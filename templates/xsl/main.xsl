@@ -16,7 +16,7 @@
 		<td valign="top" style="background: #AAA; width: 120px; height: 640px;">
             <table cellspacing="0" cellpadding="0"><tr>
             <td valign="top" bgcolor="#FFF">
-            <a href="{//link_prefix}welcome"><img src="{//path_prefix}/images/pbooks-logo.png" border="0"/></a>
+            <a href="{//link_prefix}welcome"><img src="{//path_prefix}/images/pbooks-logo_120x60.png" border="0"/></a>
             </td></tr>
             <tr>
             <td valign="top">
