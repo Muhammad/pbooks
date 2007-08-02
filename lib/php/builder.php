@@ -1,0 +1,95 @@
+<?php
+
+//define('INCLUDE_PATH', "/usr/share/php/");
+define('INCLUDE_PATH', $nexista_path);
+define('SERVER_NAME', $server_name);
+
+if(!file_exists('INCLUDE_PATH'.'nexista/kernel/foundry.php')) { 
+    echo "I can't find the nexista foundry class, and cannot continue. Try this:<br/><br/>";
+    echo "<a href='http://www.nexista.org'>http://www.nexista.org</a> or <a href='http://code.google.com/p/nexista/'>http://code.google.com/p/nexista/</a>";
+    exit;
+} else { 
+    require(INCLUDE_PATH.'nexista/kernel/foundry.php');
+}
+$foundry = Foundry::singleton();
+$config = PROJECT_ROOT.'/config/config.xml';
+$app_config = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/config.xml';
+$app_entities = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/entities.xml';
+        
+    if(!file_exists($config)) { 
+        echo "Uh-oh, we already ran into a problem. I can't find a config file! I'm looking for $config";
+        exit;
+    }
+
+    if(!file_exists($app_config)) {
+        $foundry->configure($config,NULL, $build_type);
+    } else {
+        $foundry->configure($config,$app_config, $build_type);
+    }
+    
+    
+    if(file_exists($app_entities)) { 
+        // Need to pass full path.
+        $compilePath = $foundry->getCompilePath();
+        $foundry->defineEntities($app_entities,NULL,$compilePath."entities.xml");
+    }
+    
+$foundry->debug = 1;
+
+$my_sitemap = $foundry->getSitemapPath('./build/sitemap');
+
+function check_freshness() { 
+    global $config;
+    global $app_config;
+    global $foundry;
+    global $server_init;
+    global $my_sitemap;
+    $last_build_time = filemtime($server_init); 
+    if(file_exists($app_config)) { 
+           $app_config_stat = $last_build_time < filemtime($app_config);
+    }
+           
+    
+    if($last_build_time < filemtime($my_sitemap) || $last_build_time < filemtime($config) || $app_config_stat) { 
+    
+        if($foundry->debug==1) { 
+            echo "Nexista is rebuilding the loader because either the sitemap or one of the configs has been edited.<br/>";
+            echo "<a href='javascript:history.go(-1)'>OK, all done, go back.</a><br/>";
+            echo "Building index file....OK<br/>";
+        }
+        build_it_now();
+    }
+} 
+    
+function build_it_now() { 
+    global $config;
+    global $foundry;
+    ?>
+    <html>
+    <body style="padding: 150px; font-family: verdana;">
+    
+    <?php 
+    
+        
+    echo "Looks like you are installing to $server_init. Cool! <br/><br/>";
+    
+    
+    ?>
+    
+    I'm guessing that your php is install in "/usr/share/php", and that you've already installed
+    nexista in there. <br/><br/>
+    
+    <?php
+
+
+        $foundry->buildLoader();
+        $foundry->buildGates();  
+        $foundry->buildSitemap();
+        echo "<pre>"; print_r($GLOBALS);
+        
+}
+    
+    
+    
+    
+    

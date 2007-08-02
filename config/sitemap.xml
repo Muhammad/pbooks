@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE map:sitemap [
+<!ENTITY apppath "/usr/share/##PROJECT_NAME##/apps/">
+]>
+<map:sitemap xmlns:map="http://www.nexista.com/sitemap"> 
+<!-- *************************************************  -->
+<!--  ##PROJECT_NAME##                                  -->
+<!-- *************************************************  -->
+
+
+
+<map:prepend>
+    <map:script src="../lib/php/runtime.php"/>
+</map:prepend>  
+
+<map:include src="&apppath;auth/config/auth_sitemap.xml"/>
+<map:include src="&apppath;user/config/user_sitemap.xml"/>
+<map:include src="&apppath;##PROJECT_NAME##/config/app_sitemap.xml"/>
+	
+	
+
+</map:sitemap>
