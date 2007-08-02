@@ -1,12 +1,13 @@
 <?php
 
-//define('INCLUDE_PATH', "/usr/share/php/");
-define('INCLUDE_PATH', $nexista_path);
-define('SERVER_NAME', $server_name);
+//define(INCLUDE_PATH, "/usr/share/php/");
+define(INCLUDE_PATH, $nexista_path);
+define(SERVER_NAME, $server_name);
 
-if(!file_exists('INCLUDE_PATH'.'nexista/kernel/foundry.php')) { 
+if(!file_exists(INCLUDE_PATH.'nexista/kernel/foundry.php')) { 
     echo "I can't find the nexista foundry class, and cannot continue. Try this:<br/><br/>";
-    echo "<a href='http://www.nexista.org'>http://www.nexista.org</a> or <a href='http://code.google.com/p/nexista/'>http://code.google.com/p/nexista/</a>";
+    echo "<a href='http://www.nexista.org'>http://www.nexista.org</a>, and so you know, I looking here: <br/>";
+    echo INCLUDE_PATH."nexista/kernel/foundry.php";;
     exit;
 } else { 
     require(INCLUDE_PATH.'nexista/kernel/foundry.php');
@@ -15,24 +16,43 @@ $foundry = Foundry::singleton();
 $config = PROJECT_ROOT.'/config/config.xml';
 $app_config = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/config.xml';
 $app_entities = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/entities.xml';
-        
+
     if(!file_exists($config)) { 
         echo "Uh-oh, we already ran into a problem. I can't find a config file! I'm looking for $config";
         exit;
     }
 
+    
+    $config_file = file_get_contents($config);
+        
+    if(strpos($config_file,"@@database")) { 
+        require(PROJECT_ROOT."/apps/pbooks/lib/php/install.php");
+        exit;
+    }
+    
     if(!file_exists($app_config)) {
         $foundry->configure($config,NULL, $build_type);
     } else {
         $foundry->configure($config,$app_config, $build_type);
     }
-    
-    
-    if(file_exists($app_entities)) { 
-        // Need to pass full path.
+
+    if(file_exists($app_entities)) {
+        // Need to pass full path. Need to check for freshness!
         $compilePath = $foundry->getCompilePath();
-        $foundry->defineEntities($app_entities,NULL,$compilePath."entities.xml");
+        if(!file_exists($compilePath."entities.xml")) { 
+            $foundry->defineEntities($app_entities,NULL,$compilePath."entities.xml");
+        }
     }
+    
+    
+    
+    if(!file_exists($app_config)) {
+        $foundry->configure($config,NULL, $build_type);
+    } else {
+        $foundry->configure($config,$app_config, $build_type);
+    }
+
+    
     
 $foundry->debug = 1;
 
@@ -46,11 +66,15 @@ function check_freshness() {
     global $my_sitemap;
     $last_build_time = filemtime($server_init); 
     if(file_exists($app_config)) { 
-           $app_config_stat = $last_build_time < filemtime($app_config);
+        if($last_build_time < filemtime($app_config)) { 
+                $app_config_stat = false;
+        } else { 
+                $app_config_stat = true;
+        }
     }
            
     
-    if($last_build_time < filemtime($my_sitemap) || $last_build_time < filemtime($config) || $app_config_stat) { 
+    if($last_build_time < filemtime($my_sitemap) || $last_build_time < filemtime($config) || $app_config_stat === false) { 
     
         if($foundry->debug==1) { 
             echo "Nexista is rebuilding the loader because either the sitemap or one of the configs has been edited.<br/>";
@@ -80,7 +104,6 @@ function build_it_now() {
     nexista in there. <br/><br/>
     
     <?php
-
 
         $foundry->buildLoader();
         $foundry->buildGates();  
