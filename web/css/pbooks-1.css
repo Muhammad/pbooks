@@ -1,0 +1,186 @@
+html, body {
+	color:           black;
+	background:      white;
+	font-weight:     normal;
+	font-style:      normal;
+	text-decoration: none;
+	margin:  10;
+	padding: 0;
+	border:  0;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 11px; 
+}
+img { 
+    border: 0;
+}
+.journal-data, .journal-data-wrap, a.journal-data
+{
+    text-decoration: none;
+    font-size:11px;
+    height: 24px;
+    font-style: normal;
+    letter-spacing: 0px;
+	text-indent:0px;
+	white-space: nowrap;
+	border-style: solid;
+	border-color: #CCCCCC;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    vertical-align: middle;
+}
+.journal-data-wrap
+{
+	white-space: normal;
+}
+/* alternate colored rows */
+.row0 
+{
+	background-color: #FFFFFF;
+    
+}
+
+.row1 
+{
+	background-color: #EEEEEE;
+}
+
+.row2 
+{
+	background-color: #DDDDDD;
+    
+}
+.row2:hover { background-color : #CCFFFF }
+
+.row3 
+{
+	background-color: #f0f0f0;
+}
+
+a{
+ color: #222222; text-decoration: none;
+}
+
+a:visited{
+ color: #222222; text-decoration: none;
+}
+
+a:hover{
+ color: #44BBDD; text-decoration: underline;
+}
+
+
+.menu-main
+{
+	font-size: 11px; 
+	font-style: normal; 
+	line-height: 18px;
+	letter-spacing: 1px; 
+	font-weight: bold; 
+	color: black;
+
+}
+
+.basic-table-cell, .basic-table-cell-indent
+{
+
+    align: left;
+    color: black;
+    font-size:10px;
+    font-style: normal;
+    letter-spacing: 1px;
+	text-indent:2px;
+	white-space: nowrap;
+	
+    padding: 2px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #9496AC;
+	border-left-color: #9496AC;
+	border-bottom-color: #E5E2F8;
+	border-right-color: #FFFFFF;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+.basic-table-cell-indent
+{
+	
+	border-left-color: #FFFFFF;
+    border-left-width: 20px;
+	text-indent:0px;
+
+}
+
+.menu-sub, .menu-sub-selected, .menu-sub-sub-selected, .menu-sub-sub-selected-gray
+{
+
+    align: left;
+    color: black;
+    font-size:10px;
+    font-style: normal;
+    letter-spacing: 1px;
+	text-indent:0px;
+	white-space: nowrap;
+	background: #CCC;
+    padding: 5px 5px 5px 5px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #9496AC;
+	border-left-color: #9496AC;
+	border-bottom-color: #DDD;
+	border-right-color: #DDD;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+.menu-sub-selected
+{
+ font-weight: bold;
+ background-color: 99CCCC; 
+
+
+} 
+
+.menu-sub-sub-selected
+{
+ font-weight: bold;
+ background-color: #BBB;
+ color: #444; 
+
+
+}
+.menu-sub-sub-selected-gray
+{
+ font-weight: bold;
+ background-color: #DDDDDD; 
+}
+.application-table, .table-menu, .form-table, .data-table, .journal-table
+{
+	background-color: white;
+    padding: 2px 2px 2px 2px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: black;
+	border-left-color: black;
+	border-bottom-color: black;
+	border-right-color: black;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.sm_indent { 
+    padding-left: 15px;
+}
