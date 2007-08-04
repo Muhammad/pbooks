@@ -7,7 +7,7 @@
 <html>
 <head>
 	<title>PBooks Accounting and Bookkeeping System</title>
-     <link rel="stylesheet" type="text/css" href="{//path_prefix}/css/pbooks-1.css" ></link>
+     <link rel="stylesheet" type="text/css" href="css/pbooks-1.css" ></link>
 </head>
 <body>
 <div style="padding: 10px;">
@@ -16,7 +16,7 @@
 		<td valign="top" style="background: #AAA; width: 120px; height: 640px;">
             <table cellspacing="0" cellpadding="0"><tr>
             <td valign="top" bgcolor="#FFF">
-            <a href="{//link_prefix}welcome"><img src="{//path_prefix}/images/pbooks-logo_120x60.png" border="0"/></a>
+            <a href="{//link_prefix}welcome"><img src="images/pbooks-logo_120x60.png" border="0"/></a>
             </td></tr>
             <tr>
             <td valign="top">
@@ -40,7 +40,7 @@
 	</tr>
     <tr><td colspan="2" align="center" style="background: #333; color: #EEE; padding: 5px;">
     <xsl:comment>You must keep this copyright notice intact</xsl:comment>
-    <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved. 
+    <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved. <!-- Link to download source, as required by AGPL -->
     </td></tr>
 </table>
 </div>
