@@ -28,7 +28,7 @@ if(!include(PROJECT_ROOT.'/lib/php/builder.php')) {
 
 
 // Loader not there or manually getting rebuilt? Build it!
-if(!file_exists($server_init) || $_GET['nxbin']) {
+if(!file_exists($server_init) || isset($_GET['nxbin'])) {
     build_it_now();
 } else { // Loader is there, check freshness, then either rebuild or include it.
     check_freshness();

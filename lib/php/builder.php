@@ -1,9 +1,10 @@
 <?php
 
 //define(INCLUDE_PATH, "/usr/share/php/");
-define(INCLUDE_PATH, $nexista_path);
-define(SERVER_NAME, $server_name);
-
+define('INCLUDE_PATH', $nexista_path);
+if(!defined('SERVER_NAME')) { 
+    define('SERVER_NAME', $server_name);
+}
 if(!file_exists(INCLUDE_PATH.'nexista/kernel/foundry.php')) { 
     echo "I can't find the nexista foundry class, and cannot continue. Try this:<br/><br/>";
     echo "<a href='http://www.nexista.org'>http://www.nexista.org</a>, and so you know, I looking here: <br/>";
@@ -29,7 +30,9 @@ $app_entities = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/entities.xml';
         require(PROJECT_ROOT."/apps/pbooks/lib/php/install.php");
         exit;
     }
-    
+    if(!isset($build_type)) { 
+        $build_type="dev";
+    }
     if(!file_exists($app_config)) {
         $foundry->configure($config,NULL, $build_type);
     } else {

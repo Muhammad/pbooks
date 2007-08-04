@@ -82,11 +82,14 @@ function gzBuffer($init)
 		}
 		$cache_type = "None";
 	}	
-	if($_GET['view_flow']=="true"){
-		view_flow();
+	if(isset($_GET['view_flow'])){
+        if($_GET['view_flow']=="true"){
+            view_flow();
+        }
 	}
-	
-	header("ETag: ".$etag);
+	if(isset($etag)) { 
+        header("ETag: ".$etag);
+    }
 	echo $output;
 	final_notices($cache_type,"dev");
 	

@@ -2,16 +2,16 @@
     <datasource id="pbooks">
         <type>mysql</type>
         <hostname>127.0.0.1</hostname>
-        <database>database</database>
-        <username>username</username>
-        <password>password</password>
+        <database>pbooks</database>
+        <username>pbooks</username>
+        <password>pbooks</password>
     </datasource>
     <datasource id="auth">
         <type>mysql</type>
         <hostname>127.0.0.1</hostname>
-        <database>database</database>
-        <username>username</username>
-        <password>password</password>
+        <database>pbooks</database>
+        <username>pbooks</username>
+        <password>pbooks</password>
     </datasource>
 	
 	
