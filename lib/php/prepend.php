@@ -31,8 +31,13 @@ function gzBuffer($init)
         echo "can't find cache lite";
         exit;   
     }
+    $my_cache_dir = NX_PATH_CACHE;
+    if(!is_dir($my_cache_dir)) { 
+        mkdir($my_cache_dir);
+    }
+        
 	
-	$options = array('cacheDir'=>NX_PATH_CACHE,'caching'  => 1,'lifeTime' => $expiryTime);
+	$options = array('cacheDir'=> $my_cache_dir,'caching'  => 1,'lifeTime' => $expiryTime);
 	$cache = new Cache_Lite($options);
 	if(strpos($_SERVER['REQUEST_URI'],"server") || strpos($_SERVER['REQUEST_URI'],"gantt")) { 
 		$file_server_status="yes";
@@ -46,7 +51,7 @@ function gzBuffer($init)
     
 	// Server cache! Always on, controlled by sitemap.
 	// Server cache especially helpful for ssl connections.
-	if($output = $cache->get($my_request_uri, $my_user_id, FALSE)) { 
+	if($output = $cache->get($my_request_uri, $my_user_id, TRUE)) { 
 		$cache_type = "File";
 		// Check file mtime, and potentially return 304 response code.
 		// Only for testing and production sites.
@@ -56,6 +61,11 @@ function gzBuffer($init)
 		$etag = md5($last_modified_str);
 		$last_modified = gmdate('D, d M Y H:i:s', $last_modified_str);
 		
+        // Where is the modified since header set? In the browser, nowhere else
+        // Apache sets an expires header, which allows the browser 
+        // to use the cache without checking the server to ask if anything 
+        // has been modified
+        // Should we set it here?
 		$request = getallheaders(); 
 		if (isset($request['If-Modified-Since'])) { 
 		   $modifiedSince = explode(';', $request['If-Modified-Since']); 
@@ -63,12 +73,22 @@ function gzBuffer($init)
 		} else { 
 		   $modifiedSince = 0; 
 		}
-		// Client cache! Only on for...
-		if ($last_modified_str <= $modifiedSince) {
-			while (@ob_end_clean());
-			header("HTTP/1.0 304 Not Modified");
-			exit;
-		}	
+        
+		// Client cache!
+        $client_cache = $init->getInfo('clientCacheExpiryTime');
+        // Should we calculate the time? Sure... need to make sure the 
+        // modified time plus the client cache is greater than the 
+        // if modified since time...
+        $lms = $modifiedSince;
+        $client_cache_work = 
+            mktime(date('H',$lms), date('i',$lms), date('s',$lms)+$client_cache, 
+                    date('m',$lms), date('d',$lms), date('Y',$lms));
+        $client_cache_good_stamp = strtotime($client_cache_work);
+        if($client_cache > 0 && $client_cache_work > time()) {
+            while (@ob_end_clean());
+            header("HTTP/1.0 304 Not Modified");
+            exit;
+        }
 		
 		header("Last-Modified: " . $last_modified . " GMT");
 	
