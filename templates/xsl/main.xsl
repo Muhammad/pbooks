@@ -20,8 +20,7 @@
             </td></tr>
             <tr>
             <td valign="top">
-            <!-- why not admin? -->
-            <xsl:if test="not(//_get/nid='login') and not(//_get/nid='logout') and not(//_get/nid='admin')">
+            <xsl:if test="not(//_get/nid='login') and not(//_get/nid='logout') and not(//_get/nid='development-data-generator') and not(contains(//_get/nid,'user'))">
             <xsl:call-template name="accounting-menu"/>
             </xsl:if></td></tr>
             </table>
