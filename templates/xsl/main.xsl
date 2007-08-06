@@ -16,11 +16,13 @@
 		<td valign="top" style="background: #AAA; width: 120px; height: 640px;">
             <table cellspacing="0" cellpadding="0"><tr>
             <td valign="top" bgcolor="#FFF">
-            <a href="{//link_prefix}welcome"><img src="images/pbooks-logo_120x60.png" border="0"/></a>
+            <a href="index.php?nid=welcome"><img src="images/pbooks-logo_120x60.png" border="0"/></a>
             </td></tr>
             <tr>
             <td valign="top">
-            <xsl:if test="not(//_get/nid='login') and not(//_get/nid='logout') and not(//_get/nid='development-data-generator') and not(contains(//_get/nid,'user'))">
+            <xsl:if test="not(//_get/nid='login') and not(//_get/nid='logout') and not(//_get/nid='development-data-generator') and not(contains(//_get/nid,'user'))
+             and not(contains(//_get/nid,'group'))
+              and not(contains(//_get/nid,'role'))">
             <xsl:call-template name="accounting-menu"/>
             </xsl:if></td></tr>
             </table>
