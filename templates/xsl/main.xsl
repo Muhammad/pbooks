@@ -10,6 +10,7 @@
      <link rel="stylesheet" type="text/css" href="css/pbooks-1.css" ></link>
 </head>
 <body>
+<script language="JavaScript" src="js/make_request.js"> &#160; </script>
 <div style="padding: 10px;">
 <table width="768" border="0" cellspacing="0" cellpadding="0">
 	<tr>
