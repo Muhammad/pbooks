@@ -1,4 +1,3 @@
-
 function validateCompleteForm(objForm,strErrorClass){
 return _validateInternal(objForm,strErrorClass,0);
 };

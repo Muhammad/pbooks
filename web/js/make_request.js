@@ -1,4 +1,4 @@
-function makeRequest(url,entry_id) {
+function makeRequest(url,entry_id,method,parameters,doublecheck,next) {
     var httpRequest;
 
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -24,7 +24,40 @@ function makeRequest(url,entry_id) {
         alert('Giving up :( Cannot create an XMLHTTP instance');
         return false;
     }
-    httpRequest.open('GET', url, true);
-    httpRequest.send(null);
-    document.getElementById(entry_id).innerHTML="";
+    if(doublecheck!=='false') { 
+        var makesure = confirm(doublecheck);
+        if(makesure) { 
+            
+            httpRequest.open(method, url, true);  
+            httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.send(parameters);
+            if(next=="reload") { 
+                setTimeout('window.location.reload()',200);
+            } else { 
+                document.getElementById(entry_id).innerHTML="";
+                return true;
+            }
+        } else { 
+            return false;
+        }
+    
+    
+    } else { 
+
+        httpRequest.open(method, url, true);  
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.send(parameters);
+            if(next=="reload") { 
+                setTimeout('window.location.reload()',200);
+            } else { 
+                if(entry_id!==0) { 
+                    document.getElementById(entry_id).innerHTML="";
+                }
+                return true;
+            }
+    }
+    
+    
+    
+    
 }
