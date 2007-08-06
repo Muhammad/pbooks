@@ -1,5 +1,15 @@
 <?php
 
+/*
+<!-- *************************************************  -->
+<!--	Program: Nexista Example Site  					-->
+<!--	Component: runtime.php							-->	
+<!--    Copyright 2003-2007, Albert L. Lash, IV         -->
+<!--    Savonix Corporation                             -->
+<!--    License: LGPL  -->
+<!--                                                    -->
+<!-- *************************************************  -->
+*/
 
 //This is different depending on which web/file.php is called. 
 $app_runtime=PROJECT_ROOT.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lib/php'.DIRECTORY_SEPARATOR.'runtime.php';
@@ -21,7 +31,5 @@ $runtime = array('path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
                 'right_now'=>$right_now,
                 'current_user_id'=>$current_user_id);
-
-
 
 Flow::add("runtime",$runtime,false);
