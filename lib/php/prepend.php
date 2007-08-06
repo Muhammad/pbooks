@@ -7,6 +7,15 @@ server side caching.
 
 */
 
+if(count($_POST) > 0) { 
+    $gate_cache_file = NX_PATH_CACHE.'cache_*';
+    
+    foreach (glob("$gate_cache_file") as $filename) {
+       unlink($filename);
+    }
+    
+}
+
 Init::registerOutputHandler('gzBuffer');
 
 

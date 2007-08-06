@@ -1,8 +1,6 @@
 <?php
 
 
-
-    
 //This is different depending on which web/file.php is called. 
 $app_config=PROJECT_ROOT.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php';
 
