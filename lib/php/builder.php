@@ -91,6 +91,7 @@ function check_freshness() {
 function build_it_now() { 
     global $config;
     global $foundry;
+    global $server_init;
     ?>
     <html>
     <body style="padding: 150px; font-family: verdana;">
@@ -114,8 +115,3 @@ function build_it_now() {
         echo "<pre>"; print_r($GLOBALS);
         
 }
-    
-    
-    
-    
-    

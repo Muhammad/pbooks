@@ -7,7 +7,7 @@ server side caching.
 
 */
 
-if(count($_POST) > 0) { 
+if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") { 
     $gate_cache_file = NX_PATH_CACHE.'cache_*';
     
     foreach (glob("$gate_cache_file") as $filename) {
@@ -19,10 +19,15 @@ if(count($_POST) > 0) {
 Init::registerOutputHandler('gzBuffer');
 
 
+
 function gzBuffer($init)
 {
+    
 	$init->process();
 	
+	$request_uri = $_SERVER['REQUEST_URI'];
+	Flow::add("request_uri",$request_uri);
+    
 	ob_start();
 	ob_start('ob_gzhandler');
 	
@@ -53,7 +58,7 @@ function gzBuffer($init)
 	} else { 
 		$file_server_status="no";
 	}	
-	development_console();
+	//development_console();
 	if(isset($_SESSION['NX_AUTH']['real_account_id']) && $file_server_status!="yes") { 
 		cs_console();
 	}
@@ -95,13 +100,18 @@ function gzBuffer($init)
         $client_cache_good_stamp = strtotime($client_cache_work);
         if($client_cache > 0 && $client_cache_work > time()) {
             while (@ob_end_clean());
+            //header( 'Cache-Control: no-cache, must-revalidate, post-check='.$client_cache.', pre-check='.$client_cache);
             header("HTTP/1.0 304 Not Modified");
             exit;
         }
-		
+        
+        // When using client cache a session cache limiter, you've got to use this cache-control
+        // header.
+        header( 'Cache-Control: no-cache, must-revalidate, post-check=3600, pre-check=3600');
 		header("Last-Modified: " . $last_modified . " GMT");
 	
 	} else { 
+        header( 'Cache-Control: no-cache, must-revalidate, post-check=3600, pre-check=3600');
 		header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 		$output = $init->run();
 		/* Write the output to cache, only if its not encrypted data. */
@@ -120,7 +130,7 @@ function gzBuffer($init)
         header("ETag: ".$etag);
     }
 	echo $output;
-	final_notices($cache_type,"dev");
+	//final_notices($cache_type,"dev");
 	
 	
 	ob_end_flush();
