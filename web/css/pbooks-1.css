@@ -39,6 +39,11 @@ img {
     background: #AAA; width: 120px; float: left;
     
 }
+
+#foot { 
+    width: 100%; display: block; background: #555; text-align: center; color: #FFF; line-height: 20px;
+}
+
 .journal-data, .journal-data-wrap, a.journal-data
 {
     text-decoration: none;
