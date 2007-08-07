@@ -9,9 +9,35 @@ html, body {
 	border:  0;
 	font-family: Arial, Helvetica, sans-serif; 
 	font-size: 11px; 
+    min-height: 600px;
 }
 img { 
     border: 0;
+}
+
+#container { 
+    width: 924px; 
+    border: 10px; 
+    border-style: solid; 
+    border-color: #FFF;
+    
+}
+
+#capsule { 
+    min-height:700px; 
+    width: 100%;
+    background: #AAA;
+}
+
+#header { 
+    width: 804px; border: 0px; margin-left: 120px; 
+    background: #FFF;
+    min-height: 700px;
+}
+
+#leftcol { 
+    background: #AAA; width: 120px; float: left;
+    
 }
 .journal-data, .journal-data-wrap, a.journal-data
 {
@@ -24,10 +50,8 @@ img {
 	white-space: nowrap;
 	border-style: solid;
 	border-color: #CCCCCC;
+    border-width: 0px;
     border-top-width: 1px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
     vertical-align: middle;
 }
 .journal-data-wrap
@@ -49,6 +73,7 @@ img {
 .row2 
 {
 	background-color: #DDDDDD;
+    margin: 1px;
     
 }
 .row2:hover { background-color : #CCFFFF }
@@ -92,20 +117,7 @@ a:hover{
     letter-spacing: 1px;
 	text-indent:2px;
 	white-space: nowrap;
-	
     padding: 2px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	border-top-color: #9496AC;
-	border-left-color: #9496AC;
-	border-bottom-color: #E5E2F8;
-	border-right-color: #FFFFFF;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
 }
 
 .basic-table-cell-indent
@@ -119,7 +131,6 @@ a:hover{
 
 .menu-sub, .menu-sub-selected, .menu-sub-sub-selected, .menu-sub-sub-selected-gray
 {
-
     align: left;
     color: black;
     font-size:10px;
@@ -128,24 +139,12 @@ a:hover{
 	text-indent:0px;
 	white-space: nowrap;
 	background: #CCC;
-    padding: 5px 5px 5px 5px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	border-top-color: #9496AC;
-	border-left-color: #9496AC;
-	border-bottom-color: #DDD;
-	border-right-color: #DDD;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
+    padding: 5px;
 }
 .menu-sub-selected
 {
  font-weight: bold;
- background-color: 99CCCC; 
+ background-color: #99CCCC; 
 
 
 } 
@@ -163,23 +162,16 @@ a:hover{
  font-weight: bold;
  background-color: #DDDDDD; 
 }
-.application-table, .table-menu, .form-table, .data-table, .journal-table
+.application-table, .table-menu, .form-table,, .journal-table
 {
-	background-color: white;
-    padding: 2px 2px 2px 2px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-	border-top-color: black;
-	border-left-color: black;
-	border-bottom-color: black;
-	border-right-color: black;
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
 }
+
+.data-table td { 
+    border-bottom-width: 1px;
+    border-bottom-color: white;
+	border-bottom-style: solid;
+}
+    
 
 .sm_indent { 
     padding-left: 15px;
