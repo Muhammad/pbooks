@@ -31,10 +31,15 @@
             httpRequest.open(method, url, true);  
             httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest.send(parameters);
+            mytbl = document.getElementById("accounts_table");
             if(next=="reload") { 
                 setTimeout('window.location.reload()',200);
             } else { 
-                document.getElementById(entry_id).innerHTML="";
+                if(mytbl.rows.length > 0) { 
+                    mytbl.deleteRow(entry_id);
+                } else {
+                    document.getElementById(entry_id).innerHTML="";
+                }
                 return true;
             }
         } else { 
