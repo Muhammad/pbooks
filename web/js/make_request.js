@@ -1,4 +1,4 @@
-function makeRequest(url,entry_id,method,parameters,doublecheck,next) {
+  function makeRequest(url,entry_id,method,parameters,doublecheck,next) {
     var httpRequest;
 
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -52,8 +52,8 @@ function makeRequest(url,entry_id,method,parameters,doublecheck,next) {
             } else { 
                 if(entry_id!==0) { 
                     document.getElementById(entry_id).innerHTML="";
+                    return true;
                 }
-                return true;
             }
     }
     
