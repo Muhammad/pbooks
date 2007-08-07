@@ -31,6 +31,7 @@
             httpRequest.open(method, url, true);  
             httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest.send(parameters);
+            
             mytbl = document.getElementById("accounts_table");
             if(next=="reload") { 
                 setTimeout('window.location.reload()',200);
