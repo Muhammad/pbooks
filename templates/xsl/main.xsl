@@ -37,12 +37,10 @@
     </td></tr> -->
 
 </div>
-<div style="width: 100%; display: block; background: #555; text-align: center;">
-<div  style="padding: 5px;" >
-<xsl:comment>You must keep this copyright notice intact</xsl:comment>
+<div id="foot">
+<xsl:comment>You must keep this copyright notice intact.</xsl:comment>
     <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved.
     <!-- Link to download source, as required by AGPL --></div>
-</div>
 </div>
 </body>
 </html>
