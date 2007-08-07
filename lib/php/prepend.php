@@ -85,13 +85,17 @@ function gzBuffer($init)
         // to use the cache without checking the server to ask if anything 
         // has been modified
         // Should we set it here?
-		$request = getallheaders(); 
-		if (isset($request['If-Modified-Since'])) { 
-		   $modifiedSince = explode(';', $request['If-Modified-Since']); 
-		   $modifiedSince = strtotime($modifiedSince[0]); 
-		} else { 
-		   $modifiedSince = 0; 
-		}
+        if(function_exists(getallheaders)) { 
+            $request = getallheaders(); 
+            if (isset($request['If-Modified-Since'])) { 
+               $modifiedSince = explode(';', $request['If-Modified-Since']); 
+               $modifiedSince = strtotime($modifiedSince[0]); 
+            } else { 
+               $modifiedSince = 0; 
+            }
+        } else { 
+           $modifiedSince = 0; 
+        }
         
 		// Client cache!
         $client_cache = $init->getInfo('clientCacheExpiryTime');
