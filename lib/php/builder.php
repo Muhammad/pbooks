@@ -1,5 +1,7 @@
 <?php
 
+
+
 //define(INCLUDE_PATH, "/usr/share/php/");
 define('INCLUDE_PATH', $nexista_path);
 if(!defined('SERVER_NAME')) { 
@@ -79,12 +81,15 @@ function check_freshness() {
     
     if($last_build_time < filemtime($my_sitemap) || $last_build_time < filemtime($config) || $app_config_stat === false) { 
     
+  
+        build_it_now();      
         if($foundry->debug==1) { 
             echo "Nexista is rebuilding the loader because either the sitemap or one of the configs has been edited.<br/>";
             echo "<a href='javascript:history.go(-1)'>OK, all done, go back.</a><br/>";
             echo "Building index file....OK<br/>";
+
         }
-        build_it_now();
+
     }
 } 
     
@@ -92,6 +97,8 @@ function build_it_now() {
     global $config;
     global $foundry;
     global $server_init;
+    ob_end_clean();
+    header( 'Cache-Control: no-cache, no-store');
     ?>
     <html>
     <body style="padding: 150px; font-family: verdana;">
@@ -112,6 +119,13 @@ function build_it_now() {
         $foundry->buildLoader();
         $foundry->buildGates();  
         $foundry->buildSitemap();
-        echo "<pre>"; print_r($GLOBALS);
-        
+                ?>
+<script type="text/javascript">
+setTimeout('top.location.reload()',1000);
+</script>
+<?       
+ob_flush();
+
+        //echo "<pre>"; print_r($GLOBALS);
+
 }

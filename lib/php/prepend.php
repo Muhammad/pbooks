@@ -50,18 +50,23 @@ function gzBuffer($init)
         mkdir($my_cache_dir);
     }
         
-	
-	$options = array('cacheDir'=> $my_cache_dir,'caching'  => 1,'lifeTime' => $expiryTime);
+	//$blah = $this->init->getSection('session');
+    $cache_config = Config::get('./runtime/cache');
+	$options = array('cacheDir'=> $my_cache_dir,'caching'  => $cache_config,'lifeTime' => $expiryTime);
 	$cache = new Cache_Lite($options);
 	if(strpos($_SERVER['REQUEST_URI'],"server") || strpos($_SERVER['REQUEST_URI'],"gantt")) { 
 		$file_server_status="yes";
 	} else { 
 		$file_server_status="no";
 	}	
-	//development_console();
+    $console_config = Config::get('./runtime/console');
+    if($console_config=="1") { 
+        development_console();
+    }
 	if(isset($_SESSION['NX_AUTH']['real_account_id']) && $file_server_status!="yes") { 
 		cs_console();
 	}
+    
     
 	// Server cache! Always on, controlled by sitemap.
 	// Server cache especially helpful for ssl connections.
@@ -130,8 +135,9 @@ function gzBuffer($init)
         header("ETag: ".$etag);
     }
 	echo $output;
-	//final_notices($cache_type,"dev");
-	
+    if($console_config=="1") {
+        final_notices($cache_type,"dev");
+	}
 	
 	ob_end_flush();
 	
