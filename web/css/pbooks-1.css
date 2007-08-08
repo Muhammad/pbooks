@@ -187,3 +187,7 @@ a:hover{
     font-family: 'Lucida Console', Monaco, monospace; font-size: 11px; color: red; border: 1px; border-color: #FF6699; border-style: solid; background: #FFCCFF; line-height: 24px;
     text-align: center;
 }
+
+.myerror { 
+    border: 1px; border-color: #FF6699; border-style: solid; 
+}
