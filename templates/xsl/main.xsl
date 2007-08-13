@@ -17,7 +17,7 @@
     and not(//_get/nid='logout') 
     and not(//_get/nid='development-data-generator') 
     and not(contains(//_get/nid,'user'))
-    and not(contains(//_get/nid,'group'))
+    and not(//_get/nid='group')
     and not(contains(//_get/nid,'role'))">
     <xsl:call-template name="accounting-menu"/>
     </xsl:if>
