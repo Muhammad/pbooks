@@ -9,9 +9,9 @@
     <datasource id="auth">
         <type>mysql</type>
         <hostname>127.0.0.1</hostname>
-    <database>database</database>
-            <username>username</username>
-	            <password>password</password>tasource>
+        <database>database</database>
+        <username>username</username>
+        <password>password</password>
 </datasource>	
 	
     <!-- AUTHENTICATION-->
