@@ -123,7 +123,7 @@ function build_it_now() {
 <script type="text/javascript">
 setTimeout('top.location.reload()',1000);
 </script>
-<?       
+<?php       
 ob_flush();
 
         //echo "<pre>"; print_r($GLOBALS);
