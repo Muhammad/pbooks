@@ -36,7 +36,8 @@ function gzBuffer($init)
 	if(stripos($agent,"google") || stripos($agent,"slurp") || stripos($agent,"msnbot") || stripos($agent,"spider") || stripos($agent,"bot")) { 		
 		$my_user_id = -1000;
 	} else { 
-		$my_user_id = $_SESSION['NX_AUTH']['user_id'];
+		//$my_user_id = $_SESSION['NX_AUTH']['user_id'];
+		$my_user_id = 100;
 	}
 
 	$my_request_uri = $_SERVER['REQUEST_URI'];

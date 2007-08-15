@@ -22,11 +22,12 @@ if(is_file($app_runtime)) {
 $path = "index.php";
 $path_prefix = dirname($_SERVER['SCRIPT_NAME']);
 //$app_prefix = "acc/".APP_NAME."/";
-$link_prefix = $path."?nid=".$app_prefix;
-
+//$link_prefix = $path."?nid=".$app_prefix;
+$link_prefix = $path."?nid=";
 $right_now = date('Y-m-d H:i:s');
-$current_user_id = $_SESSION['NX_AUTH']['user_id'];
 
+//$current_user_id = $_SESSION['NX_AUTH']['user_id'];
+$current_user_id = 100;
 
 $runtime = array('path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
