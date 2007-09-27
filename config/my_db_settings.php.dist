@@ -1,0 +1,15 @@
+<?php
+
+/*
+
+   This file is used only for installation at this point, allowing you 
+   to specify a different user (probably with higher privileges) to 
+   the installation process. 
+
+*/
+
+$DATABASE = "pbooks";
+$USER = "";
+$PASS = "";
+
+?>
