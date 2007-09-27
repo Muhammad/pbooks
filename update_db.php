@@ -17,6 +17,8 @@ if(!is_file('config/my_db_settings.php')) {
 
 `echo "ALTER TABLE pb_accounts ADD COLUMN hide enum('off','on') default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
 
+`echo "ALTER TABLE pb_entries ADD COLUMN status tinyint(2) default 2;" | mysql -u $USER -p$PASS $DATABASE`;
+
 
 ?>
 
