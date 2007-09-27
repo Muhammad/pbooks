@@ -7,10 +7,10 @@ a web based installer.  */
 
 /* Copy config/my_db_admin_settings.php.dist to my_db_admin_settings.php and change to your info */
 if(!is_file('config/my_db_settings.php')) { 
-    echo "Copy config/my_db_settings.php.dist to config/my_db_settings.php and change to your info.\n";
+    echo "Copy config/my_db_admin_settings.php.dist to config/my_db_settings.php and change to your info.\n";
     exit;
 } else {  
-    include('config/my_db_settings.php');
+    include('config/my_db_admin_settings.php');
 }
 
 `mysqladmin -u $USER -p$PASS CREATE $DATABASE`;
