@@ -28,10 +28,12 @@ $right_now = date('Y-m-d H:i:s');
 
 //$current_user_id = $_SESSION['NX_AUTH']['user_id'];
 $current_user_id = 100;
+$debug = Config::get('./runtime/debug');
 
 $runtime = array('path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
                 'right_now'=>$right_now,
-                'current_user_id'=>$current_user_id);
+                'current_user_id'=>$current_user_id,
+                'debug'=>$debug);
 
 Flow::add("runtime",$runtime,false);

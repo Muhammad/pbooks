@@ -60,8 +60,8 @@ function gzBuffer($init)
 	} else { 
 		$file_server_status="no";
 	}	
-    $console_config = Config::get('./runtime/console');
-    if($console_config=="1") { 
+    $development_console = (bool)Config::get('./runtime/development_console');
+    if($development_console===true) { 
         development_console();
     }
 	if(isset($_SESSION['NX_AUTH']['real_account_id']) && $file_server_status!="yes") { 
