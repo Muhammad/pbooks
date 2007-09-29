@@ -83,8 +83,9 @@
         <query>nid</query>
     </build>
 
-	<!-- This should probably be instead determined by dev status. -->
+	<!-- 0 = false, anything else = true -->
     <runtime>
+        <development_console>0</development_console>
         <cache>0</cache>
         <!-- Sets $GLOBALS['debugTrack'] to true when on, anything else does not set it -->
         <debug>o</debug>
