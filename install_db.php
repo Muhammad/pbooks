@@ -17,6 +17,7 @@ if(!is_file('config/my_db_settings.php')) {
 
 `mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/model/pbooks_data_model.sql`;
 `mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/sample_data/auth_pbooks_data.sql`;
+`mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/sample_data/from_weberp.sql`;
 
 `echo "GRANT ALL PRIVILEGES ON pbooks.* TO 'pbooks'@'%' IDENTIFIED BY 'pbooks';" | mysql -u $USER -p$PASS $DATABASE`;
 
