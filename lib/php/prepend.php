@@ -16,8 +16,11 @@ if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") {
     
 }
 
-Init::registerOutputHandler('gzBuffer');
 
+if(COMMAND_LINE===true) {
+} else {
+Init::registerOutputHandler('gzBuffer');
+}
 
 
 function gzBuffer($init)
@@ -221,13 +224,16 @@ done_loading();</script> - Server cache: $cacher <!--[ <a href='/acc/cache/purge
 
 function authLogin($auth)
 {
-    if(empty($_SESSION['authReferer']))
-    {
-        $_SESSION['authReferer'] = $_SERVER['REQUEST_URI'];
+    if(COMMAND_LINE===true) {
+    } else {
+        if(empty($_SESSION['authReferer']))
+        {
+            $_SESSION['authReferer'] = $_SERVER['REQUEST_URI'];
+        }
+        $link_prefix = dirname(NX_LINK_PREFIX);
+        header("Location: ".$link_prefix."/auth.php?nid=login");
+        exit;
     }
-    $link_prefix = dirname(NX_LINK_PREFIX);
-    header("Location: ".$link_prefix."/auth.php?nid=login");
-    exit;
 }
 
 Auth::registerTimeoutHandler('authLogin');

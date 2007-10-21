@@ -37,3 +37,7 @@ $runtime = array('path_prefix'=>$path_prefix,
                 'debug'=>$debug);
 
 Flow::add("runtime",$runtime,false);
+
+// for use with command line admin and cli.xsl
+global $in;
+Flow::add("test",$in,false);

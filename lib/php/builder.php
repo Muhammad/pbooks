@@ -32,13 +32,16 @@ $app_entities = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/entities.xml';
         require(PROJECT_ROOT."/apps/pbooks/lib/php/install.php");
         exit;
     }
-    if(!isset($build_type)) { 
-        $build_type="dev";
+    if(!isset($mode)) { 
+        $mode="dev";
+    }
+    if(isset($_ENV['NEXISTA_MODE'])) { 
+        $mode=$_ENV['NEXISTA_MODE'];
     }
     if(!file_exists($app_config)) {
-        $foundry->configure($config,NULL, $build_type);
+        $foundry->configure($config,NULL, $mode);
     } else {
-        $foundry->configure($config,$app_config, $build_type);
+        $foundry->configure($config,$app_config, $mode);
     }
 
     if(file_exists($app_entities)) {
@@ -52,9 +55,9 @@ $app_entities = PROJECT_ROOT.'/apps/'.APP_NAME.'/config/entities.xml';
     
     
     if(!file_exists($app_config)) {
-        $foundry->configure($config,NULL, $build_type);
+        $foundry->configure($config,NULL, $mode);
     } else {
-        $foundry->configure($config,$app_config, $build_type);
+        $foundry->configure($config,$app_config, $mode);
     }
 
     
@@ -119,7 +122,8 @@ function build_it_now() {
         $foundry->buildLoader();
         $foundry->buildGates();  
         $foundry->buildSitemap();
-                ?>
+?>
+
 <script type="text/javascript">
 setTimeout('top.location.reload()',1000);
 </script>
