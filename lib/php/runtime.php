@@ -15,7 +15,7 @@
 $app_runtime=PROJECT_ROOT.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lib/php'.DIRECTORY_SEPARATOR.'runtime.php';
 
 if(is_file($app_runtime)) { 
-    require_once($app_runtime);
+    require($app_runtime);
 }
 
 //$path = $_SERVER['SCRIPT_NAME'];
