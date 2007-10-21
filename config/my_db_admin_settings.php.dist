@@ -8,8 +8,17 @@
 
 */
 
-$DATABASE = "pbooks";
+$HOST = "";
+$DATABASE = "";
 $USER = "";
 $PASS = "";
+
+
+$db = array(
+        'host' => $HOST,
+        'database' => $DATABASE,
+        'user' => $USER,
+        'pass' => $PASS
+        );
 
 ?>
