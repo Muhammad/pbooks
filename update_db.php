@@ -21,10 +21,17 @@ if ($db_version == "0.00") {
     `echo "ALTER TABLE pb_entries ADD COLUMN status tinyint(2) default 2;" | mysql -u $USER -p$PASS $DATABASE`;
 }
 
-if($db_version == "0.03") { 
+if($db_version <= "0.03") { 
     `echo "ALTER TABLE pb_accounts ADD COLUMN group_id tinyint(2) default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
     fwrite(STDOUT,"Database update successful");
 }
+
+/* Not yet but soon: 
+if($db_version <= "0.04") { 
+    `echo "DROP TABLE pb_account_parent_groups;" | mysql -u $USER -p$PASS $DATABASE`;
+    fwrite(STDOUT,"Database update successful");
+}
+    */
 
 ?>
 
