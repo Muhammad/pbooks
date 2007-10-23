@@ -39,7 +39,7 @@
 </div>
 <div id="foot">
 <xsl:comment>You must keep this copyright notice intact.</xsl:comment>
-    <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved. License: AGPL v3. Download source: <a style="color: #FFF;" href="http://www.pbooks.org/download/">Download source</a>.
+    <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_code_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved. License: AGPL v3. Download source: <a style="color: #FFF;" href="http://www.pbooks.org/download/">Download source</a>.
     <!-- Link to download source, as required by AGPL --></div>
 </div>
 </body>
