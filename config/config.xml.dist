@@ -12,10 +12,9 @@
         <database>pbooks</database>
         <username>username</username>
         <password>password</password>
-</datasource>	
-	
-    <!-- AUTHENTICATION-->
+    </datasource>	
 
+    <!-- AUTHENTICATION-->
     <auth>       
         <expire>0</expire>
         <idle>0</idle>
@@ -28,17 +27,14 @@
         <cacheExpires>120000</cacheExpires>
     </session>
 	
-  <!-- FLOW -->
-
+    <!-- FLOW -->
     <flow name="www">
         <globals>PG</globals>
         <request>PGFR</request>
     </flow>
-    
     <flow name="dev">
         <globals>PGC</globals>   
         <request>PGFR</request>
-
     </flow>
 	
 	
@@ -49,16 +45,15 @@
 	<domain>
 		<server_name mode="dev">&server_name;</server_name>
 	</domain>
+    
     <!-- PATH SETTINGS -->
     <path>
-
         <base>&includepath;nexista/</base>
         <!-- I would like to simplify these -->
         <builders>&includepath;nexista/modules/builders/</builders>
         <handlers>&includepath;nexista/modules/handlers/</handlers>
         <validators>&includepath;nexista/modules/validators/</validators>
         <actions>&includepath;nexista/modules/actions/</actions>
-
         
         <applications>&project_root;/apps/&app_name;/</applications>
         <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
