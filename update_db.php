@@ -20,12 +20,12 @@ if(!is_file('config/my_db_admin_settings.php')) {
 if ($db_version == "a") {
     `echo "ALTER TABLE pb_accounts ADD COLUMN hide enum('off','on') default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "ALTER TABLE pb_entries ADD COLUMN status tinyint(2) default 2;" | mysql -u $USER -p$PASS $DATABASE`;
-    // UPDATE to "c"
+    fwrite(STDOUT,"Database update to b successful");
 }
 
 if($db_version == "b") { 
     `echo "ALTER TABLE pb_accounts ADD COLUMN group_id tinyint(2) default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
-    fwrite(STDOUT,"Database update successful");
+    fwrite(STDOUT,"Database update to c successful");
 }
 
 if($db_version == "c") { 
@@ -34,7 +34,7 @@ if($db_version == "c") {
     `echo "DELETE FROM pb_options WHERE option_key='pbooks_database_version';" | mysql -u $USER -p$PASS $DATABASE`; 
     `echo "insert into pb_options ( option_key,option_value) VALUES ('pbooks_database_version','c');" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "d" > config/db_version.txt`;
-    fwrite(STDOUT,"Database update successful.\n");
+    fwrite(STDOUT,"Database update to version d was successful.\n");
 }
 
 if($db_version == "d") { 
