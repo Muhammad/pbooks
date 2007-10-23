@@ -1,9 +1,11 @@
 <?php
 
+if(isset($nexista_path)) { 
+    define('INCLUDE_PATH', $nexista_path);
+} else { 
+    define('INCLUDE_PATH', "/usr/share/php/");
+}
 
-
-//define(INCLUDE_PATH, "/usr/share/php/");
-define('INCLUDE_PATH', $nexista_path);
 if(!defined('SERVER_NAME')) { 
     define('SERVER_NAME', $server_name);
 }
