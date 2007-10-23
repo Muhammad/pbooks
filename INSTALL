@@ -8,7 +8,7 @@ REQUIREMENTS
 2.  MySQL 5
 3.  PHP Extentions: mysqli, xslt
 4.  PEAR Libraries: Cache_Lite, MDB2, MDB2#mysqli
-5.  Nexista (included in distribution)
+5.  Nexista (included in distribution for now)
 
  
  
@@ -39,3 +39,5 @@ DATABASE INSTALLATION
 DATABASE UPDATE
 ===============
 
+There is a file called update_db.php which can be used to update your database, 
+if necessary. 
