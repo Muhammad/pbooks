@@ -32,6 +32,7 @@ if($db_version == "c") {
     fwrite(STDOUT,"Dropping pb_account_parent_groups...\n");
     `echo "DROP TABLE pb_account_parent_groups;" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "DELETE FROM pb_options WHERE option_key='pbooks_database_version';" | mysql -u $USER -p$PASS $DATABASE`; 
+    `echo "DELETE FROM pb_accounts WHERE name='PLACEHOLDER';" | mysql -u $USER -p$PASS $DATABASE`; 
     `echo "insert into pb_options ( option_key,option_value) VALUES ('pbooks_database_version','c');" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "d" > config/db_version.txt`;
     fwrite(STDOUT,"Database update successful.\n");
