@@ -20,25 +20,24 @@ if(!is_file('config/my_db_admin_settings.php')) {
 if ($db_version == "a") {
     `echo "ALTER TABLE pb_accounts ADD COLUMN hide enum('off','on') default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "ALTER TABLE pb_entries ADD COLUMN status tinyint(2) default 2;" | mysql -u $USER -p$PASS $DATABASE`;
-    fwrite(STDOUT,"Database update to b successful");
+    // UPDATE to "c"
 }
 
 if($db_version == "b") { 
     `echo "ALTER TABLE pb_accounts ADD COLUMN group_id tinyint(2) default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
-    fwrite(STDOUT,"Database update to c successful");
+    fwrite(STDOUT,"Database update successful");
 }
 
 if($db_version == "c") { 
     fwrite(STDOUT,"Dropping pb_account_parent_groups...\n");
     `echo "DROP TABLE pb_account_parent_groups;" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "DELETE FROM pb_options WHERE option_key='pbooks_database_version';" | mysql -u $USER -p$PASS $DATABASE`; 
-    `echo "insert into pb_options ( option_key,option_value) VALUES ('pbooks_database_version','d');" | mysql -u $USER -p$PASS $DATABASE`;
+    `echo "insert into pb_options ( option_key,option_value) VALUES ('pbooks_database_version','c');" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "d" > config/db_version.txt`;
-    fwrite(STDOUT,"Database update to version d was successful.\n");
+    fwrite(STDOUT,"Database update successful.\n");
 }
 
 if($db_version == "d") { 
     fwrite(STDOUT,"No update required.\n");
 }
 ?>
-
