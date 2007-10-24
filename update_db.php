@@ -9,7 +9,7 @@ fwrite(STDOUT,"Current database version is ".$db_version."\n");
 
 /* Copy config/my_db_admin_settings.php.dist to my_db_admin_settings.php and change to your info */
 if(!is_file('config/my_db_admin_settings.php')) { 
-    echo "Copy config/my_db_admin_settings.php.dist to config/my_db_settings.php and change to your info.\n";
+    echo "Copy config/my_db_admin_settings.php.dist to config/my_db_admin_settings.php and change to your info.\n";
     exit;
 } else {  
     include('config/my_db_admin_settings.php');
