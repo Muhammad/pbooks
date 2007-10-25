@@ -83,6 +83,6 @@
         <development_console>0</development_console>
         <cache>0</cache>
         <!-- Sets $GLOBALS['debugTrack'] to true when on, anything else does not set it -->
-        <debug>o</debug>
+        <debug>0</debug>
     </runtime>
 </config>
