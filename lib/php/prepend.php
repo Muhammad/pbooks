@@ -7,13 +7,15 @@ server side caching.
 
 */
 
-if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") { 
-    $gate_cache_file = NX_PATH_CACHE.'cache_*';
-    
-    foreach (glob("$gate_cache_file") as $filename) {
-       unlink($filename);
+if((bool)Config::get('./runtime/cache')===true){
+    if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") { 
+        $gate_cache_file = NX_PATH_CACHE.'cache_*';
+        
+        foreach (glob("$gate_cache_file") as $filename) {
+           unlink($filename);
+        }
+        
     }
-    
 }
 
 
@@ -46,7 +48,7 @@ function gzBuffer($init)
 	$my_request_uri = $_SERVER['REQUEST_URI'];
 	$clear_gate_file='cache_'.$my_user_id."_".$my_request_uri;
 	if(!include('Cache/Lite.php')) { 
-        echo "can't find cache lite";
+        echo "Error: Can't find PEAR package cache_lite";
         exit;   
     }
     $my_cache_dir = NX_PATH_CACHE;
@@ -54,16 +56,14 @@ function gzBuffer($init)
         mkdir($my_cache_dir);
     }
         
-	//$blah = $this->init->getSection('session');
     $cache_config = Config::get('./runtime/cache');
 	$options = array('cacheDir'=> $my_cache_dir,'caching'  => $cache_config,'lifeTime' => $expiryTime);
 	$cache = new Cache_Lite($options);
-	if(strpos($_SERVER['REQUEST_URI'],"server") || strpos($_SERVER['REQUEST_URI'],"gantt")) { 
-		$file_server_status="yes";
-	} else { 
-		$file_server_status="no";
-	}	
+
     $development_console = (bool)Config::get('./runtime/development_console');
+    if($_GET['development_console']=="false") { 
+        unset($development_console); 
+    }
     if($development_console===true) { 
         development_console();
     }
@@ -143,9 +143,9 @@ function gzBuffer($init)
         header("ETag: ".$etag);
     }
 	echo $output;
-    //if($console_config=="1") {
+    if($development_console === true) {
         final_notices($cache_type,"dev");
-	//}
+    }
 	
 	ob_end_flush();
 	
