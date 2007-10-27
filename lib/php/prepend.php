@@ -6,8 +6,8 @@ In development you will never do client side caching, but on every stage you wil
 server side caching. 
 
 */
-
-if((bool)Config::get('./runtime/cache')===true){
+$mycaching=(bool)Config::get('./runtime/cache');
+if($mycaching===true){
     if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") { 
         $gate_cache_file = NX_PATH_CACHE.'cache_*';
         
@@ -27,7 +27,6 @@ Init::registerOutputHandler('gzBuffer');
 
 function gzBuffer($init)
 {
-    
 	$init->process();
 	
 	$request_uri = $_SERVER['REQUEST_URI'];
@@ -35,8 +34,7 @@ function gzBuffer($init)
     
 	ob_start();
 	ob_start('ob_gzhandler');
-	
-	$expiryTime=$init->getInfo('cacheExpiryTime');
+	/*
 	$agent = $_SERVER['HTTP_USER_AGENT'];
 	if(stripos($agent,"google") || stripos($agent,"slurp") || stripos($agent,"msnbot") || stripos($agent,"spider") || stripos($agent,"bot")) { 		
 		$my_user_id = -1000;
@@ -44,20 +42,21 @@ function gzBuffer($init)
 		//$my_user_id = $_SESSION['NX_AUTH']['user_id'];
 		$my_user_id = 100;
 	}
+    */
 
-	$my_request_uri = $_SERVER['REQUEST_URI'];
+	$expiryTime=$init->getInfo('cacheExpiryTime');
+	$my_request_uri = $request_uri;
 	$clear_gate_file='cache_'.$my_user_id."_".$my_request_uri;
 	if(!include('Cache/Lite.php')) { 
         echo "Error: Can't find PEAR package cache_lite";
         exit;   
     }
-    $my_cache_dir = NX_PATH_CACHE;
-    if(!is_dir($my_cache_dir)) { 
-        mkdir($my_cache_dir);
+    if(!is_dir(NX_PATH_CACHE)) { 
+        mkdir(NX_PATH_CACHE);
     }
         
     $cache_config = Config::get('./runtime/cache');
-	$options = array('cacheDir'=> $my_cache_dir,'caching'  => $cache_config,'lifeTime' => $expiryTime);
+	$options = array('cacheDir'=> NX_PATH_CACHE,'caching'  => $cache_config,'lifeTime' => $expiryTime);
 	$cache = new Cache_Lite($options);
 
     $development_console = (bool)Config::get('./runtime/development_console');
