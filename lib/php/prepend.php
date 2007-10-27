@@ -2,12 +2,12 @@
 
 /* 
 
-In development you will never do client side caching, but on every stage you will do 
-server side caching. 
+In development you will never do client side caching, but on every stage you
+will do server side caching. 
 
 */
-$mycaching=(bool)Config::get('./runtime/cache');
-if($mycaching===true){
+
+if((bool)Config::get('./runtime/cache')===true){
     if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") { 
         $gate_cache_file = NX_PATH_CACHE.'cache_*';
         
@@ -35,6 +35,8 @@ function gzBuffer($init)
 	ob_start();
 	ob_start('ob_gzhandler');
 	/*
+    // You could set an environmental variable from the webserver
+    // to identify user or user agent
 	$agent = $_SERVER['HTTP_USER_AGENT'];
 	if(stripos($agent,"google") || stripos($agent,"slurp") || stripos($agent,"msnbot") || stripos($agent,"spider") || stripos($agent,"bot")) { 		
 		$my_user_id = -1000;
