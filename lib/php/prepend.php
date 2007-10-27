@@ -143,9 +143,9 @@ function gzBuffer($init)
         header("ETag: ".$etag);
     }
 	echo $output;
-    if($console_config=="1") {
+    //if($console_config=="1") {
         final_notices($cache_type,"dev");
-	}
+	//}
 	
 	ob_end_flush();
 	
