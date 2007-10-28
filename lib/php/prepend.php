@@ -90,8 +90,8 @@ function gzBuffer($init)
         // to use the cache without checking the server to ask if anything 
         // has been modified
         // Should we set it here?
-        if(function_exists(getallheaders)) { 
-            $request = getallheaders(); 
+        if(function_exists(getallheaders)) {  
+            $request = getallheaders(); // Apache Module Only
             if (isset($request['If-Modified-Since'])) { 
                $modifiedSince = explode(';', $request['If-Modified-Since']); 
                $modifiedSince = strtotime($modifiedSince[0]); 
@@ -99,7 +99,13 @@ function gzBuffer($init)
                $modifiedSince = 0; 
             }
         } else { 
-           $modifiedSince = 0; 
+            // CGI
+            if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) { 
+               $modifiedSince = $_SERVER['HTTP_IF_MODIFIED_SINCE']; 
+               $modifiedSince = strtotime($modifiedSince); 
+            } else { 
+                $modifiedSince = 0;
+            }
         }
         
 		// Client cache!
@@ -114,9 +120,9 @@ function gzBuffer($init)
         $client_cache_good_stamp = strtotime($client_cache_work);
         if($client_cache > 0 && $client_cache_work > time()) {
             while (@ob_end_clean());
-            //header( 'Cache-Control: no-cache, must-revalidate, post-check='.$client_cache.', pre-check='.$client_cache);
+            header( 'Cache-Control: no-cache, must-revalidate, post-check='.$client_cache.', pre-check='.$client_cache);
             header("HTTP/1.0 304 Not Modified");
-            exit;
+            exit();
         }
         
         // When using client cache a session cache limiter, you've got to use this cache-control
