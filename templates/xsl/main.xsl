@@ -1,6 +1,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="html" indent="yes" encoding="UTF-8" omit-xml-declaration="no" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
-    doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
+doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:template match="/">
 <html>
 <head>
@@ -8,7 +8,6 @@
      <link rel="stylesheet" type="text/css" href="css/pbooks-1.css" ></link>
 </head>
 <body>
-<script language="JavaScript" src="js/make_request.js"> &#160; </script>
 <div id="container">
 <div id="capsule">
 <div id="leftcol">
@@ -42,6 +41,8 @@
     <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_code_version"/>, DB Version: <xsl:value-of select="//pbooks_database_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved. License: AGPL v3. <a style="color: #FFF;" href="http://www.pbooks.org/download/">Download source</a>.
     <!-- Link to download source, as required by AGPL --></div>
 </div>
+
+<script language="JavaScript" src="js/make_request.js"> &#160; </script>
 </body>
 </html>
 </xsl:template>
