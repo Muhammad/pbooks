@@ -174,11 +174,6 @@ function gzBuffer($init)
 
 
 
-
-
-
-
-
 /* This function used by all stages. */
 function cs_console()  {
 	$blah = new XsltProcessor();
