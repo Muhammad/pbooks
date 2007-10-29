@@ -191,3 +191,7 @@ a:hover{
 .myerror { 
     border: 1px; border-color: #FF6699; border-style: solid; 
 }
+
+.generic-button { 
+    padding: 2px 5px 2px 5px; border: 2px; border-style: solid; border-color: #BBB;
+}
