@@ -11,7 +11,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <div id="container">
 <div id="capsule">
 <div id="leftcol">
-    <a href="index.php?nid=welcome"><img src="images/pbooks-logo_120x60.png" border="0"/></a>
+    <a href="index.php?nid=welcome"><img src="images/pbooks-logo_120x60.png" border="0" alt="PBooks Logo"/></a>
     <xsl:if test="not(//_get/nid='login') 
     and not(//_get/nid='logout') 
     and not(//_get/nid='development-data-generator') 
@@ -30,11 +30,6 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:call-template name="content"/>
     </div>
 </div>
-    <!--
-    <tr><td colspan="2" align="center" style="background: #333; color: #EEE; padding: 5px;">
-     
-    </td></tr> -->
-
 </div>
 <div id="foot">
 <xsl:comment>You must keep this copyright notice intact.</xsl:comment>
