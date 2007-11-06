@@ -38,7 +38,15 @@ if($db_version == "c") {
     fwrite(STDOUT,"Database update successful.\n");
 }
 
-if($db_version == "d") { 
+if($db_version == "d") {
+    fwrite(STDOUT,"Adding fiscal_period_id...\n");
+    `echo "ALTER TABLE pb_entries ADD COLUMN fiscal_period_id int(11) default 0;" | mysql -u $USER -p$PASS $DATABASE`;
+    `echo "ALTER TABLE pb_general_ledger ADD COLUMN fiscal_period_id int(11) default 0;" | mysql -u $USER -p$PASS $DATABASE`;
+    `echo "e" > config/db_version.txt`;
+    fwrite(STDOUT,"Database update successful.\n");
+}
+
+if($db_version == "e") { 
     fwrite(STDOUT,"No update required.\n");
 }
 ?>
