@@ -11,6 +11,9 @@
 <!-- *************************************************  -->
 */
 
+    
+    
+    
 //This is different depending on which web/file.php is called. 
 $app_runtime=PROJECT_ROOT.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.APP_NAME.DIRECTORY_SEPARATOR.'lib/php'.DIRECTORY_SEPARATOR.'runtime.php';
 
@@ -29,12 +32,25 @@ $right_now = date('Y-m-d H:i:s');
 //$current_user_id = $_SESSION['NX_AUTH']['user_id'];
 $current_user_id = 100;
 $debug = Config::get('./runtime/debug');
+$top_left_logo = "images/pbooks-logo_120x60.png";
 
+if($_SERVER['SERVER_NAME']=="www.livedemo.pbooks.org") { 
+$footer_includes = <<< EOF
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+_uacct = "UA-574944-19";
+urchinTracker();
+</script>
+EOF;
+} else { 
+$footer_includes; 
+}
 $runtime = array('path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
                 'right_now'=>$right_now,
                 'current_user_id'=>$current_user_id,
-                'debug'=>$debug);
+                'debug'=>$debug,
+                'top_left_logo'=>$top_left_logo,
+                'footer_includes'=>$footer_includes);
 
 Flow::add("runtime",$runtime,false);
 

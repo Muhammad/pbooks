@@ -4,14 +4,16 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:template match="/">
 <html>
 <head>
-	 <title>PBooks Open Source Accounting and Bookkeeping System</title>
+	 <title><xsl:value-of select="/__ROOT__/i18n/titles/title[key='default_page_title']/value"/></title>
+     <meta name="generator" content="Nexista 1.0" /> 
      <link rel="stylesheet" type="text/css" href="css/pbooks-1.css" ></link>
+     <!-- xsl:value-of select="/__ROOT__/runtime/head_includes"/> -->
 </head>
 <body>
 <div id="container">
 <div id="capsule">
 <div id="leftcol">
-    <a href="index.php?nid=welcome"><img src="images/pbooks-logo_120x60.png" border="0" alt="PBooks Logo"/></a>
+    <a href="index.php?nid=welcome"><img src="{/__ROOT__/runtime/top_left_logo}" border="0" alt="PBooks Logo"/></a>
     <xsl:if test="not(//_get/nid='login') 
     and not(//_get/nid='logout') 
     and not(//_get/nid='development-data-generator') 
@@ -24,7 +26,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <div id="header">
     <div style="height: 60px; background: #777; letter-spacing: 1px; display: block;">&#160;
     <div style="float: right; padding-right: 10px; color: #EEE;"><xsl:value-of select="//company_name"/></div>
-    <h1 style="padding: 10px; color: #EEE; font-size: 18px; margin-top: 8px;"><xsl:value-of select="//titles[@lang=//selected_lang]/title[key=//_get/nid]/value"/></h1>
+    <h1 style="padding: 10px; color: #EEE; font-size: 18px; margin-top: 8px;"><xsl:value-of select="/__ROOT__/i18n/titles/title[key=//_get/nid]/value"/></h1>
     </div>
     <div style="padding: 10px; 784px;">
     <xsl:call-template name="content"/>
@@ -36,8 +38,8 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">PBooks</a> version <xsl:value-of select="//pbooks_code_version"/>, DB Version: <xsl:value-of select="//pbooks_database_version"/>, Copyright <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">Savonix</a>, all rights reserved. License: <a style="color: #FFF;" href="{__ROOT__/runtime/link_prefix}license">AGPL v3</a>. <a style="color: #FFF;" href="http://www.pbooks.org/download/">Download source</a>.
     <!-- Link to download source, as required by AGPL --></div>
 </div>
-
 <script language="JavaScript" src="js/make_request.js"> &#160; </script>
+<xsl:value-of select="/__ROOT__/runtime/footer_includes" disable-output-escaping="yes"/>
 </body>
 </html>
 </xsl:template>
