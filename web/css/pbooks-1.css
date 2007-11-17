@@ -14,6 +14,10 @@ html, body {
 img { 
     border: 0;
 }
+td
+{
+    background-color: #FFF;
+}
 
 #container { 
     width: 924px; 
@@ -44,7 +48,9 @@ img {
     width: 100%; display: block; background: #555; text-align: center; color: #FFF; line-height: 20px;
 }
 
-.journal-data, .journal-data-wrap, a.journal-data
+
+
+.journal-data, .journal-data-wrap, a.journal-data td
 {
     text-decoration: none;
     font-size:11px;
@@ -59,44 +65,49 @@ img {
     border-top-width: 1px;
     vertical-align: middle;
 }
-.journal-data-wrap
+.journal-data-wrap td
 {
 	white-space: normal;
 }
 /* alternate colored rows */
-.row0 
+.row0 td
 {
 	background-color: #FFFFFF;
     
 }
 
-.row1 
+.row1 td
 {
 	background-color: #EEEEEE;
 }
 
-.row2 
+.row2 td
 {
 	background-color: #DDDDDD;
     margin: 1px;
     
 }
-.row2:hover { background-color : #CCFFFF }
+.row2:hover  td{ background-color : #CCFFFF }
 
-.row3 
+.row3 td 
 {
 	background-color: #f0f0f0;
 }
 
-a{
+.row4 td 
+{
+	background-color: #CCC;
+}
+
+a {
  color: #222222; text-decoration: none;
 }
 
-a:visited{
+a:visited {
  color: #222222; text-decoration: none;
 }
 
-a:hover{
+a:hover {
  color: #44BBDD; text-decoration: underline;
 }
 
