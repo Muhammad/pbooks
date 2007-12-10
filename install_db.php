@@ -1,7 +1,5 @@
 <?php
 
-
-
 /* Use this file to create the initial database, eventually this will move to 
 a web based installer.  */
 
