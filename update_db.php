@@ -15,6 +15,8 @@ if(!is_file('config/my_db_admin_settings.php')) {
     include('config/my_db_admin_settings.php');
 }
 
+$db_versions_to_update = array('a','b','c','d');
+
 // should get db version first... 
 
 if ($db_version == "a") {
@@ -46,7 +48,7 @@ if($db_version == "d") {
     fwrite(STDOUT,"Database update successful.\n");
 }
 
-if($db_version == "e") { 
+if(!in_array($db_version,$db_versions_to_update)) { 
     fwrite(STDOUT,"No update required.\n");
 }
 ?>
