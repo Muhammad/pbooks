@@ -16,9 +16,10 @@ if(is_file($app_runtime)) {
     require($app_runtime);
 }
 
-$path = $_SERVER['SCRIPT_NAME'];
-//$path = basename(__FILE__); //"index.php";
-$path_prefix = dirname($_SERVER['SCRIPT_NAME']);
+# This wacky path builder is required due to mod_rewrite situations
+$path = $_SERVER['REQUEST_URI'];
+$path = dirname($path)."/".basename($_SERVER['SCRIPT_NAME']);
+$path_prefix = dirname($path)."/";
 //$app_prefix = "acc/".APP_NAME."/";
 //$link_prefix = $path."?nid=".$app_prefix;
 $link_prefix = $path."?nid=";
