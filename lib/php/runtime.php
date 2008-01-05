@@ -16,8 +16,8 @@ if(is_file($app_runtime)) {
     require($app_runtime);
 }
 
-//$path = $_SERVER['SCRIPT_NAME'];
-$path = "index.php";
+$path = $_SERVER['SCRIPT_NAME'];
+//$path = basename(__FILE__); //"index.php";
 $path_prefix = dirname($_SERVER['SCRIPT_NAME']);
 //$app_prefix = "acc/".APP_NAME."/";
 //$link_prefix = $path."?nid=".$app_prefix;
