@@ -40,7 +40,8 @@ EOF;
 } else { 
 $footer_includes; 
 }
-$runtime = array('path_prefix'=>$path_prefix,
+$runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
+                'path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
                 'right_now'=>$right_now,
                 'current_user_id'=>$current_user_id,
