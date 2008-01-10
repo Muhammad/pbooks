@@ -19,6 +19,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     and not(//_get/nid='development-data-generator') 
     and not(contains(//_get/nid,'user'))
     and not(//_get/nid='group')
+    and not(//_get/nid='group/edit')
     and not(contains(//_get/nid,'role'))">
     <xsl:call-template name="accounting-menu"/>
     </xsl:if>
