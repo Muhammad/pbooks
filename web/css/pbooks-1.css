@@ -247,3 +247,13 @@ width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
 #bill_number { float: right; }
 #bill_payee { margin-top: 60px; float:right; }
 #bill_memo { margin-top: 120px; }
+
+
+
+
+
+
+table.tablesorter tbody tr.active td,table.tablesorter tbody tr.active td a{
+	background-color: #FFCCCC;
+    color: red;
+}
