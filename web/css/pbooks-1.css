@@ -24,7 +24,6 @@ td
     border: 10px; 
     border-style: solid; 
     border-color: #FFF;
-    
 }
 
 #capsule { 
@@ -39,11 +38,25 @@ td
     min-height: 700px;
 }
 
+#top-block { 
+    height: 60px; background: #777; letter-spacing: 1px; display: block;
+}
 #leftcol { 
     background: #AAA; width: 120px; float: left;
     
 }
 
+#company-name { 
+    float: right; padding-right: 10px; color: #EEE;
+}
+
+.page-title { 
+    padding: 10px; color: #EEE; font-size: 18px; margin-top: 8px;
+}
+
+#content { 
+    padding: 10px; 784px;
+}
 #foot { 
     width: 100%; display: block; background: #555; text-align: center; color: #FFF; line-height: 20px;
 }
@@ -195,7 +208,7 @@ a:hover {
 
 
 .error { 
-    font-family: 'Lucida Console', Monaco, monospace; font-size: 11px; color: red; border: 1px; border-color: #FF6699; border-style: solid; background: #FFCCFF; line-height: 24px;
+    font-size: 14px; color: red; border: 1px; border-color: #FF6699; border-style: solid; background: #FFCCFF; line-height: 32px;
     text-align: center;
 }
 
