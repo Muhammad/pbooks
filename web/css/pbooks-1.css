@@ -216,7 +216,9 @@ a:hover {
     border: 1px; border-color: #FF6699; border-style: solid; 
 }
 
-
+.generic-box { 
+    border: 2px; border-color: #BBB; border-style: solid; text-align: center; margin-top: 20px; padding: 4px; display: table; margin-left: auto; margin-right: auto;
+}
 
 .generic-button { 
     text-align: center;
