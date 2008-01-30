@@ -10,6 +10,18 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
      <!-- xsl:value-of select="/__ROOT__/runtime/head_includes"/> -->
 </head>
 <body>
+<xsl:if test="/__ROOT__/_get/print='true'">
+    <xsl:call-template name="content"/>
+</xsl:if>
+<xsl:if test="not(/__ROOT__/_get/print='true')">
+    <xsl:call-template name="default"/>
+</xsl:if>
+</body>
+</html>
+</xsl:template>
+
+<xsl:template name="default">
+
 <div id="container">
 <div id="capsule">
 <div id="leftcol">
@@ -52,7 +64,5 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:value-of select="." disable-output-escaping="yes"/>
 </xsl:for-each>
 <xsl:value-of select="/__ROOT__/runtime/footer_includes" disable-output-escaping="yes"/>
-</body>
-</html>
 </xsl:template>
 </xsl:stylesheet>
