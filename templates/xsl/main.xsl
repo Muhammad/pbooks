@@ -46,6 +46,11 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <!-- Link to download source, as required by AGPL --></div>
 </div>
 <script  type="text/javascript" src="js/make_request.js"> &#160; </script>
+<script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}/js/jsval.js"> &#160; </script>
+<xsl:comment> footer code from plugins  </xsl:comment>
+<xsl:for-each select="//plugin[@hook='footer']">
+    <xsl:value-of select="." disable-output-escaping="yes"/>
+</xsl:for-each>
 <xsl:value-of select="/__ROOT__/runtime/footer_includes" disable-output-escaping="yes"/>
 </body>
 </html>
