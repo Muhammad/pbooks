@@ -42,12 +42,15 @@ td
     height: 60px; background: #777; letter-spacing: 1px; display: block;
 }
 #leftcol { 
-    background: #AAA; width: 120px; float: left;
-    
+    background: #AAA; width: 120px; float: left;    
 }
 
 #company-name { 
-    float: right; padding-right: 10px; color: #EEE;
+    text-align: right; padding-right: 10px; color: #EEE;  position: relative;
+}
+#print-button { 
+    float: right; padding: 20px; padding-top: 50px; color: red; position: relative;
+
 }
 
 .page-title { 
@@ -271,4 +274,17 @@ width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
 table.tablesorter tbody tr.active td,table.tablesorter tbody tr.active td a{
 	background-color: #FFCCCC;
     color: red;
+}
+
+.simpletable { 
+    background-color: #222;
+    border-collapse: collapse;
+}
+table.simpletable tbody tr td {
+	background-color: #FFF;
+    padding: 4px;
+    margin: 0px;
+    border: 1px;
+    border-color: #555;
+    border-style: solid;
 }
