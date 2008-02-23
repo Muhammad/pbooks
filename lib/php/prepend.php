@@ -241,11 +241,16 @@ function development_console()  {
 }
  
 function view_flow() { 
-	$debugXsl = new Nexista_XsltProcessor();
+	$debugXsl = new XsltProcessor();
 	$xsl = new DomDocument;
 	$xsl->load(NX_PATH_CORE."xsl/flow.xsl");
 	$debugXsl->importStyleSheet($xsl);
-	$flow = Nexista_Flow::singleton();
+    if(isset($_GET['ignore'])) { 
+        $debugXsl->setParameter('','ignore',$_GET['ignore']);
+    } else { 
+        $debugXsl->setParameter('','ignore','i18n');
+	}
+    $flow = Nexista_Flow::singleton();
 	echo $debugXsl->transformToXML($flow->flowDocument);
 }
 
