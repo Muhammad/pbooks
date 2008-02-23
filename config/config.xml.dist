@@ -48,12 +48,12 @@
     
     <!-- PATH SETTINGS -->
     <path>
-        <base>&includepath;nexista/</base>
+        <base>&includepath;</base>
         <!-- I would like to simplify these -->
-        <builders>&includepath;nexista/modules/builders/</builders>
-        <handlers>&includepath;nexista/modules/handlers/</handlers>
-        <validators>&includepath;nexista/modules/validators/</validators>
-        <actions>&includepath;nexista/modules/actions/</actions>
+        <builders>&includepath;modules/builders/</builders>
+        <handlers>&includepath;modules/handlers/</handlers>
+        <validators>&includepath;modules/validators/</validators>
+        <actions>&includepath;modules/actions/</actions>
         
         <applications>&project_root;/apps/&app_name;/</applications>
         <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
