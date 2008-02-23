@@ -27,7 +27,20 @@ $right_now = date('Y-m-d H:i:s');
 
 //$current_user_id = $_SESSION['NX_AUTH']['user_id'];
 $current_user_id = 100;
-$debug = Config::get('./runtime/debug');
+
+if(class_exists("Nexista_Config")) { 
+} else { 
+    class Nexista_Config extends Config { 
+    }
+    class Nexista_Config extends Config { 
+    }
+    class Nexista_Flow extends Flow { 
+    }
+    class Nexista_Path extends Path { 
+    }
+}
+$debug = Nexista_Config::get('./runtime/debug');
+    
 $top_left_logo = "images/pbooks-logo_120x60.png";
 
 if($_SERVER['SERVER_NAME']=="www.livedemo.pbooks.org") { 
@@ -50,8 +63,8 @@ $runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
                 'footer_includes'=>$footer_includes,
                 'db_version'=>$db_version);
 
-Flow::add("runtime",$runtime,false);
+Nexista_Flow::add("runtime",$runtime,false);
 
 // for use with command line admin and cli.xsl
 global $in;
-Flow::add("test",$in,false);
+Nexista_Flow::add("test",$in,false);
