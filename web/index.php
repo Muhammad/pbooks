@@ -2,7 +2,7 @@
 
 // Configuration 
 // Where is nexista? This path should be to a folder which contains a folder called "nexista"
-$nexista_path = "/usr/share/php/nexista2/";
+$nexista_path = "/usr/share/pbooks/nexista2/";
 
 
 $server_name = $_SERVER['SERVER_NAME'];
