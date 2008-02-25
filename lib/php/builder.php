@@ -91,29 +91,22 @@ function check_freshness() {
 
     }
 } 
-    
+
 function build_it_now() { 
     global $config;
     global $foundry;
     global $server_init;
     ob_end_clean();
     header( 'Cache-Control: no-cache, no-store');
-    ?>
-    <html>
-    <body style="padding: 150px; font-family: verdana;">
-    
-    <?php 
-    
-        
-    echo "Looks like you are installing to $server_init. Cool! <br/><br/>";
-    
-    
-    ?>
-    
-    I'm guessing that your php is install in "/usr/share/php", and that you've already installed
-    nexista in there. <br/><br/>
-    
-    <?php
+?>
+
+<html>
+<body style="padding: 150px; font-family: verdana;">
+<?php 
+echo "Looks like you are installing to $server_init. Cool! <br/><br/>";
+?>
+
+<?php
 
         $foundry->buildLoader();
         $foundry->buildGates();  
