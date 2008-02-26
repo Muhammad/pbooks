@@ -12,7 +12,7 @@ $HOST = "";
 $DATABASE = "";
 $USER = "";
 $PASS = "";
-
+$MYSQLBIN = "";
 
 $db = array(
         'host' => $HOST,
