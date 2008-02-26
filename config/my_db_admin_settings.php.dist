@@ -12,6 +12,7 @@ $HOST = "";
 $DATABASE = "";
 $USER = "";
 $PASS = "";
+// In the case of XAMPP you would put $MYSQLBIN="/opt/lampp/bin";
 $MYSQLBIN = "";
 
 $db = array(
