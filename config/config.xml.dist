@@ -54,7 +54,7 @@
         <handlers>&includepath;modules/handlers/</handlers>
         <validators>&includepath;modules/validators/</validators>
         <actions>&includepath;modules/actions/</actions>
-        
+        <plugins>&project_root;/apps/&app_name;/plugins/</plugins> 
         <applications>&project_root;/apps/&app_name;/</applications>
         <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
 		<cache>&project_root;/cache/&server_name;/cache/</cache>
