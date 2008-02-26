@@ -11,13 +11,12 @@ if(!is_file('config/my_db_admin_settings.php')) {
     include('config/my_db_admin_settings.php');
 }
 
-`mysqladmin -u $USER -p$PASS CREATE $DATABASE`;
+`$MYSQLBIN/mysqladmin -u $USER -p$PASS CREATE $DATABASE`;
 
-`mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/model/pbooks_data_model.sql`;
-`mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/sample_data/auth_pbooks_data.sql`;
-`mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/sample_data/from_weberp.sql`;
+`$MYSQLBIN/mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/model/pbooks_data_model.sql`;
+`$MYSQLBIN/mysql -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/sample_data/auth_pbooks_data.sql`;
 
-`echo "GRANT ALL PRIVILEGES ON pbooks.* TO 'pbooks'@'%' IDENTIFIED BY 'pbooks';" | mysql -u $USER -p$PASS $DATABASE`;
+`echo "GRANT ALL PRIVILEGES ON pbooks.* TO 'pbooks'@'%' IDENTIFIED BY 'pbooks';" | $MYSQLBIN/mysql -u $USER -p$PASS $DATABASE`;
 
 
 ?>
