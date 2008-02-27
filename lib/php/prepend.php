@@ -8,32 +8,8 @@ will do server side caching.
 */
 
 
-if(class_exists("Nexista_Config") 
-    || class_exists("Nexista_Flow")
-    || class_exists("Nexista_Path") 
-    || class_exists("Nexista_Init") 
-    || class_exists("Nexista_PathBuilder")
-    || class_exists("Nexista_Error") ) { 
-} else { 
-    class Nexista_Config extends Config { 
-    }
-    class Nexista_Flow extends Flow { 
-    }
-    class Nexista_Init extends Init { 
-    }
-    class Nexista_Path extends Path { 
-    }
-    class Nexista_Pathbuilder extends Pathbuilder { 
-    }
-    class Nexista_Error extends Error { 
-    }
-}
+$mycache = (bool)Nexista_Config::get('./runtime/cache');
 
-if(class_exists("Nexista_Foundry")) { 
-    $mycache = (bool)Nexista_Config::get('./runtime/cache');
-} else { 
-    $mycache = (bool)Config::get('./runtime/cache');
-}
 if($mycache===true){
     if(count($_POST) > 0 || $_GET['from_date'] || $_GET['nid']=="logout") { 
         $gate_cache_file = NX_PATH_CACHE.'cache_*';
@@ -45,11 +21,7 @@ if($mycache===true){
     }
 }
 
-
-if(COMMAND_LINE===true) {
-} else {
-        Nexista_Init::registerOutputHandler('gzBuffer');
-}
+Nexista_Init::registerOutputHandler('gzBuffer');
 
 
 function gzBuffer($init)
@@ -64,17 +36,6 @@ function gzBuffer($init)
     }
 	ob_start();
 	ob_start('ob_gzhandler');
-	/*
-    // You could set an environmental variable from the webserver
-    // to identify user or user agent
-	$agent = $_SERVER['HTTP_USER_AGENT'];
-	if(stripos($agent,"google") || stripos($agent,"slurp") || stripos($agent,"msnbot") || stripos($agent,"spider") || stripos($agent,"bot")) { 		
-		$my_user_id = -1000;
-	} else { 
-		//$my_user_id = $_SESSION['NX_AUTH']['user_id'];
-		$my_user_id = 100;
-	}
-    */
 
 	$expiryTime=$init->getInfo('cacheExpiryTime');
 	$my_request_uri = $request_uri;
