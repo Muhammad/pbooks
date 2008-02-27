@@ -1,3 +1,5 @@
+<!-- This is a configuration file for Nexista applications. It can be
+used for a single or several applications. -->
 <config>
     <datasource id="pbooks">
         <type>mysql</type>
@@ -70,7 +72,7 @@
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
         <sitemap>&project_root;/apps/&app_name;/config/sitemap.xml</sitemap>
 
-        <prepend>&project_root;/lib/php/prepend.php</prepend>
+        <prepend>&includepath;plugins/nx-cache.php</prepend>
         <!-- enter a gate name for missing when there is no match -->
         <missing>welcome</missing>
         <!-- this needs the relative url, not the gate -->

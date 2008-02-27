@@ -23,7 +23,7 @@ $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".ph
     
     
 
-if(!include(PROJECT_ROOT.'/lib/php/builder.php')) {
+if(!include($nexista_path.'/plugins/builder.php')) {
     echo "Error: Unable to load server loader or builder.";
     exit;
 }

@@ -5,7 +5,7 @@
 $nexista_path = "/usr/share/pbooks/nexista/";
 
 
-server_name = $_SERVER['SERVER_NAME'];
+$server_name = $_SERVER['SERVER_NAME'];
 define('SERVER_NAME',$server_name);
 $project_root = dirname(dirname(__FILE__));
 define('PROJECT_ROOT',$project_root);
@@ -14,7 +14,8 @@ define('APP_NAME','auth');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
-if(!include(PROJECT_ROOT.'/lib/php/builder.php')) {
+
+if(!include($nexista_path.'/plugins/builder.php')) {
     echo "Error: Unable to load server loader or builder.";
     exit;
 }
