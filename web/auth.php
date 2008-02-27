@@ -1,10 +1,11 @@
 <?php
 
-// Configuration 
-// Where is nexista? This path should be to a folder which contains a folder called "nexista"
-$nexista_path = "/usr/share/pbooks/nexista2/";
+// Configuration
+// Where is nexista? This path should be to a folder containing the nexista source
+$nexista_path = "/usr/share/pbooks/nexista/";
 
-$server_name = $_SERVER['SERVER_NAME'];
+
+server_name = $_SERVER['SERVER_NAME'];
 define('SERVER_NAME',$server_name);
 $project_root = dirname(dirname(__FILE__));
 define('PROJECT_ROOT',$project_root);
