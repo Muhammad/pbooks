@@ -1,8 +1,8 @@
 <?php
 
 // Configuration 
-// Where is nexista? This path should be to a folder which contains a folder called "nexista"
-$nexista_path = "/usr/share/pbooks/nexista2/";
+// Where is nexista? This path should be to a folder containing the nexista source 
+$nexista_path = "/usr/share/pbooks/nexista/";
 
 // Bad hack
 if(!strpos($_SERVER['REQUEST_URI'],'.php')) { 
