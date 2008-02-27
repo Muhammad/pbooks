@@ -1,5 +1,5 @@
 PBooks Accounting Software
-
+Copyright Savonix Corporation
 
 REQUIREMENTS
 ============
@@ -26,11 +26,16 @@ Debian
 6.  Login to http://your-hostname-here/pbooks/auth.php?nid=login
 
 
+XAMPP
+-----
+
+Visit http://www.pbooks.org/wiki/PBooks_Installation_using_XAMPP_and_Ubuntu
+
 DATABASE INSTALLATION
 =====================
 
 1.  Edit config/my_db_admin_settings.php.dist, save as my_db_admin_settings.php
-2.  php -q install_db.php
+2.  php install_db.php
 3.  Step 2 will install the database you chose in step 1, the default username
     and password are demo / demo.
 4.  Login. 
@@ -41,3 +46,14 @@ DATABASE UPDATE
 
 There is a file called update_db.php which can be used to update your database, 
 if necessary. 
+
+
+CONFIGURATION
+=============
+
+1. cd /usr/share/pbooks
+2. cp config/config.xml.dist config/config.xml
+3. vim config/config.xml
+
+
+
