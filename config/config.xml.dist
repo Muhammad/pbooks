@@ -86,4 +86,12 @@ used for a single or several applications. -->
         <cache>0</cache>
         <debug>0</debug>
     </runtime>
+    
+    
+    <plugins>
+        <plugin name="nx-cache">
+            <directory>&project_root;/cache/&server_name;/cache/</directory>
+            <active>0</active>
+        </plugin>
+    </plugins>
 </config>
