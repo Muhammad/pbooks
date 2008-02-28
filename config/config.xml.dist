@@ -89,5 +89,9 @@ used for a single or several applications. -->
     
     
     <plugins>
+        <nx_auth>
+            <placement>prepend</placement>
+            <source>&includepath;plugins/nx_auth.php</source>
+        </nx_auth>
     </plugins>
 </config>
