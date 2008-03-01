@@ -2,14 +2,14 @@
 used for a single or several applications. -->
 <config>
     <datasource id="pbooks">
-        <type>mysql</type>
+        <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
         <username>username</username>
         <password>password</password>
     </datasource>
     <datasource id="auth">
-        <type>mysql</type>
+        <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
         <username>username</username>
