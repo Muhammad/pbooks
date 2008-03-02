@@ -54,6 +54,7 @@ CONFIGURATION
 1. cd /usr/share/pbooks
 2. cp config/config.xml.dist config/config.xml
 3. vim config/config.xml
-
+4. cp apps/pbooks/config/config.xml.dist apps/pbooks/config/config.xml
+5. vim apps/pbooks/config/config.xml
 
 
