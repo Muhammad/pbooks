@@ -1,0 +1,14 @@
+These files: 
+
+jquery.tablesorter.min.js
+jquery-latest.js
+blue/*
+jquery-1.2.1.min.js
+
+are thanks to the talented folks who created jquery and tablesorter, licensed under the GPL: 
+
+http://tablesorter.com/
+
+http://jquery.com/
+
+http://www.opensource.org/licenses/gpl-license.php
