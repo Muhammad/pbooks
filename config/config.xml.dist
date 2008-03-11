@@ -21,12 +21,12 @@ used for a single or several applications. -->
         <expire>0</expire>
         <idle>0</idle>
     </auth>
-
+    <!-- This will override some php.ini settings. -->
     <session>
 		<active>1</active>
         <cookieLifetime>0</cookieLifetime>
-        <cacheLimiter>private</cacheLimiter>
-        <cacheExpires>120000</cacheExpires>
+        <cacheLimiter></cacheLimiter>
+        <cacheExpires></cacheExpires>
     </session>
 	
     <!-- FLOW -->
@@ -60,30 +60,19 @@ used for a single or several applications. -->
         <applications>&project_root;/apps/&app_name;/</applications>
         <compile>&project_root;/cache/&server_name;/&app_name;/</compile>
 		<cache>&project_root;/cache/&server_name;/cache/</cache>
-        
-        <tmp>/tmp/php/</tmp>
-        <logs>/usr/share/pbooks/log/</logs>
-
-		<home>/index.php</home>
     </path>
 
     <!-- BUILD SETTINGS -->
     <build>
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
         <sitemap>&project_root;/apps/&app_name;/config/sitemap.xml</sitemap>
-
-        <prepend>&includepath;plugins/nx-cache.php</prepend>
         <!-- enter a gate name for missing when there is no match -->
         <missing>welcome</missing>
-        <!-- this needs the relative url, not the gate -->
-        <default>index.php?nid=welcome</default>
         <query>nid</query>
     </build>
 
 	<!-- 0 = false, anything else = true -->
     <runtime>
-        <development_console>0</development_console>
-        <cache>0</cache>
         <debug>0</debug>
     </runtime>
     
