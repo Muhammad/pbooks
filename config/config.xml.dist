@@ -66,6 +66,10 @@ used for a single or several applications. -->
     <build>
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
         <sitemap>&project_root;/apps/&app_name;/config/sitemap.xml</sitemap>
+
+        <!-- default uri - used for login script to send user somewhere -->
+        <default>index.php?nid=index</default>
+
         <!-- enter a gate name for missing when there is no match -->
         <missing>welcome</missing>
         <query>nid</query>
