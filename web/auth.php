@@ -8,6 +8,7 @@ $nexista_path = "/usr/share/pbooks/nexista/";
 $server_name = $_SERVER['SERVER_NAME'];
 define('SERVER_NAME',$server_name);
 $project_root = dirname(dirname(__FILE__));
+$project_root = str_replace('\\','/',$project_root);
 define('PROJECT_ROOT',$project_root);
 define('PROJECT_NAME','pbooks');
 define('APP_NAME','auth');
