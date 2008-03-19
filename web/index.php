@@ -12,6 +12,7 @@ if(!strpos($_SERVER['REQUEST_URI'],'.php')) {
 $server_name = $_SERVER['SERVER_NAME'];
 define('SERVER_NAME',$server_name);
 $project_root = dirname(dirname(__FILE__));
+$project_root = str_replace('\\','/',$project_root);
 define('PROJECT_ROOT',$project_root);
 define('PROJECT_NAME','pbooks');
 define('APP_NAME','pbooks');
