@@ -1,7 +1,9 @@
 <?php
 
 /* Use this file to create the initial database, eventually this will move to 
-a web based installer.  */
+a web based installer.
+
+This script is not used with Windows or SQLite. */
 
 /* Copy config/my_db_admin_settings.php.dist to my_db_admin_settings.php and change to your info */
 if(!is_file('config/my_db_admin_settings.php')) { 
