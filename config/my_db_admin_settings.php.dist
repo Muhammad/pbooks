@@ -10,8 +10,10 @@
 
 $HOST = "";
 $DATABASE = "";
-$USER = "";
-$PASS = "";
+$ADMIN_USER = "";
+$ADMIN_PASS = "";
+$PBOOKS_USER = "";
+$PBOOKS_PASS = "";
 // In the case of XAMPP you would include "/opt/lampp/bin" in the 
 // $MYSQLBIN path
 
@@ -21,8 +23,10 @@ $MYSQLBIN = "mysql";
 $db = array(
         'host' => $HOST,
         'database' => $DATABASE,
-        'user' => $USER,
-        'pass' => $PASS
+        'admin_user' => $USER,
+        'admin_pass' => $PASS,
+        'pbooks_user' => $PBOOKS_USER,
+        'pbooks_pass' => $PBOOKS_PASS
         );
 
 ?>
