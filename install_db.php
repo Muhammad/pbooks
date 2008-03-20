@@ -16,7 +16,7 @@ if(!is_file('config/my_db_admin_settings.php')) {
 `$MYSQLBIN -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/model/pbooks_data_model.sql`;
 `$MYSQLBIN -u $USER -p$PASS $DATABASE < ./apps/pbooks/data/sample_data/auth_pbooks_data.sql`;
 
-`echo "GRANT ALL PRIVILEGES ON pbooks.* TO 'pbooks'@'%' IDENTIFIED BY 'pbooks';" | $MYSQLBIN -u $USER -p$PASS $DATABASE`;
+`echo "GRANT ALL PRIVILEGES ON $DATABASE.* TO 'pbooks'@'%' IDENTIFIED BY 'pbooks';" | $MYSQLBIN -u $USER -p$PASS $DATABASE`;
 
 
 ?>
