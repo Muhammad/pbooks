@@ -1,0 +1,39 @@
+<?php
+
+/*
+
+This file is used only for installation, allowing you 
+to specify a different user (probably with higher privileges) to 
+the installation process. 
+
+The ADMIN_USER must have enough privileges to create a database
+and grant privileges.
+
+The PBOOKS_USER should match the credentials supplied in config.xml.
+
+This script is not used on Windows or with SQLite.
+
+*/
+
+$HOST = "";
+$DATABASE = "";
+$ADMIN_USER = "";
+$ADMIN_PASS = "";
+$PBOOKS_USER = "";
+$PBOOKS_PASS = "";
+// In the case of XAMPP you would include "/opt/lampp/bin" in the 
+// $MYSQLBIN path
+
+$MYSQLADMIN = "mysqladmin";
+$MYSQLBIN = "mysql";
+
+$db = array(
+        'host' => $HOST,
+        'database' => $DATABASE,
+        'admin_user' => $USER,
+        'admin_pass' => $PASS,
+        'pbooks_user' => $PBOOKS_USER,
+        'pbooks_pass' => $PBOOKS_PASS
+        );
+
+?>
