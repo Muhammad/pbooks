@@ -1,0 +1,4 @@
+The XML files in this directory are used as basic data sources. They may eventually be 
+moved to an alternative storage mechanism like a database, or as configuration options. 
+
+

@@ -1,0 +1,55 @@
+<!--
+Program: PBooks
+Component: main_menu.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<!-- This will be user configurable at some point -->
+<navigation>
+    <main_menu>
+        <button status="active" target="accounts">chart_of_accounts</button>
+        <button status="off" target="account-balances">account-balances</button>
+        <button status="active" target="account-groups">account-groups</button>
+        <button status="active" target="customer-accounts">customer-accounts</button>
+        <button status="active" target="journal">journal</button>
+        <button status="active" target="ledger">ledger</button>
+        <button status="active" target="reports">reports</button>
+    </main_menu>
+    <activities>
+        <button status="active" target="functions">functions</button>
+        <button status="active" target="matching">matching</button>
+        <button status="active" target="posting">posting</button>
+        <button status="active" target="duplicates">duplicates</button>
+    </activities>
+    <business>
+        <button status="active" target="checks">checks</button>
+        <button status="active" target="invoices">invoices</button>
+        <button status="active" target="deposits">deposits</button>
+        <button status="active" target="transfers">transfers</button>
+    </business>
+        
+    <setup>
+        <button status="active" target="help">help</button>
+        <button status="active" target="company">company</button>
+        <button status="active" target="preferences">preferences</button>
+        <button status="active" target="periods">periods</button>
+        <button status="active" target="admin">admin</button>
+    </setup>
+</navigation>

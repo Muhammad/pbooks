@@ -1,0 +1,59 @@
+<!-- 
+Program: PBooks             				
+Component: entries_and_amounts_get_some.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA 
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_all_entry_amounts" loop="//get_all_transactions/entry_datetime">
+    <connection>&pb_connection;</connection>
+    <params>
+        <param array="//get_all_transactions/entry_datetime" type="text"/>
+        <param array="//get_all_transactions/entry_amount" type="text"/>
+        <param array="//get_all_transactions/entry_amount" type="text"/>
+        <param array="//get_all_transactions/account_id" type="text"/>
+        
+	</params>
+    <sql>
+        SELECT DISTINCT &pb_entry_amounts;.entry_id,
+        &pb_entry_amounts;.account_id,
+        &pb_entry_amounts;.entry_amount,
+        &pb_entry_amounts;.entry_type_id,
+        &pb_accounts;.name,
+        &pb_accounts;.account_type_id,
+        &pb_entries;.entry_id,
+        SUBSTR(&pb_entries;.entry_datetime,1,10) as entry_datetime
+        
+		
+		FROM &pb_accounts;, &pb_entry_amounts;, &pb_entries;
+        
+		WHERE 
+        &pb_accounts;.id = &pb_entry_amounts;.account_id
+        AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
+        AND entry_datetime = ?
+        AND (&pb_entry_amounts;.entry_amount = ?
+        OR 0-&pb_entry_amounts;.entry_amount = ?)
+        AND &pb_entry_amounts;.account_id = ?
+        
+        
+        ORDER BY 
+        &pb_entry_amounts;.entry_type_id DESC
+    </sql>
+</query>

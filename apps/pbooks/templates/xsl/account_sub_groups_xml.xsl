@@ -1,0 +1,49 @@
+<!--
+Program: PBooks
+Component: account_sub_groups.xsl
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
+<xsl:output method="xml" indent="yes" encoding="UTF-8" 
+	omit-xml-declaration="yes"/>
+<xsl:key name="my_groups" match="group" use="number(group_id)"/>
+<xsl:template match="/">
+<groups>
+<xsl:for-each
+   select="//group
+             [count(.|key('my_groups', number(group_id))[1]) = 1]">
+   <xsl:sort select="group_id" />
+   <xsl:variable name="my_group_id" value="group_id"/>
+   <xsl:if test="group_id=//group[group_id=//_get/id]//group_id">
+    <group>
+        <xsl:value-of select="group_id"/>
+    </group>
+    </xsl:if>
+</xsl:for-each>
+
+
+</groups>
+</xsl:template>
+
+
+<xsl:template match="//group_id">
+</xsl:template>
+</xsl:stylesheet>

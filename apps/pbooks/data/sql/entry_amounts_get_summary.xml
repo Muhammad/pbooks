@@ -1,0 +1,50 @@
+<!--
+Program: PBooks
+Component: entry_amounts_get_summary.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_all_entry_amounts">
+    <connection>pbooks</connection>
+    <params>
+        <param name="from_date" type="text" default="2006-01-01"/>
+        <param name="to_date" type="text" default="2009-01-01"/>
+	</params>
+    <sql>
+        <!-- This query is used by the income statement report -->
+        SELECT SUM(&pb_entry_amounts;.entry_amount) as entry_amount, 
+        &pb_entry_amounts;.account_id,
+        &pb_accounts;.account_type_id,
+        SUBSTR(entry_datetime,6,2) as entry_month
+        
+		FROM &pb_entries;,&pb_entry_amounts;,&pb_accounts;
+        
+		WHERE &pb_entries;.entry_datetime &gt;= ?
+        AND &pb_entries;.entry_datetime &lt;= ?
+        AND &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
+        AND &pb_accounts;.id = &pb_entry_amounts;.account_id
+        AND (
+            &pb_accounts;.account_type_id = 40000
+            OR &pb_accounts;.account_type_id = 50000
+            )
+        GROUP BY account_id, entry_month
+    </sql>
+</query>
