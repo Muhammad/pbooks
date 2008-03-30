@@ -34,10 +34,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:if>
 </xsl:variable>
 
-<a href="{$my_uri}&amp;from_date={//prev_from_date}&amp;to_date={//prev_to_date}"><img style="padding-right: 5px;" src="images/buttons/out.gif"/></a>
+<a href="{$my_uri}&amp;from_date={//prev_from_date}&amp;to_date={//prev_to_date}">
+<img style="padding-right: 5px;" src="s/images/buttons/out.gif"/></a>
 From <input type="text" name="from_date" id="f_date_a" value="{$my_from_date}"/>
 To <input type="text" name="to_date" id="f_calcdate" value="{//to_date}"/>&#160;
-<a href="{$my_uri}&amp;from_date={//next_from_date}&amp;to_date={//next_to_date}"><img style="padding-right: 5px;" src="images/buttons/in.gif"/></a>
+<a href="{$my_uri}&amp;from_date={//next_from_date}&amp;to_date={//next_to_date}">
+<img style="padding-right: 5px;" src="s/images/buttons/in.gif"/></a>
 		
 
 <script type="text/javascript">
