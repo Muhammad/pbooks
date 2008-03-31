@@ -1,4 +1,4 @@
-<!--	
+<!--
 Program: PBooks
 Component: check_form.xsl
 Copyright: Savonix Corporation
@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- This template references data from the business_object_get_metadata nodes which stem from  a generic query called business_object_get_metadata.xml. It is used to gather entry metadata for all business objects: checks, bills, etc. -->
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='write_check']/value"/></h2>
 
-<form 
+<form
     action="{/__ROOT__/runtime/link_prefix}check-submit&amp;entry_id={/__ROOT__/_get/entry_id}&amp;view_flow=true" method="post" 
     onSubmit="return validateStandard(this, 'myerror');">
 <input type="hidden" name="entry_id" value="{/__ROOT__/_get/entry_id}"/>
@@ -37,24 +37,38 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div id="check_account_id">
     </div>
     <div id="check_date">
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/>: <input type="text" name="entry_datetime" value="{/__ROOT__/get_journal_entry/entry_date}"/>
+        <xsl:value-of select="//i18n/labels/label[key='date']/value"/>:
+        <input type="text" name="entry_datetime" 
+            value="{substring(/__ROOT__/get_journal_entry/entry_date,0,11)}"/>
     </div>
     <div id="check_number">
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_number']/value"/>: <input type="text" name="check_number" value="{//get_some_business_objects/check_number}"/>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_number']/value"/>:
+        <input type="text" name="check_number" value="{//get_some_business_objects/check_number}"/>
     </div>
     <div id="check_payee">
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_payee']/value"/>: <input type="text" name="check_payee" value="{//get_some_business_objects/check_payee}"/> $<input type="text" name="entry_amount" length="6" value="{/__ROOT__/get_journal_entry/entry_amount}"/>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_payee']/value"/>:
+        <input type="text" name="check_payee" value="{//get_some_business_objects/check_payee}"/> 
+        $<input type="text" name="entry_amount" length="6" value="{/__ROOT__/get_journal_entry/entry_amount}"/>
     </div>
     <div id="check_memo">
         <xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/>: 
         <input type="text" name="memorandum">
-            <xsl:if test="not(contains(/__ROOT__/get_journal_entry/memorandum,'__'))"><xsl:attribute name="value"><xsl:value-of select="/__ROOT__/get_journal_entry/memorandum"/></xsl:attribute></xsl:if></input>
+            <xsl:if test="not(contains(/__ROOT__/get_journal_entry/memorandum,'__'))">
+                <xsl:attribute name="value">
+                    <xsl:value-of select="/__ROOT__/get_journal_entry/memorandum"/>
+                </xsl:attribute>
+            </xsl:if>
+        </input>
     </div>
     <!-- Link to journal entry form. -->
-    <div style="float: right"><a href="{/__ROOT__/runtime/link_prefix}journal-entry&amp;entry_id={/__ROOT__/_get/entry_id}"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit_journal_entry']/value"/></a></div>
-    
+    <div style="float: right">
+        <a href="{/__ROOT__/runtime/link_prefix}journal-entry&amp;entry_id={/__ROOT__/_get/entry_id}">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit_journal_entry']/value"/>
+        </a>
+    </div>
+
     <!-- 
-        Select a checking account, if more than one exists. 
+        Select a checking account, if more than one exists.
         -->
     <xsl:if test="count(/__ROOT__/account_business_objects/account_id) &gt; 1">
     <select name="checking_account_id" required="1" exclude="-1" err="Please select a checking account.">
