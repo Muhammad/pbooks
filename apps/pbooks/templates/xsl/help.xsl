@@ -30,20 +30,36 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='resource_links']/value"/></h2>
 <ul>
-    <li><a href="http://www.pbooks.org/" target="_blank"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='pbooks_homepage']/value"/> -></a></li>
-
-    <li><a href="http://www.informedbanking.com/index.html" target="_blank"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='informed']/value"/> -></a></li>
-
-    <li><a href="http://www.sb-info.com/wiki/Main_Page" target="_blank"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='small_business_info']/value"/> -></a></li>
+    <li>
+        <a href="http://www.pbooks.org/" target="_blank">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='pbooks_homepage']/value"/>
+        </a>
+    </li>
+    <li>
+        <a href="http://www.informedbanking.com/index.html" target="_blank">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='informed']/value"/>
+        </a>
+    </li>
+    <li>
+        <a href="http://www.sb-info.com/wiki/Main_Page" target="_blank">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='small_business_info']/value"/>
+        </a>
+    </li>
 </ul>
 
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='pbooks_consulting']/value"/></h2>
 
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='written']/value"/><a href="http://www.savonix.com" target="_blank">
+<xsl:value-of select="/__ROOT__/i18n/labels/label[key='written']/value"/>
 
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='savonix']/value"/></a>. <xsl:value-of select="/__ROOT__/i18n/labels/label[key='consulting_services']/value"/>
+<a href="http://www.savonix.com" target="_blank">
+    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='savonix']/value"/>
+</a>.
 
-<a href="mailto:support@savonix.com"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='support']/value"/></a>.
+<xsl:value-of select="/__ROOT__/i18n/labels/label[key='consulting_services']/value"/>
+
+<a href="mailto:support@savonix.com">
+    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='support']/value"/>
+</a>.
 
 </xsl:template> 
 </xsl:stylesheet>

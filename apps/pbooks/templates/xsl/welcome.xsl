@@ -33,12 +33,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <br/><br/>
 <ul>
     <li>
-        <a href="{__ROOT__/runtime/link_prefix}ledger"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='view_the_ledger']/value"/></a>
+        <a href="{__ROOT__/runtime/link_prefix}ledger">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='view_the_ledger']/value"/>
+        </a>
     </li>
     <li>
-        <a href="{__ROOT__/runtime/link_prefix}journal-new"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='make']/value"/></a>
+        <a href="{__ROOT__/runtime/link_prefix}journal-new">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='make']/value"/>
+        </a>
     </li>
-    <li><a href="{__ROOT__/runtime/link_prefix}journal"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='view']/value"/></a></li>
+    <li>
+        <a href="{__ROOT__/runtime/link_prefix}journal">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='view']/value"/>
+        </a>
+    </li>
 </ul>
 
 

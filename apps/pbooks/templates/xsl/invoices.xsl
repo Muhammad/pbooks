@@ -2,7 +2,7 @@
 Program: PBooks
 Component: invoices.xsl
 Copyright: Savonix Corporation
-Author: Albert L. Lash, IV     
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
 
@@ -83,5 +83,5 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
 </table>
 </div>
 <xsl:call-template name="pager"/>
-</xsl:template> 
+</xsl:template>
 </xsl:stylesheet>

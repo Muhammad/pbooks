@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 <!-- POST JOURNAL ENTRY TO LEDGER -->
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}s/js/jquery-latest.js">&#160;</script>
+<script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
         $.post("<xsl:value-of select="//link_prefix"/>ledger-create", 
@@ -56,7 +56,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="previous_next"/>
 </td></tr></table>
 <form action="{__ROOT__/runtime/link_prefix}journal-delete" method="post">
-<!-- this is the table of journal entries. we don't use the tablesorter here because of the dynamic number of rows per entry. -->
+<!-- this is the table of journal entries. we don't use the tablesorter here 
+because of the dynamic number of rows per entry. -->
 <table class="journal-table">
     <thead>
 	<tr>
@@ -108,10 +109,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <tr class="row{$posa}">
     <td colspan="5" class="row{$posa}"></td>
 
-     <!-- These table cells contain the account name and amount for each transaction in each entry. If the entry has not yet been posted to the 
-    general ledger, and the entry is in balance, then a "+" link will be displayed. Clicking on the + will make an ajax request to post the 
-    transaction to the ledger. 
-    UPDATE - I removed the + sign sue to the difficulty of having it match up with the different styles.    
+ <!-- 
+     These table cells contain the account name and amount for each 
+     transaction in each entry. If the entry has not yet been posted to the 
+     general ledger, and the entry is in balance, then a "+" link will be 
+     displayed. Clicking on the + will make an ajax request to post the 
+     transaction to the ledger.
     -->
     <td>
         <!-- All this for the plus sign! -->
@@ -134,17 +137,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <a href="{$my_link_prefix}ledger&amp;account_id={account_id}"><xsl:value-of select="name"/></a></td>
         <td class="journal-data">&#160;</td>
         <td class="journal-data"><xsl:attribute name="style">color: <xsl:value-of select="$my_color"/>;</xsl:attribute><xsl:value-of select="entry_amount"/>
-		</td>  
+		</td>
     </xsl:if>
     <xsl:if test="entry_type_id='Debit'">
     <td class="journal-data">
         <a href="{$my_link_prefix}ledger&amp;account_id={account_id}"><xsl:value-of select="name"/></a></td>
         <td class="journal-data"><xsl:attribute name="style">color: <xsl:value-of select="$my_color"/>;</xsl:attribute><xsl:value-of select="entry_amount"/>
-		</td>      
+		</td>
         <td class="journal-data">&#160;</td>
     </xsl:if>
-
-
 
 		</tr>
 	</xsl:for-each>
@@ -171,13 +172,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<td class="journal-data"><xsl:value-of select="format-number($total_credits,'#######.##')"/></td>
 	</tr>
 </table>
-<xsl:call-template name="previous_next"/> 
+<xsl:call-template name="previous_next"/>
+
 <!-- only display the form controls for the journal, not other pages which use this template -->
 <xsl:if test="//_get/nid='journal'">
-<input type="button" id="new_entry_button" value="{//labels/label[key='new_entry']/value}" onclick="document.location.href='{/__ROOT__/runtime/link_prefix}journal-new'"/>
-<!-- Delete selected entries 
-TODO - only display this function in training mode -->
-<input type="submit" value="{//labels/label[key='delete_entries']/value}" onclick="return confirm('Are you sure you want to delete these entries?')"/>
+    <input type="button" id="new_entry_button" value="{//labels/label[key='new_entry']/value}" 
+        onclick="document.location.href='{/__ROOT__/runtime/link_prefix}journal-new'"/>
+    <!-- Delete selected entries 
+    TODO - only display this function in training mode -->
+    <input type="submit" value="{//labels/label[key='delete_entries']/value}" 
+        onclick="return confirm('Are you sure you want to delete these entries?')"/>
 </xsl:if>
 </form>
 </xsl:template>

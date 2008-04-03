@@ -2,7 +2,7 @@
 Program: PBooks
 Component: account_group_form.xsl
 Copyright: Savonix Corporation
-Author: Albert L. Lash, IV                  
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
 

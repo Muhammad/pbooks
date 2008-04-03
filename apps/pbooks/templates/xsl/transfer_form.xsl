@@ -2,7 +2,7 @@
 Program: PBooks
 Component: transfer_form.xsl
 Copyright: Savonix Corporation
-Author: Albert L. Lash, IV     
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
 
@@ -79,10 +79,14 @@ onSubmit="return validateStandard(this, 'myerror');">
     <tr>
         <td><xsl:value-of select="/__ROOT__/i18n/labels/label[key='method']/value"/>:</td>
         <td>
-<select name="method">
-    <option value="check"><xsl:value-of select="//label[key='by_check']/value"/></option>
-    <option value="electronic"><xsl:value-of select="//label[key='electronic']/value"/></option>
-</select>
+        <select name="method">
+            <option value="check">
+                <xsl:value-of select="//label[key='by_check']/value"/>
+            </option>
+            <option value="electronic">
+                <xsl:value-of select="//label[key='electronic']/value"/>
+            </option>
+        </select>
         </td>
     </tr>
 </table>

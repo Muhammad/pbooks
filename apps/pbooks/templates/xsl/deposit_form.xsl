@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:import href="main.xsl"/>
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery-latest.js">&#160;</script>
+<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
             $.post("<xsl:value-of select="//link_prefix"/>journal-entry-amount-delete", 
@@ -54,11 +54,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
 method="post" onSubmit="return validateStandard(this, 'myerror');">
 <!-- If there is more than one deposit account, the user needs to select which one the deposit is being made into -->
 <xsl:if test="count(//account_business_objects) &gt; 1">
-<select name="deposit_account_id" required="1" exclude="-1" err="{/__ROOT__/i18n/labels/label[key='error_select_debit']/value}">
-    <option value="-1"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='deposit_account']/value"/></option>
+<select name="deposit_account_id" required="1" exclude="-1" 
+    err="{/__ROOT__/i18n/labels/label[key='error_select_debit']/value}">
+    <option value="-1">
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='deposit_account']/value"/>
+    </option>
     <xsl:for-each select="//account_business_objects">
-        <option value="{id}"><xsl:if test="id=//get_journal_entry/account_id and //get_journal_entry/entry_type_id='Debit'"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-        <xsl:value-of select="name"/></option>
+        <option value="{id}">
+            <xsl:if test="id=//get_journal_entry/account_id 
+                and //get_journal_entry/entry_type_id='Debit'">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name"/>
+        </option>
     </xsl:for-each>
 </select>
 </xsl:if>

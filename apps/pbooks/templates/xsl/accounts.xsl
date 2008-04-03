@@ -65,7 +65,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:value-of select="//labels/label[key='new_account']/value"/>
     </a>
 </div>
-            
 
 <!-- drop down menu for the account selection -->
 <div style="float: top;">
@@ -97,8 +96,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </thead>
 <tbody>
 
-<!-- These are the account table rows. The tests are to decide how the table should be displayed, i.e. whether or not an account 
-type is selected, or whether the account balance should be displayed --> 
+<!-- These are the account table rows. The tests are to decide how the table
+    should be displayed, i.e. whether or not an account type is selected,
+    or whether the account balance should be displayed -->
 
 <!-- No specific account type selected, show all --> 
 <xsl:if test="not(__ROOT__/_get/account_type_id) or //_get/account_type_id='%'">
@@ -109,9 +109,9 @@ type is selected, or whether the account balance should be displayed -->
         </xsl:for-each>
     </xsl:if>
     <xsl:if test="__ROOT__/_get/nid='account-balances'">
-	
-	
-	
+
+
+
         <xsl:for-each select="__ROOT__/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:if test="running_balance &gt; 0">
@@ -146,7 +146,8 @@ type is selected, or whether the account balance should be displayed -->
 </form>
 <br/>
 <!-- Display the text that explains when accounts can be deleted 
-"An account can only be deleted when there are no journal transactions in that account. If you would like to hide the account, click edit and select the hide option."
+"An account can only be deleted when there are no journal transactions in that 
+account. If you would like to hide the account, click edit and select the hide option."
 -->
 <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_deletion_requirement']/value"/>
 

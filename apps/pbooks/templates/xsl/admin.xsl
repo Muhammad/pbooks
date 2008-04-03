@@ -33,9 +33,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:for-each>
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='themes']/value"/></h2>
 
+<!-- User Admin Link -->
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='user_admin']/value"/></h2>
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='enter_user_manager']/value"/>, <a href="user.php?nid=user">
-	<xsl:value-of select="/__ROOT__/i18n/labels/label[key='click_here']/value"/></a>. 
+<xsl:value-of select="/__ROOT__/i18n/labels/label[key='enter_user_manager']/value"/>, 
+    <a href="user.php?nid=user">
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='click_here']/value"/>
+    </a>.
 <br/><br/>
 <xsl:value-of select="/__ROOT__/i18n/labels/label[key='return_user_admin']/value"/>. 
 </xsl:template>

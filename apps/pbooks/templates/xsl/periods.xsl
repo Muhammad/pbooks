@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Program: PBooks
 Component: periods.xsl
 Copyright: Savonix Corporation

@@ -89,42 +89,54 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <tbody>
     <xsl:for-each select="__ROOT__/get_all_transactions">
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
-            <td>
-            <xsl:choose>
-                <xsl:when test="not(entry_id='0')">
-                    <a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
-                </xsl:when>
-                <xsl:otherwise>
-                    <a href="{$my_link_prefix}ledger-delete&amp;transaction_id={transaction_id}"  onclick="return confirm('Are you sure you want to delete this ledger 
-        transaction?')"><img src="{//path_prefix}{//icon_set}delete.png" alt="x" border="0"/></a>
-                    &#160;
-                    <!-- create new matching entry -->
-                    <a href="{$my_link_prefix}journal-new-from-transaction&amp;transaction_id={transaction_id}"><xsl:if test="/__ROOT__/show_tool_tips='yes'">
-        <xsl:attribute name="title"><xsl:value-of select="/__ROOT__/tool_tips[@lang=/__ROOT__/selected_lang]/tip[key='create_entry']/value" />
-        </xsl:attribute></xsl:if><img src="{//path_prefix}{//icon_set}add.png" alt="+" border="0"/></a>
-                </xsl:otherwise>
-            </xsl:choose>
-            </td>
-            
-            <td><a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}"><xsl:value-of select="entry_datetime"/></a></td>
-            
-            <td><xsl:value-of select="memorandum[not(.='NULL')]"/></td>
-            
-             <td><a href="{$my_link_prefix}ledger&amp;account_id={account_id}"><xsl:value-of select="name"/></a></td>
-             
-             <td><xsl:value-of select="entry_amount"/></td>
+        <td>
+        <xsl:choose>
+            <xsl:when test="not(entry_id='0')">
+                <a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}">
+                    <xsl:value-of select="entry_id"/>
+                </a>
+            </xsl:when>
+            <xsl:otherwise>
+                <a href="{$my_link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
+                    onclick="return confirm('Are you sure you want to delete this ledger 
+                    transaction?')">
+                    <img src="{//path_prefix}{//icon_set}delete.png" alt="x" border="0"/>
+                </a>
+                &#160;
+                <!-- create new matching entry -->
+                <a href="{$my_link_prefix}journal-new-from-transaction&amp;transaction_id={transaction_id}">
+                    <xsl:if test="/__ROOT__/show_tool_tips='yes'">
+                    <xsl:attribute name="title">
+                        <xsl:value-of select="/__ROOT__/tool_tips[@lang=/__ROOT__/selected_lang]/tip[key='create_entry']/value" />
+                    </xsl:attribute>
+                    </xsl:if>
+                    <img src="{//path_prefix}{//icon_set}add.png" alt="+" border="0"/>
+                </a>
+            </xsl:otherwise>
+        </xsl:choose>
+        </td>
+        <td>
+            <a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}">
+                <xsl:value-of select="entry_datetime"/>
+            </a>
+        </td>
+        <td>
+            <xsl:value-of select="memorandum[not(.='NULL')]"/>
+        </td>
+        <td>
+            <a href="{$my_link_prefix}ledger&amp;account_id={account_id}">
+                <xsl:value-of select="name"/>
+            </a>
+        </td>
+        <td>
+            <xsl:value-of select="entry_amount"/>
+        </td>
     </tr>
     </xsl:for-each>
     </tbody>
-    
-
-        
-
 </table>
 <xsl:call-template name="pager"/>
 <br/>
-
-
 </form>
 </xsl:template>
 </xsl:stylesheet>

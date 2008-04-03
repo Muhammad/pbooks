@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- include calendar js and css -->
 <xsl:call-template name="calendar-inc"/>
 <!-- Add / delete items -->
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery-latest.js">&#160;</script>
+<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
             $.post("<xsl:value-of select="//link_prefix"/>journal-entry-amount-delete", 

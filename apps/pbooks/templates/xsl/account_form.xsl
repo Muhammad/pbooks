@@ -157,7 +157,7 @@ and set appropriate parameter "my_action" -->
     <tr>
 		<td>
             <xsl:value-of select="//label[key='group']/value"/>:
-        </td>	
+        </td>
         <td>
             <select name="group_id">
             <xsl:for-each select="//get_account_groups">

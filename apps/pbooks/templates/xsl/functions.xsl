@@ -42,17 +42,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:value-of select="//text[key='import_instructions']/value"/>
     </textarea>
     <br/>
-    <select name="account_id" required="1" exclude="-1" err="Please select an account to post your transactions to.">
-        <option value="-1"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='select_one']/value"/></option>
+    <select name="account_id" required="1" exclude="-1" 
+        err="Please select an account to post your transactions to.">
+        <option value="-1">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='select_one']/value"/>
+        </option>
         <xsl:for-each select="/__ROOT__/get_all_accounts">
-        <option value="{id}"><xsl:if test="id=/__ROOT__/_get/account_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
+        <option value="{id}">
+            <xsl:if test="id=/__ROOT__/_get/account_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name"/>
+        </option>
         </xsl:for-each>
         </select>
     <input type="submit"/>
 </form>
-
-
-
 
 </xsl:template> 
 </xsl:stylesheet>

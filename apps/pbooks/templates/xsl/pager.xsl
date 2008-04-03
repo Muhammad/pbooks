@@ -63,7 +63,7 @@ $(document).ready(function()
 <!-- load the javascript -->
 <xsl:template name="jquery-links">
 <link rel="stylesheet" href="{__ROOT__/runtime/path_prefix}/s/js/blue/style.css" type="text/css" media="print, projection, screen" />
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery-latest.js">&#160;</script>
+<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery.js">&#160;</script>
 <script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery.tablesorter.min.js">&#160;</script>
 </xsl:template>
 
@@ -84,13 +84,7 @@ $(document).ready(function()
         </td>
         </tr>
     </table>
-		<input class="pagesize" type="hidden" name="pagesize" value="10"/>
-        <!--<select class="pagesize">
-			<option selected="selected"  value="10">10</option>
-			<option value="20">20</option>
-			<option value="30">30</option>
-			<option  value="40">40</option>
-		</select>-->
+    <input class="pagesize" type="hidden" name="pagesize" value="10"/>
 </div>
 </xsl:template> 
 </xsl:stylesheet>

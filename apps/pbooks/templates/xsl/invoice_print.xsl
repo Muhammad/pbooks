@@ -86,21 +86,23 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
     </tbody>
 </table>
-<div style="height: 600px; margin-top: 10px;">
+<div style="height: 500px; margin-top: 10px;">
 <table class="simpletable" style="width: 600px;">
     <thead>
         <tr>
-            <th colspan="2"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='billable_items']/value"/>:</th>
+            <th colspan="2">
+                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='billable_items']/value"/>:
+            </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td width="360"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='desc']/value"/></td>
-            <!--
-            <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='quantity']/value"/></td>
-            <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='price']/value"/></td>
-            -->
-            <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='total']/value"/></td>
+            <td width="360">
+                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='desc']/value"/>
+            </td>
+            <td>
+                <xsl:value-of select="__ROOT__/i18n/labels/label[key='total']/value"/>
+            </td>
         </tr>
         
         <!-- INVOICE LINE ITEM ROWS -->
@@ -108,10 +110,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:variable name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:variable>
         <tr>
             <td><xsl:value-of select="/__ROOT__/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/></td>
-            <!--
-            <td></td>
-            <td></td>
-            -->
             <td><xsl:value-of select="/__ROOT__/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount"/></td>
         </tr>
         </xsl:for-each>
@@ -120,10 +118,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- TODO: i18n -->
         <tr>
             <td style="text-align: right;">Grand total:</td>
-            <!--
-            <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='quantity']/value"/></td>
-            <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='price']/value"/></td>
-            -->
             <td><strong><xsl:value-of select="sum(/__ROOT__/invoices_get_amounts[entry_type_id='Credit']/entry_amount)"/></strong></td>
         </tr>
         

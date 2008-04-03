@@ -29,7 +29,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- these rows contain ids for use in testing, do not remove! -->
 <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass" >
 
-
     <!-- Show account checkbox -->
     <xsl:if test="//_get/show_all_accounts='on'">
         <td>
