@@ -30,8 +30,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:for-each select="//company_options/option">
     <xsl:variable name="my_option"><xsl:value-of select="option_key"/></xsl:variable>
     <tr>
-        <td><xsl:value-of select="title"/>: </td>
-        <td><input type="text" name="{option_key}" value="{//option_get[option_key=$my_option]/option_value}"/></td>
+        <td>
+            <xsl:value-of select="title"/>:
+        </td>
+        <td>
+            <input type="text" name="{option_key}" 
+                value="{//option_get[option_key=$my_option]/option_value}"/>
+        </td>
     </tr>
 </xsl:for-each>
 </table>

@@ -53,6 +53,7 @@ Form input elements have attributes like required="1" if they are to be validate
 </xsl:if>
 <!-- End error -->
 
+<!-- customer accounts are "special" asset accounts - type 10000 -->
 <input type="hidden" name="account_type_id" value="10000"/>
 
 
@@ -78,15 +79,29 @@ Form input elements have attributes like required="1" if they are to be validate
     </xsl:for-each>
     <!-- END META -->
 	<tr>
-		<td valign="top"><xsl:value-of select="//label[key='account_number']/value"/>:</td>
-		<td><input type="text" name="account_number"  required="1" err="{//error[key='missing_account_number']/value}" value="{//get_account/account_number|//_post/account_number}"/></td>
+		<td>
+            <xsl:value-of select="//label[key='account_number']/value"/>:
+        </td>
+		<td>
+            <input type="text" name="account_number"  required="1" 
+            err="{//error[key='missing_account_number']/value}" 
+            value="{//get_account/account_number|//_post/account_number}"/>
+        </td>
 	</tr>
 	<tr>
-		<td valign="top"><xsl:value-of select="//label[key='desc']/value"/>:</td>
-		<td><textarea name="description" cols="40" rows="6"><xsl:value-of select="//get_account/description|//_post/description"/>&#160;</textarea></td>
+		<td>
+            <xsl:value-of select="//label[key='desc']/value"/>:
+        </td>
+		<td>
+            <textarea name="description" cols="40" rows="6">
+            <xsl:value-of select="//get_account/description|//_post/description"/>&#160;
+            </textarea>
+        </td>
 	</tr>
     <tr>
-		<td valign="top"><xsl:value-of select="//label[key='group']/value"/>:</td>	
+		<td>
+            <xsl:value-of select="//label[key='group']/value"/>:
+        </td>
         <td>
         <select name="group_id">
         <xsl:for-each select="//get_account_groups">
@@ -102,7 +117,9 @@ Form input elements have attributes like required="1" if they are to be validate
         </td>
 	</tr>
     <tr>
-		<td valign="top"><xsl:value-of select="//label[key='hide']/value"/>:</td>
+		<td>
+            <xsl:value-of select="//label[key='hide']/value"/>:
+        </td>
 		<td>
             <input type="checkbox" name="hide">
                 <xsl:if test="//get_account/hide='on'">

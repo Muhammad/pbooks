@@ -30,8 +30,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='write_check']/value"/></h2>
 
 <form
-    action="{/__ROOT__/runtime/link_prefix}check-submit&amp;entry_id={/__ROOT__/_get/entry_id}&amp;view_flow=true" method="post" 
-    onSubmit="return validateStandard(this, 'myerror');">
+    action="{//runtime/link_prefix}check-submit&amp;entry_id={//_get/entry_id}"
+    method="post" onSubmit="return validateStandard(this, 'myerror');">
 <input type="hidden" name="entry_id" value="{/__ROOT__/_get/entry_id}"/>
 <div id="check">
     <div id="check_account_id">
@@ -43,12 +43,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </div>
     <div id="check_number">
         <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_number']/value"/>:
-        <input type="text" name="check_number" value="{//get_some_business_objects/check_number}"/>
+        <input type="text" name="check_number"
+            value="{//get_some_business_objects/check_number}"/>
     </div>
     <div id="check_payee">
         <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_payee']/value"/>:
         <input type="text" name="check_payee" value="{//get_some_business_objects/check_payee}"/> 
-        $<input type="text" name="entry_amount" length="6" value="{/__ROOT__/get_journal_entry/entry_amount}"/>
+        $<input type="text" name="entry_amount" 
+            length="6" value="{/__ROOT__/get_journal_entry/entry_amount}"/>
     </div>
     <div id="check_memo">
         <xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/>: 
@@ -85,7 +87,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:if>
     <!-- Only one checking account. -->
     <xsl:if test="count(/__ROOT__/account_get_checking_accounts/account_id)=1">
-    <input type="hidden" name="checking_account_id" value="{/__ROOT__/account_get_checking_accounts/account_id}"/>
+    <input type="hidden" name="checking_account_id" 
+        value="{/__ROOT__/account_get_checking_accounts/account_id}"/>
     </xsl:if>
 </div>
 
