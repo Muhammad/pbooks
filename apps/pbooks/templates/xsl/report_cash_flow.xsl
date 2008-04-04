@@ -50,105 +50,113 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
 
-            <!-- This is the table structure only, the table cells are 
-            the templates at the bottom of the file -->
-		<table width="100%" class="matrix-table" cellspacing="1" cellpadding="2" border="0" bgcolor="gray">
-			<tr>
-				<td class="matrix-data"> </td>
-				<xsl:for-each select="//months/option">
-					<xsl:if test="@id &gt;= $from_month and @id &lt;= $to_month">
-						<td class="matrix-data"><xsl:value-of select="@shortname"/></td>
-					</xsl:if>
-				</xsl:for-each>
-			</tr>
+<!-- This is the table structure only, the table cells are 
+the templates at the bottom of the file -->
+<table width="100%" class="matrix-table" cellspacing="1" cellpadding="2" border="0" bgcolor="gray">
+    <tr>
+        <td class="matrix-data"> </td>
+        <xsl:for-each select="//months/option">
+            <xsl:if test="@id &gt;= $from_month and @id &lt;= $to_month">
+                <td class="matrix-data"><xsl:value-of select="@shortname"/></td>
+            </xsl:if>
+        </xsl:for-each>
+    </tr>
 
-			<!--  Cash Flow -->
-			<tr>
-				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='incoming_cash_flow_deposit']/value"/></td>				 
-                <xsl:call-template name="empty_cell">
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
+    <!--  Cash Flow -->
+    <tr>
+        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='incoming_cash_flow_deposit']/value"/></td>				 
+        <xsl:call-template name="empty_cell">
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
+    <tr>
+        <td class="matrix-data" style="padding-left: 20px;"><xsl:value-of select="__ROOT__/i18n/labels/label[key='beginning_balance']/value"/></td>				 
+        <xsl:call-template name="empty_cell">
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
+    <!-- Income / Deposits -->
+    <xsl:for-each select="//get_all_accounts[account_type_id=10000][cash_account='on']">
+    <xsl:variable name="this_i_account_id"><xsl:value-of select="id"/></xsl:variable>
+        <tr class="row{position() mod 2}">
+            <td class="matrix-data" style="text-indent: 16px;">
+                <a href="{//link_prefix}ledger&amp;account_id={id}">
+                    <xsl:value-of select="name"/>
+                </a>
+            </td>
+             <xsl:call-template name="income_cell">
+                  <xsl:with-param name="mn" select="$from_month"/>
+                  <xsl:with-param name="repeat" select="$monthnum"/>
+                  <xsl:with-param name="this_i_account_id" select="$this_i_account_id"/>
+             </xsl:call-template>
+        </tr>
+    </xsl:for-each>
+    <tr class="row{position() mod 2}">
+        <td class="matrix-data"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='total_cash_inflow']/value"/></td>
+         <xsl:call-template name="income_total_cell">
+              <xsl:with-param name="mn" select="$from_month"/>
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
+    <tr>
+        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+    </tr>
+    <!--  Disbursements -->
+    <tr>
+        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='disbursements']/value"/></td>
+         <xsl:call-template name="empty_cell">
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
+    <!-- Disb by account -->
+    <xsl:for-each select="//get_all_accounts[account_type_id=10000][cash_account='on']">
+    <xsl:variable name="this_d_account_id"><xsl:value-of select="id"/></xsl:variable>
+        <tr class="row{position() mod 2}">
+            <td class="matrix-data" style="text-indent: 16px;">
+                <a href="{//link_prefix}ledger&amp;account_id={id}">
+                    <xsl:value-of select="name"/>
+                </a>
+            </td>
+             <xsl:call-template name="outgoing_cell">
+                  <xsl:with-param name="mn" select="$from_month"/>
+                  <xsl:with-param name="repeat" select="$monthnum"/>
+                  <xsl:with-param name="this_d_account_id" select="$this_d_account_id"/>
+             </xsl:call-template>
+        </tr>
+    </xsl:for-each>
+    <!-- Total disbursements -->
+    <tr class="row{position() mod 2}">
+        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='total_cash_outflow']/value"/></td>
+         <xsl:call-template name="outgoing_total_cell">
+              <xsl:with-param name="mn" select="$from_month"/>
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
+    <tr>
+        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+    </tr>
+    <!-- Capital Investments -->
+    <tr>
+        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='capital_investments']/value"/></td>
+         <xsl:call-template name="empty_cell">
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
 
-	
-			</tr>
-            <tr>
-                <td class="matrix-data" style="padding-left: 20px;"><xsl:value-of select="__ROOT__/i18n/labels/label[key='beginning_balance']/value"/></td>				 
-                <xsl:call-template name="empty_cell">
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
-            </tr>
-            <!-- Income / Deposits -->
-			<xsl:for-each select="//get_all_accounts[account_type_id=10000]">
-			<xsl:variable name="this_i_account_id"><xsl:value-of select="id"/></xsl:variable>
-                <tr class="row{position() mod 2}">
-                <td class="matrix-data" style="padding-left: 20px;"><xsl:value-of select="name"/></td>
-                     <xsl:call-template name="income_cell">
-                          <xsl:with-param name="mn" select="$from_month"/>
-                          <xsl:with-param name="repeat" select="$monthnum"/>
-                          <xsl:with-param name="this_i_account_id" select="$this_i_account_id"/>
-                     </xsl:call-template>
-                </tr>
-            </xsl:for-each>
-			<tr class="row{position() mod 2}">
-				<td class="matrix-data"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='total_cash_inflow']/value"/></td>
-				 <xsl:call-template name="income_total_cell">
-					  <xsl:with-param name="mn" select="$from_month"/>
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
-			</tr>
-			<tr>
-				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
-            </tr>
-			<!--  Disbursements -->
-			<tr>
-				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='disbursements']/value"/></td>
-				 <xsl:call-template name="empty_cell">
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
-			</tr>
-            <!-- Disb by account -->
-			<xsl:for-each select="//get_all_accounts[account_type_id=10000]">
-			<xsl:variable name="this_d_account_id"><xsl:value-of select="id"/></xsl:variable>
-                <tr class="row{position() mod 2}">
-                <td class="matrix-data" style="padding-left: 20px;"><xsl:value-of select="name"/></td>
-                     <xsl:call-template name="outgoing_cell">
-                          <xsl:with-param name="mn" select="$from_month"/>
-                          <xsl:with-param name="repeat" select="$monthnum"/>
-                          <xsl:with-param name="this_d_account_id" select="$this_d_account_id"/>
-                     </xsl:call-template>
-                </tr>
-            </xsl:for-each>
-            <!-- Total disbursements -->
-			<tr class="row{position() mod 2}">
-				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='total_cash_outflow']/value"/></td>
-				 <xsl:call-template name="outgoing_total_cell">
-					  <xsl:with-param name="mn" select="$from_month"/>
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
-            </tr>
-			<tr>
-				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
-            </tr>
-			<!-- Capital Investments -->
-			<tr>
-				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='capital_investments']/value"/></td>
-				 <xsl:call-template name="empty_cell">
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
-			</tr>
-
-			<tr>
-				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
-			</tr>
-			<!-- Cash Flow -->
-			<tr>
-				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow']/value"/></td>
-				 <xsl:call-template name="total_cell">
-					  <xsl:with-param name="mn" select="$from_month"/>
-					  <xsl:with-param name="repeat" select="$monthnum"/>
-				 </xsl:call-template>
-			</tr>
-		</table>
+    <tr>
+        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+    </tr>
+    <!-- Cash Flow -->
+    <tr>
+        <td class="matrix-data">
+            <xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow']/value"/>
+        </td>
+         <xsl:call-template name="total_cell">
+              <xsl:with-param name="mn" select="$from_month"/>
+              <xsl:with-param name="repeat" select="$monthnum"/>
+         </xsl:call-template>
+    </tr>
+</table>
 
 </xsl:template>
 <!-- These are the individual cells -->
