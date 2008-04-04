@@ -1,0 +1,63 @@
+<!--
+Program: PBooks
+Component: checks_get_some.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA 
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_some_business_objects">
+    <!-- this query and queries like it are based on entries_only_get_some.xml, but optimized for a specific business object type. This saves a lot of complex XSL in the end.  
+            This query only selects checks, and does so by using a metadata key. 
+            I would like to use the status flag for this purpose if possible
+        -->
+    <connection>&pb_connection;</connection>
+    <params>
+        <param name="_get/entry_id" type="text" default="%"/>
+        <param name="_get/start" type="integer" default="0"/>
+        <param name="option_get[display_num_entries!='NULL']/display_num_entries" type="integer" default="40"/>
+	</params>
+    <sql>
+        SELECT pbe.entry_id, entry_datetime,
+        pbe.memorandum, pbeam.entry_amount,
+        pem.meta_value as check_payee,
+        mymeta1.meta_value as check_number
+        
+        FROM &pb_entries; AS pbe 
+        
+        INNER JOIN &pb_entry_amounts; AS pbeam 
+        ON pbe.entry_id=pbeam.entry_id
+        
+        INNER JOIN &pb_entry_metadata; AS pem
+        ON pbe.entry_id=pem.entry_id
+        
+        LEFT JOIN &pb_entry_metadata; AS mymeta1
+        ON (mymeta1.entry_id = pbe.entry_id
+        AND mymeta1.meta_key='check_number')
+        
+        WHERE pbe.entry_id!=0
+        AND pbe.memorandum!='PLACEHOLDER'
+        AND pbe.entry_id LIKE ?
+        AND pbe.status != 9
+        
+        AND pem.meta_key='check_payee'
+        AND pbeam.entry_type_id='Debit'
+        LIMIT ?,?
+    </sql>
+</query>

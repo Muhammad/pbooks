@@ -1,0 +1,52 @@
+<!--
+Program: PBooks
+Component: account_get_by_id.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_account">
+    <connection>&pb_connection;</connection>
+    <params>
+		<param name="_get/id" type="text" default="-999"/>
+		<param name="_get/id" type="text" default="-999"/>
+		<param name="_get/id" type="text" default="-999"/>
+	</params>
+    <sql>
+        SELECT &pb_accounts;.*,
+        mymeta.meta_value as takes_deposits,
+        mymeta2.meta_value as cash_account
+        
+        FROM &pb_accounts;
+        
+        
+        LEFT JOIN &pb_accounts_meta; AS mymeta
+        ON mymeta.account_id = ?
+        AND mymeta.meta_key='takes_deposits'
+        
+        LEFT JOIN &pb_accounts_meta; AS mymeta2
+        ON mymeta2.account_id = ?
+        AND mymeta2.meta_key='cash_account'
+
+
+		WHERE id=? 
+
+    </sql>
+</query>

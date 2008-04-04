@@ -1,0 +1,31 @@
+<!-- This is a sub-config file. Additional information can be inserted here, 
+and overlapping information will override settings in the main configuration file -->
+<config>
+    <defaults>
+        <default_selected_lang>en_US</default_selected_lang>
+        <default_fiscal_start>01-01</default_fiscal_start>
+        <default_theme>default</default_theme>
+        <default_icon_set>s/images/icons/famfamfam/</default_icon_set>
+    </defaults>
+    <plugins>
+        <dev_buffer>
+            <placement>prepend</placement>
+            <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
+            <excludes>themed-css,xml-sitemap,account-groups-xml,account-sub-groups-xml</excludes>
+        </dev_buffer>
+        <nx_auth>
+            <placement>prepend</placement>
+            <source>&includepath;plugins/nx_auth.php</source>
+            <login>auth.php?nid=login</login>
+        </nx_auth>
+        <!--
+        <nx_cache>
+            <placement>prepend</placement>
+            <source>&includepath;plugins/nx_cache.php</source>
+            <directory>&project_root;/cache/&server_name;/cache/</directory>
+            <active>1</active>
+            <compress>0</compress>
+        </nx_cache>
+        -->
+    </plugins>
+</config>

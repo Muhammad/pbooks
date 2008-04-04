@@ -1,0 +1,81 @@
+<!--
+Program: PBooks
+Component: account_types.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<!-- Types after 50000 were influenced by XBRL - see http://www.xbrl.org/ -->
+<account_types>
+	<account_type>
+		<name>Assets</name>
+		<account_type_id>10000</account_type_id>
+        <normal_balance>Debit</normal_balance>
+	</account_type>
+	<account_type>
+		<name>Liabilities</name>
+		<account_type_id>20000</account_type_id>
+        <normal_balace>Credit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Stockholder's Equity</name>
+		<account_type_id>30000</account_type_id>
+        <normal_balace>Credit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Revenues</name>
+		<account_type_id>40000</account_type_id>
+        <normal_balace>Credit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Expenses</name>
+		<account_type_id>50000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Gain</name>
+		<account_type_id>60000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Loss</name>
+		<account_type_id>70000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Distribution from Equity</name>
+		<account_type_id>80000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Contribution to Equity</name>
+		<account_type_id>90000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Comprehensive Income</name>
+		<account_type_id>100000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+	<account_type>
+		<name>Other</name>
+		<account_type_id>110000</account_type_id>
+        <normal_balace>Debit</normal_balace>
+	</account_type>
+</account_types>

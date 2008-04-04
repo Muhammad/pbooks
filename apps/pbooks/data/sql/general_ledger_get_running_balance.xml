@@ -1,0 +1,84 @@
+<!--
+Program: PBooks
+Component: general_ledger_get_all.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA 
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_all_transactions">
+    <connection>&pb_connection;</connection>
+    <params>
+		<param name="_get/account_id" type="text" default="%"/>
+        <param name="from_date" type="text" />
+        <param name="to_date" type="text" />
+        <param name="sorting" type="text" default="ASC"/>
+        <param name="sorting" type="text" default="ASC"/>
+        <param name="sorting" type="text" default="ASC"/>
+        <param name="sorting" type="text" default="ASC"/>
+        <param name="_get/start" type="integer" default="0"/>
+        <param name="option_get/display_num_trans" type="integer" default="1000"/>
+	</params>
+    <sql>
+        SELECT &pb_general_ledger;.transaction_id,
+        &pb_general_ledger;.entry_amount,
+        SUM(b.entry_amount) as balance,
+        &pb_general_ledger;.account_id,
+        &pb_general_ledger;.entry_id,
+        &pb_general_ledger;.entry_amount_id,
+        DATE(&pb_general_ledger;.entry_datetime) as entry_datetime,
+        SUBSTR(&pb_general_ledger;.memorandum,1,35) as memorandum, 
+        &pb_accounts;.account_type_id,
+        &pb_accounts;.name
+        
+        FROM &pb_general_ledger;, &pb_accounts;
+        
+        INNER JOIN &pb_general_ledger; b
+        
+        WHERE 
+        
+        &pb_general_ledger;.account_id=&pb_accounts;.id
+        
+        AND &pb_general_ledger;.account_id LIKE ? 
+        
+        
+        <!-- this searches for previously occuring transactions, as well as 
+        transactions that happened the same day with less than or equal to entry amounts -->
+        AND (
+        ((b.entry_datetime = &pb_general_ledger;.entry_datetime)
+        AND (b.entry_amount &gt;= &pb_general_ledger;.entry_amount)) OR
+        (b.entry_datetime &lt; &pb_general_ledger;.entry_datetime)
+        )
+        AND b.account_id = &pb_general_ledger;.account_id
+                
+		AND &pb_general_ledger;.entry_datetime &gt;= ?
+        AND &pb_general_ledger;.entry_datetime &lt;= ?
+        
+        GROUP BY  &pb_general_ledger;.transaction_id
+        
+        ORDER BY 
+         &pb_general_ledger;.entry_id,
+        CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_datetime END ASC, 
+        CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_datetime END DESC,
+        CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_amount END DESC, 
+        CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_amount END ASC
+        
+        LIMIT ?,?
+    </sql>
+</query>

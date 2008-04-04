@@ -1,0 +1,51 @@
+<!-- 
+Program: PBooks             				
+Component: user_options.xml								
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV                  
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA 
+-->
+<user_options lang="en-us">
+    <!-- 
+    <option>
+        <option_key>reverse_order</option_key>
+        <option_type>checkbox</option_type>
+        <title>Display journal and ledger in reverse order</title>
+        <default></default>
+    </option>
+    -->
+    <option>
+        <option_key>display_num_entries</option_key>
+        <option_type>text</option_type>
+        <title>Number of journal entries to display</title>
+        <default>8</default>
+    </option>
+    <option>
+        <option_key>display_num_trans</option_key>
+        <option_type>text</option_type>
+        <title>Number of transactions to display</title>
+        <default>16</default>
+    </option>
+    <option>
+        <option_key>display_num_accounts</option_key>
+        <option_type>text</option_type>
+        <title>Number of accounts to display</title>
+        <default>24</default>
+    </option>
+</user_options>

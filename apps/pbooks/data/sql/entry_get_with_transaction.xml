@@ -1,0 +1,46 @@
+<!--
+Program: PBooks
+Component: entry_get_with_transaction.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA 
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_journal_entry">
+    <connection>&pb_connection;</connection>
+    <params>       
+		<param name="_get/transaction_id" type="integer"/>
+		<param name="_get/entry_id" type="integer"/>
+		<param name="_get/entry_id" type="integer"/>
+	</params>
+    <sql>
+        SELECT id,name,account_type_id,description,creation_datetime,account_number,
+        &pb_entries;.entry_id,&pb_general_ledger;.entry_datetime,&pb_entries;.memorandum,
+        &pb_entries;.entry_id as transaction_id,&pb_general_ledger;.entry_amount,
+        &pb_general_ledger;.account_id,&pb_entry_amounts;.entry_type_id
+        
+        FROM &pb_accounts;,&pb_entries;,&pb_general_ledger;,&pb_entry_amounts;
+        
+		WHERE transaction_id=? 
+		AND &pb_entries;.entry_id=?
+        AND &pb_accounts;.id=&pb_general_ledger;.account_id
+        AND &pb_entries;.entry_id=&pb_general_ledger;.entry_id
+		AND &pb_entry_amounts;.entry_id=?
+    </sql>
+</query>
