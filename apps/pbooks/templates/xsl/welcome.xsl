@@ -50,13 +50,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </ul>
 
 
+<!-- strict layout table -->
+<table cellpadding="20">
+    <tr>
+        <td>
 
-<b><xsl:value-of select="__ROOT__/i18n/labels/label[key='quick_stats']/value"/></b>
-<br/><br/>
-    
 <!-- This table displays some basic information about the books -->
-<table cellpadding="5" cellspacing="0" width="300">
-    <tr class="row1">
+<table class="simpletable" width="300">
+    <thead>
+    <tr>
+        <th colspan="2">
+            <b><xsl:value-of select="__ROOT__/i18n/labels/label[key='quick_stats']/value"/></b>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
         <td>
             <a href="{/__ROOT__/runtime/link_prefix}accounts">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='accounts']/value"/></a>
@@ -65,34 +74,70 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="//select_account_stats/account_stats"/>
         </td>
     </tr>
-    <tr class="row1">
+    <tr>
         <td>
             <a href="{/__ROOT__/runtime/link_prefix}ledger">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='ledger_transactions']/value"/></a>
+                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='ledger_transactions']/value"/>
+            </a>
         </td>
         <td>
             <xsl:value-of select="//select_account_stats/gl_stats"/>
         </td>
     </tr>
-    <tr class="row1">
+    <tr>
         <td>
             <a href="{/__ROOT__/runtime/link_prefix}journal">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='journal_entry_amounts']/value"/></a>
+                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='journal_entry_amounts']/value"/>
+            </a>
         </td>
         <td>
             <xsl:value-of  select="//select_account_stats/entry_amounts_stats"/>
         </td>
     </tr>
-    <tr class="row1">
+    <tr>
         <td>
             <a href="{/__ROOT__/runtime/link_prefix}journal">
-            <xsl:value-of  select="/__ROOT__/i18n/labels/label[key='journal_entries']/value"/></a>
+                <xsl:value-of  select="/__ROOT__/i18n/labels/label[key='journal_entries']/value"/>
+            </a>
         </td>
         <td>
             <xsl:value-of  select="//select_account_stats/entry_stats"/>
         </td>
     </tr>
+    </tbody>
 </table>
+        </td>
+        <td>
+<!-- This table displays some recent entries and transactions -->
+<table class="simpletable" width="300">
+    <thead>
+    <tr>
+        <th colspan="2">
+            <b><xsl:value-of select="__ROOT__/i18n/labels/label[key='recent_activity']/value"/></b>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='invoices']/value"/>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='checks']/value"/>
+        </td>
+        <td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+        </td>
+    </tr>
+</table>
+
 <br/><br/>
 <xsl:value-of select="/__ROOT__/i18n/labels/label[key='number_transactions']/value"/>
 </div>

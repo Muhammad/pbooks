@@ -672,6 +672,10 @@ The text you paste in here should look something like this:
         <value>Quick Stats:</value>
     </label>
     <label>
+        <key>recent_activity</key>
+        <value>Recent Activity:</value>
+    </label>
+    <label>
         <key>accounts</key>
         <value>Accounts: </value>
     </label>
