@@ -40,23 +40,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <div style="text-align: center;">
     <h2><xsl:value-of select="//company_name"/></h2>
+    <xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow_statement']/value"/> <xsl:value-of select="__ROOT__/i18n/labels/label
+            [key='from']/value"/> 
+    <xsl:value-of select="//from_date"/> <xsl:value-of select="__ROOT__/i18n/labels/label[key='through']/value"/> <xsl:value-of select="//to_date"/>
+
 </div>
 
 
 
 
-<table class="data-table" width="740" align="center">
-	<tr>
-		<td align="center"><xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow_statement']/value"/> <xsl:value-of select="__ROOT__/i18n/labels/label
-		[key='from']/value"/> 
-			<xsl:value-of select="//from_date"/> <xsl:value-of select="__ROOT__/i18n/labels/label[key='through']/value"/> <xsl:value-of select="//to_date"/></td>
-	</tr>
-	<tr>
-		<td>
-        <!-- This is the table structure only, the table cells are 
+
+            <!-- This is the table structure only, the table cells are 
             the templates at the bottom of the file -->
 		<table width="100%" class="matrix-table" cellspacing="1" cellpadding="2" border="0" bgcolor="gray">
-			<tr bgcolor="white">
+			<tr>
 				<td class="matrix-data"> </td>
 				<xsl:for-each select="//months/option">
 					<xsl:if test="@id &gt;= $from_month and @id &lt;= $to_month">
@@ -66,7 +63,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			</tr>
 
 			<!--  Cash Flow -->
-			<tr bgcolor="white">
+			<tr>
 				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='incoming_cash_flow_deposit']/value"/></td>				 
                 <xsl:call-template name="empty_cell">
 					  <xsl:with-param name="repeat" select="$monthnum"/>
@@ -74,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 	
 			</tr>
-            <tr bgcolor="white">
+            <tr>
                 <td class="matrix-data" style="padding-left: 20px;"><xsl:value-of select="__ROOT__/i18n/labels/label[key='beginning_balance']/value"/></td>				 
                 <xsl:call-template name="empty_cell">
 					  <xsl:with-param name="repeat" select="$monthnum"/>
@@ -99,11 +96,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					  <xsl:with-param name="repeat" select="$monthnum"/>
 				 </xsl:call-template>
 			</tr>
-			<tr bgcolor="white">
-				<td class="matrix-data"><xsl:attribute name="colspan"><xsl:value-of select="number($to_month - $from_month + 3)"/></xsl:attribute>&#160;</td>
-			</tr>
+			<tr>
+				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+            </tr>
 			<!--  Disbursements -->
-			<tr bgcolor="white">
+			<tr>
 				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='disbursements']/value"/></td>
 				 <xsl:call-template name="empty_cell">
 					  <xsl:with-param name="repeat" select="$monthnum"/>
@@ -129,22 +126,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					  <xsl:with-param name="repeat" select="$monthnum"/>
 				 </xsl:call-template>
             </tr>
-			<tr bgcolor="white">
-				<td class="matrix-data"><xsl:attribute name="colspan"><xsl:value-of select="number($to_month - $from_month + 3)"/></xsl:attribute>&#160;</td>
-			</tr>
+			<tr>
+				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+            </tr>
 			<!-- Capital Investments -->
-			<tr bgcolor="white">
+			<tr>
 				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='capital_investments']/value"/></td>
 				 <xsl:call-template name="empty_cell">
 					  <xsl:with-param name="repeat" select="$monthnum"/>
 				 </xsl:call-template>
 			</tr>
 
-			<tr bgcolor="white">
-				<td class="matrix-data"><xsl:attribute name="colspan"><xsl:value-of select="number($to_month - $from_month + 3)"/></xsl:attribute>&#160;</td>
+			<tr>
+				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
 			</tr>
 			<!-- Cash Flow -->
-			<tr bgcolor="white">
+			<tr>
 				<td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow']/value"/></td>
 				 <xsl:call-template name="total_cell">
 					  <xsl:with-param name="mn" select="$from_month"/>
@@ -152,9 +149,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 				 </xsl:call-template>
 			</tr>
 		</table>
-		</td>
-	</tr>
-</table>
+
 </xsl:template>
 <!-- These are the individual cells -->
 <xsl:template name="empty_cell">
