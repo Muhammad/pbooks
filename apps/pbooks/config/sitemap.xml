@@ -24,7 +24,7 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <map:prepend>
-    <map:set name="pbooks_code_version" value="0.08"/>
+    <map:set name="pbooks_code_version" value="0.09"/>
     <map:script src="lib/php/runtime.php"/>
     <map:query src="data/sql/option_get_company_name.xml"/>
     <map:query src="data/sql/accounts_get_all.xml" />
