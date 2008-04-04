@@ -47,6 +47,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='view']/value"/>
         </a>
     </li>
+    <li>
+        <a href="{__ROOT__/runtime/link_prefix}reports">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='reports']/value"/>
+        </a>
+    </li>
 </ul>
 
 
