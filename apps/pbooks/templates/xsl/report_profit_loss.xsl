@@ -73,7 +73,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<xsl:for-each select="__ROOT__/get_all_accounts[account_type_id=$rev]">
 			<xsl:variable name="this_r_account_id"><xsl:value-of select="id"/></xsl:variable>
 			<tr class="row{position() mod 2}">
-				<td class="matrix-data">&#160;&#160;&#160;&#160;<xsl:value-of select="name"/></td>
+				<td class="matrix-data" style="text-indent: 16px;">
+                    <a href="{//link_prefix}ledger&amp;account_id={id}">
+                        <xsl:value-of select="name"/>
+                    </a>
+                </td>
 				 <xsl:call-template name="revenue_cell">
 					  <xsl:with-param name="repeat" select="$monthnum"/>
 					  <xsl:with-param name="mn" select="$from_month"/>
@@ -87,7 +91,9 @@ select="sum(/__ROOT__/get_all_entry_amounts[account_type_id=$rev][account_id=$th
 			</tr>
 			</xsl:for-each>
 			<tr>
-				<td class="matrix-data">&#160;&#160;&#160;&#160;<b><xsl:value-of select="/__ROOT__/i18n/labels/label[key='totalrevenue']/value"/></b></td>
+				<td class="matrix-data" style="text-indent: 16px;">
+                    <b><xsl:value-of select="/__ROOT__/i18n/labels/label[key='totalrevenue']/value"/></b>
+                </td>
 				
 				 <xsl:call-template name="revenue_cell_total">
 					  <xsl:with-param name="mn" select="$from_month"/>
@@ -97,8 +103,9 @@ select="sum(/__ROOT__/get_all_entry_amounts[account_type_id=$rev][account_id=$th
 				<td class="matrix-data"><xsl:value-of select="format-number(sum(/__ROOT__/get_all_entry_amounts[account_type_id=$rev]/entry_amount),'#######')"/></td>
 			</tr>
 			<tr>
-				<td class="matrix-data"><xsl:attribute name="colspan"><xsl:value-of select="number($to_month - $from_month + 3)"/>
-				</xsl:attribute>&#160;</td>
+				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">
+				&#160;
+                </td>
 			</tr>
 			<!--  Expenses -->
 			<tr>
@@ -111,7 +118,11 @@ select="sum(/__ROOT__/get_all_entry_amounts[account_type_id=$rev][account_id=$th
 			<xsl:for-each select="__ROOT__/get_all_accounts[account_type_id=$exp]">
 			<xsl:variable name="this_ex_account_id"><xsl:value-of select="id"/></xsl:variable>
 			<tr class="row{position() mod 2}">
-				<td class="matrix-data">&#160;&#160;&#160;<xsl:value-of select="name"/></td>
+				<td class="matrix-data" style="text-indent: 16px;">
+                    <a href="{//link_prefix}ledger&amp;account_id={id}">
+                        <xsl:value-of select="name"/>
+                    </a>
+                </td>
 
 				 <xsl:call-template name="expense_cell">
 					  <xsl:with-param name="mn" select="$from_month"/>
@@ -119,13 +130,16 @@ select="sum(/__ROOT__/get_all_entry_amounts[account_type_id=$rev][account_id=$th
 					  <xsl:with-param name="this_ex_account_id" select="$this_ex_account_id"/>
 					  <xsl:with-param name="exp" select="$exp"/>
 				 </xsl:call-template>
-				<td class="matrix-data"><xsl:value-of select="format-number(sum(/__ROOT__/get_all_entry_amounts[account_type_id=$exp][account_id=$this_ex_account_id]
+				<td class="matrix-data">
+                    <xsl:value-of select="format-number(sum(/__ROOT__/get_all_entry_amounts[account_type_id=$exp][account_id=$this_ex_account_id]
 				/entry_amount),'#####')"/></td>
 			</tr>
 			</xsl:for-each>
             
 			<tr>
-				<td class="matrix-data">&#160;&#160;&#160;<b><xsl:value-of select="__ROOT__/i18n/labels/label[key='total_expenses']/value"/></b></td>
+				<td class="matrix-data" style="text-indent: 16px;">
+                    <b><xsl:value-of select="__ROOT__/i18n/labels/label[key='total_expenses']/value"/></b>
+                </td>
 				 <xsl:call-template name="expense_cell_total">
 					  <xsl:with-param name="mn" select="$from_month"/>
 					  <xsl:with-param name="repeat" select="$monthnum"/>
@@ -135,8 +149,9 @@ select="sum(/__ROOT__/get_all_entry_amounts[account_type_id=$rev][account_id=$th
 			</tr>
 			
 			<tr>
-				<td class="matrix-data"><xsl:attribute name="colspan"><xsl:value-of select="number($to_month - $from_month + 3)"/>
-				</xsl:attribute>&#160;</td>
+				<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">
+				&#160;
+                </td>
 			</tr>
 
 			<!-- NET PROFIT -->
