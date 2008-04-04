@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_hide_update" loop="//_post/hide" default="1">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
 		<param array="//_post/hide" type="text" default="-999"/>
 	</params>

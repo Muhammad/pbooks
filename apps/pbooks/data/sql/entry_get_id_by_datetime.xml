@@ -1,5 +1,5 @@
-<!-- 
-Program: PBooks             				
+<!--
+Program: PBooks
 Component: entry_get_id_by_datetime.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_this_entry_id">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
 		<param name="entry_datetime" type="text"/>
 		<param name="temp_entry_datetime" type="text"/>

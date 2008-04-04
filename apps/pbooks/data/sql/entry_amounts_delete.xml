@@ -1,5 +1,5 @@
-<!-- 
-Program: PBooks             				
+<!--
+Program: PBooks
 Component: entry_amounts_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="entry_amounts_delete" loop="//_post/entry_id" default="1">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
 		<param array="_post/entry_id" type="integer"/>
 	</params>

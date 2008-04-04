@@ -1,8 +1,8 @@
-<!-- 
-Program: PBooks             				
-Component: general_ledger_get_all.xml								
-Copyright 2003-2007, Albert L. Lash, IV        
-Savonix Corporation                          
+<!--
+Program: PBooks
+Component: general_ledger_get_all.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses 
 
@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_transactions">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
 		<param name="_get/account_id" type="text" default="%"/>
         <param name="from_date" type="text" />

@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="general_ledger_import" loop="//import_csv">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
         <param array="//import_csv/entry_datetime" type="timestamp"/>
         <param array="//import_csv/memorandum" type="text"/>

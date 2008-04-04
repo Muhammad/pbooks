@@ -23,13 +23,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_account_groups">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
 	</params>
-    <sql>        
+    <sql>
         SELECT &pb_account_groups;.*
-        
+
         FROM &pb_account_groups;
-        
+
     </sql>
 </query>

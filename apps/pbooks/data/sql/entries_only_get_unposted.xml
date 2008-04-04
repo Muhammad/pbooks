@@ -1,5 +1,5 @@
-<!-- 
-Program: PBooks             				
+<!--
+Program: PBooks
 Component: entries_only_get_unposted.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_entries">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
         <param name="_post/entry_id" type="text" default="%"/>
         <param name="from_date" type="text" default="2000-04-01"/>

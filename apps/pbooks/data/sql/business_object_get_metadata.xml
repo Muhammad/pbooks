@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="business_object_get_metadata" loop="/__ROOT__/get_some_business_objects/entry_id" default="1">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
         <param array="/__ROOT__/get_some_business_objects/entry_id" type="integer"/>
 	</params>

@@ -23,11 +23,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="delete_account_group_parents">
-    <connection>pbooks</connection>
+    <connection>&pb_connection;</connection>
     <params>
         <param name="_post/id" type="integer"/>
 	</params>
-    <sql>        
+    <sql>
         DELETE FROM &pb_account_group_parents;
         WHERE account_group_id=? LIMIT 1
     </sql>
