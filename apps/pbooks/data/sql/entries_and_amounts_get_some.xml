@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         &pb_accounts;.name,
         &pb_accounts;.account_type_id,
         &pb_entries;.entry_id,
-        SUBSTR(&pb_entries;.entry_datetime,1,10) as entry_datetime
+        &pb_entries;.entry_datetime
         
 		
 		FROM &pb_accounts;, &pb_entry_amounts;, &pb_entries;

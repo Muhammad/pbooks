@@ -823,20 +823,17 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/preferences.xsl"/>
 </map:gate>
 
-<!-- *************************************************  -->
-<!--    PERIODS      		                            -->
-<!-- *************************************************  -->
-<map:gate name="periods" role="pb_admin" cache="300">  
+<!-- PERIODS -->
+<map:gate name="periods" role="pb_admin" cache="300">
     <map:xml src="data/xml/fiscal_periods.xml"/>
     <map:xsl src="templates/xsl/periods.xsl" />
-</map:gate>	
+</map:gate>
 
-<!-- *************************************************  -->
-<!--    ADMIN      		                            -->
-<!-- *************************************************  -->
-<map:gate name="admin" role="pb_admin" cache="300">  
+
+<!-- ADMIN -->
+<map:gate name="admin" role="pb_admin" cache="300">
     <map:xsl src="templates/xsl/admin.xsl" />
-</map:gate>	
+</map:gate>
 
 
 
@@ -845,25 +842,25 @@ This makes it easier to maintain persistence. -->
 
 
 
-<map:gate name="duplicates" role="pb_admin">   
+<map:gate name="duplicates" role="pb_admin">
     <map:query src="data/sql/option_get.xml"/>
     <map:set name="display_num_entries" value="200"/>
     <map:query src="data/sql/general_ledger_get_unmatched.xml" />
     <map:query src="data/sql/entries_and_amounts_get_some.xml"/>
+    <map:action type="datetime" params="//get_all_entry_amounts/entry_datetime,datetime,Y-m-d"/>
     <map:xsl src="templates/xsl/duplicates.xsl" />
-</map:gate>	
+</map:gate>
 
-<!-- *************************************************  -->
-<!--    HELP   		                            -->
-<!-- *************************************************  -->
-<map:gate name="help" role="pb_admin" cache="300" client_cache="120">   
+
+<!-- HELP -->
+<map:gate name="help" role="pb_admin" cache="300" client_cache="120">
     <map:xsl src="templates/xsl/help.xsl" />
-</map:gate>	
+</map:gate>
 
 <!-- Logout -->
-<map:gate name="logout" role="pb_admin">   
+<map:gate name="logout" role="pb_admin">
     <map:action type="redirect" params="auth.php?nid=logout"/>
-</map:gate>	
+</map:gate>
 
 
 
@@ -889,7 +886,7 @@ files. -->
 
 
 
-<map:gate name="xml-sitemap">   
+<map:gate name="xml-sitemap">
     <map:xml src="config/sitemap.xml"/>
     <map:xsl src="templates/xsl/xml-sitemap.xsl"/>
 </map:gate>	
