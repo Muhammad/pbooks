@@ -35,5 +35,4 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		VALUES
 		(?, 'Debit', ?, ?)
     </sql>
-    
 </query>

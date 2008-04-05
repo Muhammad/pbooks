@@ -4,7 +4,7 @@ Component: entry_get_by_id.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -19,12 +19,12 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_journal_entry">
     <connection>&pb_connection;</connection>
-    <params>       
+    <params>
 		<param name="//_get/entry_id" type="integer"/>
 	</params>
     <sql>
@@ -33,17 +33,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
         entry_datetime,
         entry_datetime as entry_date,
         &pb_entry_amounts;.memorandum as entry_amount_memorandum
-        
-        FROM 
+
+        FROM
         &pb_entries;
-        
+
         LEFT JOIN &pb_entry_amounts;
         ON &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
-        
+
         LEFT JOIN &pb_accounts;
         ON &pb_entry_amounts;.account_id=&pb_accounts;.id
-        
-		WHERE 
+
+		WHERE
 		&pb_entries;.entry_id=?
     </sql>
 </query>
