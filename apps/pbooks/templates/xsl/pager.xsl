@@ -36,6 +36,7 @@ $(document).ready(function()
     {
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter({
+            widthFixed: true,
             widgets: ['zebra']
             <xsl:value-of select="$my-sort-column"/>
             })
@@ -68,7 +69,7 @@ $(document).ready(function()
 </xsl:template>
 
 <xsl:template name="pager">
-<div id="pager" class="pager" style="margin-top: 20px;">
+<div id="pager" class="pager" style="margin-top: -20px;">
     <table>
         <tr>
         <td>

@@ -86,16 +86,21 @@ because of the dynamic number of rows per entry. -->
 					<input type="checkbox" name="entry_id[]" value="{entry_id}"/></td>
 
 				<td valign="top"  class="journal-data">
-					<a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
+					<a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}">
+                        <xsl:value-of select="entry_id"/>
+                    </a>
                 </td>
 
                 <td valign="top" class="journal-data">
                     <xsl:value-of select="entry_datetime"/>
                 </td>
 
-                    <td class="journal-data"></td>
+                <td class="journal-data"></td>
 				<td valign="top" class="journal-data" colspan="5" width="100%">
-					<a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}"><xsl:value-of select="memorandum"/></a></td>
+					<a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}">
+                        <xsl:value-of select="memorandum"/>
+                    </a>
+                </td>
          </tr>
 
      <!-- These variables are used inside the loop to select specific nodes using xpath -->

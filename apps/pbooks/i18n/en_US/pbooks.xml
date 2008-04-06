@@ -1,10 +1,10 @@
-<!-- 
-Program: PBooks             				
+<!--
+Program: PBooks
 Component: pbooks.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -19,11 +19,10 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <i18n>
 <labels lang="en_US">
-
 
 <!-- Menu-->
 
@@ -784,7 +783,7 @@ The text you paste in here should look something like this:
 
     <label>
         <key>post</key>
-        <value>Post Ref.</value>
+        <value>Entry</value>
     </label>
     <label>
         <key>account_ledger_links</key>

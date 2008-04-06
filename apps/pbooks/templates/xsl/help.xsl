@@ -26,7 +26,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/> 
 <xsl:template name="content">
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='pbooks_manual']/value"/></h2>
-<a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='pbooks_user_manual']/value"/> -></a>
+<a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank">
+    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='pbooks_user_manual']/value"/> ->
+</a>
 
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='resource_links']/value"/></h2>
 <ul>

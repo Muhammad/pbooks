@@ -347,18 +347,13 @@ width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
 
 
 .journal-post-plus {
-    height: 17px; 
-    width: 17px; 
+    height: 17px;
+    width: 17px;
     text-align: center;
     color: white;
 }
 
-
-table.tablesorter tbody tr.active td,table.tablesorter tbody tr.active td a{
-	background-color: #FFCCCC;
-    color: red;
-}
-
+/* tables */
 .simpletable {
     background-color: #222;
     border-collapse: collapse;
@@ -372,3 +367,5 @@ table.simpletable thead th, table.simpletable tbody tr td {
     border-color: #555;
     border-style: solid;
 }
+
+

@@ -31,27 +31,45 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:call-template>
 
 <xsl:value-of select="//label[key='duplicates_info']/value"/>
-<xsl:variable name="my_link_prefix"><xsl:value-of select="/__ROOT__/runtime/link_prefix"/></xsl:variable>
+<xsl:variable name="my_link_prefix">
+    <xsl:value-of select="/__ROOT__/runtime/link_prefix"/>
+</xsl:variable>
 <br/><br/>
-<table class="tablesorter" id="myDups">	
+<table class="tablesorter" id="myDups">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='post']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/>:</th>
-        <th>Memo.</th>
-         <xsl:if test="(__ROOT__/_get/account_id='%' or not(__ROOT__/_get/account_id))"><th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='account']/value"/></th></xsl:if>
-        <th><xsl:value-of select="__ROOT__/i18n/labels/label[key='amount']/value"/></th>
-         <xsl:if test="(not(__ROOT__/_get/account_id='%') and __ROOT__/_get/account_id)"><th>Balance</th></xsl:if>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='post']/value"/>
+        </th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/>:
+        </th>
+        <th>
+            Memo.
+        </th>
+        <xsl:if test="(__ROOT__/_get/account_id='%' or not(__ROOT__/_get/account_id))">
+            <th>
+                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account']/value"/>
+            </th>
+        </xsl:if>
+        <th>
+            <xsl:value-of select="__ROOT__/i18n/labels/label[key='amount']/value"/>
+        </th>
+        <xsl:if test="(not(__ROOT__/_get/account_id='%') and __ROOT__/_get/account_id)">
+            <th>
+                Balance
+            </th>
+        </xsl:if>
     </tr>
     </thead>
-    
+
     <!-- ROWS OF POTENTIALLY DUPLICATE ENTRIES -->
     <tbody>
         <xsl:for-each select="/__ROOT__/get_all_transactions|/__ROOT__/get_all_entry_amounts">
         <xsl:sort select="entry_datetime"/>
         <xsl:variable name="this_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
         <xsl:variable name="my_entry_datetime"><xsl:value-of select="entry_datetime"/></xsl:variable>
-        
+
         <!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE -->
         <!-- only show the similar ones - first check if there is an unmatched transaction and an existing entry on the same day, then check for equal amounts (and abs val)-->
         <xsl:if test="
@@ -63,10 +81,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- END MOST IMPORTANT PART -->
         <tr>
             <td></td>
-            <td><a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}"><xsl:value-of select="entry_datetime"/></a></td>
-            <td><xsl:value-of select="substring(memorandum[not(.='NULL')],0,20)"/></td>
-            <td><a href="{$my_link_prefix}ledger&amp;account_id={account_id}"><xsl:value-of select="name"/></a></td>
-            <td colspan="3"><xsl:value-of select="entry_amount"/></td>
+            <td>
+                <a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}">
+                    <xsl:value-of select="entry_datetime"/>
+                </a>
+            </td>
+            <td>
+                <xsl:value-of select="substring(memorandum[not(.='NULL')],0,20)"/>
+            </td>
+            <td>
+                <a href="{$my_link_prefix}ledger&amp;account_id={account_id}">
+                    <xsl:value-of select="name"/>
+                </a>
+            </td>
+            <td colspan="3">
+                <xsl:value-of select="entry_amount"/>
+            </td>
         </tr>
         </xsl:if>
         </xsl:for-each>

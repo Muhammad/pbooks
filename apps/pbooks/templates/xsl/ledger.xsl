@@ -177,23 +177,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <br/>
 
 <!--
-
     Provide some links to related pages: gl and account edit
-
 -->
 <xsl:value-of select="//label[key='account_ledger_links']/value"/>
-<a href="{//link_prefix}ledger"><xsl:value-of select="//label[key='general_ledger']/value"/></a>
-<a href="{//link_prefix}accounts-edit&amp;id={//_get/account_id}"><xsl:value-of select="//label[key='account_edit']/value"/></a>
-
+    <a href="{//link_prefix}ledger">
+        <xsl:value-of select="//label[key='general_ledger']/value"/>
+    </a>
+    <a href="{//link_prefix}accounts-edit&amp;id={//_get/account_id}">
+        <xsl:value-of select="//label[key='account_edit']/value"/>
+    </a>
 </xsl:if>
 
-<!-- 
-
+<!--
     Show the accounting equation in no specific account is selected
-
 -->
-<xsl:if test="(/__ROOT__/_get/account_id='%' or 
-        not(/__ROOT__/_get/account_id)) and 
+<xsl:if test="(/__ROOT__/_get/account_id='%' or
+        not(/__ROOT__/_get/account_id)) and
         not(contains(/__ROOT__/_get/nid,'match')
         )">
 
