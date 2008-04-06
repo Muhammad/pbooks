@@ -158,18 +158,26 @@ because of the dynamic number of rows per entry. -->
      <!-- END OUTER LOOP -->
      </tbody>
     <xsl:variable name="total_debits">
-        <xsl:value-of select="sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Debit']/entry_amount)"/>
+        <xsl:value-of
+            select="format-number(sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
     </xsl:variable>
     <xsl:variable name="total_credits">
-        <xsl:value-of select="sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit']/entry_amount)"/>
+        <xsl:value-of
+            select="format-number(sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
     </xsl:variable>
     <tr><td colspan="9"><hr/></td></tr>
-    
+
     <!-- This row shows the total of the credits and the debits, which should be equal. If they are unequal, PBooks will complain to the user. -->
 	<tr>
-		<td colspan="7" align="right"><xsl:if test="not($total_credits=$total_debits)"><font color="red" id="error_match"><xsl:value-of select="//labels/label[key='error_match']/value"/>:</font></xsl:if></td>
-		<td class="journal-data"><xsl:value-of select="format-number($total_debits,'#######.##')"/></td>
-		<td class="journal-data"><xsl:value-of select="format-number($total_credits,'#######.##')"/></td>
+		<td colspan="7" align="right">
+            <xsl:if test="not($total_credits=$total_debits)">
+                <div style="color: red;" id="error_match">
+                    <xsl:value-of select="//labels/label[key='error_match']/value"/>:
+                </div>
+            </xsl:if>
+        </td>
+		<td class="journal-data"><xsl:value-of select="$total_debits"/></td>
+		<td class="journal-data"><xsl:value-of select="$total_credits"/></td>
 	</tr>
 </table>
 <xsl:call-template name="previous_next"/>
