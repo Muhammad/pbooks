@@ -67,14 +67,26 @@ and set appropriate parameter "my_action" -->
             <select name="account_type_id">
 				<option><xsl:value-of select="//label[key='select_one']/value"/></option>
 				<xsl:for-each select="//account_types/account_type">
-					<option value="{account_type_id}"><xsl:if test="//get_account/account_type_id=account_type_id or //_post/account_type_id=account_type_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
+					<option value="{account_type_id}">
+                        <xsl:if test="//get_account/account_type_id=account_type_id or 
+                            //_post/account_type_id=account_type_id">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="name"/>
+                    </option>
 				</xsl:for-each>
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td><xsl:value-of select="//label[key='account_number']/value"/>:</td>
-		<td><input type="text" name="account_number"  required="1" err="{//error[key='missing_account_number']/value}" value="{//get_account/account_number|//_post/account_number}"/></td>
+		<td>
+            <xsl:value-of select="//label[key='account_number']/value"/>:
+        </td>
+		<td>
+            <input type="text" name="account_number" required="1" 
+                err="{//error[key='missing_account_number']/value}" 
+                value="{//get_account/account_number|//_post/account_number}"/>
+        </td>
 	</tr>
 	<tr>
 		<td>

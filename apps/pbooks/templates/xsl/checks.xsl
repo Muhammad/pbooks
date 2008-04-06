@@ -21,7 +21,7 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:import href="main.xsl"/>
 <xsl:import href="accounting_menu.xsl"/>
 <xsl:import href="pager.xsl"/>
@@ -38,7 +38,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </a>
 </div>
 
-<strong><xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_checks']/value"/>:</strong> 
+<strong>
+    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_checks']/value"/>:
+</strong>
 <div style="min-height: 400px;" id="myChecksDiv">
 <script type="text/javascript">
 document.getElementById('myChecksDiv').style.visibility = 'hidden';
@@ -46,12 +48,24 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
 <table id="myChecks" class="tablesorter">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_number']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='payee']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/>
+        </th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_number']/value"/>
+        </th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='payee']/value"/>
+        </th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/>
+        </th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/>
+        </th>
+        <th>
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -62,11 +76,23 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
         <td>
             <a href="{/__ROOT__/runtime/link_prefix}check-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
         </td>
-        <td><xsl:value-of select="check_number"/></td>
-        <td><a href="#"><xsl:value-of select="check_payee"/></a></td>
-        <td><xsl:value-of select="memorandum"/></td>
-        <td><xsl:value-of select="entry_amount"/></td>
-        <td><xsl:value-of select="entry_datetime"/></td>
+        <td>
+            <xsl:value-of select="check_number"/>
+        </td>
+        <td>
+            <a href="#">
+                <xsl:value-of select="check_payee"/>
+            </a>
+        </td>
+        <td>
+            <xsl:value-of select="memorandum"/>
+        </td>
+        <td>
+            <xsl:value-of select="entry_amount"/>
+        </td>
+        <td>
+            <xsl:value-of select="entry_datetime"/>
+        </td>
     </tr>
     </xsl:for-each>
     <!-- END LOOP -->

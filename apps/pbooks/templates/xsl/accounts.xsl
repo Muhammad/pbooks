@@ -74,9 +74,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <select name="account_type_id" onchange="this.form.submit();">
     <option value="%"><xsl:value-of select="//label[key='all']/value"/></option>
     <xsl:for-each select="/__ROOT__/i18n/account_type">
-        <option value="{account_type_id}"><xsl:if test="account_type_id=/__ROOT__/_get/account_type_id">
-		<xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
-    </xsl:for-each> 
+        <option value="{account_type_id}">
+            <xsl:if test="account_type_id=/__ROOT__/_get/account_type_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name"/>
+        </option>
+    </xsl:for-each>
 </select>
 </form>
 </div>
@@ -85,13 +89,29 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table class="tablesorter" id="accounts_table">
 <thead>
 <tr>
-	<xsl:if test="//_get/show_all_accounts='on'"><th><input type="checkbox"/></th></xsl:if>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='number']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_name']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='type']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='balance']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/></th>
+	<xsl:if test="//_get/show_all_accounts='on'">
+        <th>
+            <input type="checkbox"/>
+        </th>
+    </xsl:if>
+    <th>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='number']/value"/>
+    </th>
+    <th>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_name']/value"/>
+    </th>
+    <th>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='type']/value"/>
+    </th>
+    <th>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='balance']/value"/>
+    </th>
+    <th>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/>
+    </th>
+    <th>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/>
+    </th>
 </tr>
 </thead>
 <tbody>
@@ -141,7 +161,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </tbody>
 </table>
 <xsl:if test="//_get/show_all_accounts='on'">
-<input type="submit" name="submit" value="Submit"/>
+    <input type="submit" name="submit" value="Submit"/>
 </xsl:if>
 </form>
 <br/>

@@ -26,7 +26,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 
-<!-- This template references data from the business_object_get_metadata nodes which stem from  a generic query called business_object_get_metadata.xml. It is used to gather entry metadata for all business objects: checks, bills, etc. -->
+<!-- This template references data from the business_object_get_metadata nodes
+which stem from a generic query called business_object_get_metadata.xml.
+It is used to gather entry metadata for all business objects: checks, bills.. -->
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='write_check']/value"/></h2>
 
 <form
@@ -96,8 +98,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!--
     Select the expense account.
     -->
-<select name="expense_account_id" required="1" exclude="-1" err="Please select a credit account.">
-    <option value="-1"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='credit_account']/value"/></option>
+<select name="expense_account_id" required="1" 
+    exclude="-1" err="Please select a credit account.">
+    <option value="-1">
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='credit_account']/value"/>
+    </option>
 
     <xsl:for-each select="//get_all_accounts">
         <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
@@ -109,7 +114,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
 
     <xsl:if test="not(//get_journal_entry/account_id=//get_all_accounts/account_id) and not(//get_journal_entry/status=9)">
-        <option value="{//get_journal_entry/account_id}"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_hidden']/value"/></option>
+        <option value="{//get_journal_entry/account_id}">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_hidden']/value"/>
+        </option>
     </xsl:if>
 </select>
 
@@ -117,5 +124,5 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <input type="submit"/>
 </form>
 
-</xsl:template> 
+</xsl:template>
 </xsl:stylesheet>
