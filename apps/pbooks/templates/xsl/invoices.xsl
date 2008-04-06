@@ -29,6 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">myInvoices</xsl:with-param>
     <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
+<xsl:with-param name="no-sort-column">, headers: { 7: {sorter: false} }</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
     <a href="{/__ROOT__/runtime/link_prefix}invoice-create" id="invoice-create">

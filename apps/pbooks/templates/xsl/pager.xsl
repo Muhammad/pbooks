@@ -29,6 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:param name="my-table"/>
 <xsl:param name="my-table-div"/>
 <xsl:param name="my-sort-column"></xsl:param>
+<xsl:param name="no-sort-column"></xsl:param>
 <xsl:call-template name="jquery-links"/>
 <script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery.tablesorter.pager.js">&#160;</script>
 <script type="text/javascript">
@@ -39,6 +40,7 @@ $(document).ready(function()
             widthFixed: true,
             widgets: ['zebra']
             <xsl:value-of select="$my-sort-column"/>
+            <xsl:value-of select="$no-sort-column"/>
             })
         .tablesorterPager({container: $("#pager")});
         document.getElementById('<xsl:value-of select="$my-table-div"/>').style.visibility = 'visible';

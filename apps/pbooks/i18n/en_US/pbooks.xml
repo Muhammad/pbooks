@@ -998,7 +998,7 @@ The text you paste in here should look something like this:
     </label>
     <label>
         <key>due_date</key>
-        <value>Due Date</value>
+        <value>Due</value>
     </label>
 
     <!-- Line item -->
