@@ -78,7 +78,7 @@ $(document).ready(function()
 </xsl:template>
 
 <xsl:template name="pager">
-<div id="pager" class="pager" style="margin-top: -20px;">
+<div id="pager" class="pager" style="margin-top: 20px;">
     <table>
         <tr>
         <td>
