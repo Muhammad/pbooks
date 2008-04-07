@@ -19,7 +19,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
@@ -32,7 +32,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Net change -->
 <div class="generic-button" style="float: right;">
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='net_change']/value"/>: <xsl:value-of select="format-number(sum(__ROOT__/get_all_transactions/entry_amount),'#########.##')"/>
+    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='net_change']/value"/>: 
+    <xsl:value-of select="
+        format-number(
+            sum(
+                __ROOT__/get_all_transactions/entry_amount
+                ),'#########.##')
+                "/>
 </div>
 
 
