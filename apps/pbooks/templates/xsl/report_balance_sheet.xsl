@@ -84,12 +84,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td class="journal-data" style="text-indent: 16px;">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='total_liabilities']/value"/>
         </td>
-        <td align="right" class="journal-data"><xsl:value-of select="format-number((sum(/__ROOT__/get_all_entry_amounts[account_type_id=20000][entry_type_id=
-        'Credit']/entry_amount)-sum(/__ROOT__/get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount)),'#,###,###.##')"/></td>
-        <td align="right"></td>
+        <td align="right" class="journal-data">
+            <xsl:value-of select="
+                format-number(
+                    (sum(/__ROOT__/get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount) - 
+                    sum(/__ROOT__/get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount)
+                                ),'#,###,###.##')"/>
+        </td>
+        <td align="right">
+        </td>
     </tr>
     <tr>
-        <td colspan="3">&#160;</td>
+        <td colspan="3">
+        </td>
     </tr>
     <xsl:for-each select="/__ROOT__/get_all_accounts[account_type_id='30000']">
     <xsl:variable name="this_e_account_id"><xsl:value-of select="id"/></xsl:variable>
@@ -99,19 +106,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:value-of select="name"/>
             </a>
         </td>
-        <td align="right" class="journal-data"><xsl:if test="name='Retained Earnings'"><xsl:value-of select="format-number(
-        
+        <td align="right" class="journal-data"><xsl:if test="name='Retained Earnings'">
+            <xsl:value-of select="format-number(
         sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)-
         sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+
         sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)-
         sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount)
-        
-        ,'####,###.##')"/></xsl:if>
-        
-        <xsl:if test="not(name='Retained Earnings')">
-        <xsl:value-of select="format-number((sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_e_account_id]/entry_amount) - sum
-        (/__ROOT__/get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_e_account_id]/entry_amount)),'#,###,###.##')"/>
-                            </xsl:if></td>
+            ,'####,###.##')"/></xsl:if>
+            <xsl:if test="not(name='Retained Earnings')">
+                <xsl:value-of select="
+                    format-number(
+                    (sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_e_account_id]/entry_amount) - 
+                        sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_e_account_id]/entry_amount)
+                        ),'#,###,###.##')"/>
+            </xsl:if>
+        </td>
         <td align="right"></td>
     </tr>
     </xsl:for-each>

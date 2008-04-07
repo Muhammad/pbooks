@@ -83,7 +83,8 @@ because of the dynamic number of rows per entry. -->
 	<xsl:variable name="posa"><xsl:value-of select="position() mod 2"/></xsl:variable>
         <tr class="row2">
 				<td valign="top" class="journal-data">
-					<input type="checkbox" name="entry_id[]" value="{entry_id}"/></td>
+					<input type="checkbox" name="entry_id[]" value="{entry_id}"/>
+                </td>
 
 				<td valign="top"  class="journal-data">
 					<a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}">
@@ -131,18 +132,23 @@ because of the dynamic number of rows per entry. -->
     <a 
     href="{$my_link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;account_type_id={account_type_id}"
     onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
-    <div class="journal-post-plus" style="background-image: url({//path_prefix}{//icon_set}add.png);">&#160;</div>
+        <div class="journal-post-plus" style="background-image: url({//path_prefix}{//icon_set}add.png);">&#160;</div>
     </a>
             </div>
             </xsl:if>
         </xsl:if>
     </td>
     <xsl:if test="entry_type_id='Credit'">
-    <td class="journal-data"><xsl:attribute name="align">right</xsl:attribute>
-        <a href="{$my_link_prefix}ledger&amp;account_id={account_id}"><xsl:value-of select="name"/></a></td>
-        <td class="journal-data">&#160;</td>
-        <td class="journal-data"><xsl:attribute name="style">color: <xsl:value-of select="$my_color"/>;</xsl:attribute><xsl:value-of select="entry_amount"/>
-		</td>
+        <td class="journal-data"><xsl:attribute name="align">right</xsl:attribute>
+            <a href="{$my_link_prefix}ledger&amp;account_id={account_id}">
+                <xsl:value-of select="name"/>
+            </a>
+        </td>
+        <td class="journal-data">
+        </td>
+        <td class="journal-data" style="color: {$my_color};">
+            <xsl:value-of select="entry_amount"/>
+        </td>
     </xsl:if>
     <xsl:if test="entry_type_id='Debit'">
     <td class="journal-data">
@@ -181,8 +187,12 @@ because of the dynamic number of rows per entry. -->
                 </div>
             </xsl:if>
         </td>
-		<td class="journal-data"><xsl:value-of select="$total_debits"/></td>
-		<td class="journal-data"><xsl:value-of select="$total_credits"/></td>
+		<td class="journal-data">
+            <xsl:value-of select="$total_debits"/>
+        </td>
+		<td class="journal-data">
+            <xsl:value-of select="$total_credits"/>
+        </td>
 	</tr>
 </table>
 <xsl:call-template name="previous_next"/>

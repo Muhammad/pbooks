@@ -2,7 +2,7 @@
 Program: PBooks
 Component: transfers.xsl
 Copyright: Savonix Corporation
-Author: Albert L. Lash, IV     
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
 
@@ -31,13 +31,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table-div">myTransfersDiv</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
-<a href="{/__ROOT__/runtime/link_prefix}transfer-create" id="transfer-create"><img src="{//path_prefix}{//icon_set}/page_edit.gif"/>
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_transfer']/value"/></a>
+    <a href="{/__ROOT__/runtime/link_prefix}transfer-create" id="transfer-create">
+        <img src="{//path_prefix}{//icon_set}/page_edit.gif"/>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_transfer']/value"/>
+    </a>
 </div>
-<strong><xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_transfers']/value"/>:</strong>
+<strong>
+    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_transfers']/value"/>:
+</strong>
 <div style="min-height: 400px;" id="myTransfersDiv">
 <script type="text/javascript">
-document.getElementById('myTransfersDiv').style.visibility = 'hidden';
+    document.getElementById('myTransfersDiv').style.visibility = 'hidden';
 </script>
 <table class="tablesorter" id="myTransfers">
     <thead>
@@ -54,7 +58,9 @@ document.getElementById('myTransfersDiv').style.visibility = 'hidden';
     <tbody>
     <!-- LOOP -->
     <xsl:for-each select="/__ROOT__/get_some_business_objects">
-    <xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
+    <xsl:variable name="my_entry_id">
+        <xsl:value-of select="entry_id"/>
+    </xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td id="{$my_entry_id}">
             <a href="{/__ROOT__/runtime/link_prefix}transfer-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
