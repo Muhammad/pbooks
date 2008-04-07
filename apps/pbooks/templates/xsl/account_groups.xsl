@@ -40,9 +40,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         }
     }
 </script>
-    
-<div class="generic-button" style="text-align: right;"><a href="{/__ROOT__/runtime/link_prefix}account-group-edit"><img src="{//path_prefix}{//icon_set}/folder_new.gif"/> <xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_account_group']/value"/></a></div>
-        
+
+<div class="generic-button" style="text-align: right;">
+    <a href="{/__ROOT__/runtime/link_prefix}account-group-edit"><img src="{//path_prefix}{//icon_set}/folder_new.gif"/>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_account_group']/value"/>
+    </a>
+</div>
+
 <table class="tablesorter" id="accounts_table">
     <thead>
 	<tr>

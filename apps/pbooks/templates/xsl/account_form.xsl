@@ -197,6 +197,6 @@ and set appropriate parameter "my_action" -->
     <input type="button" value="{//label[key='cancel']/value}" 
     onclick="window.location.href='{/__ROOT__/runtime/link_prefix}accounts'"/>
 </div>
-</form>				
+</form>
 </xsl:template>
 </xsl:stylesheet>
