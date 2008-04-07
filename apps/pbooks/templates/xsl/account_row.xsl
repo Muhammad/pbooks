@@ -56,11 +56,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
     <!-- Account type -->
+    <xsl:if test="not(//_get/nid='customer-accounts')">
     <td>
         <a href="{$my_link_prefix}accounts&amp;account_type_id={account_type_id}">
             <xsl:value-of select="account_type_id"/>
         </a>
     </td>
+    </xsl:if>
 
 
     <!-- Running balance -->

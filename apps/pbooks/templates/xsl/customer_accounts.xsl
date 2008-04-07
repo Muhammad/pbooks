@@ -81,7 +81,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	<xsl:if test="//_get/show_all_accounts='on'"><th><input type="checkbox"/></th></xsl:if>
     <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='number']/value"/></th>
     <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='customer_name']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='type']/value"/></th>
     <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='balance']/value"/></th>
     <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/></th>
     <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/></th>
@@ -92,21 +91,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- These are the account table rows. The tests are to decide how the table should be displayed, i.e. whether or not an account 
 type is selected, or whether the account balance should be displayed --> 
 
-<!-- No specific account type selected, show all --> 
-<xsl:if test="not(/__ROOT__/_get/account_type_id) or //_get/account_type_id='%'">
     <xsl:for-each select="__ROOT__/get_all_accounts[accounts_receivable_account='on']">
         <xsl:sort select="account_number"/>
         <xsl:call-template name="account-row"/>
     </xsl:for-each>
-</xsl:if>
 
-<!-- Specific account type selected, only show that one --> 
-<xsl:if test="/__ROOT__/_get/account_type_id">
-    <xsl:for-each select="/__ROOT__/get_all_accounts[account_type_id=//_get/account_type_id]">
-        <xsl:sort select="account_number"/>
-        <xsl:call-template name="account-row"/>
-    </xsl:for-each>
-</xsl:if>
 </tbody>
 </table>
 <xsl:if test="//_get/show_all_accounts='on'">
