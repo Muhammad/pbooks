@@ -52,12 +52,19 @@ $(document).ready(function()
 <!-- This template is used by pages which only use the tablesorter, not the paginator-->
 <xsl:template name="jquery-setup-simple">
 <xsl:param name="my-table"/>
+<xsl:param name="my-sort-column"/>
+<xsl:param name="no-sort-column"/>
 <xsl:call-template name="jquery-links"/>
 <script type="text/javascript">
 $(document).ready(function() 
     { 
         $("#<xsl:value-of select="$my-table"/>")
-        .tablesorter({widgets: ['zebra']});
+        .tablesorter({
+            widgets: ['zebra']
+            <xsl:value-of select="$my-sort-column"/>
+            <xsl:value-of select="$no-sort-column"/>
+            }
+            );
     } 
 ); 
 </script>

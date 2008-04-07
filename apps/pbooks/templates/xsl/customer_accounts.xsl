@@ -29,6 +29,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup-simple">
     <xsl:with-param name="my-table">accounts_table</xsl:with-param>
+    <xsl:with-param name="no-sort-column">
+        , headers: { 3: {sorter: false}, 4: {sorter: false} }
+    </xsl:with-param>
 </xsl:call-template>
 
 <!-- Confirm account deletion -->
@@ -88,8 +91,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </thead>
 <tbody>
 
-<!-- These are the account table rows. The tests are to decide how the table should be displayed, i.e. whether or not an account 
-type is selected, or whether the account balance should be displayed --> 
+<!-- These are the account table rows.
+    The tests are to decide how the table should be displayed,
+    i.e. whether or not an account type is selected, or whether
+    the account balance should be displayed.
+    See account_row.xsl for the actual row data. -->
 
     <xsl:for-each select="__ROOT__/get_all_accounts[accounts_receivable_account='on']">
         <xsl:sort select="account_number"/>
@@ -103,13 +109,7 @@ type is selected, or whether the account balance should be displayed -->
 </xsl:if>
 </form>
 <br/>
-<!-- Display the text that explains when accounts can be deleted 
-"An account can only be deleted when there are no journal transactions in that account. If you would like to hide the account, click edit and select the hide option."
--->
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_deletion_requirement']/value"/>
+
 
 </xsl:template>
-
-
-
 </xsl:stylesheet>
