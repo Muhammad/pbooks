@@ -26,21 +26,25 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="previous_next">
 
 <xsl:variable name="my_uri">
-<xsl:if test="__ROOT__/_get/from_date">
-<xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;from_date')"/>
-</xsl:if>
-<xsl:if test="not(__ROOT__/_get/from_date)">
-<xsl:if test="__ROOT__/_get/start"><xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;start')"/></xsl:if>
-<xsl:if test="not(__ROOT__/_get/start)"><xsl:value-of select="/__ROOT__/request_uri"/></xsl:if>
-</xsl:if>
+    <xsl:if test="__ROOT__/_get/from_date">
+        <xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;from_date')"/>
+    </xsl:if>
+    <xsl:if test="not(__ROOT__/_get/from_date)">
+        <xsl:if test="__ROOT__/_get/start">
+            <xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;start')"/>
+        </xsl:if>
+        <xsl:if test="not(__ROOT__/_get/start)">
+            <xsl:value-of select="/__ROOT__/request_uri"/>
+        </xsl:if>
+    </xsl:if>
 </xsl:variable>
 
 <xsl:variable name="incr">
 <xsl:if test="contains(/__ROOT__/_get/nid,'ledger')">
-<xsl:value-of select="//option_get/display_num_trans"/>
+    <xsl:value-of select="//option_get/display_num_trans"/>
 </xsl:if>
 <xsl:if test="not(contains(/__ROOT__/_get/nid,'ledger'))">
-<xsl:value-of select="//option_get/display_num_entries"/>
+    <xsl:value-of select="//option_get/display_num_entries"/>
 </xsl:if>
 </xsl:variable>
 <table cellpadding="0" align="right">
