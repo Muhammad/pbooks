@@ -260,14 +260,6 @@ This makes it easier to maintain persistence. -->
 </map:gate>
 
 
-<map:gate name="invoice-xml" role="pb_admin">
-    <map:xml src="data/xml/invoice_meta.xml"/>
-    <map:query src="data/sql/invoices_get_some.xml"/>
-    <map:query src="data/sql/invoices_get_amounts.xml"/>
-    <map:query src="data/sql/business_object_get_metadata.xml"/>
-    <map:xsl src="templates/xsl/invoice_xml.xsl" />
-</map:gate>
-
 <map:gate name="invoices-submit" role="pb_admin">
     <map:if name="/__ROOT__/_post">
         <map:true>
