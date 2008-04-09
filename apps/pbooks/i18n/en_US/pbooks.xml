@@ -92,11 +92,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <description></description>
     </label>
     <label>
-        <key>functions</key>
-        <value>Import</value>
-        <description>Import CVS data.</description>
-    </label>
-    <label>
         <key>account-balances</key>
         <value>Account Balances</value>
         <description>Check your account balances</description>
@@ -174,13 +169,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <description>Purchase Orders.</description>
     </label>
     
+    <!-- Import / Export Sub-Menu -->
+    <label>
+        <key>import-export</key>
+        <value>Import / Export</value>
+        <description></description>
+    </label>
+    <label>
+        <key>transactions-import</key>
+        <value>Transactions</value>
+        <description>Import CVS data.</description>
+    </label>
+    <label>
+        <key>accounts-import</key>
+        <value>Accounts</value>
+        <description>Import chart of acccounts.</description>
+    </label>
     
     <!-- Quick Links Sub-Menu -->
     <label>
         <key>quick_links</key>
         <value>Quick Links</value>
         <description></description>
-    </label>    
+    </label>
     <label>
         <key>help</key>
         <value>Help</value>

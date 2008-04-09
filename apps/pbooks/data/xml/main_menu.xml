@@ -33,7 +33,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <button status="active" target="reports">reports</button>
     </main_menu>
     <activities>
-        <button status="active" target="functions">functions</button>
         <button status="active" target="matching">matching</button>
         <button status="active" target="posting">posting</button>
         <button status="active" target="duplicates">duplicates</button>
@@ -44,7 +43,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <button status="active" target="deposits">deposits</button>
         <button status="active" target="transfers">transfers</button>
     </business>
-        
+    <import-export>
+        <button status="active" target="transactions-import">transactions-import</button>
+        <button status="active" target="accounts-import">accounts-import</button>
+    </import-export>
     <setup>
         <button status="active" target="help">help</button>
         <button status="active" target="company">company</button>
