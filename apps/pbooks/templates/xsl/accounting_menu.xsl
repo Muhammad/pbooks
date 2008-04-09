@@ -60,6 +60,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
 
 
+    <!-- IMPORT / EXPORT -->
+    <tr>
+        <td class="menu-sub-sub-selected">
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='import-export']/value"/>
+        </td>
+    </tr>
+    <xsl:for-each select="//navigation/import-export/button[@status='active']">
+        <xsl:call-template name="button">
+            <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
+            <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
+        </xsl:call-template>
+    </xsl:for-each>
     <!-- SETUP -->
     <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='setup']/value"/></td></tr>
     <xsl:for-each select="//navigation/setup/button[@status='active']">
