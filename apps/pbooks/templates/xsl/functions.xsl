@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <br/>
 </xsl:if>
 
-<form method="post" action="{//link_prefix}functions-import" 
+<form method="post" action="{//link_prefix}functions-import"
     onSubmit="return validateStandard(this, 'error');">
     <textarea id="csv_import" name="csv_import" rows="14" cols="80">
     <xsl:value-of select="//text[key='import_instructions']/value"/>
