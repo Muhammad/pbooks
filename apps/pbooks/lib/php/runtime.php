@@ -53,10 +53,8 @@ $path = $_SERVER['REQUEST_URI'];
 Nexista_Flow::add("request_uri",$path);
 $path = dirname($path)."/".basename($_SERVER['SCRIPT_NAME']);
 $path_prefix = dirname($path)."/";
-//$app_prefix = "acc/".APP_NAME."/";
-//$link_prefix = $path."?nid=".$app_prefix;
 $link_prefix = $path."?nid=";
-$right_now = gmdate('Y-m-d H:i:s');
+$utcdate = gmdate('Y-m-d H:i:s');
 
 
 $db_version = rtrim(file_get_contents(PROJECT_ROOT.DIRECTORY_SEPARATOR.'config/db_version.txt'));
@@ -64,8 +62,8 @@ $db_version = rtrim(file_get_contents(PROJECT_ROOT.DIRECTORY_SEPARATOR.'config/d
 $runtime = array('host_name' => $_SERVER['SERVER_NAME'],
                 'path_prefix' => $path_prefix,
                 'link_prefix' => $link_prefix,
-                'right_now' => $right_now,
-                'user_timezone_offset' => '-05:00',
+                'right_now' => $utcdate,
+                'utcdate' => $utcdate,
                 'current_user_id' => $current_user_id,
                 'debug' => $debug,
                 'top_left_logo' => $top_left_logo,
@@ -73,10 +71,6 @@ $runtime = array('host_name' => $_SERVER['SERVER_NAME'],
 
 Nexista_Flow::add("runtime",$runtime,false);
 
-$defaults = Nexista_Config::getSection('defaults');
-foreach($defaults as $default) {
-
-}
 
 $default_selected_lang = Nexista_Config::get("./defaults/default_selected_lang");
 if(empty($default_selected_lang)) { 
@@ -104,11 +98,9 @@ Nexista_Flow::add("icon_set",$default_icon_set);
  * Not posting anymore dates. Only using POST method for updating data.
  */
 if(isset($_GET['month'])) {
-    // Clear cache!!
     $from_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), $_GET['month'], 01, date('Y')));
     $_SESSION['from_date'] = $from_date;
 } elseif(isset($_GET['from_date'])) {
-    // Clear cache!!
     $_SESSION['from_date'] = $_GET['from_date'];
     $from_date = $_GET['from_date'];
 } elseif (isset($_SESSION['from_date'])) { 
@@ -117,8 +109,6 @@ if(isset($_GET['month'])) {
     $from_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), date('m')-2, date('d'), date('Y')));
 }
 
-
-
 Nexista_Flow::add("from_date",$from_date,false);
 
 /*
@@ -126,7 +116,6 @@ Nexista_Flow::add("from_date",$from_date,false);
  */
 
 if(isset($_GET['month'])) {
-    // Clear cache!!
     $to_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), $_GET['month'], 31, date('Y')));
     $_SESSION['to_date'] = $to_date;
 } elseif(isset($_GET['to_date'])) {                       // if there is a get date, use it and save it no matter, unless its redoing balances.

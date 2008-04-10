@@ -5,7 +5,7 @@ Component: update_db.php
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -20,7 +20,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+Fifth Floor, Boston, MA 02110-1301  USA
 */
 
 $db_version = rtrim(file_get_contents($mypath.'config/db_version.txt'));
@@ -35,10 +35,11 @@ if(!is_file('config/my_db_admin_settings.php')) {
     include('config/my_db_admin_settings.php');
 }
 
-$db_versions_to_update = array('a','b','c','d');
+//$db_versions_to_update = array('a','b','c','d');
+$db_versions_to_update = array('d');
 
 // should get db version first... 
-
+/*
 if ($db_version == "a") {
     `echo "ALTER TABLE pb_accounts ADD COLUMN hide enum('off','on') default NULL;" | mysql -u $USER -p$PASS $DATABASE`;
     `echo "ALTER TABLE pb_entries ADD COLUMN status tinyint(2) default 2;" | mysql -u $USER -p$PASS $DATABASE`;
@@ -59,7 +60,7 @@ if($db_version == "c") {
     `echo "d" > config/db_version.txt`;
     fwrite(STDOUT,"Database update successful.\n");
 }
-
+*/
 if($db_version == "d") {
     fwrite(STDOUT,"Adding fiscal_period_id...\n");
     `echo "ALTER TABLE pb_entries ADD COLUMN fiscal_period_id int(11) default 0;" | mysql -u $USER -p$PASS $DATABASE`;

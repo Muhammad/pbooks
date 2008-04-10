@@ -2,7 +2,7 @@
 /*
 Program: PBooks
 Component: invoice_pdf.php
-Copyright:Savonix Corporation 
+Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
