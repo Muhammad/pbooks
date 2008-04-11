@@ -278,6 +278,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <value>Import Transactions CSV File</value>
     </label>
     <label>
+        <key>import_csv_accounts</key>
+        <value>Import Accounts CSV File</value>
+    </label>
+    <label>
         <key>backup_db</key>
         <value>Export Database Backup</value>
     </label>
