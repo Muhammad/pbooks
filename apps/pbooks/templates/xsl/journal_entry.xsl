@@ -61,6 +61,19 @@ Sorry for all the white space! Hard to navigate without.
                 setTimeout('window.location.reload()',200);
             });
     }
+    
+    function summarize_debits() { 
+        mysum = "";
+        for (i=0; i &lt; document.forms[0].length; i++) {
+            if(document.forms[0].elements[i].name == "debit_amount_1[]") { 
+                mysum = (mysum * 1) + (1 * document.forms[0].elements[i].value);
+            } else if (document.forms[0].elements[i].name == "credit_amount_1[]") {
+                mytarget = document.forms[0].elements[i];
+            } else { 
+            }
+        }
+        mytarget.value = mysum;
+    }
 </script>
 
 <!-- Non existent entry_id error -->
@@ -121,7 +134,7 @@ Sorry for all the white space! Hard to navigate without.
             <input type="hidden" name="transaction_id" value="{/__ROOT__/_get/transaction_id}"/>
             <input type="hidden" name="transaction_amount" value="{//entry_amount}"/>
             <input type="hidden" name="transaction_account_id"
-            value="{////get_journal_entry/account_id}"/>
+            value="{//get_journal_entry/account_id}"/>
         </xsl:if>
 	</tr>
 	<tr>
@@ -438,7 +451,8 @@ function get_entry_date()
             </xsl:if>
         </select>
     </td>
-    <td>$<input name="debit_amount_1[]" type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" err="Please enter a monetary value for the debit and credit. Do not include $ signs."><xsl:attribute name="value"><xsl:if test="not(//_get/transaction_id)"><xsl:value-of select="entry_amount"/></xsl:if><xsl:if test="//_get/transaction_id"><xsl:call-template name="abs-amount"/></xsl:if></xsl:attribute></input>
+    <td>$<input name="debit_amount_1[]"  type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" err="Please enter a monetary value for the debit and credit. Do not include $ signs."><xsl:attribute name="value"><xsl:if test="not(//_get/transaction_id)"><xsl:value-of select="entry_amount"/></xsl:if><xsl:if test="//_get/transaction_id"><xsl:call-template name="abs-amount"/></xsl:if></xsl:attribute></input>
+    <a href="#" onclick="summarize_debits();">Check</a>
     </td>
     <td></td>
     
