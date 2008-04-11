@@ -62,7 +62,7 @@ Sorry for all the white space! Hard to navigate without.
             });
     }
     
-    function summarize_debits() { 
+    function debits_summarize() {
         mysum = "";
         for (i=0; i &lt; document.forms[0].length; i++) {
             if(document.forms[0].elements[i].name == "debit_amount_1[]") { 
@@ -404,6 +404,11 @@ function get_entry_date()
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
         <img src="{//path_prefix}{//icon_set}delete.png" border="0" /></a>
     </xsl:if>
+    <xsl:if test="count(//get_journal_entry[entry_type_id='Debit']) &gt; 1">
+        <a href=""
+        onclick="debits_summarize(); return false;">
+        <img src="{//path_prefix}{//icon_set}icon_accept.gif" border="0" /></a>
+    </xsl:if>
     </td>
 </tr>
 </xsl:template>
@@ -451,8 +456,17 @@ function get_entry_date()
             </xsl:if>
         </select>
     </td>
-    <td>$<input name="debit_amount_1[]"  type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" err="Please enter a monetary value for the debit and credit. Do not include $ signs."><xsl:attribute name="value"><xsl:if test="not(//_get/transaction_id)"><xsl:value-of select="entry_amount"/></xsl:if><xsl:if test="//_get/transaction_id"><xsl:call-template name="abs-amount"/></xsl:if></xsl:attribute></input>
-    <a href="#" onclick="summarize_debits();">Check</a>
+    <td>$<input name="debit_amount_1[]"  type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" 
+    err="Please enter a monetary value for the debit and credit. Do not include $ signs.">
+        <xsl:attribute name="value">
+            <xsl:if test="not(//_get/transaction_id)">
+                <xsl:value-of select="entry_amount"/>
+            </xsl:if>
+            <xsl:if test="//_get/transaction_id">
+                <xsl:call-template name="abs-amount"/>
+            </xsl:if>
+        </xsl:attribute>
+        </input>
     </td>
     <td></td>
     
