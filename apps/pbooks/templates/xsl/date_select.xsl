@@ -24,7 +24,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="date_select">
 <xsl:param name="my_from_date"><xsl:value-of select="//from_date"/></xsl:param>
-<xsl:call-template name="calendar-inc"/>
 <xsl:variable name="my_uri">
 <xsl:if test="__ROOT__/_get/from_date">
 <xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;from_date')"/>
@@ -33,37 +32,42 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:value-of select="//__ROOT__/request_uri"/>
 </xsl:if>
 </xsl:variable>
-
 <a href="{$my_uri}&amp;from_date={//prev_from_date}&amp;to_date={//prev_to_date}">
-<img style="padding-right: 5px;" src="s/images/buttons/out.gif"/></a>
-From <input type="text" name="from_date" id="f_date_a" value="{$my_from_date}"/>
-To <input type="text" name="to_date" id="f_calcdate" value="{//to_date}"/>&#160;
+    <img style="padding-right: 5px;" src="s/images/buttons/out.gif"/>
+</a>
+
+From <input type="text" name="from_date" class="date_input" value="{$my_from_date}"/>
+
+To <input type="text" name="to_date" class="date_input" value="{//to_date}"/>
+
 <a href="{$my_uri}&amp;from_date={//next_from_date}&amp;to_date={//next_to_date}">
-<img style="padding-right: 5px;" src="s/images/buttons/in.gif"/></a>
-		
+    <img style="padding-right: 5px;" src="s/images/buttons/in.gif"/>
+</a>
+
 
 <script type="text/javascript">
 
-    Calendar.setup({
-        inputField     :    "f_date_a",   // id of the input field
-        ifFormat       :    "%Y-%m-%d",       // format of the input field
-        showsTime      :    false
-    });
-    Calendar.setup({
-        inputField     :    "f_calcdate",
-        ifFormat       :    "%Y-%m-%d",
-        showsTime      :    false
-    });
+$($.date_input.initialize);
+
+$.extend(DateInput.DEFAULT_OPTS, {
+  stringToDate: function(string) {
+    var matches;
+    if (matches = string.match(/^(\d{4,4})-(\d{2,2})-(\d{2,2})$/)) {
+      return new Date(matches[1], matches[2] - 1, matches[3]);
+    } else {
+      return null;
+    };
+  },
+
+  dateToString: function(date) {
+    var month = (date.getMonth() + 1).toString();
+    var dom = date.getDate().toString();
+    if (month.length == 1) month = "0" + month;
+    if (dom.length == 1) dom = "0" + dom;
+    return date.getFullYear() + "-" + month + "-" + dom;
+  }
+});
 </script>
 
-</xsl:template>
-
-
-<xsl:template name="calendar-inc">
-<!-- calendar stylesheet -->
-<link rel="stylesheet" type="text/css" media="all" href="{/__ROOT__/runtime/path_prefix}/s/css/calendar-system.css" title="win2k-cold-1" />
-<script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}/s/js/calendar.js"></script>
-<script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}/s/js/lang/calendar-en.js"></script>
-<script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}/s/js/calendar-setup.js"></script>
 </xsl:template>
 </xsl:stylesheet>

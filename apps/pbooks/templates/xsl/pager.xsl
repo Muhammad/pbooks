@@ -37,8 +37,8 @@ $(document).ready(function()
     {
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter({
-            widthFixed: true,
-            widgets: ['zebra']
+            widthFixed: true,widgets:['zebra','cookie'],
+            widgetCookie: {sortList: [[5,1]]}
             <xsl:value-of select="$my-sort-column"/>
             <xsl:value-of select="$no-sort-column"/>
             })
@@ -60,7 +60,8 @@ $(document).ready(function()
     { 
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter({
-            widgets: ['zebra']
+            widgets: ['zebra'],
+            widgets: ['cookie']
             <xsl:value-of select="$my-sort-column"/>
             <xsl:value-of select="$no-sort-column"/>
             }
@@ -73,8 +74,6 @@ $(document).ready(function()
 <!-- load the javascript -->
 <xsl:template name="jquery-links">
 <link rel="stylesheet" href="{__ROOT__/runtime/path_prefix}/s/js/blue/style.css" type="text/css" media="print, projection, screen" />
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery/jquery.js">&#160;</script>
-<script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js">&#160;</script>
 </xsl:template>
 
 <xsl:template name="pager">
