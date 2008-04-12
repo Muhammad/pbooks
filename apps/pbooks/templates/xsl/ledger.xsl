@@ -31,7 +31,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table">myLedger</xsl:with-param>
     <xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
     <xsl:with-param name="my-sort-column">
-        ,fixedWidth: true,
+        ,widthFixed: true,
         <xsl:if test="//_get/account_id">,sortList: [[2,0],[3,1]]</xsl:if>
     </xsl:with-param>
 </xsl:call-template>
@@ -92,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     document.getElementById('myLedgerDiv').style.visibility = 'hidden';
 </script>
 <table id="myLedger" class="tablesorter">
-    <thead>	
+    <thead>
     <tr>
         <!-- This cell will be used for a star or flag with notations -->
         <!--<th>FPO</th>-->
@@ -144,18 +144,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </xsl:choose>
         </td>
 
-        <td><xsl:value-of select="memorandum[not(.='NULL')]"/></td>
+        <td><xsl:value-of select="substring(memorandum,0,42)"/></td>
 
         <xsl:if test="/__ROOT__/_get/account_id='%' or not(/__ROOT__/_get/account_id)">
         <td>
-            <a href="{$my_link_prefix}ledger&amp;account_id={account_id}"><xsl:value-of select="name"/></a>
+            <a href="{$my_link_prefix}ledger&amp;account_id={account_id}">
+                <xsl:value-of select="substring(name,0,20)"/>
+            </a>
         </td>
         </xsl:if>
-        
-        <td><a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}"><xsl:value-of select="entry_datetime"/></a></td>
-        
+
+        <td>
+            <a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}">
+                <xsl:value-of select="entry_datetime"/>
+            </a>
+        </td>
+
         <td><xsl:value-of select="entry_amount"/></td>
-        
+
         <xsl:if test="not(/__ROOT__/_get/account_id='%') and /__ROOT__/_get/account_id">
         <td>
             <xsl:value-of select="balance"/>
@@ -165,10 +171,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
-</div>
 <xsl:call-template name="pager">
     <xsl:with-param name="my-table">myLedger</xsl:with-param>
 </xsl:call-template>
+</div>
 
 <!-- If an account_id has been selected, only show how much it has changed.-->
 <xsl:if test="(/__ROOT__/_get/account_id &gt; 0)">
