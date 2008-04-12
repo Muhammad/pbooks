@@ -31,6 +31,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table">myLedger</xsl:with-param>
     <xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
     <xsl:with-param name="my-sort-column">
+        ,fixedWidth: true,
         <xsl:if test="//_get/account_id">,sortList: [[2,0],[3,1]]</xsl:if>
     </xsl:with-param>
 </xsl:call-template>
@@ -164,8 +165,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
-<xsl:call-template name="pager"/>
 </div>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">myLedger</xsl:with-param>
+</xsl:call-template>
 
 <!-- If an account_id has been selected, only show how much it has changed.-->
 <xsl:if test="(/__ROOT__/_get/account_id &gt; 0)">

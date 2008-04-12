@@ -30,9 +30,10 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <head>
     <title><xsl:value-of select="/__ROOT__/i18n/labels/label[key='default_page_title']/value"/></title>
     <link rel="stylesheet" type="text/css" href="{//link_prefix}themed-css" ></link>
-    <script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery/jquery.js">&#160;</script>
+    <script type="text/javascript" src="{//path_prefix}/s/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
-    <script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js">&#160;</script>
+    <script type="text/javascript" src="{//path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="{//path_prefix}/s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
     <script type="text/javascript" src="{//path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
