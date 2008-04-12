@@ -45,7 +45,7 @@
                if (pageNum && pageNum > 1) {
                    table.config.page = pageNum;
                    if(sortList) {
-                    jQuery(table).trigger('sorton', [sortList]);
+                       jQuery(table).trigger('sorton', [sortList]);
                    } else { 
                        jQuery(table).trigger('sorton', [[[0,0]]]);
                    }
