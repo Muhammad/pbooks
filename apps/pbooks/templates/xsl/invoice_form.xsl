@@ -90,7 +90,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
                     </xsl:if>
                 </input><xsl:value-of select="__ROOT__/i18n/labels/label[key='unpaid']/value"/><br/>
 		</td>
-		
 	</tr>
     </tbody>
     <tbody>
@@ -137,15 +136,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
         </xsl:for-each>
         <!-- END LINE ITEMS -->
-        
-        
         <tr>
             <td colspan="7"></td>
-            <td><a href="{//link_prefix}journal-entry-new-credit&amp;entry_id={//_get/entry_id}">
-    <img onclick="journal_entry_amount_create('credit',{//_get/entry_id}); return false;" src="{//path_prefix}{//icon_set}add.png" border="0"/></a></td>
+            <td>
+                <a href="{//link_prefix}journal-entry-new-credit&amp;entry_id={//_get/entry_id}">
+                <img onclick="journal_entry_amount_create('credit',{//_get/entry_id}); return false;"
+                src="{//path_prefix}{//icon_set}add.png" border="0"/>
+                </a>
+            </td>
         </tr>
         <tr>
-            <td colspan="7"><input type="submit"/></td>
+            <td colspan="7">
+                <input type="submit"/>
+            </td>
         </tr>
     </tbody>
 </table>
