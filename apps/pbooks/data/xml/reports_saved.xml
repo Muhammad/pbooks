@@ -1,0 +1,39 @@
+<!--
+Program: PBooks
+Component: reports_saved.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA 
+-->
+<!-- This is a work in-progress for saved reports - they'll eventually be
+    managed from the webGUI. -->
+<reports_saved>
+    <report active="1">
+        <label>2007 Balance Sheet</label>
+        <link>report_type_id=3&amp;from_date=2007-01-01&amp;to_date=2007-12-31&amp;submit=Build+Report</link>
+    </report>
+    <report active="1">
+        <label>2007 Cash Flow Statement</label>
+        <link>report_type_id=1&amp;from_date=2007-01-01&amp;to_date=2007-12-31&amp;submit=Build+Report</link>
+    </report>
+    <report active="1">
+        <label>2007 Profit and Loss Statement</label>
+        <link>report_type_id=2&amp;from_date=2007-01-01&amp;to_date=2007-12-31&amp;submit=Build+Report</link>
+    </report>
+</reports_saved>

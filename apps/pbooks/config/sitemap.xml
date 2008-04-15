@@ -696,6 +696,7 @@ This makes it easier to maintain persistence. -->
 <!-- REPORTS -->
 <map:gate name="reports" role="pb_admin" cache="300" client_cache="60">
     <map:xml src="data/xml/report_types.xml"/>
+    <map:xml src="data/xml/reports_saved.xml"/>
     <map:xsl src="templates/xsl/reports.xsl" />
 </map:gate>
 <map:gate name="reports-build" role="pb_admin">

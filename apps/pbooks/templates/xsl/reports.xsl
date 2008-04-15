@@ -57,9 +57,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Saved reports -->
 <h2><xsl:value-of select="//label[key='saved_reports']/value"/></h2>
 <ul style="big">
-    <li><a href="{//link_prefix}reports-build&amp;report_type_id=3&amp;from_date=2007-01-01&amp;to_date=2007-12-31&amp;submit=Build+Report">2007 Balance Sheet</a></li>
-    <li><a href="{//link_prefix}reports-build&amp;report_type_id=1&amp;from_date=2007-01-01&amp;to_date=2007-12-31&amp;submit=Build+Report">2007 Cash Flow Statement</a></li>
-    <li><a href="{//link_prefix}reports-build&amp;report_type_id=2&amp;from_date=2007-01-01&amp;to_date=2007-12-31&amp;submit=Build+Report">2007 Profit and Loss Statement</a></li>
+    <xsl:for-each select="//reports_saved/report">
+        <li>
+            <a href="{//link_prefix}reports-build&amp;{link}">
+                <xsl:value-of select="label"/>
+            </a>
+        </li>
+    </xsl:for-each>
 </ul>
 
 <!-- Additional reports -->
