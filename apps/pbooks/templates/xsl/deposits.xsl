@@ -76,6 +76,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <!-- END LOOP -->
     </tbody>
 </table>
-<xsl:call-template name="pager"/>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">myDeposits</xsl:with-param>
+</xsl:call-template>
 </xsl:template> 
 </xsl:stylesheet>

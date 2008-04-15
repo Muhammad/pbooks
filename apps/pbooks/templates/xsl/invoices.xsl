@@ -83,6 +83,8 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
     </tbody>
 </table>
 </div>
-<xsl:call-template name="pager"/>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">myInvoices</xsl:with-param>
+</xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>

@@ -68,7 +68,7 @@ $(document).ready(function()
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter(
             {
-                widgets:['zebra']
+                widgets:['zebra','cookie']
                 <xsl:value-of select="$my-sort-column"/>
                 <xsl:value-of select="$no-sort-column"/>
             }

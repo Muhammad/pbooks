@@ -77,6 +77,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tbody>
 </table>
 </div>
-<xsl:call-template name="pager"/>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">myTransfers</xsl:with-param>
+</xsl:call-template>
 </xsl:template> 
 </xsl:stylesheet>

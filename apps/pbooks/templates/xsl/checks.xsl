@@ -98,7 +98,9 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
     <!-- END LOOP -->
     </tbody>
 </table>
-<xsl:call-template name="pager"/>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">myChecks</xsl:with-param>
+</xsl:call-template>
 </div>
 
 </xsl:template> 
