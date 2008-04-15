@@ -63,12 +63,12 @@ $(document).ready(function()
 <xsl:param name="no-sort-column"/>
 <xsl:call-template name="jquery-links"/>
 <script type="text/javascript">
-$(document).ready(function() 
+$(document).ready(function()
     {
         $("#<xsl:value-of select="$my-table"/>")
         .tablesorter(
             {
-                widgets:['zebra','cookie'],
+                widgets:['zebra']
                 <xsl:value-of select="$my-sort-column"/>
                 <xsl:value-of select="$no-sort-column"/>
             }

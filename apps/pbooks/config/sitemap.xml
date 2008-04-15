@@ -517,24 +517,24 @@ This makes it easier to maintain persistence. -->
     <map:action type="curl" params="{//link_prefix}account-groups-xml&amp;development_console=false,,account_groups"/>
     <map:action type="rawxml" params="account_groups"/>
     <map:xsl src="templates/xsl/account_groups.xsl" />
-</map:gate>	
+</map:gate>
 <map:gate name="account-groups-xml" role="pb_admin" cache="600" client_cache="600">
     <map:xml src="data/xml/account_types.xml"/>
     <map:query src="data/sql/account_groups_get_all.xml"/>
     <map:query src="data/sql/account_groups_get_family_tree.xml"/>
     <map:xsl src="templates/xsl/account_groups_xml.xsl" />
-</map:gate>	
+</map:gate>
 <map:gate name="account-groups-organize" role="pb_admin" cache="600" client_cache="600">
     <map:xml src="data/xml/account_types.xml"/>
     <map:action type="curl" params="{//link_prefix}account-groups-xml&amp;development_console=false,,account_groups"/>
     <map:action type="rawxml" params="account_groups"/>
     <map:xsl src="templates/xsl/account_groups.xsl" />
-</map:gate>	
+</map:gate>
 <map:gate name="account-sub-groups-xml" role="pb_admin" cache="600" client_cache="600">
     <map:action type="curl" params="{//link_prefix}account-groups-xml&amp;development_console=false,,account_groups"/>
     <map:action type="rawxml" params="account_groups"/>
     <map:xsl src="templates/xsl/account_sub_groups_xml.xsl" />
-</map:gate>	
+</map:gate>
 <map:gate name="account-group-edit" role="pb_admin">
     <map:if name="//_post">
         <map:true>
@@ -572,7 +572,7 @@ This makes it easier to maintain persistence. -->
 
 <map:gate name="account-group-delete" role="pb_admin">
     <map:query src="data/sql/account_group_delete.xml" />
-</map:gate>	
+</map:gate>
 
 
 
@@ -636,7 +636,11 @@ This makes it easier to maintain persistence. -->
 </map:gate>
 <map:gate name="ledger-create" role="pb_admin">
     <map:query src="data/sql/entry_get_one_by_id.xml"/>
-    <!-- TEST THIS LOGIC THOROUGHLY, AS OF DEC 2007 SEEMS OK -->
+    <!--    TEST THIS LOGIC THOROUGHLY, AS OF DEC 2007 SEEMS OK
+            AGAIN STILL IN APRIL 2008 STILL OK
+            WOULD BE BEST TO WRITE TESTS TO ENSURE PROPER BEHAVIOR
+            FOR ALL PERMUTATIONS
+    -->
     <map:if name="_post">
     <map:true>
     <map:switch name="//_post/type">
