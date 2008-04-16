@@ -38,8 +38,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <form method="post"
     onsubmit="return validateStandard(this, 'error');">
-    <textarea id="csv_import" name="csv_import" rows="14" cols="80">
-    </textarea>
+    <textarea id="csv_import" name="csv_accounts_import" rows="14" cols="80">
+10000,1234,"testing","this is a test account"
+10000,4567,"testing 2","this is another test account"
+</textarea>
     <br/>
     <input type="submit"/>
 </form>

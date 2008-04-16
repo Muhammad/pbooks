@@ -36,7 +36,7 @@ $link_prefix = Nexista_Path::get("//link_prefix","flow");
 
 
 if(empty($csv_string) || $csv_string=="") { 
-        header("Location: ".$link_prefix."functions&error=import-empty");
+        header("Location: ".$link_prefix."transactions-import&error=import-empty");
         exit;
 }
 
@@ -91,7 +91,7 @@ foreach($data_array as $value) {
                                 'account_id' => $csv_row[4]);
     
     } else { 
-        header("Location: ".$link_prefix."functions&error=import-wrong-number-of-rows,".count($csv_row).",".$csv_row[4]);
+        header("Location: ".$link_prefix."transactions-import&error=import-wrong-number-of-rows,".count($csv_row).",".$csv_row[4]);
         exit;
     }
         

@@ -25,10 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="accounts_import" loop="//import_csv">
     <connection>&pb_connection;</connection>
     <params>
-		<param name="//import_csv/account_type_id" type="integer"/>
-		<param name="//import_csv/account_number" type="text"/>
-		<param name="//import_csv/name" type="text"/>
-		<param name="//import_csv/description" type="text"/>
+		<param array="//import_csv/account_type_id" type="integer"/>
+		<param array="//import_csv/account_number" type="text"/>
+		<param array="//import_csv/account_name" type="text"/>
+		<param array="//import_csv/account_description" type="text"/>
 	</params>
     <sql>
         INSERT INTO &pb_accounts;

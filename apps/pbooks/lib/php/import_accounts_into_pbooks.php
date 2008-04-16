@@ -29,13 +29,13 @@ For each line of the csv file, a sql statement is made.
 
 */
 
-$debug="true";
+$debug="false";
 $csv_string = Nexista_Path::get("//_post/csv_accounts_import","flow");
 $link_prefix = Nexista_Path::get("//link_prefix","flow");
 
 
 if(empty($csv_string) || $csv_string=="") { 
-    header("Location: ".$link_prefix."functions&error=import-empty");
+    header("Location: ".$link_prefix."accounts-import&error=import-empty");
     exit;
 }
 
@@ -51,50 +51,40 @@ echo "</pre>";
 $data_array = explode("\r\n",$csv_string);
 //$data_array = explode("\n",$csv_string);
 
+if($debug=="true") {
+echo "<pre>";
+print_r($data_array);
+echo "</pre>";
+}
 $i=0;
-foreach($data_array as $value) { 
-    if($value!="") { 
-   //$final_data_array[$i] = "'".str_replace(",","','",$value)."',".$account_id;
-    //$csv_row="'".str_replace(",","','",$value)."',".$account_id;
+foreach($data_array as $value) {
+    // avoiding errors due to trailing garbage ( like linefeeds )
+    if($value!="" && strlen($value) > 5) { 
 
-    // Remove non-delineating commas
-    $value = preg_replace('/\"(.+)(,)(.+)\"!\n/', '${1}${3}', $value);
-    // Remove quotes
-    $value = str_replace("\"","",$value);
-    $value = str_replace("$","",$value);
+        // Remove non-delineating commas
+        $value = preg_replace('/\"(.+)(,)(.+)\"!\n/', '${1}${3}', $value);
+        $csv_row = explode(",",$value);
     
-    $csv_row=explode(",",$value);
-    $csv_row[0] = date('Y-m-d H:i:s',strtotime($csv_row[0]));
-    $csv_row[2] = number_format($csv_row[2],2,'.','');
-    if(count($csv_row)=="3") {
+        if($debug=="true") {
+            echo "=====<pre>";
+            print_r($cvs_row);
+            echo "</pre>";
+        }
+        
+        if(count($csv_row)=="4") {
 
-        // 3 columns of data - entry_datetime, memorandum, entry_amount
-        $final_data_array[] = Array('entry_datetime' => $csv_row[0],
-                            'memorandum' => $csv_row[1],
-                            'entry_amount' => number_format($csv_row[2],2,'.',''));
+            // 4 columns of data - entry_datetime, memorandum, entry_amount, balance
+            $final_data_array[] = Array('account_type_id' => $csv_row[0],
+                                'account_number' => $csv_row[1],
+                                'account_name' => $csv_row[2],
+                                'account_description' => $csv_row[3]);
 
-    } elseif(count($csv_row)=="4") {
+        } else {
+            header("Location: ".$link_prefix.
+                "accounts-import&error=import-wrong-number-of-rows,".count($csv_row).",".$csv_row[4]);
+            exit;
+        }
 
-        // 4 columns of data - entry_datetime, memorandum, entry_amount, balance
-        $final_data_array[] = Array('entry_datetime' => $csv_row[0],
-                            'memorandum' => $csv_row[1],
-                            'entry_amount' => $csv_row[2]);
-
-    } elseif(count($csv_row)=="5") {
-
-        // 5 columns of data - entry_datetime, memorandum, entry_amount, balance, account_id
-        $final_data_array[] = Array('entry_datetime' => $csv_row[0],
-                            'memorandum' => $csv_row[1],
-                            'entry_amount' => number_format($csv_row[2],2,'.',''),
-                            'balance' => number_format($csv_row[3],2,'.',''),
-                            'account_id' => $csv_row[4]);
-
-    } else { 
-        header("Location: ".$link_prefix."functions&error=import-wrong-number-of-rows,".count($csv_row).",".$csv_row[4]);
-        exit;
-    }
-
-    // $data_array[$i] = explode(",",$value);
     }
     $i++;
 }
@@ -105,7 +95,7 @@ if($debug=="true") {
 echo "<pre>";
 print_r($final_data_array);
 echo "</pre>";
-//exit;
+exit;
 }
 
 
