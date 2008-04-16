@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <ul>
     <xsl:for-each select="//quick_links/link">
     <li>
-        <a href="{__ROOT__/runtime/link_prefix}{link}">
+        <a href="{//runtime/link_prefix}{link}">
             <xsl:value-of select="label"/>
         </a>
     </li>
