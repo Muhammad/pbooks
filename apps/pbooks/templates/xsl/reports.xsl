@@ -1,8 +1,8 @@
 <!-- 
 Program: PBooks
 Component: reports.xsl
-Copyright 2003-2007, Albert L. Lash, IV
-Savonix Corporation
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
 

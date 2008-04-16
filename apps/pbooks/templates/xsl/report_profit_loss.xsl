@@ -1,7 +1,7 @@
 <!--
 Program: PBooks
 Component: report_profit_loss.xsl
-Copyright:Savonix Corporation
+Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses

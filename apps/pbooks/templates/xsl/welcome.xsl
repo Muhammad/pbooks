@@ -32,26 +32,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <b><xsl:value-of select="/__ROOT__/i18n/labels/label[key='get_started']/value"/></b>
 <br/><br/>
 <ul>
+    <xsl:for-each select="//quick_links/link">
     <li>
-        <a href="{__ROOT__/runtime/link_prefix}ledger">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='view_the_ledger']/value"/>
+        <a href="{__ROOT__/runtime/link_prefix}{link}">
+            <xsl:value-of select="label"/>
         </a>
     </li>
-    <li>
-        <a href="{__ROOT__/runtime/link_prefix}journal-new">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='make']/value"/>
-        </a>
-    </li>
-    <li>
-        <a href="{__ROOT__/runtime/link_prefix}journal">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='view']/value"/>
-        </a>
-    </li>
-    <li>
-        <a href="{__ROOT__/runtime/link_prefix}reports">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='reports']/value"/>
-        </a>
-    </li>
+    </xsl:for-each>
 </ul>
 
 
