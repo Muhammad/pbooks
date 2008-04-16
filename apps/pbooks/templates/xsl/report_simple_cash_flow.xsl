@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:value-of select="
         format-number(
             sum(
-                __ROOT__/get_all_transactions/entry_amount
+                /__ROOT__/get_all_transactions/entry_amount
                 ),'#########.##')
                 "/>
 </div>
