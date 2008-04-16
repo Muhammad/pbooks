@@ -70,7 +70,7 @@ the templates at the bottom of the file -->
          </xsl:call-template>
     </tr>
     <tr>
-        <td class="matrix-data" style="padding-left: 20px;"><xsl:value-of select="__ROOT__/i18n/labels/label[key='beginning_balance']/value"/></td>				 
+        <td class="matrix-data" style="padding-left: 6px;"><xsl:value-of select="__ROOT__/i18n/labels/label[key='beginning_balance']/value"/></td>				 
         <xsl:call-template name="empty_cell">
               <xsl:with-param name="repeat" select="$monthnum"/>
          </xsl:call-template>
@@ -79,9 +79,9 @@ the templates at the bottom of the file -->
     <xsl:for-each select="//get_all_accounts[account_type_id=10000][cash_account='on']">
     <xsl:variable name="this_i_account_id"><xsl:value-of select="id"/></xsl:variable>
         <tr class="row{position() mod 2}">
-            <td class="matrix-data" style="text-indent: 16px;">
+            <td class="matrix-data" style="text-indent: 6px;">
                 <a href="{//link_prefix}ledger&amp;account_id={id}">
-                    <xsl:value-of select="name"/>
+                    <xsl:value-of select="substring(name,0,25)"/>
                 </a>
             </td>
              <xsl:call-template name="income_cell">
@@ -112,9 +112,9 @@ the templates at the bottom of the file -->
     <xsl:for-each select="//get_all_accounts[account_type_id=10000][cash_account='on']">
     <xsl:variable name="this_d_account_id"><xsl:value-of select="id"/></xsl:variable>
         <tr class="row{position() mod 2}">
-            <td class="matrix-data" style="text-indent: 16px;">
+            <td class="matrix-data" style="text-indent: 6px;">
                 <a href="{//link_prefix}ledger&amp;account_id={id}">
-                    <xsl:value-of select="name"/>
+                    <xsl:value-of select="substring(name,0,25)"/>
                 </a>
             </td>
              <xsl:call-template name="outgoing_cell">
@@ -177,7 +177,14 @@ the templates at the bottom of the file -->
 	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
         <a href="{//link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_i_account_id}">
-		<xsl:value-of select="sum(//get_all_transactions[entry_month=$mn][entry_amount &gt; 0][account_id=$this_i_account_id]/entry_amount)"/>
+		<xsl:value-of select="
+            format-number(
+            sum(
+                //get_all_transactions[entry_month=$mn][entry_amount &gt; 0][account_id=$this_i_account_id]/entry_amount
+                ),
+                '#######'
+                )
+                "/>
 		</a>
 		</td>
 		<xsl:call-template name="income_cell">
@@ -192,7 +199,14 @@ the templates at the bottom of the file -->
 	<xsl:param name="mn">0</xsl:param>
 	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
-        <xsl:value-of select="sum(//get_all_transactions[entry_amount &gt; 0][entry_month=$mn]/entry_amount)"/>
+        <xsl:value-of select="
+            format-number(
+                sum(
+                    //get_all_transactions[entry_amount &gt; 0][entry_month=$mn]/entry_amount
+                    ),
+                '######'
+                )
+                "/>
 		</td>
 		<xsl:call-template name="income_total_cell">
 			<xsl:with-param name="repeat" select="$repeat - 1"/>
@@ -210,10 +224,16 @@ the templates at the bottom of the file -->
 	<xsl:param name="repeat">0</xsl:param>
 	<xsl:param name="this_d_account_id">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
-	<xsl:if test="number($repeat)>=1">    
+	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
 		 <a href="{//link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_d_account_id}">
-		 <xsl:value-of select="sum(//get_all_transactions[entry_month=$mn][entry_amount &lt; 0][account_id=$this_d_account_id]/entry_amount)"/></a>
+		 <xsl:value-of select="
+         format-number(
+             sum(
+                   //get_all_transactions[entry_month=$mn][entry_amount &lt; 0][account_id=$this_d_account_id]/entry_amount
+                    ),
+                    '######')
+                "/></a>
 		</td>
 		<xsl:call-template name="outgoing_cell">
 			<xsl:with-param name="repeat" select="$repeat - 1"/>
@@ -226,9 +246,15 @@ the templates at the bottom of the file -->
 <xsl:template name="outgoing_total_cell">
 	<xsl:param name="repeat">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
-	<xsl:if test="number($repeat)>=1">    
+	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
-		 <xsl:value-of select="sum(//get_all_transactions[entry_month=$mn][entry_amount &lt; 0]/entry_amount)"/>
+		 <xsl:value-of select="
+            format-number(
+            sum(
+                //get_all_transactions[entry_month=$mn][entry_amount &lt; 0]/entry_amount),
+                '######'
+                )
+                "/>
 		</td>
 		<xsl:call-template name="outgoing_total_cell">
 			<xsl:with-param name="repeat" select="$repeat - 1"/>
@@ -245,7 +271,7 @@ the templates at the bottom of the file -->
 	<xsl:param name="disb">0</xsl:param>
 	<xsl:param name="rev">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
-	<xsl:if test="number($repeat)>=1">    
+	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
 		<xsl:value-of select="format-number(sum(//get_all_transactions[entry_month=$mn]/entry_amount),'######')"/>
 		</td>
