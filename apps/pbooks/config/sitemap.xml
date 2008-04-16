@@ -507,9 +507,6 @@ This makes it easier to maintain persistence. -->
     </map:if>
 </map:gate>
 
-<map:gate name="accounts-import">
-    <map:xsl src="templates/xsl/accounts_import.xsl" />
-</map:gate>
 
 
 <!-- ACCOUNT GROUPS -->
@@ -733,7 +730,7 @@ This makes it easier to maintain persistence. -->
             <map:xsl src="templates/xsl/reports.xsl" />
         </map:default>
     </map:switch>
-</map:gate>		
+</map:gate>
 <map:gate name="reports-simple-cash-flow" role="pb_admin">
     <map:xml src="i18n/{selected_lang}/months.xml"/>
     <map:query src="data/sql/general_ledger_get_cash_flow.xml" />
@@ -766,6 +763,18 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/transactions_import.xsl" />
 </map:gate>
 
+<map:gate name="accounts-import" role="pb_admin">
+    <map:if name="//_post">
+        <map:true>
+            <map:script src="lib/php/import_accounts_into_pbooks.php"/>
+            <map:query src="data/sql/accounts_import.xml" />
+            <map:action type="redirect" params="{//link_prefix}accounts"/>
+        </map:true>
+        <map:false>
+        </map:false>
+    </map:if>
+    <map:xsl src="templates/xsl/accounts_import.xsl"/>
+</map:gate>
 
 
 
@@ -783,12 +792,12 @@ This makes it easier to maintain persistence. -->
         </map:false>
     </map:if>
     <map:query src="data/sql/option_get.xml"/>
-    <map:xsl src="templates/xsl/company.xsl" />
+    <map:xsl src="templates/xsl/company.xsl"/>
 </map:gate>
 
 
 <!-- PREFERENCES -->
-<map:gate name="preferences" role="pb_admin"> 
+<map:gate name="preferences" role="pb_admin">
     <map:xml src="i18n/{selected_lang}/user_options.xml"/>
     <map:if name="//_post">
         <map:true>
