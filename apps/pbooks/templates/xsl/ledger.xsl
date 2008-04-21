@@ -144,7 +144,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </xsl:choose>
         </td>
 
-        <td><xsl:value-of select="substring(memorandum,0,32)"/></td>
+        <td><xsl:value-of select="substring(memorandum,0,42)"/></td>
 
         <xsl:if test="/__ROOT__/_get/account_id='%' or not(/__ROOT__/_get/account_id)">
         <td>
@@ -171,10 +171,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
-</div>
 <xsl:call-template name="pager">
     <xsl:with-param name="my-table">myLedger</xsl:with-param>
 </xsl:call-template>
+</div>
 
 <!-- If an account_id has been selected, only show how much it has changed.-->
 <xsl:if test="(/__ROOT__/_get/account_id &gt; 0)">
