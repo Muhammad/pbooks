@@ -76,10 +76,10 @@ INSERT INTO `auth_role` (`role_id`, `name`, `description`) VALUES
 
 CREATE TABLE IF NOT EXISTS `auth_user` (
   `user_id` int(11) NOT NULL auto_increment,
-  `user_login` varchar(60) NOT NULL default '',
-  `user_pass` varchar(64) NOT NULL default '',
+  `user_name` varchar(60) NOT NULL default '',
+  `user_password` varchar(64) NOT NULL default '',
   `user_nicename` varchar(50) NOT NULL default '',
-  `user_email` varchar(100) NOT NULL default '',
+  `email` varchar(100) NOT NULL default '',
   `user_url` varchar(100) NOT NULL default '',
   `user_registered` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `user_activation_key` varchar(60) NOT NULL default '',
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 -- Dumping data for table `auth_user`
 -- 
 
-INSERT INTO `auth_user` (`user_id`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES 
+INSERT INTO `auth_user` (`user_id`, `user_name`, `user_password`, `user_nicename`, `email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES 
 (1016, 'demo', '$1$Iw/GCM2A$BNcUnIIawg7wFq9Iw3VA4/', '', 'demo', '', '2007-04-24 13:36:21', '', 0, '');
 
 -- --------------------------------------------------------
