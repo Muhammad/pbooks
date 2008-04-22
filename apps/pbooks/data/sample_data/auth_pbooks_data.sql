@@ -85,8 +85,7 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
   `user_activation_key` varchar(60) NOT NULL default '',
   `user_status` int(11) NOT NULL default '0',
   `display_name` varchar(250) NOT NULL default '',
-  PRIMARY KEY  (`user_id`),
-  KEY `user_login_key` (`user_login`)
+  PRIMARY KEY  (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1017 ;
 
 -- 
