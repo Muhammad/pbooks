@@ -23,8 +23,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_journal_entry">
-    <connection>&pb_connection;</connection>
-    <params>       
+    <connection>&pb_connection_read;</connection>
+    <params>
 		<param name="_get/transaction_id" type="integer"/>
 		<param name="_get/entry_id" type="integer"/>
 		<param name="_get/entry_id" type="integer"/>

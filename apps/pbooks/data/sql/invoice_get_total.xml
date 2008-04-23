@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="invoice_get_total">
-    <connection>&pb_connection;</connection>
+    <connection>&pb_connection_read;</connection>
     <params>
 		<param name="_post/entry_id" type="integer"/>
 	</params>

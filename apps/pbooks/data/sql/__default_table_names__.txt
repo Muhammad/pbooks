@@ -21,3 +21,4 @@
 <!ENTITY pb_general_ledger "&prefix;general_ledger">
 <!ENTITY pb_options "&prefix;options">
 <!ENTITY pb_connection "pbooks">
+<!ENTITY pb_connection_read "pbooks_read">

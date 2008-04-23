@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="option_get" loop="//option/option_key" default="1">
-    <connection>&pb_connection;</connection>
+    <connection>&pb_connection_read;</connection>
     <params>
 		<param array="//option_key" type="text" default="none"/>
 		<param array="//option_key" type="text" default="none"/>
