@@ -1,7 +1,7 @@
 <!--
 Program: PBooks
 Component: journal_entry.xsl
-Copyright: Savonix Corporation 
+Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
 http://www.gnu.org/licenses
@@ -184,9 +184,10 @@ Sorry for all the white space! Hard to navigate without.
 		</td>
 	</tr>
 	<tr>
-		<td valign="top"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memorandum']/value"/>:</td>
+		<td><xsl:value-of select="//i18n/labels/label[key='memorandum']/value"/>:</td>
         <td>
             <textarea type="text" name="memorandum" rows="5" cols="35" required="1" err="Please enter a memo.">
+            <!-- don't show placeholders -->
             <xsl:if test="
                 not
                 (
@@ -254,7 +255,11 @@ Sorry for all the white space! Hard to navigate without.
         </td>
 
         <!-- this is an arrow which links to the next entry_id in the journal -->
-        <td><a href="{__ROOT__/runtime/link_prefix}{//nid}&amp;entry_id={/__ROOT__/_get/entry_id + 1}"><img src="{__ROOT__/runtime/path_prefix}s/images/buttons/in.gif"/></a></td>
+        <td>
+            <a href="{__ROOT__/runtime/link_prefix}{//nid}&amp;entry_id={/__ROOT__/_get/entry_id + 1}">
+                <img src="{__ROOT__/runtime/path_prefix}s/images/buttons/in.gif"/>
+            </a>
+        </td>
 	</tr>
 </table>
 
@@ -277,7 +282,7 @@ If you want to complete this process, continue as usual. For more information, s
 <!-- only display in training mode -->
 <xsl:if test="//books_mode='training'">
 <hr/>
-<div style="padding-top: 50px; text-align: center;">
+<div  class="generic-button">
 <form method="post" action="{/__ROOT__/runtime/link_prefix}journal-delete">
 <input type="hidden" name="entry_id" value="{/__ROOT__/_get/entry_id}"/>
 <input type="submit" value="Delete this entry" onclick="return confirm('You sure you want to delete this entry? Doing so will also delete any ledger transactions having to do with it.');"/>
@@ -296,16 +301,6 @@ function get_entry_date()
 </script>    
 </xsl:template>
 <!-- end form template -->
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -363,7 +358,7 @@ function get_entry_date()
     <td>$<input name="credit_amount_1[]" 
         type="text" size="6" required="1"  equals="sum(debit_amount_1)" 
         err="Credit and Debit amounts must be equal. ">
-        <xsl:attribute name="value"><!-- Does this need to be ere?-->
+        <xsl:attribute name="value">
             <xsl:if test="not(//_get/transaction_id)">
                 <xsl:value-of select="entry_amount"/>
             </xsl:if>
@@ -391,9 +386,9 @@ function get_entry_date()
                 )
             )
             ">
-                    <xsl:if test="not(id=//get_journal_entry/account_id)">
+                <xsl:if test="not(id=//get_journal_entry/account_id)">
                     <xsl:attribute name="readonly">readonly</xsl:attribute>
-            </xsl:if>
+                </xsl:if>
             </xsl:if>
         </input>
     </td>
@@ -445,14 +440,17 @@ function get_entry_date()
                 (//get_journal_entry/account_type_id=20000 or //get_journal_entry/account_type_id=30000 or //get_journal_entry/account_type_id=40000)) or (//get_journal_entry/entry_amount &lt;0 and (//get_journal_entry/account_type_id=10000 or //get_journal_entry/account_type_id=50000))"><xsl:if test="contains(description,substring(//get_journal_entry/memorandum,1,7)) or contains(description,//get_journal_entry/entry_amount)"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if></xsl:if>
 
                 </xsl:if>
-
-
-                <!--<xsl:value-of select="account_type_id"/> --> <xsl:value-of select="name"/></option>
+                <!--<xsl:value-of select="account_type_id"/> -->
+                <xsl:value-of select="name"/>
+                </option>
             </xsl:for-each>
+            
             <!-- HIDDEN ACCOUNT -->
             <xsl:if test="not(//get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts//id) and not(//get_journal_entry/status=9)
             and not(/__ROOT__/_get/transaction_id)">
-                <option value="{//get_journal_entry/account_id}" selected="selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_hidden']/value"/></option>
+                <option value="{//get_journal_entry/account_id}" selected="selected">
+                    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_hidden']/value"/>
+                </option>
             </xsl:if>
         </select>
     </td>
@@ -474,7 +472,8 @@ function get_entry_date()
     <xsl:if test="count(//get_journal_entry[entry_type_id='Debit']) &gt; 1">
         <a href="{//link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-        <img src="{//path_prefix}{//icon_set}delete.png" border="0" /></a>
+            <img src="{//path_prefix}{//icon_set}delete.png" border="0" />
+        </a>
     </xsl:if>
     </td>
 </tr>
@@ -483,6 +482,11 @@ function get_entry_date()
 
 
 <xsl:template name="abs-amount">
-<xsl:if test="//get_journal_entry/entry_amount &lt;0"><xsl:value-of select="0 - //get_journal_entry/entry_amount"/></xsl:if><xsl:if test="//get_journal_entry/entry_amount &gt;0"><xsl:value-of select="//get_journal_entry/entry_amount"/></xsl:if>
+    <xsl:if test="//get_journal_entry/entry_amount &lt;0">
+        <xsl:value-of select="0 - //get_journal_entry/entry_amount"/>
+    </xsl:if>
+    <xsl:if test="//get_journal_entry/entry_amount &gt;0">
+        <xsl:value-of select="//get_journal_entry/entry_amount"/>
+    </xsl:if>
 </xsl:template>
 </xsl:stylesheet>
