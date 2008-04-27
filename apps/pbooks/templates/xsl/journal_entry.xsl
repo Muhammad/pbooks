@@ -111,7 +111,9 @@ Sorry for all the white space! Hard to navigate without.
 <form name="myform" method="post" 
     onSubmit="return validateStandard(this, 'error');" 
     action="{__ROOT__/runtime/link_prefix}journal-edit-submit&amp;entry_id={/__ROOT__/_get/entry_id}">
-<xsl:if test="/__ROOT__/_get/entry_id"><input type="hidden" name="entry_id" value="{/__ROOT__/_get/entry_id}"/></xsl:if>
+<xsl:if test="/__ROOT__/_get/entry_id">
+    <input type="hidden" name="entry_id" value="{/__ROOT__/_get/entry_id}"/>
+</xsl:if>
 <div id="journal-entry-form">
 <table class="form-table">
 	<tr>
@@ -128,7 +130,7 @@ Sorry for all the white space! Hard to navigate without.
         </td>
 		<td>
             <input type="text" name="entry_datetime"  id="entry_datetime"
-                value="{substring(/__ROOT__/get_journal_entry/entry_datetime,0,11)}"/>
+                value="{/__ROOT__/get_journal_entry/entry_datetime}"/>
         </td>
         <xsl:if test="/__ROOT__/_get/transaction_id">
             <input type="hidden" name="transaction_id" value="{/__ROOT__/_get/transaction_id}"/>
@@ -347,7 +349,8 @@ function get_entry_date()
 <xsl:if test="(//get_journal_entry/entry_amount &gt;0 and (//get_journal_entry/account_type_id=20000 or //get_journal_entry/account_type_id=30000 or //get_journal_entry/account_type_id=40000)) or (//get_journal_entry/entry_amount &lt; 0 and (//get_journal_entry/account_type_id=10000 or //get_journal_entry/account_type_id=50000))"><xsl:if test="id=//get_journal_entry/account_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:if test="not(id=//get_journal_entry/account_id)"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if></xsl:if>
 </xsl:if>
 
-            <!--<xsl:value-of select="account_type_id"/> --><xsl:value-of select="name"/><!-- <xsl:value-of select="//get_journal_entry[entry_type_id='Credit']/account_id"/>--></option>
+            <xsl:value-of select="name"/>
+        </option>
         </xsl:for-each>
 
         <!-- HIDDEN ACCOUNT -->

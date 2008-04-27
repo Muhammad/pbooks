@@ -119,6 +119,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <map:false>
         </map:false>
     </map:if>
+    <map:action type="datetime" params="//get_journal_entry/entry_datetime,datetime,Y-m-d"/>
     <map:xsl src="templates/xsl/journal_entry.xsl"/>
 </map:gate>
 

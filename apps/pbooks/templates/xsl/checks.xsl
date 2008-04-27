@@ -74,7 +74,9 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
     <xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}check-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
+            <a href="{/__ROOT__/runtime/link_prefix}check-edit&amp;entry_id={entry_id}">
+            <xsl:value-of select="entry_id"/>
+            </a>
         </td>
         <td>
             <xsl:value-of select="check_number"/>
