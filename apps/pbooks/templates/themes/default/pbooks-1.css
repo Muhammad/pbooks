@@ -101,7 +101,7 @@ input, textarea
 }
 
 #content { 
-    padding: 10px; 784px;
+    padding: 10px;
 }
 #foot { 
     width: 100%; display: block; background: #555; text-align: center; color: #FFF; line-height: 20px;
@@ -110,8 +110,9 @@ input, textarea
 
 #journal-entry-form table
 {
-     width: 600px; 
+     width: 100%; 
      text-align: center;
+     font-size: 12px;
 }
 #journal-entry-form tr td
 {

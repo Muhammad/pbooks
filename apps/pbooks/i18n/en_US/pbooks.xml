@@ -1069,6 +1069,10 @@ The text you paste in here should look something like this:
         <value>You sure you want to flip this entry? Doing so will also delete any ledger transactions having to do with it</value>
     </label>
     <label>
+        <key>confirm_delete</key>
+        <value>You sure you want to delete this entry? Doing so will also delete any ledger transactions having to do with it.</value>
+    </label>
+    <label>
         <key>account_hidden</key>
         <value>Account hidden</value>
     </label>

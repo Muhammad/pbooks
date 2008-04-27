@@ -58,19 +58,7 @@ $utcdate = gmdate('Y-m-d H:i:s');
 
 
 $db_version = rtrim(file_get_contents(PROJECT_ROOT.DIRECTORY_SEPARATOR.'config/db_version.txt'));
-
-$runtime = array('host_name' => $_SERVER['SERVER_NAME'],
-                'path_prefix' => $path_prefix,
-                'link_prefix' => $link_prefix,
-                'right_now' => $utcdate,
-                'utcdate' => $utcdate,
-                'current_user_id' => $current_user_id,
-                'debug' => $debug,
-                'top_left_logo' => $top_left_logo,
-                'db_version' => $db_version);
-
-Nexista_Flow::add("runtime",$runtime,false);
-
+/* DEFAULTS */
 
 $default_selected_lang = Nexista_Config::get("./defaults/default_selected_lang");
 if(empty($default_selected_lang)) { 
@@ -90,6 +78,25 @@ if(empty($default_icon_set)) {
 }
 Nexista_Flow::add("icon_set",$default_icon_set);
 
+$default_currency_unit = Nexista_Config::get("./defaults/default_currency_unit");
+if(empty($default_currency_unit)) { 
+    $default_currency_unit = "$";
+}
+
+/* END DEFAULTS */
+
+$runtime = array('host_name' => $_SERVER['SERVER_NAME'],
+                'path_prefix' => $path_prefix,
+                'link_prefix' => $link_prefix,
+                'right_now' => $utcdate,
+                'utcdate' => $utcdate,
+                'current_user_id' => $current_user_id,
+                'default_currency_unit' => $default_currency_unit,
+                'debug' => $debug,
+                'top_left_logo' => $top_left_logo,
+                'db_version' => $db_version);
+
+Nexista_Flow::add("runtime",$runtime,false);
 
 
 

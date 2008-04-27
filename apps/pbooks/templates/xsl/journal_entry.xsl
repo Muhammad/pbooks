@@ -116,7 +116,7 @@ Sorry for all the white space! Hard to navigate without.
 <table class="form-table">
 	<tr>
 		<td>
-        <xsl:value-of select="__ROOT__/i18n/labels/label[key='entry']/value"/> :
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='entry']/value"/> :
         </td>
         <td>
             <xsl:value-of select="/__ROOT__/_get/entry_id"/>
@@ -124,7 +124,7 @@ Sorry for all the white space! Hard to navigate without.
 	</tr>	
     <tr>
 		<td>
-            <xsl:value-of select="__ROOT__/i18n/labels/label[key='date']/value"/> :
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/> :
         </td>
 		<td>
             <input type="text" name="entry_datetime"  id="entry_datetime"
@@ -139,7 +139,7 @@ Sorry for all the white space! Hard to navigate without.
 	</tr>
 	<tr>
 		<td colspan="2">
-            <xsl:value-of select="__ROOT__/i18n/labels/label[key='amount']/value"/> :
+            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/> :
         </td>
     </tr>
     <tr>
@@ -148,18 +148,18 @@ Sorry for all the white space! Hard to navigate without.
             <thead>
 			<tr>
                 <th></th>
-                <th><xsl:value-of select="__ROOT__/i18n/labels/label[key='type']/value"/> :</th>
-				<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='accounts']/value"/> :</th>
-				<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='debit']/value"/> :</th>
-				<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='credit']/value"/> :</th>
-                <th width="20px"></th>
+                <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='type']/value"/> :</th>
+				<th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='accounts']/value"/> :</th>
+				<th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='debit']/value"/> :</th>
+				<th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='credit']/value"/> :</th>
+                <th width="20"></th>
 			</tr>
             </thead>
             <tbody>
             <!-- Recursive, aka looping, template for debits
                  calls the journal entry row templates, see below
                  -->
-            <xsl:for-each select="/__ROOT__/get_journal_entry[entry_type_id='Debit']">         
+            <xsl:for-each select="/__ROOT__/get_journal_entry[entry_type_id='Debit']">
             <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
 			    <xsl:call-template name="debit"><xsl:with-param name="my_entry_id" value="{entry_id}"/></xsl:call-template>
             </xsl:for-each>
@@ -243,7 +243,7 @@ Sorry for all the white space! Hard to navigate without.
             <script language="javascript">
             function confirmFlip () { 
                 var flip=confirm('<xsl:value-of select="/__ROOT__/i18n/labels/label[key='confirm_flip']/value"/>.');
-                if(flip)  
+                if(flip)
                     window.location.href= location.href + '&amp;flip=true';
                 else 
                     return false;
@@ -278,14 +278,15 @@ If you want to complete this process, continue as usual. For more information, s
 </div>
 <xsl:comment>end entry form table </xsl:comment>
 </form>
-                                   
+
 <!-- only display in training mode -->
 <xsl:if test="//books_mode='training'">
 <hr/>
 <div  class="generic-button">
 <form method="post" action="{/__ROOT__/runtime/link_prefix}journal-delete">
 <input type="hidden" name="entry_id" value="{/__ROOT__/_get/entry_id}"/>
-<input type="submit" value="Delete this entry" onclick="return confirm('You sure you want to delete this entry? Doing so will also delete any ledger transactions having to do with it.');"/>
+<input type="submit" value="Delete this entry" 
+    onclick="return confirm('{/__ROOT__/i18n/labels/label[key='confirm_flip']/value}');"/>
 </form>
 </div>
 </xsl:if>
@@ -332,8 +333,11 @@ function get_entry_date()
     </a>
     </xsl:if>
     </td>
-    <td><xsl:value-of select="/__ROOT__/i18n/labels/label[key='credit']/value"/>:</td>
-    <td><div style="padding-left: 40px;">
+    <td>
+        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='credit']/value"/>:
+    </td>
+    <td>
+    <div style="padding-left: 40px;">
     <select name="credit_account_1[]" required="1" exclude="-1" err="Please select a credit account.">
         <option value="-1"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='credit_account']/value"/></option>
         <xsl:for-each select="//get_all_accounts">
@@ -350,12 +354,16 @@ function get_entry_date()
         <xsl:if test="not(//get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id=//get_all_accounts//id) 
         and not(//get_journal_entry/status=9)
         and not(/__ROOT__/_get/transaction_id)">
-            <option value="{//get_journal_entry/account_id}" selected="selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_hidden']/value"/></option>
+            <option value="{//get_journal_entry/account_id}" selected="selected">
+                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_hidden']/value"/>
+            </option>
         </xsl:if>
     </select></div>
     </td>
     <td></td>
-    <td>$<input name="credit_amount_1[]" 
+    <td style="white-space: nowrap;">
+        <xsl:value-of select="//runtime/default_currency_unit"/>
+        <input name="credit_amount_1[]" 
         type="text" size="6" required="1"  equals="sum(debit_amount_1)" 
         err="Credit and Debit amounts must be equal. ">
         <xsl:attribute name="value">
@@ -397,12 +405,12 @@ function get_entry_date()
     <xsl:if test="count(//get_journal_entry[entry_type_id='Credit']) &gt; 1">
         <a href="{//link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-        <img src="{//path_prefix}{//icon_set}delete.png" border="0" /></a>
+        <img src="{//path_prefix}{//icon_set}delete.png"/></a>
     </xsl:if>
     <xsl:if test="count(//get_journal_entry[entry_type_id='Debit']) &gt; 1">
         <a href=""
         onclick="debits_summarize(); return false;">
-        <img src="{//path_prefix}{//icon_set}icon_accept.gif" border="0" /></a>
+        <img src="{//path_prefix}{//icon_set}icon_accept.gif"/></a>
     </xsl:if>
     </td>
 </tr>
@@ -454,8 +462,10 @@ function get_entry_date()
             </xsl:if>
         </select>
     </td>
-    <td>$<input name="debit_amount_1[]"  type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" 
-    err="Please enter a monetary value for the debit and credit. Do not include $ signs.">
+    <td style="white-space: nowrap;">
+        <xsl:value-of select="//runtime/default_currency_unit"/>
+        <input name="debit_amount_1[]"  type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" 
+        err="Please enter a monetary value for the debit and credit. Do not include $ signs.">
         <xsl:attribute name="value">
             <xsl:if test="not(//_get/transaction_id)">
                 <xsl:value-of select="entry_amount"/>
@@ -472,7 +482,7 @@ function get_entry_date()
     <xsl:if test="count(//get_journal_entry[entry_type_id='Debit']) &gt; 1">
         <a href="{//link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-            <img src="{//path_prefix}{//icon_set}delete.png" border="0" />
+            <img src="{//path_prefix}{//icon_set}delete.png" />
         </a>
     </xsl:if>
     </td>
