@@ -22,13 +22,13 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="account_group_parents_create" loop="//_post/account_group_parents">
+<query name="account_group_parents_create" loop="//_post/account_group_parents" default="1">
     <connection>&pb_connection;</connection>
     <params>
         <param name="_post/id" type="integer"/>
         <param array="_post/account_group_parents" type="integer"/>
 	</params>
-    <sql>        
+    <sql>
         INSERT INTO &pb_account_group_parents;
         (account_group_id, parent_group_id) VALUES (?,?)
     </sql>

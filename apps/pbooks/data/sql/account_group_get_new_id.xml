@@ -23,14 +23,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_group_get_new_id">
-    <connection>&pb_connection_read;</connection>
+    <!-- this query needs to run against the primary database -->
+    <connection>&pb_connection;</connection>
     <params>
         <param name="_post/name" type="text"/>
-        <param name="_post/description" type="text"/>
 	</params>
-    <sql>        
-        SELECT id FROM &pb_account_groups; WHERE name=?
-        AND description=?
+    <sql>
+        SELECT id FROM &pb_account_groups;
+        WHERE name=?
         LIMIT 1;
     </sql>
 </query>
