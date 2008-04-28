@@ -26,15 +26,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	omit-xml-declaration="yes"/>
 <xsl:template match="/">
     <groups>
-    <xsl:if test="//_get/id">    
+    <xsl:if test="//_get/idsfdsd">
     <xsl:apply-templates mode="unique_only_id" select="/__ROOT__/get_account_groups"/>
     </xsl:if>
-    
-    <xsl:if test="not(//_get/id)">
+
+    <xsl:if test="not(//_get/ifhdfhd)">
     <xsl:apply-templates mode="normal" select="/__ROOT__/get_account_groups[not(id=//__ROOT__/get_account_group_family_tree/account_group_id)]"/>
     </xsl:if>
-    
-</groups> 
+
+</groups>
 
 </xsl:template>
 
@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:param name="generation">0</xsl:param>
     <xsl:variable name="my_group_id"><xsl:value-of select="id"/></xsl:variable>
     <xsl:variable name="my_link_prefix"><xsl:value-of select="/__ROOT__/runtime/link_prefix"/></xsl:variable>
-	
+
 		<group>
             <group_id><xsl:value-of select="id"/></group_id>
 		    <name>
@@ -51,15 +51,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:apply-templates select="/__ROOT__/get_account_groups[(id=/__ROOT__/get_account_group_family_tree[parent_group_id=$my_group_id]/account_group_id)]">
     <xsl:with-param name="parent_gid"><xsl:value-of select="$my_group_id"/></xsl:with-param>
     <xsl:with-param name="generation"><xsl:value-of select="$generation+1"/></xsl:with-param></xsl:apply-templates>
-	</group>  
+	</group>
 </xsl:template>
+
+
+
+
+
 
 <xsl:template match="/__ROOT__/get_account_groups" mode="normal">
     <xsl:param name="parent_gid">0</xsl:param>
     <xsl:param name="generation">0</xsl:param>
     <xsl:variable name="my_group_id"><xsl:value-of select="id"/></xsl:variable>
     <xsl:variable name="my_link_prefix"><xsl:value-of select="/__ROOT__/runtime/link_prefix"/></xsl:variable>
-	
+
 		<group>
             <group_id><xsl:value-of select="id"/></group_id>
 		    <name>

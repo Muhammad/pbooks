@@ -25,11 +25,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="xml" indent="yes" encoding="UTF-8" 
 	omit-xml-declaration="yes"/>
 <xsl:key name="my_groups" match="group" use="number(group_id)"/>
+
+<!-- This template returns an xml tree of groups which are descendents of the _get/id group -->
 <xsl:template match="/">
 <groups>
 <xsl:for-each
-   select="//group
-             [count(.|key('my_groups', number(group_id))[1]) = 1]">
+   select="//group[count(.|key('my_groups', number(group_id))[1]) = 1]">
    <xsl:sort select="group_id" />
    <xsl:variable name="my_group_id" value="group_id"/>
    <xsl:if test="group_id=//group[group_id=//_get/id]//group_id">
@@ -43,7 +44,4 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </groups>
 </xsl:template>
 
-
-<xsl:template match="//group_id">
-</xsl:template>
 </xsl:stylesheet>

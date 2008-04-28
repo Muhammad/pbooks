@@ -527,13 +527,16 @@ This makes it easier to maintain persistence. -->
 </map:gate>
 <map:gate name="account-groups-organize" role="pb_admin" cache="600" client_cache="600">
     <map:xml src="data/xml/account_types.xml"/>
-    <map:action type="curl" params="{//link_prefix}account-groups-xml,,account_groups"/>
-    <map:action type="rawxml" params="account_groups"/>
+    <map:action type="xsl" params="templates/xsl/account_groups_xml.xsl,my_account_groups"/>
+    <map:action type="rawxml" params="my_account_groups"/>
     <map:xsl src="templates/xsl/account_groups.xsl" />
 </map:gate>
 <map:gate name="account-sub-groups-xml" role="pb_admin" cache="600" client_cache="600">
-    <map:action type="curl" params="{//link_prefix}account-groups-xml,,account_groups"/>
-    <map:action type="rawxml" params="account_groups"/>
+    <map:xml src="data/xml/account_types.xml"/>
+    <map:query src="data/sql/account_groups_get_all.xml"/>
+    <map:query src="data/sql/account_groups_get_family_tree.xml"/>
+    <map:action type="xsl" params="templates/xsl/account_groups_xml.xsl,my_account_groups"/>
+    <map:action type="rawxml" params="my_account_groups"/>
     <map:xsl src="templates/xsl/account_sub_groups_xml.xsl" />
 </map:gate>
 <map:gate name="account-group-edit" role="pb_admin">
@@ -556,20 +559,18 @@ This makes it easier to maintain persistence. -->
         <map:false>
         </map:false>
     </map:if>
-    <map:action type="curl" params="{//link_prefix}account-groups-xml,,account_groups"/>
-    <map:action type="rawxml" params="account_groups"/>
-    <map:action type="curl" params="{//link_prefix}account-sub-groups-xml,//_get/id,account_sub_groups"/>
-    <map:action type="rawxml" params="account_sub_groups"/>
     <map:xml src="data/xml/account_types.xml"/>
     <map:query src="data/sql/account_groups_get_all.xml"/>
+    <map:query src="data/sql/account_groups_get_family_tree.xml"/>
+    <map:action type="xsl" params="templates/xsl/account_groups_xml.xsl,my_account_groups"/>
+    <map:action type="rawxml" params="my_account_groups"/>
+    <map:action type="xsl" params="templates/xsl/account_sub_groups_xml.xsl,account_sub_groups"/>
+    <map:action type="rawxml" params="account_sub_groups"/>
     <map:query src="data/sql/account_groups_get_by_id.xml"/>
     <map:query src="data/sql/account_groups_get_accounts.xml"/>
     <map:xsl src="templates/xsl/account_group_form.xsl" />
 </map:gate>
 
-<map:gate name="account-group-test" role="pb_admin">
-    <map:action type="curl" params="{//link_prefix}account-sub-groups-xml,//_get/id,account_sub_groups"/>
-</map:gate>
 
 <map:gate name="account-group-delete" role="pb_admin">
     <map:query src="data/sql/account_group_delete.xml" />
