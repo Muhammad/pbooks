@@ -26,8 +26,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:include href="date_select.xsl"/>
 <xsl:template name="content">
-<!-- include calendar js and css -->
-<xsl:call-template name="calendar-inc"/>
 <!-- Add / delete items -->
 <script type="text/javascript" src="{__ROOT__/runtime/path_prefix}/s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
@@ -63,14 +61,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
         <tr>
             <td><xsl:value-of select="//label[key='customer']/value"/>:</td>
-            <td>
+            <td colspan="7">
             <select name="debit_account_id">
             <xsl:for-each select="/__ROOT__/get_all_accounts[accounts_receivable_account='on']">
                 <option value="{id}"><xsl:if test="id=//get_some_business_objects/customer_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
             </xsl:for-each>
             </select>&#160;
+            <a href="{//link_prefix}customer-edit">
+            <img src="{//path_prefix}{//icon_set}add.png" border="0"/>
+            </a>
             </td>
-            <td colspan="7">
+            <td>
             </td>
         </tr>
         <tr>
@@ -153,13 +154,5 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tbody>
 </table>
 </form>
-
-<script type="text/javascript">
-    Calendar.setup({
-        inputField     :    "invoice_date",   // id of the input field
-        ifFormat       :    "%Y-%m-%d",       // format of the input field
-        showsTime      :    false
-    });
-</script>
 </xsl:template> 
 </xsl:stylesheet>
