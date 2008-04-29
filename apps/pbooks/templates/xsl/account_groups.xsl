@@ -74,9 +74,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:if test="not($parent_gid='0')">
             <xsl:call-template name="generation_indent"><xsl:with-param name="iterator"><xsl:value-of select="$generation"/></xsl:with-param></xsl:call-template>\----
         </xsl:if>
-        <a href="{$my_link_prefix}account-group-edit&amp;id={group_id}"><xsl:value-of select="name"/></a></td>
-		<td><a href="{$my_link_prefix}account-group-edit&amp;id={group_id}"><xsl:value-of select="description"/></a></td>
-		<td><a href="{$my_link_prefix}account-group-edit&amp;id={group_id}" id="{account_number}-e"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/></a></td>
+        <a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}"><xsl:value-of select="name"/></a></td>
+		<td><a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}"><xsl:value-of select="description"/></a></td>
+		<td><a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}" id="{account_number}-e"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/></a></td>
 		<td><a id="{account_group}-d" href="{//link_prefix}account-group-delete&amp;group_id={group_id}"
         onclick="account_group_delete({group_id},this.parentNode.parentNode.rowIndex); return false; "><xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/></a></td>
 	</tr>    

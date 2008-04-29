@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="get_account_group_by_id">
     <connection>&pb_connection;</connection>
     <params>
-        <param name="_get/id" type="integer"/>
+        <param name="_get/group_id" type="integer"/>
 	</params>
     <sql>
         SELECT &pb_account_groups;.*, 

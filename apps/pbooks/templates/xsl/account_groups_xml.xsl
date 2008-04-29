@@ -83,11 +83,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:param name="parent_gid">0</xsl:param>
     <xsl:variable name="my_group_id"><xsl:value-of select="id"/></xsl:variable>
     <xsl:choose>
-    <xsl:when test="(id=//_get/id)">
+    <xsl:when test="(id=//_get/group_id)">
         <group_id><xsl:value-of select="id"/></group_id>
     </xsl:when>
     <xsl:when test="(
-    id=/__ROOT__/get_account_group_family_tree[parent_group_id=//_get/id]/account_group_id)">
+    id=/__ROOT__/get_account_group_family_tree[parent_group_id=//_get/group_id]/account_group_id)">
         <group_id><xsl:value-of select="id"/></group_id></xsl:when>
     <xsl:when test="(
     id=/__ROOT__/get_account_group_family_tree[account_group_id=$parent_gid]/parent_group_id)">

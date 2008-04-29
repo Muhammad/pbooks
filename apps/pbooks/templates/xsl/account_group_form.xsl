@@ -26,11 +26,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 <form method="post" onSubmit="return validateStandard(this, 'myerror');">
-<xsl:if test="//_get/id">
+<xsl:if test="//_get/group_id">
 <input type="hidden" name="my_action" value="update"/>
-<input type="hidden" value="{//_get/id}" name="id"/>
+<input type="hidden" value="{//_get/group_id}" name="group_id"/>
 </xsl:if>
-<xsl:if test="not(//_get/id)">
+<xsl:if test="not(//_get/group_id)">
 <input type="hidden" name="my_action" value="create"/>
 </xsl:if>
 <table class="form-table" cellpadding="10" cellspacing="0" border="0" align="center">
@@ -61,10 +61,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td>
         <select multiple="multiple" name="account_group_parents[]">
         <xsl:for-each 
-        select="/__ROOT__/get_account_groups[not(//_get/id=id)]">
+        select="/__ROOT__/get_account_groups[not(//_get/group_id=id)]">
             <xsl:variable name="my_group_id"><xsl:value-of select="id"/></xsl:variable>
             <option value="{id}"><xsl:if test="/__ROOT__/get_account_group_by_id/parent_group_id=id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-            <xsl:if test="contains(//group[group_id=//_get/id],$my_group_id) and not(/__ROOT__/get_account_group_by_id/parent_group_id=id)"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
+            <xsl:if test="contains(//group[group_id=//_get/group_id],$my_group_id) and not(/__ROOT__/get_account_group_by_id/parent_group_id=id)"><xsl:attribute name="disabled">disabled</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
         </xsl:for-each>
         </select>
         </td>
@@ -75,7 +75,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
         <td>
         <textarea readonly="readonly" cols="30" rows="8">
-        <xsl:for-each select="//account_sub_groups/groups/group[not(.=//_get/id)]">
+        <xsl:for-each select="//account_sub_groups/groups/group[not(.=//_get/group_id)]">
             <xsl:variable name="my_group_id"><xsl:value-of select="."/></xsl:variable>
             <xsl:value-of select="/__ROOT__/get_account_groups[id=$my_group_id]/name"/>
             <!-- This is a newline character -->

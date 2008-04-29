@@ -69,7 +69,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Additional reports -->
 <h2><xsl:value-of select="//label[key='additional_reports']/value"/></h2>
 <ul style="big">
-    <li><a href="{//link_prefix}reports-simple-cash-flow"><xsl:value-of select="//label[key='simple_monthly_cash_flow']/value"/></a></li>
+    <li>
+        <a href="{//link_prefix}reports-simple-cash-flow">
+            <xsl:value-of select="//label[key='simple_monthly_cash_flow']/value"/>
+        </a>
+    </li>
+    <li>
+        <a href="{//link_prefix}reports-group-cash-flow">
+            <xsl:value-of select="//label[key='group_monthly_cash_flow']/value"/>
+        </a>
+    </li>
 </ul>
 </form>	
 </xsl:template>

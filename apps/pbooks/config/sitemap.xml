@@ -741,6 +741,12 @@ This makes it easier to maintain persistence. -->
     <map:query src="data/sql/general_ledger_get_cash_flow.xml" />
     <map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />
 </map:gate>
+<map:gate name="reports-group-cash-flow" role="pb_admin">
+    <map:xml src="i18n/{selected_lang}/months.xml"/>
+    <map:query src="data/sql/account_groups_get_all.xml"/>
+    <map:query src="data/sql/general_ledger_get_cash_flow.xml" />
+    <map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />
+</map:gate>
 
 
 <!-- FUNCTIONS -->

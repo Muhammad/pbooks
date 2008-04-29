@@ -33,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
    select="//group[count(.|key('my_groups', number(group_id))[1]) = 1]">
    <xsl:sort select="group_id" />
    <xsl:variable name="my_group_id" value="group_id"/>
-   <xsl:if test="group_id=//group[group_id=//_get/id]//group_id">
+   <xsl:if test="group_id=//group[group_id=//_get/group_id]//group_id">
     <group>
         <xsl:value-of select="group_id"/>
     </group>
