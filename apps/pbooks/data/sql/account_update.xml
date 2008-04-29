@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="edit_account">
-    <connection>&pb_connection_read;</connection>
+    <connection>&pb_connection;</connection>
     <params>
 		<param name="_post/account_type_id" type="integer"/>
 		<param name="_post/account_number" type="text"/>
@@ -35,6 +35,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	</params>
     <sql>
         UPDATE &pb_accounts; SET account_type_id=?,account_number=?,name=?,description=?,hide=?,group_id=?
-		WHERE id=? LIMIT 1
+		WHERE id=?
     </sql>
 </query>
