@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">myInvoices</xsl:with-param>
     <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
-<xsl:with-param name="no-sort-column">, headers: { 7: {sorter: false} }</xsl:with-param>
+<xsl:with-param name="no-sort-column">, headers: { 6: {sorter: false} }</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
     <a href="{/__ROOT__/runtime/link_prefix}invoice-create" id="invoice-create">
@@ -52,7 +52,9 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
+        <!--
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='due_date']/value"/></th>
+        -->
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='paid']/value"/>&#160;
             <!--<sup>[<a onclick="alert('')">?</a>]</sup>--></th>
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='print']/value"/></th>
@@ -73,7 +75,9 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
         <td><a href="{/__ROOT__/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="invoice_total"/></td>
         <td><xsl:value-of select="entry_datetime"/></td>
+        <!--
         <td><xsl:value-of select="due_date"/></td>
+        -->
         <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
         <td><a href="#"><xsl:value-of select="paid"/></a></td>
         <td><a href="{//link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='print']/value"/></a></td>

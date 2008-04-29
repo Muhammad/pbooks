@@ -230,10 +230,11 @@ This makes it easier to maintain persistence. -->
             <map:xsl src="templates/xsl/errors.xsl" />
         </map:false>
     </map:if>
-</map:gate>	
+</map:gate>
 <map:gate name="invoice-edit" role="pb_admin">
     <map:query src="data/sql/account_business_objects.xml" />
     <map:query src="data/sql/entry_get_by_id.xml"/>
+    <map:action type="datetime" params="//get_journal_entry/entry_datetime,datetime,Y-m-d"/>
     <map:xml src="data/xml/invoice_meta.xml"/>
     <map:query src="data/sql/invoices_get_some.xml"/>
     <map:query src="data/sql/invoices_get_amounts.xml"/>
