@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="option_update" loop="//_post" default="1">
     <connection>&pb_connection;</connection>
     <params>
-		<param array="//option/option_key" type="text" default="delete"/>
+		<param array="//option/option_key" type="text" default=""/>
 		<param array="//option/option_type" type="text" default="text"/>
 		<param array="//_post/*" type="text" />
 	</params>

@@ -25,9 +25,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="get_account">
     <connection>&pb_connection_read;</connection>
     <params>
-		<param name="_get/id" type="text" default="-999"/>
-		<param name="_get/id" type="text" default="-999"/>
-		<param name="_get/id" type="text" default="-999"/>
+		<param name="_get/account_id" type="text" default="-999"/>
+		<param name="_get/account_id" type="text" default="-999"/>
+		<param name="_get/account_id" type="text" default="-999"/>
 	</params>
     <sql>
         SELECT &pb_accounts;.*,

@@ -74,7 +74,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <!-- Account Edit -->
     <xsl:if test="//_get/nid='accounts'">
     <td>
-        <a href="{$my_link_prefix}accounts-edit&amp;id={id}" id="{account_number}-e">
+        <a href="{$my_link_prefix}accounts-edit&amp;account_id={id}" id="{account_number}-e">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/>
         </a>
     </td>
@@ -92,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
     <td>
-        <a id="{account_number}-d" href="{//link_prefix}accounts-delete&amp;id={id}"
+        <a id="{account_number}-d" href="{//link_prefix}accounts-delete&amp;account_id={id}"
         onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/>
         </a>
