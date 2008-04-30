@@ -86,7 +86,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </td>
         </tr>
         <tr>
-            <td><xsl:value-of select="//label[key='due_date']/value"/>:</td><td colspan="8"><input type="text" name="due_date" value="{//get_some_business_objects/due_date}"/></td>
+            <td><xsl:value-of select="//label[key='due_date']/value"/>:</td>
+            <td colspan="8">
+                <input type="text" name="due_date" value="{//get_some_business_objects/due_date}">
+                    <xsl:if test="not(//get_some_business_objects/due_date)">
+                    <xsl:attribute name="value">On Receipt</xsl:attribute>
+                    </xsl:if>
+                </input>
+            </td>
         </tr>
         <tr>
             <td><xsl:value-of select="//label[key='paid_status']/value"/>:</td>
