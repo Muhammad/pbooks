@@ -27,12 +27,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <params>
         <param name="_post/name" type="text"/>
         <param name="_post/description" type="text"/>
-        <param name="_post/id" type="integer"/>
+        <param name="_post/group_id" type="integer"/>
 	</params>
     <sql>
         UPDATE &pb_account_groups;
         SET name=?, description=?
         WHERE id=?
-        LIMIT 1
     </sql>
 </query>
