@@ -59,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tr>
             <td><xsl:value-of select="//label[key='date']/value"/>:</td>
             <td colspan="8">
-                <input type="text" name="entry_datetime" 
+                <input type="text" name="entry_datetime"
                     id="invoice_date" value="{//get_journal_entry/entry_datetime}"/>
             </td>
         </tr>
@@ -79,7 +79,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/__ROOT__/i18n/labels/label[key='invoice_number']/value"/>:</td><td colspan="8"><input type="text" name="invoice_number" value="{//get_some_business_objects/invoice_number|//get_last_meta_id}"/></td>
+            <td><xsl:value-of select="/__ROOT__/i18n/labels/label[key='invoice_number']/value"/>:</td>
+            <td colspan="8">
+                <input type="text" name="invoice_number"
+                    value="{//get_some_business_objects/invoice_number|//get_last_meta_id + 1}"/>
+            </td>
         </tr>
         <tr>
             <td><xsl:value-of select="//label[key='due_date']/value"/>:</td><td colspan="8"><input type="text" name="due_date" value="{//get_some_business_objects/due_date}"/></td>
