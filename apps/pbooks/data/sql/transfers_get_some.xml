@@ -19,7 +19,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_some_business_objects">
@@ -37,33 +37,33 @@ Fifth Floor, Boston, MA 02110-1301  USA
         mytoname.name as to_account_name,
         myfromname.name as from_account_name,
         pem.meta_value as method
-        
-        FROM &pb_entries; AS pbe 
-        
+
+        FROM &pb_entries; AS pbe
+
         INNER JOIN &pb_entry_amounts; AS pbeam 
         ON pbe.entry_id=pbeam.entry_id
-        
+
         INNER JOIN &pb_entry_metadata; AS pem
         ON pbe.entry_id=pem.entry_id
-        
+
         <!-- from account -->
         LEFT JOIN &pb_entry_amounts; AS mymeta2
         ON (mymeta2.entry_id = pbe.entry_id
         AND mymeta2.entry_type_id = 'Credit')
-        
+
         LEFT JOIN &pb_accounts; AS myfromname
         ON mymeta2.account_id=myfromname.id
         <!-- end from account -->
-        
+
         <!-- to account -->
         LEFT JOIN &pb_entry_amounts; AS mymeta1
         ON (mymeta1.entry_id = pbe.entry_id
         AND mymeta1.entry_type_id = 'Debit')
-        
+
         LEFT JOIN &pb_accounts; AS mytoname
         ON mymeta1.account_id=mytoname.id
         <!-- end to account -->
-        
+
         WHERE pbe.entry_id!=0
         AND pbe.memorandum!='PLACEHOLDER'
         AND pbe.entry_datetime &gt;= ?
@@ -72,45 +72,5 @@ Fifth Floor, Boston, MA 02110-1301  USA
         AND pbe.status != 9
         AND pem.meta_key='method'
         LIMIT ?,?
-<!--
-        SELECT &pb_entries;.entry_id, SUBSTRING(entry_datetime,1,10) as entry_datetime,
-        SUBSTRING(&pb_entries;.memorandum,1,80) as memorandum, 
-        myto.entry_amount,
-        mytoname.name as to_account_name,
-        myfromname.name as from_account_name,
-        mymeta.meta_value as method
-        
-        FROM (&pb_entries;, &pb_entry_metadata;)
-        
-        LEFT JOIN (&pb_entry_amounts; AS myto, &pb_accounts; AS mytoname)
-        ON (myto.entry_id = &pb_entries;.entry_id
-        AND myto.entry_type_id = 'Debit'
-        AND mytoname.id=myto.account_id)
-        
-        LEFT JOIN (&pb_entry_amounts; AS myfrom, &pb_accounts; AS myfromname)
-        ON (myfrom.entry_id = &pb_entries;.entry_id
-        AND myfrom.entry_type_id = 'Credit'
-        AND myfromname.id=myfrom.account_id)
-        
-        LEFT JOIN (&pb_entry_metadata; AS mymeta)
-        ON (mymeta.entry_id = &pb_entries;.entry_id
-        AND mymeta.meta_key='method')
-        
-        
-        
-        
-        WHERE &pb_entries;.entry_id!=0
-        AND &pb_entries;.memorandum!='PLACEHOLDER'
-        AND &pb_entries;.entry_datetime &gt;= ?
-        AND &pb_entries;.entry_datetime &lt;= ?
-        AND &pb_entries;.entry_id LIKE ?
-        AND &pb_entries;.status != 9
-        AND &pb_entry_metadata;.entry_id=&pb_entries;.entry_id
-        AND &pb_entry_metadata;.meta_key='method'
-        ORDER BY 
-        CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC, 
-        CASE ? WHEN 'DESC' THEN &pb_entries;.entry_datetime END DESC
-        LIMIT ?,?
-        -->
     </sql>
 </query>

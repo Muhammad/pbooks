@@ -32,6 +32,5 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		SELECT entry_id, entry_datetime
         FROM &pb_entries; 
         WHERE entry_datetime=? AND memorandum=?
-        LIMIT 1
     </sql>
 </query>

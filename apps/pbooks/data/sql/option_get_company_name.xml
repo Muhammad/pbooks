@@ -28,13 +28,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	</params>
     <sql>
         SELECT name.option_value as company_name, mode.option_value as books_mode
-        
+
         FROM &pb_options; as name
-        
+
         LEFT JOIN &pb_options; as mode
         ON mode.option_key='books_mode'
-        
+
         WHERE name.option_key = 'company_name'
-        
+
     </sql>
 </query>

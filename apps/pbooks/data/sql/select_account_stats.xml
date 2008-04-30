@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <params>
 	</params>
     <sql>
-        SELECT 
+        SELECT
             (SELECT count(&pb_accounts;.id) FROM &pb_accounts;)  as account_stats, 
             (SELECT count(&pb_entries;.entry_id)FROM &pb_entries; WHERE &pb_entries;.status !=9) as entry_stats,
             (SELECT count(&pb_entry_amounts;.entry_amount_id) FROM &pb_entry_amounts;) as entry_amounts_stats,
