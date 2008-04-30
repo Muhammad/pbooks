@@ -6,6 +6,7 @@ and overlapping information will override settings in the main configuration fil
         <default_fiscal_start>01-01</default_fiscal_start>
         <default_theme>default</default_theme>
         <default_icon_set>s/images/icons/famfamfam/</default_icon_set>
+        <default_invoice_print_vertical>-22</default_invoice_print_vertical>
     </defaults>
     <plugins>
         <dev_buffer>

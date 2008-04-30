@@ -83,6 +83,11 @@ if(empty($default_currency_unit)) {
     $default_currency_unit = "$";
 }
 
+$default_invoice_print_vertical = Nexista_Config::get("./defaults/default_invoice_print_vertical");
+if(empty($default_invoice_print_vertical)) { 
+    $default_invoice_print_vertical = "-22";
+}
+
 /* END DEFAULTS */
 
 $runtime = array('host_name' => $_SERVER['SERVER_NAME'],
@@ -92,6 +97,7 @@ $runtime = array('host_name' => $_SERVER['SERVER_NAME'],
                 'utcdate' => $utcdate,
                 'current_user_id' => $current_user_id,
                 'default_currency_unit' => $default_currency_unit,
+                'default_invoice_print_vertical' => $default_invoice_print_vertical,
                 'debug' => $debug,
                 'top_left_logo' => $top_left_logo,
                 'db_version' => $db_version);

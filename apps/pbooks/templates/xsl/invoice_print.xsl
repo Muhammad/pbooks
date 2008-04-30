@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 
-<div style="font-size: 14px; margin-top: -22px;">
+<div style="font-size: 14px; margin-top: {//runtime/default_invoice_print_vertical}px;">
 <table border="0" style="float: right;">
     <tbody>
         <tr>
