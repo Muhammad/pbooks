@@ -192,7 +192,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <a href="{//link_prefix}ledger">
         <xsl:value-of select="//label[key='general_ledger']/value"/>
     </a>
-    <a href="{//link_prefix}accounts-edit&amp;id={//_get/account_id}">
+    <a href="{//link_prefix}accounts-edit&amp;account_id={//_get/account_id}">
         <xsl:value-of select="//label[key='account_edit']/value"/>
     </a>
 </xsl:if>

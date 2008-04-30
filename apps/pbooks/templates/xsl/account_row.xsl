@@ -84,7 +84,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <!-- Is this a customer account or a regular account? -->
     <xsl:if test="//_get/nid='customer-accounts'">
     <td>
-        <a href="{$my_link_prefix}customer-edit&amp;id={id}" id="{account_number}-e">
+        <a href="{$my_link_prefix}customer-edit&amp;account_id={id}" id="{account_number}-e">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/>
         </a>
     </td>

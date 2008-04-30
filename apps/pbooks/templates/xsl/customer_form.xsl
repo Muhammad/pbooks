@@ -28,13 +28,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- The form is validated via a javascript library included in the end of main.xsl. 
 Form input elements have attributes like required="1" if they are to be validated. -->
-<form method="post" action="{//request_uri}" 
+<form method="post" action="{//request_uri}"
     onSubmit="return validateStandard(this, 'myerror');">
 
 <!-- 
-        Check if the user is creating a new account 
-        or editing and existing one, 
-        and set appropriate parameter "my_action" 
+        Check if the user is creating a new account
+        or editing and existing one,
+        and set appropriate parameter "my_action"
 -->
 <xsl:if test="//get_account/id">
     <input type="hidden" name="my_action" value="update"/>
@@ -83,8 +83,8 @@ Form input elements have attributes like required="1" if they are to be validate
             <xsl:value-of select="//label[key='account_number']/value"/>:
         </td>
 		<td>
-            <input type="text" name="account_number"  required="1" 
-            err="{//error[key='missing_account_number']/value}" 
+            <input type="text" name="account_number" required="1"
+            err="{//error[key='missing_account_number']/value}"
             value="{//get_account/account_number|//_post/account_number}"/>
         </td>
 	</tr>
