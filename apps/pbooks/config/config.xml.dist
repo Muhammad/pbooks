@@ -11,7 +11,7 @@ and overlapping information will override settings in the main configuration fil
         <dev_buffer>
             <placement>prepend</placement>
             <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
-            <excludes>themed-css,xml-sitemap,account-groups-xml,account-sub-groups-xml</excludes>
+            <excludes>themed-css,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
         </dev_buffer>
         <nx_auth>
             <placement>prepend</placement>
