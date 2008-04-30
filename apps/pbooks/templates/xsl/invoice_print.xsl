@@ -26,12 +26,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 
-<div style="font-size: 14px; margin-top: 30px;">
+<div style="font-size: 14px; margin-top: -22px;">
 <table border="0" style="float: right;">
     <tbody>
         <tr>
             <td><xsl:value-of select="//label[key='date']/value"/>:</td>
-            <td colspan="8"><xsl:value-of select="//get_journal_entry/entry_date"/></td>
+            <td colspan="8"><xsl:value-of select="//get_journal_entry/entry_datetime"/></td>
         </tr>
         <tr>
             <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='invoice_number']/value"/>:</td>

@@ -251,6 +251,7 @@ This makes it easier to maintain persistence. -->
     <map:xml src="data/xml/company_options.xml"/>
     <map:query src="data/sql/option_get.xml"/>
     <map:query src="data/sql/entry_get_by_id.xml"/>
+    <map:action type="datetime" params="//get_journal_entry/entry_datetime,datetime,Y-m-d"/>
     <map:xml src="data/xml/invoice_meta.xml"/>
     <map:query src="data/sql/invoices_get_some.xml"/>
     <map:query src="data/sql/invoices_get_amounts.xml"/>
