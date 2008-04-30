@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<map:sitemap xmlns:map="http://www.nexista.com/sitemap"> 
+<map:sitemap xmlns:map="http://www.nexista.com/sitemap">
 <!--
 Program: PBooks
 Component: Sitemap
@@ -243,11 +243,10 @@ This makes it easier to maintain persistence. -->
         </map:true>
         <map:false>
             <map:query src="data/sql/invoices_get_last_id.xml"/>
-            <map:action type="add1" params="//get_last_meta_id"/>
         </map:false>
     </map:if>
     <map:xsl src="templates/xsl/invoice_form.xsl" />
-</map:gate>	
+</map:gate>
 <map:gate name="invoice-print" role="pb_admin">
     <map:xml src="data/xml/company_options.xml"/>
     <map:query src="data/sql/option_get.xml"/>
