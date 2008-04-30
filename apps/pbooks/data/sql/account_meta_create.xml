@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<param array="//account_meta/meta/meta_key" type="text"/>
 		<param array="//_post/*[name()=//account_meta/meta/meta_key]/." type="text" default=""/>
 	</params>
-    <sql> 
+    <sql>
         INSERT INTO &pb_accounts_meta;
 		(account_id,meta_key,meta_value) VALUES (?,?,?)
     </sql>
