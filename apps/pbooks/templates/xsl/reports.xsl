@@ -79,6 +79,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="//label[key='group_monthly_cash_flow']/value"/>
         </a>
     </li>
+    <li>
+        <a href="{//link_prefix}reports-invoices">
+            <xsl:value-of select="//label[key='report_invoices']/value"/>
+        </a>
+    </li>
 </ul>
 </form>	
 </xsl:template>

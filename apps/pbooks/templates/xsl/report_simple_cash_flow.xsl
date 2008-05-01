@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 <!-- Net change -->
 <div class="generic-button" style="float: right;">
-    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='net_change']/value"/>: 
+    <b><xsl:value-of select="/__ROOT__/i18n/labels/label[key='net_change']/value"/></b>: 
     <xsl:value-of select="
         format-number(
             sum(

@@ -66,7 +66,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </map:gate>
 
 
-<map:gate name="journal-new-from-transaction"  role="pb_admin">
+<map:gate name="journal-new-from-transaction" role="pb_admin">
     <map:query src="data/sql/general_ledger_get_transaction.xml"/>
     <map:query src="data/sql/entry_create_from_transaction.xml"/>
     <map:query src="data/sql/entry_get_id_from_transaction.xml"/>
@@ -78,7 +78,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:action type="redirect" params="{runtime/link_prefix}journal-entry&amp;entry_id={//get_this_entry_id/entry_id}&amp;transaction_id={//_get/transaction_id}"/>
 </map:gate>
 
-<map:gate name="journal-entry-new-credit"  role="pb_admin">
+<map:gate name="journal-entry-new-credit" role="pb_admin">
     <map:query src="data/sql/entry_get_id.xml"/>
     <map:query src="data/sql/entry_amount_credit_create_get.xml"/>
     <map:block name="entry_update_datetime">
@@ -722,6 +722,12 @@ This makes it easier to maintain persistence. -->
     <map:xml src="i18n/{selected_lang}/months.xml"/>
     <map:query src="data/sql/general_ledger_get_cash_flow.xml" />
     <map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />
+</map:gate>
+<map:gate name="reports-invoices" role="pb_admin">
+    <map:xml src="i18n/{selected_lang}/months.xml"/>
+    <map:query src="data/sql/invoices_get_some.xml" />
+    <map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d"/>
+    <map:xsl src="templates/xsl/report_invoices.xsl" />
 </map:gate>
 <map:gate name="reports-group-cash-flow" role="pb_admin">
     <map:xml src="i18n/{selected_lang}/months.xml"/>

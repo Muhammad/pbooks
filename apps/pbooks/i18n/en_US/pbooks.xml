@@ -880,6 +880,10 @@ The text you paste in here should look something like this:
         <key>group_monthly_cash_flow</key>
         <value>Account Group Monthly Cash Flow</value>
     </label>
+    <label>
+        <key>report_invoices</key>
+        <value>Monthly Invoice Reports</value>
+    </label>
     
     
     <label>
