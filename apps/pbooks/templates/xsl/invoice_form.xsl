@@ -81,8 +81,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tr>
             <td><xsl:value-of select="/__ROOT__/i18n/labels/label[key='invoice_number']/value"/>:</td>
             <td colspan="8">
-                <input type="text" name="invoice_number"
-                    value="{//get_some_business_objects/invoice_number|//get_last_meta_id + 1}"/>
+                <input type="text" name="invoice_number">
+                    <xsl:attribute name="value">
+                    <xsl:if test="//get_some_business_objects/invoice_number">
+                        <xsl:value-of select="//get_some_business_objects/invoice_number"/>
+                    </xsl:if>
+                    <xsl:if test="not(//get_some_business_objects/invoice_number)">
+                        <xsl:value-of select="//get_last_meta_id + 1"/>
+                    </xsl:if>
+                    </xsl:attribute>
+                </input>
             </td>
         </tr>
         <tr>
