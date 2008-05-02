@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup">
-    <xsl:with-param name="my-table">myLedger</xsl:with-param>
+    <xsl:with-param name="my-table"></xsl:with-param>
 </xsl:call-template>
 
 <!-- Net change -->
@@ -85,12 +85,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
         <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
-        <!--
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='due_date']/value"/></th>
-        -->
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='paid']/value"/>&#160;
-            <!--<sup>[<a onclick="alert('')">?</a>]</sup>--></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='print']/value"/></th>
     </tr>
     </thead>
     <tbody>
@@ -108,16 +102,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <td><a href="{/__ROOT__/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="invoice_total"/></td>
         <td><xsl:value-of select="entry_datetime"/></td>
-        <!--
-        <td><xsl:value-of select="due_date"/></td>
-        -->
-        <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
-        <td><a href="#"><xsl:value-of select="paid"/></a></td>
-        <td><a href="{//link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='print']/value"/></a></td>
     </tr>
     </xsl:for-each>
     <!-- END LOOP -->
     </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" style="text-align: right;">Total:</td>
+        <td>
+            <xsl:value-of select="
+        format-number(
+            sum(
+                /__ROOT__/get_some_business_objects/invoice_total
+                ),'#########.##')
+                "/>
+        </td>
+        <td></td>
+    </tr>
+    </tfoot>
 </table>
 <br/>
 </form>
