@@ -97,11 +97,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- This cell will be used for a star or flag with notations -->
         <!--<th>FPO</th>-->
         <th><xsl:value-of select="__ROOT__/i18n/labels/label[key='post']/value"/></th>
-        <th>Memo.</th>
-        
+        <th><xsl:value-of select="__ROOT__/i18n/labels/label[key='memo']/value"/></th>
+
         <!-- Exclude account column if only one account selected-->
         <xsl:if test="(__ROOT__/_get/account_id='%' or not(__ROOT__/_get/account_id))">
-            <th>Account</th>
+            <th><xsl:value-of select="__ROOT__/i18n/labels/label[key='account']/value"/></th>
         </xsl:if>
 
         <th>
@@ -144,7 +144,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </xsl:choose>
         </td>
 
-        <td><xsl:value-of select="substring(memorandum,0,42)"/></td>
+        <td nowrap="nowrap"><xsl:value-of select="substring(memorandum,0,42)"/></td>
 
         <xsl:if test="/__ROOT__/_get/account_id='%' or not(/__ROOT__/_get/account_id)">
         <td>
