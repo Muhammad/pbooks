@@ -77,6 +77,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:value-of select="//account_meta_get[meta_key='address_1']/meta_value"/>
             </td>
         </tr>
+    <xsl:if test="not(//account_meta_get[meta_key='address_2']/meta_value='')">
+    <tr>
+        <td>
+            <xsl:value-of select="//account_meta_get[meta_key='address_2']/meta_value"/>
+        </td>
+    </tr>
+    </xsl:if>
         <tr>
             <td>
     <xsl:value-of select="//account_meta_get[meta_key='city']/meta_value"/>, 
