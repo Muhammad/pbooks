@@ -1,7 +1,16 @@
 <!-- This is a configuration file for Nexista applications. It can be
 used for a single or several applications. -->
 <config>
+    <!-- configure both pbooks and pbooks-read, they can be the same thing, 
+    or pbooks can be a remote primary, and pbooks-read a local replicant -->
     <datasource id="pbooks">
+        <type>mysqli</type>
+        <hostname>127.0.0.1</hostname>
+        <database>pbooks</database>
+        <username>username</username>
+        <password>password</password>
+    </datasource>
+    <datasource id="pbooks_read">
         <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
@@ -14,7 +23,7 @@ used for a single or several applications. -->
         <database>pbooks</database>
         <username>username</username>
         <password>password</password>
-    </datasource>	
+    </datasource>
 
     <!-- AUTHENTICATION-->
     <auth>       
@@ -28,18 +37,18 @@ used for a single or several applications. -->
         <cacheLimiter></cacheLimiter>
         <cacheExpires></cacheExpires>
     </session>
-	
+
     <!-- FLOW -->
     <flow name="www">
         <globals>PG</globals>
         <request>PGFR</request>
     </flow>
     <flow name="dev">
-        <globals>PGC</globals>   
+        <globals>PGC</globals>
         <request>PGFR</request>
     </flow>
-	
-	
+
+
 	<modes>
 		<dev/>
 	</modes>
@@ -79,8 +88,8 @@ used for a single or several applications. -->
     <runtime>
         <debug>0</debug>
     </runtime>
-    
-    
+
+
     <plugins>
         <nx_auth>
             <placement>prepend</placement>
