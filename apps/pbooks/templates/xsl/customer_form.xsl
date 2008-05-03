@@ -60,10 +60,10 @@ Form input elements have attributes like required="1" if they are to be validate
 <table class="form-table" cellpadding="10">
 	<tr>
 		<td><xsl:value-of select="//label[key='customer_name']/value"/>:</td>
-		<td><input type="text" name="name" value="{//get_account/name|//_post/name}"  
+		<td><input type="text" name="name" value="{//get_account/name|//_post/name}"
         required="1" err="{//error[key='missing_account_name']/value}"/></td>
 	</tr>
-    
+
     <!-- META DATA -->
     <input type="hidden" name="has_checks" value="off"/>
     <input type="hidden" name="takes_deposits" value="off"/>

@@ -23,7 +23,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_entry_amounts" loop="//get_all_entries/entry_id" default="%">
-    <connection>&pb_connection_read;</connection>
+    <!-- Needs primary db -->
+    <connection>&pb_connection;</connection>
     <params>
         <param array="//get_all_entries/entry_id" type="text" default="%"/>
 	</params>

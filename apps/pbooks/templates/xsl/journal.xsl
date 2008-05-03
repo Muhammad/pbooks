@@ -31,14 +31,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
-        $.post("<xsl:value-of select="//link_prefix"/>ledger-create", 
+        $.post("<xsl:value-of select="//link_prefix"/>ledger-create",
         {
-            'entry_id': entry_id, 
-            'account_id': account_id, 
+            'entry_id': entry_id,
+            'account_id': account_id,
             'type': entry_type_id,
             'entry_amount_id': entry_amount_id,
             'account_type_id': account_type_id
-        }, 
+        },
         function (data){
             document.getElementById(entry_amount_id).innerHTML="";
         });
@@ -49,7 +49,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <tr><td>
 <form action="{/__ROOT__/runtime/link_prefix}journal" method="get">
     <input type="hidden" name="nid" value="{/__ROOT__/_get/nid}"/>
-	<xsl:call-template name="date_select"/><input type="submit"/> 
+	<xsl:call-template name="date_select"/><input type="submit"/>
 </form>
 </td>
 <td align="right">
