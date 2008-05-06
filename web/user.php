@@ -2,7 +2,7 @@
 
 // Configuration 
 // Where is nexista? This path should be to a folder containing the nexista source 
-$nexista_path = "/usr/share/pbooks/nexista/";
+$nexista_path = "/var/www/dev/nexista/";
 
 // Bad hack
 if(!strpos($_SERVER['REQUEST_URI'],'.php')) { 
@@ -18,10 +18,6 @@ define('APP_NAME','user');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
-
-    
-    
-    
 
 if(!include($nexista_path.'/plugins/builder.php')) {
     echo "Error: Unable to load server loader or builder.";

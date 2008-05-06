@@ -2,7 +2,7 @@
 
 // Configuration
 // Where is nexista? This path should be to a folder containing the nexista source
-$nexista_path = "/usr/share/pbooks/nexista/";
+$nexista_path = "/var/www/dev/nexista/";
 
 
 $server_name = $_SERVER['SERVER_NAME'];
