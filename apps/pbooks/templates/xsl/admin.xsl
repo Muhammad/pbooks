@@ -23,7 +23,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
-<xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 <p><xsl:value-of select="/__ROOT__/i18n/labels/label[key='configure']/value"/>:</p>
 <h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='options']/value"/></h2>

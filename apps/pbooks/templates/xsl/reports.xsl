@@ -24,7 +24,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
 <xsl:import href="date_select.xsl"/>
-<xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 <!-- Main reports -->
 <h2><xsl:value-of select="//label[key='report_type']/value"/></h2>

@@ -25,7 +25,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:include href="date_select.xsl"/>
 <xsl:include href="prev_next.xsl"/>
-<xsl:include href="accounting_menu.xsl"/>
 <xsl:template name="content">
 <!-- POST JOURNAL ENTRY TO LEDGER -->
 <script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}s/js/jquery.js">&#160;</script>
