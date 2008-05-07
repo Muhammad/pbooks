@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:include href="html_shell.xsl"/>
-<xsl:include href="accounting_menu.xsl"/>
+<xsl:include href="accounting_menu_h.xsl"/>
 <xsl:template name="main">
 <xsl:if test="/__ROOT__/_get/print='true'">
     <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';" 
