@@ -66,31 +66,28 @@ input, textarea
     border: 10px; 
     border-style: solid; 
     border-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #capsule { 
-    min-height:700px; 
     width: 100%;
     background: #AAA;
 }
 
 #header { 
-    width: 804px; border: 0px; margin-left: 120px; 
+    width: 100%; border: 0px;
     background: #FFF;
-    min-height: 700px;
 }
 
 #top-block { 
-    height: 60px; background: #777; letter-spacing: 1px; display: block;
-}
-#leftcol { 
-    background: #AAA; width: 120px; float: left;    
+    height: 60px; background: #777; letter-spacing: 1px;
 }
 
-#company-name { 
+#company-name {
     text-align: right; padding-right: 10px; color: #EEE;  position: relative;
 }
-#print-button { 
+#print-button {
     float: right; padding: 20px; padding-top: 50px; color: red; position: relative;
 
 }
@@ -98,6 +95,7 @@ input, textarea
 .page-title { 
     padding: 10px; color: #EEE; font-size: 18px; 
     margin-top: -8px;
+    text-indent: 20px;
 }
 
 #content { 

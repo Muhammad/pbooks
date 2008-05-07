@@ -30,8 +30,6 @@ $(document).ready(function()
 });
 </script>
 <ul id="top-main-menu-ul">
-<li>Locations<ul><li><a class="main-menu" href="/a/dev/internetfloorplans/index.php?nid=ifp-locations" id="locations">Locations</a></li></ul>
-</li>
 <li>Main Menu<ul>
     <xsl:for-each select="//navigation/main_menu/button[@status='active']">
         <xsl:call-template name="button">
@@ -42,7 +40,7 @@ $(document).ready(function()
     </ul>
 </li>
 </ul>
-
+<!--
 <table cellpadding="0" cellspacing="0" border="0" width="120">
     <tr>
         <td class="menu-sub-sub-selected">
@@ -51,7 +49,6 @@ $(document).ready(function()
         </a>
         </td>
     </tr>
-    <!--  MAIN -->
     <xsl:for-each select="//navigation/main_menu/button[@status='active']">
         <xsl:call-template name="button">
             <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
@@ -60,7 +57,6 @@ $(document).ready(function()
     </xsl:for-each>
 
 
-    <!-- ACTIVITIES -->
     <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='activities']/value"/></td></tr>
     <xsl:for-each select="//navigation/activities/button[@status='active']">
         <xsl:call-template name="button">
@@ -70,7 +66,6 @@ $(document).ready(function()
     </xsl:for-each>
 
 
-    <!-- BUSINESS PROCESS SUB-MENU -->
     <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='business']/value"/></td></tr>
     <xsl:for-each select="//navigation/business/button[@status='active']">
         <xsl:call-template name="button">
@@ -80,7 +75,6 @@ $(document).ready(function()
     </xsl:for-each>
 
 
-    <!-- IMPORT / EXPORT -->
     <tr>
         <td class="menu-sub-sub-selected">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key='import-export']/value"/>
@@ -92,7 +86,6 @@ $(document).ready(function()
             <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
         </xsl:call-template>
     </xsl:for-each>
-    <!-- SETUP -->
     <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='setup']/value"/></td></tr>
     <xsl:for-each select="//navigation/setup/button[@status='active']">
         <xsl:call-template name="button">
@@ -114,6 +107,7 @@ $(document).ready(function()
         </td>
     </tr>
 </table>
+-->
 </xsl:template>
 
 <xsl:template name="button">
