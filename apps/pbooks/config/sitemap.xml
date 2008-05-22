@@ -516,7 +516,7 @@ This makes it easier to maintain persistence. -->
     <map:xml src="data/xml/account_types.xml"/>
     <map:query src="data/sql/account_groups_get_all.xml"/>
     <map:query src="data/sql/account_groups_get_family_tree.xml"/>
-    <map:action type="xsl" params="templates/xsl/account_groups_xml.xsl,my_account_groups"/>
+    <map:action type="xsl" params="templates/xml/account_groups.xml.xsl,my_account_groups"/>
     <map:action type="rawxml" params="my_account_groups"/>
     <map:xsl src="templates/xsl/account_groups.xsl" />
 </map:gate>
@@ -544,9 +544,9 @@ This makes it easier to maintain persistence. -->
     <map:xml src="data/xml/account_types.xml"/>
     <map:query src="data/sql/account_groups_get_all.xml"/>
     <map:query src="data/sql/account_groups_get_family_tree.xml"/>
-    <map:action type="xsl" params="templates/xsl/account_groups_xml.xsl,my_account_groups"/>
+    <map:action type="xsl" params="templates/xml/account_groups.xml.xsl,my_account_groups"/>
     <map:action type="rawxml" params="my_account_groups"/>
-    <map:action type="xsl" params="templates/xsl/account_sub_groups_xml.xsl,account_sub_groups"/>
+    <map:action type="xsl" params="templates/xml/account_sub_groups.xml.xsl,account_sub_groups"/>
     <map:action type="rawxml" params="account_sub_groups"/>
     <map:query src="data/sql/account_groups_get_by_id.xml"/>
     <map:query src="data/sql/account_groups_get_accounts.xml"/>
@@ -876,7 +876,7 @@ files. -->
 
 <map:gate name="xml-sitemap">
     <map:xml src="config/sitemap.xml"/>
-    <map:xsl src="templates/xsl/xml-sitemap.xsl"/>
+    <map:xsl src="templates/xml/sitemap.xml.xsl"/>
 </map:gate>
 
 </map:sitemap>
