@@ -867,9 +867,9 @@ files. -->
     <map:action type="header" params="Content-Type,text/plain"/>
     <map:raw src="INSTALL" />
 </map:gate>
-<map:gate name="themed-css" cache="0" client_cache="120">
+<map:gate name="dynamic-css" cache="0" client_cache="120">
     <map:action type="header" params="Content-Type,text/css"/>
-    <map:raw src="templates/themes/{//theme}/pbooks-1.css" />
+    <map:xsl src="templates/css/dynamic.css.xsl"/>
 </map:gate>
 
 
