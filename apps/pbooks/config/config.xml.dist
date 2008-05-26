@@ -8,15 +8,15 @@ and overlapping information will override settings in the main configuration fil
         <default_icon_set>s/images/icons/famfamfam/</default_icon_set>
         <default_invoice_print_vertical>-22</default_invoice_print_vertical>
     </defaults>
-    <plugins>
+    <extensions>
         <dev_buffer>
             <placement>prepend</placement>
-            <source>&includepath;plugins/dev_buffer/dev_buffer.php</source>
+            <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
             <excludes>themed-css,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
         </dev_buffer>
         <nx_auth>
             <placement>prepend</placement>
-            <source>&includepath;plugins/nx_auth.php</source>
+            <source>&includepath;extensions/nx_auth.php</source>
             <login>auth.php?nid=login</login>
         </nx_auth>
         <!--
@@ -28,5 +28,5 @@ and overlapping information will override settings in the main configuration fil
             <compress>0</compress>
         </nx_cache>
         -->
-    </plugins>
+    </extensions>
 </config>
