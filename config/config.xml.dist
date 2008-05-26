@@ -26,7 +26,7 @@ used for a single or several applications. -->
     </datasource>
 
     <!-- AUTHENTICATION-->
-    <auth>       
+    <auth>
         <expire>0</expire>
         <idle>0</idle>
     </auth>
@@ -40,23 +40,21 @@ used for a single or several applications. -->
 
     <!-- FLOW -->
     <flow name="www">
-        <globals>PG</globals>
-        <request>PGFR</request>
+        <request>PGFSV</request>
     </flow>
     <flow name="dev">
-        <globals>PGC</globals>
-        <request>PGFR</request>
+        <request>PGFSV</request>
     </flow>
 
 
 	<modes>
 		<dev/>
 	</modes>
-	
+
 	<domain>
 		<server_name mode="dev">&server_name;</server_name>
 	</domain>
-    
+
     <!-- PATH SETTINGS -->
     <path>
         <base>&includepath;</base>
