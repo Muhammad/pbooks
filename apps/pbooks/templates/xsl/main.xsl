@@ -35,7 +35,37 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </div>
 </xsl:if>
 <xsl:if test="not(/__ROOT__/_get/print='true')">
-    <xsl:call-template name="default"/>
+
+<div id="container">
+<div id="capsule">
+<div id="leftcol">
+    <a href="index.php?nid=welcome">
+        <img src="{/__ROOT__/runtime/top_left_logo}" border="0" alt="PBooks Logo"/>
+    </a>
+    <xsl:if test="not(//_get/nid='login')
+    and not(//_get/nid='logout')
+    and not(//_get/nid='development-data-generator')
+    and not(contains(//_get/nid,'user'))
+    and not(//_get/nid='group')
+    and not(//_get/nid='group/edit')
+    and not(contains(//_get/nid,'role'))">
+        <xsl:call-template name="accounting-menu"/>
+    </xsl:if>
+</div>
+<div id="header">
+
+    <xsl:call-template name="header"/>
+    <!-- This is where the page content appears -->
+    <xsl:comment>page content</xsl:comment>
+    <div id="content">
+    <xsl:call-template name="content"/>
+    </div>
+</div>
+</div>
+</div>
+
+
+
 </xsl:if>
 </xsl:template>
 

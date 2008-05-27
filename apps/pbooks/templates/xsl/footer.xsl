@@ -23,7 +23,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="footer">
-
 <div id="foot">
 <xsl:comment>You must keep this copyright notice intact.</xsl:comment>
     <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">

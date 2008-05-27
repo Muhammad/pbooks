@@ -23,14 +23,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="header">
-    <div id="top-block">&#160;
-        <div id="company-name">
-            <xsl:value-of select="//company_name"/>
-        </div>
-        <div id="print-button"></div>
-        <h1 class="page-title">
-            <xsl:value-of select="//i18n/labels/label[key=//_get/nid]/value"/>
-        </h1>
+<div id="top-block">&#160;
+    <div id="company-name">
+        <xsl:value-of select="//company_name"/>
     </div>
+    <div id="print-button"></div>
+    <h1 class="page-title">
+        <xsl:value-of select="//i18n/labels/label[key=//_get/nid]/value"/>
+    </h1>
+</div>
 </xsl:template>
 </xsl:stylesheet>
