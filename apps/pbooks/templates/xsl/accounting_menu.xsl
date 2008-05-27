@@ -23,89 +23,89 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="accounting-menu">
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">table-menu</xsl:with-param>
+</xsl:call-template>
 <table cellpadding="0" cellspacing="0" border="0" width="120">
-    <tr>
-        <td class="menu-sub-sub-selected">
-        <a href="{/__ROOT__/runtime/link_prefix}welcome">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='main_menu']/value"/>
-        </a>
-        </td>
-    </tr>
-    <!--  MAIN -->
-    <xsl:for-each select="//navigation/main_menu/button[@status='active']">
+
+
+    <xsl:for-each select="//menu/item[not(@active=0)]">
         <xsl:call-template name="button">
-            <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
-            <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
+            <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
+            <xsl:with-param name="target"><xsl:value-of select="url"/></xsl:with-param>
         </xsl:call-template>
     </xsl:for-each>
 
 
-    <!-- ACTIVITIES -->
-    <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='activities']/value"/></td></tr>
-    <xsl:for-each select="//navigation/activities/button[@status='active']">
-        <xsl:call-template name="button">
-            <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
-            <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
-        </xsl:call-template>
-    </xsl:for-each>
-
-
-    <!-- BUSINESS PROCESS SUB-MENU -->
-    <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='business']/value"/></td></tr>
-    <xsl:for-each select="//navigation/business/button[@status='active']">
-        <xsl:call-template name="button">
-            <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
-            <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
-        </xsl:call-template>
-    </xsl:for-each>
-
-
-    <!-- IMPORT / EXPORT -->
-    <tr>
-        <td class="menu-sub-sub-selected">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='import-export']/value"/>
-        </td>
-    </tr>
-    <xsl:for-each select="//navigation/import-export/button[@status='active']">
-        <xsl:call-template name="button">
-            <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
-            <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
-        </xsl:call-template>
-    </xsl:for-each>
-    <!-- SETUP -->
-    <tr><td class="menu-sub-sub-selected"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='setup']/value"/></td></tr>
-    <xsl:for-each select="//navigation/setup/button[@status='active']">
-        <xsl:call-template name="button">
-            <xsl:with-param name="key"><xsl:value-of select="."/></xsl:with-param>
-            <xsl:with-param name="target"><xsl:value-of select="@target"/></xsl:with-param>
-        </xsl:call-template>
-    </xsl:for-each>
-    
-    <tr>
-        <td class="menu-sub-sub-selected">
-            Sessions
-        </td>
-    </tr>
-    <tr>
-        <td class="menu-sub">
-            <a href="{/__ROOT__/runtime/link_prefix}logout">
-            Logout
-            </a>
-        </td>
-    </tr>
 </table>
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_end">table-menu</xsl:with-param>
+</xsl:call-template>
 </xsl:template>
 
 <xsl:template name="button">
-    <xsl:param name="key"/> 
-    <xsl:param name="target"/> 
+    <xsl:param name="key"/>
     <tr>
-        <td class="menu-sub">
-            <a href="{/__ROOT__/runtime/link_prefix}{$target}" id="{$key}">
-            <xsl:if test="//show_tool_tips='yes'"><xsl:attribute name="title"><xsl:value-of select="/__ROOT__/i18n/labels/label[key=$key]/description" /></xsl:attribute></xsl:if>
+        <td class="menu-sub-selected">
             <xsl:value-of select="/__ROOT__/i18n/labels/label[key=$key]/value"/>
-            </a>
         </td>
     </tr>
+    <xsl:for-each select="//menu/item[key=$key]/item">
+    <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
+    <tr>
+        <td class="menu-sub">
+        <a href="{//runtime/link_prefix}{url}" id="{key}">
+            <xsl:if test="//show_tool_tips='yes'">
+                <xsl:attribute name="title">
+                    <xsl:value-of select="/__ROOT__/i18n/labels/label[key=$key]/description"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="//labels/label[key=$my_key]/value"/>
+        </a>
+        </td>
+    </tr>
+    </xsl:for-each>
+</xsl:template>
+
+
+
+<xsl:template name="main-menu">
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">main-menu</xsl:with-param>
+</xsl:call-template>
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#top-main-menu').clickMenu();
+    });
+    </script>
+	<ul id="top-main-menu">
+    <xsl:for-each select="//menu/item[not(@active=0)]">
+    <xsl:call-template name="list-button">
+        <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
+    </xsl:call-template>
+    </xsl:for-each>
+    </ul>
+    
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_end">main-menu</xsl:with-param>
+</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="list-button">
+    <xsl:param name="key"/>
+    <li>
+        <xsl:value-of select="//labels/label[key=$key]/value"/>
+        <ul>
+        <xsl:for-each select="//menu/item[key=$key]/item">
+        <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
+            <li>
+            <a href="{//runtime/link_prefix}{url}" id="{key}">
+                <xsl:value-of select="//labels/label[key=$my_key]/value"/>
+            </a>
+            </li>
+        </xsl:for-each>
+        </ul>
+    </li>
 </xsl:template>
 </xsl:stylesheet>
