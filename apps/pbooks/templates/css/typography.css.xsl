@@ -25,5 +25,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="typography">
 
+body {
+    font: small sans-serif;
+}
+
+
 </xsl:template>
 </xsl:stylesheet>

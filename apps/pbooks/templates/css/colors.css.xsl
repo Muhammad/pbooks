@@ -25,5 +25,34 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="colors">
 
+#foot {
+    background: #555;
+    color: #FFF;
+}
+
+
+.row0 td {
+	background-color: #FFFFFF;
+}
+
+.row1 td {
+	background-color: #EEEEEE;
+}
+
+.row2 td {
+	background-color: #DDDDDD;
+    margin: 1px;
+}
+.row2:hover td {
+    background-color: #CCFFFF;
+}
+
+.row3 td {
+	background-color: #f0f0f0;
+}
+
+.row4 td {
+	background-color: #CCC;
+}
 </xsl:template>
 </xsl:stylesheet>

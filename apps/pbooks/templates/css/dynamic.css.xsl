@@ -58,66 +58,40 @@ Fifth Floor, Boston, MA 02110-1301 USA
 </xsl:call-template>
 
 
-/* ALL OLD CSS - SHOULD BE REPLACED ASAP */
-
-html, body {
-    color: black;
-    background: white;
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-family: Arial, Helvetica, sans-serif; 
-    min-height: 600px;
-    font: small sans-serif;
-}
-
-
 .page-title {
-    padding: 10px; color: #EEE; font-size: 18px; 
+    padding: 10px;
+    color: #EEE;
+    font-size: 18px;
     margin-top: -8px;
 }
 
-#content {
-    padding: 10px;
-}
 
-#foot {
-    width: 100%; display: block; background: #555; text-align: center; color: #FFF; line-height: 20px;
-}
 
-#journal-entry-form table
-{
+#journal-entry-form table {
      width: 100%;
      text-align: center;
      font-size: 12px;
 }
 
-#journal-entry-form tr td
-{
+#journal-entry-form tr td {
      text-align: left;
      padding: 5px;
 }
 
-.journal-table
-{
+.journal-table {
      border: 0;
      width: 100%;
-     padding: 2px; 
+     padding: 2px;
      border-spacing: 0px;
 }
 
-.journal-table thead th
-{
+.journal-table thead th {
     background-color: #EEEEEE;
     font-weight: bold;
     text-align: left;
 }
 
-.journal-table tbody tr td
-{
+.journal-table tbody tr td {
     height: 24px;
 	white-space: nowrap;
 	border-style: solid;
@@ -128,80 +102,49 @@ html, body {
     vertical-align: middle;
 }
 
-.journal-table tbody tr td.separator
-{
+.journal-table tbody tr td.separator {
     height: 4px;
     background-color: #BBBBBB;
 	border-color: #555555;
     border-bottom-width: 1px;
 }
 
-.journal-table tbody tr td.row0
-{
+.journal-table tbody tr td.row0 {
 	border-color: #FFFFFF;
 }
 
-.journal-table tbody tr td.row1
-{
+.journal-table tbody tr td.row1 {
 	border-color: #EEEEEE;
 }
 
-.journal-data-wrap td
-{
+.journal-data-wrap td {
 	white-space: normal;
 }
-/* alternate colored rows */
-.row0 td
-{
-	background-color: #FFFFFF;
-}
 
-.row1 td
-{
-	background-color: #EEEEEE;
-}
-
-.row2 td
-{
-	background-color: #DDDDDD;
-    margin: 1px;
-    
-}
-.row2:hover td { background-color : #CCFFFF }
-
-.row3 td 
-{
-	background-color: #f0f0f0;
-}
-
-.row4 td 
-{
-	background-color: #CCC;
-}
 
 a {
- color: #222222; text-decoration: none;
+    color: #222222;
+    text-decoration: none;
 }
 
 a:visited {
- color: #222222; text-decoration: none;
+    color: #222222;
+    text-decoration: none;
 }
 
 a:hover {
- color: #44BBDD; text-decoration: underline;
+    color: #44BBDD;
+    text-decoration: underline;
 }
 
-.menu-main
-{
+.menu-main{
 	font-style: normal;
 	line-height: 18px;
 	font-weight: bold;
 	color: black;
 }
 
-.basic-table-cell, .basic-table-cell-indent
-{
-
+.basic-table-cell, .basic-table-cell-indent{
     align: left;
     color: black;
     font-style: normal;
@@ -210,15 +153,13 @@ a:hover {
     padding: 2px;
 }
 
-.basic-table-cell-indent
-{
+.basic-table-cell-indent {
 	border-left-color: #FFFFFF;
     border-left-width: 20px;
 	text-indent:0px;
 }
 
-.menu-sub, .menu-sub-selected, .menu-sub-sub-selected, .menu-sub-sub-selected-gray
-{
+.menu-sub, .menu-sub-selected, .menu-sub-sub-selected, .menu-sub-sub-selected-gray {
     align: left;
     color: black;
 	text-indent:0px;
@@ -227,8 +168,7 @@ a:hover {
     padding: 5px;
 }
 
-.menu-sub-selected
-{
+.menu-sub-selected{
     background-color: #99CCCC;
 }
 
@@ -244,11 +184,8 @@ a:hover {
     background-color: #DDDDDD;
 }
 
-.application-table, .table-menu, .form-table, .journal-table
-{
-}
 
-.data-table td { 
+.data-table td {
     border-bottom-width: 1px;
     border-bottom-color: white;
 	border-bottom-style: solid;
@@ -259,22 +196,37 @@ a:hover {
 }
 
 .error {
-    font-size: 104%; color: red; border: 1px; border-color: #FF6699; border-style: solid; background: #FFCCFF; line-height: 32px;
+    font-size: 104%;
+    color: red;
+    border: 1px;
+    border-color: #FF6699;
+    border-style: solid;
+    background: #FFCCFF;
+    line-height: 32px;
     text-align: center;
 }
 
 .error img {
-    margin-bottom: -3px; padding-right: 5px;
+    margin-bottom: -3px;
+    padding-right: 5px;
 }
 
 .myerror {
-    border: 1px; border-color: #FF6699; border-style: solid;
+    border: 1px;
+    border-color: #FF6699;
+    border-style: solid;
 }
 
 .generic-box {
-    border: 2px; border-color: #BBB; border-style: solid; text-align: center;
-    margin-top: 20px; padding: 4px; 
-    display: table; margin-left: auto; margin-right: auto;
+    border: 2px;
+    border-color: #BBB;
+    border-style: solid;
+    text-align: center;
+    margin-top: 20px;
+    padding: 4px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .generic-button {
@@ -284,17 +236,22 @@ a:hover {
 
 .generic-button a {
     padding: 2px 5px 2px 5px;
-    border: 2px; border-style: solid;
+    border: 2px;
+    border-style: solid;
     border-color: #BBB;
     text-align: center;
 }
 
 .generic-button img {
-    margin-bottom: -4px; margin-right: 6px;
+    margin-bottom: -4px;
+    margin-right: 6px;
 }
 
 a.generic-button {
-    padding: 2px 5px 2px 5px; border: 2px; border-style: solid; border-color: #BBB;
+    padding: 2px 5px 2px 5px;
+    border: 2px;
+    border-style: solid;
+    border-color: #BBB;
     text-align: center;
 }
 
