@@ -41,5 +41,28 @@ body {
 	white-space: normal;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.journal-table {
+     border: 0;
+     width: 100%;
+     padding: 2px;
+     border-spacing: 0px;
+}
+
+.journal-table thead th {
+    font-weight: bold;
+}
+
 </xsl:template>
 </xsl:stylesheet>

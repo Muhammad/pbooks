@@ -29,14 +29,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="footer.xsl"/>
 <xsl:include href="source_spacer.xsl"/>
 <xsl:template name="main">
-<xsl:if test="/__ROOT__/_get/print='true'">
-    <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';"
-    style="padding: 20px; width: 600px;">
-    <xsl:call-template name="content"/>
-    </div>
-</xsl:if>
-<xsl:if test="not(/__ROOT__/_get/print='true')">
 
+
+<xsl:if test="not(/__ROOT__/_get/print='true')">
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">main</xsl:with-param>
+</xsl:call-template>
 <div id="main">
     <div id="leftcol">
         <a href="{//link_prefix}welcome">
@@ -59,11 +57,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </div>
     <xsl:call-template name="footer"/>
 </div>
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_end">main</xsl:with-param>
+</xsl:call-template>
+</xsl:if>
 
 
 
 
+
+
+
+<xsl:if test="/__ROOT__/_get/print='true'">
+    <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';"
+    style="padding: 20px; width: 600px;">
+    <xsl:call-template name="content"/>
+    </div>
 </xsl:if>
 </xsl:template>
+
 
 </xsl:stylesheet>

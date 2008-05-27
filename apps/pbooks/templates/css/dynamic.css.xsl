@@ -59,19 +59,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 
-.journal-table {
-     border: 0;
-     width: 100%;
-     padding: 2px;
-     border-spacing: 0px;
-}
-
-.journal-table thead th {
-    background-color: #EEEEEE;
-    font-weight: bold;
-    text-align: left;
-}
-
 .journal-table tbody tr td {
     height: 24px;
 	white-space: nowrap;
@@ -94,27 +81,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 
-a {
-    color: #222222;
-    text-decoration: none;
-}
 
-a:visited {
-    color: #222222;
-    text-decoration: none;
-}
 
-a:hover {
-    color: #44BBDD;
-    text-decoration: underline;
-}
-
-.menu-main{
-	font-style: normal;
-	line-height: 18px;
-	font-weight: bold;
-	color: black;
-}
 
 .basic-table-cell, .basic-table-cell-indent{
     align: left;
@@ -125,36 +93,6 @@ a:hover {
     padding: 2px;
 }
 
-.basic-table-cell-indent {
-	border-left-color: #FFFFFF;
-    border-left-width: 20px;
-	text-indent:0px;
-}
-
-.menu-sub, .menu-sub-selected, .menu-sub-sub-selected, .menu-sub-sub-selected-gray {
-    align: left;
-    color: black;
-	text-indent:0px;
-	white-space: nowrap;
-	background: #CCC;
-    padding: 5px;
-}
-
-.menu-sub-selected{
-    background-color: #99CCCC;
-}
-
-.menu-sub-sub-selected
-{
-    background-color: #BBB;
-    color: #444;
-}
-
-.menu-sub-sub-selected-gray
-{
-    font-weight: bold;
-    background-color: #DDDDDD;
-}
 
 
 .data-table td {
@@ -199,32 +137,6 @@ a:hover {
     display: table;
     margin-left: auto;
     margin-right: auto;
-}
-
-.generic-button {
-    text-align: center;
-    margin-left: 5px;
-}
-
-.generic-button a {
-    padding: 2px 5px 2px 5px;
-    border: 2px;
-    border-style: solid;
-    border-color: #BBB;
-    text-align: center;
-}
-
-.generic-button img {
-    margin-bottom: -4px;
-    margin-right: 6px;
-}
-
-a.generic-button {
-    padding: 2px 5px 2px 5px;
-    border: 2px;
-    border-style: solid;
-    border-color: #BBB;
-    text-align: center;
 }
 
 

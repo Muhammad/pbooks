@@ -70,5 +70,33 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	border-color: #EEEEEE;
 }
 
+.menu-sub-selected {
+    background-color: #AAA;
+}
+.menu-sub {
+	background: #CCC;
+}
+a {
+    color: #222222;
+}
+
+a:visited {
+    color: #222222;
+}
+
+a:hover {
+    color: #44BBDD;
+}
+
+
+.generic-button a {
+    border-color: #BBB;
+}
+
+a.generic-button {
+    border-color: #BBB;
+}
+
+
 </xsl:template>
 </xsl:stylesheet>
