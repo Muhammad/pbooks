@@ -30,12 +30,15 @@ body {
 }
 
 .page-title {
-    padding: 10px;
     font-size: 18px;
-    margin-top: -8px;
 }
+
 #journal-entry-form table {
      font-size: 12px;
+}
+
+.journal-data-wrap td {
+	white-space: normal;
 }
 
 </xsl:template>

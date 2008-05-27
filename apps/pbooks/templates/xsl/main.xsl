@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="footer.xsl"/>
 <xsl:template name="main">
 <xsl:if test="/__ROOT__/_get/print='true'">
-    <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';" 
+    <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';"
     style="padding: 20px; width: 600px;">
     <xsl:call-template name="content"/>
     </div>
@@ -62,6 +62,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </div>
 </div>
 </div>
+
+    <xsl:call-template name="footer"/>
 </div>
 
 

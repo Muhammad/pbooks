@@ -103,32 +103,70 @@ table.simpletable thead th, table.simpletable tbody tr td {
 
 /* Check form */
 #check {
-    width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
+    width: 500px;
+    height: 200px;
+    border: 1px;
+    border-style: solid;
+    padding: 5px;
 }
 
-#check_date {float: left}
-#check_number { float: right; }
-#check_payee { margin-top: 60px; }
-#check_memo { margin-top: 80px; }
+#check_date {
+    float: left;
+}
+#check_number {
+    float: right;
+}
+#check_payee {
+    margin-top: 60px;
+}
+#check_memo {
+    margin-top: 80px;
+}
 
 /* Deposit slip */
 #deposit {
-width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
+    width: 500px;
+    height: 200px;
+    border: 1px;
+    border-style: solid;
+    padding: 5px;
 }
 
-#deposit_date {float: left}
-#deposit_number { float: right; }
-#deposit_payee { margin-top: 40px; float:right; }
-#deposit_memo { float:right;}
+#deposit_date {
+    float: left;
+}
+#deposit_number {
+    float: right;
+}
+#deposit_payee {
+    margin-top: 40px;
+    float:right;
+}
+#deposit_memo {
+    float:right;
+}
 
 /* Bill form */
-#bill { 
-width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
+#bill {
+    width: 500px;
+    height: 200px;
+    border: 1px;
+    border-style: solid;
+    padding: 5px;
 }
-#bill_date {float: left}
-#bill_number { float: right; }
-#bill_payee { margin-top: 60px; float:right; }
-#bill_memo { margin-top: 120px; }
+#bill_date {
+    float: left;
+}
+#bill_number {
+    float: right;
+}
+#bill_payee {
+    margin-top: 60px;
+    float:right;
+}
+#bill_memo {
+    margin-top: 120px;
+}
 
 
 
@@ -141,6 +179,11 @@ width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
 #journal-entry-form tr td {
      text-align: left;
      padding: 5px;
+}
+
+.page-title {
+    padding: 10px;
+    margin-top: -8px;
 }
 </xsl:template>
 </xsl:stylesheet>

@@ -57,5 +57,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 .row4 td {
 	background-color: #CCC;
 }
+
+.journal-table tbody tr td.row0 {
+	border-color: #FFFFFF;
+}
+
+.journal-table tbody tr td.row1 {
+	border-color: #EEEEEE;
+}
+
 </xsl:template>
 </xsl:stylesheet>
