@@ -130,5 +130,17 @@ width: 500px; height: 200px; border: 1px; border-style: solid; padding: 5px;
 #bill_payee { margin-top: 60px; float:right; }
 #bill_memo { margin-top: 120px; }
 
+
+
+
+#journal-entry-form table {
+     width: 100%;
+     text-align: center;
+}
+
+#journal-entry-form tr td {
+     text-align: left;
+     padding: 5px;
+}
 </xsl:template>
 </xsl:stylesheet>

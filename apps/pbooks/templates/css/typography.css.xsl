@@ -29,6 +29,14 @@ body {
     font: small sans-serif;
 }
 
+.page-title {
+    padding: 10px;
+    font-size: 18px;
+    margin-top: -8px;
+}
+#journal-entry-form table {
+     font-size: 12px;
+}
 
 </xsl:template>
 </xsl:stylesheet>
