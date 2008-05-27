@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="header.xsl"/>
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:include href="footer.xsl"/>
+<xsl:include href="source_spacer.xsl"/>
 <xsl:template name="main">
 <xsl:if test="/__ROOT__/_get/print='true'">
     <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';"
@@ -39,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <div id="container">
 <div id="capsule">
 <div id="leftcol">
-    <a href="index.php?nid=welcome">
+    <a href="{//link_prefix}welcome">
         <img src="{/__ROOT__/runtime/top_left_logo}" border="0" alt="PBooks Logo"/>
     </a>
     <xsl:if test="not(//_get/nid='login')

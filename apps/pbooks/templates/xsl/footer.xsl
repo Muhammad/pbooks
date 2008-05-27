@@ -23,7 +23,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="footer">
-<div id="foot">
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">footer</xsl:with-param>
+</xsl:call-template>
+<div id="footer">
+<footer>
 <xsl:comment>You must keep this copyright notice intact.</xsl:comment>
     <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">
         PBooks</a> version
@@ -39,6 +43,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
             Download source
         </a>.
     <!-- Link to download source, as required by AGPL -->
+</footer>
 </div>
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_end">footer</xsl:with-param>
+</xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>
