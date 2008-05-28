@@ -105,7 +105,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <a href="{$my_link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
                     onclick="return confirm('Are you sure you want to delete this ledger 
                     transaction?')">
-                    <img src="{/_R_/runtime/path_prefix}{//icon_set}delete.png" alt="x" border="0"/>
+                    <img src="{/_R_/runtime/path_prefix}{/_R_/icon_set}delete.png" alt="x" border="0"/>
                 </a>
                 &#160;
                 <!-- create new matching entry -->
@@ -115,7 +115,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                         <xsl:value-of select="/_R_/tool_tips[@lang=/_R_/selected_lang]/tip[key='create_entry']/value" />
                     </xsl:attribute>
                     </xsl:if>
-                    <img src="{/_R_/runtime/path_prefix}{//icon_set}add.png" alt="+" border="0"/>
+                    <img src="{/_R_/runtime/path_prefix}{/_R_/icon_set}add.png" alt="+" border="0"/>
                 </a>
             </xsl:otherwise>
         </xsl:choose>

@@ -38,14 +38,14 @@ Form input elements have attributes like required="1" if they are to be validate
 -->
 <xsl:if test="//get_account/id">
     <input type="hidden" name="my_action" value="update"/>
-    <input type="hidden" value="{//get_account/id}" name="account_id"/>
+    <input type="hidden" value="{/_R_/get_account/id}" name="account_id"/>
 </xsl:if>
 <xsl:if test="not(//get_account/id)">
     <input type="hidden" name="my_action" value="create"/>
 </xsl:if>
 
 <!-- If there is already an account with the same name, display error. -->
-<xsl:if test="//account_duplicate_check">
+<xsl:if test="/_R_/account_duplicate_check">
 <div class="error" id="my_error">
     <img src="{/_R_/runtime/path_prefix}{//icon_set}/exclamation.png"/>
     Error: <xsl:value-of select="//error[key='account_duplicate']/value"/>

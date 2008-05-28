@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <div style="padding: 30px;">
 <form method="post">
 <table>
-    <xsl:for-each select="//user_options/option">
+    <xsl:for-each select="/_R_/user_options/option">
         <xsl:call-template name="option_row"/>
     </xsl:for-each>
 </table>
@@ -49,14 +49,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
                         <xsl:value-of select="default"/>
                     </xsl:if>
                     <xsl:if test="not(//option_get[option_key=$my_option]/option_value='NULL' or //option_get[option_key=$my_option]/option_value='')">
-                        <xsl:value-of select="//option_get[option_key=$my_option]/option_value"/>
+                        <xsl:value-of select="/_R_/option_get[option_key=$my_option]/option_value"/>
                     </xsl:if>
                 </xsl:attribute>
             </input>
             </xsl:if>
             <xsl:if test="option_type='checkbox'">
             <input type="{option_type}" name="{option_key}">
-                <xsl:if test="//option_get[option_key=$my_option]/option_value='on'">
+                <xsl:if test="/_R_/option_get[option_key=$my_option]/option_value='on'">
                     <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
             </input>
