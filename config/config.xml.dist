@@ -41,9 +41,11 @@ used for a single or several applications. -->
     <!-- FLOW -->
     <flow name="www">
         <request>PGFSV</request>
+        <my_doc_root>_R_</my_doc_root>
     </flow>
     <flow name="dev">
         <request>PGFSV</request>
+        <my_doc_root>_R_</my_doc_root>
     </flow>
 
 
