@@ -32,11 +32,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <a href="http://www.pbooks.org/" target="_blank" style="color: #FFF;">
         PBooks</a> version
         <xsl:value-of select="//pbooks_code_version"/>,
-        DB Version: <xsl:value-of select="/__ROOT__/runtime/db_version"/>,
+        DB Version: <xsl:value-of select="/_R_/runtime/db_version"/>,
         Copyright 
         <a href="http://www.savonix.com" target="_blank" style="color: #FFF;">
             Savonix</a>, all rights reserved. License:
-        <a style="color: #FFF;" href="{/__ROOT__/runtime/link_prefix}license">
+        <a style="color: #FFF;" href="{/_R_/runtime/link_prefix}license">
             AGPL v3
         </a>.
         <a style="color: #FFF;" href="http://www.pbooks.org/blog/download/">

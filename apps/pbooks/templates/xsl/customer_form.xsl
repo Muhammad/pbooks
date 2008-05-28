@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- The form is validated via a javascript library included in the end of main.xsl. 
 Form input elements have attributes like required="1" if they are to be validated. -->
-<form method="post" action="{//request_uri}"
+<form method="post"
     onSubmit="return validateStandard(this, 'myerror');">
 
 <!-- 
@@ -47,7 +47,7 @@ Form input elements have attributes like required="1" if they are to be validate
 <!-- If there is already an account with the same name, display error. -->
 <xsl:if test="//account_duplicate_check">
 <div class="error" id="my_error">
-    <img src="{//path_prefix}{//icon_set}/exclamation.png"/>
+    <img src="{/_R_/runtime/path_prefix}{//icon_set}/exclamation.png"/>
     Error: <xsl:value-of select="//error[key='account_duplicate']/value"/>
 </div>
 </xsl:if>
@@ -59,7 +59,7 @@ Form input elements have attributes like required="1" if they are to be validate
 
 <table class="form-table" cellpadding="10">
 	<tr>
-		<td><xsl:value-of select="//label[key='customer_name']/value"/>:</td>
+		<td><xsl:value-of select="/_R_/i18n/label[key='customer_name']/value"/>:</td>
 		<td><input type="text" name="name" value="{//get_account/name|//_post/name}"
         required="1" err="{//error[key='missing_account_name']/value}"/></td>
 	</tr>
@@ -73,14 +73,14 @@ Form input elements have attributes like required="1" if they are to be validate
     <xsl:for-each select="//account_meta/meta/meta_key[@category='address']">
         <xsl:variable name="my_option"><xsl:value-of select="."/></xsl:variable>
         <tr>
-            <td><xsl:value-of select="//label[key=$my_option]/value"/>: </td>
+            <td><xsl:value-of select="/_R_/i18n/label[key=$my_option]/value"/>: </td>
             <td><input type="text" name="{$my_option}" value="{//account_meta_get[meta_key=$my_option]/meta_value}"/></td>
         </tr>
     </xsl:for-each>
     <!-- END META -->
 	<tr>
 		<td>
-            <xsl:value-of select="//label[key='account_number']/value"/>:
+            <xsl:value-of select="/_R_/i18n/label[key='account_number']/value"/>:
         </td>
 		<td>
             <input type="text" name="account_number" required="1"
@@ -90,7 +90,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
 	<tr>
 		<td>
-            <xsl:value-of select="//label[key='desc']/value"/>:
+            <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>:
         </td>
 		<td>
             <textarea name="description" cols="40" rows="6">
@@ -100,7 +100,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
     <tr>
 		<td>
-            <xsl:value-of select="//label[key='group']/value"/>:
+            <xsl:value-of select="/_R_/i18n/label[key='group']/value"/>:
         </td>
         <td>
         <select name="group_id">
@@ -118,7 +118,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
     <tr>
 		<td>
-            <xsl:value-of select="//label[key='hide']/value"/>:
+            <xsl:value-of select="/_R_/i18n/label[key='hide']/value"/>:
         </td>
 		<td>
             <input type="checkbox" name="hide">
@@ -132,7 +132,7 @@ Form input elements have attributes like required="1" if they are to be validate
 <div style="text-align: center; margin-top: 20px;">
     <input type="submit" value="Save" name="submit" />
     <input type="button" value="Cancel"
-        onclick="window.location.href='{/__ROOT__/runtime/link_prefix}customer-accounts'"/>
+        onclick="window.location.href='{/_R_/runtime/link_prefix}customer-accounts'"/>
 </div>
 </form>
 </xsl:template>

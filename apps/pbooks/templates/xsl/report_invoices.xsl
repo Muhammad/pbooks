@@ -31,11 +31,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 <!-- Net change -->
 <div class="generic-button" style="float: right;">
-    <b><xsl:value-of select="/__ROOT__/i18n/labels/label[key='net_change']/value"/></b>: 
+    <b><xsl:value-of select="/_R_/i18n/label[key='net_change']/value"/></b>: 
     <xsl:value-of select="
         format-number(
             sum(
-                /__ROOT__/get_some_business_objects/invoice_total
+                /_R_/get_some_business_objects/invoice_total
                 ),'#########.##')
                 "/>
 </div>
@@ -46,17 +46,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <table>
 
     <tr>
-	<td><xsl:if test="/__ROOT__/_get/month >= 1"><a><xsl:attribute name="href"><xsl:value-of select="//link_prefix"/>reports-invoices&amp;month=<xsl:if test="//_get/month &lt;= 10">0</xsl:if><xsl:value-of select="/__ROOT__/_get/month - 1"/></xsl:attribute>
-	<img src="{//path_prefix}/images/buttons/out.gif"/></a></xsl:if>
-    <xsl:if test="not(/__ROOT__/_get/month >= 1)"><img src="{//path_prefix}/images/buttons/out_d.gif"/></xsl:if></td>
+	<td><xsl:if test="/_R_/_get/month >= 1"><a><xsl:attribute name="href"><xsl:value-of select="/_R_/runtime/link_prefix"/>reports-invoices&amp;month=<xsl:if test="/_R_/_get/month &lt;= 10">0</xsl:if><xsl:value-of select="/_R_/_get/month - 1"/></xsl:attribute>
+	<img src="{/_R_/runtime/path_prefix}/images/buttons/out.gif"/></a></xsl:if>
+    <xsl:if test="not(/_R_/_get/month >= 1)"><img src="{/_R_/runtime/path_prefix}/images/buttons/out_d.gif"/></xsl:if></td>
 
-        <td><xsl:value-of select="//label[key='month']/value"/>:</td>
+        <td><xsl:value-of select="/_R_/i18n/label[key='month']/value"/>:</td>
         <td>
             <select name="month"  onchange="this.form.submit();">
             <option value="%">All</option>
             <xsl:for-each select="//months/option">
                 <option value="{@id}">
-                    <xsl:if test="@id=/__ROOT__/_get/month">
+                    <xsl:if test="@id=/_R_/_get/month">
                         <xsl:attribute name="selected">selected</xsl:attribute>
                     </xsl:if>
                     <xsl:value-of select="@fullname"/>
@@ -65,12 +65,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</select>
         </td>
 	<td>
-    <xsl:if test="/__ROOT__/_get/month &gt;= 12"><img src="{//path_prefix}/images/buttons/in_d.gif"/></xsl:if>
-	<xsl:if test="not(//_get/month)"><a href="{//link_prefix}reports-invoices&amp;month=01">
-	<img src="{//path_prefix}/images/buttons/in.gif"/></a></xsl:if>
-	<xsl:if test="(/__ROOT__/_get/month &lt; 12)"><a><xsl:attribute name="href"><xsl:value-of select="//link_prefix"/>reports-invoices&amp;month=<xsl:if test="//_get/month &lt; 9">0</xsl:if>
-	<xsl:value-of select="/__ROOT__/_get/month + 1"/></xsl:attribute>
-	<img src="{//path_prefix}/images/buttons/in.gif"/></a></xsl:if>
+    <xsl:if test="/_R_/_get/month &gt;= 12"><img src="{/_R_/runtime/path_prefix}/images/buttons/in_d.gif"/></xsl:if>
+	<xsl:if test="not(/_R_/_get/month)"><a href="{/_R_/runtime/link_prefix}reports-invoices&amp;month=01">
+	<img src="{/_R_/runtime/path_prefix}/images/buttons/in.gif"/></a></xsl:if>
+	<xsl:if test="(/_R_/_get/month &lt; 12)"><a><xsl:attribute name="href"><xsl:value-of select="/_R_/runtime/link_prefix"/>reports-invoices&amp;month=<xsl:if test="/_R_/_get/month &lt; 9">0</xsl:if>
+	<xsl:value-of select="/_R_/_get/month + 1"/></xsl:attribute>
+	<img src="{/_R_/runtime/path_prefix}/images/buttons/in.gif"/></a></xsl:if>
 	</td>
 
     </tr>
@@ -79,26 +79,26 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <table class="tablesorter" id="myInvoices">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='client']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='id']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='client']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='amount']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='date']/value"/></th>
     </tr>
     </thead>
     <tbody>
     <!-- LOOP -->
-    <xsl:for-each select="/__ROOT__/get_some_business_objects">
+    <xsl:for-each select="/_R_/get_some_business_objects">
     <xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
     <xsl:variable name="my_customer_id"><xsl:value-of select="customer_id"/></xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td id="{$my_entry_id}">
-            <a href="{/__ROOT__/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
+            <a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
             <xsl:value-of select="invoice_number"/></a>
             </td>
         <td><a href="#">
-        <xsl:value-of select="/__ROOT__/get_all_accounts[id=$my_customer_id]/name"/></a></td>
-        <td><a href="{/__ROOT__/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
+        <xsl:value-of select="/_R_/get_all_accounts[id=$my_customer_id]/name"/></a></td>
+        <td><a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="invoice_total"/></td>
         <td><xsl:value-of select="entry_datetime"/></td>
     </tr>
@@ -112,7 +112,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="
         format-number(
             sum(
-                /__ROOT__/get_some_business_objects/invoice_total
+                /_R_/get_some_business_objects/invoice_total
                 ),'#########.##')
                 "/>
         </td>

@@ -22,8 +22,6 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <i18n>
-<labels lang="en_US">
-
 <!-- Menu-->
 
     <label>
@@ -1194,5 +1192,4 @@ The text you paste in here should look something like this:
         <value>Create new journal entry based upon this transaction.</value>
         <description></description>
     </label>
-    </labels>
 </i18n>

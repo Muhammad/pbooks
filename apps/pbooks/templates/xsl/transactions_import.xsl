@@ -25,11 +25,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 
-<h2><xsl:value-of select="//label[key='import_csv']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='import_csv']/value"/></h2>
 
-<xsl:if test="/__ROOT__/_get/error">
+<xsl:if test="/_R_/_get/error">
 <div class="error" id="function-error">
-    <img src="{//path_prefix}{//icon_set}/exclamation.png"/>
+    <img src="{/_R_/runtime/path_prefix}{//icon_set}/exclamation.png"/>
     <xsl:value-of select="//errors/error[key='general_error']/value"/>
 </div>
 <br/>
@@ -44,11 +44,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <select name="account_id" required="1" exclude="-1" 
         err="Please select an account to post your transactions to.">
         <option value="-1">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='select_one']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/>
         </option>
-        <xsl:for-each select="/__ROOT__/get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts">
         <option value="{id}">
-            <xsl:if test="id=/__ROOT__/_get/account_id">
+            <xsl:if test="id=/_R_/_get/account_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
             <xsl:value-of select="name"/>

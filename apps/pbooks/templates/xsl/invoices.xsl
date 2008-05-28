@@ -31,13 +31,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:with-param name="no-sort-column">, headers: { 6: {sorter: false} }</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
-    <a href="{/__ROOT__/runtime/link_prefix}invoice-create" id="invoice-create">
-        <img src="{//path_prefix}{//icon_set}/page_edit.gif"/>
-        <xsl:value-of select="//labels/label[key='new_invoice']/value"/>
+    <a href="{/_R_/runtime/link_prefix}invoice-create" id="invoice-create">
+        <img src="{/_R_/runtime/path_prefix}{//icon_set}/page_edit.gif"/>
+        <xsl:value-of select="/_R_/i18n/label[key='new_invoice']/value"/>
     </a>
 </div>
 
-<strong><xsl:value-of select="//labels/label[key='recent_invoices']/value"/>:</strong> 
+<strong><xsl:value-of select="/_R_/i18n/label[key='recent_invoices']/value"/>:</strong> 
 <div id="myInvoicesDiv" style="min-height: 400px">
 <script type="text/javascript">
 document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
@@ -46,32 +46,32 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
 <table class="tablesorter" id="myInvoices">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='client']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='id']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='client']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='amount']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='date']/value"/></th>
         <!--
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='due_date']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='due_date']/value"/></th>
         -->
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='paid']/value"/>&#160;
+        <th><xsl:value-of select="/_R_/i18n/label[key='paid']/value"/>&#160;
             <!--<sup>[<a onclick="alert('')">?</a>]</sup>--></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='print']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='print']/value"/></th>
     </tr>
     </thead>
     <tbody>
     <!-- LOOP -->
-    <xsl:for-each select="/__ROOT__/get_some_business_objects">
+    <xsl:for-each select="/_R_/get_some_business_objects">
     <xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
     <xsl:variable name="my_customer_id"><xsl:value-of select="customer_id"/></xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td id="{$my_entry_id}">
-            <a href="{/__ROOT__/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
+            <a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
             <xsl:value-of select="invoice_number"/></a>
             </td>
         <td><a href="#">
-        <xsl:value-of select="/__ROOT__/get_all_accounts[id=$my_customer_id]/name"/></a></td>
-        <td><a href="{/__ROOT__/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
+        <xsl:value-of select="/_R_/get_all_accounts[id=$my_customer_id]/name"/></a></td>
+        <td><a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="invoice_total"/></td>
         <td><xsl:value-of select="entry_datetime"/></td>
         <!--
@@ -79,7 +79,7 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
         -->
         <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
         <td><a href="#"><xsl:value-of select="paid"/></a></td>
-        <td><a href="{//link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='print']/value"/></a></td>
+        <td><a href="{/_R_/runtime/link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true"><xsl:value-of select="/_R_/i18n/label[key='print']/value"/></a></td>
     </tr>
     </xsl:for-each>
     <!-- END LOOP -->

@@ -25,10 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 <h2>
-    <xsl:value-of select="/__ROOT__/i18n/errors/error[key='error']/value"/>:
+    <xsl:value-of select="/_R_/i18n/errors/error[key='error']/value"/>:
 </h2>
 <div class="error" id="general-error">
-    <img src="{//path_prefix}/{//icon_set}/exclamation.png"/>
+    <img src="{/_R_/runtime/path_prefix}/{//icon_set}/exclamation.png"/>
     <xsl:value-of select="//error[key=//my_error]/value"/>
 </div>
 </xsl:template>

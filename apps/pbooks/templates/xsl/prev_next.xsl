@@ -26,45 +26,45 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="previous_next">
 
 <xsl:variable name="my_uri">
-    <xsl:if test="__ROOT__/_get/from_date">
-        <xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;from_date')"/>
+    <xsl:if test="/_R_/_get/from_date">
+        <xsl:value-of select="substring-before(/_R_/request_uri,'&amp;from_date')"/>
     </xsl:if>
-    <xsl:if test="not(__ROOT__/_get/from_date)">
-        <xsl:if test="__ROOT__/_get/start">
-            <xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;start')"/>
+    <xsl:if test="not(/_R_/_get/from_date)">
+        <xsl:if test="/_R_/_get/start">
+            <xsl:value-of select="substring-before(/_R_/request_uri,'&amp;start')"/>
         </xsl:if>
-        <xsl:if test="not(__ROOT__/_get/start)">
-            <xsl:value-of select="/__ROOT__/request_uri"/>
+        <xsl:if test="not(/_R_/_get/start)">
+            <xsl:value-of select="/_R_/request_uri"/>
         </xsl:if>
     </xsl:if>
 </xsl:variable>
 
 <xsl:variable name="incr">
-<xsl:if test="contains(/__ROOT__/_get/nid,'ledger')">
+<xsl:if test="contains(/_R_/_get/nid,'ledger')">
     <xsl:value-of select="//option_get/display_num_trans"/>
 </xsl:if>
-<xsl:if test="not(contains(/__ROOT__/_get/nid,'ledger'))">
+<xsl:if test="not(contains(/_R_/_get/nid,'ledger'))">
     <xsl:value-of select="//option_get/display_num_entries"/>
 </xsl:if>
 </xsl:variable>
 <table cellpadding="0" align="right">
 				<tr>
-					<xsl:if test="(/__ROOT__/_get/start!=0) and not(/__ROOT__/_get/start='NaN')">
+					<xsl:if test="(/_R_/_get/start!=0) and not(/_R_/_get/start='NaN')">
 					<td>
 					<input type="button" value="Previous">
-<xsl:attribute name="onclick">document.location.href='<xsl:value-of select="$my_uri"/>&amp;start=<xsl:value-of select="/__ROOT__/_get/start - $incr + 1"/>'</xsl:attribute>
+<xsl:attribute name="onclick">document.location.href='<xsl:value-of select="$my_uri"/>&amp;start=<xsl:value-of select="/_R_/_get/start - $incr + 1"/>'</xsl:attribute>
 					</input>
 					</td>
 					
 					<td>
 					<input type="button" value="Next">
-<xsl:attribute name="onclick">document.location.href='<xsl:value-of select="$my_uri"/>&amp;start=<xsl:value-of select="/__ROOT__/_get/start + $incr - 1"/>'</xsl:attribute>
+<xsl:attribute name="onclick">document.location.href='<xsl:value-of select="$my_uri"/>&amp;start=<xsl:value-of select="/_R_/_get/start + $incr - 1"/>'</xsl:attribute>
 					</input>
 					</td>
 					</xsl:if>
                     
                     
-					<xsl:if test="(/__ROOT__/_get/start=0) or not(/__ROOT__/_get/start)">
+					<xsl:if test="(/_R_/_get/start=0) or not(/_R_/_get/start)">
 					<td>
 					<input type="button" value="Previous" disabled="disabled">
 					</input>

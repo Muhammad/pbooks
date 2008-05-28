@@ -35,10 +35,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
 <script type="text/javascript">
-    var question = '<xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete_account']/value"/>?';
+    var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
     function account_delete(id,row) {
         if(confirm(question)) { 
-            $.post("<xsl:value-of select="//link_prefix"/>accounts-delete", {'id': id}, 
+            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>accounts-delete", {'id': id}, 
             function (data){
                 myTable = document.getElementById("accounts_table");
                 myTable.deleteRow(row);
@@ -49,43 +49,43 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
 <script type="text/javascript">
-    var question = '<xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete_account']/value"/>?';
+    var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
 </script>
 
 <!-- buttons on the right hand side -->
 <div class="generic-button" style="float: right;">
-<xsl:if test="/__ROOT__/show_all_accounts">
-    <a href="{__ROOT__/runtime/link_prefix}customer-accounts&amp;show_all_accounts=off">
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='hide_accounts']/value"/>
+<xsl:if test="/_R_/show_all_accounts">
+    <a href="{_R_/runtime/link_prefix}customer-accounts&amp;show_all_accounts=off">
+        <xsl:value-of select="/_R_/i18n/label[key='hide_accounts']/value"/>
     </a>
 </xsl:if>
 
-<xsl:if test="not(__ROOT__/show_all_accounts)">
-    <a href="{/__ROOT__/runtime/link_prefix}customer-accounts&amp;show_all_accounts=on">
+<xsl:if test="not(/_R_/show_all_accounts)">
+    <a href="{/_R_/runtime/link_prefix}customer-accounts&amp;show_all_accounts=on">
         <xsl:value-of
-            select="/__ROOT__/i18n/labels/label[key='show_accounts']/value"/>
+            select="/_R_/i18n/label[key='show_accounts']/value"/>
     </a>
 </xsl:if>
 
-<a href="{/__ROOT__/runtime/link_prefix}customer-edit" class="generic-button">
-    <img src="{//path_prefix}{//icon_set}/folder_new.gif"/>
-    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_customer']/value"/>
+<a href="{/_R_/runtime/link_prefix}customer-edit" class="generic-button">
+    <img src="{/_R_/runtime/path_prefix}{//icon_set}/folder_new.gif"/>
+    <xsl:value-of select="/_R_/i18n/label[key='new_customer']/value"/>
 </a>
 </div>
 
 
 <br/><br/>
 
-<form method="post" action="{//request_uri}">
+<form method="post">
 <table class="tablesorter" id="accounts_table">
 <thead>
 <tr>
-	<xsl:if test="//_get/show_all_accounts='on'"><th><input type="checkbox"/></th></xsl:if>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='number']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='customer_name']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='balance']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/></th>
-    <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/></th>
+	<xsl:if test="/_R_/_get/show_all_accounts='on'"><th><input type="checkbox"/></th></xsl:if>
+    <th><xsl:value-of select="/_R_/i18n/label[key='number']/value"/></th>
+    <th><xsl:value-of select="/_R_/i18n/label[key='customer_name']/value"/></th>
+    <th><xsl:value-of select="/_R_/i18n/label[key='balance']/value"/></th>
+    <th><xsl:value-of select="/_R_/i18n/label[key='edit']/value"/></th>
+    <th><xsl:value-of select="/_R_/i18n/label[key='delete']/value"/></th>
 </tr>
 </thead>
 <tbody>
@@ -96,14 +96,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
     the account balance should be displayed.
     See account_row.xsl for the actual row data. -->
 
-    <xsl:for-each select="__ROOT__/get_all_accounts[accounts_receivable_account='on']">
+    <xsl:for-each select="/_R_/get_all_accounts[accounts_receivable_account='on']">
         <xsl:sort select="account_number"/>
         <xsl:call-template name="account-row"/>
     </xsl:for-each>
 
 </tbody>
 </table>
-<xsl:if test="//_get/show_all_accounts='on'">
+<xsl:if test="/_R_/_get/show_all_accounts='on'">
 <input type="submit" name="submit" value="Submit"/>
 </xsl:if>
 </form>

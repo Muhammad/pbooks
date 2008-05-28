@@ -31,14 +31,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table-div">myChecksDiv</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
-    <a href="{/__ROOT__/runtime/link_prefix}check-create">
-    <img style="" src="{//path_prefix}{//icon_set}/page_edit.gif"/>
-    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='write_check']/value"/>
+    <a href="{/_R_/runtime/link_prefix}check-create">
+    <img style="" src="{/_R_/runtime/path_prefix}{//icon_set}/page_edit.gif"/>
+    <xsl:value-of select="/_R_/i18n/label[key='write_check']/value"/>
     </a>
 </div>
 
 <strong>
-    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_checks']/value"/>:
+    <xsl:value-of select="/_R_/i18n/label[key='recent_checks']/value"/>:
 </strong>
 <div style="min-height: 400px;" id="myChecksDiv">
 <script type="text/javascript">
@@ -48,32 +48,32 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
     <thead>
     <tr>
         <th>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='id']/value"/>
         </th>
         <th>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='check_number']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='check_number']/value"/>
         </th>
         <th>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='payee']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='payee']/value"/>
         </th>
         <th>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>
         </th>
         <th>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
         </th>
         <th>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>
         </th>
     </tr>
     </thead>
     <tbody>
     <!-- Start LOOP -->
-    <xsl:for-each select="/__ROOT__/get_some_business_objects">
+    <xsl:for-each select="/_R_/get_some_business_objects">
     <xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}check-edit&amp;entry_id={entry_id}">
+            <a href="{/_R_/runtime/link_prefix}check-edit&amp;entry_id={entry_id}">
             <xsl:value-of select="entry_id"/>
             </a>
         </td>

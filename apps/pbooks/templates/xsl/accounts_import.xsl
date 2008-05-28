@@ -25,11 +25,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 
-<h2><xsl:value-of select="//label[key='import_csv_accounts']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='import_csv_accounts']/value"/></h2>
 
-<xsl:if test="/__ROOT__/_get/error">
+<xsl:if test="/_R_/_get/error">
 <div class="error" id="function-error">
-    <img src="{//path_prefix}{//icon_set}/exclamation.png"/>
+    <img src="{/_R_/runtime/path_prefix}{//icon_set}/exclamation.png"/>
     <xsl:value-of select="//errors/error[key='general_error']/value"/>
 </div>
 <br/>

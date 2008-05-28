@@ -24,13 +24,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <!-- This is the account table row -->
 <xsl:template name="account-row">
-<xsl:variable name="my_link_prefix"><xsl:value-of select="/__ROOT__/runtime/link_prefix"/></xsl:variable>
+<xsl:variable name="my_link_prefix"><xsl:value-of select="/_R_/runtime/link_prefix"/></xsl:variable>
 
 <!-- these rows contain ids for use in testing, do not remove! -->
 <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass" >
 
     <!-- Show account checkbox -->
-    <xsl:if test="//_get/show_all_accounts='on'">
+    <xsl:if test="/_R_/_get/show_all_accounts='on'">
         <td>
             <input type="checkbox" name="hide[]" value="{id}">
                 <xsl:if test="hide='on'">
@@ -56,7 +56,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
     <!-- Account type -->
-    <xsl:if test="not(//_get/nid='customer-accounts')">
+    <xsl:if test="not(/_R_/_get/nid='customer-accounts')">
     <td>
         <a href="{$my_link_prefix}accounts&amp;account_type_id={account_type_id}">
             <xsl:value-of select="account_type_id"/>
@@ -72,29 +72,29 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
     <!-- Account Edit -->
-    <xsl:if test="//_get/nid='accounts'">
+    <xsl:if test="/_R_/_get/nid='accounts'">
     <td>
         <a href="{$my_link_prefix}accounts-edit&amp;account_id={id}" id="{account_number}-e">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
         </a>
     </td>
     </xsl:if>
 
 
     <!-- Is this a customer account or a regular account? -->
-    <xsl:if test="//_get/nid='customer-accounts'">
+    <xsl:if test="/_R_/_get/nid='customer-accounts'">
     <td>
         <a href="{$my_link_prefix}customer-edit&amp;account_id={id}" id="{account_number}-e">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
         </a>
     </td>
     </xsl:if>
 
 
     <td>
-        <a id="{account_number}-d" href="{//link_prefix}accounts-delete&amp;account_id={id}"
+        <a id="{account_number}-d" href="{/_R_/runtime/link_prefix}accounts-delete&amp;account_id={id}"
         onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
         </a>
     </td>
 </tr>

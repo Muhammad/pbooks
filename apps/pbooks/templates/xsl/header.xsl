@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </div>
     <div id="print-button"></div>
     <h1 class="page-title">
-        <xsl:value-of select="//i18n/labels/label[key=//_get/nid]/value"/>
+        <xsl:value-of select="//i18n/label[key=/_R_/_get/nid]/value"/>
     </h1>
 </div>
 <xsl:call-template name="source_spacer">

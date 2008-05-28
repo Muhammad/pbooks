@@ -26,22 +26,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="date_select.xsl"/>
 <xsl:template name="content">
 <!-- Main reports -->
-<h2><xsl:value-of select="//label[key='report_type']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='report_type']/value"/></h2>
 <form method="get">
-<input type="hidden" name="nid" value="{/__ROOT__/_get/nid}-build"/>
+<input type="hidden" name="nid" value="{/_R_/_get/nid}-build"/>
 <table>
 	<tr>
-		<td><xsl:value-of select="//label[key='report_type']/value"/>:</td>
+		<td><xsl:value-of select="/_R_/i18n/label[key='report_type']/value"/>:</td>
 		<td> <select name="report_type_id">
 				<xsl:for-each select="//report_types/report_type">
                     <xsl:variable name="mykey"><xsl:value-of select="@key"/></xsl:variable>
-					<option value="{@id}"><xsl:value-of select="//label[key=$mykey]/value"/></option>
+					<option value="{@id}"><xsl:value-of select="/_R_/i18n/label[key=$mykey]/value"/></option>
 				</xsl:for-each>
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td valign="top"><xsl:value-of select="//label[key='period']/value"/>:</td>
+		<td valign="top"><xsl:value-of select="/_R_/i18n/label[key='period']/value"/>:</td>
 		<td>
 		<xsl:call-template name="date_select">
             <xsl:with-param name="my_from_date"><xsl:value-of select="//fiscal_start"/></xsl:with-param>
@@ -50,15 +50,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	</tr>
 </table>
 <div style="text-align: center; margin-top: 20px;">
-    <input type="submit" value="{//label[key='build_report']/value}" name="submit" />
+    <input type="submit" value="{/_R_/i18n/label[key='build_report']/value}" name="submit" />
 </div>
 
 <!-- Saved reports -->
-<h2><xsl:value-of select="//label[key='saved_reports']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='saved_reports']/value"/></h2>
 <ul style="big">
     <xsl:for-each select="//reports_saved/report">
         <li>
-            <a href="{//link_prefix}reports-build&amp;{link}">
+            <a href="{/_R_/runtime/link_prefix}reports-build&amp;{link}">
                 <xsl:value-of select="label"/>
             </a>
         </li>
@@ -66,21 +66,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </ul>
 
 <!-- Additional reports -->
-<h2><xsl:value-of select="//label[key='additional_reports']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='additional_reports']/value"/></h2>
 <ul style="big">
     <li>
-        <a href="{//link_prefix}reports-simple-cash-flow">
-            <xsl:value-of select="//label[key='simple_monthly_cash_flow']/value"/>
+        <a href="{/_R_/runtime/link_prefix}reports-simple-cash-flow">
+            <xsl:value-of select="/_R_/i18n/label[key='simple_monthly_cash_flow']/value"/>
         </a>
     </li>
     <li>
-        <a href="{//link_prefix}reports-group-cash-flow">
-            <xsl:value-of select="//label[key='group_monthly_cash_flow']/value"/>
+        <a href="{/_R_/runtime/link_prefix}reports-group-cash-flow">
+            <xsl:value-of select="/_R_/i18n/label[key='group_monthly_cash_flow']/value"/>
         </a>
     </li>
     <li>
-        <a href="{//link_prefix}reports-invoices">
-            <xsl:value-of select="//label[key='report_invoices']/value"/>
+        <a href="{/_R_/runtime/link_prefix}reports-invoices">
+            <xsl:value-of select="/_R_/i18n/label[key='report_invoices']/value"/>
         </a>
     </li>
 </ul>

@@ -24,21 +24,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
-<p><xsl:value-of select="/__ROOT__/i18n/labels/label[key='configure']/value"/>:</p>
-<h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='options']/value"/></h2>
-<h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='plugins']/value"/></h2>
+<p><xsl:value-of select="/_R_/i18n/label[key='configure']/value"/>:</p>
+<h2><xsl:value-of select="/_R_/i18n/label[key='options']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='plugins']/value"/></h2>
 <xsl:for-each select="//plugins_list">
     <xsl:value-of select="."/><br/>
 </xsl:for-each>
-<h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='themes']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/label[key='themes']/value"/></h2>
 
 <!-- User Admin Link -->
-<h2><xsl:value-of select="/__ROOT__/i18n/labels/label[key='user_admin']/value"/></h2>
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='enter_user_manager']/value"/>, 
+<h2><xsl:value-of select="/_R_/i18n/label[key='user_admin']/value"/></h2>
+<xsl:value-of select="/_R_/i18n/label[key='enter_user_manager']/value"/>, 
     <a href="user.php?nid=user">
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='click_here']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='click_here']/value"/>
     </a>.
 <br/><br/>
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='return_user_admin']/value"/>. 
+<xsl:value-of select="/_R_/i18n/label[key='return_user_admin']/value"/>. 
 </xsl:template>
 </xsl:stylesheet>

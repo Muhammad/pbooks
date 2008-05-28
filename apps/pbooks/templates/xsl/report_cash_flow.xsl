@@ -28,10 +28,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Just setting up some frequently used xpaths -->
 
 <xsl:variable name="from_month">
-    <xsl:value-of select="substring(/__ROOT__/_get/from_date,6,2)"/>
+    <xsl:value-of select="substring(/_R_/_get/from_date,6,2)"/>
 </xsl:variable>
 <xsl:variable name="to_month">
-    <xsl:value-of select="substring(/__ROOT__/_get/to_date,6,2)"/>
+    <xsl:value-of select="substring(/_R_/_get/to_date,6,2)"/>
 </xsl:variable>
 <xsl:variable name="monthnum">
     <xsl:value-of select="number($to_month - $from_month + 1)"/>
@@ -39,9 +39,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <div style="text-align: center;">
     <h2><xsl:value-of select="//company_name"/></h2>
-    <xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow_statement']/value"/> <xsl:value-of select="__ROOT__/i18n/labels/label
+    <xsl:value-of select="/_R_/i18n/label[key='cash_flow_statement']/value"/> <xsl:value-of select="/_R_/i18n/label
             [key='from']/value"/> 
-    <xsl:value-of select="//from_date"/> <xsl:value-of select="__ROOT__/i18n/labels/label[key='through']/value"/> <xsl:value-of select="//to_date"/>
+    <xsl:value-of select="//from_date"/> <xsl:value-of select="/_R_/i18n/label[key='through']/value"/> <xsl:value-of select="//to_date"/>
 
 </div>
 
@@ -63,13 +63,13 @@ the templates at the bottom of the file -->
 
     <!--  Cash Flow -->
     <tr>
-        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='incoming_cash_flow_deposit']/value"/></td>				 
+        <td class="matrix-data"><xsl:value-of select="/_R_/i18n/label[key='incoming_cash_flow_deposit']/value"/></td>				 
         <xsl:call-template name="empty_cell">
               <xsl:with-param name="repeat" select="$monthnum"/>
          </xsl:call-template>
     </tr>
     <tr>
-        <td class="matrix-data" style="padding-left: 6px;"><xsl:value-of select="__ROOT__/i18n/labels/label[key='beginning_balance']/value"/></td>				 
+        <td class="matrix-data" style="padding-left: 6px;"><xsl:value-of select="/_R_/i18n/label[key='beginning_balance']/value"/></td>				 
         <xsl:call-template name="empty_cell">
               <xsl:with-param name="repeat" select="$monthnum"/>
          </xsl:call-template>
@@ -79,7 +79,7 @@ the templates at the bottom of the file -->
     <xsl:variable name="this_i_account_id"><xsl:value-of select="id"/></xsl:variable>
         <tr class="row{position() mod 2}">
             <td class="matrix-data" style="text-indent: 6px;">
-                <a href="{//link_prefix}ledger&amp;account_id={id}">
+                <a href="{/_R_/runtime/link_prefix}ledger&amp;account_id={id}">
                     <xsl:value-of select="substring(name,0,25)"/>
                 </a>
             </td>
@@ -91,7 +91,7 @@ the templates at the bottom of the file -->
         </tr>
     </xsl:for-each>
     <tr class="row{position() mod 2}">
-        <td class="matrix-data"><xsl:value-of select="/__ROOT__/i18n/labels/label[key='total_cash_inflow']/value"/></td>
+        <td class="matrix-data"><xsl:value-of select="/_R_/i18n/label[key='total_cash_inflow']/value"/></td>
          <xsl:call-template name="income_total_cell">
               <xsl:with-param name="mn" select="$from_month"/>
               <xsl:with-param name="repeat" select="$monthnum"/>
@@ -102,7 +102,7 @@ the templates at the bottom of the file -->
     </tr>
     <!--  Disbursements -->
     <tr>
-        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='disbursements']/value"/></td>
+        <td class="matrix-data"><xsl:value-of select="/_R_/i18n/label[key='disbursements']/value"/></td>
          <xsl:call-template name="empty_cell">
               <xsl:with-param name="repeat" select="$monthnum"/>
          </xsl:call-template>
@@ -112,7 +112,7 @@ the templates at the bottom of the file -->
     <xsl:variable name="this_d_account_id"><xsl:value-of select="id"/></xsl:variable>
         <tr class="row{position() mod 2}">
             <td class="matrix-data" style="text-indent: 6px;">
-                <a href="{//link_prefix}ledger&amp;account_id={id}">
+                <a href="{/_R_/runtime/link_prefix}ledger&amp;account_id={id}">
                     <xsl:value-of select="substring(name,0,25)"/>
                 </a>
             </td>
@@ -125,7 +125,7 @@ the templates at the bottom of the file -->
     </xsl:for-each>
     <!-- Total disbursements -->
     <tr class="row{position() mod 2}">
-        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='total_cash_outflow']/value"/></td>
+        <td class="matrix-data"><xsl:value-of select="/_R_/i18n/label[key='total_cash_outflow']/value"/></td>
          <xsl:call-template name="outgoing_total_cell">
               <xsl:with-param name="mn" select="$from_month"/>
               <xsl:with-param name="repeat" select="$monthnum"/>
@@ -136,7 +136,7 @@ the templates at the bottom of the file -->
     </tr>
     <!-- Capital Investments -->
     <tr>
-        <td class="matrix-data"><xsl:value-of select="__ROOT__/i18n/labels/label[key='capital_investments']/value"/></td>
+        <td class="matrix-data"><xsl:value-of select="/_R_/i18n/label[key='capital_investments']/value"/></td>
          <xsl:call-template name="empty_cell">
               <xsl:with-param name="repeat" select="$monthnum"/>
          </xsl:call-template>
@@ -148,7 +148,7 @@ the templates at the bottom of the file -->
     <!-- Cash Flow -->
     <tr>
         <td class="matrix-data">
-            <xsl:value-of select="__ROOT__/i18n/labels/label[key='cash_flow']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='cash_flow']/value"/>
         </td>
          <xsl:call-template name="total_cell">
               <xsl:with-param name="mn" select="$from_month"/>
@@ -175,7 +175,7 @@ the templates at the bottom of the file -->
 	<xsl:param name="this_i_account_id">0</xsl:param>
 	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
-        <a href="{//link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_i_account_id}">
+        <a href="{/_R_/runtime/link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_i_account_id}">
 		<xsl:value-of select="
             format-number(
             sum(
@@ -225,7 +225,7 @@ the templates at the bottom of the file -->
     <xsl:param name="mn">0</xsl:param>
 	<xsl:if test="number($repeat)>=1">
 		<td class="matrix-data">
-		 <a href="{//link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_d_account_id}">
+		 <a href="{/_R_/runtime/link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_d_account_id}">
 		 <xsl:value-of select="
          format-number(
              sum(

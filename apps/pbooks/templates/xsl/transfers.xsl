@@ -30,13 +30,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table-div">myTransfersDiv</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
-    <a href="{/__ROOT__/runtime/link_prefix}transfer-create" id="transfer-create">
-        <img src="{//path_prefix}{//icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_transfer']/value"/>
+    <a href="{/_R_/runtime/link_prefix}transfer-create" id="transfer-create">
+        <img src="{/_R_/runtime/path_prefix}{//icon_set}/page_edit.gif"/>
+        <xsl:value-of select="/_R_/i18n/label[key='new_transfer']/value"/>
     </a>
 </div>
 <strong>
-    <xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_transfers']/value"/>:
+    <xsl:value-of select="/_R_/i18n/label[key='recent_transfers']/value"/>:
 </strong>
 <div style="min-height: 400px;" id="myTransfersDiv">
 <script type="text/javascript">
@@ -45,24 +45,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table class="tablesorter" id="myTransfers">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='from_account']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='to_account']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='method']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='id']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='amount']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='date']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='from_account']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='to_account']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='method']/value"/></th>
     </tr>
     </thead>
     <tbody>
     <!-- LOOP -->
-    <xsl:for-each select="/__ROOT__/get_some_business_objects">
+    <xsl:for-each select="/_R_/get_some_business_objects">
     <xsl:variable name="my_entry_id">
         <xsl:value-of select="entry_id"/>
     </xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td id="{$my_entry_id}">
-            <a href="{/__ROOT__/runtime/link_prefix}transfer-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
+            <a href="{/_R_/runtime/link_prefix}transfer-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
         </td>
         <td><a href="#"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="entry_amount"/></td>

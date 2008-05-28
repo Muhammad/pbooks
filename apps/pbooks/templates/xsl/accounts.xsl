@@ -36,10 +36,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
 <script type="text/javascript">
-    var question = '<xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete_account']/value"/>?';
+    var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
     function account_delete(account_id,row) {
         if(confirm(question)) { 
-            $.post("<xsl:value-of select="//link_prefix"/>accounts-delete", {'account_id': account_id}, 
+            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>accounts-delete", {'account_id': account_id}, 
             function (data){
                 myTable = document.getElementById("accounts_table");
                 myTable.deleteRow(row);
@@ -50,34 +50,34 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- buttons on the right hand side -->
 <div class="generic-button" style="float: right;">
-    <xsl:if test="__ROOT__/show_all_accounts">
-    <a href="{__ROOT__/runtime/link_prefix}accounts&amp;show_all_accounts=off">
-        <xsl:value-of select="//labels/label[key='hide_accounts']/value"/>
+    <xsl:if test="/_R_/show_all_accounts">
+    <a href="{/_R_/runtime/link_prefix}accounts&amp;show_all_accounts=off">
+        <xsl:value-of select="/_R_/i18n/label[key='hide_accounts']/value"/>
     </a>
     </xsl:if>
 
-    <xsl:if test="not(__ROOT__/show_all_accounts)">
-    <a href="{/__ROOT__/runtime/link_prefix}accounts&amp;show_all_accounts=on">
-        <xsl:value-of select="//labels/label[key='show_accounts']/value"/>
+    <xsl:if test="not(/_R_/show_all_accounts)">
+    <a href="{/_R_/runtime/link_prefix}accounts&amp;show_all_accounts=on">
+        <xsl:value-of select="/_R_/i18n/label[key='show_accounts']/value"/>
     </a>
     </xsl:if>
 
-    <a href="{/__ROOT__/runtime/link_prefix}accounts-edit" class="generic-button" id="new_account">
-        <img src="{//path_prefix}{//icon_set}/folder_new.gif"/>
-        <xsl:value-of select="//labels/label[key='new_account']/value"/>
+    <a href="{/_R_/runtime/link_prefix}accounts-edit" class="generic-button" id="new_account">
+        <img src="{/_R_/runtime/path_prefix}{//icon_set}/folder_new.gif"/>
+        <xsl:value-of select="/_R_/i18n/label[key='new_account']/value"/>
     </a>
 </div>
 
 <!-- drop down menu for the account selection -->
 <div style="float: top;">
-<form method="get" action="{/__ROOT__/runtime/link_prefix}">
-<input type="hidden" name="nid" value="{//_get/nid}"/>
+<form method="get" action="{/_R_/runtime/link_prefix}">
+<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 <!-- Select one type of account -->
 <select name="account_type_id" onchange="this.form.submit();">
-    <option value="%"><xsl:value-of select="//label[key='all']/value"/></option>
-    <xsl:for-each select="/__ROOT__/i18n/account_type">
+    <option value="%"><xsl:value-of select="/_R_/i18n/label[key='all']/value"/></option>
+    <xsl:for-each select="/_R_/i18n/account_type">
         <option value="{account_type_id}">
-            <xsl:if test="account_type_id=/__ROOT__/_get/account_type_id">
+            <xsl:if test="account_type_id=/_R_/_get/account_type_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
             <xsl:value-of select="name"/>
@@ -87,32 +87,32 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </form>
 </div>
 
-<form method="post" action="{//request_uri}">
+<form method="post">
 <table class="tablesorter" id="accounts_table">
 <thead>
 <tr>
-	<xsl:if test="//_get/show_all_accounts='on'">
+	<xsl:if test="/_R_/_get/show_all_accounts='on'">
         <th>
             <input type="checkbox"/>
         </th>
     </xsl:if>
     <th>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='number']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='number']/value"/>
     </th>
     <th>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_name']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='account_name']/value"/>
     </th>
     <th>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='type']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='type']/value"/>
     </th>
     <th>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='balance']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='balance']/value"/>
     </th>
     <th>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='edit']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
     </th>
     <th>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='delete']/value"/>
+        <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
     </th>
 </tr>
 </thead>
@@ -123,18 +123,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
     or whether the account balance should be displayed -->
 
 <!-- No specific account type selected, show all --> 
-<xsl:if test="not(__ROOT__/_get/account_type_id) or //_get/account_type_id='%'">
-    <xsl:if test="not(__ROOT__/_get/nid='account-balances')">
-        <xsl:for-each select="__ROOT__/get_all_accounts">
+<xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
+    <xsl:if test="not(/_R_/_get/nid='account-balances')">
+        <xsl:for-each select="/_R_/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:call-template name="account-row"/>
         </xsl:for-each>
     </xsl:if>
-    <xsl:if test="__ROOT__/_get/nid='account-balances'">
+    <xsl:if test="/_R_/_get/nid='account-balances'">
 
 
 
-        <xsl:for-each select="__ROOT__/get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:if test="running_balance &gt; 0">
             <xsl:call-template name="account-row"/>
@@ -144,15 +144,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:if>
 
 <!-- Specific account type selected, only show that one --> 
-<xsl:if test="/__ROOT__/_get/account_type_id">
-    <xsl:if test="not(__ROOT__/_get/nid='account-balances')">
-        <xsl:for-each select="/__ROOT__/get_all_accounts[account_type_id=//_get/account_type_id]">
+<xsl:if test="/_R_/_get/account_type_id">
+    <xsl:if test="not(/_R_/_get/nid='account-balances')">
+        <xsl:for-each select="/_R_/get_all_accounts[account_type_id=/_R_/_get/account_type_id]">
             <xsl:sort select="account_number"/>
             <xsl:call-template name="account-row"/>
         </xsl:for-each>
     </xsl:if>
-    <xsl:if test="/__ROOT__/_get/nid='account-balances'">
-        <xsl:for-each select="__ROOT__/get_all_accounts">
+    <xsl:if test="/_R_/_get/nid='account-balances'">
+        <xsl:for-each select="/_R_/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:if test="running_balance &gt; 0">
             <xsl:call-template name="account-row"/>
@@ -162,7 +162,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:if>
 </tbody>
 </table>
-<xsl:if test="//_get/show_all_accounts='on'">
+<xsl:if test="/_R_/_get/show_all_accounts='on'">
     <input type="submit" name="submit" value="Submit"/>
 </xsl:if>
 </form>
@@ -171,7 +171,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 "An account can only be deleted when there are no journal transactions in that 
 account. If you would like to hide the account, click edit and select the hide option."
 -->
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='account_deletion_requirement']/value"/>
+<xsl:value-of select="/_R_/i18n/label[key='account_deletion_requirement']/value"/>
 
 </xsl:template>
 

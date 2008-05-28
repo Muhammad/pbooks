@@ -29,15 +29,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table border="0" style="float: right;">
     <tbody>
         <tr>
-            <td><xsl:value-of select="//label[key='date']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/label[key='date']/value"/>:</td>
             <td colspan="8"><xsl:value-of select="//get_journal_entry/entry_datetime"/></td>
         </tr>
         <tr>
-            <td><xsl:value-of select="__ROOT__/i18n/labels/label[key='invoice_number']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/label[key='invoice_number']/value"/>:</td>
             <td colspan="8"><xsl:value-of select="//get_some_business_objects/invoice_number"/></td>
         </tr>
         <tr>
-            <td><xsl:value-of select="//label[key='due_date']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/label[key='due_date']/value"/>:</td>
             <td colspan="8"><xsl:value-of select="//get_some_business_objects/due_date"/></td>
         </tr>
     </tbody>
@@ -63,12 +63,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tbody>
 </table>
 
-<xsl:variable name="my_client_id"><xsl:value-of select="/__ROOT__/business_object_get_metadata[meta_key='client_id']/meta_value"/></xsl:variable>
+<xsl:variable name="my_client_id"><xsl:value-of select="/_R_/business_object_get_metadata[meta_key='client_id']/meta_value"/></xsl:variable>
 <table border="0" id="client-address" style="margin-top: 100px; margin-bottom:40px;">
     <tbody>
         <tr>
             <td>
-    <xsl:value-of select="//get_all_accounts[id=//_get/account_id]/name"/>
+    <xsl:value-of select="//get_all_accounts[id=/_R_/_get/account_id]/name"/>
             </td>
         </tr>
         <tr>
@@ -97,17 +97,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <thead>
         <tr>
             <th colspan="2">
-                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='billable_items']/value"/>:
+                <xsl:value-of select="/_R_/i18n/label[key='billable_items']/value"/>:
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td width="360">
-                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='desc']/value"/>
+                <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>
             </td>
             <td>
-                <xsl:value-of select="__ROOT__/i18n/labels/label[key='total']/value"/>
+                <xsl:value-of select="/_R_/i18n/label[key='total']/value"/>
             </td>
         </tr>
         
@@ -115,8 +115,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
         <xsl:variable name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:variable>
         <tr>
-            <td><xsl:value-of select="/__ROOT__/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/></td>
-            <td><xsl:value-of select="/__ROOT__/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount"/></td>
+            <td><xsl:value-of select="/_R_/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/></td>
+            <td><xsl:value-of select="/_R_/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount"/></td>
         </tr>
         </xsl:for-each>
         <!-- END LINE ITEMS -->
@@ -124,7 +124,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- TODO: i18n -->
         <tr>
             <td style="text-align: right;">Grand total:</td>
-            <td><strong><xsl:value-of select="sum(/__ROOT__/invoices_get_amounts[entry_type_id='Credit']/entry_amount)"/></strong></td>
+            <td><strong><xsl:value-of select="sum(/_R_/invoices_get_amounts[entry_type_id='Credit']/entry_amount)"/></strong></td>
         </tr>
         
     </tbody>

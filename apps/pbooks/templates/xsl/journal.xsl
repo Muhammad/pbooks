@@ -27,10 +27,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="prev_next.xsl"/>
 <xsl:template name="content">
 <!-- POST JOURNAL ENTRY TO LEDGER -->
-<script type="text/javascript" src="{/__ROOT__/runtime/path_prefix}s/js/jquery.js">&#160;</script>
+<script type="text/javascript" src="{/_R_/runtime/path_prefix}s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
-        $.post("<xsl:value-of select="//link_prefix"/>ledger-create",
+        $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>ledger-create",
         {
             'entry_id': entry_id,
             'account_id': account_id,
@@ -46,38 +46,38 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </script>
 <table width="100%">
 <tr><td>
-<form action="{/__ROOT__/runtime/link_prefix}journal" method="get">
-    <input type="hidden" name="nid" value="{/__ROOT__/_get/nid}"/>
+<form action="{/_R_/runtime/link_prefix}journal" method="get">
+    <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 	<xsl:call-template name="date_select"/><input type="submit"/>
 </form>
 </td>
 <td align="right">
 <xsl:call-template name="previous_next"/>
 </td></tr></table>
-<form action="{__ROOT__/runtime/link_prefix}journal-delete" method="post">
+<form action="{_R_/runtime/link_prefix}journal-delete" method="post">
 <!-- this is the table of journal entries. we don't use the tablesorter here 
 because of the dynamic number of rows per entry. -->
 <table class="journal-table">
     <thead>
 	<tr>
 		<th></th>
-		<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='id']/value"/></th>
-		<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='date']/value"/></th>
+		<th><xsl:value-of select="/_R_/i18n/label[key='id']/value"/></th>
+		<th><xsl:value-of select="/_R_/i18n/label[key='date']/value"/></th>
         <th></th>
-		<th width="200"><xsl:value-of select="__ROOT__/i18n/labels/label[key='memo']/value"/>.</th>
+		<th width="200"><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>.</th>
         <th width="15"></th>
-		<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='accounts']/value"/></th>
-		<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='debit']/value"/></th>
-		<th><xsl:value-of select="__ROOT__/i18n/labels/label[key='credit']/value"/></th>
+		<th><xsl:value-of select="/_R_/i18n/label[key='accounts']/value"/></th>
+		<th><xsl:value-of select="/_R_/i18n/label[key='debit']/value"/></th>
+		<th><xsl:value-of select="/_R_/i18n/label[key='credit']/value"/></th>
 	</tr>
     </thead>
     <tbody>
     <!-- each journal entry is comprised of the entry itself, plus several entry amounts and accounts which are descendent from it. 
     The outer loop goes through each entry, and the inner loop iterates through each entry amount. -->
-    <xsl:variable name="my_link_prefix"><xsl:value-of select="__ROOT__/runtime/link_prefix"/></xsl:variable>
+    <xsl:variable name="my_link_prefix"><xsl:value-of select="/_R_/runtime/link_prefix"/></xsl:variable>
 
     <!-- OUTER LOOP -->
-    <xsl:for-each select="/__ROOT__/get_all_entries">
+    <xsl:for-each select="/_R_/get_all_entries">
 	<xsl:variable name="this_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
 	<xsl:variable name="posa"><xsl:value-of select="position() mod 2"/></xsl:variable>
         <tr class="row2">
@@ -109,7 +109,7 @@ because of the dynamic number of rows per entry. -->
     <xsl:variable name="balanced"><xsl:if test="$this_entry_debit_total=$this_entry_credit_total">yes</xsl:if></xsl:variable>
     <xsl:variable name="my_color"><xsl:if test="not($this_entry_debit_total=$this_entry_credit_total)">red</xsl:if></xsl:variable>
      <!--  INNER LOOP -->   
-    <xsl:for-each select="/__ROOT__/get_all_entry_amounts[entry_id=$this_entry_id]">
+    <xsl:for-each select="/_R_/get_all_entry_amounts[entry_id=$this_entry_id]">
 	<xsl:variable name="posi"><xsl:value-of select="position()"/></xsl:variable>
     <tr class="row{$posa}">
     <td colspan="5" class="row{$posa}"></td>
@@ -131,7 +131,7 @@ because of the dynamic number of rows per entry. -->
     <a 
     href="{$my_link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;account_type_id={account_type_id}"
     onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
-        <div class="journal-post-plus" style="background-image: url({//path_prefix}{//icon_set}add.png);">&#160;</div>
+        <div class="journal-post-plus" style="background-image: url({/_R_/runtime/path_prefix}{//icon_set}add.png);">&#160;</div>
     </a>
             </div>
             </xsl:if>
@@ -169,11 +169,11 @@ because of the dynamic number of rows per entry. -->
      </tbody>
     <xsl:variable name="total_debits">
         <xsl:value-of
-            select="format-number(sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
+            select="format-number(sum(/_R_/get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
     </xsl:variable>
     <xsl:variable name="total_credits">
         <xsl:value-of
-            select="format-number(sum(/__ROOT__/get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
+            select="format-number(sum(/_R_/get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
     </xsl:variable>
     <tr><td colspan="9"><hr/></td></tr>
 
@@ -182,7 +182,7 @@ because of the dynamic number of rows per entry. -->
 		<td colspan="7" align="right">
             <xsl:if test="not($total_credits=$total_debits)">
                 <div style="color: red;" id="error_match">
-                    <xsl:value-of select="//labels/label[key='error_match']/value"/>:
+                    <xsl:value-of select="/_R_/i18n/label[key='error_match']/value"/>:
                 </div>
             </xsl:if>
         </td>
@@ -197,12 +197,12 @@ because of the dynamic number of rows per entry. -->
 <xsl:call-template name="previous_next"/>
 
 <!-- only display the form controls for the journal, not other pages which use this template -->
-<xsl:if test="//_get/nid='journal'">
-    <input type="button" id="new_entry_button" value="{//labels/label[key='new_entry']/value}" 
-        onclick="document.location.href='{/__ROOT__/runtime/link_prefix}journal-new'"/>
+<xsl:if test="/_R_/_get/nid='journal'">
+    <input type="button" id="new_entry_button" value="{/_R_/i18n/label[key='new_entry']/value}" 
+        onclick="document.location.href='{/_R_/runtime/link_prefix}journal-new'"/>
     <!-- Delete selected entries 
     TODO - only display this function in training mode -->
-    <input type="submit" value="{//labels/label[key='delete_entries']/value}" 
+    <input type="submit" value="{/_R_/i18n/label[key='delete_entries']/value}" 
         onclick="return confirm('Are you sure you want to delete these entries?')"/>
 </xsl:if>
 </form>

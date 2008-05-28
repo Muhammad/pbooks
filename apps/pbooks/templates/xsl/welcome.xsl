@@ -26,9 +26,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <div style="padding: 25px;">
 
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='wicked_cool']/value"/>
+<xsl:value-of select="/_R_/i18n/label[key='wicked_cool']/value"/>
 <br/><br/>
-<b><xsl:value-of select="/__ROOT__/i18n/labels/label[key='get_started']/value"/></b>
+<b><xsl:value-of select="/_R_/i18n/label[key='get_started']/value"/></b>
 <br/><br/>
 <ul>
     <xsl:for-each select="//quick_links/link">
@@ -51,15 +51,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <thead>
     <tr>
         <th colspan="2">
-            <b><xsl:value-of select="__ROOT__/i18n/labels/label[key='quick_stats']/value"/></b>
+            <b><xsl:value-of select="/_R_/i18n/label[key='quick_stats']/value"/></b>
         </th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}accounts">
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='accounts']/value"/></a>
+            <a href="{/_R_/runtime/link_prefix}accounts">
+            <xsl:value-of select="/_R_/i18n/label[key='accounts']/value"/></a>
         </td>
         <td>
             <xsl:value-of select="//select_account_stats/account_stats"/>
@@ -67,8 +67,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tr>
     <tr>
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}ledger">
-                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='ledger_transactions']/value"/>
+            <a href="{/_R_/runtime/link_prefix}ledger">
+                <xsl:value-of select="/_R_/i18n/label[key='ledger_transactions']/value"/>
             </a>
         </td>
         <td>
@@ -77,8 +77,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tr>
     <tr>
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}journal">
-                <xsl:value-of select="/__ROOT__/i18n/labels/label[key='journal_entry_amounts']/value"/>
+            <a href="{/_R_/runtime/link_prefix}journal">
+                <xsl:value-of select="/_R_/i18n/label[key='journal_entry_amounts']/value"/>
             </a>
         </td>
         <td>
@@ -87,8 +87,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tr>
     <tr>
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}journal">
-                <xsl:value-of  select="/__ROOT__/i18n/labels/label[key='journal_entries']/value"/>
+            <a href="{/_R_/runtime/link_prefix}journal">
+                <xsl:value-of  select="/_R_/i18n/label[key='journal_entries']/value"/>
             </a>
         </td>
         <td>
@@ -104,21 +104,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <thead>
     <tr>
         <th colspan="2">
-            <b><xsl:value-of select="__ROOT__/i18n/labels/label[key='recent_activity']/value"/></b>
+            <b><xsl:value-of select="/_R_/i18n/label[key='recent_activity']/value"/></b>
         </th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='invoices']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='invoices']/value"/>
         </td>
         <td>
         </td>
     </tr>
     <tr>
         <td>
-            <xsl:value-of select="/__ROOT__/i18n/labels/label[key='checks']/value"/>
+            <xsl:value-of select="/_R_/i18n/label[key='checks']/value"/>
         </td>
         <td>
         </td>
@@ -130,7 +130,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </table>
 
 <br/><br/>
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='number_transactions']/value"/>
+<xsl:value-of select="/_R_/i18n/label[key='number_transactions']/value"/>
 </div>
 </xsl:template>
 </xsl:stylesheet>

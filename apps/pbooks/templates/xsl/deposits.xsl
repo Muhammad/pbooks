@@ -33,34 +33,34 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:call-template>
 
 <div class="generic-button" style="float: right;">
-    <a href="{/__ROOT__/runtime/link_prefix}deposit-create" id="deposit-create">
-        <img src="{//path_prefix}{//icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/__ROOT__/i18n/labels/label[key='new_deposit']/value"/>
+    <a href="{/_R_/runtime/link_prefix}deposit-create" id="deposit-create">
+        <img src="{/_R_/runtime/path_prefix}{//icon_set}/page_edit.gif"/>
+        <xsl:value-of select="/_R_/i18n/label[key='new_deposit']/value"/>
     </a>
 </div>
 <!-- Page title -->
-<strong><xsl:value-of select="/__ROOT__/i18n/labels/label[key='recent_deposits']/value"/>:</strong> 
+<strong><xsl:value-of select="/_R_/i18n/label[key='recent_deposits']/value"/>:</strong> 
 <table class="tablesorter" id="myDeposits">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='id']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='memo']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='amount']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='date']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='id']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='amount']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='date']/value"/></th>
     </tr>
     </thead>
     <tbody>
     <!-- START LOOP -->
-    <xsl:for-each select="/__ROOT__/get_some_business_objects">
+    <xsl:for-each select="/_R_/get_some_business_objects">
     <xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}deposit-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
+            <a href="{/_R_/runtime/link_prefix}deposit-edit&amp;entry_id={entry_id}"><xsl:value-of select="entry_id"/></a>
             <!--
             <xsl:value-of select="entry_id"/>-->
         </td>
         <td>
-            <a href="{/__ROOT__/runtime/link_prefix}deposit-edit&amp;entry_id={entry_id}">
+            <a href="{/_R_/runtime/link_prefix}deposit-edit&amp;entry_id={entry_id}">
             <xsl:value-of select="memorandum"/>
             </a>
         </td>

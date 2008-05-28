@@ -25,11 +25,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="date_select">
 <xsl:param name="my_from_date"><xsl:value-of select="//from_date"/></xsl:param>
 <xsl:variable name="my_uri">
-<xsl:if test="__ROOT__/_get/from_date">
-<xsl:value-of select="substring-before(__ROOT__/request_uri,'&amp;from_date')"/>
+<xsl:if test="/_R_/_get/from_date">
+<xsl:value-of select="substring-before(/_R_/request_uri,'&amp;from_date')"/>
 </xsl:if>
-<xsl:if test="not(__ROOT__/_get/from_date)">
-<xsl:value-of select="//__ROOT__/request_uri"/>
+<xsl:if test="not(/_R_/_get/from_date)">
+<xsl:value-of select="//_R_/request_uri"/>
 </xsl:if>
 </xsl:variable>
 <a href="{$my_uri}&amp;from_date={//prev_from_date}&amp;to_date={//prev_to_date}">

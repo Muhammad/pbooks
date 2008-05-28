@@ -31,16 +31,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table class="tablesorter" id="periods_table">
     <thead>
     <tr>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='period_id']/value"/></th>
-        <th><xsl:value-of select="/__ROOT__/i18n/labels/label[key='period_value']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='period_id']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/label[key='period_value']/value"/></th>
     </tr>
     </thead>
     <tbody>
-    <xsl:for-each select="/__ROOT__/fiscal_periods/period">
+    <xsl:for-each select="/_R_/fiscal_periods/period">
         <tr><td><xsl:value-of select="period_id"/></td><td><xsl:value-of select="period_value"/></td></tr>
     </xsl:for-each>
     </tbody>
 </table>
-<xsl:value-of select="/__ROOT__/i18n/labels/label[key='period_info']/value"/>
+<xsl:value-of select="/_R_/i18n/label[key='period_info']/value"/>
 </xsl:template> 
 </xsl:stylesheet>

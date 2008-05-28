@@ -31,22 +31,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="main">
 
 
-<xsl:if test="not(/__ROOT__/_get/print='true')">
+<xsl:if test="not(/_R_/_get/print='true')">
 <xsl:call-template name="source_spacer">
     <xsl:with-param name="section_start">main</xsl:with-param>
 </xsl:call-template>
 <div id="main">
     <div id="leftcol">
-        <a href="{//link_prefix}welcome">
-            <img src="{/__ROOT__/runtime/top_left_logo}" border="0" alt="PBooks Logo"/>
+        <a href="{/_R_/runtime/link_prefix}welcome">
+            <img src="{/_R_/runtime/top_left_logo}" border="0" alt="PBooks Logo"/>
         </a>
-        <xsl:if test="not(//_get/nid='login')
-        and not(//_get/nid='logout')
-        and not(//_get/nid='development-data-generator')
-        and not(contains(//_get/nid,'user'))
-        and not(//_get/nid='group')
-        and not(//_get/nid='group/edit')
-        and not(contains(//_get/nid,'role'))">
+        <xsl:if test="not(/_R_/_get/nid='login')
+        and not(/_R_/_get/nid='logout')
+        and not(/_R_/_get/nid='development-data-generator')
+        and not(contains(/_R_/_get/nid,'user'))
+        and not(/_R_/_get/nid='group')
+        and not(/_R_/_get/nid='group/edit')
+        and not(contains(/_R_/_get/nid,'role'))">
             <xsl:call-template name="accounting-menu"/>
         </xsl:if>
     </div>
@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
 
-<xsl:if test="/__ROOT__/_get/print='true'">
+<xsl:if test="/_R_/_get/print='true'">
     <div onclick="window.location.href='{substring-before(//request_uri,'&amp;print=true')}';"
     style="padding: 20px; width: 600px;">
     <xsl:call-template name="content"/>
