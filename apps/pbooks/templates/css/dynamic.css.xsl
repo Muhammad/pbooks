@@ -27,11 +27,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:include href="colors.css.xsl"/>
 <xsl:include href="layout.css.xsl"/>
 <xsl:include href="typography.css.xsl"/>
+<xsl:include href="interactive.css.xsl"/>
 <xsl:template match="/">
 
 <xsl:call-template name="base"/>
 <xsl:call-template name="typography"/>
 <xsl:call-template name="layout"/>
+<xsl:call-template name="interactive"/>
 <xsl:call-template name="colors"/>
 
 <xsl:if test="//path_prefix='/demo/'">

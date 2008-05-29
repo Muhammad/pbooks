@@ -38,10 +38,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <div id="main">
     <div id="leftcol">
         <div id="primary_logo">
-        <br/>
-        <a href="{/_R_/runtime/link_prefix}welcome">
-            <img src="{/_R_/runtime/top_left_logo}" alt="PBooks Logo"/>
-        </a>
+            <div id="primary_logo_span">
+            <a href="{/_R_/runtime/link_prefix}welcome">
+                <img src="{/_R_/runtime/top_left_logo}" alt="PBooks Logo"/>
+            </a>
+            </div>
         </div>
         <xsl:if test="not(/_R_/_get/nid='login')
         and not(/_R_/_get/nid='logout')

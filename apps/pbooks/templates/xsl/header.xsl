@@ -26,11 +26,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:call-template name="source_spacer">
     <xsl:with-param name="section_start">header</xsl:with-param>
 </xsl:call-template>
-<div id="top-block">&#160;
-    <div id="company-name">
+<div id="header">&#160;
+    <span id="company-name">
         <xsl:value-of select="//company_name"/>
-    </div>
-    <div id="print-button"></div>
+    </span>
     <h1 class="page-title">
         <xsl:value-of select="//i18n/label[key=/_R_/_get/nid]/value"/>
     </h1>

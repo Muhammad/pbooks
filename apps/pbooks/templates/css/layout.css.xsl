@@ -31,22 +31,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
     margin-right: auto;
 }
 
-#header {
-    width: 100%;
-    border: 0px;
-    background: #FFF;
-}
 #primary_logo {
     height: <xsl:value-of select="//header/height"/>;
     text-align: center;
     background-color: white;
     display: block;
 }
+#primary_logo_span {
+    padding: 12px;
+}
+#company-name {
+    float: right;
+    margin-right: .4em;
+}
 
-
-#top-block {
+#header {
     height: <xsl:value-of select="//header/height"/>;
-    background: #444;
     letter-spacing: 1px;
     display: block;
     margin-left: <xsl:value-of select="//left_column/width"/>;
@@ -90,8 +90,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 #footer {
     display: block;
-    text-align: center;
-    line-height: 20px;
+    margin-bottom: 2em;: 
 }
 
 
@@ -223,9 +222,6 @@ table.simpletable thead th, table.simpletable tbody tr td {
      padding: 5px;
 }
 
-.page-title {
-    padding: 10px;
-    margin-top: -8px;
-}
+
 </xsl:template>
 </xsl:stylesheet>

@@ -30,11 +30,28 @@ body {
 }
 
 .page-title {
-    font-size: 18px;
+    font-size: 2.6em;
+    line-height: 1.4em;
+    text-indent: .5em;
+    font-family: serif;
 }
 
 #journal-entry-form table {
      font-size: 12px;
+}
+#footer {
+    padding: 3px;
+    font-size: .83em;
+    line-height: 2.4em;
+    text-align: center;
+}
+.menu-sub-selected {
+    font-weight: bold;
+}
+
+.menu-sub:hover, .menu-sub a:hover {
+    text-decoration: underline;
+    color: #700000;
 }
 
 .journal-data-wrap td {

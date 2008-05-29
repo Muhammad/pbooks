@@ -24,24 +24,35 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="colors">
-
+body {
+    background: #7B8F8F;
+}
 #footer {
-    background: #555;
-    color: #FFF;
+    border: 0;
+    border-top: 1em;
+    border-color: #7D0000;
+    border-style: solid;
+    background: #142738;
+    color: #C4C4C4;
+}
+#footer a {
+    color: #C4C4C4;
 }
 #main {
-    background: #CCC;
+    background: #C4C4C4;
 }
-
+#header {
+    background-color: #142738;
+}
 #content {
     background: #FFF;
 }
-#loftcol {
-    background-color: #CCC;
-}
 
+#company-name {
+    color: #FFC508;
+}
 .page-title {
-    color: #EEE;
+    color: #FFC508; /* #D6B28D; */
 }
 
 .row0 td {
@@ -58,6 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 }
 .row2:hover td {
     background-color: #CCFFFF;
+    cursor: pointer;
 }
 
 .row3 td {
@@ -77,10 +89,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 }
 
 .menu-sub-selected {
-    background-color: #AAA;
+    background-color: #7D0000;
+    color: #FFC508;
 }
 .menu-sub {
-	background: #CCC;
+	background: #C4C4C4;
+}
+.menu-sub:hover {
+    background: #F7F7F7; /* 7D0000 */
 }
 a {
     color: #222222;
@@ -91,7 +107,7 @@ a:visited {
 }
 
 a:hover {
-    color: #44BBDD;
+    color: #7D0000;
 }
 
 
