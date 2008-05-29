@@ -45,10 +45,15 @@ body {
     line-height: 2.4em;
     text-align: center;
 }
-.menu-sub-selected {
-    font-weight: bold;
-}
 
+
+.menu-sub-selected {
+	font-weight: bold;
+}
+.menu-sub-selected, .menu-sub {
+	text-indent: .5em;
+	white-space: nowrap;
+}
 .menu-sub:hover, .menu-sub a:hover {
     text-decoration: underline;
     color: #700000;

@@ -89,8 +89,8 @@ body {
 }
 
 .menu-sub-selected {
-    background-color: #7D0000;
-    color: #FFC508;
+    background-color: #AAA;
+    color: #FFF;
 }
 .menu-sub {
 	background: #C4C4C4;

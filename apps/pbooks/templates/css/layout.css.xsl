@@ -121,8 +121,6 @@ a.generic-button {
 
 .menu-sub, .menu-sub-selected {
     align: left;
-	text-indent:0px;
-	white-space: nowrap;
     padding: 5px;
 }
 

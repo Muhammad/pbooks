@@ -54,7 +54,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
     <tr>
         <td class="menu-sub" onclick="window.location.href='{//runtime/link_prefix}{url}';">
-        <a href="{//runtime/link_prefix}{url}" id="{key}">
+        <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
             <xsl:if test="//show_tool_tips='yes'">
                 <xsl:attribute name="title">
                     <xsl:value-of select="/_R_/i18n/label[key=$key]/description"/>
