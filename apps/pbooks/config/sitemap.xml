@@ -83,7 +83,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:query src="data/sql/entry_get_id.xml"/>
     <map:query src="data/sql/entry_amount_credit_create_get.xml"/>
     <map:block name="entry_update_datetime">
-        <map:if name="/__ROOT__/_get/entry_datetime">
+        <map:if name="/_R_/_get/entry_datetime">
             <map:true>
                 <map:query src="data/sql/entry_update_datetime.xml"/>
             </map:true>
@@ -201,7 +201,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:set name="debit_account_1" value="{accounts_receivable_id}"/>
     <map:query src="data/sql/account_get_by_ar_id.xml"/>
     <map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d"/>
-    <map:if name="/__ROOT__/account_business_objects">
+    <map:if name="/_R_/account_business_objects">
         <map:true>
             <map:xsl src="templates/xsl/invoices.xsl" />
         </map:true>
@@ -219,7 +219,7 @@ This makes it easier to maintain persistence. -->
     <map:query src="data/sql/account_business_objects.xml" />
     <map:set name="debit_account_1" value="{//accounts_get_accounts_receivable_id/accounts_receivable_id}"/>
     <map:query src="data/sql/account_get_by_ar_id.xml"/>
-    <map:if name="/__ROOT__/account_business_objects">
+    <map:if name="/_R_/account_business_objects">
         <map:true>
             <map:insert name="blank-entry"/>
             <map:query src="data/sql/entry_get_by_id.xml"/>
@@ -265,7 +265,7 @@ This makes it easier to maintain persistence. -->
 
 
 <map:gate name="invoices-submit" role="pb_admin">
-    <map:if name="/__ROOT__/_post">
+    <map:if name="/_R_/_post">
         <map:true>
             <map:query src="data/sql/entry_meta_delete.xml"/>
             <map:xml src="data/xml/invoice_meta.xml"/>
@@ -301,7 +301,7 @@ This makes it easier to maintain persistence. -->
     processes, like invoices and bills.-->
     <map:set name="account_meta_key" value="takes_deposits"/>
     <map:query src="data/sql/account_business_objects.xml"/>
-    <map:if name="/__ROOT__/account_business_objects">
+    <map:if name="/_R_/account_business_objects">
         <map:true>
             <map:insert name="blank-entry"/>
             <map:query src="data/sql/entry_get_by_id.xml"/>
@@ -326,7 +326,7 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/deposit_form.xsl" />
 </map:gate>
 <map:gate name="deposit-submit" role="pb_admin">
-    <map:if name="/__ROOT__/_post">
+    <map:if name="/_R_/_post">
         <map:true>
             <map:query src="data/sql/entry_update.xml"/>
             <map:query src="data/sql/account_business_objects.xml"/>
@@ -342,7 +342,7 @@ This makes it easier to maintain persistence. -->
         <map:false>
         </map:false>
     </map:if>
-    <map:action type="redirect" params="{/__ROOT__/runtime/link_prefix}deposits"/> 
+    <map:action type="redirect" params="{/_R_/runtime/link_prefix}deposits"/> 
 </map:gate>
 
 <!-- CHECKS -->
@@ -354,7 +354,7 @@ This makes it easier to maintain persistence. -->
 <map:gate name="check-create" role="pb_admin">
     <map:set name="account_meta_key" value="has_checks"/>
     <map:query src="data/sql/account_business_objects.xml"/>
-    <map:if name="/__ROOT__/account_business_objects">
+    <map:if name="/_R_/account_business_objects">
         <map:true>
             <map:insert name="blank-entry"/>
             <map:query src="data/sql/entry_get_by_id.xml"/>
@@ -375,7 +375,7 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/check_form.xsl" />
 </map:gate>
 <map:gate name="check-submit" role="pb_admin">
-    <map:if name="/__ROOT__/_post">
+    <map:if name="/_R_/_post">
         <map:true>
             <map:xml src="data/xml/strip_chars.xml"/>
             <map:action type="strip" params="//_post/entry_amount,//strip_chars/entry_amounts/char"/>
@@ -391,7 +391,7 @@ This makes it easier to maintain persistence. -->
         <map:false>
         </map:false>
     </map:if>
-    <map:action type="redirect" params="{/__ROOT__/runtime/link_prefix}checks"/> 
+    <map:action type="redirect" params="{/_R_/runtime/link_prefix}checks"/> 
 </map:gate>
 
 
@@ -417,7 +417,7 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/transfer_form.xsl" />
 </map:gate>
 <map:gate name="transfer-submit" role="pb_admin">
-    <map:if name="/__ROOT__/_post">
+    <map:if name="/_R_/_post">
         <map:true>
             <map:query src="data/sql/entry_update.xml"/>
             <map:query src="data/sql/entry_meta_delete.xml"/>
@@ -427,7 +427,7 @@ This makes it easier to maintain persistence. -->
             <map:query src="data/sql/entry_amounts_delete.xml" />
             <map:query src="data/sql/entry_amount_transfer_debit.xml"/>
             <map:query src="data/sql/entry_amount_transfer_credit.xml"/>
-            <map:action type="redirect" params="{/__ROOT__/runtime/link_prefix}transfers"/>
+            <map:action type="redirect" params="{/_R_/runtime/link_prefix}transfers"/>
         </map:true>
         <map:false>
         </map:false>
@@ -455,7 +455,7 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/accounts.xsl" />
 </map:gate>
 <map:gate name="new-account">
-    <map:action type="redirect" params="{/__ROOT__/runtime/link_prefix}accounts-edit"/>
+    <map:action type="redirect" params="{/_R_/runtime/link_prefix}accounts-edit"/>
 </map:gate>
 <map:gate name="accounts-edit" role="pb_admin" cache="300">
 <map:if name="//_post">
