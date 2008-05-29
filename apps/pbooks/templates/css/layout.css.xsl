@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 #top-block {
     height: 5.4em;
-    background: #777;
+    background: #444;
     letter-spacing: 1px;
     display: block;
     margin-left: <xsl:value-of select="//left_column/width"/>;
@@ -48,8 +48,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 #leftcol {
     float: left;
     width: <xsl:value-of select="//left_column/width"/>;
+    margin: 0;
 }
 #content {
+    padding: 4px;
     margin-left: <xsl:value-of select="//left_column/width"/>;
 }
 #content:after {

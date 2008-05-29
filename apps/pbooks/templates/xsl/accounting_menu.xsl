@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="source_spacer">
     <xsl:with-param name="section_start">table-menu</xsl:with-param>
 </xsl:call-template>
-<table cellpadding="0" cellspacing="0" border="0" width="120">
+<table cellpadding="0" cellspacing="0" border="0" width="{//left_column/width}">
 
 
     <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
