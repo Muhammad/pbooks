@@ -30,6 +30,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:query src="data/sql/accounts_get_all.xml" />
     <map:query src="data/sql/account_business_objects.xml" />
     <map:xml src="data/xml/main_menu.xml"/>
+    <map:xml src="data/xml/page_layout.xml"/>
     <map:xml src="i18n/{selected_lang}/pbooks.xml"/>
     <map:xml src="i18n/{selected_lang}/errors.xml"/>
 </map:prepend>
