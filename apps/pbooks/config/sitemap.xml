@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<map:sitemap xmlns:map="http://www.nexista.com/sitemap">
+<map:sitemap xmlns:map="http://www.nexista.org/sitemap">
 <!--
 Program: PBooks
 Component: Sitemap
@@ -25,14 +25,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <map:prepend>
     <map:set name="pbooks_code_version" value="0.11"/>
-    <map:script src="lib/php/runtime.php"/>
-    <map:query src="data/sql/option_get_company_name.xml"/>
-    <map:query src="data/sql/accounts_get_all.xml" />
-    <map:query src="data/sql/account_business_objects.xml" />
-    <map:xml src="data/xml/main_menu.xml"/>
     <map:xml src="data/xml/page_layout.xml"/>
-    <map:xml src="i18n/{selected_lang}/pbooks.xml"/>
-    <map:xml src="i18n/{selected_lang}/errors.xml"/>
+    <xsl:switch name="/_R_/_get/nid">
+        <map:case value="dynamic-css">
+        </map:case>
+        <map:default>
+            <map:script src="lib/php/runtime.php"/>
+            <map:query src="data/sql/option_get_company_name.xml"/>
+            <map:query src="data/sql/accounts_get_all.xml" />
+            <map:query src="data/sql/account_business_objects.xml" />
+            <map:xml src="data/xml/main_menu.xml"/>
+            <map:xml src="i18n/{selected_lang}/pbooks.xml"/>
+            <map:xml src="i18n/{selected_lang}/errors.xml"/>
+        </map:default>
+    </xsl:switch>
 </map:prepend>
 
 
