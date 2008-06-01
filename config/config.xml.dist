@@ -74,7 +74,7 @@ used for a single or several applications. -->
     <!-- BUILD SETTINGS -->
     <build>
         <loader>&project_root;/cache/&server_name;/&app_name;/&app_name;.php</loader>
-        <sitemap>&project_root;/apps/&app_name;/config/sitemap.xml</sitemap>
+        <sitemap>&project_root;/apps/&app_name;/sitemap.xml</sitemap>
 
         <!-- default uri - used for login script to send user somewhere -->
         <default>index.php?nid=index</default>
