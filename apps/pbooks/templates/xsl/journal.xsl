@@ -131,7 +131,7 @@ because of the dynamic number of rows per entry. -->
     <a 
     href="{$my_link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;account_type_id={account_type_id}"
     onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
-        <div class="journal-post-plus" style="background-image: url({/_R_/runtime/path_prefix}{//icon_set}add.png);">&#160;</div>
+        <div class="journal-post-plus" style="background-image: url({/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png);">&#160;</div>
     </a>
             </div>
             </xsl:if>

@@ -103,7 +103,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
         <xsl:value-of select="/_R_/i18n/label[key='credit_account']/value"/>
     </option>
 
-    <xsl:for-each select="//get_all_accounts">
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
         <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
         <option value="{id}">
             <xsl:if test="id=//get_journal_entry/account_id 

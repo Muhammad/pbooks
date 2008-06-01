@@ -23,25 +23,25 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="date_select">
-<xsl:param name="my_from_date"><xsl:value-of select="//from_date"/></xsl:param>
+<xsl:param name="my_from_date"><xsl:value-of select="/_R_/runtime/from_date"/></xsl:param>
 <xsl:variable name="my_uri">
 <xsl:if test="/_R_/_get/from_date">
-<xsl:value-of select="substring-before(/_R_/request_uri,'&amp;from_date')"/>
+    <xsl:value-of select="substring-before(/_R_/_server/REQUEST_URI,'&amp;from_date')"/>
 </xsl:if>
 <xsl:if test="not(/_R_/_get/from_date)">
-<xsl:value-of select="//_R_/request_uri"/>
+    <xsl:value-of select="/_R_/_server/REQUEST_URI"/>
 </xsl:if>
 </xsl:variable>
-<a href="{$my_uri}&amp;from_date={//prev_from_date}&amp;to_date={//prev_to_date}">
-    <img style="padding-right: 5px;" src="s/images/buttons/out.gif"/>
+<a href="{$my_uri}&amp;from_date={/_R_/runtime/prev_from_date}&amp;to_date={/_R_/runtime/prev_to_date}">
+    <img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
 </a>
 
 From <input type="text" name="from_date" class="date_input" value="{$my_from_date}"/>
 
-To <input type="text" name="to_date" class="date_input" value="{//to_date}"/>
+To <input type="text" name="to_date" class="date_input" value="{/_R_/runtime/to_date}"/>
 
-<a href="{$my_uri}&amp;from_date={//next_from_date}&amp;to_date={//next_to_date}">
-    <img style="padding-right: 5px;" src="s/images/buttons/in.gif"/>
+<a href="{$my_uri}&amp;from_date={/_R_/runtime/next_from_date}&amp;to_date={/_R_/runtime/next_to_date}">
+    <img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/in.gif"/>
 </a>
 
 

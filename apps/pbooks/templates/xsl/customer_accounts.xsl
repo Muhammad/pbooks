@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:if>
 
 <a href="{/_R_/runtime/link_prefix}customer-edit" class="generic-button">
-    <img src="{/_R_/runtime/path_prefix}{//icon_set}/folder_new.gif"/>
+    <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
     <xsl:value-of select="/_R_/i18n/label[key='new_customer']/value"/>
 </a>
 </div>

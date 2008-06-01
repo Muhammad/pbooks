@@ -330,7 +330,7 @@ function get_entry_date()
     <td>
     <xsl:if test="count(//get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not(//get_journal_entry[entry_type_id='Debit']))">
     <a onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id},get_entry_date()); return false;">
-        <img src="{/_R_/runtime/path_prefix}{//icon_set}add.png"/>
+        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png"/>
     </a>
     </xsl:if>
     </td>
@@ -407,12 +407,12 @@ function get_entry_date()
     <xsl:if test="count(//get_journal_entry[entry_type_id='Credit']) &gt; 1">
         <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-        <img src="{/_R_/runtime/path_prefix}{//icon_set}delete.png"/></a>
+        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png"/></a>
     </xsl:if>
     <xsl:if test="count(//get_journal_entry[entry_type_id='Debit']) &gt; 1">
         <a href=""
         onclick="debits_summarize(); return false;">
-        <img src="{/_R_/runtime/path_prefix}{//icon_set}icon_accept.gif"/></a>
+        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}icon_accept.gif"/></a>
     </xsl:if>
     </td>
 </tr>
@@ -430,7 +430,7 @@ function get_entry_date()
     <td>
     <xsl:if test="count(//get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not(//get_journal_entry[entry_type_id='Credit']))">
     <a onclick="journal_entry_amount_create('debit',{/_R_/_get/entry_id},get_entry_date()); return false;">
-        <img src="{/_R_/runtime/path_prefix}{//icon_set}add.png"/>
+        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png"/>
     </a>
     </xsl:if>
     </td>
@@ -484,7 +484,7 @@ function get_entry_date()
     <xsl:if test="count(//get_journal_entry[entry_type_id='Debit']) &gt; 1">
         <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-            <img src="{/_R_/runtime/path_prefix}{//icon_set}delete.png" />
+            <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" />
         </a>
     </xsl:if>
     </td>

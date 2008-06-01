@@ -71,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </xsl:for-each>
             </select>&#160;
             <a href="{/_R_/runtime/link_prefix}customer-edit">
-            <img src="{/_R_/runtime/path_prefix}{//icon_set}add.png" border="0"/>
+            <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
             </a>
             </td>
             <td>
@@ -153,7 +153,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:if test="position() &gt; 1">
                 <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
                 onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-                <img src="{/_R_/runtime/path_prefix}{//icon_set}delete.png" border="0" /></a>
+                <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" /></a>
                 </xsl:if>
             </td>
         </tr>
@@ -164,7 +164,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td>
                 <a href="{/_R_/runtime/link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                 <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-                src="{/_R_/runtime/path_prefix}{//icon_set}add.png" border="0"/>
+                src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
                 </a>
             </td>
         </tr>

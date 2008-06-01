@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </script>
 
 <div class="generic-button" style="text-align: right;">
-    <a href="{/_R_/runtime/link_prefix}account-group-edit"><img src="{/_R_/runtime/path_prefix}{//icon_set}/folder_new.gif"/>
+    <a href="{/_R_/runtime/link_prefix}account-group-edit"><img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
         <xsl:value-of select="/_R_/i18n/label[key='new_account_group']/value"/>
     </a>
 </div>

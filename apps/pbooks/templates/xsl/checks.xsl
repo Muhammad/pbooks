@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
     <a href="{/_R_/runtime/link_prefix}check-create">
-    <img style="" src="{/_R_/runtime/path_prefix}{//icon_set}/page_edit.gif"/>
+    <img style="" src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
     <xsl:value-of select="/_R_/i18n/label[key='write_check']/value"/>
     </a>
 </div>

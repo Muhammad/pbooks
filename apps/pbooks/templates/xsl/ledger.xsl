@@ -132,12 +132,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:otherwise>
                 <a href="{$my_link_prefix}ledger-delete&amp;transaction_id={transaction_id}" 
                 onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
-                    <img src="{/_R_/runtime/path_prefix}{//icon_set}delete.png" alt="x" border="0"/>
+                    <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x" border="0"/>
                 </a>
                 &#160;
                 <!-- create new matching entry -->
                 <a href="{$my_link_prefix}journal-new-from-transaction&amp;transaction_id={transaction_id}">
-                    <img src="{/_R_/runtime/path_prefix}{//icon_set}add.png" alt="+" border="0"/>
+                    <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" alt="+" border="0"/>
                 </a>
             </xsl:otherwise>
         </xsl:choose>

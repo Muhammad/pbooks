@@ -63,7 +63,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:if>
 
     <a href="{/_R_/runtime/link_prefix}accounts-edit" class="generic-button" id="new_account">
-        <img src="{/_R_/runtime/path_prefix}{//icon_set}/folder_new.gif"/>
+        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
         <xsl:value-of select="/_R_/i18n/label[key='new_account']/value"/>
     </a>
 </div>

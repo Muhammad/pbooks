@@ -49,35 +49,26 @@ $debug = Nexista_Config::get('./runtime/debug');
 $top_left_logo = "s/images/pbooks-logo_120x60.png";
 
 # This wacky path builder is required due to mod_rewrite situations
-$path = $_SERVER['REQUEST_URI'];
-Nexista_Flow::add("request_uri",$path);
-$path = dirname($path)."/".basename($_SERVER['SCRIPT_NAME']);
+$path = $_SERVER['SCRIPT_NAME'];
 $path_prefix = dirname($path)."/";
 $link_prefix = $path."?nid=";
 $utcdate = gmdate('Y-m-d H:i:s');
 
 
-$db_version = rtrim(file_get_contents(PROJECT_ROOT.DIRECTORY_SEPARATOR.'config/db_version.txt'));
-/* DEFAULTS */
-
+$db_version = rtrim(file_get_contents(PROJECT_ROOT.'/config/db_version.txt'));
 $default_selected_lang = Nexista_Config::get("./defaults/default_selected_lang");
 if(empty($default_selected_lang)) { 
     $default_selected_lang = "en_US";
 }
-Nexista_Flow::add("selected_lang",$default_selected_lang);
 
 $default_theme = Nexista_Config::get("./defaults/default_theme");
 if(empty($default_theme)) { 
     $default_theme = "default";
 }
-Nexista_Flow::add("theme",$default_theme);
-
 $default_icon_set = Nexista_Config::get("./defaults/default_icon_set");
 if(empty($default_icon_set)) { 
     $default_icon_set = "images/icons/famfamfam/";
 }
-Nexista_Flow::add("icon_set",$default_icon_set);
-
 $default_currency_unit = Nexista_Config::get("./defaults/default_currency_unit");
 if(empty($default_currency_unit)) { 
     $default_currency_unit = "$";
@@ -87,23 +78,6 @@ $default_invoice_print_vertical = Nexista_Config::get("./defaults/default_invoic
 if(empty($default_invoice_print_vertical)) { 
     $default_invoice_print_vertical = "-22";
 }
-
-/* END DEFAULTS */
-
-$runtime = array('host_name' => $_SERVER['SERVER_NAME'],
-                'path_prefix' => $path_prefix,
-                'link_prefix' => $link_prefix,
-                'right_now' => $utcdate,
-                'utcdate' => $utcdate,
-                'current_user_id' => $current_user_id,
-                'default_currency_unit' => $default_currency_unit,
-                'default_invoice_print_vertical' => $default_invoice_print_vertical,
-                'debug' => $debug,
-                'top_left_logo' => $top_left_logo,
-                'db_version' => $db_version);
-
-Nexista_Flow::add("runtime",$runtime,false);
-
 
 
 /* 
@@ -116,13 +90,11 @@ if(isset($_GET['month'])) {
 } elseif(isset($_GET['from_date'])) {
     $_SESSION['from_date'] = $_GET['from_date'];
     $from_date = $_GET['from_date'];
-} elseif (isset($_SESSION['from_date'])) { 
+} elseif (isset($_SESSION['from_date'])) {
     $from_date = $_SESSION['from_date'];
-} else { 
+} else {
     $from_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), date('m')-2, date('d'), date('Y')));
 }
-
-Nexista_Flow::add("from_date",$from_date,false);
 
 /*
  * Which date span source should I use? 
@@ -140,10 +112,6 @@ if(isset($_GET['month'])) {
     $to_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1, date('Y')));
 }
 
-Nexista_Flow::add("to_date",$to_date,false);
-
-
-
 
 
 
@@ -154,13 +122,6 @@ $prev_from_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($from_date)),date
 $next_to_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($to_date)),date('d',strtotime($to_date))+7, date('Y',strtotime($to_date))));
 
 $next_from_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($from_date)),date('d',strtotime($from_date))+7, date('Y',strtotime($from_date))));
-
-Nexista_Flow::add("prev_to_date",$prev_to_date,false);
-Nexista_Flow::add("prev_from_date",$prev_from_date,false);
-Nexista_Flow::add("next_to_date",$next_to_date,false);
-Nexista_Flow::add("next_from_date",$next_from_date,false);
-
-Nexista_Flow::add("sorting","ASC",false);
 
 
 if(isset($_GET['show_all_accounts'])) {
@@ -173,10 +134,36 @@ if(isset($_GET['show_all_accounts'])) {
 
 if(isset($_SESSION['show_all_accounts'])) { 
     if($_SESSION['show_all_accounts']=="on") { 
-        Nexista_Flow::add("show_all_accounts","on",false);
+        $show_all_accounts = "on";
     }
 }
 
+
+$runtime = array('host_name' => $_SERVER['SERVER_NAME'],
+                'path_prefix' => $path_prefix,
+                'link_prefix' => $link_prefix,
+                'right_now' => $utcdate,
+                'utcdate' => $utcdate,
+                'current_user_id' => $current_user_id,
+                'default_currency_unit' => $default_currency_unit,
+                'default_invoice_print_vertical' => $default_invoice_print_vertical,
+                'debug' => $debug,
+                'top_left_logo' => $top_left_logo,
+                'db_version' => $db_version,
+                'from_date' => $from_date,
+                'to_date' => $to_date,
+                'prev_to_date' => $prev_to_date,
+                'prev_from_date' => $prev_from_date,
+                'next_to_date' => $next_from_date,
+                'next_from_date' => $next_from_date,
+                'sorting' => 'ASC',
+                'show_all_accounts' => $show_all_accounts,
+                'selected_lang' => $default_selected_lang,
+                'theme' => $theme,
+                'icon_set' => $default_icon_set,
+                );
+
+Nexista_Flow::add("runtime",$runtime,false);
 
 
 ?>
