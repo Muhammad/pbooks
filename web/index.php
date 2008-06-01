@@ -19,25 +19,11 @@ define('APP_NAME','pbooks');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
-if(!include($nexista_path.'/extensions/nx_builder.php')) {
-    // This is included just for transisioning 
-    if(!include($nexista_path.'/plugins/builder.php')) {
-        echo "Error: Unable to load server loader or builder.";
-        exit;
-    }
-    
-    // Loader not there or manually getting rebuilt? Build it!
-    if(!file_exists($server_init) || isset($_GET['nxbin'])) {
-        build_it_now();
-    } else { // Loader is there, check freshness, then either rebuild or include it.
-        check_freshness();
-            include($server_init);
-            exit;
-    }
-    // END TRANSITIONING
+if(!include($nexista_path.'/extensions/nexista_builder.php')) {
     echo "Error: Unable to load server loader or builder.";
     exit;
 }
+    
 
 
 
