@@ -25,16 +25,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="get_equation">
     <connection>&pb_connection_read;</connection>
     <params>
-        <param name="from_date" type="text" />
-        <param name="to_date" type="text" />
-        <param name="from_date" type="text" />
-        <param name="to_date" type="text" />
-        <param name="from_date" type="text" />
-        <param name="to_date" type="text" />
-        <param name="from_date" type="text" />
-        <param name="to_date" type="text" />
-        <param name="from_date" type="text" />
-        <param name="to_date" type="text" />
+        <param name="runtime/from_date" type="text" />
+        <param name="runtime/to_date" type="text" />
+        <param name="runtime/from_date" type="text" />
+        <param name="runtime/to_date" type="text" />
+        <param name="runtime/from_date" type="text" />
+        <param name="runtime/to_date" type="text" />
+        <param name="runtime/from_date" type="text" />
+        <param name="runtime/to_date" type="text" />
+        <param name="runtime/from_date" type="text" />
+        <param name="runtime/to_date" type="text" />
 	</params>
     <sql>
         SELECT 
