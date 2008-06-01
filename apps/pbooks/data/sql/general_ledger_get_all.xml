@@ -25,10 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="get_all_transactions">
     <connection>&pb_connection_read;</connection>
     <params>
-        <param name="from_date" type="text"/>
-        <param name="to_date" type="text"/>
-        <param name="sorting" type="text" default="ASC"/>
-        <param name="sorting" type="text" default="ASC"/>
+        <param name="runtime/from_date" type="text"/>
+        <param name="runtime/to_date" type="text"/>
+        <param name="runtime/sorting" type="text" default="ASC"/>
+        <param name="runtime/sorting" type="text" default="ASC"/>
         <param name="_get/start" type="integer" default="0"/>
         <param name="option_get/display_num_trans" type="integer" default="1000"/>
     </params>
