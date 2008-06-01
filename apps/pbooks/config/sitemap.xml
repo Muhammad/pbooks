@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <map:prepend>
     <map:set name="pbooks_code_version" value="0.11"/>
     <map:xml src="data/xml/page_layout.xml"/>
-    <xsl:switch name="/_R_/_get/nid">
+    <map:switch name="/_R_/_get/nid">
         <map:case value="dynamic-css">
         </map:case>
         <map:default>
@@ -38,7 +38,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <map:xml src="i18n/{selected_lang}/pbooks.xml"/>
             <map:xml src="i18n/{selected_lang}/errors.xml"/>
         </map:default>
-    </xsl:switch>
+    </map:switch>
 </map:prepend>
 
 
