@@ -66,7 +66,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td><xsl:value-of select="/_R_/i18n/label[key='customer']/value"/>:</td>
             <td colspan="7">
             <select name="debit_account_id">
-            <xsl:for-each select="/_R_/get_all_accounts[accounts_receivable_account='on']">
+            <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
                 <option value="{id}"><xsl:if test="id=//get_some_business_objects/customer_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
             </xsl:for-each>
             </select>&#160;
@@ -138,7 +138,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td>
                 <select name="credit_account_1[]">
                     <option><xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/></option>
-                    <xsl:for-each select="/_R_/get_all_accounts[account_type_id=40000]">
+                    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
                         <xsl:variable name="my_account_id"><xsl:value-of select="id"/></xsl:variable>
                         <option value="{$my_account_id}"><xsl:if test="/_R_/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
 						<xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>

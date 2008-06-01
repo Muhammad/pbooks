@@ -62,7 +62,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="/_R_/i18n/label[key='accounts']/value"/></a>
         </td>
         <td>
-            <xsl:value-of select="//select_account_stats/account_stats"/>
+            <xsl:value-of select="/_R_/select_account_stats/select_account_stats/account_stats"/>
         </td>
     </tr>
     <tr>
@@ -72,7 +72,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </a>
         </td>
         <td>
-            <xsl:value-of select="//select_account_stats/gl_stats"/>
+            <xsl:value-of select="/_R_/select_account_stats/select_account_stats/gl_stats"/>
         </td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </a>
         </td>
         <td>
-            <xsl:value-of  select="//select_account_stats/entry_amounts_stats"/>
+            <xsl:value-of  select="/_R_/select_account_stats/select_account_stats/entry_amounts_stats"/>
         </td>
     </tr>
     <tr>
@@ -92,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </a>
         </td>
         <td>
-            <xsl:value-of  select="//select_account_stats/entry_stats"/>
+            <xsl:value-of  select="/_R_/select_account_stats/select_account_stats/entry_stats"/>
         </td>
     </tr>
     </tbody>

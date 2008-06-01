@@ -67,7 +67,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/
         from_year"/></b>--></td>
     </tr>
-    <xsl:for-each select="/_R_/get_all_accounts[account_type_id='20000']">
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='20000']">
     <xsl:variable name="this_l_account_id"><xsl:value-of select="id"/></xsl:variable>
     <xsl:variable name="liability_value"><xsl:value-of select="format-number((sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum
 (/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"/></xsl:variable>

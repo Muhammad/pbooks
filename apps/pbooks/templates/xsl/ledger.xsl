@@ -71,11 +71,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input type="hidden" name="nid" value="{_R_/_get/nid}"/>
 		<td><xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/>:</td>
 		<td align="right">
-        <select name="account_id"  onchange="this.form.submit();">
+        <select name="account_id" onchange="this.form.submit();">
             <option value="%">
                 <xsl:value-of select="/_R_/i18n/titles/title[key='ledger']/value"/>
             </option>
-            
+
 			<xsl:for-each select="/_R_/get_all_accounts">
 			    <option value="{id}"><xsl:if test="id=/_R_/_get/account_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
                 <xsl:value-of select="name"/></option>
@@ -110,7 +110,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
         </th>
 
-        <xsl:if test="not(/_R_/_get/account_id='%') and _R_/_get/account_id">
+        <xsl:if test="not(/_R_/_get/account_id='%') and /_R_/_get/account_id">
             <th>Balance</th>
         </xsl:if>
     </tr>
@@ -179,8 +179,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:if test="(/_R_/_get/account_id &gt; 0)">
 <!-- Net change -->
 <div class="generic-box" style="font-size: 18px;">
-    Net change: 
-    <xsl:value-of select="format-number(sum(/_R_/get_all_transactions/entry_amount),'#########.##')"/>
+    Net change:
+    <xsl:value-of select="format-number(sum(/_R_/get_all_transactions/get_all_transactions/entry_amount),'#########.##')"/>
 </div>
 <br/>
 
@@ -218,13 +218,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </thead>
 <tbody>
 <tr>
-    <td><xsl:value-of select="/_R_/get_equation/asset_total"/> +</td>
-    <td><xsl:value-of select="/_R_/get_equation/expenses_total"/> =</td>
-    <td><xsl:if test="/_R_/get_equation/asset_total + //get_equation/expenses_total"><xsl:value-of select="/_R_/get_equation/asset_total + //get_equation/expenses_total"/></xsl:if></td>
-    <td><xsl:value-of select="/_R_/get_equation/liabilities_total"/> +</td>
-    <td><xsl:value-of select="/_R_/get_equation/equity_total"/> +</td>
-    <td><xsl:value-of select="/_R_/get_equation/revenue_total"/></td>
-    <td><xsl:if test="/_R_/get_equation/liabilities_total + _R_/get_equation/equity_total + _R_/get_equation/revenue_total"><xsl:value-of select="/_R_/get_equation/liabilities_total + _R_/get_equation/equity_total + _R_/get_equation/revenue_total"/></xsl:if></td>
+    <td><xsl:value-of select="/_R_/get_equation/get_equation/asset_total"/> +</td>
+    <td><xsl:value-of select="/_R_/get_equation/get_equation/expenses_total"/> =</td>
+    <td><xsl:if test="/_R_/get_equation/get_equation/asset_total + /_R_/get_equation/get_equation/expenses_total"><xsl:value-of select="/_R_/get_equation/get_equation/asset_total + //get_equation/expenses_total"/></xsl:if></td>
+    <td><xsl:value-of select="/_R_/get_equation/get_equation/liabilities_total"/> +</td>
+    <td><xsl:value-of select="/_R_/get_equation/get_equation/equity_total"/> +</td>
+    <td><xsl:value-of select="/_R_/get_equation/get_equation/revenue_total"/></td>
+    <td>
+        <xsl:if test="/_R_/get_equation/get_equation/liabilities_total + /_R_/get_equation/equity_total + /_R_/get_equation/revenue_total">
+        <xsl:value-of select="/_R_/get_equation/get_equation/liabilities_total + /_R_/get_equation/equity_total + /_R_/get_equation/revenue_total"/>
+        </xsl:if>
+    </td>
 </tr>
 </tbody>
 </table>

@@ -70,7 +70,7 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
             <xsl:value-of select="invoice_number"/></a>
             </td>
         <td><a href="#">
-        <xsl:value-of select="/_R_/get_all_accounts[id=$my_customer_id]/name"/></a></td>
+        <xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name"/></a></td>
         <td><a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="invoice_total"/></td>
         <td><xsl:value-of select="entry_datetime"/></td>
