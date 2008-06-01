@@ -77,7 +77,7 @@ because of the dynamic number of rows per entry. -->
     <xsl:variable name="my_link_prefix"><xsl:value-of select="/_R_/runtime/link_prefix"/></xsl:variable>
 
     <!-- OUTER LOOP -->
-    <xsl:for-each select="/_R_/get_all_entries">
+    <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
 	<xsl:variable name="this_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
 	<xsl:variable name="posa"><xsl:value-of select="position() mod 2"/></xsl:variable>
         <tr class="row2">
@@ -109,7 +109,7 @@ because of the dynamic number of rows per entry. -->
     <xsl:variable name="balanced"><xsl:if test="$this_entry_debit_total=$this_entry_credit_total">yes</xsl:if></xsl:variable>
     <xsl:variable name="my_color"><xsl:if test="not($this_entry_debit_total=$this_entry_credit_total)">red</xsl:if></xsl:variable>
      <!--  INNER LOOP -->   
-    <xsl:for-each select="/_R_/get_all_entry_amounts[entry_id=$this_entry_id]">
+    <xsl:for-each select="/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id]">
 	<xsl:variable name="posi"><xsl:value-of select="position()"/></xsl:variable>
     <tr class="row{$posa}">
     <td colspan="5" class="row{$posa}"></td>

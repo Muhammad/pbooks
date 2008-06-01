@@ -120,7 +120,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- General ledger -->
     <tbody>
-    <xsl:for-each select="/_R_/get_all_transactions">
+    <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <!-- This cell will be used for a star or flag with notations -->
         <!--<td>FPO</td>-->

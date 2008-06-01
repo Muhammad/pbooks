@@ -96,7 +96,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     the account balance should be displayed.
     See account_row.xsl for the actual row data. -->
 
-    <xsl:for-each select="/_R_/get_all_accounts[accounts_receivable_account='on']">
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
         <xsl:sort select="account_number"/>
         <xsl:call-template name="account-row"/>
     </xsl:for-each>
