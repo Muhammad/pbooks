@@ -43,7 +43,7 @@ if(!include($nexista_path.'/extensions/nx_builder.php')) {
 
 
 // Loader not there or manually getting rebuilt? Build it!
-if(!file_exists($server_init) || isset($_GET['nxbin'])) {
+if(!file_exists($server_init) || isset($_POST['x--dev--rebuild'])) {
     nexista_build_it_now();
 } else { // Loader is there, check freshness, then either rebuild or include it.
     nexista_check_freshness();
