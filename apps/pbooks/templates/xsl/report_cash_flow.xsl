@@ -39,9 +39,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <div style="text-align: center;">
     <h2><xsl:value-of select="//company_name"/></h2>
-    <xsl:value-of select="/_R_/i18n/label[key='cash_flow_statement']/value"/> <xsl:value-of select="/_R_/i18n/label
-            [key='from']/value"/> 
-    <xsl:value-of select="//from_date"/> <xsl:value-of select="/_R_/i18n/label[key='through']/value"/> <xsl:value-of select="//to_date"/>
+    <xsl:value-of select="/_R_/i18n/label[key='cash_flow_statement']/value"/>
+    <xsl:value-of select="/_R_/i18n/label[key='from']/value"/>
+    <xsl:value-of select="/_R_/runtime/from_date"/> <xsl:value-of select="/_R_/i18n/label[key='through']/value"/> <xsl:value-of select="/_R_/runtime/to_date"/>
 
 </div>
 
@@ -75,7 +75,7 @@ the templates at the bottom of the file -->
          </xsl:call-template>
     </tr>
     <!-- Income / Deposits -->
-    <xsl:for-each select="//get_all_accounts[account_type_id=10000][cash_account='on']">
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=10000][cash_account='on']">
     <xsl:variable name="this_i_account_id"><xsl:value-of select="id"/></xsl:variable>
         <tr class="row{position() mod 2}">
             <td class="matrix-data" style="text-indent: 6px;">
@@ -108,7 +108,7 @@ the templates at the bottom of the file -->
          </xsl:call-template>
     </tr>
     <!-- Disb by account -->
-    <xsl:for-each select="//get_all_accounts[account_type_id=10000][cash_account='on']">
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=10000][cash_account='on']">
     <xsl:variable name="this_d_account_id"><xsl:value-of select="id"/></xsl:variable>
         <tr class="row{position() mod 2}">
             <td class="matrix-data" style="text-indent: 6px;">

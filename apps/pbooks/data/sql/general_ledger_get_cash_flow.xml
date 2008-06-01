@@ -23,11 +23,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_transactions">
+    <!-- TODO - FIXME - this query uses non-standard SQL -->
     <connection>&pb_connection_read;</connection>
     <params>
         <param name="_get/month" type="text" default="%"/>
-        <param name="sorting" type="text" default="ASC"/>
-        <param name="sorting" type="text" default="ASC"/>
+        <param name="runtime/sorting" type="text" default="ASC"/>
+        <param name="runtime/sorting" type="text" default="ASC"/>
         <param name="_get/start" type="integer" default="0"/>
         <param name="option_get/display_num_trans" type="integer" default="1000"/>
     </params>
@@ -39,13 +40,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         &pb_general_ledger;.entry_amount_id,
         DATE(&pb_general_ledger;.entry_datetime) as entry_datetime,
         SUBSTR(&pb_general_ledger;.entry_datetime,6,2) as entry_month,
-        SUBSTR(&pb_general_ledger;.memorandum,1,35) as memorandum, 
+        SUBSTR(&pb_general_ledger;.memorandum,1,35) as memorandum,
         &pb_accounts;.name
-        
+
         FROM &pb_general_ledger;, &pb_accounts;, &pb_accounts_meta;
-        
+
         WHERE
-                
+
         SUBSTR(&pb_general_ledger;.entry_datetime,6,2) LIKE ?
         AND &pb_general_ledger;.account_id=&pb_accounts;.id
         AND &pb_accounts_meta;.account_id=&pb_accounts;.id
