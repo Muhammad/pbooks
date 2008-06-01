@@ -122,10 +122,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     should be displayed, i.e. whether or not an account type is selected,
     or whether the account balance should be displayed -->
 
-<!-- No specific account type selected, show all --> 
+<!-- No specific account type selected, show all -->
 <xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
     <xsl:if test="not(/_R_/_get/nid='account-balances')">
-        <xsl:for-each select="/_R_/get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:call-template name="account-row"/>
         </xsl:for-each>
@@ -134,7 +134,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
 
-        <xsl:for-each select="/_R_/get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:if test="running_balance &gt; 0">
             <xsl:call-template name="account-row"/>
@@ -143,16 +143,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:if>
 </xsl:if>
 
-<!-- Specific account type selected, only show that one --> 
+<!-- Specific account type selected, only show that one -->
 <xsl:if test="/_R_/_get/account_type_id">
     <xsl:if test="not(/_R_/_get/nid='account-balances')">
-        <xsl:for-each select="/_R_/get_all_accounts[account_type_id=/_R_/_get/account_type_id]">
+        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=/_R_/_get/account_type_id]">
             <xsl:sort select="account_number"/>
             <xsl:call-template name="account-row"/>
         </xsl:for-each>
     </xsl:if>
     <xsl:if test="/_R_/_get/nid='account-balances'">
-        <xsl:for-each select="/_R_/get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
             <xsl:sort select="account_number"/>
             <xsl:if test="running_balance &gt; 0">
             <xsl:call-template name="account-row"/>
