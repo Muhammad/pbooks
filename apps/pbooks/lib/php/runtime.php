@@ -24,23 +24,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 */
 
-// this is just a quick patch to do a best effort to
-// set the page when it is unset
-
-if(isset($_GET['page'])) { 
-    if(!$_GET['page'] && !$_POST['page']) { 
-        $page_title = Path::get("//_get/params","flow");
-        $page_title = str_replace("/","",$page_title);
-        Nexista_Flow::add("page",$page_title);
-    }
-}
 
 /* Default fiscal start */
 $default_fiscal_start = Nexista_Config::get("./default_fiscal_start");
 if(empty($default_fiscal_start)) { 
     $default_fiscal_start = "01-01";
 }
-Nexista_Flow::add("fiscal_start",$default_fiscal_start);
+
 
 
 
@@ -161,6 +151,7 @@ $runtime = array('host_name' => $_SERVER['SERVER_NAME'],
                 'selected_lang' => $default_selected_lang,
                 'theme' => $theme,
                 'icon_set' => $default_icon_set,
+                'fiscal_start' => $default_fiscal_start,
                 );
 
 Nexista_Flow::add("runtime",$runtime,false);
