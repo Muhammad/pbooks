@@ -221,5 +221,57 @@ table.simpletable thead th, table.simpletable tbody tr td {
 }
 
 
+
+
+#accordion-menu {
+	margin:0px;
+	padding:0px;
+	text-indent:0px;
+	background-color:#AAA;
+	width:<xsl:value-of select="//left_column/width"/>;
+}
+#accordion-menu a.head {
+	cursor:pointer;
+	background: #AAA;
+	color:#FFFFFF;
+	display:block;
+	font-weight:bold;
+	margin:0px;
+  padding: 5px;
+	text-decoration: none;
+}
+#accordion-menu a.head:hover {
+	color: #7D0000;
+}
+#accordion-menu a.current {
+	background-color: #F7F7F7;
+}
+#accordion-menu ul {
+	border-width: 0px;
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+}
+#accordion-menu li {
+	list-style: none outside none;
+  display: inline;
+}
+#accordion-menu li li a {
+	color: #000000;
+  background-color: #C4C4C4;
+	display: block;
+	text-decoration: none;
+  padding: 5px;
+}
+#accordion-menu li li a:hover {
+	background-color:#F7F7F7;
+}
+@media print {
+	#accordion-menu ul{
+		display: block!important;
+		height: auto!important
+	}
+}
+
 </xsl:template>
 </xsl:stylesheet>

@@ -31,7 +31,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:call-template name="source_spacer">
     <xsl:with-param name="section_start">table-menu</xsl:with-param>
   </xsl:call-template>
-    <xsl:call-template name="table-menu"/>
+    <xsl:call-template name="accordian-menu"/>
   <xsl:call-template name="source_spacer">
     <xsl:with-param name="section_end">table-menu</xsl:with-param>
   </xsl:call-template>
@@ -87,9 +87,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="section_start">accordian-menu</xsl:with-param>
 </xsl:call-template>
     <script type="text/javascript">
-
+    $().ready(function(){
+      $('#accordion-menu').accordion({
+          active: false,
+          header: '.head',
+          navigation: true
+      });
+    });
     </script>
-    <ul id="accordian-menu">
+    <ul id="accordion-menu">
       <xsl:for-each select="//menu/item[not(@active=0)]">
       <xsl:call-template name="list-button">
           <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
@@ -132,7 +138,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="list-button">
     <xsl:param name="key"/>
     <li>
-        <xsl:value-of select="/_R_/i18n/label[key=$key]/value"/>
+        <a href="#"  class="head"><xsl:value-of select="/_R_/i18n/label[key=$key]/value"/></a>
         <ul>
         <xsl:for-each select="//menu/item[key=$key]/item">
         <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
