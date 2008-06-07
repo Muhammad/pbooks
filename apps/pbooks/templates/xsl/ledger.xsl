@@ -143,7 +143,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </xsl:choose>
         </td>
 
-        <td nowrap="nowrap"><xsl:value-of select="substring(memorandum,0,42)"/></td>
+        <td nowrap="nowrap">
+          <a href="{$my_link_prefix}journal-entry&amp;entry_id={entry_id}">
+            <xsl:value-of select="substring(memorandum,0,42)"/>
+          </a>
+        </td>
 
         <xsl:if test="/_R_/_get/account_id='%' or not(/_R_/_get/account_id)">
         <td>

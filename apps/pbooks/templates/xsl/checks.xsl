@@ -86,7 +86,9 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
             </a>
         </td>
         <td>
-            <xsl:value-of select="memorandum"/>
+            <a href="{/_R_/runtime/link_prefix}check-edit&amp;entry_id={entry_id}">
+              <xsl:value-of select="memorandum"/>
+            </a>
         </td>
         <td>
             <xsl:value-of select="entry_amount"/>
