@@ -81,7 +81,26 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
 </xsl:template>
 
+<!-- Alternative vertical accordian menus -->
+<xsl:template name="accordian-menu">
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_start">accordian-menu</xsl:with-param>
+</xsl:call-template>
+    <script type="text/javascript">
 
+    </script>
+    <ul id="accordian-menu">
+      <xsl:for-each select="//menu/item[not(@active=0)]">
+      <xsl:call-template name="list-button">
+          <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
+      </xsl:call-template>
+      </xsl:for-each>
+    </ul>
+    
+<xsl:call-template name="source_spacer">
+    <xsl:with-param name="section_end">accordian-menu</xsl:with-param>
+</xsl:call-template>
+</xsl:template>
 
 
 
