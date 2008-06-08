@@ -711,6 +711,7 @@ This makes it easier to maintain persistence. -->
         -->
         <map:case value="1">
             <map:query src="data/sql/general_ledger_get_cash_flow.xml" />
+            <map:action type="datetime" params="//get_all_transactions/entry_month,datetime,m"/>
             <map:xsl src="templates/xsl/report_cash_flow.xsl" />
         </map:case>
         <!-- Profit and Loss -->
