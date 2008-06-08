@@ -38,16 +38,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
         &pb_general_ledger;.account_id,
         &pb_general_ledger;.entry_id,
         &pb_general_ledger;.entry_amount_id,
-        DATE(&pb_general_ledger;.entry_datetime) as entry_datetime,
-        SUBSTR(&pb_general_ledger;.entry_datetime,6,2) as entry_month,
-        SUBSTR(&pb_general_ledger;.memorandum,1,35) as memorandum,
+        &pb_general_ledger;.entry_datetime,
+        &pb_general_ledger;.entry_datetime as entry_month,
+        &pb_general_ledger;.memorandum,
         &pb_accounts;.name
 
         FROM &pb_general_ledger;, &pb_accounts;, &pb_accounts_meta;
 
         WHERE
 
-        SUBSTR(&pb_general_ledger;.entry_datetime,6,2) LIKE ?
+        &pb_general_ledger;.entry_datetime LIKE ?
         AND &pb_general_ledger;.account_id=&pb_accounts;.id
         AND &pb_accounts_meta;.account_id=&pb_accounts;.id
         AND &pb_accounts_meta;.meta_key='cash_account'
