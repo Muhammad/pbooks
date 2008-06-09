@@ -27,65 +27,71 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
 
-<xsl:template name="accounting-menu">
-  <xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_start">table-menu</xsl:with-param>
-  </xsl:call-template>
+  <xsl:template name="accounting-menu">
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_start">table-menu</xsl:with-param>
+    </xsl:call-template>
     <xsl:call-template name="accordian-menu"/>
-  <xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_end">table-menu</xsl:with-param>
-  </xsl:call-template>
-</xsl:template>
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_end">table-menu</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 
 
 <!-- Original vertical table menu -->
 <!-- Should work with all browsers -->
-<xsl:template name="table-menu">
+  <xsl:template name="table-menu">
 
 
-  <table cellpadding="0" cellspacing="0" border="0" width="{//left_column/width}">
+    <table cellpadding="0" cellspacing="0" border="0" width="{//left_column/width}">
 
 
-    <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
-      <xsl:call-template name="button">
-        <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
-        <xsl:with-param name="target"><xsl:value-of select="url"/></xsl:with-param>
-      </xsl:call-template>
-    </xsl:for-each>
+      <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
+        <xsl:call-template name="button">
+          <xsl:with-param name="key">
+            <xsl:value-of select="key"/>
+          </xsl:with-param>
+          <xsl:with-param name="target">
+            <xsl:value-of select="url"/>
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:for-each>
 
 
-  </table>
-</xsl:template>
+    </table>
+  </xsl:template>
 <!-- table menu buttons -->
-<xsl:template name="button">
+  <xsl:template name="button">
     <xsl:param name="key"/>
     <tr>
-        <td class="menu-sub-selected">
-            <xsl:value-of select="/_R_/i18n/label[key=$key]/value"/>
-        </td>
+      <td class="menu-sub-selected">
+        <xsl:value-of select="/_R_/i18n/label[key=$key]/value"/>
+      </td>
     </tr>
     <xsl:for-each select="//menu/item[key=$key]/item">
-    <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
-    <tr>
+      <xsl:variable name="my_key">
+        <xsl:value-of select="key"/>
+      </xsl:variable>
+      <tr>
         <td class="menu-sub" onclick="window.location.href='{//runtime/link_prefix}{url}';">
-        <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
+          <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
             <xsl:if test="//show_tool_tips='yes'">
-                <xsl:attribute name="title">
-                    <xsl:value-of select="/_R_/i18n/label[key=$key]/description"/>
-                </xsl:attribute>
+              <xsl:attribute name="title">
+                <xsl:value-of select="/_R_/i18n/label[key=$key]/description"/>
+              </xsl:attribute>
             </xsl:if>
             <xsl:value-of select="/_R_/i18n/label[key=$my_key]/value"/>
-        </a>
+          </a>
         </td>
-    </tr>
+      </tr>
     </xsl:for-each>
-</xsl:template>
+  </xsl:template>
 
 <!-- Alternative vertical accordian menus -->
-<xsl:template name="accordian-menu">
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_start">accordian-menu</xsl:with-param>
-</xsl:call-template>
+  <xsl:template name="accordian-menu">
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_start">accordian-menu</xsl:with-param>
+    </xsl:call-template>
     <script type="text/javascript">
     $().ready(function(){
       $('#accordion-menu').accordion({
@@ -98,58 +104,66 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </script>
     <ul id="accordion-menu">
       <xsl:for-each select="//menu/item[not(@active=0)]">
-      <xsl:call-template name="list-button">
-          <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
-      </xsl:call-template>
+        <xsl:call-template name="list-button">
+          <xsl:with-param name="key">
+            <xsl:value-of select="key"/>
+          </xsl:with-param>
+        </xsl:call-template>
       </xsl:for-each>
     </ul>
-    
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_end">accordian-menu</xsl:with-param>
-</xsl:call-template>
-</xsl:template>
+
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_end">accordian-menu</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 
 
 
 
 <!-- Alternative horizontal drop down menus -->
-<xsl:template name="main-menu">
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_start">main-menu</xsl:with-param>
-</xsl:call-template>
+  <xsl:template name="main-menu">
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_start">main-menu</xsl:with-param>
+    </xsl:call-template>
     <script type="text/javascript">
     $(document).ready(function()
     {
         $('#top-main-menu').clickMenu();
     });
     </script>
-	<ul id="top-main-menu">
-    <xsl:for-each select="//menu/item[not(@active=0)]">
-    <xsl:call-template name="list-button">
-        <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
-    </xsl:call-template>
-    </xsl:for-each>
+    <ul id="top-main-menu">
+      <xsl:for-each select="//menu/item[not(@active=0)]">
+        <xsl:call-template name="list-button">
+          <xsl:with-param name="key">
+            <xsl:value-of select="key"/>
+          </xsl:with-param>
+        </xsl:call-template>
+      </xsl:for-each>
     </ul>
-    
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_end">main-menu</xsl:with-param>
-</xsl:call-template>
-</xsl:template>
 
-<xsl:template name="list-button">
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_end">main-menu</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template name="list-button">
     <xsl:param name="key"/>
     <li>
-        <a href="#"  class="head"><xsl:value-of select="/_R_/i18n/label[key=$key]/value"/></a>
-        <ul>
+      <a href="#" class="head">
+        <xsl:value-of select="/_R_/i18n/label[key=$key]/value"/>
+      </a>
+      <ul>
         <xsl:for-each select="//menu/item[key=$key]/item">
-        <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
-            <li>
+          <xsl:variable name="my_key">
+            <xsl:value-of select="key"/>
+          </xsl:variable>
+          <li>
             <a href="{//runtime/link_prefix}{url}" id="{key}">
-                <xsl:value-of select="/_R_/i18n/label[key=$my_key]/value"/>
+              <xsl:value-of select="/_R_/i18n/label[key=$my_key]/value"/>
             </a>
-            </li>
+          </li>
         </xsl:for-each>
-        </ul>
+      </ul>
     </li>
-</xsl:template>
+  </xsl:template>
 </xsl:stylesheet>
