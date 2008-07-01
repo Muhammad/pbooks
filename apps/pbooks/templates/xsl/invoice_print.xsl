@@ -115,8 +115,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
         <xsl:variable name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:variable>
         <tr>
-            <td><xsl:value-of select="/_R_/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/></td>
-            <td><xsl:value-of select="/_R_/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount"/></td>
+            <td><xsl:value-of select="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/></td>
+            <td><xsl:value-of select="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount"/></td>
         </tr>
         </xsl:for-each>
         <!-- END LINE ITEMS -->
@@ -124,7 +124,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- TODO: i18n -->
         <tr>
             <td style="text-align: right;">Grand total:</td>
-            <td><strong><xsl:value-of select="sum(/_R_/invoices_get_amounts[entry_type_id='Credit']/entry_amount)"/></strong></td>
+            <td><strong><xsl:value-of select="sum(/_R_/invoices_get_amounts/invoices_get_amounts[entry_type_id='Credit']/entry_amount)"/></strong></td>
         </tr>
         
     </tbody>
