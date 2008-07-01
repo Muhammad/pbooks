@@ -276,7 +276,9 @@ This makes it easier to maintain persistence. -->
             <map:query src="data/sql/entry_meta_delete.xml"/>
             <map:xml src="data/xml/invoice_meta.xml"/>
             <map:query src="data/sql/entry_create_meta.xml"/>
+            <!--
             <map:action type="concat" params="{//_post/client_id},{//_post/invoice_number},//_post/client_id"/>
+            -->
             <map:query src="data/sql/entry_update.xml"/>
             <map:query src="data/sql/entry_get_id.xml"/>
             <map:query src="data/sql/entry_amounts_delete.xml" />
