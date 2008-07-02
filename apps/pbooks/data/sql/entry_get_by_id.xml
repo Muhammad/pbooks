@@ -23,7 +23,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_journal_entry">
-    <connection>&pb_connection_read;</connection>
+    <!-- Needs primary db -->
+    <!-- Can this be merged with entry_get_one_by_id.xml? -->
+    <connection>&pb_connection;</connection>
     <params>
 		<param name="//_get/entry_id" type="integer"/>
 	</params>
