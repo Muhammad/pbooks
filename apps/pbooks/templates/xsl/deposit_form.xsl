@@ -52,16 +52,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <form action="{/_R_/runtime/link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}" 
 method="post" onSubmit="return validateStandard(this, 'myerror');">
 <!-- If there is more than one deposit account, the user needs to select which one the deposit is being made into -->
-<xsl:if test="count(//account_business_objects) &gt; 1">
+<xsl:if test="count(/_R_/account_business_objects/account_business_objects) &gt; 1">
 <select name="deposit_account_id" required="1" exclude="-1" 
     err="{/_R_/i18n/label[key='error_select_debit']/value}">
     <option value="-1">
         <xsl:value-of select="/_R_/i18n/label[key='deposit_account']/value"/>
     </option>
-    <xsl:for-each select="//account_business_objects">
+    <xsl:for-each select="/_R_/account_business_objects/account_business_objects">
         <option value="{id}">
-            <xsl:if test="id=//get_journal_entry/account_id 
-                and //get_journal_entry/entry_type_id='Debit'">
+            <xsl:if test="id=/_R_/get_journal_entry/get_journal_entry/get_journal_entry/account_id 
+                and /_R_/get_journal_entry/get_journal_entry/get_journal_entry/entry_type_id='Debit'">
                 <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
             <xsl:value-of select="name"/>
@@ -70,9 +70,9 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 </select>
 </xsl:if>
 <!-- If there is only one deposit account, just use that id -->
-<xsl:if test="count(//account_business_objects) = 1">
-<xsl:value-of select="//account_business_objects/name"/>
-<input type="hidden" name="deposit_account_id" value="{//account_business_objects/id}"/>
+<xsl:if test="count(/_R_/account_business_objects/account_business_objects) = 1">
+<xsl:value-of select="/_R_/account_business_objects/account_business_objects/name"/>
+<input type="hidden" name="deposit_account_id" value="{/_R_/account_business_objects/account_business_objects/id}"/>
 </xsl:if>
 <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
 <div id="deposit">
@@ -80,11 +80,11 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
     </div>
     <div id="deposit_date">
         <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>: 
-		<input type="text" name="entry_datetime" value="{/_R_/get_journal_entry/entry_date}"/>
+		<input type="text" name="entry_datetime" value="{/_R_/get_journal_entry/get_journal_entry/entry_date}"/>
     </div>
     <div id="deposit_memo">
         <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>: 
-		<input type="text" name="memorandum" value="{/_R_/get_journal_entry/memorandum}"/>
+		<input type="text" name="memorandum" value="{/_R_/get_journal_entry/get_journal_entry/memorandum}"/>
     </div>
     <div id="deposit_payee">
         <table border="0" id="deposit_form_table">
@@ -97,9 +97,9 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 			</tr>
             <tr>
                 <!-- Here the check number is the equivalent of a journal entry memorandum -->
-                <td><input type="text" name="check_number[]" style="width: 50px;" value="{/_R_/get_journal_entry/entry_amount_memorandum}"/>
+                <td><input type="text" name="check_number[]" style="width: 50px;" value="{/_R_/get_journal_entry/get_journal_entry/entry_amount_memorandum}"/>
 				</td>
-                <td>$<input type="text" name="entry_amount[]"  style="width: 100px;" value="{/_R_/get_journal_entry/entry_amount}"/>
+                <td>$<input type="text" name="entry_amount[]"  style="width: 100px;" value="{/_R_/get_journal_entry/get_journal_entry/entry_amount}"/>
 				</td>
                 <td>
 					<!-- only one cash entry is allowed -->
@@ -112,17 +112,17 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
                         <option value="0">
 							<xsl:value-of select="/_R_/i18n/label[key='not_applicable']/value"/>
 						</option>
-					<xsl:for-each select="//get_some_business_objects">
+					<xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
 						<xsl:variable name="my_new_entry_id">
 							<xsl:value-of select="entry_id"/>
 						</xsl:variable>
 						<xsl:variable name="my_client_id">
-							<xsl:value-of select="//business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
+							<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
 						</xsl:variable>
 
 						<option value="{id}"><xsl:if test="id=//metadata/account_id and not(/_R_/_get/transaction_id)">
 							<xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-						<xsl:value-of select="//business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/> - 
+						<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/> - 
 						<xsl:value-of select="//clients/clients/client[client_id=$my_client_id]/client_name"/>
 						
 							<xsl:value-of select="name"/>
@@ -143,9 +143,9 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 			<xsl:variable name="my_entry_id"><xsl:value-of select="entry_id"/></xsl:variable>
             <tr>
                 <!-- Here the check number is the equivalent of a journal entry memorandum -->
-                <td><input type="text" name="check_number[]" style="width: 50px;" value="{/_R_/get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
+                <td><input type="text" name="check_number[]" style="width: 50px;" value="{/_R_/get_journal_entry/get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
 				</td>
-                <td>$<input type="text" name="entry_amount[]"  style="width: 100px;" value="{/_R_/get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
+                <td>$<input type="text" name="entry_amount[]"  style="width: 100px;" value="{/_R_/get_journal_entry/get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
 				</td>
                 <!-- Additional deposit line items. -->
                 <td>
@@ -164,17 +164,17 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
                         <option value="0">
 							<xsl:value-of select="/_R_/i18n/label[key='not_applicable']/value"/>
 						</option>
-					<xsl:for-each select="//get_some_business_objects">
+					<xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
 						<xsl:variable name="my_new_entry_id">
 							<xsl:value-of select="entry_id"/>
 						</xsl:variable>
 						<xsl:variable name="my_client_id">
-							<xsl:value-of select="//business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
+							<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
 						</xsl:variable>
 
 						<option value="{id}"><xsl:if test="id=//metadata/account_id and not(/_R_/_get/transaction_id)">
 							<xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-						<xsl:value-of select="//business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/> - 
+						<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/> - 
 						<xsl:value-of select="//clients/clients/client[client_id=$my_client_id]/client_name"/>
 
 							<xsl:value-of select="name"/>
@@ -209,7 +209,7 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 <select name="revenue_account_id" required="1" exclude="-1" err="{/_R_/i18n/label[key='error_select_credit']/value}">
     <option value="-1"><xsl:value-of select="/_R_/i18n/label[key='credit_account']/value"/></option>
     <xsl:for-each select="//get_all_accounts">
-        <option value="{id}"><xsl:if test="id=//get_journal_entry/account_id and not(/_R_/_get/transaction_id)"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+        <option value="{id}"><xsl:if test="id=/_R_/get_journal_entry/get_journal_entry/get_journal_entry/account_id and not(/_R_/_get/transaction_id)"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
         <xsl:value-of select="name"/></option>
     </xsl:for-each>
 </select>
