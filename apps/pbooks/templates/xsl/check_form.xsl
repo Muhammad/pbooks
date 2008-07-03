@@ -40,7 +40,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
     <div id="check_date">
         <xsl:value-of select="//i18n/label[key='date']/value"/>:
         <input type="text" name="entry_datetime" 
-            value="{substring(/_R_/get_journal_entry/entry_date,0,11)}"/>
+            value="{substring(/_R_/get_journal_entry/get_journal_entry/entry_date,0,11)}"/>
     </div>
     <div id="check_number">
         <xsl:value-of select="/_R_/i18n/label[key='check_number']/value"/>:
@@ -51,14 +51,14 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
         <xsl:value-of select="/_R_/i18n/label[key='check_payee']/value"/>:
         <input type="text" name="check_payee" value="{//get_some_business_objects/check_payee}"/> 
         $<input type="text" name="entry_amount" 
-            length="6" value="{/_R_/get_journal_entry/entry_amount}"/>
+            length="6" value="{/_R_/get_journal_entry/get_journal_entry/entry_amount}"/>
     </div>
     <div id="check_memo">
         <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>: 
         <input type="text" name="memorandum">
-            <xsl:if test="not(contains(/_R_/get_journal_entry/memorandum,'__'))">
+            <xsl:if test="not(contains(/_R_/get_journal_entry/get_journal_entry/memorandum,'__'))">
                 <xsl:attribute name="value">
-                    <xsl:value-of select="/_R_/get_journal_entry/memorandum"/>
+                    <xsl:value-of select="/_R_/get_journal_entry/get_journal_entry/memorandum"/>
                 </xsl:attribute>
             </xsl:if>
         </input>
