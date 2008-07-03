@@ -33,7 +33,7 @@ onSubmit="return validateStandard(this, 'myerror');">
  <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>: 
         </td>
         <td>
-        <input type="text" name="entry_datetime" value="{//get_journal_entry/entry_datetime}"/>
+        <input type="text" name="entry_datetime" value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
         </td>
     </tr>
     <tr>

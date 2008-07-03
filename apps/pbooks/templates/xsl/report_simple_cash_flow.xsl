@@ -35,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:value-of select="
         format-number(
             sum(
-                /_R_/get_all_transactions/entry_amount
+                /_R_/get_all_transactions/get_all_transactions/entry_amount
                 ),'#########.##')
                 "/>
 </div>
@@ -92,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     
     <!-- General ledger -->
     <tbody>
-    <xsl:for-each select="/_R_/get_all_transactions">
+    <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td>
         <xsl:choose>

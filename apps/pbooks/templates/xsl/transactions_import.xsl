@@ -46,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <option value="-1">
             <xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/>
         </option>
-        <xsl:for-each select="/_R_/get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
         <option value="{id}">
             <xsl:if test="id=/_R_/_get/account_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>

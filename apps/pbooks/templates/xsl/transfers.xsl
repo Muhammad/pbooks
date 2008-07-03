@@ -56,7 +56,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </thead>
     <tbody>
     <!-- LOOP -->
-    <xsl:for-each select="/_R_/get_some_business_objects">
+    <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
     <xsl:variable name="my_entry_id">
         <xsl:value-of select="entry_id"/>
     </xsl:variable>

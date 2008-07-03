@@ -104,12 +104,20 @@ because of the dynamic number of rows per entry. -->
          </tr>
 
      <!-- These variables are used inside the loop to select specific nodes using xpath -->
-    <xsl:variable name="this_entry_debit_total"><xsl:value-of select="sum(//get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/></xsl:variable>
-	<xsl:variable name="this_entry_credit_total"><xsl:value-of select="sum(//get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Credit']/entry_amount)"/></xsl:variable>
-    <xsl:variable name="balanced"><xsl:if test="$this_entry_debit_total=$this_entry_credit_total">yes</xsl:if></xsl:variable>
-    <xsl:variable name="my_color"><xsl:if test="not($this_entry_debit_total=$this_entry_credit_total)">red</xsl:if></xsl:variable>
-     <!--  INNER LOOP -->   
-    <xsl:for-each select="/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id]">
+  <xsl:variable name="this_entry_debit_total">
+    <xsl:value-of select="sum(//get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
+  </xsl:variable>
+	<xsl:variable name="this_entry_credit_total">
+    <xsl:value-of select="sum(//get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Credit']/entry_amount)"/>
+  </xsl:variable>
+  <xsl:variable name="balanced">
+    <xsl:if test="$this_entry_debit_total=$this_entry_credit_total">yes</xsl:if>
+  </xsl:variable>
+  <xsl:variable name="my_color">
+    <xsl:if test="not($this_entry_debit_total=$this_entry_credit_total)">red</xsl:if>
+  </xsl:variable>
+   <!--  INNER LOOP -->
+  <xsl:for-each select="/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id]">
 	<xsl:variable name="posi"><xsl:value-of select="position()"/></xsl:variable>
     <tr class="row{$posa}">
     <td colspan="5" class="row{$posa}"></td>
