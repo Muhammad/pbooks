@@ -131,7 +131,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
         
         <!-- INVOICE LINE ITEM ROWS -->
-        <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
+        <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
         <xsl:variable name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:variable>
         <tr id="i-{entry_amount_id}">
             <td><xsl:value-of select="entry_amount_id"/></td>
@@ -140,15 +140,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
                     <option><xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/></option>
                     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
                         <xsl:variable name="my_account_id"><xsl:value-of select="id"/></xsl:variable>
-                        <option value="{$my_account_id}"><xsl:if test="/_R_/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
+                        <option value="{$my_account_id}"><xsl:if test="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
 						<xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
                     </xsl:for-each>
                 </select>
             </td>
-            <td colspan="2"><input type="text" name="memorandum[]" size="40" value="{/_R_/ invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/></td>
+            <td colspan="2"><input type="text" name="memorandum[]" size="40" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/></td>
             <td><input type="text" name="quantity" size="4"/></td>
             <td><input type="text" name="price" size="4"/></td>
-            <td><input type="text" name="credit_amount_1[]" size="6" value="{/_R_/ invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/></td>
+            <td><input type="text" name="credit_amount_1[]" size="6" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/></td>
             <td>
                 <xsl:if test="position() &gt; 1">
                 <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 

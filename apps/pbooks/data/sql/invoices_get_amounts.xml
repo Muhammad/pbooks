@@ -22,10 +22,10 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="invoices_get_amounts" loop="//get_some_business_objects/entry_id" default="1">
+<query name="invoices_get_amounts" loop="//get_some_business_objects/get_some_business_objects/entry_id" default="1">
     <connection>&pb_connection_read;</connection>
     <params>
-        <param array="//get_some_business_objects/entry_id" type="integer"/>
+        <param array="//get_some_business_objects/get_some_business_objects/entry_id" type="integer"/>
 	</params>
     <!-- SQL taken from and should be the same as entries_get_some.xml -->
     <sql>
