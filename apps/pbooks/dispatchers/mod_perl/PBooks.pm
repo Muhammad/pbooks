@@ -1,28 +1,33 @@
-package phunkybb::apps::phunkybb::dispatchers::mod_perl::PBooks;
+package pbooks::apps::pbooks::dispatchers::mod_perl::PBooks;
 use Apache2::Aortica::Aortica ();
 use strict;
 use Data::Dumper;
 use DateTime;
 
 
-my $tree = Apache2::Directive::conftree();
-my $srv_cfg = $tree->lookup('PerlBooksServerConfigFile');
+my $tree     = Apache2::Directive::conftree();
+my $app_node = $tree->lookup('Location', '/pbooks');
+my $srv_cfg  = $app_node->{ AorticaServerConfigFile };
+my $app_cfg  = $app_node->{ AppConfigFile };
 
-my $app_node = $tree->lookup('Location', '/perlbooks');
-my $app_cfg = $app_node->{ AppConfigFile };
 our $doc;
 
 
 
 
 # Create config
-my $config = Apache2::Aortica::Kernel::Config->instance($srv_cfg, $app_cfg);
+my $config = Apache2::Aortica::Kernel::Config->instance();
+$config->configure($srv_cfg, $app_cfg, 'pbooks');
 
 # Create fence
-my $fence_file = $config->{ CONFIG }->{build}->{sitemap};
-Apache2::Aortica::Kernel::Fence->instance($fence_file);
+my $fence_file = $config->{ CONFIG }->{ pbooks }->{build}->{sitemap};
+my $fence = Apache2::Aortica::Kernel::Fence->instance();
+$fence->set_fence($fence_file, 'pbooks');
 
-Apache2::Aortica::Kernel::Init->instance();
+Apache2::Aortica::Kernel::Init->instance('pbooks');
+Apache2::Aortica::Modules::Handlers::QueryHandler->instance('pbooks');
+Apache2::Aortica::Modules::Handlers::XmlHandler->instance('pbooks');
+Apache2::Aortica::Modules::Handlers::XslHandler->instance('pbooks');
 
 
 sub handler {
