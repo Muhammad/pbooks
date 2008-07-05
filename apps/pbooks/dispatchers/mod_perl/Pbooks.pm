@@ -1,4 +1,4 @@
-package phunkybb::apps::phunkybb::dispatchers::mod_perl::Pbooks;
+package phunkybb::apps::phunkybb::dispatchers::mod_perl::PBooks;
 use Apache2::Aortica::Aortica ();
 use strict;
 use Data::Dumper;
