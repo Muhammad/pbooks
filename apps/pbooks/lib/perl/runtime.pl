@@ -50,8 +50,8 @@ my $auth = Apache2::Aortica::Kernel::Auth->new();
 $auth_info = $auth->check_status();
 $username = $auth_info->{username};
 my $runtime;
-my $link_prefix = '/aortica?nid=';
-my $path_prefix = '/a/dev/phunkybb/';
+my $link_prefix = '/pbooks?nid=';
+my $path_prefix = '/a/dev/pbooks/';
 
 #print(Dumper($auth_info));
 if ($username) {

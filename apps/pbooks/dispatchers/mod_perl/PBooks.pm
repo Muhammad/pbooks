@@ -46,7 +46,7 @@ sub handler {
     my $gate_content_type = undef;
 
     # Create Gatekeeper
-    my $init = Apache2::Aortica::Kernel::Init->instance();
+    my $init = Apache2::Aortica::Kernel::Init->instance('pbooks');
 
 
     $init->start();
@@ -57,7 +57,7 @@ sub handler {
     $duration = $init->stop();
     $duration = sprintf("%.3f", $duration);
     {
-        if ( $gate_content_type = $init->{ GATE }->{ $nid }->{ CONTENT_TYPE } ) {
+        if ( $gate_content_type = $init->{ pbooks }->{ GATE }->{ $nid }->{ CONTENT_TYPE } ) {
             # Memory leak???
             #unless($gate_content_type eq 'text/html') {
             $r->content_type($gate_content_type);
