@@ -30,7 +30,7 @@ my $flow = Apache2::Aortica::Kernel::Flow->instance();
 
 my $config  = Apache2::Aortica::Kernel::Config->instance();
 
-my $defaults = $config->{ CONFIG }->{ defaults };
+my $defaults = $config->{ CONFIG }->{ pbooks }->{ defaults };
 
 
 my $xml_str = XMLout($defaults, 'RootName' => 'defaults', 'NoAttr' => 1 );

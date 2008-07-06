@@ -3,7 +3,8 @@ use Apache2::Aortica::Aortica ();
 use strict;
 use Data::Dumper;
 use DateTime;
-
+use Cache::MemoryCache;
+use Digest::MD5 qw(md5 md5_hex md5_base64);
 
 my $tree     = Apache2::Directive::conftree();
 my $app_node = $tree->lookup('Location', '/pbooks');
