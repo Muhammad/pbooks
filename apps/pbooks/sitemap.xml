@@ -42,9 +42,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </map:switch>
 </map:prepend>
 
+<map:gate name="welcome">
+  <map:action type="redirect" params="{//link_prefix}index"/>
+</map:gate>
 
-
-<map:gate name="welcome" role="pb_admin" cache="600" client_cache="600">
+<map:gate name="index" role="pb_admin" cache="600" client_cache="600">
     <map:query src="data/sql/select_account_stats.xml"/>
     <map:xml src="data/xml/quick_links.xml"/>
     <map:xsl src="templates/xsl/welcome.xsl"/>
