@@ -168,14 +168,13 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 						<xsl:variable name="my_new_entry_id">
 							<xsl:value-of select="entry_id"/>
 						</xsl:variable>
-						<xsl:variable name="my_client_id">
-							<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
-						</xsl:variable>
+                        <xsl:variable name="my_customer_id">
+                            <xsl:value-of select="customer_id"/>
+                        </xsl:variable>
 
 						<option value="{id}"><xsl:if test="id=//metadata/account_id and not(/_R_/_get/transaction_id)">
 							<xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-						<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/> - 
-						<xsl:value-of select="//clients/clients/client[client_id=$my_client_id]/client_name"/>
+						<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/>, <xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name"/>
 
 							<xsl:value-of select="name"/>
 						</option>
