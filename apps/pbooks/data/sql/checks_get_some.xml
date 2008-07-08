@@ -27,37 +27,37 @@ Fifth Floor, Boston, MA 02110-1301  USA
             This query only selects checks, and does so by using a metadata key. 
             I would like to use the status flag for this purpose if possible
         -->
-    <connection>&pb_connection_read;</connection>
-    <params>
-        <param name="_get/entry_id" type="text" default="%"/>
-        <param name="_get/start" type="integer" default="0"/>
-        <param name="option_get[display_num_entries!='NULL']/display_num_entries" type="integer" default="40"/>
-	</params>
-    <sql>
-        SELECT pbe.entry_id, entry_datetime,
-        pbe.memorandum, pbeam.entry_amount,
-        pem.meta_value as check_payee,
-        mymeta1.meta_value as check_number
-        
-        FROM &pb_entries; AS pbe 
-        
-        INNER JOIN &pb_entry_amounts; AS pbeam 
-        ON pbe.entry_id=pbeam.entry_id
-        
-        INNER JOIN &pb_entry_metadata; AS pem
-        ON pbe.entry_id=pem.entry_id
-        
-        LEFT JOIN &pb_entry_metadata; AS mymeta1
-        ON (mymeta1.entry_id = pbe.entry_id
-        AND mymeta1.meta_key='check_number')
-        
-        WHERE pbe.entry_id!=0
-        AND pbe.memorandum!='PLACEHOLDER'
-        AND pbe.entry_id LIKE ?
-        AND pbe.status != 9
-        
-        AND pem.meta_key='check_payee'
-        AND pbeam.entry_type_id='Debit'
-        LIMIT ?,?
+  <connection>&pb_connection_read;</connection>
+  <params>
+    <param name="_get/entry_id" type="text" default="%"/>
+    <param name="_get/start" type="integer" default="0"/>
+    <param name="option_get[display_num_entries!='NULL']/display_num_entries" type="integer" default="40"/>
+  </params>
+  <sql>
+    SELECT pbe.entry_id, entry_datetime,
+    pbe.memorandum, pbeam.entry_amount,
+    pem.meta_value as check_payee,
+    mymeta1.meta_value as check_number
+
+    FROM &pb_entries; AS pbe
+
+    INNER JOIN &pb_entry_amounts; AS pbeam
+    ON pbe.entry_id=pbeam.entry_id
+
+    INNER JOIN &pb_entry_metadata; AS pem
+    ON pbe.entry_id=pem.entry_id
+
+    LEFT JOIN &pb_entry_metadata; AS mymeta1
+    ON (mymeta1.entry_id = pbe.entry_id
+    AND mymeta1.meta_key='check_number')
+
+    WHERE pbe.entry_id!=0
+    AND pbe.memorandum!='PLACEHOLDER'
+    AND pbe.entry_id LIKE ?
+    AND pbe.status != 9
+
+    AND pem.meta_key='check_payee'
+    AND pbeam.entry_type_id='Debit'
+    LIMIT ?,?
     </sql>
 </query>
