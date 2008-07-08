@@ -27,14 +27,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <xsl:variable name="my_uri">
     <xsl:if test="/_R_/_get/from_date">
-        <xsl:value-of select="substring-before(/_R_/request_uri,'&amp;from_date')"/>
+        <xsl:value-of select="substring-before(/_R_/runtime/request_uri,'&amp;from_date')"/>
     </xsl:if>
     <xsl:if test="not(/_R_/_get/from_date)">
         <xsl:if test="/_R_/_get/start">
-            <xsl:value-of select="substring-before(/_R_/request_uri,'&amp;start')"/>
+            <xsl:value-of select="substring-before(/_R_/runtime/request_uri,'&amp;start')"/>
         </xsl:if>
         <xsl:if test="not(/_R_/_get/start)">
-            <xsl:value-of select="/_R_/request_uri"/>
+            <xsl:value-of select="/_R_/runtime/request_uri"/>
         </xsl:if>
     </xsl:if>
 </xsl:variable>

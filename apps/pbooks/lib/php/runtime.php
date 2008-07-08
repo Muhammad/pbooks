@@ -152,6 +152,7 @@ $runtime = array('host_name' => $_SERVER['SERVER_NAME'],
                 'theme' => $theme,
                 'icon_set' => $default_icon_set,
                 'fiscal_start' => $default_fiscal_start,
+                'request_uri' => $_SERVER['REQUEST_URI'],
                 );
 
 Nexista_Flow::add("runtime",$runtime,false);
