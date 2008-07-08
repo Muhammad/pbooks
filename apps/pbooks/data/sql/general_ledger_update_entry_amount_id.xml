@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="general_ledger_update_entry_id">
     <connection>&pb_connection;</connection>
     <params>
-		<param name="entry_amount_get_id/entry_amount_id" type="integer"/>
+		<param name="entry_amount_get_id/entry_amount_get_id/entry_amount_id" type="integer"/>
 		<param name="_post/transaction_id" type="integer"/>
 	</params>
     <sql>
