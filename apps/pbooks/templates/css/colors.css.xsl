@@ -120,5 +120,9 @@ a.generic-button {
 }
 
 
+#active {
+  color: red;
+  background: pink;
+  }
 </xsl:template>
 </xsl:stylesheet>

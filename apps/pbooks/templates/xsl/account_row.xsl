@@ -30,7 +30,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- these rows contain ids for use in testing, do not remove! -->
     <tr onmouseover="oldClass=this.className; this.className='active'"
-        onmouseout="this.className=oldClass">
+        onmouseout="this.className=oldClass"
+        onclick="location.href='{$my_link_prefix}ledger&amp;account_id={id}';" style="cursor: pointer;">
 
     <!-- Show account checkbox -->
       <xsl:if test="/_R_/_get/show_all_accounts='on'">
