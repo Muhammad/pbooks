@@ -50,7 +50,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <textarea name="description"
                 cols="40" rows="6">
               <xsl:value-of
-                  select="//get_account_group_by_id/description|//_post/description"/>
+                  select="//get_account_group_by_id/get_account_group_by_id/description|//_post/description"/>
             </textarea>
           </td>
         </tr>
@@ -61,16 +61,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <td>
             <select multiple="multiple" name="account_group_parents[]">
               <xsl:for-each
-                  select="/_R_/get_account_groups[not(/_R_/_get/group_id=id)]">
+                  select="/_R_/get_account_groups/get_account_groups[not(/_R_/_get/group_id=id)]">
                 <xsl:variable name="my_group_id">
                   <xsl:value-of select="id"/>
                 </xsl:variable>
                 <option value="{id}">
-                  <xsl:if test="/_R_/get_account_group_by_id/parent_group_id=id">
+                  <xsl:if test="/_R_/get_account_group_by_id/get_account_group_by_id/parent_group_id=id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:if test=" contains(//group[group_id=/_R_/_get/group_id],$my_group_id) and
-                  not(/_R_/get_account_group_by_id/parent_group_id=id) ">
+                  not(/_R_/get_account_group_by_id/get_account_group_by_id/parent_group_id=id) ">
                     <xsl:attribute name="disabled">disabled</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>
