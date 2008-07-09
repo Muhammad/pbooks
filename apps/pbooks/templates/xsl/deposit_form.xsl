@@ -24,10 +24,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
-    <script type="text/javascript" src="{_R_/runtime/path_prefix}/s/js/jquery.js">&#160;</script>
+  <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-      $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete", 
+      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete", 
       {
         'entry_amount_id': entry_amount_id
       }, 
@@ -37,7 +38,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       myTable.deleteRow(row);
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-      $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
+      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
       {
         'entry_id': entry_id,
         'entry_datetime': entry_date
@@ -51,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:value-of select="/_R_/i18n/label[key='make_deposits']/value"/>
     </h2>
 
-    <form action="{/_R_/runtime/link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
+    <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
         method="post" onSubmit="return validateStandard(this, 'myerror');">
 <!-- If there is more than one deposit account, the user needs to select which one the deposit is being made into -->
       <xsl:if test="count(/_R_/account_business_objects/account_business_objects) &gt; 1">
@@ -172,9 +173,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <!-- Additional deposit line items. -->
                 <td>
                   <xsl:if test="position() &gt; 1">
-                    <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
+                    <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
                         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-                      <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
+                      <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
                     </a>
                   </xsl:if>
                 </td>
@@ -213,9 +214,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <tr>
               <td colspan="2"></td>
               <td>
-                <a href="{/_R_/runtime/link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
+                <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                   <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-                  src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
+                  src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
                 </a>
               </td>
               <td></td>
@@ -224,7 +225,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
         <!-- Link to journal entry form. -->
           <div style="float: right">
-            <a href="{/_R_/runtime/link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
+            <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
               <xsl:value-of select="/_R_/i18n/label[key='edit_journal_entry']/value"/>
             </a>
           </div>

@@ -24,6 +24,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
+  <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
 
 <!-- The form is validated via a javascript library included in the end of main.xsl. 
 Form input elements have attributes like required="1" if they are to be validated. -->
@@ -46,7 +48,7 @@ Form input elements have attributes like required="1" if they are to be validate
 <!-- If there is already an account with the same name, display error. -->
 <xsl:if test="/_R_/account_duplicate_check">
 <div class="error" id="my_error">
-    <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
+    <img src="{$path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
     Error: <xsl:value-of select="//error[key='account_duplicate']/value"/>
 </div>
 </xsl:if>
@@ -131,7 +133,7 @@ Form input elements have attributes like required="1" if they are to be validate
 <div style="text-align: center; margin-top: 20px;">
     <input type="submit" value="Save" name="submit" />
     <input type="button" value="Cancel"
-        onclick="window.location.href='{/_R_/runtime/link_prefix}customer-accounts'"/>
+        onclick="window.location.href='{$link_prefix}customer-accounts'"/>
 </div>
 </form>
 </xsl:template>

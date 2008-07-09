@@ -25,14 +25,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
+  <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
 <xsl:call-template name="jquery-setup">
     <xsl:with-param name="my-table">myInvoices</xsl:with-param>
     <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
 <xsl:with-param name="no-sort-column">, headers: { 6: {sorter: false} }</xsl:with-param>
 </xsl:call-template>
 <div class="generic-button" style="float: right;">
-    <a href="{/_R_/runtime/link_prefix}invoice-create" id="invoice-create">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
+    <a href="{$link_prefix}invoice-create" id="invoice-create">
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
         <xsl:value-of select="/_R_/i18n/label[key='new_invoice']/value"/>
     </a>
 </div>
@@ -66,12 +68,12 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
     <xsl:variable name="my_customer_id"><xsl:value-of select="customer_id"/></xsl:variable>
     <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <td id="{$my_entry_id}">
-            <a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
+            <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
             <xsl:value-of select="invoice_number"/></a>
             </td>
         <td><a href="#">
         <xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name"/></a></td>
-        <td><a href="{/_R_/runtime/link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
+        <td><a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}"><xsl:value-of select="memorandum"/></a></td>
         <td><xsl:value-of select="invoice_total"/></td>
         <td><xsl:value-of select="entry_datetime"/></td>
         <!--
@@ -79,7 +81,7 @@ document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
         -->
         <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
         <td><a href="#"><xsl:value-of select="paid"/></a></td>
-        <td><a href="{/_R_/runtime/link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true"><xsl:value-of select="/_R_/i18n/label[key='print']/value"/></a></td>
+        <td><a href="{$link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true"><xsl:value-of select="/_R_/i18n/label[key='print']/value"/></a></td>
     </tr>
     </xsl:for-each>
     <!-- END LOOP -->

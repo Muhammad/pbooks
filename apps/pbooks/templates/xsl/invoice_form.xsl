@@ -25,8 +25,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:include href="date_select.xsl"/>
 <xsl:template name="content">
+<xsl:param name="link_prefix"/>
+<xsl:param name="path_prefix"/>
 <!-- Add / delete items -->
-<script type="text/javascript" src="{_R_/runtime/path_prefix}/s/js/jquery.js">&#160;</script>
 <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
             $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete", 

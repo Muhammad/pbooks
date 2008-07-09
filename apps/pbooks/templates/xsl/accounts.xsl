@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="account_row.xsl"/>
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">

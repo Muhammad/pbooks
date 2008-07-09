@@ -34,10 +34,12 @@ Sorry for all the white space! Hard to navigate without.
 -->
 
 <xsl:template name="content">
+<xsl:param name="link_prefix"/>
+<xsl:param name="path_prefix"/>
 <xsl:call-template name="jquery-setup-simple"/>
 <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete", 
+            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete", 
             {
                 'entry_amount_id': entry_amount_id
             }, 
@@ -51,7 +53,7 @@ Sorry for all the white space! Hard to navigate without.
             }
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
+            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
             {
                 'entry_id': entry_id,
                 'entry_datetime': entry_date
@@ -81,15 +83,15 @@ Sorry for all the white space! Hard to navigate without.
 
 <table cellpadding="5" align="center">
 	<tr>
-        <td><a href="{_R_/runtime/link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
-            <img src="{_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
+        <td><a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
+            <img src="{$path_prefix}s/images/buttons/out.gif"/>
             </a>
         </td>
         <td>
         <input type="button" style="padding: 5px;" value="Go Back"  onclick="history.go(-1)"/>
         </td>
-        <td><a href="{_R_/runtime/link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
-            <img src="{_R_/runtime/path_prefix}s/images/buttons/in.gif"/>
+        <td><a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
+            <img src="{$path_prefix}s/images/buttons/in.gif"/>
             </a>
         </td>
 	</tr>
@@ -109,7 +111,7 @@ Sorry for all the white space! Hard to navigate without.
 </xsl:comment>
 <form name="myform" method="post" 
     onSubmit="return validateStandard(this, 'error');" 
-    action="{_R_/runtime/link_prefix}journal-edit-submit&amp;entry_id={/_R_/_get/entry_id}">
+    action="{$link_prefix}journal-edit-submit&amp;entry_id={/_R_/_get/entry_id}">
 <xsl:if test="/_R_/_get/entry_id">
     <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
 </xsl:if>
@@ -161,24 +163,58 @@ Sorry for all the white space! Hard to navigate without.
                  calls the journal entry row templates, see below
                  -->
             <xsl:for-each select="/_R_/get_journal_entry/get_journal_entry[entry_type_id='Debit']">
-            <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
-			    <xsl:call-template name="debit"><xsl:with-param name="my_entry_id" value="{entry_id}"/></xsl:call-template>
+              <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
+              <xsl:call-template name="debit">
+                <xsl:with-param name="my_entry_id" value="{entry_id}"/>
+                <xsl:with-param name="link_prefix">
+                  <xsl:value-of select="$link_prefix"/>
+                </xsl:with-param>
+                <xsl:with-param name="path_prefix">
+                  <xsl:value-of select="$path_prefix"/>
+                </xsl:with-param>
+              </xsl:call-template>
             </xsl:for-each>
             <!-- for broken journal entries without a debit -->
             <xsl:if test="not(/_R_/get_journal_entry/get_journal_entry[entry_type_id='Debit'])">
-			    <xsl:call-template name="debit"/>
+              <xsl:call-template name="debit">
+                <xsl:with-param name="link_prefix">
+                  <xsl:value-of select="$link_prefix"/>
+                </xsl:with-param>
+                <xsl:with-param name="path_prefix">
+                  <xsl:value-of select="$path_prefix"/>
+                </xsl:with-param>
+              </xsl:call-template>
             </xsl:if>
 
             <!-- Recursive, aka looping, template for credits -->
             <xsl:for-each select="/_R_/get_journal_entry/get_journal_entry[entry_type_id='Credit']">
             <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
-			    <xsl:call-template name="credit"><xsl:with-param name="my_entry_id"><xsl:value-of select="entry_amount"/></xsl:with-param>
-			    <xsl:with-param name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:with-param></xsl:call-template>
+            <xsl:call-template name="credit">
+              <xsl:with-param name="my_entry_id">
+                <xsl:value-of select="entry_amount"/>
+              </xsl:with-param>
+              <xsl:with-param name="my_entry_amount_id">
+                <xsl:value-of select="entry_amount_id"/>
+              </xsl:with-param>
+              <xsl:with-param name="link_prefix">
+                <xsl:value-of select="$link_prefix"/>
+              </xsl:with-param>
+              <xsl:with-param name="path_prefix">
+                <xsl:value-of select="$path_prefix"/>
+              </xsl:with-param>
+            </xsl:call-template>
             </xsl:for-each>
-            
+
             <!-- for broken journal entries without a credit -->
             <xsl:if test="not(/_R_/get_journal_entry/get_journal_entry[entry_type_id='Credit'])">
-			    <xsl:call-template name="credit"/>
+              <xsl:call-template name="credit">
+                <xsl:with-param name="link_prefix">
+                  <xsl:value-of select="$link_prefix"/>
+                </xsl:with-param>
+                <xsl:with-param name="path_prefix">
+                  <xsl:value-of select="$path_prefix"/>
+                </xsl:with-param>
+              </xsl:call-template>
             </xsl:if>
             </tbody>
 		</table>
@@ -212,8 +248,8 @@ Sorry for all the white space! Hard to navigate without.
 	<tr>
         <!-- this is an arrow which links to the previous entry_id in the journal -->
         <td>
-            <a href="{/_R_/runtime/link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
-                <img src="{/_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
+            <a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
+                <img src="{$path_prefix}s/images/buttons/out.gif"/>
             </a>
         </td>
 
@@ -228,13 +264,13 @@ Sorry for all the white space! Hard to navigate without.
                 <xsl:if test="/_R_/_get/transaction_id">
                     <xsl:attribute
                     name="onclick">window.location.href='<xsl:value-of 
-                    select="/_R_/runtime/link_prefix"/>journal-cancel&amp;transaction_id=<xsl:value-of 
+                    select="$link_prefix"/>journal-cancel&amp;transaction_id=<xsl:value-of 
                     select="/_R_/_get/transaction_id"/>'</xsl:attribute>
                 </xsl:if>
                 <xsl:if test="not(/_R_/_get/transaction_id)">
                     <xsl:attribute 
                     name="onclick">window.location.href='<xsl:value-of 
-                    select="/_R_/runtime/link_prefix"/>journal"'</xsl:attribute>
+                    select="$link_prefix"/>journal"'</xsl:attribute>
                 </xsl:if>
             </input>
             
@@ -257,8 +293,8 @@ Sorry for all the white space! Hard to navigate without.
 
         <!-- this is an arrow which links to the next entry_id in the journal -->
         <td>
-            <a href="{_R_/runtime/link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
-                <img src="{_R_/runtime/path_prefix}s/images/buttons/in.gif"/>
+            <a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
+                <img src="{$path_prefix}s/images/buttons/in.gif"/>
             </a>
         </td>
 	</tr>
@@ -284,7 +320,7 @@ If you want to complete this process, continue as usual. For more information, s
 <xsl:if test="//books_mode='training'">
 <hr/>
 <div  class="generic-button">
-<form method="post" action="{/_R_/runtime/link_prefix}journal-delete">
+<form method="post" action="{$link_prefix}journal-delete">
 <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
 <input type="submit" value="Delete this entry" 
     onclick="return confirm('{/_R_/i18n/label[key='confirm_flip']/value}');"/>
@@ -324,13 +360,15 @@ function get_entry_date()
 
 <!-- CREDIT -->
 <xsl:template name="credit">
+  <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
 <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
 <xsl:variable name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:variable>
 <tr class="odd">
     <td>
     <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not(//get_journal_entry/get_journal_entry[entry_type_id='Debit']))">
     <a onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id},get_entry_date()); return false;">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png"/>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
     </a>
     </xsl:if>
     </td>
@@ -405,14 +443,14 @@ function get_entry_date()
 
     <td>
     <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Credit']) &gt; 1">
-        <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
+        <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png"/></a>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png"/></a>
     </xsl:if>
     <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Debit']) &gt; 1">
         <a href=""
         onclick="debits_summarize(); return false;">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}icon_accept.gif"/></a>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}icon_accept.gif"/></a>
     </xsl:if>
     </td>
 </tr>
@@ -425,12 +463,14 @@ function get_entry_date()
 
 <!-- DEBIT -->
 <xsl:template name="debit">
+<xsl:param name="link_prefix"/>
+<xsl:param name="path_prefix"/>
 <xsl:variable name="my_entry_amount"><xsl:value-of select="entry_amount"/></xsl:variable>
 <tr>
     <td>
     <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not(//get_journal_entry/get_journal_entry[entry_type_id='Credit']))">
     <a onclick="journal_entry_amount_create('debit',{/_R_/_get/entry_id},get_entry_date()); return false;">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png"/>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
     </a>
     </xsl:if>
     </td>
@@ -482,9 +522,9 @@ function get_entry_date()
     
     <td>
     <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Debit']) &gt; 1">
-        <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
+        <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-            <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" />
+            <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" />
         </a>
     </xsl:if>
     </td>
