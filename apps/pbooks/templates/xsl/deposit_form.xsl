@@ -196,10 +196,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
                       </xsl:variable>
 						
                       <option value="{id}">
-                        <xsl:if test="id=//metadata/account_id and not(/_R_/_get/transaction_id)">
+                        <xsl:if test="id=//metadata/metadata/account_id and not(/_R_/_get/transaction_id)">
                           <xsl:attribute name="selected">selected</xsl:attribute>
                         </xsl:if>
-                        <xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/>, <xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name"/>
+                        <xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/>, 
+                        <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,20)"/>
 							
                         <xsl:value-of select="name"/>
                       </option>
@@ -236,7 +237,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <option value="-1">
           <xsl:value-of select="/_R_/i18n/label[key='credit_account']/value"/>
         </option>
-        <xsl:for-each select="//get_all_accounts">
+        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
           <option value="{id}">
             <xsl:if test="id=/_R_/get_journal_entry/get_journal_entry/get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
               <xsl:attribute name="selected">selected</xsl:attribute>
