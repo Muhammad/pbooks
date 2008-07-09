@@ -335,7 +335,7 @@ This makes it easier to maintain persistence. -->
     <map:query src="data/sql/invoices_get_some.xml"/>
     <map:query src="data/sql/business_object_get_metadata.xml"/>
     <map:action type="datetime" 
-    params="//get_some_business_objects/get_some_business_objects/entry_datetime,datetime,Y-m-d"/>
+    params="//get_some_business_objects/get_some_business_objects/entry_date,datetime,Y-m-d"/>
     <map:xsl src="templates/xsl/deposit_form.xsl" />
 </map:gate>
 <map:gate name="deposit-submit" role="pb_admin">
