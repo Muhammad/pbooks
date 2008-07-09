@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="pager.xsl"/>
   <xsl:include href="account_row.xsl"/>
   <xsl:template name="content">
+  <xsl:param name="link_prefix"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
@@ -39,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
     function account_delete(account_id,row) {
         if(confirm(question)) { 
-            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>accounts-delete", {'account_id': account_id}, 
+            $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'account_id': account_id}, 
             function (data){
                 myTable = document.getElementById("accounts_table");
                 myTable.deleteRow(row);
@@ -51,18 +52,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
-        <a href="{/_R_/runtime/link_prefix}accounts&amp;show_all_accounts=off">
+        <a href="{$link_prefix}accounts&amp;show_all_accounts=off">
           <xsl:value-of select="/_R_/i18n/label[key='hide_accounts']/value"/>
         </a>
       </xsl:if>
 
       <xsl:if test="not(/_R_/show_all_accounts)">
-        <a href="{/_R_/runtime/link_prefix}accounts&amp;show_all_accounts=on">
+        <a href="{$link_prefix}accounts&amp;show_all_accounts=on">
           <xsl:value-of select="/_R_/i18n/label[key='show_accounts']/value"/>
         </a>
       </xsl:if>
 
-      <a href="{/_R_/runtime/link_prefix}accounts-edit" class="generic-button" id="new_account">
+      <a href="{$link_prefix}accounts-edit" class="generic-button" id="new_account">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
         <xsl:value-of select="/_R_/i18n/label[key='new_account']/value"/>
       </a>
@@ -70,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- drop down menu for the account selection -->
     <div style="float: top;">
-      <form method="get" action="{/_R_/runtime/link_prefix}">
+      <form method="get" action="{$link_prefix}">
         <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 <!-- Select one type of account -->
         <select name="account_type_id" onchange="this.form.submit();">

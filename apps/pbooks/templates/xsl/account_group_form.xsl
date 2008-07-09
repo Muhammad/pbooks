@@ -24,6 +24,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
+  <xsl:param name="link_prefix"/>
     <form method="post" onSubmit="return validateStandard(this, 'myerror');">
       <xsl:if test="/_R_/_get/group_id">
         <input type="hidden" name="my_action" value="update"/>
@@ -102,7 +103,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </td>
           <td>
             <xsl:for-each select="//account_groups_get_accounts">
-              <a href="{/_R_/runtime/link_prefix}accounts-edit&amp;id={id}"
+              <a href="{$link_prefix}accounts-edit&amp;id={id}"
                   id="{account_number}-e">
                 <xsl:value-of select="name"/>
               </a>
@@ -118,7 +119,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </td>
           <td>
             <input type="button" value="Cancel"
-                onclick="window.location.href='{//runtime/link_prefix}account-groups'"/>
+                onclick="window.location.href='{$link_prefix}account-groups'"/>
           </td>
         </tr>
       </table>
