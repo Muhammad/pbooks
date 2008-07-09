@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myLedger</xsl:with-param>
       <xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
@@ -35,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:if test="/_R_/_get/account_id">,sortList: [[2,0],[3,1]]</xsl:if>
       </xsl:with-param>
     </xsl:call-template>
-<!-- Need this action to retain any account selection -->
+    <!-- Need this action to retain any account selection -->
     <form method="get">
       <input type="hidden" name="nid" value="{_R_/_get/nid}"/>
       <xsl:if test="/_R_/_get/account_id">
@@ -146,12 +147,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   <xsl:otherwise>
                     <a href="{$link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
                       onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
-                      <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x" border="0"/>
+                      <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x" border="0"/>
                     </a>
                 &#160;
                 <!-- create new matching entry -->
                     <a href="{$link_prefix}journal-new-from-transaction&amp;transaction_id={transaction_id}">
-                      <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" alt="+" border="0"/>
+                      <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" alt="+" border="0"/>
                     </a>
                   </xsl:otherwise>
                 </xsl:choose>

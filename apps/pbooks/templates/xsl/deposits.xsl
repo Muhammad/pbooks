@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
 
 <!-- This calls a template from pager.xsl which loads the javascript -->
     <xsl:call-template name="jquery-setup">
@@ -35,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}deposit-create" id="deposit-create">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
         <xsl:value-of select="/_R_/i18n/label[key='new_deposit']/value"/>
       </a>
     </div>

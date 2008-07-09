@@ -30,8 +30,18 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:variable name="link_prefix">
   <xsl:value-of select="/_R_/runtime/link_prefix"/>
 </xsl:variable>
+<xsl:variable name="path_prefix">
+  <xsl:value-of select="/_R_/runtime/path_prefix"/>
+</xsl:variable>
 
-<xsl:call-template name="head"/>
+<xsl:call-template name="head">
+  <xsl:with-param name="link_prefix">
+    <xsl:value-of select="$link_prefix"/>
+  </xsl:with-param>
+  <xsl:with-param name="path_prefix">
+    <xsl:value-of select="$path_prefix"/>
+  </xsl:with-param>
+</xsl:call-template>
 <body>
 <xsl:for-each select="//pre_body_content">
     <xsl:sort select="priority"/>
@@ -41,6 +51,9 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:call-template name="main">
       <xsl:with-param name="link_prefix">
         <xsl:value-of select="$link_prefix"/>
+      </xsl:with-param>
+      <xsl:with-param name="path_prefix">
+        <xsl:value-of select="$path_prefix"/>
       </xsl:with-param>
     </xsl:call-template>
 

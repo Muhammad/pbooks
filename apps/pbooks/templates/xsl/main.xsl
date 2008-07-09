@@ -30,6 +30,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="source_spacer.xsl"/>
 <xsl:template name="main">
 <xsl:param name="link_prefix"/>
+<xsl:param name="path_prefix"/>
 
 <xsl:if test="not(/_R_/_get/print='true')">
 <xsl:call-template name="source_spacer">
@@ -60,6 +61,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:call-template name="content">
           <xsl:with-param name="link_prefix">
             <xsl:value-of select="$link_prefix"/>
+          </xsl:with-param>
+          <xsl:with-param name="path_prefix">
+            <xsl:value-of select="$path_prefix"/>
           </xsl:with-param>
         </xsl:call-template>
     </div>
