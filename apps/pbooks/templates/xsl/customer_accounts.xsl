@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="account_row.xsl"/>
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
+  <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
@@ -50,26 +51,26 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
+    var question = '<xsl:value-of select="$i18n/delete_account"/>?';
 </script>
 
 <!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
         <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=off">
-          <xsl:value-of select="/_R_/i18n/hide_accounts"/>
+          <xsl:value-of select="$i18n/hide_accounts"/>
         </a>
       </xsl:if>
 
       <xsl:if test="not(/_R_/show_all_accounts)">
         <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=on">
-          <xsl:value-of select="/_R_/i18n/show_accounts"/>
+          <xsl:value-of select="$i18n/show_accounts"/>
         </a>
       </xsl:if>
 
       <a href="{$link_prefix}customer-edit" class="generic-button">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-        <xsl:value-of select="/_R_/i18n/new_customer"/>
+        <xsl:value-of select="$i18n/new_customer"/>
       </a>
     </div>
 
@@ -87,19 +88,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </th>
             </xsl:if>
             <th>
-              <xsl:value-of select="/_R_/i18n/number"/>
+              <xsl:value-of select="$i18n/number"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/customer_name"/>
+              <xsl:value-of select="$i18n/customer_name"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/balance"/>
+              <xsl:value-of select="$i18n/balance"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/edit"/>
+              <xsl:value-of select="$i18n/edit"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/delete"/>
+              <xsl:value-of select="$i18n/delete"/>
             </th>
           </tr>
         </thead>

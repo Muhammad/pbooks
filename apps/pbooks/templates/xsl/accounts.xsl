@@ -108,16 +108,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <xsl:value-of select="$i18n/account_name"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/type"/>
+              <xsl:value-of select="$i18n/type"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/balance"/>
+              <xsl:value-of select="$i18n/balance"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/edit"/>
+              <xsl:value-of select="$i18n/edit"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/delete"/>
+              <xsl:value-of select="$i18n/delete"/>
             </th>
           </tr>
         </thead>
@@ -176,7 +176,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 "An account can only be deleted when there are no journal transactions in that 
 account. If you would like to hide the account, click edit and select the hide option."
 -->
-    <xsl:value-of select="/_R_/i18n/account_deletion_requirement"/>
+    <xsl:value-of select="$i18n/account_deletion_requirement"/>
 
   </xsl:template>
 
