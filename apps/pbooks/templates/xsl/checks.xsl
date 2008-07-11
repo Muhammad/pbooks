@@ -28,6 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myChecks</xsl:with-param>
       <xsl:with-param name="my-table-div">myChecksDiv</xsl:with-param>
@@ -35,12 +36,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}check-create">
         <img style="" src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/write_check"/>
+        <xsl:value-of select="$i18n/write_check"/>
       </a>
     </div>
 
     <strong>
-      <xsl:value-of select="/_R_/i18n/recent_checks"/>:
+      <xsl:value-of select="$i18n/recent_checks"/>:
 </strong>
     <div style="min-height: 400px;" id="myChecksDiv">
       <script type="text/javascript">
@@ -50,22 +51,22 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/id"/>
+              <xsl:value-of select="$i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/check_number"/>
+              <xsl:value-of select="$i18n/check_number"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/payee"/>
+              <xsl:value-of select="$i18n/payee"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/memo"/>
+              <xsl:value-of select="$i18n/memo"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/amount"/>
+              <xsl:value-of select="$i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/date"/>
+              <xsl:value-of select="$i18n/date"/>
             </th>
           </tr>
         </thead>

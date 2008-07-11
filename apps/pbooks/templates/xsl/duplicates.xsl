@@ -26,11 +26,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myDups</xsl:with-param>
     </xsl:call-template>
 
-    <xsl:value-of select="/_R_/i18n/duplicates_info"/>
+    <xsl:value-of select="$i18n/duplicates_info"/>
     <xsl:variable name="my_link_prefix">
       <xsl:value-of select="$link_prefix"/>
     </xsl:variable>
@@ -40,21 +41,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <thead>
         <tr>
           <th>
-            <xsl:value-of select="/_R_/i18n/post"/>
+            <xsl:value-of select="$i18n/post"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/date"/>:
+            <xsl:value-of select="$i18n/date"/>:
         </th>
           <th>
             Memo.
         </th>
           <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
             <th>
-              <xsl:value-of select="/_R_/i18n/account"/>
+              <xsl:value-of select="$i18n/account"/>
             </th>
           </xsl:if>
           <th>
-            <xsl:value-of select="/_R_/i18n/amount"/>
+            <xsl:value-of select="$i18n/amount"/>
           </th>
           <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">
             <th>
