@@ -60,9 +60,11 @@ Form input elements have attributes like required="1" if they are to be validate
 
 <table class="form-table" cellpadding="10">
 	<tr>
-		<td><xsl:value-of select="/_R_/i18n/label[key='customer_name']/value"/>:</td>
+		<td>
+      <xsl:value-of select="/_R_/i18n/label[key='customer_name']/value"/>:
+    </td>
 		<td><input type="text" name="name" value="{//get_account/name|//_post/name}"
-        required="1" err="{//error[key='missing_account_name']/value}"/></td>
+      required="1" err="{//error[key='missing_account_name']/value}"/></td>
 	</tr>
 
     <!-- META DATA -->
@@ -72,7 +74,9 @@ Form input elements have attributes like required="1" if they are to be validate
     <input type="hidden" name="cash_account" value="off"/>
     <!-- Follow a similar pattern as company options -->
     <xsl:for-each select="//account_meta/meta/meta_key[@category='address']">
-      <xsl:variable name="my_option"><xsl:value-of select="."/></xsl:variable>
+      <xsl:variable name="my_option">
+        <xsl:value-of select="."/>
+      </xsl:variable>
       <tr>
         <td>
           <xsl:value-of select="/_R_/i18n/label[key=$my_option]/value"/>:
@@ -111,13 +115,15 @@ Form input elements have attributes like required="1" if they are to be validate
     <td>
       <select name="group_id">
         <xsl:for-each select="//get_account_groups">
-            <xsl:variable name="my_group_id"><xsl:value-of select="id"/></xsl:variable>
-            <option value="{id}">
-                <xsl:if test="//get_account/group_id=id">
-                    <xsl:attribute name="selected">selected</xsl:attribute>
-                </xsl:if>
-                <xsl:value-of select="name"/>
-            </option>
+          <xsl:variable name="my_group_id">
+            <xsl:value-of select="id"/>
+          </xsl:variable>
+          <option value="{id}">
+            <xsl:if test="//get_account/group_id=id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="name"/>
+          </option>
         </xsl:for-each>
       </select>
     </td>
