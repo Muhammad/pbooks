@@ -80,7 +80,7 @@ Sorry for all the white space! Hard to navigate without.
 </script>
 
 <!-- Non existent entry_id error -->
-    <xsl:if test="not(/_R_/get_journal_entry/get_journal_entry)">
+    <xsl:if test="not($get_journal_entry)">
       <div class="error">
         <xsl:value-of select="//errors/error[key='non_existent_entry_id']/value"/>
       </div>
@@ -110,7 +110,7 @@ Sorry for all the white space! Hard to navigate without.
 
 
 <!-- Check to make sure entry_id exists -->
-    <xsl:if test="/_R_/get_journal_entry/get_journal_entry">
+    <xsl:if test="$get_journal_entry">
 <!-- The journal entry form -->
       <xsl:comment>
     start journal entry form table
@@ -134,8 +134,8 @@ Sorry for all the white space! Hard to navigate without.
                 <xsl:value-of select="$i18n/date"/> :
         </td>
               <td>
-                <input type="text" name="entry_datetime" id="entry_datetime" 
-                value="{/_R_/get_journal_entry/get_journal_entry/entry_datetime}"/>
+                <input type="text" name="entry_datetime" id="entry_datetime"
+                value="{$get_journal_entry/entry_datetime}"/>
               </td>
               <xsl:if test="/_R_/_get/transaction_id">
                 <input type="hidden" name="transaction_id" value="{/_R_/_get/transaction_id}"/>
@@ -217,7 +217,8 @@ Sorry for all the white space! Hard to navigate without.
                           <xsl:value-of select="$path_prefix"/>
                         </xsl:with-param>
                         <xsl:with-param name="i18n" select="$i18n"/>
-                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/></xsl:call-template>
+                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
+                      </xsl:call-template>
                     </xsl:for-each>
 
             <!-- for broken journal entries without a credit -->
@@ -230,7 +231,8 @@ Sorry for all the white space! Hard to navigate without.
                           <xsl:value-of select="$path_prefix"/>
                         </xsl:with-param>
                         <xsl:with-param name="i18n" select="$i18n"/>
-                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/></xsl:call-template>
+                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
+                      </xsl:call-template>
                     </xsl:if>
                   </tbody>
                 </table>
@@ -366,6 +368,7 @@ function get_entry_date()
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+    <xsl:param name="get_journal_entry"/>
     <xsl:variable name="my_account_id">
       <xsl:value-of select="account_id"/>
     </xsl:variable>
@@ -374,7 +377,7 @@ function get_entry_date()
     </xsl:variable>
     <tr class="odd">
       <td>
-        <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not(//get_journal_entry/get_journal_entry[entry_type_id='Debit']))">
+        <xsl:if test="count($get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not($get_journal_entry[entry_type_id='Debit']))">
           <a onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id},get_entry_date()); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
           </a>
@@ -391,16 +394,16 @@ function get_entry_date()
             </option>
             <xsl:for-each select="//get_all_accounts">
               <option value="{id}">
-                <xsl:if test="id=//get_journal_entry/get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id and not(/_R_/_get/transaction_id)">
+                <xsl:if test="id=$get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id and not(/_R_/_get/transaction_id)">
                   <xsl:attribute name="selected">selected</xsl:attribute>
                 </xsl:if>
 
                 <xsl:if test="/_R_/_get/transaction_id">
-                  <xsl:if test="(//get_journal_entry/get_journal_entry/entry_amount &gt;0 and (//get_journal_entry/get_journal_entry/account_type_id=20000 or //get_journal_entry/get_journal_entry/account_type_id=30000 or //get_journal_entry/get_journal_entry/account_type_id=40000)) or (//get_journal_entry/get_journal_entry/entry_amount &lt; 0 and (//get_journal_entry/get_journal_entry/account_type_id=10000 or //get_journal_entry/get_journal_entry/account_type_id=50000))">
-                    <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id">
+                  <xsl:if test="($get_journal_entry/entry_amount &gt;0 and ($get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000)) or ($get_journal_entry/entry_amount &lt; 0 and ($get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000))">
+                    <xsl:if test="id=$get_journal_entry/account_id">
                       <xsl:attribute name="selected">selected</xsl:attribute>
                     </xsl:if>
-                    <xsl:if test="not(id=//get_journal_entry/get_journal_entry/account_id)">
+                    <xsl:if test="not(id=$get_journal_entry/account_id)">
                       <xsl:attribute name="disabled">disabled</xsl:attribute>
                     </xsl:if>
                   </xsl:if>
@@ -411,8 +414,8 @@ function get_entry_date()
             </xsl:for-each>
 
         <!-- HIDDEN ACCOUNT -->
-            <xsl:if test="not(//get_journal_entry/get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id=//get_all_accounts/get_all_accounts/id) and not(//get_journal_entry/get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
-              <option value="{//get_journal_entry/get_journal_entry/account_id}" selected="selected">
+            <xsl:if test="not($get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id=//get_all_accounts/get_all_accounts/id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
+              <option value="{$get_journal_entry/account_id}" selected="selected">
                 <xsl:value-of select="$i18n/account_hidden"/>
               </option>
             </xsl:if>
@@ -431,8 +434,8 @@ function get_entry_date()
               <xsl:call-template name="abs-amount"/>
             </xsl:if>
           </xsl:attribute>
-          <xsl:if test=" ( //get_journal_entry/get_journal_entry/entry_amount &gt;0 and ( //get_journal_entry/get_journal_entry/account_type_id=20000 or //get_journal_entry/get_journal_entry/account_type_id=30000 or //get_journal_entry/get_journal_entry/account_type_id=40000 ) ) or ( //get_journal_entry/get_journal_entry/entry_amount &lt;0 and ( //get_journal_entry/get_journal_entry/account_type_id=10000 or //get_journal_entry/get_journal_entry/account_type_id=50000 ) ) ">
-            <xsl:if test="not(id=//get_journal_entry/get_journal_entry/account_id)">
+          <xsl:if test=" ( $get_journal_entry/entry_amount &gt;0 and ( $get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000 ) ) or ( $get_journal_entry/entry_amount &lt;0 and ( $get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000 ) ) ">
+            <xsl:if test="not(id=$get_journal_entry/account_id)">
               <xsl:attribute name="readonly">readonly</xsl:attribute>
             </xsl:if>
           </xsl:if>
@@ -440,12 +443,13 @@ function get_entry_date()
       </td>
 
       <td>
-        <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Credit']) &gt; 1">
-          <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
+        <xsl:if test="count($get_journal_entry[entry_type_id='Credit']) &gt; 1">
+          <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
+            onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png"/>
           </a>
         </xsl:if>
-        <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Debit']) &gt; 1">
+        <xsl:if test="count($get_journal_entry[entry_type_id='Debit']) &gt; 1">
           <a href="" onclick="debits_summarize(); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}icon_accept.gif"/>
           </a>
@@ -464,12 +468,13 @@ function get_entry_date()
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+    <xsl:param name="get_journal_entry"/>
     <xsl:variable name="my_entry_amount">
       <xsl:value-of select="entry_amount"/>
     </xsl:variable>
     <tr>
       <td>
-        <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not(//get_journal_entry/get_journal_entry[entry_type_id='Credit']))">
+        <xsl:if test="count($get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not($get_journal_entry[entry_type_id='Credit']))">
           <a onclick="journal_entry_amount_create('debit',{/_R_/_get/entry_id},get_entry_date()); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
           </a>
@@ -478,30 +483,31 @@ function get_entry_date()
       <td>
         <xsl:value-of select="$i18n/debit"/>:</td>
       <td>
-        <select name="debit_account_1[]" required="1" exclude="-1" err="Please select a debit account.">
+        <select name="debit_account_1[]" required="1" exclude="-1"
+          err="Please select a debit account.">
           <option value="-1">
             <xsl:value-of select="$i18n/debit_account"/>
           </option>
-          <xsl:for-each select="//get_all_accounts">
+          <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
             <option value="{id}">
                 <!-- Existing entry? -->
-              <xsl:if test="id=//get_journal_entry/get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id and not(/_R_/_get/transaction_id)">
+              <xsl:if test="id=$get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id and not(/_R_/_get/transaction_id)">
                 <xsl:attribute name="selected">selected</xsl:attribute>
               </xsl:if>
                 <!-- Existing transaction? -->
               <xsl:if test="/_R_/_get/transaction_id">
                 <!-- Is the transaction a debit? -->
-                <xsl:if test="(//get_journal_entry/get_journal_entry/entry_amount &lt;0 and (//get_journal_entry/get_journal_entry/account_type_id=20000 or //get_journal_entry/get_journal_entry/account_type_id=30000 or //get_journal_entry/get_journal_entry/account_type_id=40000)) or (//get_journal_entry/get_journal_entry/entry_amount &gt;0 and (//get_journal_entry/get_journal_entry/account_type_id=10000 or //get_journal_entry/get_journal_entry/account_type_id=50000))">
-                  <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id">
+                <xsl:if test="($get_journal_entry/entry_amount &lt;0 and ($get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000)) or ($get_journal_entry/entry_amount &gt;0 and ($get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000))">
+                  <xsl:if test="id=$get_journal_entry/account_id">
                     <xsl:attribute name="selected">selected="selected"</xsl:attribute>
                   </xsl:if>
-                  <xsl:if test="not(id=//get_journal_entry/get_journal_entry/account_id)">
+                  <xsl:if test="not(id=$get_journal_entry/account_id)">
                     <xsl:attribute name="disabled">disabled</xsl:attribute>
                   </xsl:if>
                 </xsl:if>
                 <!-- If not, does the memo match up with an account's metadata? -->
-                <xsl:if test="(//get_journal_entry/get_journal_entry/entry_amount &gt;0 and (//get_journal_entry/get_journal_entry/account_type_id=20000 or //get_journal_entry/get_journal_entry/account_type_id=30000 or //get_journal_entry/get_journal_entry/account_type_id=40000)) or (//get_journal_entry/get_journal_entry/entry_amount &lt;0 and (//get_journal_entry/get_journal_entry/account_type_id=10000 or //get_journal_entry/get_journal_entry/account_type_id=50000))">
-                  <xsl:if test="contains(description,substring(//get_journal_entry/get_journal_entry/memorandum,1,7)) or contains(description,//get_journal_entry/get_journal_entry/entry_amount)">
+                <xsl:if test="($get_journal_entry/entry_amount &gt;0 and ($get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000)) or ($get_journal_entry/entry_amount &lt;0 and ($get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000))">
+                  <xsl:if test="contains(description,substring($get_journal_entry/memorandum,1,7)) or contains(description,$get_journal_entry/entry_amount)">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                 </xsl:if>
@@ -513,8 +519,8 @@ function get_entry_date()
           </xsl:for-each>
             
             <!-- HIDDEN ACCOUNT -->
-          <xsl:if test="not(//get_journal_entry/get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts//id) and not(//get_journal_entry/get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
-            <option value="{//get_journal_entry/get_journal_entry/account_id}" selected="selected">
+          <xsl:if test="not($get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts//id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
+            <option value="{$get_journal_entry/account_id}" selected="selected">
               <xsl:value-of select="$i18n/account_hidden"/>
             </option>
           </xsl:if>
@@ -522,7 +528,8 @@ function get_entry_date()
       </td>
       <td style="white-space: nowrap;">
         <xsl:value-of select="//runtime/default_currency_unit"/>
-        <input name="debit_amount_1[]" type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/" err="Please enter a monetary value for the debit and credit. Do not include $ signs.">
+        <input name="debit_amount_1[]" type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/"
+        err="Please enter a monetary value for the debit and credit. Do not include $ signs.">
           <xsl:attribute name="value">
             <xsl:if test="not(/_R_/_get/transaction_id)">
               <xsl:value-of select="entry_amount"/>
@@ -536,8 +543,9 @@ function get_entry_date()
       <td></td>
 
       <td>
-        <xsl:if test="count(//get_journal_entry/get_journal_entry[entry_type_id='Debit']) &gt; 1">
-          <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
+        <xsl:if test="count($get_journal_entry[entry_type_id='Debit']) &gt; 1">
+          <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
+          onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" />
           </a>
         </xsl:if>
@@ -548,11 +556,11 @@ function get_entry_date()
 
 
   <xsl:template name="abs-amount">
-    <xsl:if test="//get_journal_entry/get_journal_entry/entry_amount &lt;0">
-      <xsl:value-of select="0 - //get_journal_entry/get_journal_entry/entry_amount"/>
+    <xsl:if test="$get_journal_entry/entry_amount &lt;0">
+      <xsl:value-of select="0 - $get_journal_entry/entry_amount"/>
     </xsl:if>
-    <xsl:if test="//get_journal_entry/get_journal_entry/entry_amount &gt;0">
-      <xsl:value-of select="//get_journal_entry/get_journal_entry/entry_amount"/>
+    <xsl:if test="$get_journal_entry/entry_amount &gt;0">
+      <xsl:value-of select="$get_journal_entry/entry_amount"/>
     </xsl:if>
   </xsl:template>
 </xsl:stylesheet>
