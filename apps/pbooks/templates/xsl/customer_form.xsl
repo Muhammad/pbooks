@@ -72,39 +72,44 @@ Form input elements have attributes like required="1" if they are to be validate
     <input type="hidden" name="cash_account" value="off"/>
     <!-- Follow a similar pattern as company options -->
     <xsl:for-each select="//account_meta/meta/meta_key[@category='address']">
-        <xsl:variable name="my_option"><xsl:value-of select="."/></xsl:variable>
-        <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key=$my_option]/value"/>: </td>
-            <td><input type="text" name="{$my_option}" value="{//account_meta_get[meta_key=$my_option]/meta_value}"/></td>
-        </tr>
+      <xsl:variable name="my_option"><xsl:value-of select="."/></xsl:variable>
+      <tr>
+        <td>
+          <xsl:value-of select="/_R_/i18n/label[key=$my_option]/value"/>:
+        </td>
+        <td>
+          <input type="text" name="{$my_option}"
+          value="{//account_meta_get[meta_key=$my_option]/meta_value}"/>
+        </td>
+      </tr>
     </xsl:for-each>
     <!-- END META -->
 	<tr>
 		<td>
-            <xsl:value-of select="/_R_/i18n/label[key='account_number']/value"/>:
-        </td>
+      <xsl:value-of select="/_R_/i18n/label[key='account_number']/value"/>:
+    </td>
 		<td>
-            <input type="text" name="account_number" required="1"
-            err="{//error[key='missing_account_number']/value}"
-            value="{//get_account/account_number|//_post/account_number}"/>
-        </td>
+      <input type="text" name="account_number" required="1"
+        err="{//error[key='missing_account_number']/value}"
+        value="{//get_account/account_number|//_post/account_number}"/>
+    </td>
 	</tr>
 	<tr>
 		<td>
-            <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>:
-        </td>
+        <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>:
+    </td>
 		<td>
-            <textarea name="description" cols="40" rows="6">
-            <xsl:value-of select="//get_account/description|//_post/description"/>&#160;
-            </textarea>
-        </td>
+      <textarea name="description" cols="40" rows="6">
+        <xsl:value-of select="//get_account/description|//_post/description"/>&#160;
+      </textarea>
+    </td>
 	</tr>
-    <tr>
+  <tr>
 		<td>
-            <xsl:value-of select="/_R_/i18n/label[key='group']/value"/>:
-        </td>
-        <td>
-        <select name="group_id">
+      <xsl:value-of select="/_R_/i18n/label[key='group']/value"/>:
+    </td>
+    <td>
+      <select name="group_id">
         <xsl:for-each select="//get_account_groups">
             <xsl:variable name="my_group_id"><xsl:value-of select="id"/></xsl:variable>
             <option value="{id}">
@@ -114,20 +119,20 @@ Form input elements have attributes like required="1" if they are to be validate
                 <xsl:value-of select="name"/>
             </option>
         </xsl:for-each>
-        </select>
-        </td>
+      </select>
+    </td>
 	</tr>
-    <tr>
+  <tr>
+    <td>
+      <xsl:value-of select="/_R_/i18n/label[key='hide']/value"/>:
+    </td>
 		<td>
-            <xsl:value-of select="/_R_/i18n/label[key='hide']/value"/>:
-        </td>
-		<td>
-            <input type="checkbox" name="hide">
-                <xsl:if test="//get_account/hide='on'">
-                    <xsl:attribute name="checked">checked</xsl:attribute>
-                </xsl:if>
-            </input>
-        </td>
+      <input type="checkbox" name="hide">
+        <xsl:if test="//get_account/hide='on'">
+          <xsl:attribute name="checked">checked</xsl:attribute>
+        </xsl:if>
+      </input>
+    </td>
 	</tr>
 </table>
 <div style="text-align: center; margin-top: 20px;">
