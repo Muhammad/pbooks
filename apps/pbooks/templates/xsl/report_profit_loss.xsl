@@ -97,11 +97,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
               <xsl:call-template name="revenue_cell">
                 <xsl:with-param name="link_prefix" select="$link_prefix"/>
-                  <xsl:with-param name="repeat" select="$monthnum"/>
-                  <xsl:with-param name="mn" select="$from_month"/>
-                  <xsl:with-param name="this_r_account_id" select="$this_r_account_id"/>
-                  <xsl:with-param name="rev" select="$rev"/>
-                </xsl:call-template>
+                <xsl:with-param name="repeat" select="$monthnum"/>
+                <xsl:with-param name="mn" select="$from_month"/>
+                <xsl:with-param name="this_r_account_id" select="$this_r_account_id"/>
+                <xsl:with-param name="my_entry_amounts" 
+                  select="$get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id]"/>
+              </xsl:call-template>
 
                 <td class="matrix-data">
                   <xsl:value-of select="sum($get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id]/entry_amount)"/>
@@ -231,21 +232,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="revenue_cell">
     <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
-    <xsl:param name="rev">0</xsl:param>
-    <xsl:param name="this_r_account_id">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
+    <xsl:param name="my_entry_amounts"/>
+    <xsl:param name="this_r_account_id"/>
     <xsl:if test="number($repeat)>=1">
       <td class="matrix-data">
         <a href="{$link_prefix}ledger&amp;account_id={$this_r_account_id}&amp;from_date=2007-{$mn}-01&amp;to_date=2007-{$mn}-31">
-          <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id][entry_month=$mn]/entry_amount),'#######')"/>
+          <xsl:value-of select="format-number(sum($my_entry_amounts[entry_month=$mn]/entry_amount),'#######')"/>
         </a>
       </td>
 
       <xsl:call-template name="revenue_cell">
         <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
-        <xsl:with-param name="this_r_account_id" select="$this_r_account_id"/>
-        <xsl:with-param name="rev" select="$rev"/>
+        <xsl:with-param name="my_entry_amounts" select="$my_entry_amounts"/>
         <xsl:with-param name="mn" select="$mn + 1"/>
       </xsl:call-template>
     </xsl:if>
