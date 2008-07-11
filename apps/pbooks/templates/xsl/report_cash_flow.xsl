@@ -75,6 +75,7 @@ the templates at the bottom of the file -->
         </td>
         <xsl:call-template name="empty_cell">
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
       <tr>
@@ -83,6 +84,7 @@ the templates at the bottom of the file -->
         </td>
         <xsl:call-template name="empty_cell">
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
     <!-- Income / Deposits -->
@@ -100,6 +102,7 @@ the templates at the bottom of the file -->
             <xsl:with-param name="mn" select="$from_month"/>
             <xsl:with-param name="repeat" select="$monthnum"/>
             <xsl:with-param name="this_i_account_id" select="$this_i_account_id"/>
+            <xsl:with-param name="link_prefix" select="$link_prefix"/>
           </xsl:call-template>
         </tr>
       </xsl:for-each>
@@ -110,6 +113,7 @@ the templates at the bottom of the file -->
         <xsl:call-template name="income_total_cell">
           <xsl:with-param name="mn" select="$from_month"/>
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
       <tr>
@@ -122,6 +126,7 @@ the templates at the bottom of the file -->
         </td>
         <xsl:call-template name="empty_cell">
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
     <!-- Disb by account -->
@@ -139,6 +144,7 @@ the templates at the bottom of the file -->
             <xsl:with-param name="mn" select="$from_month"/>
             <xsl:with-param name="repeat" select="$monthnum"/>
             <xsl:with-param name="this_d_account_id" select="$this_d_account_id"/>
+            <xsl:with-param name="link_prefix" select="$link_prefix"/>
           </xsl:call-template>
         </tr>
       </xsl:for-each>
@@ -150,6 +156,7 @@ the templates at the bottom of the file -->
         <xsl:call-template name="outgoing_total_cell">
           <xsl:with-param name="mn" select="$from_month"/>
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
       <tr>
@@ -162,6 +169,7 @@ the templates at the bottom of the file -->
         </td>
         <xsl:call-template name="empty_cell">
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
 
@@ -176,6 +184,7 @@ the templates at the bottom of the file -->
         <xsl:call-template name="total_cell">
           <xsl:with-param name="mn" select="$from_month"/>
           <xsl:with-param name="repeat" select="$monthnum"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
     </table>
@@ -183,6 +192,7 @@ the templates at the bottom of the file -->
   </xsl:template>
 <!-- These are the individual cells -->
   <xsl:template name="empty_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:if test="number($repeat) >= 1">
       <td class="matrix-data"></td>
@@ -193,6 +203,7 @@ the templates at the bottom of the file -->
   </xsl:template>
 
   <xsl:template name="income_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
     <xsl:param name="this_i_account_id">0</xsl:param>
@@ -210,6 +221,7 @@ the templates at the bottom of the file -->
     </xsl:if>
   </xsl:template>
   <xsl:template name="income_total_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
     <xsl:if test="number($repeat)>=1">
@@ -229,6 +241,7 @@ the templates at the bottom of the file -->
 
 <!-- DISBURSEMENTS -->
   <xsl:template name="outgoing_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="this_d_account_id">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
@@ -247,6 +260,7 @@ the templates at the bottom of the file -->
   </xsl:template>
 <!-- TOTAL DISBURSEMENTS -->
   <xsl:template name="outgoing_total_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
     <xsl:if test="number($repeat)>=1">
@@ -264,6 +278,7 @@ the templates at the bottom of the file -->
 
 <!-- TOTAL -->
   <xsl:template name="total_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="disb">0</xsl:param>
     <xsl:param name="rev">0</xsl:param>
