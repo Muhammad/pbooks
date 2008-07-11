@@ -26,10 +26,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
+  <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple"/>
 <!-- This is the text for the deletion confirm -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="/_R_/i18n/delete_account_group"/>?';
+    var question = '<xsl:value-of select="$i18n/delete_account_group"/>?';
     function account_group_delete(group_id,row) {
       if(confirm(question)) { 
         $.post("<xsl:value-of select="$link_prefix"/>account-group-delete",
@@ -45,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="text-align: right;">
       <a href="{$link_prefix}account-group-edit">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-        <xsl:value-of select="/_R_/i18n/new_account_group"/>
+        <xsl:value-of select="$i18n/new_account_group"/>
       </a>
     </div>
 
@@ -54,16 +55,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tr>
           <th>ID</th>
           <th>
-            <xsl:value-of select="/_R_/i18n/group_name"/>
+            <xsl:value-of select="$i18n/group_name"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/desc"/>
+            <xsl:value-of select="$i18n/desc"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/edit"/>
+            <xsl:value-of select="$i18n/edit"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/delete"/>
+            <xsl:value-of select="$i18n/delete"/>
           </th>
         </tr>
       </thead>

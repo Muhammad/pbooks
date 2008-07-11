@@ -28,6 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
+  <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
@@ -54,19 +55,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=off">
-          <xsl:value-of select="/_R_/i18n/hide_accounts"/>
+          <xsl:value-of select="$i18n/hide_accounts"/>
         </a>
       </xsl:if>
 
       <xsl:if test="not(/_R_/show_all_accounts)">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=on">
-          <xsl:value-of select="/_R_/i18n/show_accounts"/>
+          <xsl:value-of select="$i18n/show_accounts"/>
         </a>
       </xsl:if>
 
       <a href="{$link_prefix}accounts-edit" class="generic-button" id="new_account">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-        <xsl:value-of select="/_R_/i18n/new_account"/>
+        <xsl:value-of select="$i18n/new_account"/>
       </a>
     </div>
 
@@ -77,9 +78,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Select one type of account -->
         <select name="account_type_id" onchange="this.form.submit();">
           <option value="%">
-            <xsl:value-of select="/_R_/i18n/all"/>
+            <xsl:value-of select="$i18n/all"/>
           </option>
-          <xsl:for-each select="/_R_/i18n/account_type">
+          <xsl:for-each select="$i18n/account_type">
             <option value="{account_type_id}">
               <xsl:if test="account_type_id=/_R_/_get/account_type_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
@@ -101,10 +102,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </th>
             </xsl:if>
             <th>
-              <xsl:value-of select="/_R_/i18n/number"/>
+              <xsl:value-of select="$i18n/number"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/account_name"/>
+              <xsl:value-of select="$i18n/account_name"/>
             </th>
             <th>
               <xsl:value-of select="/_R_/i18n/type"/>
