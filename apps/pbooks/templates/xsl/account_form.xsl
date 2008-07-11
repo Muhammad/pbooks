@@ -86,7 +86,7 @@ and set appropriate parameter "my_action" -->
           <td>
             <input type="text" name="account_number" required="1"
                 err="{//error[key='missing_account_number']/value}"
-                value="{//get_account/account_number|//_post/account_number}"/>
+                value="{//get_account/get_account/account_number|//_post/account_number}"/>
           </td>
         </tr>
         <tr>
@@ -95,7 +95,7 @@ and set appropriate parameter "my_action" -->
         </td>
           <td>
             <textarea name="description" cols="40" rows="6">
-              <xsl:value-of select="//get_account/description|//_post/description"/>&#160;
+              <xsl:value-of select="//get_account/get_account/description|//_post/description"/>&#160;
             </textarea>
           </td>
         </tr>
@@ -105,12 +105,12 @@ and set appropriate parameter "my_action" -->
         </td>
           <td>
             <input type="radio" name="has_checks" value="on">
-              <xsl:if test="/_R_/account_meta_get[meta_key='has_checks']/meta_value='on'">
+              <xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>Yes<br/>
             <input type="radio" name="has_checks" value="off">
-              <xsl:if test="not(/_R_/account_meta_get[meta_key='has_checks']/meta_value='on')">
+              <xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on')">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>No
@@ -122,12 +122,12 @@ and set appropriate parameter "my_action" -->
         </td>
           <td>
             <input type="radio" name="takes_deposits" value="on">
-              <xsl:if test="/_R_/get_account/takes_deposits='on'">
+              <xsl:if test="/_R_/get_account/get_account/takes_deposits='on'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>Yes<br/>
             <input type="radio" name="takes_deposits" value="off">
-              <xsl:if test="not(/_R_/get_account/takes_deposits='on')">
+              <xsl:if test="not(/_R_/get_account/get_account/takes_deposits='on')">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>No
@@ -139,12 +139,12 @@ and set appropriate parameter "my_action" -->
         </td>
           <td>
             <input type="radio" name="accounts_receivable_account" value="on">
-              <xsl:if test="/_R_/account_meta_get[meta_key='accounts_receivable_account']/meta_value='on'">
+              <xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='accounts_receivable_account']/meta_value='on'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>Yes<br/>
             <input type="radio" name="accounts_receivable_account" value="off">
-              <xsl:if test="not(/_R_/account_meta_get[meta_key='accounts_receivable_account']/meta_value='on')">
+              <xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='accounts_receivable_account']/meta_value='on')">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>No<br/>
@@ -155,13 +155,13 @@ and set appropriate parameter "my_action" -->
             <xsl:value-of select="/_R_/i18n/label[key='cash_account']/value"/>:</td>
           <td>
             <input type="radio" name="cash_account" value="on">
-              <xsl:if test="//get_account/cash_account='on'">
+              <xsl:if test="/_R_/get_account/get_account/cash_account='on'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>Yes
             <br/>
             <input type="radio" name="cash_account" value="off">
-              <xsl:if test="not(//get_account/cash_account='on')">
+              <xsl:if test="not(/_R_/get_account/get_account/cash_account='on')">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>No
@@ -178,7 +178,7 @@ and set appropriate parameter "my_action" -->
                   <xsl:value-of select="id"/>
                 </xsl:variable>
                 <option value="{id}">
-                  <xsl:if test="//get_account/group_id=id">
+                  <xsl:if test="/_R_/get_account/get_account/group_id=id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>
@@ -193,7 +193,7 @@ and set appropriate parameter "my_action" -->
         </td>
           <td>
             <input type="checkbox" name="hide">
-              <xsl:if test="//get_account/hide='on'">
+              <xsl:if test="/_R_/get_account/get_account/hide='on'">
                 <xsl:attribute name="checked">checked</xsl:attribute>
               </xsl:if>
             </input>
