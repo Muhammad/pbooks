@@ -35,6 +35,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:variable name="to_month">
       <xsl:value-of select="substring(/_R_/runtime/to_date,6,2)"/>
     </xsl:variable>
+    <xsl:variable name="get_all_entry_amounts"
+      select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+    <xsl:variable name="get_all_accounts"
+      select="/_R_/get_all_accounts/get_all_accounts"/>
 <!-- end variables -->
 
 
@@ -73,12 +77,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td class="matrix-data">
                 <xsl:value-of select="/_R_/i18n/revenue"/>
               </td>
+
               <xsl:call-template name="empty_cell">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                 <xsl:with-param name="repeat" select="$monthnum + 1"/>
               </xsl:call-template>
             </tr>
             <xsl:variable name="rev">40000</xsl:variable>
-            <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=$rev]">
+            <xsl:for-each select="$get_all_accounts[account_type_id=$rev]">
               <xsl:variable name="this_r_account_id">
                 <xsl:value-of select="id"/>
               </xsl:variable>
@@ -88,15 +94,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
                     <xsl:value-of select="name"/>
                   </a>
                 </td>
-                <xsl:call-template name="revenue_cell">
+
+              <xsl:call-template name="revenue_cell">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                   <xsl:with-param name="repeat" select="$monthnum"/>
                   <xsl:with-param name="mn" select="$from_month"/>
                   <xsl:with-param name="this_r_account_id" select="$this_r_account_id"/>
                   <xsl:with-param name="rev" select="$rev"/>
                 </xsl:call-template>
-				
+
                 <td class="matrix-data">
-                  <xsl:value-of select="sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id]/entry_amount)"/>
+                  <xsl:value-of select="sum($get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id]/entry_amount)"/>
                 </td>
               </tr>
             </xsl:for-each>
@@ -106,32 +114,35 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   <xsl:value-of select="/_R_/i18n/totalrevenue"/>
                 </b>
               </td>
-				
+
               <xsl:call-template name="revenue_cell_total">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                 <xsl:with-param name="mn" select="$from_month"/>
                 <xsl:with-param name="repeat" select="$monthnum"/>
                 <xsl:with-param name="rev" select="$rev"/>
               </xsl:call-template>
               <td class="matrix-data">
-                <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev]/entry_amount),'#######')"/>
+                <xsl:value-of select="format-number(sum($get_all_entry_amounts[account_type_id=$rev]/entry_amount),'#######')"/>
               </td>
             </tr>
             <tr>
               <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">
-				&#160;
-                </td>
+              &#160;
+              </td>
             </tr>
 			<!--  Expenses -->
             <tr>
               <td class="matrix-data">
                 <xsl:value-of select="/_R_/i18n/expenses"/>
               </td>
+
               <xsl:call-template name="empty_cell">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                 <xsl:with-param name="repeat" select="$monthnum+1"/>
               </xsl:call-template>
             </tr>
             <xsl:variable name="exp">50000</xsl:variable>
-            <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=$exp]">
+            <xsl:for-each select="$get_all_accounts[account_type_id=$exp]">
               <xsl:variable name="this_ex_account_id">
                 <xsl:value-of select="id"/>
               </xsl:variable>
@@ -141,39 +152,42 @@ Fifth Floor, Boston, MA 02110-1301  USA
                     <xsl:value-of select="name"/>
                   </a>
                 </td>
-				
-                <xsl:call-template name="expense_cell">
+
+              <xsl:call-template name="expense_cell">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                   <xsl:with-param name="mn" select="$from_month"/>
                   <xsl:with-param name="repeat" select="$monthnum"/>
                   <xsl:with-param name="this_ex_account_id" select="$this_ex_account_id"/>
                   <xsl:with-param name="exp" select="$exp"/>
                 </xsl:call-template>
                 <td class="matrix-data">
-                  <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$exp][account_id=$this_ex_account_id] /entry_amount),'#####')"/>
+                  <xsl:value-of select="format-number(sum($get_all_entry_amounts[account_type_id=$exp][account_id=$this_ex_account_id] /entry_amount),'#####')"/>
                 </td>
               </tr>
             </xsl:for-each>
-			
+
             <tr>
               <td class="matrix-data" style="text-indent: 16px;">
                 <b>
                   <xsl:value-of select="/_R_/i18n/total_expenses"/>
                 </b>
               </td>
+
               <xsl:call-template name="expense_cell_total">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                 <xsl:with-param name="mn" select="$from_month"/>
                 <xsl:with-param name="repeat" select="$monthnum"/>
                 <xsl:with-param name="exp" select="$exp"/>
               </xsl:call-template>
               <td class="matrix-data">
-                <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$exp]/entry_amount),'#######')"/>
+                <xsl:value-of select="format-number(sum($get_all_entry_amounts[account_type_id=$exp]/entry_amount),'#######')"/>
               </td>
             </tr>
-			
+
             <tr>
               <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">
-				&#160;
-                </td>
+              &#160;
+              </td>
             </tr>
 
 			<!-- NET PROFIT -->
@@ -181,13 +195,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td class="matrix-data">
                 <xsl:value-of select="/_R_/i18n/net_profit"/>
               </td>
+
               <xsl:call-template name="net_profit">
+                <xsl:with-param name="link_prefix" select="$link_prefix"/>
                 <xsl:with-param name="mn" select="$from_month"/>
                 <xsl:with-param name="repeat" select="$monthnum"/>
                 <xsl:with-param name="exp" select="$exp"/>
                 <xsl:with-param name="rev" select="$rev"/>
               </xsl:call-template>
-              <td class="matrix-data">$<b><xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev]/entry_amount)-sum (/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$exp]/entry_amount),'#######')"/>
+              <td class="matrix-data">$<b>
+                <xsl:value-of select="format-number(sum($get_all_entry_amounts[account_type_id=$rev]/entry_amount)-sum ($get_all_entry_amounts[account_type_id=$exp]/entry_amount),'#######')"/>
                 </b>
               </td>
             </tr>
@@ -198,10 +215,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
   </xsl:template>
 
   <xsl:template name="empty_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:if test="number($repeat) >= 1">
       <td class="matrix-data"></td>
+
       <xsl:call-template name="empty_cell">
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
       </xsl:call-template>
     </xsl:if>
@@ -209,6 +229,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- REVENUES -->
   <xsl:template name="revenue_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="rev">0</xsl:param>
     <xsl:param name="this_r_account_id">0</xsl:param>
@@ -219,7 +240,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id][entry_month=$mn]/entry_amount),'#######')"/>
         </a>
       </td>
+
       <xsl:call-template name="revenue_cell">
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
         <xsl:with-param name="this_r_account_id" select="$this_r_account_id"/>
         <xsl:with-param name="rev" select="$rev"/>
@@ -228,6 +251,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:if>
   </xsl:template>
   <xsl:template name="revenue_cell_total">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="rev">0</xsl:param>
     <xsl:param name="this_r_account_id">0</xsl:param>
@@ -236,7 +260,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td class="matrix-data">
         <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev][entry_month=$mn]/entry_amount),'######')"/>
       </td>
+
       <xsl:call-template name="revenue_cell_total">
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
         <xsl:with-param name="rev" select="$rev"/>
         <xsl:with-param name="mn" select="$mn + 1"/>
@@ -248,6 +274,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- EXPENSES -->
   <xsl:template name="expense_cell">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="exp">0</xsl:param>
     <xsl:param name="this_ex_account_id">0</xsl:param>
@@ -258,7 +285,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$exp][account_id=$this_ex_account_id][entry_month=$mn]/entry_amount),'#######')"/>
         </a>
       </td>
+
       <xsl:call-template name="expense_cell">
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
         <xsl:with-param name="this_ex_account_id" select="$this_ex_account_id"/>
         <xsl:with-param name="exp" select="$exp"/>
@@ -267,6 +296,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:if>
   </xsl:template>
   <xsl:template name="expense_cell_total">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="exp">0</xsl:param>
     <xsl:param name="this_ex_account_id">0</xsl:param>
@@ -275,7 +305,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td class="matrix-data">
         <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$exp][entry_month=$mn]/entry_amount),'#######')"/>
       </td>
+
       <xsl:call-template name="expense_cell_total">
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
         <xsl:with-param name="exp" select="$exp"/>
         <xsl:with-param name="mn" select="$mn + 1"/>
@@ -285,6 +317,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- NET PROFIT -->
   <xsl:template name="net_profit">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="rev">0</xsl:param>
     <xsl:param name="exp">0</xsl:param>
@@ -294,7 +327,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td class="matrix-data">
         <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$rev][entry_month=$mn]/entry_amount) - sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=$exp][entry_month=$mn]/entry_amount),'#######')"/>
       </td>
+
       <xsl:call-template name="net_profit">
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
         <xsl:with-param name="exp" select="$exp"/>
         <xsl:with-param name="rev" select="$rev"/>
