@@ -51,20 +51,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
     }
 </script>
 
-<h2><xsl:value-of select="/_R_/i18n/label[key='new_invoice']/value"/>:</h2> 
+<h2><xsl:value-of select="/_R_/i18n/new_invoice"/>:</h2> 
 <form method="POST" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}&amp;view_flow=true">
 <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
 <table border="0" id="invoice_form_table">
     <tbody>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='date']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/date"/>:</td>
             <td colspan="8">
                 <input type="text" name="entry_datetime"
                     id="invoice_date" value="{//get_journal_entry/entry_datetime}"/>
             </td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='customer']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/customer"/>:</td>
             <td colspan="7">
             <select name="debit_account_id">
             <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
@@ -79,7 +79,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='invoice_number']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/invoice_number"/>:</td>
             <td colspan="8">
                 <input type="text" name="invoice_number">
                     <xsl:attribute name="value">
@@ -94,7 +94,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='due_date']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/due_date"/>:</td>
             <td colspan="8">
                 <input type="text" name="due_date" value="{//get_some_business_objects/due_date}">
                     <xsl:if test="not(//get_some_business_objects/due_date)">
@@ -104,31 +104,31 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='paid_status']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/paid_status"/>:</td>
 			<td colspan="8">
-	   			<input type="radio" name="paid_status" value="paid_in_full"/><xsl:value-of select="/_R_/i18n/label[key='paid_in_full']/value"/><br/>
-				<input type="radio" name="paid_status" value="paid"/><xsl:value-of select="/_R_/i18n/label[key='paid']/value"/><br/>
+	   			<input type="radio" name="paid_status" value="paid_in_full"/><xsl:value-of select="/_R_/i18n/paid_in_full"/><br/>
+				<input type="radio" name="paid_status" value="paid"/><xsl:value-of select="/_R_/i18n/paid"/><br/>
 				<input type="radio" name="paid_status" value="unpaid">
                     <xsl:if test="not(//get_some_business_objects/paid_status)">
                         <xsl:attribute name="checked">checked</xsl:attribute>
                     </xsl:if>
-                </input><xsl:value-of select="/_R_/i18n/label[key='unpaid']/value"/><br/>
+                </input><xsl:value-of select="/_R_/i18n/unpaid"/><br/>
 		</td>
 	</tr>
     </tbody>
     <tbody>
         <tr>
-            <td colspan="8"><xsl:value-of select="/_R_/i18n/label[key='billable_items']/value"/>:</td>
+            <td colspan="8"><xsl:value-of select="/_R_/i18n/billable_items"/>:</td>
         </tr>
         <tr>
             <td>ID</td>
-            <td><xsl:value-of select="/_R_/i18n/label[key='revenue']/value"/></td>
-            <td><xsl:value-of select="/_R_/i18n/label[key='desc']/value"/></td>
+            <td><xsl:value-of select="/_R_/i18n/revenue"/></td>
+            <td><xsl:value-of select="/_R_/i18n/desc"/></td>
             <td width="240"></td>
-            <td><xsl:value-of select="/_R_/i18n/label[key='quantity']/value"/></td>
-            <td><xsl:value-of select="/_R_/i18n/label[key='price']/value"/></td>
-            <td><xsl:value-of select="/_R_/i18n/label[key='total']/value"/></td>
-            <td><xsl:value-of select="/_R_/i18n/label[key='edit']/value"/></td>
+            <td><xsl:value-of select="/_R_/i18n/quantity"/></td>
+            <td><xsl:value-of select="/_R_/i18n/price"/></td>
+            <td><xsl:value-of select="/_R_/i18n/total"/></td>
+            <td><xsl:value-of select="/_R_/i18n/edit"/></td>
         </tr>
         
         <!-- INVOICE LINE ITEM ROWS -->
@@ -138,7 +138,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td><xsl:value-of select="entry_amount_id"/></td>
             <td>
                 <select name="credit_account_1[]">
-                    <option><xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/></option>
+                    <option><xsl:value-of select="/_R_/i18n/select_one"/></option>
                     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
                         <xsl:variable name="my_account_id"><xsl:value-of select="id"/></xsl:variable>
                         <option value="{$my_account_id}"><xsl:if test="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">

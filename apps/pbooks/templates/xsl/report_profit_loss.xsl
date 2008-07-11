@@ -46,9 +46,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <table class="data-table" width="740" align="center">
       <tr>
         <td align="center">
-          <xsl:value-of select="/_R_/i18n/label[key='income_statement']/value"/>&#160;
+          <xsl:value-of select="/_R_/i18n/income_statement"/>&#160;
         <xsl:value-of select="/_R_/runtime/from_date"/>
-          <xsl:value-of select="/_R_/i18n/label[key='through']/value"/>
+          <xsl:value-of select="/_R_/i18n/through"/>
           <xsl:value-of select="/_R_/runtime/to_date"/>
         </td>
       </tr>
@@ -65,13 +65,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 </xsl:if>
               </xsl:for-each>
               <td class="matrix-data">
-                <xsl:value-of select="/_R_/i18n/label[key='total']/value"/>
+                <xsl:value-of select="/_R_/i18n/total"/>
               </td>
             </tr>
 			<!--  REVENUE -->
             <tr>
               <td class="matrix-data">
-                <xsl:value-of select="/_R_/i18n/label[key='revenue']/value"/>
+                <xsl:value-of select="/_R_/i18n/revenue"/>
               </td>
               <xsl:call-template name="empty_cell">
                 <xsl:with-param name="repeat" select="$monthnum + 1"/>
@@ -103,7 +103,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <tr>
               <td class="matrix-data" style="text-indent: 16px;">
                 <b>
-                  <xsl:value-of select="/_R_/i18n/label[key='totalrevenue']/value"/>
+                  <xsl:value-of select="/_R_/i18n/totalrevenue"/>
                 </b>
               </td>
 				
@@ -124,7 +124,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<!--  Expenses -->
             <tr>
               <td class="matrix-data">
-                <xsl:value-of select="/_R_/i18n/label[key='expenses']/value"/>
+                <xsl:value-of select="/_R_/i18n/expenses"/>
               </td>
               <xsl:call-template name="empty_cell">
                 <xsl:with-param name="repeat" select="$monthnum+1"/>
@@ -157,7 +157,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <tr>
               <td class="matrix-data" style="text-indent: 16px;">
                 <b>
-                  <xsl:value-of select="/_R_/i18n/label[key='total_expenses']/value"/>
+                  <xsl:value-of select="/_R_/i18n/total_expenses"/>
                 </b>
               </td>
               <xsl:call-template name="expense_cell_total">
@@ -179,7 +179,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<!-- NET PROFIT -->
             <tr>
               <td class="matrix-data">
-                <xsl:value-of select="/_R_/i18n/label[key='net_profit']/value"/>
+                <xsl:value-of select="/_R_/i18n/net_profit"/>
               </td>
               <xsl:call-template name="net_profit">
                 <xsl:with-param name="mn" select="$from_month"/>

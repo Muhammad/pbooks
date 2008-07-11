@@ -68,23 +68,23 @@ because of the dynamic number of rows per entry. -->
           <tr>
             <th></th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='id']/value"/>
+              <xsl:value-of select="/_R_/i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>
+              <xsl:value-of select="/_R_/i18n/date"/>
             </th>
             <th></th>
             <th width="200">
-              <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>.</th>
+              <xsl:value-of select="/_R_/i18n/memo"/>.</th>
             <th width="15"></th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='accounts']/value"/>
+              <xsl:value-of select="/_R_/i18n/accounts"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='debit']/value"/>
+              <xsl:value-of select="/_R_/i18n/debit"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='credit']/value"/>
+              <xsl:value-of select="/_R_/i18n/credit"/>
             </th>
           </tr>
         </thead>
@@ -216,7 +216,7 @@ because of the dynamic number of rows per entry. -->
           <td colspan="7" align="right">
             <xsl:if test="not($total_credits=$total_debits)">
               <div style="color: red;" id="error_match">
-                <xsl:value-of select="/_R_/i18n/label[key='error_match']/value"/>:
+                <xsl:value-of select="/_R_/i18n/error_match"/>:
                 </div>
             </xsl:if>
           </td>
@@ -232,10 +232,10 @@ because of the dynamic number of rows per entry. -->
 
 <!-- only display the form controls for the journal, not other pages which use this template -->
       <xsl:if test="/_R_/_get/nid='journal'">
-        <input type="button" id="new_entry_button" value="{/_R_/i18n/label[key='new_entry']/value}" onclick="document.location.href='{$link_prefix}journal-new'"/>
+        <input type="button" id="new_entry_button" value="{/_R_/i18n/new_entry}" onclick="document.location.href='{$link_prefix}journal-new'"/>
     <!-- Delete selected entries 
     TODO - only display this function in training mode -->
-        <input type="submit" value="{/_R_/i18n/label[key='delete_entries']/value}" onclick="return confirm('Are you sure you want to delete these entries?')"/>
+        <input type="submit" value="{/_R_/i18n/delete_entries}" onclick="return confirm('Are you sure you want to delete these entries?')"/>
       </xsl:if>
     </form>
   </xsl:template>

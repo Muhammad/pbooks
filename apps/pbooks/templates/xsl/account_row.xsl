@@ -80,7 +80,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td>
           <a href="{$my_link_prefix}accounts-edit&amp;account_id={id}"
             id="{account_number}-e">
-            <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
+            <xsl:value-of select="/_R_/i18n/edit"/>
           </a>
         </td>
       </xsl:if>
@@ -91,7 +91,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td>
           <a href="{$my_link_prefix}customer-edit&amp;account_id={id}"
             id="{account_number}-e">
-            <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
+            <xsl:value-of select="/_R_/i18n/edit"/>
           </a>
         </td>
       </xsl:if>
@@ -100,7 +100,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td>
         <a id="{account_number}-d" href="{/_R_/runtime/link_prefix}accounts-delete&amp;account_id={id}"
             onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
-          <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
+          <xsl:value-of select="/_R_/i18n/delete"/>
         </a>
       </td>
     </tr>

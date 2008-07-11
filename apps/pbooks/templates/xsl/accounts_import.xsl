@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 
-<h2><xsl:value-of select="/_R_/i18n/label[key='import_csv_accounts']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/import_csv_accounts"/></h2>
 
 <xsl:if test="/_R_/_get/error">
 <div class="error" id="function-error">

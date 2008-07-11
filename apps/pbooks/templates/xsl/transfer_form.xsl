@@ -30,29 +30,29 @@ onSubmit="return validateStandard(this, 'myerror');">
 <table>
     <tr>
         <td>
- <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>: 
+ <xsl:value-of select="/_R_/i18n/date"/>: 
         </td>
         <td>
         <input type="text" name="entry_datetime" value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
         </td>
     </tr>
     <tr>
-        <td><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>:</td>
+        <td><xsl:value-of select="/_R_/i18n/memo"/>:</td>
         <td>
             <input type="text" name="memorandum"/>
         </td>
     </tr>
     <tr>
-        <td><xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>:</td>
+        <td><xsl:value-of select="/_R_/i18n/amount"/>:</td>
         <td>
             <input type="text" name="transfer_amount"/>
         </td>
     </tr>
     <tr>
-        <td><xsl:value-of select="/_R_/i18n/label[key='from']/value"/>:</td>
+        <td><xsl:value-of select="/_R_/i18n/from"/>:</td>
         <td>
-<select name="from_account_id" required="1" exclude="-1" err="{/_R_/i18n/label[key='error_select_credit']/value}">
-    <option value="-1"><xsl:value-of select="/_R_/i18n/label[key='from_account']/value"/></option>
+<select name="from_account_id" required="1" exclude="-1" err="{/_R_/i18n/error_select_credit}">
+    <option value="-1"><xsl:value-of select="/_R_/i18n/from_account"/></option>
     <xsl:for-each select="//get_all_accounts">
         <option value="{id}"><xsl:if test="id=//get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
 		<xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
@@ -62,10 +62,10 @@ onSubmit="return validateStandard(this, 'myerror');">
         </td>
     </tr>
     <tr>
-        <td><xsl:value-of select="/_R_/i18n/label[key='to']/value"/>:</td>
+        <td><xsl:value-of select="/_R_/i18n/to"/>:</td>
         <td>
-<select name="to_account_id" required="1" exclude="-1" err="{/_R_/i18n/label[key='error_select_credit']/value}">
-    <option value="-1"><xsl:value-of select="/_R_/i18n/label[key='to_account']/value"/></option>
+<select name="to_account_id" required="1" exclude="-1" err="{/_R_/i18n/error_select_credit}">
+    <option value="-1"><xsl:value-of select="/_R_/i18n/to_account"/></option>
     <xsl:for-each select="//get_all_accounts">
         <option value="{id}"><xsl:if test="id=//get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
 		<xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
@@ -76,14 +76,14 @@ onSubmit="return validateStandard(this, 'myerror');">
     </tr>
     <input type="hidden" name="transfer_id" value="{/_R_/_get/entry_id}"/>
     <tr>
-        <td><xsl:value-of select="/_R_/i18n/label[key='method']/value"/>:</td>
+        <td><xsl:value-of select="/_R_/i18n/method"/>:</td>
         <td>
         <select name="method">
             <option value="check">
-                <xsl:value-of select="/_R_/i18n/label[key='by_check']/value"/>
+                <xsl:value-of select="/_R_/i18n/by_check"/>
             </option>
             <option value="electronic">
-                <xsl:value-of select="/_R_/i18n/label[key='electronic']/value"/>
+                <xsl:value-of select="/_R_/i18n/electronic"/>
             </option>
         </select>
         </td>

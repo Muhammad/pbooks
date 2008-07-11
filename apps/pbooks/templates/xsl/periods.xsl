@@ -31,8 +31,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table class="tablesorter" id="periods_table">
     <thead>
     <tr>
-        <th><xsl:value-of select="/_R_/i18n/label[key='period_id']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='period_value']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/period_id"/></th>
+        <th><xsl:value-of select="/_R_/i18n/period_value"/></th>
     </tr>
     </thead>
     <tbody>
@@ -41,6 +41,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
-<xsl:value-of select="/_R_/i18n/label[key='period_info']/value"/>
+<xsl:value-of select="/_R_/i18n/period_info"/>
 </xsl:template> 
 </xsl:stylesheet>

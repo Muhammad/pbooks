@@ -45,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="text-align: right;">
       <a href="{$link_prefix}account-group-edit">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-        <xsl:value-of select="/_R_/i18n/label[key='new_account_group']/value"/>
+        <xsl:value-of select="/_R_/i18n/new_account_group"/>
       </a>
     </div>
 
@@ -54,16 +54,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tr>
           <th>ID</th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='group_name']/value"/>
+            <xsl:value-of select="/_R_/i18n/group_name"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>
+            <xsl:value-of select="/_R_/i18n/desc"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
+            <xsl:value-of select="/_R_/i18n/edit"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
+            <xsl:value-of select="/_R_/i18n/delete"/>
           </th>
         </tr>
       </thead>
@@ -107,13 +107,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td>
         <a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}"
           id="{account_number}-e">
-          <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
+          <xsl:value-of select="/_R_/i18n/edit"/>
         </a>
       </td>
       <td>
         <a id="{account_group}-d" href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
             onclick="account_group_delete({group_id},this.parentNode.parentNode.rowIndex); return false; ">
-          <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
+          <xsl:value-of select="/_R_/i18n/delete"/>
         </a>
       </td>
     </tr>

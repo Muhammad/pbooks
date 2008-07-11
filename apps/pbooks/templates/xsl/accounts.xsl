@@ -38,7 +38,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
+    var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
     function account_delete(account_id,row) {
         if(confirm(question)) { 
             $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'account_id': account_id}, 
@@ -54,19 +54,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=off">
-          <xsl:value-of select="/_R_/i18n/label[key='hide_accounts']/value"/>
+          <xsl:value-of select="/_R_/i18n/hide_accounts"/>
         </a>
       </xsl:if>
 
       <xsl:if test="not(/_R_/show_all_accounts)">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=on">
-          <xsl:value-of select="/_R_/i18n/label[key='show_accounts']/value"/>
+          <xsl:value-of select="/_R_/i18n/show_accounts"/>
         </a>
       </xsl:if>
 
       <a href="{$link_prefix}accounts-edit" class="generic-button" id="new_account">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-        <xsl:value-of select="/_R_/i18n/label[key='new_account']/value"/>
+        <xsl:value-of select="/_R_/i18n/new_account"/>
       </a>
     </div>
 
@@ -77,7 +77,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Select one type of account -->
         <select name="account_type_id" onchange="this.form.submit();">
           <option value="%">
-            <xsl:value-of select="/_R_/i18n/label[key='all']/value"/>
+            <xsl:value-of select="/_R_/i18n/all"/>
           </option>
           <xsl:for-each select="/_R_/i18n/account_type">
             <option value="{account_type_id}">
@@ -101,22 +101,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </th>
             </xsl:if>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='number']/value"/>
+              <xsl:value-of select="/_R_/i18n/number"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='account_name']/value"/>
+              <xsl:value-of select="/_R_/i18n/account_name"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='type']/value"/>
+              <xsl:value-of select="/_R_/i18n/type"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='balance']/value"/>
+              <xsl:value-of select="/_R_/i18n/balance"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
+              <xsl:value-of select="/_R_/i18n/edit"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
+              <xsl:value-of select="/_R_/i18n/delete"/>
             </th>
           </tr>
         </thead>
@@ -175,7 +175,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 "An account can only be deleted when there are no journal transactions in that 
 account. If you would like to hide the account, click edit and select the hide option."
 -->
-    <xsl:value-of select="/_R_/i18n/label[key='account_deletion_requirement']/value"/>
+    <xsl:value-of select="/_R_/i18n/account_deletion_requirement"/>
 
   </xsl:template>
 

@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
+    var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
     function account_delete(id,row) {
         if(confirm(question)) { 
             $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'id': id}, 
@@ -50,26 +50,26 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- Confirm account deletion -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="/_R_/i18n/label[key='delete_account']/value"/>?';
+    var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
 </script>
 
 <!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
         <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=off">
-          <xsl:value-of select="/_R_/i18n/label[key='hide_accounts']/value"/>
+          <xsl:value-of select="/_R_/i18n/hide_accounts"/>
         </a>
       </xsl:if>
 
       <xsl:if test="not(/_R_/show_all_accounts)">
         <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=on">
-          <xsl:value-of select="/_R_/i18n/label[key='show_accounts']/value"/>
+          <xsl:value-of select="/_R_/i18n/show_accounts"/>
         </a>
       </xsl:if>
 
       <a href="{$link_prefix}customer-edit" class="generic-button">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-        <xsl:value-of select="/_R_/i18n/label[key='new_customer']/value"/>
+        <xsl:value-of select="/_R_/i18n/new_customer"/>
       </a>
     </div>
 
@@ -87,19 +87,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </th>
             </xsl:if>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='number']/value"/>
+              <xsl:value-of select="/_R_/i18n/number"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='customer_name']/value"/>
+              <xsl:value-of select="/_R_/i18n/customer_name"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='balance']/value"/>
+              <xsl:value-of select="/_R_/i18n/balance"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='edit']/value"/>
+              <xsl:value-of select="/_R_/i18n/edit"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='delete']/value"/>
+              <xsl:value-of select="/_R_/i18n/delete"/>
             </th>
           </tr>
         </thead>

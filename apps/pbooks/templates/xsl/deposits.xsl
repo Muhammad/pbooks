@@ -37,26 +37,26 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}deposit-create" id="deposit-create">
         <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/label[key='new_deposit']/value"/>
+        <xsl:value-of select="/_R_/i18n/new_deposit"/>
       </a>
     </div>
 <!-- Page title -->
     <strong>
-      <xsl:value-of select="/_R_/i18n/label[key='recent_deposits']/value"/>:</strong>
+      <xsl:value-of select="/_R_/i18n/recent_deposits"/>:</strong>
     <table class="tablesorter" id="myDeposits">
       <thead>
         <tr>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='id']/value"/>
+            <xsl:value-of select="/_R_/i18n/id"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>
+            <xsl:value-of select="/_R_/i18n/memo"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
+            <xsl:value-of select="/_R_/i18n/amount"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>
+            <xsl:value-of select="/_R_/i18n/date"/>
           </th>
         </tr>
       </thead>

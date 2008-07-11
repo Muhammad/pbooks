@@ -150,7 +150,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:param name="key"/>
     <li>
       <a href="#" class="head">
-        <xsl:value-of select="/_R_/i18n/label[key=$key]/value"/>
+        <xsl:value-of select="/_R_/i18n/*[name()=$key]"/>
       </a>
       <ul>
         <xsl:for-each select="//menu/item[key=$key]/item">
@@ -159,7 +159,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </xsl:variable>
           <li>
             <a href="{//runtime/link_prefix}{url}" id="{key}">
-              <xsl:value-of select="/_R_/i18n/label[key=$my_key]/value"/>
+              <xsl:value-of select="/_R_/i18n/*[name()=$my_key]"/>
             </a>
           </li>
         </xsl:for-each>

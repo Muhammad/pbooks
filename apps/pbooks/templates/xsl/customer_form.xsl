@@ -61,7 +61,7 @@ Form input elements have attributes like required="1" if they are to be validate
 <table class="form-table" cellpadding="10">
 	<tr>
 		<td>
-      <xsl:value-of select="/_R_/i18n/label[key='customer_name']/value"/>:
+      <xsl:value-of select="/_R_/i18n/customer_name"/>:
     </td>
 		<td><input type="text" name="name" value="{//get_account/name|//_post/name}"
       required="1" err="{//error[key='missing_account_name']/value}"/></td>
@@ -90,7 +90,7 @@ Form input elements have attributes like required="1" if they are to be validate
     <!-- END META -->
 	<tr>
 		<td>
-      <xsl:value-of select="/_R_/i18n/label[key='account_number']/value"/>:
+      <xsl:value-of select="/_R_/i18n/account_number"/>:
     </td>
 		<td>
       <input type="text" name="account_number" required="1"
@@ -100,7 +100,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
 	<tr>
 		<td>
-        <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>:
+        <xsl:value-of select="/_R_/i18n/desc"/>:
     </td>
 		<td>
       <textarea name="description" cols="40" rows="6">
@@ -110,7 +110,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
   <tr>
 		<td>
-      <xsl:value-of select="/_R_/i18n/label[key='group']/value"/>:
+      <xsl:value-of select="/_R_/i18n/group"/>:
     </td>
     <td>
       <select name="group_id">
@@ -130,7 +130,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
   <tr>
     <td>
-      <xsl:value-of select="/_R_/i18n/label[key='hide']/value"/>:
+      <xsl:value-of select="/_R_/i18n/hide"/>:
     </td>
 		<td>
       <input type="checkbox" name="hide">

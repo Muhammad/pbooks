@@ -33,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!-- Net change -->
     <div class="generic-button" style="float: right;">
       <b>
-        <xsl:value-of select="/_R_/i18n/label[key='net_change']/value"/>
+        <xsl:value-of select="/_R_/i18n/net_change"/>
       </b>: 
     <xsl:value-of select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
     </div>
@@ -60,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
 
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='month']/value"/>:</td>
+            <xsl:value-of select="/_R_/i18n/month"/>:</td>
           <td>
             <select name="month" onchange="this.form.submit();">
               <option value="%">All</option>
@@ -101,19 +101,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='id']/value"/>
+              <xsl:value-of select="/_R_/i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='client']/value"/>
+              <xsl:value-of select="/_R_/i18n/client"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>
+              <xsl:value-of select="/_R_/i18n/memo"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
+              <xsl:value-of select="/_R_/i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>
+              <xsl:value-of select="/_R_/i18n/date"/>
             </th>
           </tr>
         </thead>

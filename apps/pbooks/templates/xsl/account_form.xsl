@@ -51,7 +51,7 @@ and set appropriate parameter "my_action" -->
       <table class="form-table" cellpadding="10">
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='account_name']/value"/>:
+            <xsl:value-of select="/_R_/i18n/account_name"/>:
         </td>
           <td>
             <input type="text" name="name" value="{//get_account/name|//_post/name}"
@@ -60,12 +60,12 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='account_type']/value"/>:
+            <xsl:value-of select="/_R_/i18n/account_type"/>:
         </td>
           <td>
             <select name="account_type_id">
               <option>
-                <xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/>
+                <xsl:value-of select="/_R_/i18n/select_one"/>
               </option>
               <xsl:for-each select="//account_types/account_type">
                 <option value="{account_type_id}">
@@ -81,7 +81,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='account_number']/value"/>:
+            <xsl:value-of select="/_R_/i18n/account_number"/>:
         </td>
           <td>
             <input type="text" name="account_number" required="1"
@@ -91,7 +91,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>:
+            <xsl:value-of select="/_R_/i18n/desc"/>:
         </td>
           <td>
             <textarea name="description" cols="40" rows="6">
@@ -101,7 +101,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='has_checks']/value"/>:
+            <xsl:value-of select="/_R_/i18n/has_checks"/>:
         </td>
           <td>
             <input type="radio" name="has_checks" value="on">
@@ -118,7 +118,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='takes_deposits']/value"/>:
+            <xsl:value-of select="/_R_/i18n/takes_deposits"/>:
         </td>
           <td>
             <input type="radio" name="takes_deposits" value="on">
@@ -135,7 +135,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='accounts_receivable_account']/value"/>:
+            <xsl:value-of select="/_R_/i18n/accounts_receivable_account"/>:
         </td>
           <td>
             <input type="radio" name="accounts_receivable_account" value="on">
@@ -152,7 +152,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='cash_account']/value"/>:</td>
+            <xsl:value-of select="/_R_/i18n/cash_account"/>:</td>
           <td>
             <input type="radio" name="cash_account" value="on">
               <xsl:if test="/_R_/get_account/get_account/cash_account='on'">
@@ -169,7 +169,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='group']/value"/>:
+            <xsl:value-of select="/_R_/i18n/group"/>:
         </td>
           <td>
             <select name="group_id">
@@ -189,7 +189,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='hide']/value"/>:
+            <xsl:value-of select="/_R_/i18n/hide"/>:
         </td>
           <td>
             <input type="checkbox" name="hide">
@@ -201,8 +201,8 @@ and set appropriate parameter "my_action" -->
         </tr>
       </table>
       <div style="text-align: center; margin-top: 20px;">
-        <input type="submit" value="{/_R_/i18n/label[key='save']/value}" name="submit" />
-        <input type="button" value="{/_R_/i18n/label[key='cancel']/value}"
+        <input type="submit" value="{/_R_/i18n/save}" name="submit" />
+        <input type="button" value="{/_R_/i18n/cancel}"
             onclick="window.location.href='{/_R_/runtime/link_prefix}accounts'"/>
       </div>
     </form>

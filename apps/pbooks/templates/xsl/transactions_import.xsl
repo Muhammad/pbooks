@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
 
-<h2><xsl:value-of select="/_R_/i18n/label[key='import_csv']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/import_csv"/></h2>
 
 <xsl:if test="/_R_/_get/error">
 <div class="error" id="function-error">
@@ -44,7 +44,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <select name="account_id" required="1" exclude="-1" 
         err="Please select an account to post your transactions to.">
         <option value="-1">
-            <xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/>
+            <xsl:value-of select="/_R_/i18n/select_one"/>
         </option>
         <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
         <option value="{id}">

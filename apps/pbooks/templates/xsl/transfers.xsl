@@ -32,11 +32,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <div class="generic-button" style="float: right;">
     <a href="{/_R_/runtime/link_prefix}transfer-create" id="transfer-create">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/label[key='new_transfer']/value"/>
+        <xsl:value-of select="/_R_/i18n/new_transfer"/>
     </a>
 </div>
 <strong>
-    <xsl:value-of select="/_R_/i18n/label[key='recent_transfers']/value"/>:
+    <xsl:value-of select="/_R_/i18n/recent_transfers"/>:
 </strong>
 <div style="min-height: 400px;" id="myTransfersDiv">
 <script type="text/javascript">
@@ -45,13 +45,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table class="tablesorter" id="myTransfers">
     <thead>
     <tr>
-        <th><xsl:value-of select="/_R_/i18n/label[key='id']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='memo']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='amount']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='date']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='from_account']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='to_account']/value"/></th>
-        <th><xsl:value-of select="/_R_/i18n/label[key='method']/value"/></th>
+        <th><xsl:value-of select="/_R_/i18n/id"/></th>
+        <th><xsl:value-of select="/_R_/i18n/memo"/></th>
+        <th><xsl:value-of select="/_R_/i18n/amount"/></th>
+        <th><xsl:value-of select="/_R_/i18n/date"/></th>
+        <th><xsl:value-of select="/_R_/i18n/from_account"/></th>
+        <th><xsl:value-of select="/_R_/i18n/to_account"/></th>
+        <th><xsl:value-of select="/_R_/i18n/method"/></th>
     </tr>
     </thead>
     <tbody>

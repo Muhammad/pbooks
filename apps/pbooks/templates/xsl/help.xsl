@@ -24,42 +24,42 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:include href="main.xsl"/>
 <xsl:template name="content">
-<h2><xsl:value-of select="/_R_/i18n/label[key='pbooks_manual']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/pbooks_manual"/></h2>
 <a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank">
-    <xsl:value-of select="/_R_/i18n/label[key='pbooks_user_manual']/value"/> ->
+    <xsl:value-of select="/_R_/i18n/pbooks_user_manual"/> ->
 </a>
 
-<h2><xsl:value-of select="/_R_/i18n/label[key='resource_links']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/resource_links"/></h2>
 <ul>
     <li>
         <a href="http://www.pbooks.org/" target="_blank">
-            <xsl:value-of select="/_R_/i18n/label[key='pbooks_homepage']/value"/>
+            <xsl:value-of select="/_R_/i18n/pbooks_homepage"/>
         </a>
     </li>
     <li>
         <a href="http://www.informedbanking.com/index.html" target="_blank">
-            <xsl:value-of select="/_R_/i18n/label[key='informed']/value"/>
+            <xsl:value-of select="/_R_/i18n/informed"/>
         </a>
     </li>
     <li>
         <a href="http://www.sb-info.com/wiki/Main_Page" target="_blank">
-            <xsl:value-of select="/_R_/i18n/label[key='small_business_info']/value"/>
+            <xsl:value-of select="/_R_/i18n/small_business_info"/>
         </a>
     </li>
 </ul>
 
-<h2><xsl:value-of select="/_R_/i18n/label[key='pbooks_consulting']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/pbooks_consulting"/></h2>
 
-<xsl:value-of select="/_R_/i18n/label[key='written']/value"/>
+<xsl:value-of select="/_R_/i18n/written"/>
 
 <a href="http://www.savonix.com" target="_blank">
-    <xsl:value-of select="/_R_/i18n/label[key='savonix']/value"/>
+    <xsl:value-of select="/_R_/i18n/savonix"/>
 </a>.
 
-<xsl:value-of select="/_R_/i18n/label[key='consulting_services']/value"/>
+<xsl:value-of select="/_R_/i18n/consulting_services"/>
 
 <a href="mailto:support@savonix.com">
-    <xsl:value-of select="/_R_/i18n/label[key='support']/value"/>
+    <xsl:value-of select="/_R_/i18n/support"/>
 </a>.
 </xsl:template>
 </xsl:stylesheet>

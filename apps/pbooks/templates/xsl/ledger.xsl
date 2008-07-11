@@ -45,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <table>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='month']/value"/>:
+            <xsl:value-of select="/_R_/i18n/month"/>:
         </td>
           <td>
             <select name="month" onchange="this.form.submit();">
@@ -73,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tr>
           <input type="hidden" name="nid" value="{_R_/_get/nid}"/>
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='select_one']/value"/>:</td>
+            <xsl:value-of select="/_R_/i18n/select_one"/>:</td>
           <td align="right">
             <select name="account_id" onchange="this.form.submit();">
               <option value="%">
@@ -104,24 +104,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- This cell will be used for a star or flag with notations -->
         <!--<th>FPO</th>-->
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='post']/value"/>
+              <xsl:value-of select="/_R_/i18n/post"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>
+              <xsl:value-of select="/_R_/i18n/memo"/>
             </th>
 
         <!-- Exclude account column if only one account selected-->
             <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
               <th>
-                <xsl:value-of select="/_R_/i18n/label[key='account']/value"/>
+                <xsl:value-of select="/_R_/i18n/account"/>
               </th>
             </xsl:if>
 
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>:
+              <xsl:value-of select="/_R_/i18n/date"/>:
         </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
+              <xsl:value-of select="/_R_/i18n/amount"/>
             </th>
 
             <xsl:if test="not(/_R_/_get/account_id='%') and /_R_/_get/account_id">
@@ -208,12 +208,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!--
     Provide some links to related pages: gl and account edit
 -->
-      <xsl:value-of select="/_R_/i18n/label[key='account_ledger_links']/value"/>
+      <xsl:value-of select="/_R_/i18n/account_ledger_links"/>
       <a href="{$link_prefix}ledger">
-        <xsl:value-of select="/_R_/i18n/label[key='general_ledger']/value"/>
+        <xsl:value-of select="/_R_/i18n/general_ledger"/>
       </a>
       <a href="{$link_prefix}accounts-edit&amp;account_id={/_R_/_get/account_id}">
-        <xsl:value-of select="/_R_/i18n/label[key='account_edit']/value"/>
+        <xsl:value-of select="/_R_/i18n/account_edit"/>
       </a>
     </xsl:if>
 
@@ -226,19 +226,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='assets']/value"/> +</th>
+              <xsl:value-of select="/_R_/i18n/assets"/> +</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='expenses']/value"/> =</th>
+              <xsl:value-of select="/_R_/i18n/expenses"/> =</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='sub_total']/value"/> =</th>
+              <xsl:value-of select="/_R_/i18n/sub_total"/> =</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='liabilities']/value"/> +</th>
+              <xsl:value-of select="/_R_/i18n/liabilities"/> +</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='equity']/value"/> +</th>
+              <xsl:value-of select="/_R_/i18n/equity"/> +</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='revenue']/value"/> = </th>
+              <xsl:value-of select="/_R_/i18n/revenue"/> = </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='total']/value"/>
+              <xsl:value-of select="/_R_/i18n/total"/>
             </th>
           </tr>
         </thead>

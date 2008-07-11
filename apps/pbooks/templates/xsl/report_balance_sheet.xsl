@@ -26,14 +26,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <div style="text-align: center;">
     <h2><xsl:value-of select="//company_name"/></h2>
-    <xsl:value-of select="/_R_/i18n/label[key='balance_sheet']/value"/>
+    <xsl:value-of select="/_R_/i18n/balance_sheet"/>
     &#160;
     <xsl:value-of select="//to_date"/>
 </div>
 <div style="padding: 20px;">
 <table width="100%" border="0">
     <tr class="row1">
-        <td><b><xsl:value-of select="/_R_/i18n/label[key='assetsb']/value"/></b></td>
+        <td><b><xsl:value-of select="/_R_/i18n/assetsb"/></b></td>
         <td align="right"><b><xsl:value-of select="/_R_/runtime/to_date"/></b></td>
         <td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/from_year"/></b>--></td>
     </tr>
@@ -51,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
 
     <tr>
-        <td class="journal-data" style="text-indent: 16px;"><xsl:value-of select="/_R_/i18n/label[key='total_assets']/value"/></td>
+        <td class="journal-data" style="text-indent: 16px;"><xsl:value-of select="/_R_/i18n/total_assets"/></td>
         <td align="right" class="journal-data"><b><xsl:value-of select="format-number((sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=10000][entry_type_id='Debit']
         /entry_amount)-sum(/_R_/get_all_entry_amounts/get_all_entry_amounts[account_type_id=10000][entry_type_id='Credit']/entry_amount)),'#,###,###.##')"/></b></td>
         <td align="right"></td>
@@ -62,7 +62,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 
     <tr class="row1">
-        <td><b><xsl:value-of select="/_R_/i18n/label[key='liabilities_equity']/value"/></b></td>
+        <td><b><xsl:value-of select="/_R_/i18n/liabilities_equity"/></b></td>
         <td align="right"><b><xsl:value-of select="//to_date"/></b></td>
         <td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/
         from_year"/></b>--></td>
@@ -81,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     <tr>
         <td class="journal-data" style="text-indent: 16px;">
-            <xsl:value-of select="/_R_/i18n/label[key='total_liabilities']/value"/>
+            <xsl:value-of select="/_R_/i18n/total_liabilities"/>
         </td>
         <td align="right" class="journal-data">
             <xsl:value-of select="
@@ -125,7 +125,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     <tr>
         <td class="journal-data" style="text-indent: 16px;">
-            <xsl:value-of select="/_R_/i18n/label[key='total_equity']/value"/>
+            <xsl:value-of select="/_R_/i18n/total_equity"/>
         </td>
         <td align="right" class="journal-data"></td>
         <td align="right"></td>
@@ -135,7 +135,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </tr>
     <tr>
         <td class="journal-data" style="text-indent: 16px;">
-            <xsl:value-of select="/_R_/i18n/label[key='total_liabilities_equity']/value"/>
+            <xsl:value-of select="/_R_/i18n/total_liabilities_equity"/>
         </td>
         
         <!-- This is really obtuse for testing purposes, and so developers can understand what's going on. 

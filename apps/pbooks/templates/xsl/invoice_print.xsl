@@ -29,15 +29,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <table border="0" style="float: right;">
     <tbody>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='date']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/date"/>:</td>
             <td colspan="8"><xsl:value-of select="//get_journal_entry/entry_datetime"/></td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='invoice_number']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/invoice_number"/>:</td>
             <td colspan="8"><xsl:value-of select="//get_some_business_objects/invoice_number"/></td>
         </tr>
         <tr>
-            <td><xsl:value-of select="/_R_/i18n/label[key='due_date']/value"/>:</td>
+            <td><xsl:value-of select="/_R_/i18n/due_date"/>:</td>
             <td colspan="8"><xsl:value-of select="//get_some_business_objects/due_date"/></td>
         </tr>
     </tbody>
@@ -97,17 +97,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <thead>
         <tr>
             <th colspan="2">
-                <xsl:value-of select="/_R_/i18n/label[key='billable_items']/value"/>:
+                <xsl:value-of select="/_R_/i18n/billable_items"/>:
             </th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td width="360">
-                <xsl:value-of select="/_R_/i18n/label[key='desc']/value"/>
+                <xsl:value-of select="/_R_/i18n/desc"/>
             </td>
             <td>
-                <xsl:value-of select="/_R_/i18n/label[key='total']/value"/>
+                <xsl:value-of select="/_R_/i18n/total"/>
             </td>
         </tr>
         

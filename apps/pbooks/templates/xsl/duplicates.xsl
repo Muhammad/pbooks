@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:with-param name="my-table">myDups</xsl:with-param>
     </xsl:call-template>
 
-    <xsl:value-of select="/_R_/i18n/label[key='duplicates_info']/value"/>
+    <xsl:value-of select="/_R_/i18n/duplicates_info"/>
     <xsl:variable name="my_link_prefix">
       <xsl:value-of select="$link_prefix"/>
     </xsl:variable>
@@ -40,21 +40,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <thead>
         <tr>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='post']/value"/>
+            <xsl:value-of select="/_R_/i18n/post"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>:
+            <xsl:value-of select="/_R_/i18n/date"/>:
         </th>
           <th>
             Memo.
         </th>
           <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='account']/value"/>
+              <xsl:value-of select="/_R_/i18n/account"/>
             </th>
           </xsl:if>
           <th>
-            <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
+            <xsl:value-of select="/_R_/i18n/amount"/>
           </th>
           <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">
             <th>

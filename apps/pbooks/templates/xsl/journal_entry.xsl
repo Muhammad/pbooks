@@ -119,7 +119,7 @@ Sorry for all the white space! Hard to navigate without.
 <table class="form-table">
 	<tr>
 		<td>
-        <xsl:value-of select="/_R_/i18n/label[key='entry']/value"/> :
+        <xsl:value-of select="/_R_/i18n/entry"/> :
         </td>
         <td>
             <xsl:value-of select="/_R_/_get/entry_id"/>
@@ -127,7 +127,7 @@ Sorry for all the white space! Hard to navigate without.
 	</tr>	
     <tr>
 		<td>
-            <xsl:value-of select="/_R_/i18n/label[key='date']/value"/> :
+            <xsl:value-of select="/_R_/i18n/date"/> :
         </td>
 		<td>
             <input type="text" name="entry_datetime"  id="entry_datetime"
@@ -142,7 +142,7 @@ Sorry for all the white space! Hard to navigate without.
 	</tr>
 	<tr>
 		<td colspan="2">
-            <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/> :
+            <xsl:value-of select="/_R_/i18n/amount"/> :
         </td>
     </tr>
     <tr>
@@ -151,10 +151,10 @@ Sorry for all the white space! Hard to navigate without.
             <thead>
 			<tr>
                 <th></th>
-                <th><xsl:value-of select="/_R_/i18n/label[key='type']/value"/> :</th>
-				<th><xsl:value-of select="/_R_/i18n/label[key='accounts']/value"/> :</th>
-				<th><xsl:value-of select="/_R_/i18n/label[key='debit']/value"/> :</th>
-				<th><xsl:value-of select="/_R_/i18n/label[key='credit']/value"/> :</th>
+                <th><xsl:value-of select="/_R_/i18n/type"/> :</th>
+				<th><xsl:value-of select="/_R_/i18n/accounts"/> :</th>
+				<th><xsl:value-of select="/_R_/i18n/debit"/> :</th>
+				<th><xsl:value-of select="/_R_/i18n/credit"/> :</th>
                 <th width="20"></th>
 			</tr>
             </thead>
@@ -279,7 +279,7 @@ Sorry for all the white space! Hard to navigate without.
             <!-- The flip function should only be used in training mode. -->
             <script language="javascript">
             function confirmFlip () { 
-                var flip=confirm('<xsl:value-of select="/_R_/i18n/label[key='confirm_flip']/value"/>.');
+                var flip=confirm('<xsl:value-of select="/_R_/i18n/confirm_flip"/>.');
                 if(flip)
                     window.location.href= location.href + '&amp;flip=true';
                 else 
@@ -323,7 +323,7 @@ If you want to complete this process, continue as usual. For more information, s
 <form method="post" action="{$link_prefix}journal-delete">
 <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
 <input type="submit" value="Delete this entry" 
-    onclick="return confirm('{/_R_/i18n/label[key='confirm_flip']/value}');"/>
+    onclick="return confirm('{/_R_/i18n/confirm_flip}');"/>
 </form>
 </div>
 </xsl:if>
@@ -373,12 +373,12 @@ function get_entry_date()
     </xsl:if>
     </td>
     <td>
-        <xsl:value-of select="/_R_/i18n/label[key='credit']/value"/>:
+        <xsl:value-of select="/_R_/i18n/credit"/>:
     </td>
     <td>
     <div style="padding-left: 40px;">
     <select name="credit_account_1[]" required="1" exclude="-1" err="Please select a credit account.">
-        <option value="-1"><xsl:value-of select="/_R_/i18n/label[key='credit_account']/value"/></option>
+        <option value="-1"><xsl:value-of select="/_R_/i18n/credit_account"/></option>
         <xsl:for-each select="//get_all_accounts">
             <option value="{id}"><xsl:if test="id=//get_journal_entry/get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id and not(/_R_/_get/transaction_id)"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
 
@@ -395,7 +395,7 @@ function get_entry_date()
         and not(//get_journal_entry/get_journal_entry/status=9)
         and not(/_R_/_get/transaction_id)">
             <option value="{//get_journal_entry/get_journal_entry/account_id}" selected="selected">
-                <xsl:value-of select="/_R_/i18n/label[key='account_hidden']/value"/>
+                <xsl:value-of select="/_R_/i18n/account_hidden"/>
             </option>
         </xsl:if>
     </select></div>
@@ -474,9 +474,9 @@ function get_entry_date()
     </a>
     </xsl:if>
     </td>
-    <td><xsl:value-of select="/_R_/i18n/label[key='debit']/value"/>:</td>
+    <td><xsl:value-of select="/_R_/i18n/debit"/>:</td>
     <td><select name="debit_account_1[]" required="1" exclude="-1" err="Please select a debit account.">
-            <option value="-1"><xsl:value-of select="/_R_/i18n/label[key='debit_account']/value"/></option>
+            <option value="-1"><xsl:value-of select="/_R_/i18n/debit_account"/></option>
             <xsl:for-each select="//get_all_accounts">
                 <option value="{id}">
                 <!-- Existing entry? -->
@@ -499,7 +499,7 @@ function get_entry_date()
             <xsl:if test="not(//get_journal_entry/get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts//id) and not(//get_journal_entry/get_journal_entry/status=9)
             and not(/_R_/_get/transaction_id)">
                 <option value="{//get_journal_entry/get_journal_entry/account_id}" selected="selected">
-                    <xsl:value-of select="/_R_/i18n/label[key='account_hidden']/value"/>
+                    <xsl:value-of select="/_R_/i18n/account_hidden"/>
                 </option>
             </xsl:if>
         </select>

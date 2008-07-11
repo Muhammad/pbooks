@@ -33,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!-- Net change -->
     <div class="generic-button" style="float: right;">
       <b>
-        <xsl:value-of select="/_R_/i18n/label[key='net_change']/value"/>
+        <xsl:value-of select="/_R_/i18n/net_change"/>
       </b>: 
     <xsl:value-of select=" format-number( sum( /_R_/get_all_transactions/get_all_transactions/entry_amount ),'#########.##') "/>
     </div>
@@ -61,7 +61,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
 
           <td>
-            <xsl:value-of select="/_R_/i18n/label[key='month']/value"/>:</td>
+            <xsl:value-of select="/_R_/i18n/month"/>:</td>
           <td>
             <select name="month" onchange="this.form.submit();">
               <option value="%">All</option>
@@ -104,15 +104,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr>
             <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='post']/value"/>
+              <xsl:value-of select="/_R_/i18n/post"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>:</th>
+              <xsl:value-of select="/_R_/i18n/date"/>:</th>
             <th>Memo.</th>
             <th>Account</th>
 
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
+              <xsl:value-of select="/_R_/i18n/amount"/>
             </th>
 
             <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">

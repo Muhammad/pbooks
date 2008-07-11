@@ -1,1195 +1,259 @@
-<!--
-Program: PBooks
-Component: pbooks.xml
-Copyright: Savonix Corporation
-Author: Albert L. Lash, IV
-License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301 USA
--->
 <i18n>
-<!-- Menu-->
-
-    <label>
-        <key>chart_of_accounts</key>
-        <value>Chart of Accounts</value>
-        <description>This is where all the accounts are located.</description>
-    </label>
-<label>
-        <key>default_page_title</key>
-        <value>PBooks Open Source Accounting and Bookkeeping System</value>
-    </label>
-    <label>
-        <key>main_menu</key>
-        <value>Main Menu</value>
-        <description></description>
-    </label>
-    <label>
-        <key>accounts</key>
-        <value>Chart of Accounts</value>
-        <description>This is where all the accounts are located.</description>
-    </label>
-    <label>
-        <key>account-groups</key>
-        <value>Account Groups</value>
-        <description>Account organization.</description>
-    </label>
-    <label>
-        <key>customer-accounts</key>
-        <value>Customers</value>
-        <description></description>
-    </label>
-    <label>
-        <key>welcome</key>
-        <value>Welcome</value>
-        <description>Hello.</description>
-    </label>
-    <label>
-        <key>ledger</key>
-        <value>General Ledger</value>
-        <description>Summarized transactions for each account.</description>
-    </label>
-    <label>
-        <key>journal</key>
-        <value>General Journal</value>
-        <description>Journal of all double-sided entries.</description>
-    </label>
-    <label>
-        <key>journal-entry</key>
-        <value>Journal Entry</value>
-        <description>Create or edit a journal entry.</description>
-    </label>
-    <label>
-        <key>reports</key>
-        <value>Reports</value>
-        <description>Cash flow statement, profit and loss, and balance sheet.</description>
-    </label>
-    <label>
-        <key>reports-simple-cash-flow</key>
-        <value>Simple Monthly Cash Flow</value>
-        <description></description>
-    </label>
-    <!-- Activities sub-menu -->
-    <label>
-        <key>activities</key>
-        <value>Activities</value>
-        <description></description>
-    </label>
-    <label>
-        <key>account-balances</key>
-        <value>Account Balances</value>
-        <description>Check your account balances</description>
-    </label>
-    <label>
-        <key>accounts-edit</key>
-        <value>Account</value>
-        <description>Account</description>
-    </label>
-    <label>
-        <key>new-account</key>
-        <value>New Account</value>
-        <description>Create a new account</description>
-    </label>
-    <label>
-        <key>matching</key>
-        <value>Matching</value>
-        <description>Match debit and credit accounts.</description>
-    </label>
-    <label>
-        <key>posting</key>
-        <value>Posting</value>
-        <description>Post entries to the ledger.</description>
-    </label>
-    <label>
-        <key>duplicates</key>
-        <value>Duplicates</value>
-        <description>Check for duplicate entries.</description>
-    </label>
-    <label>
-        <key>reconciliation</key>
-        <value>Reconciliation</value>
-        <description>Reconcile bank accounts.</description>
-    </label>
-    
-    <!-- Business Sub-Menu -->
-    <label>
-        <key>business</key>
-        <value>Business</value>
-        <description>Enter invoices.</description>
-    </label>
-    <label>
-        <key>checks</key>
-        <value>Checks</value>
-        <description>Write checks.</description>
-    </label>
-    <label>
-        <key>checks</key>
-        <value>Checks</value>
-        <description>Write checks.</description>
-    </label>
-    <label>
-        <key>deposits</key>
-        <value>Deposits</value>
-        <description>Deposits</description>
-    </label>
-    <label>
-        <key>bills</key>
-        <value>Bills</value>
-        <description>Enter bills.</description>
-    </label>
-    <label>
-        <key>invoices</key>
-        <value>Invoices</value>
-        <description>Enter invoices.</description>
-    </label>
-    <label>
-        <key>transfers</key>
-        <value>Transfers</value>
-        <description>Account transfers.</description>
-    </label>
-    <label>
-        <key>purchase-orders</key>
-        <value>Purchase Orders</value>
-        <description>Purchase Orders.</description>
-    </label>
-    
-    <!-- Import / Export Sub-Menu -->
-    <label>
-        <key>import-export</key>
-        <value>Import / Export</value>
-        <description></description>
-    </label>
-    <label>
-        <key>transactions-import</key>
-        <value>Transactions</value>
-        <description>Import CVS data.</description>
-    </label>
-    <label>
-        <key>accounts-import</key>
-        <value>Accounts</value>
-        <description>Import chart of acccounts.</description>
-    </label>
-    
-    <!-- Quick Links Sub-Menu -->
-    <label>
-        <key>quick_links</key>
-        <value>Quick Links</value>
-        <description></description>
-    </label>
-    <label>
-        <key>help</key>
-        <value>Help</value>
-        <description>Help</description>
-    </label>
-    
-    
-    <!-- Setup Sub-Menu -->
-    <label>
-        <key>setup</key>
-        <value>Setup</value>
-        <description></description>
-    </label>   
-    <label>
-        <key>company</key>
-        <value>Company</value>
-        <description>Company information</description>
-    </label>
-    <label>
-        <key>periods</key>
-        <value>Periods</value>
-        <description>Accouting Periods</description>
-    </label>
-    <label>
-        <key>admin</key>
-        <value>Admin</value>
-        <description>Technical Admin</description>
-    </label>
-    <!--
-    <label>
-        <key>admin</key>
-        <value>Administration</value>
-        <description>Administration information</description>
-    </label>
-    -->
-    <label>
-        <key>preferences</key>
-        <value>Preferences</value>
-        <description>Preferences</description>
-    </label>
-    
-    
-    
-    
-    
-    <!-- From admin.xml -->
-    <label>
-        <key>configure</key>
-        <value>Configure PBooks to your liking</value>
-    </label>
-    <label>
-        <key>options</key>
-        <value>Options</value>
-    </label>
-    <label>
-        <key>plugins</key>
-        <value>Plugins</value>
-    </label>
-    <label>
-        <key>themes</key>
-        <value>Themes</value>
-    </label>
-    <label>
-        <key>user_admin</key>
-        <value>User Admin</value>
-    </label>
-    <label>
-        <key>enter_user_manager</key>
-        <value>To enter the user manager</value>
-    </label>
-    <label>
-        <key>click_here</key>
-        <value>click here</value>
-    </label>
-    <label>
-        <key>return_user_admin</key>
-        <value>To return from the user admin, click on the PBooks logo in the top left hand corner</value>
-    </label>
-
-    
-    <!-- Functions -->
-    <label>
-        <key>import_csv</key>
-        <value>Import Transactions CSV File</value>
-    </label>
-    <label>
-        <key>import_csv_accounts</key>
-        <value>Import Accounts CSV File</value>
-    </label>
-    <label>
-        <key>backup_db</key>
-        <value>Export Database Backup</value>
-    </label>
-    <label>
-        <key>backup_data</key>
-        <value>Backup your data in</value>
-    </label>
-    <label>
-        <key>csv</key>
-        <value>CSV</value>
-    </label>
-    <label>
-        <key>sql</key>
-        <value>SQL</value>
-    </label>
-    <label>
-        <key>xml</key>
-        <value>XML</value>
-    </label>
-    <text>
-        <key>import_instructions</key>
-        <value>
-INSTRUCTIONS
-------------
-Paste raw CSV data here with the following column data:
-
-entry_datetime (several formats supported),memo,amount
-
-and be sure to select the account you want to post the transactions into. 
-Make sure the transaction amounts are balanced correctly for the type of 
-account you are importing into. 
-
-The text you paste in here should look something like this:
-
-2008-02-27,"Random account transaction 0",500
-2008-02-28,"Random account transaction 1",501
-2008-02-29,"Random account transaction 2",502
-2008-02-30,"Random account transaction 3",503
-2008-02-31,"Random account transaction 4",504
-2008-03-01,"Random account transaction 5",505
-2008-03-02,"Random account transaction 6",506
-2008-03-03,"Random account transaction 7",507
-2008-03-04,"Random account transaction 8",508
-2008-03-05,"Random account transaction 9",509</value>
-     </text>
-
-     
-     
-     <!-- ACCOUNTS -->
-    <label>
-        <key>account_name</key>
-        <value>Account Name</value>
-    </label>
-    <label>
-        <key>account_deletion_requirement</key>
-        <value>An account can only be deleted when there are no journal transactions in that account. If you would like to hide the account, click edit and select the hide option.
-        </value>
-    </label>
-    <label>
-        <key>account_type</key>
-        <value>Account Type</value>
-    </label>
-    <label>
-        <key>account_number</key>
-        <value>Account Number</value>
-    </label>
-    <label>
-        <key>description</key>
-        <value>Description</value>
-    </label>
-    
-    <!-- ACCOUNT META -->
-    <label>
-        <key>has_checks</key>
-        <value>This account has checks</value>
-    </label>
-    <label>
-        <key>takes_deposits</key>
-        <value>This account takes deposits</value>
-    </label>
-    <label>
-        <key>takes_deposits</key>
-        <value>This account takes deposits</value>
-    </label>
-    <label>
-        <key>cash_account</key>
-        <value>This account should be included when calculating cash flow.</value>
-    </label>
-    
-    <label>
-        <key>delete_account_group</key>
-        <value>Are you sure you want to delete this Account Group</value>
-    </label>
-    <label>
-        <key>delete_account</key>
-        <value>Are you sure you want to delete this account</value>
-    </label>
-    <label>
-        <key>accounts_receivable_account</key>
-        <value>Accounts receivable account</value>
-        <help>
-        Selecting this remove any other account 
-        you have previously selected.</help>
-        
-    </label>
-    
-    <!-- Account Groups -->
-    <label>
-        <key>groups</key>
-        <value>Groups</value>
-    </label>
-    <label>
-        <key>new_account_group</key>
-        <value>New Account Group</value>
-    </label>
-    
-    <!-- Account visibility -->
-    <label>
-        <key>hide</key>
-        <value>Hide this account</value>
-    </label>
-    <label>
-        <key>hide_accounts</key>
-        <value>Hide accounts</value>
-    </label>
-    <label>
-        <key>show_accounts</key>
-        <value>Show Hidden Accounts</value>
-    </label>
-    <label>
-        <key>new_account</key>
-        <value>New Account</value>
-    </label>
-    <label>
-        <key>number</key>
-        <value>Number</value>
-    </label>
-    <label>
-        <key>number</key>
-        <value>Number</value>
-    </label>    
-    
-    
-    <!-- Customers -->
-    <label>
-        <key>new_customer</key>
-        <value>New Customer</value>
-    </label>
-    <label>
-        <key>customer_name</key>
-        <value>Customer</value>
-    </label>
-    <label>
-        <key>customer</key>
-        <value>Customer</value>
-    </label>
-
-    <!-- Interface -->
-    <label>
-        <key>all</key>
-        <value>All</value>
-    </label>
-    <label>
-        <key>account</key>
-        <value>Account</value>
-    </label>
-    <label>
-        <key>select_one</key>
-        <value>Select One</value>
-    </label>
-    <label>
-        <key>select_account</key>
-        <value>Select account</value>
-    </label>
-    <label>
-        <key>desc</key>
-        <value>Description</value>
-    </label>
-    <label>
-        <key>group</key>
-        <value>Group</value>
-    </label>
-    <label>
-        <key>group_name</key>
-        <value>Group Name</value>
-    </label>
-    <label>
-        <key>parent_group</key>
-        <value>Parent groups</value>
-    </label>
-    <label>
-        <key>sub_group</key>
-        <value>Sub groups</value>
-    </label>
-    <label>
-        <key>total</key>
-        <value>Total</value>
-    </label>
-    <label>
-        <key>edit</key>
-        <value>Edit</value>
-    </label>
-    <label>
-        <key>save</key>
-        <value>Save</value>
-    </label>
-    <label>
-        <key>cancel</key>
-        <value>Cancel</value>
-    </label>
-    <label>
-        <key>memo</key>
-        <value>Memo</value>
-    </label>
-    <label>
-        <key>amount</key>
-        <value>Amount</value>
-    </label>
-    <label>
-        <key>assets</key>
-        <value>ASSETS</value>
-    </label>
-    <label>
-        <key>assetsb</key>
-        <value>Assets</value>
-    </label>
-    <label>
-        <key>total_assets</key>
-        <value>TOTAL ASSETS</value>
-    </label>
-    <label>
-        <key>expenses</key>
-        <value>EXPENSES</value>
-    </label>
-    <label>
-        <key>total_expenses</key>
-        <value>Total Expenses</value>
-    </label>
-    <label>
-        <key>sub_total</key>
-        <value>Sub-Total</value>
-    </label>
-    <label>
-        <key>liabilities</key>
-        <value>LIABILITIES</value>
-    </label>
-    <label>
-        <key>equity</key>
-        <value>EQUITY</value>
-    </label>
-    <label>
-        <key>from</key>
-        <value>from </value>
-    </label>
-    <label>
-        <key>through</key>
-        <value> through </value>
-    </label>
-    <label>
-        <key>revenue</key>
-        <value>REVENUE</value>
-    </label>
-        <label>
-        <key>totalrevenue</key>
-        <value>Total Revenue</value>
-    </label>
-    <label>
-        <key>total</key>
-        <value>Total</value>
-    </label>
-    <label>
-        <key>selected</key>
-        <value>Selected</value>
-    </label>
-    <label>
-        <key>delete</key>
-        <value>Delete</value>
-    </label>
-    <label>
-        <key>type</key>
-        <value>Type</value>
-    </label>
-    <label>
-        <key>balance</key>
-        <value>Balance</value>
-    </label>
-    <label>
-        <key>id</key>
-        <value>ID</value>
-    </label>
-    <label>
-        <key>accounts</key>
-        <value>Accounts</value>
-    </label>
-    <label>
-        <key>debit</key>
-        <value>Debit</value>
-    </label>
-    <label>
-        <key>credit</key>
-        <value>Credit</value>
-    </label>
-    <label>
-        <key>credit_account</key>
-        <value>Credit Account</value>
-    </label>
-    <label>
-        <key>debit_account</key>
-        <value>Debit Account</value>
-    </label>
-    <label>
-    	<key>type</key>
-	<value>Type</value>
-    </label>
-    <label>
-    	<key>entry</key>
-	<value>Entry</value>
-    </label>
-    <label>
-    	<key>net_profit</key>
-	<value>NET PROFIT</value>
-    </label>
-    <!-- Date and Time -->
-    <label>
-        <key>date</key>
-        <value>Date</value>
-    </label>
-    <label>
-        <key>period</key>
-        <value>Time Period</value>
-    </label>
-    
-    <!-- Business -->
-    <label>
-        <key>checks</key>
-        <value>Checks </value>
-    </label>
-    <label>
-        <key>edit_journal_entry</key>
-        <value>Edit journal entry</value>
-    </label>
-    <!-- CRM -->
-    <label>
-        <key>client</key>
-        <value>Client</value>
-    </label>
-     
-    
-    
-    <!--  WELCOME -->
-    <label>
-        <key>wicked_cool</key>
-        <value>Welcome to the wicked cool accounting program. It is a simple and basic accounting package that includes
+  <chart_of_accounts>Chart of Accounts</chart_of_accounts>
+  <default_page_title>PBooks Open Source Accounting and Bookkeeping System</default_page_title>
+  <main_menu>Main Menu</main_menu>
+  <accounts>Chart of Accounts</accounts>
+  <account-groups>Account Groups</account-groups>
+  <customer-accounts>Customers</customer-accounts>
+  <welcome>Welcome</welcome>
+  <ledger>General Ledger</ledger>
+  <journal>General Journal</journal>
+  <journal-entry>Journal Entry</journal-entry>
+  <reports>Reports</reports>
+  <reports-simple-cash-flow>Simple Monthly Cash Flow</reports-simple-cash-flow>
+  <activities>Activities</activities>
+  <account-balances>Account Balances</account-balances>
+  <accounts-edit>Account</accounts-edit>
+  <new-account>New Account</new-account>
+  <matching>Matching</matching>
+  <posting>Posting</posting>
+  <duplicates>Duplicates</duplicates>
+  <reconciliation>Reconciliation</reconciliation>
+  <business>Business</business>
+  <checks>Checks</checks>
+  <checks>Checks</checks>
+  <deposits>Deposits</deposits>
+  <bills>Bills</bills>
+  <invoices>Invoices</invoices>
+  <transfers>Transfers</transfers>
+  <purchase-orders>Purchase Orders</purchase-orders>
+  <import-export>Import / Export</import-export>
+  <transactions-import>Transactions</transactions-import>
+  <accounts-import>Accounts</accounts-import>
+  <quick_links>Quick Links</quick_links>
+  <help>Help</help>
+  <setup>Setup</setup>
+  <company>Company</company>
+  <periods>Periods</periods>
+  <admin>Admin</admin>
+  <preferences>Preferences</preferences>
+  <configure>Configure PBooks to your liking</configure>
+  <options>Options</options>
+  <plugins>Plugins</plugins>
+  <themes>Themes</themes>
+  <user_admin>User Admin</user_admin>
+  <enter_user_manager>To enter the user manager</enter_user_manager>
+  <click_here>click here</click_here>
+  <return_user_admin>To return from the user admin, click on the PBooks logo in the top left hand corner</return_user_admin>
+  <import_csv>Import Transactions CSV File</import_csv>
+  <import_csv_accounts>Import Accounts CSV File</import_csv_accounts>
+  <backup_db>Export Database Backup</backup_db>
+  <backup_data>Backup your data in</backup_data>
+  <csv>CSV</csv>
+  <sql>SQL</sql>
+  <xml>XML</xml>
+  <account_name>Account Name</account_name>
+  <account_deletion_requirement>An account can only be deleted when there are no journal transactions in that account. If you would like to hide the account, click edit and select the hide option.
+</account_deletion_requirement>
+  <account_type>Account Type</account_type>
+  <account_number>Account Number</account_number>
+  <description>Description</description>
+  <has_checks>This account has checks</has_checks>
+  <takes_deposits>This account takes deposits</takes_deposits>
+  <takes_deposits>This account takes deposits</takes_deposits>
+  <cash_account>This account should be included when calculating cash flow.</cash_account>
+  <delete_account_group>Are you sure you want to delete this Account Group</delete_account_group>
+  <delete_account>Are you sure you want to delete this account</delete_account>
+  <accounts_receivable_account>Accounts receivable account</accounts_receivable_account>
+  <groups>Groups</groups>
+  <new_account_group>New Account Group</new_account_group>
+  <hide>Hide this account</hide>
+  <hide_accounts>Hide accounts</hide_accounts>
+  <show_accounts>Show Hidden Accounts</show_accounts>
+  <new_account>New Account</new_account>
+  <number>Number</number>
+  <number>Number</number>
+  <new_customer>New Customer</new_customer>
+  <customer_name>Customer</customer_name>
+  <customer>Customer</customer>
+  <all>All</all>
+  <account>Account</account>
+  <select_one>Select One</select_one>
+  <select_account>Select account</select_account>
+  <desc>Description</desc>
+  <group>Group</group>
+  <group_name>Group Name</group_name>
+  <parent_group>Parent groups</parent_group>
+  <sub_group>Sub groups</sub_group>
+  <total>Total</total>
+  <edit>Edit</edit>
+  <save>Save</save>
+  <cancel>Cancel</cancel>
+  <memo>Memo</memo>
+  <amount>Amount</amount>
+  <assets>ASSETS</assets>
+  <assetsb>Assets</assetsb>
+  <total_assets>TOTAL ASSETS</total_assets>
+  <expenses>EXPENSES</expenses>
+  <total_expenses>Total Expenses</total_expenses>
+  <sub_total>Sub-Total</sub_total>
+  <liabilities>LIABILITIES</liabilities>
+  <equity>EQUITY</equity>
+  <from>from </from>
+  <through> through </through>
+  <revenue>REVENUE</revenue>
+  <totalrevenue>Total Revenue</totalrevenue>
+  <total>Total</total>
+  <selected>Selected</selected>
+  <delete>Delete</delete>
+  <type>Type</type>
+  <balance>Balance</balance>
+  <id>ID</id>
+  <accounts>Accounts</accounts>
+  <debit>Debit</debit>
+  <credit>Credit</credit>
+  <credit_account>Credit Account</credit_account>
+  <debit_account>Debit Account</debit_account>
+  <type>Type</type>
+  <entry>Entry</entry>
+  <net_profit>NET PROFIT</net_profit>
+  <date>Date</date>
+  <period>Time Period</period>
+  <checks>Checks </checks>
+  <edit_journal_entry>Edit journal entry</edit_journal_entry>
+  <client>Client</client>
+  <wicked_cool>Welcome to the wicked cool accounting program. It is a simple and basic accounting package that includes
 		the required features for small business accounting, including a general journal, a charter of accounts, a 
 		general ledger, and reports. The reports are the balance sheet, the cash flow statement, and the income statement. 
-		This accounting program was designed to be used for accrual based accounting.</value>
-    </label>
-    <label>
-        <key>get_started</key>
-        <value>Let's get started:</value>
-    </label>
-    <label>
-        <key>welcome</key>
-        <value>Welcome to the PBooks live demo!</value>
-    </label>
-    <label>
-        <key>this_demo</key>
-        <value>This demo is fully functioning, in that the changes you make will get saved to the database. This is our
-        first public demonstration of a live system, so please be patient as well roll-out the full functionality. </value>
-    </label>
-    <label>
-        <key>view_the_ledger</key>
-        <value>View the ledger</value>
-    </label>
-    <label>
-        <key>make</key>
-        <value>Make a journal entry</value>
-    </label>
-    <label>
-        <key>view</key>
-        <value>View the journal</value>
-    </label>
-    <label>
-        <key>try</key>
-        <value> There are a few things you'll definitely want to try out:</value>
-    </label>
-    <label>
-        <key>help_visitors</key>
-        <value>To try and help our visitors see a range of functionality, we've even included an out-of balance entry to show how the software keeps an eye on the balancing act. 
-	An important feature to notice in this regard: when an entry is out of balance, the amounts cannot be posted to the ledger!</value>
-    </label>
-    <label>
-        <key>general_ledger</key>
-        <value>General Ledger - Check out the accounting equation at the bottom.</value>
-    </label>
-    <label>
-        <key>general_journal</key>
-        <value>General Journal - Add an out of balance entry and see what happens in the journal.</value>
-    </label>
-    <label>
-        <key>quick_stats</key>
-        <value>Quick Stats:</value>
-    </label>
-    <label>
-        <key>recent_activity</key>
-        <value>Recent Activity:</value>
-    </label>
-    <label>
-        <key>accounts</key>
-        <value>Accounts: </value>
-    </label>
-    <label>
-        <key>ledger_transactions</key>
-        <value>Ledger transactions: </value>
-    </label>
-    <label>
-        <key>journal_entries</key>
-        <value>Journal Entries</value>
-    </label>
-    <label>
-        <key>balance_sheet</key>
-        <value>Balance Sheet</value>
-    </label>
-    <label>
-        <key>journal_entry_amounts</key>
-        <value>Journal entry amounts: </value>
-    </label>
-    <label>
-        <key>number_transactions</key>
-        <value>The number of ledger transactions should equal the number of journal entry amounts, but if they do not, it means that there are
-            transactions to match, or entries to post.</value>
-    </label>
-    
-    
-    
-    
-    
-    
-    
-    <!-- CHECKS -->
-    <label>
-        <key>recent_checks</key>
-        <value>Recent Checks</value>
-    </label>
-    <label>
-        <key>write_check</key>
-        <value>Write Check</value>
-    </label>
-    <label>
-        <key>check_payee</key>
-        <value>Pay to the order of</value>
-    </label>
-    <label>
-        <key>check_number</key>
-        <value>Check #</value>
-    </label>
-    <label>
-        <key>payee</key>
-        <value>Payee</value>
-    </label>
-
-    
-    <!-- TRANSFERS -->
-    <label>
-        <key>recent_transfers</key>
-        <value>Recent Transfers</value>
-    </label>
-    <label>
-        <key>new_transfer</key>
-        <value>New Transfer</value>
-    </label>
-    <label>
-        <key>from_account</key>
-        <value>From Account</value>
-    </label>
-    <label>
-        <key>to_account</key>
-        <value>To Account</value>
-    </label>
-    <label>
-        <key>method</key>
-        <value>Method</value>
-    </label>
-    <label>
-        <key>by_check</key>
-        <value>By Check</value>
-    </label>
-    <label>
-        <key>electronic</key>
-        <value>Electronic</value>
-    </label>
-	<label>
-        <key>memo</key>
-        <value>Memo</value>
-    </label>
-	<label>
-        <key>amount</key>
-        <value>Amount</value>
-    </label>
-	<label>
-        <key>from</key>
-        <value>From</value>
-    </label>
-	<label>
-        <key>to</key>
-        <value>To</value>
-    </label>
-	<label>
-        <key>method</key>
-        <value>Method</value>
-    </label>
-    
-    <!-- LEDGER-->
-
-    <label>
-        <key>post</key>
-        <value>Entry</value>
-    </label>
-    <label>
-        <key>account_ledger_links</key>
-        <value>
-            You are viewing a single account ledger, and you may find the following links helpful.
-        </value>
-    </label>
-    <label>
-        <key>general_ledger</key>
-        <value>
-            View the general ledger.
-        </value>
-    </label>
-    <label>
-        <key>account_edit</key>
-        <value>
-            Edit this account.
-        </value>
-    </label>
-    
-    
-    <!--  PERIODS -->
-    <label> 
-        <key>period_info</key>
-        <value>Periods are similar to "books", in that you can have separate accounting periods, which are mutually exclusive by date.</value>
-    </label>
-    <label> 
-        <key>period_id</key>
-        <value>ID</value>
-    </label>
-    <label> 
-        <key>period_value</key>
-        <value>Period</value>
-    </label>
-    
-    
-    
-    
-    <!-- Main reports -->
-    <label>
-        <key>report_type</key>
-        <value>Report Type</value>
-    </label>
-    <label>
-        <key>build_report</key>
-        <value>Build Report</value>
-    </label>
-    <label>
-        <key>income_statement</key>
-        <value>Income Statement</value>
-    </label>
-    <label>
-        <key>balance_sheet</key>
-        <value>Balance Sheet </value>
-    </label>
-    <label>
-        <key>cash_flow_statement</key>
-        <value>Cash Flow Statement </value>
-    </label>
-    
-    <!-- Additional Reports -->
-    <label>
-        <key>saved_reports</key>
-        <value>Saved Reports</value>
-    </label>
-    <label>
-        <key>additional_reports</key>
-        <value>Additional Reports</value>
-    </label>
-    <label>
-        <key>aging_report</key>
-        <value>Aging Report</value>
-    </label>
-    <label>
-        <key>simple_monthly_cash_flow</key>
-        <value>Simple Monthly Cash Flow</value>
-    </label>
-    <label>
-        <key>group_monthly_cash_flow</key>
-        <value>Account Group Monthly Cash Flow</value>
-    </label>
-    <label>
-        <key>report_invoices</key>
-        <value>Monthly Invoice Reports</value>
-    </label>
-    
-    
-    <label>
-        <key>incoming_cash_flow_deposit</key>
-        <value>INCOMING CASH FLOW (DEPOSITS)</value>
-    </label>
-    <label>
-        <key>beginning_balance</key>
-        <value>Beginning Balance</value>
-    </label>
-    <label>
-        <key>total_cash_inflow</key>
-        <value>TOTAL CASH INFLOW</value>
-    </label>
-    <label>
-        <key>disbursements</key>
-        <value>DISBURSEMENTS</value>
-    </label>
-    <label>
-        <key>total_cash_outflow</key>
-        <value>TOTAL CASH OUTFLOW</value>
-    </label>
-    <label>
-        <key>capital_investments</key>
-        <value>CAPITAL INVESTMENTS</value>
-    </label>
-    <label>
-        <key>cash_flow</key>
-        <value>CASH OUTFLOW</value>
-    </label>
-    <label>
-        <key>profit_and_loss_statement</key>
-        <value>Profit and Loss Statement</value>
-    </label>
-    <label>
-        <key>liabilities_equity</key>
-        <value>Liabilities and Equity</value>
-    </label>
-    <label>
-        <key>total_liabilities</key>
-        <value>TOTAL LIABILITIES</value>
-    </label>
-    <label>
-        <key>total_equity</key>
-        <value>TOTAL EQUITY</value>
-    </label>
-    <label>
-        <key>total_liabilities_equity</key>
-        <value>TOTAL LIABILITIES AND EQUITY</value>
-    </label>
-
-    <label>
-        <key>net_change</key>
-        <value>Net Change</value>
-    </label>
-    
-    
-    <!-- DUPLICATES -->
-    
-    <label>
-        <key>duplicates_info</key>
-        <value>The PBooks duplicates function can help you find and reconcile duplicate entries and transactions. Duplicates can occur if two different accounts have their data imported and contain mutual transactions, where one posts to the other prior creating a new journal entry for the second account. Therefore, the list of potential duplicates is currently limited to unmatched, imported transactions. </value>
-    </label>
-    
-    
-    
-    <!-- Deposits -->
-    
-    <label>
-        <key>recent_deposits</key>
-        <value>Recent Deposits</value>
-    </label>
-    <label>
-        <key>cash</key>
-        <value>Cash</value>
-    </label>
-    <label>
-        <key>source</key>
-        <value>Source</value>
-    </label>
-    <label>
-        <key>make_deposits</key>
-        <value>Make Deposits</value>
-    </label>
-    <label>
-        <key>new_deposit</key>
-        <value>New Deposit</value>
-    </label>
-    <label>
-        <key>deposit_account</key>
-        <value>Deposit Account</value>
-    </label>
-    <label>
-        <key>error_select_deposit</key>
-        <value>Please select a deposit account.</value>
-    </label>
-    <label>
-        <key>error_select_credit</key>
-        <value>Please select a credit account.</value>
-    </label>
-
-    <label>
-        <key>outstanding_invoices</key>
-        <value>Outstanding Invoices</value>
-    </label>
-    <label>
-        <key>not_applicable</key>
-        <value>Not Applicable</value>
-    </label>
-    
-    
-    
-    
-    <!--  INVOICES -->
-    
-    <label>
-        <key>print</key>
-        <value>Print</value>
-    </label>
-    <label>
-        <key>new_invoice</key>
-        <value>Create a new invoice</value>
-    </label>
-    <label>
-        <key>invoice_number</key>
-        <value>Invoice Number</value>
-    </label>
-    <label>
-        <key>billable_items</key>
-        <value>Billable Items</value>
-    </label>
-    <label>
-        <key>new</key>
-        <value>New Invoice</value>
-    </label>
-    <label>
-        <key>due_date</key>
-        <value>Due</value>
-    </label>
-
-    <!-- Line item -->
-    <label>
-        <key>revenue</key>
-        <value>Revenue</value>
-    </label>
-    <label>
-        <key>quantity</key>
-        <value>Quantity</value>
-    </label>
-    <label>
-        <key>price</key>
-        <value>Price</value>
-    </label>
-    <label>
-        <key>recent_invoices</key>
-        <value>Recent Invoices</value>
-    </label>
-    <label>
-        <key>paid_status</key>
-        <value>Paid Status</value>
-    </label>
-    <label>
-        <key>paid_in_full_date</key>
-        <value>Payment Date</value>
-    </label>
-    <label>
-        <key>unpaid</key>
-        <value>Unpaid</value>
-    </label>
-	<label>
-        <key>paid</key>
-        <value>Paid</value>
-    </label>
-    <label>
-        <key>partial</key>
-        <value>Partially Paid</value>
-    </label>
-    <label>
-        <key>paid_in_full</key>
-        <value>Paid in Full</value>
-    </label>
-    
-    <!-- Journal Entry -->
-
-    <label>
-        <key>memorandum</key>
-        <value>Memorandum</value>
-    </label>
-    <label>
-        <key>confirm_flip</key>
-        <value>You sure you want to flip this entry? Doing so will also delete any ledger transactions having to do with it</value>
-    </label>
-    <label>
-        <key>confirm_delete</key>
-        <value>You sure you want to delete this entry? Doing so will also delete any ledger transactions having to do with it.</value>
-    </label>
-    <label>
-        <key>account_hidden</key>
-        <value>Account hidden</value>
-    </label>
-    <label>
-        <key>error_match</key>
-        <value>ERROR: These should match.</value>
-    </label>
-    <label>
-        <key>post_to_ledger</key>
-        <value>Post to ledger</value>
-    </label>
-    <label>
-        <key>delete_entries</key>
-        <value>Delete Selected Entries</value>
-    </label>
-    <label>
-        <key>new_entry</key>
-        <value>New Journal Entry</value>
-    </label>
-    
-    
-    
-    <!-- HELP --> 
-
-    <label>
-        <key>pbooks_manual</key>
-        <value>PBooks Manual</value>
-    </label>
-    <label>
-        <key>pbooks_user_manual</key>
-        <value>PBooks User Manual</value>
-    </label>
-    <label>
-        <key>pbooks_homepage</key>
-        <value>PBooks Homepage</value>
-    </label>
-    <label>
-        <key>informed</key>
-        <value>Informed Banking</value>
-    </label>
-    <label>
-        <key>small_business_info</key>
-        <value>Small Business Info</value>
-    </label>
-    <label>
-        <key>savonix</key>
-        <value>Savonix</value>
-    </label>
-    <label>
-        <key>written</key>
-        <value>PBooks was written by Albert Lash at </value>
-    </label>
-    <label>
-        <key>consulting_services</key>
-        <value>For consulting services, 
-	please contact </value>
-    </label>
-    <label>
-        <key>support</key>
-        <value>support@savonix.com</value>
-    </label>
-    <label>
-        <key>resource_links</key>
-        <value>Bookkeeping and Accounting Resources</value>
-    </label>
-    <label>
-        <key>pbooks_consulting</key>
-        <value>PBooks Consulting</value>
-    </label>
-    
-    
-    
-    
-    <!-- Addresses -->
-    
-    <label>
-        <key>company_name</key>
-        <value>Company name</value>
-    </label>
-    <label>
-        <key>address_1</key>
-        <value>Address</value>
-    </label>
-    <label>
-        <key>address_2</key>
-        <value>Address</value>
-    </label>
-    <label>
-        <key>city</key>
-        <value>City</value>
-    </label>
-    <label>
-        <key>state</key>
-        <value>State</value>
-    </label>
-    <label>
-        <key>zip</key>
-        <value>Zip Code</value>
-    </label>
-    
-    
-    
-    <!-- More tool tips - are these used? -->
-    <label>
-        <key>match_entry</key>
-        <value>Match transaction to an existing journal entry.</value>
-        <description></description>
-    </label>
-    <label>
-        <key>create_entry</key>
-        <value>Create new journal entry based upon this transaction.</value>
-        <description></description>
-    </label>
+		This accounting program was designed to be used for accrual based accounting.</wicked_cool>
+  <get_started>Let's get started:</get_started>
+  <welcome>Welcome to the PBooks live demo!</welcome>
+  <this_demo>This demo is fully functioning, in that the changes you make will get saved to the database. This is our
+first public demonstration of a live system, so please be patient as well roll-out the full functionality. </this_demo>
+  <view_the_ledger>View the ledger</view_the_ledger>
+  <make>Make a journal entry</make>
+  <view>View the journal</view>
+  <try> There are a few things you'll definitely want to try out:</try>
+  <help_visitors>To try and help our visitors see a range of functionality, we've even included an out-of balance entry to show how the software keeps an eye on the balancing act. 
+	An important feature to notice in this regard: when an entry is out of balance, the amounts cannot be posted to the ledger!</help_visitors>
+  <general_ledger>General Ledger - Check out the accounting equation at the bottom.</general_ledger>
+  <general_journal>General Journal - Add an out of balance entry and see what happens in the journal.</general_journal>
+  <quick_stats>Quick Stats:</quick_stats>
+  <recent_activity>Recent Activity:</recent_activity>
+  <accounts>Accounts: </accounts>
+  <ledger_transactions>Ledger transactions: </ledger_transactions>
+  <journal_entries>Journal Entries</journal_entries>
+  <balance_sheet>Balance Sheet</balance_sheet>
+  <journal_entry_amounts>Journal entry amounts: </journal_entry_amounts>
+  <number_transactions>The number of ledger transactions should equal the number of journal entry amounts, but if they do not, it means that there are
+transactions to match, or entries to post.</number_transactions>
+  <recent_checks>Recent Checks</recent_checks>
+  <write_check>Write Check</write_check>
+  <check_payee>Pay to the order of</check_payee>
+  <check_number>Check #</check_number>
+  <payee>Payee</payee>
+  <recent_transfers>Recent Transfers</recent_transfers>
+  <new_transfer>New Transfer</new_transfer>
+  <from_account>From Account</from_account>
+  <to_account>To Account</to_account>
+  <method>Method</method>
+  <by_check>By Check</by_check>
+  <electronic>Electronic</electronic>
+  <memo>Memo</memo>
+  <amount>Amount</amount>
+  <from>From</from>
+  <to>To</to>
+  <method>Method</method>
+  <post>Entry</post>
+  <account_ledger_links>
+You are viewing a single account ledger, and you may find the following links helpful.
+</account_ledger_links>
+  <general_ledger>
+View the general ledger.
+</general_ledger>
+  <account_edit>
+Edit this account.
+</account_edit>
+  <period_info>Periods are similar to "books", in that you can have separate accounting periods, which are mutually exclusive by date.</period_info>
+  <period_id>ID</period_id>
+  <period_value>Period</period_value>
+  <report_type>Report Type</report_type>
+  <build_report>Build Report</build_report>
+  <income_statement>Income Statement</income_statement>
+  <balance_sheet>Balance Sheet </balance_sheet>
+  <cash_flow_statement>Cash Flow Statement </cash_flow_statement>
+  <saved_reports>Saved Reports</saved_reports>
+  <additional_reports>Additional Reports</additional_reports>
+  <aging_report>Aging Report</aging_report>
+  <simple_monthly_cash_flow>Simple Monthly Cash Flow</simple_monthly_cash_flow>
+  <group_monthly_cash_flow>Account Group Monthly Cash Flow</group_monthly_cash_flow>
+  <report_invoices>Monthly Invoice Reports</report_invoices>
+  <incoming_cash_flow_deposit>INCOMING CASH FLOW (DEPOSITS)</incoming_cash_flow_deposit>
+  <beginning_balance>Beginning Balance</beginning_balance>
+  <total_cash_inflow>TOTAL CASH INFLOW</total_cash_inflow>
+  <disbursements>DISBURSEMENTS</disbursements>
+  <total_cash_outflow>TOTAL CASH OUTFLOW</total_cash_outflow>
+  <capital_investments>CAPITAL INVESTMENTS</capital_investments>
+  <cash_flow>CASH OUTFLOW</cash_flow>
+  <profit_and_loss_statement>Profit and Loss Statement</profit_and_loss_statement>
+  <liabilities_equity>Liabilities and Equity</liabilities_equity>
+  <total_liabilities>TOTAL LIABILITIES</total_liabilities>
+  <total_equity>TOTAL EQUITY</total_equity>
+  <total_liabilities_equity>TOTAL LIABILITIES AND EQUITY</total_liabilities_equity>
+  <net_change>Net Change</net_change>
+  <duplicates_info>The PBooks duplicates function can help you find and reconcile duplicate entries and transactions. Duplicates can occur if two different accounts have their data imported and contain mutual transactions, where one posts to the other prior creating a new journal entry for the second account. Therefore, the list of potential duplicates is currently limited to unmatched, imported transactions. </duplicates_info>
+  <recent_deposits>Recent Deposits</recent_deposits>
+  <cash>Cash</cash>
+  <source>Source</source>
+  <make_deposits>Make Deposits</make_deposits>
+  <new_deposit>New Deposit</new_deposit>
+  <deposit_account>Deposit Account</deposit_account>
+  <error_select_deposit>Please select a deposit account.</error_select_deposit>
+  <error_select_credit>Please select a credit account.</error_select_credit>
+  <outstanding_invoices>Outstanding Invoices</outstanding_invoices>
+  <not_applicable>Not Applicable</not_applicable>
+  <print>Print</print>
+  <new_invoice>Create a new invoice</new_invoice>
+  <invoice_number>Invoice Number</invoice_number>
+  <billable_items>Billable Items</billable_items>
+  <new>New Invoice</new>
+  <due_date>Due</due_date>
+  <revenue>Revenue</revenue>
+  <quantity>Quantity</quantity>
+  <price>Price</price>
+  <recent_invoices>Recent Invoices</recent_invoices>
+  <paid_status>Paid Status</paid_status>
+  <paid_in_full_date>Payment Date</paid_in_full_date>
+  <unpaid>Unpaid</unpaid>
+  <paid>Paid</paid>
+  <partial>Partially Paid</partial>
+  <paid_in_full>Paid in Full</paid_in_full>
+  <memorandum>Memorandum</memorandum>
+  <confirm_flip>You sure you want to flip this entry? Doing so will also delete any ledger transactions having to do with it</confirm_flip>
+  <confirm_delete>You sure you want to delete this entry? Doing so will also delete any ledger transactions having to do with it.</confirm_delete>
+  <account_hidden>Account hidden</account_hidden>
+  <error_match>ERROR: These should match.</error_match>
+  <post_to_ledger>Post to ledger</post_to_ledger>
+  <delete_entries>Delete Selected Entries</delete_entries>
+  <new_entry>New Journal Entry</new_entry>
+  <pbooks_manual>PBooks Manual</pbooks_manual>
+  <pbooks_user_manual>PBooks User Manual</pbooks_user_manual>
+  <pbooks_homepage>PBooks Homepage</pbooks_homepage>
+  <informed>Informed Banking</informed>
+  <small_business_info>Small Business Info</small_business_info>
+  <savonix>Savonix</savonix>
+  <written>PBooks was written by Albert Lash at </written>
+  <consulting_services>For consulting services, 
+	please contact </consulting_services>
+  <support>support@savonix.com</support>
+  <resource_links>Bookkeeping and Accounting Resources</resource_links>
+  <pbooks_consulting>PBooks Consulting</pbooks_consulting>
+  <company_name>Company name</company_name>
+  <address_1>Address</address_1>
+  <address_2>Address</address_2>
+  <city>City</city>
+  <state>State</state>
+  <zip>Zip Code</zip>
+  <match_entry>Match transaction to an existing journal entry.</match_entry>
+  <create_entry>Create new journal entry based upon this transaction.</create_entry>
 </i18n>

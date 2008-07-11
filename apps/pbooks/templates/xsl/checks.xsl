@@ -35,12 +35,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}check-create">
         <img style="" src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/label[key='write_check']/value"/>
+        <xsl:value-of select="/_R_/i18n/write_check"/>
       </a>
     </div>
 
     <strong>
-      <xsl:value-of select="/_R_/i18n/label[key='recent_checks']/value"/>:
+      <xsl:value-of select="/_R_/i18n/recent_checks"/>:
 </strong>
     <div style="min-height: 400px;" id="myChecksDiv">
       <script type="text/javascript">
@@ -50,22 +50,22 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='id']/value"/>
+              <xsl:value-of select="/_R_/i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='check_number']/value"/>
+              <xsl:value-of select="/_R_/i18n/check_number"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='payee']/value"/>
+              <xsl:value-of select="/_R_/i18n/payee"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>
+              <xsl:value-of select="/_R_/i18n/memo"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='amount']/value"/>
+              <xsl:value-of select="/_R_/i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/label[key='date']/value"/>
+              <xsl:value-of select="/_R_/i18n/date"/>
             </th>
           </tr>
         </thead>

@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- This template references data from the business_object_get_metadata nodes
 which stem from a generic query called business_object_get_metadata.xml.
 It is used to gather entry metadata for all business objects: checks, bills.. -->
-<h2><xsl:value-of select="/_R_/i18n/label[key='write_check']/value"/></h2>
+<h2><xsl:value-of select="/_R_/i18n/write_check"/></h2>
 
 <form
     action="{//runtime/link_prefix}check-submit&amp;entry_id={/_R_/_get/entry_id}"
@@ -43,18 +43,18 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
             value="{substring(/_R_/get_journal_entry/get_journal_entry/entry_date,0,11)}"/>
     </div>
     <div id="check_number">
-        <xsl:value-of select="/_R_/i18n/label[key='check_number']/value"/>:
+        <xsl:value-of select="/_R_/i18n/check_number"/>:
         <input type="text" name="check_number"
             value="{//get_some_business_objects/check_number}"/>
     </div>
     <div id="check_payee">
-        <xsl:value-of select="/_R_/i18n/label[key='check_payee']/value"/>:
+        <xsl:value-of select="/_R_/i18n/check_payee"/>:
         <input type="text" name="check_payee" value="{//get_some_business_objects/check_payee}"/> 
         $<input type="text" name="entry_amount" 
             length="6" value="{/_R_/get_journal_entry/get_journal_entry/entry_amount}"/>
     </div>
     <div id="check_memo">
-        <xsl:value-of select="/_R_/i18n/label[key='memo']/value"/>: 
+        <xsl:value-of select="/_R_/i18n/memo"/>: 
         <input type="text" name="memorandum">
             <xsl:if test="not(contains(/_R_/get_journal_entry/get_journal_entry/memorandum,'__'))">
                 <xsl:attribute name="value">
@@ -66,7 +66,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
     <!-- Link to journal entry form. -->
     <div style="float: right">
         <a href="{/_R_/runtime/link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
-            <xsl:value-of select="/_R_/i18n/label[key='edit_journal_entry']/value"/>
+            <xsl:value-of select="/_R_/i18n/edit_journal_entry"/>
         </a>
     </div>
 
@@ -75,7 +75,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
         -->
     <xsl:if test="count(/_R_/account_business_objects/account_id) &gt; 1">
     <select name="checking_account_id" required="1" exclude="-1" err="Please select a checking account.">
-        <option value="-1"><xsl:value-of select="/_R_/i18n/label[key='checking_account']/value"/></option>
+        <option value="-1"><xsl:value-of select="/_R_/i18n/checking_account"/></option>
         <xsl:for-each select="//account_business_objects">
         <xsl:variable name="my_account_id"><xsl:value-of select="account_id"/></xsl:variable>
             <option value="{id}">
@@ -100,7 +100,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
 <select name="expense_account_id" required="1" 
     exclude="-1" err="Please select a credit account.">
     <option value="-1">
-        <xsl:value-of select="/_R_/i18n/label[key='credit_account']/value"/>
+        <xsl:value-of select="/_R_/i18n/credit_account"/>
     </option>
 
     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
@@ -114,7 +114,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
 
     <xsl:if test="not(//get_journal_entry/account_id=//get_all_accounts/account_id) and not(//get_journal_entry/status=9)">
         <option value="{//get_journal_entry/account_id}">
-            <xsl:value-of select="/_R_/i18n/label[key='account_hidden']/value"/>
+            <xsl:value-of select="/_R_/i18n/account_hidden"/>
         </option>
     </xsl:if>
 </select>
