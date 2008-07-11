@@ -55,6 +55,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
       <xsl:with-param name="path_prefix">
         <xsl:value-of select="$path_prefix"/>
       </xsl:with-param>
+      <xsl:with-param name="i18n" select="/_R_/i18n"/>
     </xsl:call-template>
 
 <xsl:for-each select="//footer">

@@ -28,8 +28,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
+    <xsl:variable name="get_all_entry_amounts"
+      select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+
+
+
 <!-- POST JOURNAL ENTRY TO LEDGER -->
-    <script type="text/javascript" src="{$path_prefix}s/js/jquery.js">&#160;</script>
     <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
         $.post("<xsl:value-of select="$link_prefix"/>ledger-create",
@@ -68,23 +73,24 @@ because of the dynamic number of rows per entry. -->
           <tr>
             <th></th>
             <th>
-              <xsl:value-of select="/_R_/i18n/id"/>
+              <xsl:value-of select="$i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/date"/>
+              <xsl:value-of select="$i18n/date"/>
             </th>
             <th></th>
             <th width="200">
-              <xsl:value-of select="/_R_/i18n/memo"/>.</th>
+              <xsl:value-of select="$i18n/memo"/>
+            </th>
             <th width="15"></th>
             <th>
-              <xsl:value-of select="/_R_/i18n/accounts"/>
+              <xsl:value-of select="$i18n/accounts"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/debit"/>
+              <xsl:value-of select="$i18n/debit"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/credit"/>
+              <xsl:value-of select="$i18n/credit"/>
             </th>
           </tr>
         </thead>
@@ -124,11 +130,14 @@ because of the dynamic number of rows per entry. -->
             </tr>
 
      <!-- These variables are used inside the loop to select specific nodes using xpath -->
+     <!-- This should likely be moved to processing instruction of action -->
             <xsl:variable name="this_entry_debit_total">
-              <xsl:value-of select="sum(//get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
+              <xsl:value-of
+                select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
             </xsl:variable>
             <xsl:variable name="this_entry_credit_total">
-              <xsl:value-of select="sum(//get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Credit']/entry_amount)"/>
+              <xsl:value-of
+                select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Credit']/entry_amount)"/>
             </xsl:variable>
             <xsl:variable name="balanced">
               <xsl:if test="$this_entry_debit_total=$this_entry_credit_total">yes</xsl:if>
@@ -136,8 +145,9 @@ because of the dynamic number of rows per entry. -->
             <xsl:variable name="my_color">
               <xsl:if test="not($this_entry_debit_total=$this_entry_credit_total)">red</xsl:if>
             </xsl:variable>
+
    <!--  INNER LOOP -->
-            <xsl:for-each select="/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_id=$this_entry_id]">
+            <xsl:for-each select="$get_all_entry_amounts[entry_id=$this_entry_id]">
               <xsl:variable name="posi">
                 <xsl:value-of select="position()"/>
               </xsl:variable>
@@ -152,11 +162,12 @@ because of the dynamic number of rows per entry. -->
      transaction to the ledger.
     -->
                 <td>
-        <!-- All this for the plus sign! -->
+                <!-- All this for the plus sign! -->
                   <xsl:if test="not(posted_account_id) or posted_account_id=''">
-            <!-- Only allow posting of balanced entries-->
+                  <!-- Only allow posting of balanced entries-->
                     <xsl:if test="$balanced='yes'">
-            <!-- This make an AJAX request to post the entry to the ledger, and then removes the plus sign -->
+                    <!-- This make an AJAX request to post the entry to the ledger,
+                    and then removes the plus sign -->
                       <div id="{entry_amount_id}">
                         <a href="{$link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}" onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
                           <div class="journal-post-plus" style="background-image: url({$path_prefix}{/_R_/runtime/icon_set}add.png);">&#160;</div>
@@ -166,8 +177,7 @@ because of the dynamic number of rows per entry. -->
                   </xsl:if>
                 </td>
                 <xsl:if test="entry_type_id='Credit'">
-                  <td class="journal-data">
-                    <xsl:attribute name="align">right</xsl:attribute>
+                  <td class="journal-data" align="right">
                     <a href="{$link_prefix}ledger&amp;account_id={account_id}">
                       <xsl:value-of select="name"/>
                     </a>
@@ -183,8 +193,7 @@ because of the dynamic number of rows per entry. -->
                       <xsl:value-of select="name"/>
                     </a>
                   </td>
-                  <td class="journal-data">
-                    <xsl:attribute name="style">color: <xsl:value-of select="$my_color"/>;</xsl:attribute>
+                  <td class="journal-data" style="color: {$my_color};">
                     <xsl:value-of select="entry_amount"/>
                   </td>
                   <td class="journal-data">&#160;</td>
@@ -200,23 +209,21 @@ because of the dynamic number of rows per entry. -->
      <!-- END OUTER LOOP -->
         </tbody>
         <xsl:variable name="total_debits">
-          <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
+          <xsl:value-of
+            select="format-number(sum($get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
         </xsl:variable>
         <xsl:variable name="total_credits">
-          <xsl:value-of select="format-number(sum(/_R_/get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
+          <xsl:value-of
+            select="format-number(sum($get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
         </xsl:variable>
-        <tr>
-          <td colspan="9">
-            <hr/>
-          </td>
-        </tr>
+
 
     <!-- This row shows the total of the credits and the debits, which should be equal. If they are unequal, PBooks will complain to the user. -->
         <tr>
           <td colspan="7" align="right">
             <xsl:if test="not($total_credits=$total_debits)">
               <div style="color: red;" id="error_match">
-                <xsl:value-of select="/_R_/i18n/error_match"/>:
+                <xsl:value-of select="$i18n/error_match"/>:
                 </div>
             </xsl:if>
           </td>
@@ -232,10 +239,12 @@ because of the dynamic number of rows per entry. -->
 
 <!-- only display the form controls for the journal, not other pages which use this template -->
       <xsl:if test="/_R_/_get/nid='journal'">
-        <input type="button" id="new_entry_button" value="{/_R_/i18n/new_entry}" onclick="document.location.href='{$link_prefix}journal-new'"/>
+        <input type="button" id="new_entry_button" value="{$i18n/new_entry}" 
+          onclick="document.location.href='{$link_prefix}journal-new'"/>
     <!-- Delete selected entries 
     TODO - only display this function in training mode -->
-        <input type="submit" value="{/_R_/i18n/delete_entries}" onclick="return confirm('Are you sure you want to delete these entries?')"/>
+        <input type="submit" value="{$i18n/delete_entries}" 
+          onclick="return confirm('Are you sure you want to delete these entries?')"/>
       </xsl:if>
     </form>
   </xsl:template>

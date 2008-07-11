@@ -23,7 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:include href="html_shell.xsl"/>
-<xsl:include href="head.xsl"/>
+<xsl:include href="html_head.xsl"/>
 <xsl:include href="header.xsl"/>
 <xsl:include href="accounting_menu.xsl"/>
 <xsl:include href="footer.xsl"/>
@@ -31,6 +31,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="main">
 <xsl:param name="link_prefix"/>
 <xsl:param name="path_prefix"/>
+<xsl:param name="i18n"/>
 
 <xsl:if test="not(/_R_/_get/print='true')">
 <xsl:call-template name="source_spacer">
@@ -65,6 +66,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <xsl:with-param name="path_prefix">
             <xsl:value-of select="$path_prefix"/>
           </xsl:with-param>
+          <xsl:with-param name="i18n" select="$i18n"/>
         </xsl:call-template>
     </div>
     <xsl:call-template name="footer"/>
