@@ -28,6 +28,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
+  <xsl:param name="i18n"/>
+  <xsl:variable name="get_equation" select="/_R_/get_equation/get_equation"/>
+
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myLedger</xsl:with-param>
       <xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
@@ -38,14 +41,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
     <!-- Need this action to retain any account selection -->
     <form method="get">
-      <input type="hidden" name="nid" value="{_R_/_get/nid}"/>
+      <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
       <xsl:if test="/_R_/_get/account_id">
         <input type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
       </xsl:if>
       <table>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/month"/>:
+            <xsl:value-of select="$i18n/month"/>:
         </td>
           <td>
             <select name="month" onchange="this.form.submit();">
@@ -64,20 +67,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </table>
     </form>
     <form method="get">
-      <input type="hidden" name="nid" value="{_R_/_get/nid}"/>
+      <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
       <xsl:call-template name="date_select"/>
       <input type="submit"/>
     </form>
     <table>
       <form method="get">
         <tr>
-          <input type="hidden" name="nid" value="{_R_/_get/nid}"/>
+          <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
           <td>
-            <xsl:value-of select="/_R_/i18n/select_one"/>:</td>
+            <xsl:value-of select="$i18n/select_one"/>:</td>
           <td align="right">
             <select name="account_id" onchange="this.form.submit();">
               <option value="%">
-                <xsl:value-of select="/_R_/i18n/titles/title[key='ledger']/value"/>
+                <xsl:value-of select="$i18n/titles/title[key='ledger']/value"/>
               </option>
 			
               <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
@@ -104,24 +107,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- This cell will be used for a star or flag with notations -->
         <!--<th>FPO</th>-->
             <th>
-              <xsl:value-of select="/_R_/i18n/post"/>
+              <xsl:value-of select="$i18n/post"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/memo"/>
+              <xsl:value-of select="$i18n/memo"/>
             </th>
 
         <!-- Exclude account column if only one account selected-->
             <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
               <th>
-                <xsl:value-of select="/_R_/i18n/account"/>
+                <xsl:value-of select="$i18n/account"/>
               </th>
             </xsl:if>
 
             <th>
-              <xsl:value-of select="/_R_/i18n/date"/>:
+              <xsl:value-of select="$i18n/date"/>:
         </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/amount"/>
+              <xsl:value-of select="$i18n/amount"/>
             </th>
 
             <xsl:if test="not(/_R_/_get/account_id='%') and /_R_/_get/account_id">
@@ -208,12 +211,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!--
     Provide some links to related pages: gl and account edit
 -->
-      <xsl:value-of select="/_R_/i18n/account_ledger_links"/>
+      <xsl:value-of select="$i18n/account_ledger_links"/>
       <a href="{$link_prefix}ledger">
-        <xsl:value-of select="/_R_/i18n/general_ledger"/>
+        <xsl:value-of select="$i18n/general_ledger"/>
       </a>
       <a href="{$link_prefix}accounts-edit&amp;account_id={/_R_/_get/account_id}">
-        <xsl:value-of select="/_R_/i18n/account_edit"/>
+        <xsl:value-of select="$i18n/account_edit"/>
       </a>
     </xsl:if>
 
@@ -226,43 +229,43 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/assets"/> +</th>
+              <xsl:value-of select="$i18n/assets"/> +</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/expenses"/> =</th>
+              <xsl:value-of select="$i18n/expenses"/> =</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/sub_total"/> =</th>
+              <xsl:value-of select="$i18n/sub_total"/> =</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/liabilities"/> +</th>
+              <xsl:value-of select="$i18n/liabilities"/> +</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/equity"/> +</th>
+              <xsl:value-of select="$i18n/equity"/> +</th>
             <th>
-              <xsl:value-of select="/_R_/i18n/revenue"/> = </th>
+              <xsl:value-of select="$i18n/revenue"/> = </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/total"/>
+              <xsl:value-of select="$i18n/total"/>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/get_equation/get_equation/asset_total"/> +</td>
+              <xsl:value-of select="$get_equation/asset_total"/> +</td>
             <td>
-              <xsl:value-of select="/_R_/get_equation/get_equation/expenses_total"/> =</td>
+              <xsl:value-of select="$get_equation/expenses_total"/> =</td>
             <td>
-              <xsl:if test="/_R_/get_equation/get_equation/asset_total + /_R_/get_equation/get_equation/expenses_total">
-                <xsl:value-of select="/_R_/get_equation/get_equation/asset_total + //get_equation/expenses_total"/>
+              <xsl:if test="$get_equation/asset_total + $get_equation/expenses_total">
+                <xsl:value-of select="$get_equation/asset_total + $get_equation/expenses_total"/>
               </xsl:if>
             </td>
             <td>
-              <xsl:value-of select="/_R_/get_equation/get_equation/liabilities_total"/> +</td>
+              <xsl:value-of select="$get_equation/liabilities_total"/> +</td>
             <td>
-              <xsl:value-of select="/_R_/get_equation/get_equation/equity_total"/> +</td>
+              <xsl:value-of select="$get_equation/equity_total"/> +</td>
             <td>
-              <xsl:value-of select="/_R_/get_equation/get_equation/revenue_total"/>
+              <xsl:value-of select="$get_equation/revenue_total"/>
             </td>
             <td>
-              <xsl:if test="/_R_/get_equation/get_equation/liabilities_total + /_R_/get_equation/equity_total + /_R_/get_equation/revenue_total">
-                <xsl:value-of select="/_R_/get_equation/get_equation/liabilities_total + /_R_/get_equation/equity_total + /_R_/get_equation/revenue_total"/>
+              <xsl:if test="$get_equation/liabilities_total + $get_equation/equity_total + $get_equation/revenue_total">
+                <xsl:value-of select="$get_equation/liabilities_total + $get_equation/equity_total + $get_equation/revenue_total"/>
               </xsl:if>
             </td>
           </tr>
