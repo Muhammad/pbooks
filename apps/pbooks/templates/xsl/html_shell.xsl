@@ -33,6 +33,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:variable name="path_prefix">
   <xsl:value-of select="/_R_/runtime/path_prefix"/>
 </xsl:variable>
+<xsl:variable name="my18n" select="document('../../i18n/en_US/pbooks.xml')/i18n"/>
 
 <xsl:call-template name="head">
   <xsl:with-param name="link_prefix">
@@ -55,7 +56,10 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
       <xsl:with-param name="path_prefix">
         <xsl:value-of select="$path_prefix"/>
       </xsl:with-param>
+        <xsl:with-param name="i18n" select="$my18n"/>
+      <!--
       <xsl:with-param name="i18n" select="/_R_/i18n"/>
+      -->
     </xsl:call-template>
 
 <xsl:for-each select="//footer">

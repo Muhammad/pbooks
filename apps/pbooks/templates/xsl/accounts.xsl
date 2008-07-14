@@ -80,7 +80,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <option value="%">
             <xsl:value-of select="$i18n/all"/>
           </option>
-          <xsl:for-each select="$i18n/account_type">
+          <!-- Special Case -->
+          <xsl:for-each select="/_R_/i18n/account_type">
             <option value="{account_type_id}">
               <xsl:if test="account_type_id=/_R_/_get/account_type_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>

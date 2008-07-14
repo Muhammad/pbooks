@@ -69,7 +69,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
       </thead>
       <tbody>
-        <xsl:apply-templates select="//groups/group"/>
+        <xsl:apply-templates select="//groups/group">
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+        </xsl:apply-templates>
       </tbody>
     </table>
   </xsl:template>
@@ -77,12 +79,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template match="group">
     <xsl:param name="parent_gid">0</xsl:param>
     <xsl:param name="generation">0</xsl:param>
+    <xsl:param name="link_prefix"/>
     <xsl:variable name="my_group_id">
       <xsl:value-of select="group_id"/>
     </xsl:variable>
-    <xsl:variable name="my_link_prefix">
-      <xsl:value-of select="$link_prefix"/>
-    </xsl:variable>
+
     <tr class="row2">
       <td>
         <xsl:value-of select="group_id"/>
@@ -96,17 +97,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </xsl:call-template>
                 \----
             </xsl:if>
-        <a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}">
+        <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
           <xsl:value-of select="name"/>
         </a>
       </td>
       <td>
-        <a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}">
+        <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
           <xsl:value-of select="description"/>
         </a>
       </td>
       <td>
-        <a href="{$my_link_prefix}account-group-edit&amp;group_id={group_id}"
+        <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}"
           id="{account_number}-e">
           <xsl:value-of select="/_R_/i18n/edit"/>
         </a>
