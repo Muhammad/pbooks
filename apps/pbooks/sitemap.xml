@@ -627,7 +627,7 @@ This makes it easier to maintain persistence. -->
     <map:xsl src="templates/xsl/ledger.xsl" />
 </map:gate>
 
-<map:gate name="ledger-export" role="pb_admin">
+<map:gate name="ledger-export" role="pb_admin" content_type="text/plain">
     <map:query src="data/sql/general_ledger_get_running_balance.xml" />
     <map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
     <map:xsl src="templates/csv/transaction_export.csv.xsl" />

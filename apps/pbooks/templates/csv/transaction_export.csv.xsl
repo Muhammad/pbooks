@@ -25,26 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" 
 	omit-xml-declaration="yes"/>
 <xsl:template match="/">
-sdfdf
           <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
-                <xsl:choose>
-                  <xsl:when test="not(entry_id='0')">
-                      <xsl:value-of select="entry_id"/>
-                  </xsl:when>
-                </xsl:choose>
 
-                  <xsl:value-of select="substring(memorandum,0,42)"/>
-
-              <xsl:if test="/_R_/_get/account_id='%' or not(/_R_/_get/account_id)">
-                    <xsl:value-of select="substring(name,0,20)"/>
-              </xsl:if>
-
-                  <xsl:value-of select="entry_datetime"/>
-                <xsl:value-of select="entry_amount"/>
-
-              <xsl:if test="not(/_R_/_get/account_id='%') and /_R_/_get/account_id">
-                  <xsl:value-of select="balance"/>
-              </xsl:if>
+<xsl:value-of select="entry_id"/>,<xsl:value-of select="substring(memorandum,0,42)"/>,<xsl:value-of select="entry_datetime"/>,<xsl:value-of select="entry_amount"/>,<xsl:value-of select="balance"/><xsl:text>
+</xsl:text>
           </xsl:for-each>
 </xsl:template>
 
