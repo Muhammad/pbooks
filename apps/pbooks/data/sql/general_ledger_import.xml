@@ -23,15 +23,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="general_ledger_import" loop="//import_csv">
-    <connection>&pb_connection;</connection>
-    <params>
-        <param array="//import_csv/entry_datetime" type="timestamp"/>
-        <param array="//import_csv/memorandum" type="text"/>
-        <param array="//import_csv/entry_amount" type="text"/>
-        <param name="//_post/account_id" type="integer"/>
-	</params>
-    <sql>
-       INSERT INTO &pb_general_ledger; (entry_datetime,memorandum,entry_amount,account_id,entry_id) 
-       VALUES (?,?,?,?,0);
-    </sql>
+  <connection>&pb_connection;</connection>
+  <params>
+    <param array="//import_csv/entry_datetime" type="timestamp"/>
+    <param array="//import_csv/memorandum" type="text"/>
+    <param array="//import_csv/entry_amount" type="text"/>
+    <param name="//_post/account_id" type="integer"/>
+  </params>
+  <sql>
+   INSERT INTO &pb_general_ledger;
+   (entry_datetime,memorandum,entry_amount,account_id,entry_id)
+   VALUES
+   (?,?,?,?,0);
+  </sql>
 </query>

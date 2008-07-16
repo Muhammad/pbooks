@@ -24,12 +24,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="invoice_get_total">
     <!-- This connection needs to read from the primary database -->
-    <connection>&pb_connection;</connection>
-    <params>
-		<param name="_post/entry_id" type="integer"/>
-	</params>
-    <sql>
-        SELECT SUM(entry_amount) as invoice_total FROM &pb_entry_amounts; 
+  <connection>&pb_connection;</connection>
+  <params>
+    <param name="_post/entry_id" type="integer"/>
+  </params>
+  <sql>
+    SELECT SUM(entry_amount) as invoice_total FROM &pb_entry_amounts;
 		WHERE entry_id=?
     </sql>
 </query>
