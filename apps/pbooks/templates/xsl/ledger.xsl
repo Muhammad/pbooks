@@ -29,7 +29,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
   <xsl:param name="i18n"/>
-  <xsl:variable name="get_equation" select="/_R_/get_equation/get_equation"/>
+  <xsl:variable name="get_equation"
+    select="/_R_/get_equation/get_equation"/>
+  <xsl:variable name="get_transactions"
+    select="/_R_/invoices_get_amounts/invoices_get_amounts"/>
 
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myLedger</xsl:with-param>
@@ -82,7 +85,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <option value="%">
                 <xsl:value-of select="$i18n/titles/title[key='ledger']/value"/>
               </option>
-			
+
               <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
                 <option value="{id}">
                   <xsl:if test="id=/_R_/_get/account_id">
@@ -99,8 +102,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </table>
     <div style="min-height: 400px;" id="myLedgerDiv">
       <script type="text/javascript">
-    document.getElementById('myLedgerDiv').style.visibility = 'hidden';
-</script>
+      document.getElementById('myLedgerDiv').style.visibility = 'hidden';
+      </script>
       <table id="myLedger" class="tablesorter">
         <thead>
           <tr>
@@ -136,7 +139,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- General ledger -->
         <tbody>
-          <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
+          <xsl:for-each select="$get_transactionss">
             <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <!-- This cell will be used for a star or flag with notations -->
         <!--<td>FPO</td>-->
@@ -205,7 +208,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Net change -->
       <div class="generic-box" style="font-size: 18px;">
     Net change:
-    <xsl:value-of select="format-number(sum(/_R_/get_all_transactions/get_all_transactions/entry_amount),'#########.##')"/>
+    <xsl:value-of select="format-number(sum($get_transactionss/entry_amount),'#########.##')"/>
       </div>
       <br/>
 

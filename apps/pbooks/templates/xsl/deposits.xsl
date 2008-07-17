@@ -28,6 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
 
 <!-- This calls a template from pager.xsl which loads the javascript -->
     <xsl:call-template name="jquery-setup">
@@ -37,26 +38,26 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}deposit-create" id="deposit-create">
         <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/new_deposit"/>
+        <xsl:value-of select="$i18n/new_deposit"/>
       </a>
     </div>
 <!-- Page title -->
     <strong>
-      <xsl:value-of select="/_R_/i18n/recent_deposits"/>:</strong>
+      <xsl:value-of select="$i18n/recent_deposits"/>:</strong>
     <table class="tablesorter" id="myDeposits">
       <thead>
         <tr>
           <th>
-            <xsl:value-of select="/_R_/i18n/id"/>
+            <xsl:value-of select="$i18n/id"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/memo"/>
+            <xsl:value-of select="$i18n/memo"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/amount"/>
+            <xsl:value-of select="$i18n/amount"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/date"/>
+            <xsl:value-of select="$i18n/date"/>
           </th>
         </tr>
       </thead>

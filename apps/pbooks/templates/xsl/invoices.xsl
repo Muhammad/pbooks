@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myInvoices</xsl:with-param>
       <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
@@ -35,12 +36,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}invoice-create" id="invoice-create">
         <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/new_invoice"/>
+        <xsl:value-of select="$i18n/new_invoice"/>
       </a>
     </div>
 
     <strong>
-      <xsl:value-of select="/_R_/i18n/recent_invoices"/>:</strong>
+      <xsl:value-of select="$i18n/recent_invoices"/>:</strong>
     <div id="myInvoicesDiv" style="min-height: 400px">
       <script type="text/javascript">
         document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
@@ -50,29 +51,29 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/id"/>
+              <xsl:value-of select="$i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/client"/>
+              <xsl:value-of select="$i18n/client"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/memo"/>
+              <xsl:value-of select="$i18n/memo"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/amount"/>
+              <xsl:value-of select="$i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/date"/>
+              <xsl:value-of select="$i18n/date"/>
             </th>
         <!--
-        <th><xsl:value-of select="/_R_/i18n/due_date"/></th>
+        <th><xsl:value-of select="$i18n/due_date"/></th>
         -->
             <th>
-              <xsl:value-of select="/_R_/i18n/paid"/>&#160;
+              <xsl:value-of select="$i18n/paid"/>&#160;
             <!--<sup>[<a onclick="alert('')">?</a>]</sup>-->
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/print"/>
+              <xsl:value-of select="$i18n/print"/>
             </th>
           </tr>
         </thead>
@@ -119,7 +120,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </td>
               <td>
                 <a href="{$link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
-                  <xsl:value-of select="/_R_/i18n/print"/>
+                  <xsl:value-of select="$i18n/print"/>
                 </a>
               </td>
             </tr>

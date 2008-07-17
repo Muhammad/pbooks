@@ -36,33 +36,35 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </form>
 </div>
 
-</xsl:template> 
+</xsl:template>
 <xsl:template name="option_row">
-    <xsl:variable name="my_option"><xsl:value-of select="option_key"/></xsl:variable>
+    <xsl:variable name="my_option">
+      <xsl:value-of select="option_key"/>
+    </xsl:variable>
+    <xsl:variable name="option_get" select="/_R_/option_get/option_get"/>
     <tr>
         <td><xsl:value-of select="title"/>: </td>
         <td>
             <xsl:if test="option_type='text'">
             <input type="{option_type}" name="{option_key}">
                 <xsl:attribute name="value">
-                    <xsl:if test="/_R_/option_get/option_get[option_key=$my_option]/option_value='NULL' or /_R_/option_get/option_get[option_key=$my_option]/option_value=''">
+                    <xsl:if test="$option_get[option_key=$my_option]/option_value='NULL' or $option_get[option_key=$my_option]/option_value=''">
                         <xsl:value-of select="default"/>
                     </xsl:if>
-                    <xsl:if test="not(/_R_/option_get/option_get[option_key=$my_option]/option_value='NULL' or /_R_/option_get/option_get[option_key=$my_option]/option_value='')">
-                        <xsl:value-of select="/_R_/option_get/option_get[option_key=$my_option]/option_value"/>
+                    <xsl:if test="not($option_get[option_key=$my_option]/option_value='NULL' or $option_get[option_key=$my_option]/option_value='')">
+                        <xsl:value-of select="$option_get[option_key=$my_option]/option_value"/>
                     </xsl:if>
                 </xsl:attribute>
             </input>
             </xsl:if>
             <xsl:if test="option_type='checkbox'">
             <input type="{option_type}" name="{option_key}">
-                <xsl:if test="/_R_/option_get/option_get[option_key=$my_option]/option_value='on'">
+                <xsl:if test="$option_get[option_key=$my_option]/option_value='on'">
                     <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
             </input>
             </xsl:if>
         </td>
     </tr>
-</xsl:template>            
+</xsl:template>
 </xsl:stylesheet>
-    
