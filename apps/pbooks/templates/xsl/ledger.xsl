@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:variable name="get_equation"
     select="/_R_/get_equation/get_equation"/>
   <xsl:variable name="get_transactions"
-    select="/_R_/invoices_get_amounts/invoices_get_amounts"/>
+    select="/_R_/get_all_transactions/get_all_transactions"/>
 
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myLedger</xsl:with-param>
@@ -139,7 +139,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- General ledger -->
         <tbody>
-          <xsl:for-each select="$get_transactionss">
+          <xsl:for-each select="$get_transactions">
             <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
         <!-- This cell will be used for a star or flag with notations -->
         <!--<td>FPO</td>-->
@@ -208,7 +208,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <!-- Net change -->
       <div class="generic-box" style="font-size: 18px;">
     Net change:
-    <xsl:value-of select="format-number(sum($get_transactionss/entry_amount),'#########.##')"/>
+    <xsl:value-of select="format-number(sum($get_transactions/entry_amount),'#########.##')"/>
       </div>
       <br/>
 
