@@ -21,161 +21,211 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:include href="main.xsl"/>
-<xsl:include href="date_select.xsl"/>
-<xsl:template name="content">
-<xsl:param name="link_prefix"/>
-<xsl:param name="path_prefix"/>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:include href="main.xsl"/>
+  <xsl:include href="date_select.xsl"/>
+  <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
 <!-- Add / delete items -->
-<script type="text/javascript">
+    <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete", 
-            {
-                'entry_amount_id': entry_amount_id
-            }, 
-            function (data){
-            });
-            myTable = document.getElementById("invoice_form_table");
-            myTable.deleteRow(row);
+      $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete",
+      {
+          'entry_amount_id': entry_amount_id
+      },
+      function (data){
+      });
+      myTable = document.getElementById("invoice_form_table");
+      myTable.deleteRow(row);
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-            $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
-            {
-                'entry_id': entry_id,
-                'entry_datetime': entry_date
-            }, 
-            function (data){
-                setTimeout('window.location.reload()',200);
-            });
+      $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+      {
+          'entry_id': entry_id,
+          'entry_datetime': entry_date
+      },
+      function (data){
+          setTimeout('window.location.reload()',200);
+      });
     }
 </script>
 
-<h2><xsl:value-of select="/_R_/i18n/new_invoice"/>:</h2> 
-<form method="POST" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}&amp;view_flow=true">
-<input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-<table border="0" id="invoice_form_table">
-    <tbody>
-        <tr>
-            <td><xsl:value-of select="/_R_/i18n/date"/>:</td>
+    <h2>
+      <xsl:value-of select="/_R_/i18n/new_invoice"/>:</h2>
+    <form method="POST" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}&amp;view_flow=true">
+      <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
+      <table border="0" id="invoice_form_table">
+        <tbody>
+          <tr>
+            <td>
+              <xsl:value-of select="/_R_/i18n/date"/>:</td>
             <td colspan="8">
-                <input type="text" name="entry_datetime"
-                    id="invoice_date" value="{//get_journal_entry/entry_datetime}"/>
+              <input type="text" name="entry_datetime"
+                  id="invoice_date" value="{//get_journal_entry/entry_datetime}"/>
             </td>
-        </tr>
-        <tr>
-            <td><xsl:value-of select="/_R_/i18n/customer"/>:</td>
+          </tr>
+          <tr>
+            <td>
+              <xsl:value-of select="/_R_/i18n/customer"/>:</td>
             <td colspan="7">
-            <select name="debit_account_id">
-            <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
-                <option value="{id}"><xsl:if test="id=//get_some_business_objects/customer_id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
-            </xsl:for-each>
-            </select>&#160;
+              <select name="debit_account_id">
+                <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
+                  <option value="{id}">
+                    <xsl:if test="id=//get_some_business_objects/customer_id">
+                      <xsl:attribute name="selected">selected</xsl:attribute>
+                    </xsl:if>
+                    <xsl:value-of select="name"/>
+                  </option>
+                </xsl:for-each>
+              </select>&#160;
             <a href="{/_R_/runtime/link_prefix}customer-edit">
             <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
-            </a>
+              </a>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <xsl:value-of select="/_R_/i18n/invoice_number"/>:</td>
+            <td colspan="8">
+              <input type="text" name="invoice_number">
+                <xsl:attribute name="value">
+                  <xsl:if test="//get_some_business_objects/invoice_number">
+                    <xsl:value-of select="//get_some_business_objects/invoice_number"/>
+                  </xsl:if>
+                  <xsl:if test="not(//get_some_business_objects/invoice_number)">
+                    <xsl:value-of select="//get_last_meta_id + 1"/>
+                  </xsl:if>
+                </xsl:attribute>
+              </input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <xsl:value-of select="/_R_/i18n/due_date"/>:</td>
+            <td colspan="8">
+              <input type="text" name="due_date" value="{//get_some_business_objects/due_date}">
+                <xsl:if test="not(//get_some_business_objects/due_date)">
+                  <xsl:attribute name="value">On Receipt</xsl:attribute>
+                </xsl:if>
+              </input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <xsl:value-of select="/_R_/i18n/paid_status"/>:</td>
+            <td colspan="8">
+              <input type="radio" name="paid_status" value="paid_in_full"/>
+              <xsl:value-of select="/_R_/i18n/paid_in_full"/>
+              <br/>
+              <input type="radio" name="paid_status" value="paid"/>
+              <xsl:value-of select="/_R_/i18n/paid"/>
+              <br/>
+              <input type="radio" name="paid_status" value="unpaid">
+                <xsl:if test="not(//get_some_business_objects/paid_status)">
+                  <xsl:attribute name="checked">checked</xsl:attribute>
+                </xsl:if>
+              </input>
+              <xsl:value-of select="/_R_/i18n/unpaid"/>
+              <br/>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td colspan="8">
+              <xsl:value-of select="/_R_/i18n/billable_items"/>:</td>
+          </tr>
+          <tr>
+            <td>ID</td>
+            <td>
+              <xsl:value-of select="/_R_/i18n/revenue"/>
             </td>
             <td>
+              <xsl:value-of select="/_R_/i18n/desc"/>
             </td>
-        </tr>
-        <tr>
-            <td><xsl:value-of select="/_R_/i18n/invoice_number"/>:</td>
-            <td colspan="8">
-                <input type="text" name="invoice_number">
-                    <xsl:attribute name="value">
-                    <xsl:if test="//get_some_business_objects/invoice_number">
-                        <xsl:value-of select="//get_some_business_objects/invoice_number"/>
-                    </xsl:if>
-                    <xsl:if test="not(//get_some_business_objects/invoice_number)">
-                        <xsl:value-of select="//get_last_meta_id + 1"/>
-                    </xsl:if>
-                    </xsl:attribute>
-                </input>
-            </td>
-        </tr>
-        <tr>
-            <td><xsl:value-of select="/_R_/i18n/due_date"/>:</td>
-            <td colspan="8">
-                <input type="text" name="due_date" value="{//get_some_business_objects/due_date}">
-                    <xsl:if test="not(//get_some_business_objects/due_date)">
-                    <xsl:attribute name="value">On Receipt</xsl:attribute>
-                    </xsl:if>
-                </input>
-            </td>
-        </tr>
-        <tr>
-            <td><xsl:value-of select="/_R_/i18n/paid_status"/>:</td>
-			<td colspan="8">
-	   			<input type="radio" name="paid_status" value="paid_in_full"/><xsl:value-of select="/_R_/i18n/paid_in_full"/><br/>
-				<input type="radio" name="paid_status" value="paid"/><xsl:value-of select="/_R_/i18n/paid"/><br/>
-				<input type="radio" name="paid_status" value="unpaid">
-                    <xsl:if test="not(//get_some_business_objects/paid_status)">
-                        <xsl:attribute name="checked">checked</xsl:attribute>
-                    </xsl:if>
-                </input><xsl:value-of select="/_R_/i18n/unpaid"/><br/>
-		</td>
-	</tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td colspan="8"><xsl:value-of select="/_R_/i18n/billable_items"/>:</td>
-        </tr>
-        <tr>
-            <td>ID</td>
-            <td><xsl:value-of select="/_R_/i18n/revenue"/></td>
-            <td><xsl:value-of select="/_R_/i18n/desc"/></td>
             <td width="240"></td>
-            <td><xsl:value-of select="/_R_/i18n/quantity"/></td>
-            <td><xsl:value-of select="/_R_/i18n/price"/></td>
-            <td><xsl:value-of select="/_R_/i18n/total"/></td>
-            <td><xsl:value-of select="/_R_/i18n/edit"/></td>
-        </tr>
+            <td>
+              <xsl:value-of select="/_R_/i18n/quantity"/>
+            </td>
+            <td>
+              <xsl:value-of select="/_R_/i18n/price"/>
+            </td>
+            <td>
+              <xsl:value-of select="/_R_/i18n/total"/>
+            </td>
+            <td>
+              <xsl:value-of select="/_R_/i18n/edit"/>
+            </td>
+          </tr>
         
         <!-- INVOICE LINE ITEM ROWS -->
-        <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
-        <xsl:variable name="my_entry_amount_id"><xsl:value-of select="entry_amount_id"/></xsl:variable>
-        <tr id="i-{entry_amount_id}">
-            <td><xsl:value-of select="entry_amount_id"/></td>
-            <td>
+          <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
+            <xsl:variable name="my_entry_amount_id">
+              <xsl:value-of select="entry_amount_id"/>
+            </xsl:variable>
+            <tr id="i-{entry_amount_id}">
+              <td>
+                <xsl:value-of select="entry_amount_id"/>
+              </td>
+              <td>
                 <select name="credit_account_1[]">
-                    <option><xsl:value-of select="/_R_/i18n/select_one"/></option>
-                    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
-                        <xsl:variable name="my_account_id"><xsl:value-of select="id"/></xsl:variable>
-                        <option value="{$my_account_id}"><xsl:if test="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
-						<xsl:attribute name="selected">selected</xsl:attribute></xsl:if><xsl:value-of select="name"/></option>
-                    </xsl:for-each>
+                  <option>
+                    <xsl:value-of select="/_R_/i18n/select_one"/>
+                  </option>
+                  <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
+                    <xsl:variable name="my_account_id">
+                      <xsl:value-of select="id"/>
+                    </xsl:variable>
+                    <option value="{$my_account_id}">
+                      <xsl:if test="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
+                        <xsl:attribute name="selected">selected</xsl:attribute>
+                      </xsl:if>
+                      <xsl:value-of select="name"/>
+                    </option>
+                  </xsl:for-each>
                 </select>
-            </td>
-            <td colspan="2"><input type="text" name="memorandum[]" size="40" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/></td>
-            <td><input type="text" name="quantity" size="4"/></td>
-            <td><input type="text" name="price" size="4"/></td>
-            <td><input type="text" name="credit_amount_1[]" size="6" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/></td>
-            <td>
+              </td>
+              <td colspan="2">
+                <input type="text" name="memorandum[]" size="40" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
+              </td>
+              <td>
+                <input type="text" name="quantity" size="4"/>
+              </td>
+              <td>
+                <input type="text" name="price" size="4"/>
+              </td>
+              <td>
+                <input type="text" name="credit_amount_1[]" size="6" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
+              </td>
+              <td>
                 <xsl:if test="position() &gt; 1">
-                <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}" 
-                onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-                <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" /></a>
+                  <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
+                      onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
+                    <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
+                  </a>
                 </xsl:if>
-            </td>
-        </tr>
-        </xsl:for-each>
+              </td>
+            </tr>
+          </xsl:for-each>
         <!-- END LINE ITEMS -->
-        <tr>
+          <tr>
             <td colspan="7"></td>
             <td>
-                <a href="{/_R_/runtime/link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
+              <a href="{/_R_/runtime/link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                 <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-                src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
-                </a>
+                    src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
+              </a>
             </td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <td colspan="7">
-                <input type="submit"/>
+              <input type="submit"/>
             </td>
-        </tr>
-    </tbody>
-</table>
-</form>
-</xsl:template> 
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </xsl:template>
 </xsl:stylesheet>
