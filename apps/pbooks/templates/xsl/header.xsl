@@ -21,21 +21,21 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:template name="header">
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_start">header</xsl:with-param>
-</xsl:call-template>
-<div id="header">&#160;
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template name="header">
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_start">header</xsl:with-param>
+    </xsl:call-template>
+    <div id="header">&#160;
     <span id="company-name">
         <xsl:value-of select="//company_name"/>
-    </span>
-    <h1 class="page-title">
+      </span>
+      <h1 class="page-title">
         <xsl:value-of select="/_R_/i18n/label[key=/_R_/_get/nid]/value"/>
-    </h1>
-</div>
-<xsl:call-template name="source_spacer">
-    <xsl:with-param name="section_end">header</xsl:with-param>
-</xsl:call-template>
-</xsl:template>
+      </h1>
+    </div>
+    <xsl:call-template name="source_spacer">
+      <xsl:with-param name="section_end">header</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>
