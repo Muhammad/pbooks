@@ -27,7 +27,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:param name="link_prefix"/>
 <!-- Set some variables -->
     <xsl:variable name="monthnum">
-      <xsl:value-of select="number(substring(/_R_/runtime/to_date,6,2) - substring(/_R_/runtime/from_date,6,2) + 1)"/>
+      <xsl:value-of select="number(substring(/_R_/runtime/to_date,6,2) -
+        substring(/_R_/runtime/from_date,6,2) + 1)"/>
     </xsl:variable>
     <xsl:variable name="from_month">
       <xsl:value-of select="substring(/_R_/runtime/from_date,6,2)"/>

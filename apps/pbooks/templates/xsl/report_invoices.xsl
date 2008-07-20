@@ -30,12 +30,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table"></xsl:with-param>
     </xsl:call-template>
 
-<!-- Net change -->
+    <!-- Net change -->
     <div class="generic-button" style="float: right;">
       <b>
         <xsl:value-of select="/_R_/i18n/net_change"/>
       </b>: 
-    <xsl:value-of select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
+    <xsl:value-of
+      select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
     </div>
 
 
@@ -93,7 +94,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </a>
             </xsl:if>
           </td>
-
         </tr>
       </table>
 
@@ -150,13 +150,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </tr>
           </xsl:for-each>
-    <!-- END LOOP -->
+          <!-- END LOOP -->
         </tbody>
         <tfoot>
           <tr>
             <td colspan="3" style="text-align: right;">Total:</td>
             <td>
-              <xsl:value-of select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
+              <xsl:value-of
+                select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
             </td>
             <td></td>
           </tr>

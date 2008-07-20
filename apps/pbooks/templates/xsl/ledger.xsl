@@ -137,12 +137,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </thead>
 
 
-<!-- General ledger -->
+        <!-- General ledger -->
         <tbody>
           <xsl:for-each select="$get_transactions">
-            <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
-        <!-- This cell will be used for a star or flag with notations -->
-        <!--<td>FPO</td>-->
+            <tr onmouseover="oldClass=this.className; this.className='active'"
+              onmouseout="this.className=oldClass">
+              <!-- This cell will be used for a star or flag with notations -->
+              <!--<td>FPO</td>-->
               <td>
                 <xsl:choose>
                   <xsl:when test="not(entry_id='0')">

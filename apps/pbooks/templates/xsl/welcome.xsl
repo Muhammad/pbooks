@@ -46,12 +46,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </ul>
 
 
-<!-- strict layout table -->
+      <!-- strict layout table -->
       <table cellpadding="20">
         <tr>
           <td>
 
-<!-- This table displays some basic information about the books -->
+          <!-- This table displays some basic information about the books -->
             <table class="simpletable" width="300">
               <thead>
                 <tr>
@@ -107,7 +107,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </table>
           </td>
           <td>
-<!-- This table displays some recent entries and transactions -->
+          <!-- This table displays some recent entries and transactions -->
             <table class="simpletable" width="300">
               <thead>
                 <tr>
