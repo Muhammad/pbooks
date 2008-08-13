@@ -39,7 +39,7 @@ Form input elements have attributes like required="1" if they are to be validate
 -->
 <xsl:if test="//get_account/id">
     <input type="hidden" name="my_action" value="update"/>
-    <input type="hidden" value="{/_R_/get_account/id}" name="account_id"/>
+    <input type="hidden" value="{/_R_/_get/account_id}" name="account_id"/>
 </xsl:if>
 <xsl:if test="not(//get_account/id)">
     <input type="hidden" name="my_action" value="create"/>
