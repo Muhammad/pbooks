@@ -586,11 +586,23 @@ This makes it easier to maintain persistence. -->
 <map:gate name="customer-edit" role="pb_admin">
     <map:if name="//_post">
         <map:true>
-            <map:insert name="create-account"/>
-            <map:xml src="data/xml/customer_meta.xml"/>
-            <map:query src="data/sql/account_get_by_name.xml" />
-            <map:query src="data/sql/account_meta_create.xml" />
-            <map:action type="redirect" params="{//link_prefix}customer-accounts"/>
+					<map:if test="//_post/account_id">
+						<map:true>
+            	<map:insert name="create-account"/>
+							<map:xml src="data/xml/customer_meta.xml"/>
+							<map:query src="data/sql/account_get_by_name.xml" />
+							<map:query src="data/sql/account_meta_create.xml" />
+							<map:action type="redirect" params="{//link_prefix}customer-accounts"/>
+						</map:true>
+						<map:false>
+							<map:query src="data/sql/account_update.xml" />
+							<map:query src="data/sql/account_meta_delete.xml" />
+							<map:xml src="data/xml/customer_meta.xml"/>
+							<map:query src="data/sql/account_get_by_name.xml" />
+							<map:query src="data/sql/account_meta_create.xml" />
+							<map:action type="redirect" params="{//link_prefix}customer-accounts"/>
+						</map:false>
+					</map:if>
         </map:true>
         <map:false>
         </map:false>
