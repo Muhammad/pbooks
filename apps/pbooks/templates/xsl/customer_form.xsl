@@ -80,7 +80,7 @@ Form input elements have attributes like required="1" if they are to be validate
       </xsl:variable>
       <tr>
         <td>
-          <xsl:value-of select="$i18n/label[key=$my_option]/value"/>:
+          <xsl:value-of select="$i18n/*[local-name=$my_option]"/>:
         </td>
         <td>
           <input type="text" name="{$my_option}"
