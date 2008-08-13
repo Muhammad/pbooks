@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
+  <xsl:param name="i18n"/>
 
 <!-- The form is validated via a javascript library included in the end of main.xsl. 
 Form input elements have attributes like required="1" if they are to be validated. -->
@@ -61,7 +62,7 @@ Form input elements have attributes like required="1" if they are to be validate
 <table class="form-table" cellpadding="10">
 	<tr>
 		<td>
-      <xsl:value-of select="/_R_/i18n/customer_name"/>:
+      <xsl:value-of select="$i18n/customer_name"/>:
     </td>
 		<td><input type="text" name="name" value="{//get_account/name|//_post/name}"
       required="1" err="{//error[key='missing_account_name']/value}"/></td>
@@ -79,7 +80,7 @@ Form input elements have attributes like required="1" if they are to be validate
       </xsl:variable>
       <tr>
         <td>
-          <xsl:value-of select="/_R_/i18n/label[key=$my_option]/value"/>:
+          <xsl:value-of select="$i18n/label[key=$my_option]/value"/>:
         </td>
         <td>
           <input type="text" name="{$my_option}"
@@ -90,7 +91,7 @@ Form input elements have attributes like required="1" if they are to be validate
     <!-- END META -->
 	<tr>
 		<td>
-      <xsl:value-of select="/_R_/i18n/account_number"/>:
+      <xsl:value-of select="$i18n/account_number"/>:
     </td>
 		<td>
       <input type="text" name="account_number" required="1"
@@ -100,7 +101,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
 	<tr>
 		<td>
-        <xsl:value-of select="/_R_/i18n/desc"/>:
+        <xsl:value-of select="$i18n/desc"/>:
     </td>
 		<td>
       <textarea name="description" cols="40" rows="6">
@@ -110,7 +111,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
   <tr>
 		<td>
-      <xsl:value-of select="/_R_/i18n/group"/>:
+      <xsl:value-of select="$i18n/group"/>:
     </td>
     <td>
       <select name="group_id">
@@ -130,7 +131,7 @@ Form input elements have attributes like required="1" if they are to be validate
 	</tr>
   <tr>
     <td>
-      <xsl:value-of select="/_R_/i18n/hide"/>:
+      <xsl:value-of select="$i18n/hide"/>:
     </td>
 		<td>
       <input type="checkbox" name="hide">
