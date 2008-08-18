@@ -613,6 +613,9 @@ This makes it easier to maintain persistence. -->
     <map:query src="data/sql/account_meta_get.xml" />
     <map:xsl src="templates/xsl/customer_form.xsl" />
 </map:gate>
+<map:gate name="customer-payments" role="pb_admin">
+    <map:xsl src="templates/xsl/customer_payments.xsl" />
+</map:gate>
 
 <!-- LEDGER	-->
 <map:gate name="ledger" role="pb_admin" cache="600" client_cache="600">
