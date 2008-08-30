@@ -29,8 +29,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:value-of select="$i18n/pbooks_manual"/>
     </h2>
     <a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank">
-      <xsl:value-of select="$i18n/pbooks_user_manual"/> ->
-</a>
+        <xsl:value-of select="$i18n/pbooks_user_manual"/>
+    </a>
 
     <h2>
       <xsl:value-of select="$i18n/resource_links"/>

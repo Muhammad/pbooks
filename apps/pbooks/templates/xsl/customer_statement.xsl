@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: errors.xsl
+Component: customer_statement.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,15 +21,13 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:include href="main.xsl"/>
-  <xsl:template name="content">
-  	<h2>
-		<xsl:value-of select="/_R_/i18n/errors/error[key='error']/value"/>:
-    </h2>
-    <div class="error" id="general-error">
-      <img src="{/_R_/runtime/path_prefix}/{/_R_/runtime/icon_set}/exclamation.png"/>
-      <xsl:value-of select="//error[key=//my_error]/value"/>
-    </div>
-  </xsl:template>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
+<xsl:include href="main.xsl"/>
+<xsl:template name="content">
+  <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
+  <xsl:param name="i18n"/>
+
+
+</xsl:template>
 </xsl:stylesheet>

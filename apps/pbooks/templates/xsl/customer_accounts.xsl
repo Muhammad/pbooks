@@ -39,8 +39,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <script type="text/javascript">
     var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
     function account_delete(id,row) {
-        if(confirm(question)) { 
-            $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'id': id}, 
+        if(confirm(question)) {
+            $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'id': id},
             function (data){
                 myTable = document.getElementById("accounts_table");
                 myTable.deleteRow(row);

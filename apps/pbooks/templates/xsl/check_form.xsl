@@ -52,7 +52,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
         </div>
         <div id="check_memo">
           <xsl:value-of select="$i18n/memo"/>: 
-        <input type="text" name="memorandum">
+	  <input type="text" name="memorandum">
             <xsl:if test="not(contains($get_journal_entry/memorandum,'__'))">
                 <xsl:attribute name="value">
                     <xsl:value-of select="$get_journal_entry/memorandum"/>
@@ -90,7 +90,8 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
         </xsl:if>
     <!-- Only one checking account. -->
         <xsl:if test="count(/_R_/account_get_checking_accounts/account_id)=1">
-          <input type="hidden" name="checking_account_id" value="{/_R_/account_get_checking_accounts/account_id}"/>
+          <input type="hidden" name="checking_account_id"
+	  	value="{/_R_/account_get_checking_accounts/account_id}"/>
         </xsl:if>
       </div>
 
