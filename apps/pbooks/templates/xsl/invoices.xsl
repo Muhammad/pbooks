@@ -95,12 +95,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </td>
               <td>
                 <a href="#">
-                  <xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name"/>
+                  <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
                 </a>
               </td>
               <td>
                 <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
-                  <xsl:value-of select="memorandum"/>
+                  <xsl:value-of select="substring(memorandum,0,12)"/>
                 </a>
               </td>
               <td>
