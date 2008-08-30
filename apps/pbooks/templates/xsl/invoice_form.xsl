@@ -135,7 +135,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td>
               <xsl:value-of select="/_R_/i18n/paid_in_full_date"/>:</td>
             <td colspan="8">
-              <input type="text" name="due_date" value="{//get_some_business_objects/paid_in_full_date}"/>
+              <input type="text" name="paid_in_full_date" value="{//get_some_business_objects/paid_in_full_date}"/>
             </td>
           </tr>
         </tbody>
