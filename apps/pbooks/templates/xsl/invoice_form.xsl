@@ -160,7 +160,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td>
               <xsl:value-of select="/_R_/i18n/desc"/>
             </td>
-            <td width="240"></td>
+            <td style="width: 20em;"></td>
             <td>
               <xsl:value-of select="/_R_/i18n/quantity"/>
             </td>
