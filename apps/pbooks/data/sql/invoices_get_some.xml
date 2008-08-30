@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         pea.account_id as customer_id,
         mymeta2.meta_value as due_date,
         mymeta3.meta_value as paid_status,
-        mymeta34.meta_value as paid_in_full_date
+        mymeta4.meta_value as paid_in_full_date
         
         
         FROM &pb_entries; as pbe
