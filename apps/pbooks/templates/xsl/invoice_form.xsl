@@ -160,7 +160,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td>
               <xsl:value-of select="/_R_/i18n/desc"/>
             </td>
-            <td style="width: 20em;"></td>
+            <td width="240"></td>
             <td>
               <xsl:value-of select="/_R_/i18n/quantity"/>
             </td>
@@ -203,7 +203,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 </select>
               </td>
               <td colspan="2">
-                <input type="text" name="memorandum[]" size="40" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
+                <input type="text" name="memorandum[]" style="width: 20em;" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
               </td>
               <td>
                 <input type="text" name="quantity" size="4"/>
