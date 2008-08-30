@@ -39,7 +39,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         mymeta.meta_value as invoice_number,
         pea.account_id as customer_id,
         mymeta2.meta_value as due_date,
-        mymeta3.meta_value as paid
+        mymeta3.meta_value as paid_status,
+        mymeta34.meta_value as paid_in_full_date
+        
         
         FROM &pb_entries; as pbe
         
@@ -62,7 +64,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         
         LEFT JOIN &pb_entry_metadata; AS mymeta3
         ON (mymeta3.entry_id = pbe.entry_id
-        AND mymeta3.meta_key='paid')
+        AND mymeta3.meta_key='paid_status')
+        
+        LEFT JOIN &pb_entry_metadata; AS mymeta4
+        ON (mymeta4.entry_id = pbe.entry_id
+        AND mymeta4.meta_key='paid_in_full_date')
         
         WHERE pbe.entry_id!=0
         AND pbe.memorandum!='PLACEHOLDER'

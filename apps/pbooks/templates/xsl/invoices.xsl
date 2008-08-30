@@ -114,7 +114,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               -->
               <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
               <td>
-                <xsl:if test="//business_object_get_metadata[entry_id=$my_entry_id]/paid_status='paid_in_full'">
+                <xsl:if test="paid_status='paid_in_full'">
                 <a href="#">
                   <xsl:value-of select="paid_in_full_date"/>
                 </a>
