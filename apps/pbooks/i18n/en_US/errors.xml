@@ -1,10 +1,10 @@
-<!-- 
-Program: PBooks             				
-Component: errors.xml								
-Copyright: Savonix Corporation         
-Author: Albert L. Lash, IV        
+<!--
+Program: PBooks
+Component: errors.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -19,59 +19,56 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <i18n>
-<errors lang="en-us">
+  <errors lang="en-us">
     <error>
-        <key>error</key>
-        <value>Error</value>
+      <key>error</key>
+      <value>Error</value>
     </error>
     <error>
-        <key>general_error</key>
-        <value>An error has occurred, please try again.</value>
+      <key>general_error</key>
+      <value>An error has occurred, please try again.</value>
     </error>
     <!-- Account errors -->
     <error>
-        <key>account_duplicate</key>
-        <value>There already exists an account with that name or number, please try again.</value>
+      <key>account_duplicate</key>
+      <value>There already exists an account with that name or number, please try again.</value>
     </error>
     <error>
-        <key>missing_account_name</key>
-        <value>Please enter an account name.</value>
+      <key>missing_account_name</key>
+      <value>Please enter an account name.</value>
     </error>
     <error>
-        <key>missing_account_number</key>
-        <value>Please enter an account number.</value>
+      <key>missing_account_number</key>
+      <value>Please enter an account number.</value>
     </error>
     <error>
-        <key>no_ar_account</key>
-        <value>You have not specified an accurate accounts receivable account. You can do so by editing the account you wish to use for accounts
+      <key>no_ar_account</key>
+      <value>You have not specified an accurate accounts receivable account. You can do so by editing the account you wish to use for accounts
         receivable and clicking the Yes radio button where it says "Accounts Receivable Account".</value>
     </error>
     <error>
-        <key>no_checking_account</key>
-        <value>You have not specified any checking accounts.</value>
+      <key>no_checking_account</key>
+      <value>You have not specified any checking accounts.</value>
     </error>
     <error>
-        <key>no_deposit_account</key>
-        <value>You have not specified any deposit accounts.</value>
-    </error>
-    
-    <error>
-        <key>no_payable_account</key>
-        <value>You have not specified any accounts payable accounts.</value>
+      <key>no_deposit_account</key>
+      <value>You have not specified any deposit accounts.</value>
     </error>
     <error>
-        <key>no_purchasing_account</key>
-        <value>You have not specified any purchasing accounts.</value>
+      <key>no_payable_account</key>
+      <value>You have not specified any accounts payable accounts.</value>
     </error>
-    no_purchasing_account
-    
+    <error>
+      <key>no_purchasing_account</key>
+      <value>You have not specified any purchasing accounts.</value>
+    </error>
     <!-- Entry errors -->
     <error>
-        <key>non_existent_entry_id</key>
-        <value>There is no entry ID with that value, please try again.</value>
+      <key>non_existent_entry_id</key>
+      <value>There is no entry ID with that value, please try again.</value>
     </error>
-</errors>
+  </errors>
 </i18n>

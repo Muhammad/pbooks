@@ -1,10 +1,10 @@
-<!-- 
-Program: PBooks             				
-Component: user_options.xml								
+<!--
+Program: PBooks
+Component: user_options.xml
 Copyright: Savonix Corporation
-Author: Albert L. Lash, IV                  
+Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -30,22 +30,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <default></default>
     </option>
     -->
-    <option>
-        <option_key>display_num_entries</option_key>
-        <option_type>text</option_type>
-        <title>Number of journal entries to display</title>
-        <default>8</default>
-    </option>
-    <option>
-        <option_key>display_num_trans</option_key>
-        <option_type>text</option_type>
-        <title>Number of transactions to display</title>
-        <default>16</default>
-    </option>
-    <option>
-        <option_key>display_num_accounts</option_key>
-        <option_type>text</option_type>
-        <title>Number of accounts to display</title>
-        <default>24</default>
-    </option>
+  <option>
+    <option_key>display_num_entries</option_key>
+    <option_type>text</option_type>
+    <title>Number of journal entries to display</title>
+    <default>8</default>
+  </option>
+  <option>
+    <option_key>display_num_trans</option_key>
+    <option_type>text</option_type>
+    <title>Number of transactions to display</title>
+    <default>16</default>
+  </option>
+  <option>
+    <option_key>display_num_accounts</option_key>
+    <option_type>text</option_type>
+    <title>Number of accounts to display</title>
+    <default>24</default>
+  </option>
 </user_options>

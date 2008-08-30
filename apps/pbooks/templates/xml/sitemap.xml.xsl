@@ -21,18 +21,22 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:map="http://www.nexista.com/sitemap">
-<xsl:output method="xml" indent="yes" encoding="UTF-8" 
-	omit-xml-declaration="no" />
-<xsl:template match="/">
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <xsl:for-each select="//map:gate">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:map="http://www.nexista.com/sitemap">
+  <xsl:output method="xml" indent="yes" encoding="UTF-8" omit-xml-declaration="no" />
+  <xsl:template match="/">
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <xsl:for-each select="//map:gate">
         <url>
-            <loc>http://<xsl:value-of select="//runtime/host_name"/><xsl:value-of select="//runtime/link_prefix"/><xsl:value-of select="@name"/></loc>
-            <lastmod><xsl:value-of select="substring(//last_db_update,0,11)"/></lastmod>
-            <changefreq>daily</changefreq>
+          <loc>http://<xsl:value-of select="//runtime/host_name"/>
+            <xsl:value-of select="//runtime/link_prefix"/>
+            <xsl:value-of select="@name"/>
+          </loc>
+          <lastmod>
+            <xsl:value-of select="substring(//last_db_update,0,11)"/>
+          </lastmod>
+          <changefreq>daily</changefreq>
         </url>
-    </xsl:for-each>
-</urlset>
-</xsl:template>
+      </xsl:for-each>
+    </urlset>
+  </xsl:template>
 </xsl:stylesheet>

@@ -1,10 +1,10 @@
-<!-- 
-Program: PBooks             				
+<!--
+Program: PBooks
 Component: months.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -22,22 +22,22 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA 
 -->
 <months>
-<labels>
+  <labels>
     <label>
-        <key>month</key>
-        <value>Month</value>
+      <key>month</key>
+      <value>Month</value>
     </label>
-</labels>
-<option fullname="January" shortname="Jan" id="01"/>
-<option fullname="February" shortname="Feb" id="02"/>
-<option fullname="March" shortname="Mar" id="03"/>
-<option fullname="April" shortname="Apr" id="04"/>
-<option fullname="May" shortname="May" id="05"/>
-<option fullname="June" shortname="Jun" id="06"/>
-<option fullname="July" shortname="Jul" id="07"/>
-<option fullname="August" shortname="Aug" id="08"/>
-<option fullname="September" shortname="Sep" id="09"/>
-<option fullname="October" shortname="Oct" id="10"/>
-<option fullname="November" shortname="Nov" id="11"/>
-<option fullname="December" shortname="Dec" id="12"/>
+  </labels>
+  <option fullname="January" shortname="Jan" id="01"/>
+  <option fullname="February" shortname="Feb" id="02"/>
+  <option fullname="March" shortname="Mar" id="03"/>
+  <option fullname="April" shortname="Apr" id="04"/>
+  <option fullname="May" shortname="May" id="05"/>
+  <option fullname="June" shortname="Jun" id="06"/>
+  <option fullname="July" shortname="Jul" id="07"/>
+  <option fullname="August" shortname="Aug" id="08"/>
+  <option fullname="September" shortname="Sep" id="09"/>
+  <option fullname="October" shortname="Oct" id="10"/>
+  <option fullname="November" shortname="Nov" id="11"/>
+  <option fullname="December" shortname="Dec" id="12"/>
 </months>

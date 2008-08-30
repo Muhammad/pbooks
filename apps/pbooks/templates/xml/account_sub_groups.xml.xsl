@@ -21,27 +21,25 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:output method="xml" indent="yes" encoding="UTF-8" 
-	omit-xml-declaration="yes"/>
-<xsl:key name="my_groups" match="group" use="number(group_id)"/>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
+  <xsl:key name="my_groups" match="group" use="number(group_id)"/>
 
 <!-- This template returns an xml tree of groups which are descendents of the _get/id group -->
-<xsl:template match="/">
-<groups>
-<xsl:for-each
-   select="//group[count(.|key('my_groups', number(group_id))[1]) = 1]">
-   <xsl:sort select="group_id" />
-   <xsl:variable name="my_group_id" value="group_id"/>
-   <xsl:if test="group_id=//group[group_id=//_get/group_id]//group_id">
-    <group>
-        <xsl:value-of select="group_id"/>
-    </group>
-    </xsl:if>
-</xsl:for-each>
+  <xsl:template match="/">
+    <groups>
+      <xsl:for-each select="//group[count(.|key('my_groups', number(group_id))[1]) = 1]">
+        <xsl:sort select="group_id" />
+        <xsl:variable name="my_group_id" value="group_id"/>
+        <xsl:if test="group_id=//group[group_id=//_get/group_id]//group_id">
+          <group>
+            <xsl:value-of select="group_id"/>
+          </group>
+        </xsl:if>
+      </xsl:for-each>
 
 
-</groups>
-</xsl:template>
+    </groups>
+  </xsl:template>
 
 </xsl:stylesheet>
