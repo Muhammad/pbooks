@@ -116,14 +116,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <td>
               <xsl:value-of select="/_R_/i18n/paid_status"/>:</td>
             <td colspan="8">
-              <input type="radio" name="paid_status" value="paid_in_full"/>
+              <input type="radio" name="paid_status" value="paid_in_full">
+                <xsl:if test="//get_some_business_objects/paid_status='paid_in_full'">
+                  <xsl:attribute name="checked">checked</xsl:attribute>
+                </xsl:if>
+              </input>
               <xsl:value-of select="/_R_/i18n/paid_in_full"/>
               <br/>
-              <input type="radio" name="paid_status" value="paid"/>
+              <input type="radio" name="paid_status" value="partial_payment">
+                <xsl:if test="//get_some_business_objects/paid_status='partial_payment'">
+                  <xsl:attribute name="checked">checked</xsl:attribute>
+                </xsl:if>
+              </input>
               <xsl:value-of select="/_R_/i18n/paid"/>
               <br/>
               <input type="radio" name="paid_status" value="unpaid">
-                <xsl:if test="not(//get_some_business_objects/paid_status)">
+                <xsl:if test="not(//get_some_business_objects/paid_status) or //get_some_business_objects/paid_status='unpaid'">
                   <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
               </input>
