@@ -73,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <xsl:for-each select="$account_business_objects">
             <option value="{id}">
               <xsl:if
-              test="id=$get_journal_entry/get_journal_entry/account_id">
+              test="id=$get_journal_entry/account_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
               </xsl:if>
               <xsl:value-of select="name"/>
@@ -83,10 +83,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </xsl:if>
       <!-- If there is only one deposit account, just use that id -->
       <xsl:if test="count($account_business_objects) = 1">
-        <xsl:for-each select="$account_business_objects">
-          <xsl:value-of select="name"/>
-          <input type="hidden" name="deposit_account_id" value="{id}"/>
-        </xsl:for-each>
+          <input type="hidden" name="deposit_account_id" value="{$account_business_objects/id}"/>
       </xsl:if>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <div id="deposit">
