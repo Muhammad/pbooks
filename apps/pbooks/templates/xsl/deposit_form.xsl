@@ -36,10 +36,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete", 
+      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
       {
         'entry_amount_id': entry_amount_id
-      }, 
+      },
       function (data){
       });
       myTable = document.getElementById("deposit_form_table");
@@ -62,7 +62,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
     <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
         method="post" onSubmit="return validateStandard(this, 'myerror');">
-<!-- If there is more than one deposit account, the user needs to select which one the deposit is being made into -->
+	<!-- If there is more than one deposit account, the user needs to select
+	which one the deposit is being made into -->
       <xsl:if test="count($account_business_objects) &gt; 1">
         <select name="deposit_account_id" required="1" exclude="-1"
             err="{/_R_/i18n/error_select_debit}">
@@ -72,8 +73,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <xsl:for-each select="$account_business_objects">
             <option value="{id}">
               <xsl:if
-              test="id=$get_journal_entry/get_journal_entry/account_id and
-              $get_journal_entry/get_journal_entry/entry_type_id='Debit'">
+              test="id=$get_journal_entry/get_journal_entry/account_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
               </xsl:if>
               <xsl:value-of select="name"/>
@@ -81,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </xsl:for-each>
         </select>
       </xsl:if>
-<!-- If there is only one deposit account, just use that id -->
+      <!-- If there is only one deposit account, just use that id -->
       <xsl:if test="count($account_business_objects) = 1">
         <xsl:for-each select="$account_business_objects">
           <xsl:value-of select="name"/>
@@ -92,12 +92,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <div id="deposit">
         <div id="my_deposit_account_id"></div>
         <div id="deposit_date">
-          <xsl:value-of select="/_R_/i18n/date"/>: 
+          <xsl:value-of select="/_R_/i18n/date"/>:
           <input type="text" name="entry_datetime"
           value="{$get_journal_entry/entry_date}"/>
         </div>
         <div id="deposit_memo">
-          <xsl:value-of select="/_R_/i18n/memo"/>: 
+          <xsl:value-of select="/_R_/i18n/memo"/>:
           <input type="text" name="memorandum"
           value="{$get_journal_entry/memorandum}"/>
         </div>
