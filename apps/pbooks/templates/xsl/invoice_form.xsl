@@ -174,7 +174,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <xsl:value-of select="/_R_/i18n/edit"/>
             </td>
           </tr>
-        
+
         <!-- INVOICE LINE ITEM ROWS -->
           <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
             <xsl:variable name="my_entry_amount_id">
