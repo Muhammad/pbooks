@@ -4,7 +4,7 @@ Component: entries_only_get_unposted.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -19,36 +19,36 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_entries">
     <!-- Needs primary db -->
-    <connection>&pb_connection;</connection>
-    <params>
-        <param name="_post/entry_id" type="text" default="%"/>
-        <param name="runtime/from_date" type="text" default="2000-04-01"/>
-        <param name="runtime/to_date" type="text" default="2018-01-01"/>
-        <param name="sorting" type="text" default="ASC"/>
-        <param name="sorting" type="text" default="ASC"/>
-        <param name="_get/start" type="integer" default="0"/>
-        <param name="option_get[display_num_entries!='NULL']/display_num_entries" type="integer" default="40"/>
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="_post/entry_id" type="text" default="%"/>
+		<param name="runtime/from_date" type="text" default="2000-04-01"/>
+		<param name="runtime/to_date" type="text" default="2018-01-01"/>
+		<param name="sorting" type="text" default="ASC"/>
+		<param name="sorting" type="text" default="ASC"/>
+		<param name="_get/start" type="integer" default="0"/>
+		<param name="option_get[display_num_entries!='NULL']/display_num_entries" type="integer" default="40"/>
 	</params>
-    <sql>
-        SELECT entry_id,
-        entry_datetime,
-        memorandum 
-        FROM &pb_entries;
-        WHERE entry_id != 0
-        AND entry_id LIKE ?
-        AND memorandum!='PLACEHOLDER'
-        AND entry_datetime &gt;= ?
-        AND entry_datetime &lt;= ?
-        AND &pb_entries;.status != 9
-        AND &pb_entries;.status != 21
-        ORDER BY 
-        CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC, 
-        CASE ? WHEN 'DESC' THEN &pb_entries;.entry_datetime END DESC
-        LIMIT ?,?
-    </sql>
+	<sql>
+		SELECT entry_id,
+		entry_datetime,
+		memorandum 
+		FROM &pb_entries;
+		WHERE entry_id != 0
+		AND entry_id LIKE ?
+		AND memorandum!='PLACEHOLDER'
+		AND entry_datetime &gt;= ?
+		AND entry_datetime &lt;= ?
+		AND &pb_entries;.status != 9
+		AND &pb_entries;.status != 21
+		ORDER BY
+		CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC,
+		CASE ? WHEN 'DESC' THEN &pb_entries;.entry_datetime END DESC
+		LIMIT ?,?
+	</sql>
 </query>
