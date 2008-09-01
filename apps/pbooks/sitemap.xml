@@ -252,7 +252,7 @@ This makes it easier to maintain persistence. -->
     <map:xml src="data/xml/invoice_meta.xml"/>
     <map:query src="data/sql/invoices_get_some.xml"/>
     <map:query src="data/sql/invoices_get_amounts.xml"/>
-    <map:if name="//invoice_number">
+    <map:if name="//_get/invoice_id">
         <map:true>
         </map:true>
         <map:false>
