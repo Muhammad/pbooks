@@ -59,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:value-of select="$i18n/new_entry"/>
       </a>
     </div>
-    
+<br/>
     <table width="100%">
       <tr>
         <td>
