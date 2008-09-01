@@ -252,13 +252,7 @@ This makes it easier to maintain persistence. -->
     <map:xml src="data/xml/invoice_meta.xml"/>
     <map:query src="data/sql/invoices_get_some.xml"/>
     <map:query src="data/sql/invoices_get_amounts.xml"/>
-    <map:if name="//_get/invoice_id">
-        <map:true>
-        </map:true>
-        <map:false>
-            <map:query src="data/sql/invoices_get_last_id.xml"/>
-        </map:false>
-    </map:if>
+    <map:query src="data/sql/invoices_get_last_id.xml"/>
     <map:xsl src="templates/xsl/invoice_form.xsl" />
 </map:gate>
 <map:gate name="invoice-print" role="pb_admin">
