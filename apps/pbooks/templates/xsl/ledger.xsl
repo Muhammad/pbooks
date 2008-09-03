@@ -70,6 +70,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </table>
     </form>
     <form method="get">
+      <xsl:if test="/_R_/_get/account_id">
+        <input type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
+      </xsl:if>
       <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
       <xsl:call-template name="date_select"/>
       <input type="submit"/>
