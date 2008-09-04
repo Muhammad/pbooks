@@ -99,7 +99,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           value="{$get_journal_entry/memorandum}"/>
         </div>
         <div id="deposit_payee">
-          <table border="1" id="deposit_form_table">
+          <table border="0" id="deposit_form_table">
             <xsl:if test="//deposits_cash='yes'">
               <tr>
                 <td>
