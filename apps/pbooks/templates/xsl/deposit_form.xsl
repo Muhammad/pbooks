@@ -204,18 +204,34 @@ Fifth Floor, Boston, MA 02110-1301  USA
                       <xsl:variable name="my_customer_id">
                         <xsl:value-of select="customer_id"/>
                       </xsl:variable>
-						
+
                       <option value="{id}">
                         <xsl:if test="id=//metadata/metadata/account_id and not(/_R_/_get/transaction_id)">
                           <xsl:attribute name="selected">selected</xsl:attribute>
                         </xsl:if>
                         <xsl:value-of select="$business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/>, 
                         <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,20)"/>
-							
+
                         <xsl:value-of select="name"/>
                       </option>
                     </xsl:for-each>
                   </select>
+                  <!-- need to select where the money is coming from - or is it accounts receivable? -->
+                  <select name="revenue_account_id" required="1" exclude="-1"
+                  err="{/_R_/i18n/error_select_credit}">
+                    <option value="-1">
+                      <xsl:value-of select="/_R_/i18n/credit_account"/>
+                    </option>
+                    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+                      <option value="{id}">
+                        <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
+                          <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="name"/>
+                      </option>
+                    </xsl:for-each>
+                  </select>
+
                 </td>
               </tr>
             </xsl:for-each>
@@ -241,21 +257,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </div>
       </div>
 
-<!-- need to select where the money is coming from - or is it accounts receivable? -->
-      <select name="revenue_account_id" required="1" exclude="-1"
-      err="{/_R_/i18n/error_select_credit}">
-        <option value="-1">
-          <xsl:value-of select="/_R_/i18n/credit_account"/>
-        </option>
-        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-          <option value="{id}">
-            <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
-              <xsl:attribute name="selected">selected</xsl:attribute>
-            </xsl:if>
-            <xsl:value-of select="name"/>
-          </option>
-        </xsl:for-each>
-      </select>
 
       <input type="submit" id="submit-me"/>
     </form>
