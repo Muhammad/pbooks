@@ -108,7 +108,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <td>
                   <xsl:value-of select="/_R_/i18n/amount"/>
                 </td>
-                <td></td>
+                <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
                 <td>
                   <xsl:value-of select="/_R_/i18n/source"/>
                 </td>
@@ -116,10 +116,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <tr>
                 <!-- Here the check number is the equivalent of a journal entry memorandum -->
                 <td>
-                  <input type="text" name="check_number[]" style="width: 50px;"
+                  <input type="text" name="check_number[]" style="width: 40px;"
                   value="{$get_journal_entry/entry_amount_memorandum}"/>
                 </td>
-                <td>$<input type="text" name="entry_amount[]" style="width: 100px;"
+                <td><input type="text" name="entry_amount[]" style="width: 60px;"
                 value="{$get_journal_entry/entry_amount}"/>
                 </td>
                 <td>
