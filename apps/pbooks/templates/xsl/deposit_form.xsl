@@ -160,9 +160,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:value-of select="/_R_/i18n/checks"/>
               </td>
               <td>Amount</td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>
+                <xsl:value-of select="/_R_/i18n/amount"/>
+              </td>
+              <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
+              <td>
+                <xsl:value-of select="/_R_/i18n/source"/>
+              </td>
             </tr>
             <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
               <xsl:variable name="my_entry_amount_id">
