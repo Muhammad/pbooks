@@ -174,10 +174,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <tr>
                 <!-- Here the check number is the equivalent of a journal entry memorandum -->
                 <td>
-                  <input type="text" name="check_number[]" style="width: 50px;"
+                  <input type="text" name="check_number[]" style="width: 40px;"
                   value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
                 </td>
-                <td>$<input type="text" name="entry_amount[]" style="width: 100px;"
+                <td><input type="text" name="entry_amount[]" style="width: 60px;"
                 value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
                 </td>
                 <!-- Additional deposit line items. -->
@@ -234,19 +234,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
                       </option>
                     </xsl:for-each>
                   </select>
-
                 </td>
               </tr>
             </xsl:for-each>
 
             <tr>
-              <td colspan="3"></td>
+              <td colspan="2"></td>
               <td>
                 <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                   <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
                   src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
                 </a>
               </td>
+              <td></td>
               <td></td>
             </tr>
           </table>
