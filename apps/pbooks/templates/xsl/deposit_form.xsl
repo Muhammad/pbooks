@@ -230,7 +230,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                         <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
                           <xsl:attribute name="selected">selected</xsl:attribute>
                         </xsl:if>
-                        <xsl:value-of select="substring(name,0,12)"/>
+                        <xsl:value-of select="substring(name,0,16)"/>
                       </option>
                     </xsl:for-each>
                   </select>
