@@ -159,7 +159,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td>
                 <xsl:value-of select="/_R_/i18n/checks"/>
               </td>
-              <td>Amount</td>
               <td>
                 <xsl:value-of select="/_R_/i18n/amount"/>
               </td>
