@@ -99,7 +99,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           value="{$get_journal_entry/memorandum}"/>
         </div>
         <div id="deposit_payee">
-          <table border="0" id="deposit_form_table">
+          <table border="1" id="deposit_form_table">
             <xsl:if test="//deposits_cash='yes'">
               <tr>
                 <td>
@@ -162,6 +162,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td>Amount</td>
               <td></td>
               <td></td>
+              <td></td>
             </tr>
             <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
               <xsl:variable name="my_entry_amount_id">
@@ -210,12 +211,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
                           <xsl:attribute name="selected">selected</xsl:attribute>
                         </xsl:if>
                         <xsl:value-of select="$business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/>, 
-                        <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,20)"/>
+                        <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,12)"/>
 
                         <xsl:value-of select="name"/>
                       </option>
                     </xsl:for-each>
                   </select>
+                </td>
+                <td>
                   <!-- need to select where the money is coming from - or is it accounts receivable? -->
                   <select name="revenue_account_id" required="1" exclude="-1"
                   err="{/_R_/i18n/error_select_credit}">
@@ -227,7 +230,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                         <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
                           <xsl:attribute name="selected">selected</xsl:attribute>
                         </xsl:if>
-                        <xsl:value-of select="name"/>
+                        <xsl:value-of select="substring(name,0,12)"/>
                       </option>
                     </xsl:for-each>
                   </select>
@@ -237,7 +240,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </xsl:for-each>
 
             <tr>
-              <td colspan="2"></td>
+              <td colspan="3"></td>
               <td>
                 <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                   <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
