@@ -77,6 +77,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <url>invoices</url>
         </item>
         <item>
+            <key>payments</key>
+            <url>customer-payments</url>
+        </item>
+        <item>
             <key>deposits</key>
             <url>deposits</url>
         </item>
