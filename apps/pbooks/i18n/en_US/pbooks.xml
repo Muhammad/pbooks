@@ -24,6 +24,7 @@
   <checks>Checks</checks>
   <deposits>Deposits</deposits>
   <payments>Payments</payments>
+  <customer_payments>Customer Payments</customer_payments>
   <bills>Bills</bills>
   <invoices>Invoices</invoices>
   <transfers>Transfers</transfers>

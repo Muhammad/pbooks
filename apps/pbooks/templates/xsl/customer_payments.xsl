@@ -60,34 +60,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
     }
     </script>
     <h2>
-      <xsl:value-of select="/_R_/i18n/make_deposits"/>
+      <xsl:value-of select="/_R_/i18n/customer_payments"/>
     </h2>
 
     <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
         method="post" onSubmit="return validateStandard(this, 'myerror');">
-	<!-- If there is more than one deposit account, the user needs to select
-	which one the deposit is being made into -->
-      <xsl:if test="count($account_business_objects) &gt; 1">
-        <select name="deposit_account_id" required="1" exclude="-1"
-            err="{/_R_/i18n/error_select_debit}">
-          <option value="-1">
-            <xsl:value-of select="/_R_/i18n/deposit_account"/>
-          </option>
-          <xsl:for-each select="$account_business_objects">
-            <option value="{id}">
-              <xsl:if
-              test="id=$get_journal_entry/account_id">
-                <xsl:attribute name="selected">selected</xsl:attribute>
-              </xsl:if>
-              <xsl:value-of select="name"/>
-            </option>
-          </xsl:for-each>
-        </select>
-      </xsl:if>
-      <!-- If there is only one deposit account, just use that id -->
-      <xsl:if test="count($account_business_objects) = 1">
-          <input type="hidden" name="deposit_account_id" value="{$account_business_objects/id}"/>
-      </xsl:if>
+
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <div id="deposit">
         <div id="my_deposit_account_id"></div>
@@ -257,12 +235,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </tr>
           </table>
 
-        <!-- Link to journal entry form. -->
-          <div style="float: right">
-            <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
-              <xsl:value-of select="/_R_/i18n/edit_journal_entry"/>
-            </a>
-          </div>
         </div>
       </div>
 
