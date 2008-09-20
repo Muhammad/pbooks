@@ -79,6 +79,8 @@
   <customer_name>Customer</customer_name>
   <customer>Customer</customer>
   <all>All</all>
+  <logs>Logs</logs>
+	<diagnostics>Diagnostics</diagnostics>
   <account>Account</account>
   <select_one>Select One</select_one>
   <select_account>Select account</select_account>
