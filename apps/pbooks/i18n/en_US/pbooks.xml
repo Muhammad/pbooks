@@ -81,6 +81,7 @@
   <all>All</all>
   <logs>Logs</logs>
 	<diagnostics>Diagnostics</diagnostics>
+	<notes>Notes</notes>
   <account>Account</account>
   <select_one>Select One</select_one>
   <select_account>Select account</select_account>
