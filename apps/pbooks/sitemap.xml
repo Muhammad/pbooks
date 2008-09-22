@@ -603,24 +603,17 @@ This makes it easier to maintain persistence. -->
     <!-- this account_meta_key tells the query to look for accounts
     which take deposits. similar values are set for the other business
     processes, like invoices and bills.-->
-		<map:query src="data/sql/account_business_objects.xml"/>
-		<map:if name="/_R_/account_business_objects">
-			<map:true>
-				<map:insert name="blank-entry"/>
-				<map:query src="data/sql/entry_get_by_id.xml"/>
-				<map:action type="redirect" params="{runtime/link_prefix}customer-payment-edit&amp;entry_id={//get_this_entry_id/entry_id}"/>
-			</map:true>
-			<map:false>
-				<map:xml src="i18n/{/_R_/runtime/selected_lang}/errors.xml"/>
-				<map:xsl src="templates/xsl/errors.xsl" />
-			</map:false>
-		</map:if>
+
+      <map:insert name="blank-entry"/>
+      <map:query src="data/sql/entry_get_by_id.xml"/>
+      <map:action type="redirect" params="{runtime/link_prefix}customer-payment-edit&amp;entry_id={//get_this_entry_id/entry_id}"/>
+
 	</map:gate>
 	<map:gate name="customer-payment-edit" role="pb_admin">
 		<map:query src="data/sql/entry_get_by_id.xml"/>
 		<map:query src="data/sql/account_business_objects.xml"/>
-		<map:xml src="data/xml/payment_meta.xml"/>
-		<map:query src="data/sql/payments_get_some.xml"/>
+		<map:xml src="data/xml/customer_payment_meta.xml"/>
+		<map:query src="data/sql/customer_payments_get_some.xml"/>
 		<map:query src="data/sql/business_object_get_metadata.xml"/>
 		<map:query src="data/sql/invoices_get_some.xml"/>
 		<map:query src="data/sql/business_object_get_metadata.xml"/>

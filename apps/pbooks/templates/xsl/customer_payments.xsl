@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
 
     <div class="generic-button" style="float: right;">
-      <a href="{$link_prefix}payment-create" id="customer-payment-create">
+      <a href="{$link_prefix}customer-payment-create" id="customer-payment-create">
         <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
         <xsl:value-of select="$i18n/new_payment"/>
       </a>
