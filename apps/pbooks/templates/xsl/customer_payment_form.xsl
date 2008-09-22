@@ -45,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       },
       function (data){
       });
-      myTable = document.getElementById("deposit_form_table");
+      myTable = document.getElementById("payment_form_table");
       myTable.deleteRow(row);
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
@@ -63,24 +63,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:value-of select="/_R_/i18n/customer_payments"/>
     </h2>
 
-    <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
+    <form action="{$link_prefix}customer-payment-submit&amp;entry_id={/_R_/_get/entry_id}"
         method="post" onSubmit="return validateStandard(this, 'myerror');">
 
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-      <div id="deposit">
-        <div id="my_deposit_account_id"></div>
-        <div id="deposit_date">
+      <div id="payment">
+        <div id="my_payment_account_id"></div>
+        <div id="payment_date">
           <xsl:value-of select="/_R_/i18n/date"/>:
           <input type="text" name="entry_datetime"
           value="{$get_journal_entry/entry_date}"/>
         </div>
-        <div id="deposit_memo">
+        <div id="payment_memo">
           <xsl:value-of select="/_R_/i18n/memo"/>:
           <input type="text" name="memorandum"
           value="{$get_journal_entry/memorandum}"/>
         </div>
-        <div id="deposit_payee">
-          <table border="0" id="deposit_form_table">
+        <div id="payment_payee">
+          <table border="0" id="payment_form_table">
             <tr>
               <td>
                 <xsl:value-of select="/_R_/i18n/checks"/>
@@ -109,7 +109,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <td><input type="text" name="entry_amount[]" style="width: 60px;"
                 value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
                 </td>
-                <!-- Additional deposit line items. -->
+                <!-- Additional payment line items. -->
                 <td>
                   <xsl:if test="position() &gt; 1">
                     <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
