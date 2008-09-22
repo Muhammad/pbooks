@@ -595,7 +595,7 @@ This makes it easier to maintain persistence. -->
 
   <!-- Payments -->
 	<map:gate name="customer-payments" role="pb_admin">
-		<map:query src="data/sql/payments_get_some.xml"/>
+		<map:query src="data/sql/customer_payments_get_some.xml"/>
 		<map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/xsl/customer_payments.xsl" />
 	</map:gate>
