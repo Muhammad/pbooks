@@ -21,170 +21,79 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:include href="main.xsl"/>
-<xsl:template name="content">
-  <xsl:param name="link_prefix"/>
-  <xsl:param name="path_prefix"/>
-  <xsl:param name="i18n"/>
-  <xsl:param name="link_prefix"/>
-  <xsl:param name="path_prefix"/>
-  <xsl:variable name="account_business_objects"
-    select="/_R_/account_business_objects/account_business_objects"/>
-  <xsl:variable name="get_journal_entry"
-    select="/_R_/get_journal_entry/get_journal_entry"/>
-    <xsl:variable name="business_object_get_metadata"
-      select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
-  <xsl:variable name ="i18n" select="/_R_/i18n/label"/>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:include href="main.xsl"/>
+  <xsl:include href="pager.xsl"/>
 
-    <script type="text/javascript">
-    function journal_entry_amount_delete(entry_amount_id,row) {
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
-      {
-        'entry_amount_id': entry_amount_id
-      },
-      function (data){
-      });
-      myTable = document.getElementById("deposit_form_table");
-      myTable.deleteRow(row);
-    }
-    function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
-      {
-        'entry_id': entry_id,
-        'entry_datetime': entry_date
-      },
-      function (data){
-        setTimeout('window.location.reload()',200);
-      });
-    }
-    </script>
-    <h2>
-      <xsl:value-of select="/_R_/i18n/customer_payments"/>
-    </h2>
+  <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
 
-    <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
-        method="post" onSubmit="return validateStandard(this, 'myerror');">
+<!-- This calls a template from pager.xsl which loads the javascript -->
+    <xsl:call-template name="jquery-setup">
+      <xsl:with-param name="my-table">mypayments</xsl:with-param>
+    </xsl:call-template>
 
-      <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-      <div id="deposit">
-        <div id="my_deposit_account_id"></div>
-        <div id="deposit_date">
-          <xsl:value-of select="/_R_/i18n/date"/>:
-          <input type="text" name="entry_datetime"
-          value="{$get_journal_entry/entry_date}"/>
-        </div>
-        <div id="deposit_memo">
-          <xsl:value-of select="/_R_/i18n/memo"/>:
-          <input type="text" name="memorandum"
-          value="{$get_journal_entry/memorandum}"/>
-        </div>
-        <div id="deposit_payee">
-          <table border="0" id="deposit_form_table">
-            <tr>
-              <td>
-                <xsl:value-of select="/_R_/i18n/checks"/>
-              </td>
-              <td>
-                <xsl:value-of select="/_R_/i18n/amount"/>
-              </td>
-              <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
-              <td>
-                <xsl:value-of select="/_R_/i18n/source"/>
-              </td>
-            </tr>
-            <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
-              <xsl:variable name="my_entry_amount_id">
-                <xsl:value-of select="entry_amount_id"/>
-              </xsl:variable>
-              <xsl:variable name="my_entry_id">
+    <div class="generic-button" style="float: right;">
+      <a href="{$link_prefix}payment-create" id="customer-payment-create">
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
+        <xsl:value-of select="$i18n/new_payment"/>
+      </a>
+    </div>
+<!-- Page title -->
+    <strong>
+      <xsl:value-of select="$i18n/customer_payments"/>:</strong>
+    <table class="tablesorter" id="mypayments">
+      <thead>
+        <tr>
+          <th>
+            <xsl:value-of select="$i18n/id"/>
+          </th>
+          <th>
+            <xsl:value-of select="$i18n/memo"/>
+          </th>
+          <th>
+            <xsl:value-of select="$i18n/amount"/>
+          </th>
+          <th>
+            <xsl:value-of select="$i18n/date"/>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+    <!-- START LOOP -->
+        <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
+          <xsl:variable name="my_entry_id">
+            <xsl:value-of select="entry_id"/>
+          </xsl:variable>
+          <tr onmouseover="oldClass=this.className; this.className='active'"
+          onmouseout="this.className=oldClass">
+            <td>
+              <a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
                 <xsl:value-of select="entry_id"/>
-              </xsl:variable>
-              <tr>
-                <!-- Here the check number is the equivalent of a journal entry memorandum -->
-                <td>
-                  <input type="text" name="check_number[]" style="width: 40px;"
-                  value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
-                </td>
-                <td><input type="text" name="entry_amount[]" style="width: 60px;"
-                value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
-                </td>
-                <!-- Additional deposit line items. -->
-                <td>
-                  <xsl:if test="position() &gt; 1">
-                    <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
-                        onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-                      <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
-                    </a>
-                  </xsl:if>
-                </td>
-                <!-- OUTSTANDING INVOICES DROP DOWN LIST HERE -->
-                <td>
-                  <select name="from_account_id" required="0" exclude="-1" err="{/_R_/i18n/error_select_credit}">
-                    <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
-                    </option>
-                    <option value="0">
-                      <xsl:value-of select="/_R_/i18n/not_applicable"/>
-                    </option>
-                    <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-                      <xsl:variable name="my_new_entry_id">
-                        <xsl:value-of select="entry_id"/>
-                      </xsl:variable>
-                      <xsl:variable name="my_customer_id">
-                        <xsl:value-of select="customer_id"/>
-                      </xsl:variable>
-
-                      <option value="{id}">
-                        <xsl:if test="id=//metadata/metadata/account_id and not(/_R_/_get/transaction_id)">
-                          <xsl:attribute name="selected">selected</xsl:attribute>
-                        </xsl:if>
-                        <xsl:value-of select="$business_object_get_metadata[meta_key='invoice_number' and entry_id=$my_new_entry_id]/meta_value"/>, 
-                        <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,12)"/>
-
-                        <xsl:value-of select="name"/>
-                      </option>
-                    </xsl:for-each>
-                  </select>
-                </td>
-                <td>
-                  <!-- need to select where the money is coming from - or is it accounts receivable? -->
-                  <select name="revenue_account_id" required="1" exclude="-1"
-                  err="{/_R_/i18n/error_select_credit}">
-                    <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/credit_account"/>
-                    </option>
-                    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-                      <option value="{id}">
-                        <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
-                          <xsl:attribute name="selected">selected</xsl:attribute>
-                        </xsl:if>
-                        <xsl:value-of select="substring(name,0,16)"/>
-                      </option>
-                    </xsl:for-each>
-                  </select>
-                </td>
-              </tr>
-            </xsl:for-each>
-
-            <tr>
-              <td colspan="2"></td>
-              <td>
-                <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
-                  <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-                  src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
-                </a>
-              </td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
-
-        </div>
-      </div>
-
-
-      <input type="submit" id="submit-me"/>
-    </form>
-	</xsl:template>
+              </a>
+            <!--
+            <xsl:value-of select="entry_id"/>-->
+            </td>
+            <td>
+              <a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
+                <xsl:value-of select="memorandum"/>
+              </a>
+            </td>
+            <td>
+              <xsl:value-of select="entry_amount"/>
+            </td>
+            <td>
+              <xsl:value-of select="entry_datetime"/>
+            </td>
+          </tr>
+        </xsl:for-each>
+    <!-- END LOOP -->
+      </tbody>
+    </table>
+    <xsl:call-template name="pager">
+      <xsl:with-param name="my-table">mypayments</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>
