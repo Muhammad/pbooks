@@ -603,11 +603,10 @@ This makes it easier to maintain persistence. -->
     <!-- this account_meta_key tells the query to look for accounts
     which take deposits. similar values are set for the other business
     processes, like invoices and bills.-->
-
-      <map:insert name="blank-entry"/>
-      <map:query src="data/sql/entry_get_by_id.xml"/>
-      <map:action type="redirect" params="{runtime/link_prefix}customer-payment-edit&amp;entry_id={//get_this_entry_id/entry_id}"/>
-
+		<map:set name="account_meta_key" value="takes_deposits"/>
+		<map:insert name="blank-entry"/>
+		<map:query src="data/sql/entry_get_by_id.xml"/>
+		<map:action type="redirect" params="{runtime/link_prefix}customer-payment-edit&amp;entry_id={//get_this_entry_id/entry_id}"/>
 	</map:gate>
 	<map:gate name="customer-payment-edit" role="pb_admin">
 		<map:query src="data/sql/entry_get_by_id.xml"/>
