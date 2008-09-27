@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: entry_amount_deposit_debit.xml
+Component: entry_amount_customer_payment_credit.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,17 +22,18 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="new_journal_entry_debit">
-    <connection>&pb_connection;</connection>
-    <params>
+<query name="new_journal_entry_credit" loop="//_post/entry_amount" default="1">
+	<connection>&pb_connection;</connection>
+	<params>
 		<param name="//get_this_entry_id/entry_id" type="integer"/>
-		<param name="//_post/deposit_account_id" type="integer" default="0"/>
-		<param name="//deposit_get_total/deposit_total" type="text" default="0"/>
+		<param array="//_post/revenue_account_id" type="integer" default="0"/>
+		<param array="//_post/entry_amount" type="text" default="0"/>
+		<param array="//_post/check_number" type="text" default="0"/>
 	</params>
-    <sql>
+	<sql>
 		INSERT INTO &pb_entry_amounts;
-		(entry_id, entry_type_id, account_id, entry_amount)
+		(entry_id, entry_type_id, account_id, entry_amount,memorandum)
 		VALUES
-		(?, 'Debit', ?, ?)
-    </sql>
+		(?, 'Credit', ?, ?,?)
+	</sql>
 </query>

@@ -62,34 +62,34 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
       </thead>
       <tbody>
-    <!-- START LOOP -->
-        <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-          <xsl:variable name="my_entry_id">
-            <xsl:value-of select="entry_id"/>
-          </xsl:variable>
-          <tr onmouseover="oldClass=this.className; this.className='active'"
-          onmouseout="this.className=oldClass">
-            <td>
-              <a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
-                <xsl:value-of select="entry_id"/>
-              </a>
-            <!--
-            <xsl:value-of select="entry_id"/>-->
-            </td>
-            <td>
-              <a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
-                <xsl:value-of select="memorandum"/>
-              </a>
-            </td>
-            <td>
-              <xsl:value-of select="entry_amount"/>
-            </td>
-            <td>
-              <xsl:value-of select="entry_datetime"/>
-            </td>
-          </tr>
-        </xsl:for-each>
-    <!-- END LOOP -->
+			<!-- START LOOP -->
+			<xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
+				<xsl:variable name="my_entry_id">
+					<xsl:value-of select="entry_id"/>
+				</xsl:variable>
+				<tr onmouseover="oldClass=this.className; this.className='active'"
+				onmouseout="this.className=oldClass">
+					<td>
+						<a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
+							<xsl:value-of select="entry_id"/>
+						</a>
+					<!--
+					<xsl:value-of select="entry_id"/>-->
+					</td>
+					<td>
+						<a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
+							<xsl:value-of select="memorandum"/>
+						</a>
+					</td>
+					<td>
+						<xsl:value-of select="entry_amount"/>
+					</td>
+					<td>
+						<xsl:value-of select="entry_datetime"/>
+					</td>
+				</tr>
+			</xsl:for-each>
+			<!-- END LOOP -->
       </tbody>
     </table>
     <xsl:call-template name="pager">
