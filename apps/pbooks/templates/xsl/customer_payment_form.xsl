@@ -68,15 +68,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <div id="payment">
-        <div id="my_payment_account_id"></div>
         <div id="payment_date">
           <xsl:value-of select="/_R_/i18n/date"/>:
-          <input type="text" name="entry_datetime"
+          <input type="text" name="entry_datetime" style="width: 6em;"
           value="{$get_journal_entry/entry_date}"/>
         </div>
         <div id="payment_memo">
           <xsl:value-of select="/_R_/i18n/memo"/>:
-          <input type="text" name="memorandum"
+          <input type="text" name="memorandum" style="width: 20em;"
           value="{$get_journal_entry/memorandum}"/>
         </div>
         <div id="payment_payee">
@@ -91,6 +90,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
               <td>
                 <xsl:value-of select="/_R_/i18n/source"/>
+                <xsl:value-of select="/_R_/i18n/customer"/>
               </td>
             </tr>
             <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
@@ -182,8 +182,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
         </div>
       </div>
-
-
       <input type="submit" id="submit-me"/>
     </form>
 	</xsl:template>

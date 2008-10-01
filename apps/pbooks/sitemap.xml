@@ -929,7 +929,7 @@ files. -->
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:raw src="INSTALL" />
 	</map:gate>
-	<map:gate name="dynamic-css" cache="600" nosession="true" content_type="text/css" cache_control="public, max-age=600, must-revalidate">
+	<map:gate name="dynamic-css" cache="60" nosession="true" content_type="text/css" cache_control="public, max-age=60, must-revalidate">
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:xsl src="templates/css/dynamic.css.xsl"/>
 	</map:gate>

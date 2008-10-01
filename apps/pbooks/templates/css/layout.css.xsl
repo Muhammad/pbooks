@@ -208,6 +208,28 @@ table.simpletable thead th, table.simpletable tbody tr td {
 }
 
 
+/* Payment form */
+#payment {
+    width: 500px;
+    height: 300px;
+    border: 1px;
+    border-style: solid;
+    padding: 5px;
+}
+
+#payment_date {
+    float: right;
+}
+
+#payment_payee {
+    margin-top: 10px;
+}
+
+#payment_memo {
+    margin-top: 10px;
+}
+
+
 
 
 #journal-entry-form table {
