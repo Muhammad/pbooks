@@ -40,10 +40,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			</map:default>
 		</map:switch>
 	</map:prepend>
-	<map:gate name="x--i18n-fixer">
-		<map:action type="header" params="Content-type,text/plain"/>
-		<map:xsl src="templates/xml/i18n_fixer.xml.xsl"/>
-	</map:gate>
+
 
 	<map:gate name="welcome">
 		<map:action type="redirect" params="{//link_prefix}index"/>
