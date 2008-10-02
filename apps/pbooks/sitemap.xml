@@ -606,6 +606,7 @@ This makes it easier to maintain persistence. -->
 		<map:action type="redirect" params="{runtime/link_prefix}customer-payment-edit&amp;entry_id={//get_this_entry_id/entry_id}"/>
 	</map:gate>
 	<map:gate name="customer-payment-edit" role="pb_admin">
+		<map:set name="account_meta_key" value="customer_payment"/>
 		<map:query src="data/sql/entry_get_by_id.xml"/>
 		<map:query src="data/sql/account_business_objects.xml"/>
 		<map:xml src="data/xml/customer_payment_meta.xml"/>
