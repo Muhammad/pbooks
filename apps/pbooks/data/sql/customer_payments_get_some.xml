@@ -51,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     AND &pb_entry_metadata;.entry_id=&pb_entries;.entry_id
     AND &pb_entry_metadata;.meta_key='customer_payment'
     AND &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
-    AND &pb_entry_amounts;.entry_type_id='Debit'
+    <!-- AND &pb_entry_amounts;.entry_type_id='Debit' -->
     LIMIT ?,?
     </sql>
 </query>

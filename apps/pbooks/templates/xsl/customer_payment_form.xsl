@@ -66,6 +66,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <form action="{$link_prefix}customer-payment-submit&amp;entry_id={/_R_/_get/entry_id}"
         method="post" onSubmit="return validateStandard(this, 'myerror');">
 
+      <input type="hidden" name="customer_payment" value="true"/>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <div id="payment">
         <div id="payment_date">
@@ -89,7 +90,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </td>
               <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
               <td>
-                <xsl:value-of select="/_R_/i18n/source"/>
                 <xsl:value-of select="/_R_/i18n/customer"/>
               </td>
             </tr>
