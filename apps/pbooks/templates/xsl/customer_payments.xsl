@@ -51,6 +51,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="$i18n/id"/>
           </th>
           <th>
+            <xsl:value-of select="$i18n/customer"/>
+          </th>
+          <th>
             <xsl:value-of select="$i18n/memo"/>
           </th>
           <th>
@@ -67,6 +70,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 				<xsl:variable name="my_entry_id">
 					<xsl:value-of select="entry_id"/>
 				</xsl:variable>
+				<xsl:variable name="my_customer_id">
+					<xsl:value-of select="account_id"/>
+				</xsl:variable>
 				<tr onmouseover="oldClass=this.className; this.className='active'"
 				onmouseout="this.className=oldClass">
 					<td>
@@ -76,6 +82,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					<!--
 					<xsl:value-of select="entry_id"/>-->
 					</td>
+          <td>
+            <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
+            <xsl:value-of select="$my_customer_id"/>
+						<xsl:value-of select="account_id"/>
+          </td>
 					<td>
 						<a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
 							<xsl:value-of select="memorandum"/>
