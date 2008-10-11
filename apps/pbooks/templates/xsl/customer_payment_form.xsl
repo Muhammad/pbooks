@@ -88,7 +88,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td>
                 <xsl:value-of select="/_R_/i18n/amount"/>
               </td>
-              <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
+							<td></td>
+              <td>
+								<xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
+							</td>
               <td>
                 <xsl:value-of select="/_R_/i18n/customer"/>
               </td>
@@ -121,9 +124,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <!-- OUTSTANDING INVOICES DROP DOWN LIST HERE -->
                 <td>
                   <select name="from_account_id" required="0" exclude="-1" err="{/_R_/i18n/error_select_credit}">
-                    <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
-                    </option>
                     <option value="0">
                       <xsl:value-of select="/_R_/i18n/not_applicable"/>
                     </option>
@@ -151,10 +151,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   <!-- need to select where the money is coming from - or is it accounts receivable? -->
                   <select name="revenue_account_id" required="1" exclude="-1"
                   err="{/_R_/i18n/error_select_credit}">
-                    <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/credit_account"/>
-                    </option>
-                    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+                    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
                       <option value="{id}">
                         <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
                           <xsl:attribute name="selected">selected</xsl:attribute>
