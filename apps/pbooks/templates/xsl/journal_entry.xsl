@@ -367,6 +367,7 @@ function get_entry_date()
   <xsl:template name="credit">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
+    <xsl:param name="get_journal_entry"/>
     <xsl:param name="i18n"/>
     <xsl:param name="get_journal_entry"/>
     <xsl:variable name="my_account_id">
@@ -431,7 +432,9 @@ function get_entry_date()
               <xsl:value-of select="entry_amount"/>
             </xsl:if>
             <xsl:if test="/_R_/_get/transaction_id">
-              <xsl:call-template name="abs-amount"/>
+              <xsl:call-template name="abs-amount">
+								<xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
+							</xsl:call-template>
             </xsl:if>
           </xsl:attribute>
           <xsl:if test=" ( $get_journal_entry/entry_amount &gt;0 and ( $get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000 ) ) or ( $get_journal_entry/entry_amount &lt;0 and ( $get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000 ) ) ">
@@ -535,7 +538,9 @@ function get_entry_date()
               <xsl:value-of select="entry_amount"/>
             </xsl:if>
             <xsl:if test="/_R_/_get/transaction_id">
-              <xsl:call-template name="abs-amount"/>
+              <xsl:call-template name="abs-amount">
+								<xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
+							</xsl:call-template>
             </xsl:if>
           </xsl:attribute>
         </input>
@@ -556,6 +561,7 @@ function get_entry_date()
 
 
   <xsl:template name="abs-amount">
+    <xsl:param name="get_journal_entry"/>
     <xsl:if test="$get_journal_entry/entry_amount &lt;0">
       <xsl:value-of select="0 - $get_journal_entry/entry_amount"/>
     </xsl:if>
