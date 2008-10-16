@@ -19,16 +19,16 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_journal_entry">
-    <connection>&pb_connection_read;</connection>
-    <params>
+	<connection>&pb_connection_read;</connection>
+	<params>
 		<param name="//_get/transaction_id" type="text" default="%"/>
 	</params>
-    <sql>
-        SELECT * FROM &pb_general_ledger;,&pb_accounts;  
-        WHERE transaction_id=? AND &pb_general_ledger;.account_id=&pb_accounts;.id
-    </sql>
+	<sql>
+		SELECT * FROM &pb_general_ledger;,&pb_accounts;
+		WHERE transaction_id=? AND &pb_general_ledger;.account_id=&pb_accounts;.id
+	</sql>
 </query>
