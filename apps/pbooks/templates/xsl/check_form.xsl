@@ -35,7 +35,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
 
     <form action="{//runtime/link_prefix}check-submit&amp;entry_id={/_R_/_get/entry_id}" method="post" onSubmit="return validateStandard(this, 'myerror');">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-      <div id="check">
+      <div id="business_object_slip">
         <div id="check_account_id"></div>
         <div id="check_date">
           <xsl:value-of select="$i18n/date"/>:

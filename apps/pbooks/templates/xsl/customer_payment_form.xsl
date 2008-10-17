@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
       <input type="hidden" name="customer_payment" value="true"/>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-      <div id="payment">
+      <div id="business_object_slip">
         <div id="payment_date">
           <xsl:value-of select="/_R_/i18n/date"/>:
           <input type="text" name="entry_datetime" style="width: 6em;"

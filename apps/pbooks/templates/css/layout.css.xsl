@@ -140,8 +140,8 @@ table.simpletable thead th, table.simpletable tbody tr td {
     border-style: solid;
 }
 
-/* Check form */
-#check {
+/* Business Objects */
+#business_object_slip {
     width: 500px;
     height: 200px;
     border: 1px;
@@ -149,6 +149,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
     padding: 5px;
 }
 
+/* Check form */
 #check_date {
     float: left;
 }
@@ -163,14 +164,6 @@ table.simpletable thead th, table.simpletable tbody tr td {
 }
 
 /* Deposit slip */
-#deposit {
-    width: 500px;
-    height: 200px;
-    border: 1px;
-    border-style: solid;
-    padding: 5px;
-}
-
 #deposit_date {
     float: left;
 }
@@ -185,38 +178,8 @@ table.simpletable thead th, table.simpletable tbody tr td {
     float:right;
 }
 
-/* Bill form */
-#bill {
-    width: 500px;
-    height: 200px;
-    border: 1px;
-    border-style: solid;
-    padding: 5px;
-}
-#bill_date {
-    float: left;
-}
-#bill_number {
-    float: right;
-}
-#bill_payee {
-    margin-top: 60px;
-    float:right;
-}
-#bill_memo {
-    margin-top: 120px;
-}
-
 
 /* Payment form */
-#payment {
-    width: 500px;
-    height: 300px;
-    border: 1px;
-    border-style: solid;
-    padding: 5px;
-}
-
 #payment_date {
     float: right;
 }
