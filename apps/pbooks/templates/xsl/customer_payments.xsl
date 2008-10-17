@@ -76,7 +76,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 				<tr onmouseover="oldClass=this.className; this.className='active'"
 				onmouseout="this.className=oldClass">
 					<td>
-						<a href="{$link_prefix}payment-edit&amp;entry_id={entry_id}">
+						<a href="{$link_prefix}customer-payment-edit&amp;entry_id={entry_id}">
 							<xsl:value-of select="entry_id"/>
 						</a>
 					<!--
