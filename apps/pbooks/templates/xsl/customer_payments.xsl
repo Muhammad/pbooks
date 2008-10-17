@@ -81,10 +81,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					<xsl:value-of select="entry_id"/>-->
 					</td>
           <td>
-            <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
-            <xsl:value-of select="$my_customer_id"/>
-						<xsl:value-of select="account_id"/>
-          </td>
+						<a href="{$link_prefix}ledger&amp;account_id={$my_customer_id}">
+	            <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
+						</a>
+					</td>
 					<td>
 						<a href="{$link_prefix}customer-payment-edit&amp;entry_id={entry_id}">
 							<xsl:value-of select="memorandum"/>
