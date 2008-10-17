@@ -70,9 +70,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 				<xsl:variable name="my_entry_id">
 					<xsl:value-of select="entry_id"/>
 				</xsl:variable>
-				<xsl:variable name="my_customer_id">
-					<xsl:value-of select="account_id"/>
-				</xsl:variable>
+				<xsl:variable name="my_customer_id" select="/_R_/get_journal_entry/get_journal_entry[entry_type_id='Credit']/account_id"/>
 				<tr onmouseover="oldClass=this.className; this.className='active'"
 				onmouseout="this.className=oldClass">
 					<td>

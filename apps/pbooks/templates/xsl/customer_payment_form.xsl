@@ -148,7 +148,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   </select>
                 </td>
                 <td>
-                  <!-- need to select where the money is coming from - or is it accounts receivable? -->
+                  <!-- Customer -->
                   <select name="revenue_account_id" required="1" exclude="-1"
                   err="{/_R_/i18n/error_select_credit}">
                     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
