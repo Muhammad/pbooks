@@ -53,7 +53,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
     <h2>
       <xsl:value-of select="/_R_/i18n/new_invoice"/>:</h2>
-    <form method="POST" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}&amp;view_flow=true">
+    <form method="post" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <table border="0" id="invoice_form_table">
         <tbody>
