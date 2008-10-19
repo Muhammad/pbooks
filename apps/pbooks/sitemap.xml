@@ -672,6 +672,7 @@ This makes it easier to maintain persistence. -->
 	<map:gate name="matching" role="pb_admin" cache="30">
 		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:query src="data/sql/general_ledger_get_unmatched.xml" />
+		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/xsl/ledger.xsl" />
 	</map:gate>
 	<map:gate name="ledger-match" role="pb_admin">
