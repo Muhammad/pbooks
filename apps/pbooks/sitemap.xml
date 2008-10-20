@@ -283,6 +283,13 @@ This makes it easier to maintain persistence. -->
 			<map:action type="redirect" params="{//link_prefix}invoices"/>
 		</map:if>
 	</map:gate>
+	<map:gate name="x--invoice-paid" role="pb_admin">
+		<map:if name="/_R_/_post">
+			<map:true>
+				<map:query src="data/sql/invoice_paid.xml"/>
+			</map:true>
+		</map:if>
+	</map:gate>
 
 	<map:gate name="invoice-pdf">
 		<map:script src="lib/php/invoice_pdf.php"/>

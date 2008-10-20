@@ -33,6 +33,22 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
       <xsl:with-param name="no-sort-column">, headers: { 6: {sorter: false} }</xsl:with-param>
     </xsl:call-template>
+
+		<!-- INVOICE PAID -->
+    <script type="text/javascript">
+    function invoice_paid(invoice_number, entry_id) {
+        $.post("<xsl:value-of select="$link_prefix"/>x--invoice-paid",
+        {
+          'invoice_number': invoice_number,
+					'entry_id': entry_id
+        },
+        function (data){
+          //document.getElementById(invoice_number).innerHTML="";
+        });
+        //document.getElementById(invoice_id).innerHTML="";
+    }
+    </script>
+
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}invoice-create" id="invoice-create">
         <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
@@ -116,7 +132,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td>
                 <xsl:if test="paid_status='paid_in_full'">
                 <a href="#">
-                  <xsl:value-of select="paid_in_full_date"/>
+                  Paid
+									<xsl:value-of select="paid_in_full_date"/>
+                </a>
+                </xsl:if>
+                <xsl:if test="not(paid_status='paid_in_full')">
+                <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
+								href="{$link_prefix}invoice-paid&amp;invoice_number={invoice_number}&amp;entry_id={$my_entry_id}">
+								  Unpaid
                 </a>
                 </xsl:if>
               </td>
