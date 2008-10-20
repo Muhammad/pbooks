@@ -83,9 +83,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <table border="0" id="payment_form_table">
             <tr>
               <td>
-                <xsl:value-of select="/_R_/i18n/checks"/>
-              </td>
-              <td>
                 <xsl:value-of select="/_R_/i18n/amount"/>
               </td>
 							<td></td>
@@ -104,11 +101,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:value-of select="entry_id"/>
               </xsl:variable>
               <tr>
-                <!-- Here the check number is the equivalent of a journal entry memorandum -->
-                <td>
-                  <input type="text" name="check_number[]" style="width: 40px;"
-                  value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
-                </td>
                 <td><input type="text" name="entry_amount[]" style="width: 60px;"
                 value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
                 </td>
@@ -164,17 +156,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </tr>
             </xsl:for-each>
 
-            <tr>
-              <td colspan="2"></td>
-              <td>
-                <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
-                  <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-                  src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
-                </a>
-              </td>
-              <td></td>
-              <td></td>
-            </tr>
           </table>
 
         </div>
