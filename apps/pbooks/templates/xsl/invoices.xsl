@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					'entry_id': entry_id
         },
         function (data){
-          //document.getElementById(invoice_number).innerHTML="";
+          document.getElementById(invoice_number).innerHTML="Paid";
         });
         //document.getElementById(invoice_id).innerHTML="";
     }
@@ -67,6 +67,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <thead>
           <tr>
             <th>
+              <xsl:value-of select="$i18n/date"/>
+            </th>
+            <th>
               <xsl:value-of select="$i18n/id"/>
             </th>
             <th>
@@ -77,9 +80,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </th>
             <th>
               <xsl:value-of select="$i18n/amount"/>
-            </th>
-            <th>
-              <xsl:value-of select="$i18n/date"/>
             </th>
         <!--
         <th><xsl:value-of select="$i18n/due_date"/></th>
@@ -104,6 +104,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </xsl:variable>
             <tr onmouseover="oldClass=this.className; this.className='active'"
               onmouseout="this.className=oldClass">
+              <td>
+                <xsl:value-of select="entry_datetime"/>
+              </td>
               <td id="{$my_entry_id}">
                 <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
                   <xsl:value-of select="invoice_number"/>
@@ -122,19 +125,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td>
                 <xsl:value-of select="invoice_total"/>
               </td>
-              <td>
-                <xsl:value-of select="entry_datetime"/>
-              </td>
               <!--
               <td><xsl:value-of select="due_date"/></td>
               -->
               <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
-              <td>
+              <td id="{invoice_number}">
                 <xsl:if test="paid_status='paid_in_full'">
-                <a href="#">
                   Paid
-									<xsl:value-of select="paid_in_full_date"/>
-                </a>
                 </xsl:if>
                 <xsl:if test="not(paid_status='paid_in_full')">
                 <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
