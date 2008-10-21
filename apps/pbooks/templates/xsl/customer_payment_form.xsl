@@ -93,7 +93,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:value-of select="/_R_/i18n/customer"/>
               </td>
             </tr>
-            <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
+            <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
               <xsl:variable name="my_entry_amount_id">
                 <xsl:value-of select="entry_amount_id"/>
               </xsl:variable>

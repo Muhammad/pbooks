@@ -19,7 +19,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -48,6 +48,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <thead>
         <tr>
           <th>
+            <xsl:value-of select="$i18n/date"/>
+          </th>
+          <th>
             <xsl:value-of select="$i18n/id"/>
           </th>
           <th>
@@ -59,9 +62,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
           <th>
             <xsl:value-of select="$i18n/amount"/>
           </th>
-          <th>
-            <xsl:value-of select="$i18n/date"/>
-          </th>
         </tr>
       </thead>
       <tbody>
@@ -70,9 +70,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 				<xsl:variable name="my_entry_id">
 					<xsl:value-of select="entry_id"/>
 				</xsl:variable>
-				<xsl:variable name="my_customer_id" select="//get_some_business_objects/account_id"/>
+				<xsl:variable name="my_customer_id" select="account_id"/>
 				<tr onmouseover="oldClass=this.className; this.className='active'"
 				onmouseout="this.className=oldClass">
+					<td>
+						<xsl:value-of select="entry_datetime"/>
+					</td>
 					<td>
 						<a href="{$link_prefix}customer-payment-edit&amp;entry_id={entry_id}">
 							<xsl:value-of select="entry_id"/>
@@ -92,9 +95,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					</td>
 					<td>
 						<xsl:value-of select="entry_amount"/>
-					</td>
-					<td>
-						<xsl:value-of select="entry_datetime"/>
 					</td>
 				</tr>
 			</xsl:for-each>
