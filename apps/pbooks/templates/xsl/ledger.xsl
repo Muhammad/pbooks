@@ -19,7 +19,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
       <xsl:with-param name="my-sort-column">
         ,widthFixed: true
-        <xsl:if test="/_R_/_get/account_id">,sortList: [[2,0],[3,1]]</xsl:if>
+        <xsl:if test="/_R_/_get/account_id">,sortList: [[0,1],[3,0]]</xsl:if>
       </xsl:with-param>
     </xsl:call-template>
     <!-- Need this action to retain any account selection -->
@@ -113,6 +113,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <!-- This cell will be used for a star or flag with notations -->
         <!--<th>FPO</th>-->
             <th>
+              <xsl:value-of select="$i18n/date"/>:
+						</th>
+            <th>
               <xsl:value-of select="$i18n/post"/>
             </th>
             <th>
@@ -126,9 +129,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </th>
             </xsl:if>
 
-            <th>
-              <xsl:value-of select="$i18n/date"/>:
-        </th>
+
             <th>
               <xsl:value-of select="$i18n/amount"/>
             </th>
@@ -147,6 +148,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
               onmouseout="this.className=oldClass">
               <!-- This cell will be used for a star or flag with notations -->
               <!--<td>FPO</td>-->
+              <td>
+                <a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
+                  <xsl:value-of select="entry_datetime"/>
+                </a>
+              </td>
               <td>
                 <xsl:choose>
                   <xsl:when test="not(entry_id='0')">
@@ -181,12 +187,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   </a>
                 </td>
               </xsl:if>
-
-              <td>
-                <a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
-                  <xsl:value-of select="entry_datetime"/>
-                </a>
-              </td>
 
               <td>
                 <xsl:value-of select="entry_amount"/>

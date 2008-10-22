@@ -87,7 +87,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </td>
 							<td></td>
               <td>
+								<!--
 								<xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
+								-->
 							</td>
               <td>
                 <xsl:value-of select="/_R_/i18n/customer"/>
@@ -114,6 +116,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   </xsl:if>
                 </td>
                 <!-- OUTSTANDING INVOICES DROP DOWN LIST HERE -->
+								<!--
                 <td>
                   <select name="from_account_id" required="0" exclude="-1" err="{/_R_/i18n/error_select_credit}">
                     <option value="0">
@@ -139,6 +142,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
                     </xsl:for-each>
                   </select>
                 </td>
+								-->
+								<td></td>
                 <td>
                   <!-- Customer -->
                   <select name="revenue_account_id" required="1" exclude="-1"
