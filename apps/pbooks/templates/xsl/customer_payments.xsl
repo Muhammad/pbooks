@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
-<!-- This calls a template from pager.xsl which loads the javascript -->
+		<!-- This calls a template from pager.xsl which loads the javascript -->
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">mypayments</xsl:with-param>
     </xsl:call-template>
@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:value-of select="$i18n/new_payment"/>
       </a>
     </div>
-<!-- Page title -->
+		<!-- Page title -->
     <strong>
       <xsl:value-of select="$i18n/customer_payments"/>:</strong>
     <table class="tablesorter" id="mypayments">
