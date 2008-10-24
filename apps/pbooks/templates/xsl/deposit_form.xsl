@@ -86,7 +86,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <input type="hidden" name="deposit_account_id" value="{$account_business_objects/id}"/>
       </xsl:if>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-      <div id="deposit">
+      <div id="business_object_slip">
         <div id="my_deposit_account_id"></div>
         <div id="deposit_date">
           <xsl:value-of select="/_R_/i18n/date"/>:
@@ -123,7 +123,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 value="{$get_journal_entry/entry_amount}"/>
                 </td>
                 <td>
-					<!-- only one cash entry is allowed --></td>
+								<!-- only one cash entry is allowed -->
+								</td>
                 <td>
                   <select name="from_account_id" required="0" exclude="-1"
                   err="{/_R_/i18n/error_select_credit}">
