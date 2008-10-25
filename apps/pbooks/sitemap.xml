@@ -895,6 +895,9 @@ This makes it easier to maintain persistence. -->
 
 
 
+	<map:gate name="taxes">
+		<map:xsl src="templates/xsl/taxes.xsl" />
+	</map:gate>
 
 
 
@@ -919,7 +922,6 @@ This makes it easier to maintain persistence. -->
 	<map:gate name="logout" role="pb_admin">
 		<map:action type="redirect" params="auth.php?nid=logout"/>
 	</map:gate>
-
 
 
 
