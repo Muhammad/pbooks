@@ -127,6 +127,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<url>periods</url>
 		</item>
 		<item>
+			<key>workflow</key>
+			<url>workflow</url>
+		</item>
+		<item>
 			<key>admin</key>
 			<url>admin</url>
 		</item>

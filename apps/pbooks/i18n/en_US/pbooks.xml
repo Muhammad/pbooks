@@ -6,6 +6,7 @@
   <account-groups>Account Groups</account-groups>
   <customer-accounts>Customers</customer-accounts>
   <welcome>Welcome</welcome>
+  <workflow>Workflow</workflow>
   <ledger>General Ledger</ledger>
   <journal>General Journal</journal>
   <journal-entry>Journal Entry</journal-entry>

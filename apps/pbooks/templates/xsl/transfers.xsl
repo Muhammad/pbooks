@@ -46,6 +46,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <thead>
           <tr>
             <th>
+              <xsl:value-of select="/_R_/i18n/date"/>
+            </th>
+            <th>
               <xsl:value-of select="/_R_/i18n/id"/>
             </th>
             <th>
@@ -53,9 +56,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </th>
             <th>
               <xsl:value-of select="/_R_/i18n/amount"/>
-            </th>
-            <th>
-              <xsl:value-of select="/_R_/i18n/date"/>
             </th>
             <th>
               <xsl:value-of select="/_R_/i18n/from_account"/>
@@ -76,6 +76,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </xsl:variable>
             <tr onmouseover="oldClass=this.className; this.className='active'"
               onmouseout="this.className=oldClass">
+              <td>
+                <xsl:value-of select="entry_datetime"/>
+              </td>
               <td id="{$my_entry_id}">
                 <a href="{/_R_/runtime/link_prefix}transfer-edit&amp;entry_id={entry_id}">
                   <xsl:value-of select="entry_id"/>
@@ -88,9 +91,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </td>
               <td>
                 <xsl:value-of select="entry_amount"/>
-              </td>
-              <td>
-                <xsl:value-of select="entry_datetime"/>
               </td>
               <td>
                 <xsl:value-of select="from_account_name"/>

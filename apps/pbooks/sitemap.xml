@@ -894,9 +894,14 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 
-
+<!-- TAXES -->
 	<map:gate name="taxes">
 		<map:xsl src="templates/xsl/taxes.xsl" />
+	</map:gate>
+
+<!-- WORKFLOW -->
+	<map:gate name="workflow">
+		<map:xsl src="templates/xsl/workflow.xsl" />
 	</map:gate>
 
 
