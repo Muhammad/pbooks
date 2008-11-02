@@ -130,6 +130,7 @@ a.generic-button {
     background-color: #222;
     border-collapse: collapse;
 }
+
 table.simpletable thead th, table.simpletable tbody tr td {
 	background-color: #FFF;
     text-align: left;
