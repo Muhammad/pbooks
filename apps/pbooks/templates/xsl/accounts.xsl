@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -35,14 +35,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
         , headers: { 4: {sorter: false}, 5: {sorter: false} }
     </xsl:with-param>
     </xsl:call-template>
-<!-- PAGE CONTENT -->
+		<!-- PAGE CONTENT -->
 
-<!-- Confirm account deletion -->
+		<!-- Confirm account deletion -->
     <script type="text/javascript">
     var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
     function account_delete(account_id,row) {
-        if(confirm(question)) { 
-            $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'account_id': account_id}, 
+        if(confirm(question)) {
+            $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'account_id': account_id},
             function (data){
                 myTable = document.getElementById("accounts_table");
                 myTable.deleteRow(row);
@@ -71,17 +71,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </a>
     </div>
 
-<!-- drop down menu for the account selection -->
+		<!-- drop down menu for the account selection -->
     <div style="float: top;">
       <form method="get" action="{$link_prefix}">
         <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-<!-- Select one type of account -->
+				<!-- Select one type of account -->
         <select name="account_type_id" onchange="this.form.submit();">
           <option value="%">
             <xsl:value-of select="$i18n/all"/>
           </option>
           <!-- Special Case -->
-          <xsl:for-each select="/_R_/i18n/account_type">
+          <xsl:for-each select="/_R_/account_types/account_type">
             <option value="{account_type_id}">
               <xsl:if test="account_type_id=/_R_/_get/account_type_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
@@ -124,11 +124,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </thead>
         <tbody>
 
-<!-- These are the account table rows. The tests are to decide how the table
-    should be displayed, i.e. whether or not an account type is selected,
-    or whether the account balance should be displayed -->
+					<!-- These are the account table rows. The tests are to decide how the table
+							should be displayed, i.e. whether or not an account type is selected,
+							or whether the account balance should be displayed -->
 
-<!-- No specific account type selected, show all -->
+					<!-- No specific account type selected, show all -->
           <xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
             <xsl:if test="not(/_R_/_get/nid='account-balances')">
               <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
@@ -149,7 +149,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </xsl:if>
           </xsl:if>
 
-<!-- Specific account type selected, only show that one -->
+					<!-- Specific account type selected, only show that one -->
           <xsl:if test="/_R_/_get/account_type_id">
             <xsl:if test="not(/_R_/_get/nid='account-balances')">
               <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=/_R_/_get/account_type_id]">
@@ -173,14 +173,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </xsl:if>
     </form>
     <br/>
-<!-- Display the text that explains when accounts can be deleted 
-"An account can only be deleted when there are no journal transactions in that 
-account. If you would like to hide the account, click edit and select the hide option."
--->
+		<!-- Display the text that explains when accounts can be deleted 
+		"An account can only be deleted when there are no journal transactions in that 
+		account. If you would like to hide the account, click edit and select the hide option."
+		-->
     <xsl:value-of select="$i18n/account_deletion_requirement"/>
 
   </xsl:template>
 
-<!-- SEE FILE "account_row.xsl" for the actual table contents -->
+	<!-- SEE FILE "account_row.xsl" for the actual table contents -->
 
 </xsl:stylesheet>
