@@ -18,22 +18,23 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<!-- This is the account table row -->
+	<!-- This is the account table row -->
   <xsl:template name="account-row">
     <xsl:variable name="my_link_prefix">
       <xsl:value-of select="/_R_/runtime/link_prefix"/>
     </xsl:variable>
 
-<!-- these rows contain ids for use in testing, do not remove! -->
+		<!-- these rows contain ids for use in testing, do not remove! -->
     <tr onmouseover="oldClass=this.className; this.className='active'"
         onmouseout="this.className=oldClass"
-        onclick="location.href='{$my_link_prefix}ledger&amp;account_id={id}';" style="cursor: pointer;">
+        onclick="location.href='{$my_link_prefix}ledger&amp;account_id={id}';"
+				style="cursor: pointer;">
 
-    <!-- Show account checkbox -->
+			<!-- Show account checkbox -->
       <xsl:if test="/_R_/_get/show_all_accounts='on'">
         <td>
           <input type="checkbox" name="hide[]" value="{id}">
@@ -44,22 +45,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
       </xsl:if>
 
-
-    <!-- Account number -->
+			<!-- Account number -->
       <td>
         <xsl:value-of select="account_number"/>
       </td>
 
-
-    <!-- Account name -->
+			<!-- Account name -->
       <td>
         <a href="{$my_link_prefix}ledger&amp;account_id={id}">
           <xsl:value-of select="name"/>
         </a>
       </td>
 
-
-    <!-- Account type -->
+			<!-- Account type -->
       <xsl:if test="not(/_R_/_get/nid='customer-accounts')">
         <td>
           <a href="{$my_link_prefix}accounts&amp;account_type_id={account_type_id}">
@@ -68,14 +66,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
       </xsl:if>
 
-
-    <!-- Running balance -->
+			<!-- Running balance -->
       <td>
         <xsl:value-of select="running_balance"/>
       </td>
 
-
-    <!-- Account Edit -->
+			<!-- Account Edit -->
       <xsl:if test="/_R_/_get/nid='accounts'">
         <td>
           <a href="{$my_link_prefix}accounts-edit&amp;account_id={id}"
@@ -85,8 +81,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
       </xsl:if>
 
-
-    <!-- Is this a customer account or a regular account? -->
+			<!-- Is this a customer account or a regular account? -->
       <xsl:if test="/_R_/_get/nid='customer-accounts'">
         <td>
           <a href="{$my_link_prefix}customer-edit&amp;account_id={id}"
@@ -96,10 +91,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
       </xsl:if>
 
-
       <td>
-        <a id="{account_number}-d" href="{/_R_/runtime/link_prefix}accounts-delete&amp;account_id={id}"
-            onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
+        <a id="{account_number}-d"
+					href="{/_R_/runtime/link_prefix}accounts-delete&amp;account_id={id}"
+					onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
           <xsl:value-of select="/_R_/i18n/delete"/>
         </a>
       </td>

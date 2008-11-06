@@ -49,9 +49,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
             });
         }
     }
-</script>
+		</script>
+		<xsl:variable name="all_accounts"
+			select="/_R_/get_all_accounts/get_all_accounts"/>
 
-<!-- buttons on the right hand side -->
+		<!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=off">
@@ -131,16 +133,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<!-- No specific account type selected, show all -->
           <xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
             <xsl:if test="not(/_R_/_get/nid='account-balances')">
-              <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+              <xsl:for-each select="$all_accounts">
                 <xsl:sort select="account_number"/>
                 <xsl:call-template name="account-row"/>
               </xsl:for-each>
             </xsl:if>
+
+
             <xsl:if test="/_R_/_get/nid='account-balances'">
-
-
-
-              <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+              <xsl:for-each select="$all_accounts">
                 <xsl:sort select="account_number"/>
                 <xsl:if test="running_balance &gt; 0">
                   <xsl:call-template name="account-row"/>
@@ -152,13 +153,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<!-- Specific account type selected, only show that one -->
           <xsl:if test="/_R_/_get/account_type_id">
             <xsl:if test="not(/_R_/_get/nid='account-balances')">
-              <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=/_R_/_get/account_type_id]">
+              <xsl:for-each select="$all_accounts[account_type_id=/_R_/_get/account_type_id]">
                 <xsl:sort select="account_number"/>
                 <xsl:call-template name="account-row"/>
               </xsl:for-each>
             </xsl:if>
             <xsl:if test="/_R_/_get/nid='account-balances'">
-              <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+              <xsl:for-each select="$all_accounts">
                 <xsl:sort select="account_number"/>
                 <xsl:if test="running_balance &gt; 0">
                   <xsl:call-template name="account-row"/>

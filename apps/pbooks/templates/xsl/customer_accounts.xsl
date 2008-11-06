@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -35,7 +35,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:with-param>
     </xsl:call-template>
 
-<!-- Confirm account deletion -->
+		<xsl:variable name="all_accounts"
+			select="/_R_/get_all_accounts/get_all_accounts"/>
+
+		<!-- Confirm account deletion -->
     <script type="text/javascript">
     var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
     function account_delete(id,row) {
@@ -47,14 +50,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
             });
         }
     }
-</script>
+		</script>
 
-<!-- Confirm account deletion -->
+		<!-- Confirm account deletion -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="$i18n/delete_account"/>?';
-</script>
+		var question = '<xsl:value-of select="$i18n/delete_account"/>?';
+		</script>
 
-<!-- buttons on the right hand side -->
+		<!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
       <xsl:if test="/_R_/show_all_accounts">
         <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=off">
@@ -106,13 +109,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </thead>
         <tbody>
 
-<!-- These are the account table rows.
-    The tests are to decide how the table should be displayed,
-    i.e. whether or not an account type is selected, or whether
-    the account balance should be displayed.
-    See account_row.xsl for the actual row data. -->
+					<!-- These are the account table rows.
+							The tests are to decide how the table should be displayed,
+							i.e. whether or not an account type is selected, or whether
+							the account balance should be displayed.
+							See account_row.xsl for the actual row data. -->
 
-          <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
+          <xsl:for-each select="$all_accounts[accounts_receivable_account='on']">
             <xsl:sort select="account_number"/>
             <xsl:call-template name="account-row"/>
           </xsl:for-each>

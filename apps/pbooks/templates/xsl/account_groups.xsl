@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -28,13 +28,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:param name="link_prefix"/>
   <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple"/>
-<!-- This is the text for the deletion confirm -->
+		<!-- This is the text for the deletion confirm -->
     <script type="text/javascript">
     var question = '<xsl:value-of select="$i18n/delete_account_group"/>?';
     function account_group_delete(group_id,row) {
-      if(confirm(question)) { 
+      if(confirm(question)) {
         $.post("<xsl:value-of select="$link_prefix"/>account-group-delete",
-        {'group_id': group_id}, 
+        {'group_id': group_id},
         function (data){
             myTable = document.getElementById("accounts_table");
             myTable.deleteRow(row);
@@ -95,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <xsl:value-of select="$generation"/>
             </xsl:with-param>
           </xsl:call-template>
-                \----
+                +----
             </xsl:if>
         <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
           <xsl:value-of select="name"/>
@@ -113,8 +113,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </a>
       </td>
       <td>
-        <a id="{account_group}-d" href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
-            onclick="account_group_delete({group_id},this.parentNode.parentNode.rowIndex); return false; ">
+        <a id="{account_group}-d"
+					href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
+					onclick="account_group_delete({group_id},this.parentNode.parentNode.rowIndex); return false;">
           <xsl:value-of select="/_R_/i18n/delete"/>
         </a>
       </td>
