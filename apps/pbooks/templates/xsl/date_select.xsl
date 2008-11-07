@@ -30,7 +30,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<xsl:variable name="link_prefix">
 			<xsl:value-of select="/_R_/runtime/link_prefix"/>
 		</xsl:variable>
-		<a href="{$link_prefix}{/_R_/_get/nid}&amp;from_date={/_R_/runtime/prev_from_date}&amp;to_date={/_R_/runtime/prev_to_date}">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="$link_prefix"/>
+				<xsl:value-of select="/_R_/_get/nid"/>
+				<xsl:text>&amp;from_date=</xsl:text>
+				<xsl:value-of select="/_R_/runtime/prev_from_date"/>
+				<xsl:text>&amp;to_date=</xsl:text>
+				<xsl:value-of select="/_R_/runtime/prev_to_date"/>
+				<xsl:if test="//_get/account_id">
+					<xsl:text>&amp;account_id=</xsl:text>
+					<xsl:value-of select="//_get/account_id"/>
+				</xsl:if>
+			</xsl:attribute>
 			<img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
 		</a>
 
@@ -38,7 +50,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 		To <input type="text" name="to_date" class="date_input" value="{/_R_/runtime/to_date}"/>
 
-		<a href="{$link_prefix}{/_R_/_get/nid}&amp;from_date={/_R_/runtime/next_from_date}&amp;to_date={/_R_/runtime/next_to_date}">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="$link_prefix"/>
+				<xsl:value-of select="/_R_/_get/nid"/>
+				<xsl:text>&amp;from_date=</xsl:text>
+				<xsl:value-of select="/_R_/runtime/next_from_date"/>
+				<xsl:text>&amp;to_date=</xsl:text>
+				<xsl:value-of select="/_R_/runtime/next_to_date"/>
+				<xsl:if test="//_get/account_id">
+					<xsl:text>&amp;account_id=</xsl:text>
+					<xsl:value-of select="//_get/account_id"/>
+				</xsl:if>
+			</xsl:attribute>
 			<img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/in.gif"/>
 		</a>
 
