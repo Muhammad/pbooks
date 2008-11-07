@@ -19,8 +19,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 
 */
 
@@ -30,7 +30,6 @@ $default_fiscal_start = Nexista_Config::get("./default_fiscal_start");
 if(empty($default_fiscal_start)) { 
     $default_fiscal_start = "01-01";
 }
-
 
 
 

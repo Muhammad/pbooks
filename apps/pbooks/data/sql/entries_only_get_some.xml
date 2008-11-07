@@ -4,7 +4,7 @@ Component: entries_only_get_some.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_entries">
@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <params>
         <param name="runtime/from_date" type="text" default="2007-04-01"/>
         <param name="runtime/to_date" type="text" default="2008-01-01"/>
+        <param name="//fiscal_period_id" type="text" default="%"/>
         <param name="sorting" type="text" default="ASC"/>
         <param name="sorting" type="text" default="ASC"/>
         <param name="_get/start" type="integer" default="0"/>
@@ -35,15 +36,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <sql>
         SELECT entry_id,
         entry_datetime as entry_datetime,
-        memorandum as memorandum 
+        memorandum as memorandum
         FROM &pb_entries;
         WHERE entry_id!=0
         AND memorandum!='PLACEHOLDER'
         AND entry_datetime &gt;= ?
         AND entry_datetime &lt;= ?
         AND &pb_entries;.status != 9
-        ORDER BY 
-        CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC, 
+				AND &pb_entries;.fiscal_period_id LIKE ?
+        ORDER BY
+        CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC,
         CASE ? WHEN 'DESC' THEN &pb_entries;.entry_datetime END DESC
         LIMIT ?,?
     </sql>

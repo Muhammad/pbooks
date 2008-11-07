@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `pb_entries` (
   `memorandum` text,
   `entry_type` enum('adjusting','budget','comparative','external-accountant','standard','passed-adjusting','eliminating','proposed','recurring','reclassifying','simulated','tax','other') NOT NULL default 'standard',
   `status` tinyint(2) default '2',
+  `fiscal_period_id` int(20) NOT NULL default '0',
   PRIMARY KEY  (`entry_id`),
   KEY `entry_datetime` (`entry_datetime`)
 ) TYPE=InnoDB AUTO_INCREMENT=2227 ;
@@ -121,6 +122,7 @@ CREATE TABLE IF NOT EXISTS `pb_general_ledger` (
   `account_id` int(11) NOT NULL default '1002',
   `entry_id` int(11) NOT NULL default '0',
   `entry_amount_id` bigint(20) NOT NULL,
+  `fiscal_period_id` int(20) NOT NULL default '0',
   PRIMARY KEY  (`transaction_id`),
   KEY `pb_general_ledger_ibfk_1` (`account_id`),
   KEY `pb_general_ledger_ibfk_2` (`entry_id`),

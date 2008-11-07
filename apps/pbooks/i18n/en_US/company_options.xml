@@ -70,7 +70,7 @@ i18n for labels. -->
         <title>Books Mode</title>
     </option>
     <option>
-        <option_key>current_period</option_key>
+        <option_key>fiscal_period_id</option_key>
         <option_type>text</option_type>
         <title>Current Period</title>
     </option>
