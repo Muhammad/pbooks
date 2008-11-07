@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <params>
         <param name="runtime/from_date" type="text"/>
         <param name="runtime/to_date" type="text"/>
+        <param name="//fiscal_period_id" type="text" default="%"/>
         <param name="runtime/sorting" type="text" default="ASC"/>
         <param name="runtime/sorting" type="text" default="ASC"/>
         <param name="_get/start" type="integer" default="0"/>
@@ -50,6 +51,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         AND &pb_general_ledger;.entry_datetime &lt;= ?
 
         AND &pb_general_ledger;.account_id=&pb_accounts;.id
+				AND &pb_general_ledger;.fiscal_period_id LIKE ?
 
         ORDER BY 
         CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_datetime END ASC, 

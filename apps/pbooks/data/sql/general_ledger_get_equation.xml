@@ -37,37 +37,37 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <param name="runtime/to_date" type="text" />
 	</params>
     <sql>
-        SELECT 
-        
-        (SELECT SUM(CASE &pb_accounts;.account_type_id WHEN 10000 THEN entry_amount ELSE 0.00 END) 
+        SELECT
+
+        (SELECT SUM(CASE &pb_accounts;.account_type_id WHEN 10000 THEN entry_amount ELSE 0.00 END)
             FROM &pb_general_ledger;,&pb_accounts;
-            WHERE &pb_general_ledger;.account_id = &pb_accounts;.id 
+            WHERE &pb_general_ledger;.account_id = &pb_accounts;.id
             AND &pb_general_ledger;.entry_datetime &gt;= ?
             AND &pb_general_ledger;.entry_datetime &lt;= ?) AS asset_total,
-            
+
         (SELECT SUM(CASE &pb_accounts;.account_type_id WHEN 20000 THEN entry_amount ELSE 0.00 END)
             FROM &pb_general_ledger;,&pb_accounts;
-            WHERE &pb_general_ledger;.account_id = &pb_accounts;.id 
+            WHERE &pb_general_ledger;.account_id = &pb_accounts;.id
             AND &pb_general_ledger;.entry_datetime &gt;= ?
             AND &pb_general_ledger;.entry_datetime &lt;= ?) AS liabilities_total,
-            
+
         (SELECT SUM(CASE &pb_accounts;.account_type_id WHEN 30000 THEN entry_amount ELSE 0.00 END) 
             FROM &pb_general_ledger;,&pb_accounts;
-            WHERE (&pb_general_ledger;.account_id = &pb_accounts;.id 
+            WHERE (&pb_general_ledger;.account_id = &pb_accounts;.id
             AND &pb_general_ledger;.entry_datetime &gt;= ?
             AND &pb_general_ledger;.entry_datetime &lt;= ?)
             OR entry_amount='0.00') AS equity_total,
             
-        (SELECT  SUM(CASE &pb_accounts;.account_type_id WHEN 40000 THEN entry_amount ELSE 0.00 END) 
+        (SELECT  SUM(CASE &pb_accounts;.account_type_id WHEN 40000 THEN entry_amount ELSE 0.00 END)
             FROM &pb_general_ledger;,&pb_accounts;
-            WHERE (&pb_general_ledger;.account_id = &pb_accounts;.id 
+            WHERE (&pb_general_ledger;.account_id = &pb_accounts;.id
             AND &pb_general_ledger;.entry_datetime &gt;= ?
             AND &pb_general_ledger;.entry_datetime &lt;= ?)
             OR entry_amount='0.00') AS revenue_total,
             
-        (SELECT SUM(CASE &pb_accounts;.account_type_id WHEN 50000 THEN entry_amount ELSE 0.00 END) 
+        (SELECT SUM(CASE &pb_accounts;.account_type_id WHEN 50000 THEN entry_amount ELSE 0.00 END)
             FROM &pb_general_ledger;,&pb_accounts;
-            WHERE (&pb_general_ledger;.account_id = &pb_accounts;.id 
+            WHERE (&pb_general_ledger;.account_id = &pb_accounts;.id
             AND &pb_general_ledger;.entry_datetime &gt;= ?
             AND &pb_general_ledger;.entry_datetime &lt;= ?)
             OR entry_amount='0.00') AS expenses_total;
