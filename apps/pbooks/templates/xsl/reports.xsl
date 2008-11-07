@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   <xsl:value-of select="@key"/>
                 </xsl:variable>
                 <option value="{@id}">
-                  <xsl:value-of select="/_R_/i18n/label[key=$mykey]/value"/>
+                  <xsl:value-of select="/_R_/i18n/*[local-name()=$mykey]"/>
                 </option>
               </xsl:for-each>
             </select>
