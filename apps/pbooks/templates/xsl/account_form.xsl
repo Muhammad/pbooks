@@ -33,9 +33,9 @@ Form input elements have attributes like required="1" if they are to be validate
 and set appropriate parameter "my_action" -->
       <xsl:if test="//get_account/id">
         <input type="hidden" name="my_action" value="update"/>
-        <input type="hidden" value="{//get_account/id}" name="account_id"/>
+        <input type="hidden" value="{//get_account/get_account/id}" name="account_id"/>
       </xsl:if>
-      <xsl:if test="not(//get_account/id)">
+      <xsl:if test="not(//get_account/get_account/id)">
         <input type="hidden" name="my_action" value="create"/>
       </xsl:if>
 
@@ -54,7 +54,7 @@ and set appropriate parameter "my_action" -->
             <xsl:value-of select="/_R_/i18n/account_name"/>:
         </td>
           <td>
-            <input type="text" name="name" value="{//get_account/name|//_post/name}"
+            <input type="text" name="name" value="{//get_account/get_account/name|//_post/name}"
                 required="1" err="{//error[key='missing_account_name']/value}"/>
           </td>
         </tr>
@@ -69,7 +69,7 @@ and set appropriate parameter "my_action" -->
               </option>
               <xsl:for-each select="//account_types/account_type">
                 <option value="{account_type_id}">
-                  <xsl:if test="//get_account/account_type_id=account_type_id or
+                  <xsl:if test="//get_account/get_account/account_type_id=account_type_id or
                   //_post/account_type_id=account_type_id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
