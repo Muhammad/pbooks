@@ -114,15 +114,15 @@ $next_from_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($from_date)),date
 
 
 if(isset($_GET['show_all_accounts'])) {
-    if($_GET['show_all_accounts']=="on") { 
+    if($_GET['show_all_accounts']=="on") {
         $_SESSION['show_all_accounts']="on";
     } else {
         unset($_SESSION['show_all_accounts']);
     }
 }
 
-if(isset($_SESSION['show_all_accounts'])) { 
-    if($_SESSION['show_all_accounts']=="on") { 
+if(isset($_SESSION['show_all_accounts'])) {
+    if($_SESSION['show_all_accounts']=="on") {
         $show_all_accounts = "on";
     }
 }

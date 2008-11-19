@@ -23,15 +23,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="new_journal_entry">
-    <connection>&pb_connection;</connection>
-    <params>
+	<connection>&pb_connection;</connection>
+	<params>
 		<param name="entry_datetime" type="text"/>
 		<param name="temp_entry_datetime" type="text"/>
+		<param name="fiscal_period_id" type="integer"/>
 	</params>
-    <sql>
-        INSERT INTO &pb_entries;
-		(entry_datetime,memorandum,status)
+	<sql>
+		INSERT INTO &pb_entries;
+		(entry_datetime,memorandum,status,fiscal_period_id)
 		VALUES
-		(?,?,9)
+		(?,?,9,?)
     </sql>
 </query>

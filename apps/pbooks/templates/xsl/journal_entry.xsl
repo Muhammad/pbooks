@@ -41,21 +41,21 @@ Sorry for all the white space! Hard to navigate without.
     <xsl:call-template name="jquery-setup-simple"/>
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete", 
+            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
             {
                 'entry_amount_id': entry_amount_id
-            }, 
+            },
             function (data){
             });
             myTable = document.getElementById("entry_form_table");
-            if(myTable.getElementsByTagName('tr').length > 4) { 
+            if(myTable.getElementsByTagName('tr').length > 4) {
                 myTable.deleteRow(row);
             } else {
                 setTimeout('window.location.reload()',200);
             }
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id, 
+            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
             {
                 'entry_id': entry_id,
                 'entry_datetime': entry_date
@@ -68,11 +68,11 @@ Sorry for all the white space! Hard to navigate without.
     function debits_summarize() {
         mysum = "";
         for (i=0; i &lt; document.forms[0].length; i++) {
-            if(document.forms[0].elements[i].name == "debit_amount_1[]") { 
+            if(document.forms[0].elements[i].name == "debit_amount_1[]") {
                 mysum = (mysum * 1) + (1 * document.forms[0].elements[i].value);
             } else if (document.forms[0].elements[i].name == "credit_amount_1[]") {
                 mytarget = document.forms[0].elements[i];
-            } else { 
+            } else {
             }
         }
         mytarget.value = mysum;
@@ -136,6 +136,9 @@ Sorry for all the white space! Hard to navigate without.
               <td>
                 <input type="text" name="entry_datetime" id="entry_datetime"
                 value="{$get_journal_entry/entry_datetime}"/>
+								Fiscal period: 
+                <input type="text" name="fiscal_period_id" id="fiscal_period_id" size="4"
+                value="{$get_journal_entry/fiscal_period_id|//option_get_company_name/fiscal_period_id}"/>
               </td>
               <xsl:if test="/_R_/_get/transaction_id">
                 <input type="hidden" name="transaction_id" value="{/_R_/_get/transaction_id}"/>

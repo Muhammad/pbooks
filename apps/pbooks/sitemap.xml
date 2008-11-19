@@ -136,7 +136,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xml src="data/xml/strip_chars.xml"/>
 		<map:action type="strip" params="//_post/credit_amount_1,//strip_chars/entry_amounts/char"/>
 		<map:action type="strip" params="//_post/debit_amount_1,//strip_chars/entry_amounts/char"/>
-
 		<map:query src="data/sql/entry_update.xml"/>
 		<map:query src="data/sql/entry_amounts_delete.xml" />
 		<map:query src="data/sql/entry_get_id.xml"/>
