@@ -79,7 +79,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 					return null;
 				};
 			},
-		
+
 			dateToString: function(date) {
 				var month = (date.getMonth() + 1).toString();
 				var dom = date.getDate().toString();

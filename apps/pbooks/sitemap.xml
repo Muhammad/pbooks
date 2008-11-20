@@ -724,12 +724,10 @@ This makes it easier to maintain persistence. -->
 					</map:default>
 				</map:switch>
 			</map:true>
-			<map:false></map:false>
 		</map:if>
 		<map:query src="data/sql/entries_only_get_unposted.xml" />
 		<map:query src="data/sql/entries_get_unposted.xml" />
-		<map:if name="//get_all_entry_amounts">
-			<map:true></map:true>
+		<map:if name="//get_all_entry_amounts/get_all_entry_amounts/entry_id">
 			<map:false>
 				<map:query src="data/sql/entry_set_fully_posted.xml"/>
 			</map:false>
