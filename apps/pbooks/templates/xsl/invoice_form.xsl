@@ -81,7 +81,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                   </option>
                 </xsl:for-each>
               </select>&#160;
-            <a href="{/_R_/runtime/link_prefix}customer-edit">
+            <a href="{$link_prefix}customer-edit&amp;print=true&amp;keepThis=true&amp;TB_iframe=true&amp;height=300&amp;width=500" title="Add New Customer" class="thickbox">
             <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
               </a>
             </td>
