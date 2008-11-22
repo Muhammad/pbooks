@@ -82,9 +82,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
     <xsl:if test="/_R_/_get/print='true'">
-      <div onclick="window.location.href='{substring-before(//REQUEST_URI,'&amp;print=true')}';"
-          style="padding: 20px; width: 600px;">
-        <xsl:call-template name="content"/>
+      <div style="padding: 20px; width: 600px;">
+          <xsl:call-template name="content">
+            <xsl:with-param name="link_prefix">
+              <xsl:value-of select="$link_prefix"/>
+            </xsl:with-param>
+            <xsl:with-param name="path_prefix">
+              <xsl:value-of select="$path_prefix"/>
+            </xsl:with-param>
+            <xsl:with-param name="i18n" select="$i18n"/>
+          </xsl:call-template>
       </div>
     </xsl:if>
   </xsl:template>
