@@ -41,6 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.cookie.js"></script>
 	<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.json.js"></script>
 	<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
+	<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/thickbox.js"></script>
 	<script type="text/javascript" src="{$path_prefix}/s/js/jsval.js"></script>
 <xsl:for-each select="//in_head">
     <xsl:sort select="priority"/>
