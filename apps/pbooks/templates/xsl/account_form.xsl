@@ -24,6 +24,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
+  <xsl:param name="link_prefix"/>
+  <xsl:param name="path_prefix"/>
+  <xsl:param name="i18n"/>
 
 <!-- The form is validated via a javascript library included in the end of main.xsl. 
 Form input elements have attributes like required="1" if they are to be validated. -->
@@ -33,9 +36,9 @@ Form input elements have attributes like required="1" if they are to be validate
 and set appropriate parameter "my_action" -->
       <xsl:if test="//get_account/id">
         <input type="hidden" name="my_action" value="update"/>
-        <input type="hidden" value="{//get_account/get_account/id}" name="account_id"/>
+        <input type="hidden" value="{/_R_/get_account/get_account/id}" name="account_id"/>
       </xsl:if>
-      <xsl:if test="not(//get_account/get_account/id)">
+      <xsl:if test="not(/_R_/get_account/get_account/id)">
         <input type="hidden" name="my_action" value="create"/>
       </xsl:if>
 
@@ -51,25 +54,25 @@ and set appropriate parameter "my_action" -->
       <table class="form-table" cellpadding="10">
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/account_name"/>:
-        </td>
+            <xsl:value-of select="$i18n/account_name"/>:
+					</td>
           <td>
-            <input type="text" name="name" value="{//get_account/get_account/name|//_post/name}"
+            <input type="text" name="name" value="{/_R_/get_account/get_account/name|//_post/name}"
                 required="1" err="{//error[key='missing_account_name']/value}"/>
           </td>
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/account_type"/>:
+            <xsl:value-of select="$i18n/account_type"/>:
         </td>
           <td>
             <select name="account_type_id">
               <option>
-                <xsl:value-of select="/_R_/i18n/select_one"/>
+                <xsl:value-of select="$i18n/select_one"/>
               </option>
               <xsl:for-each select="//account_types/account_type">
                 <option value="{account_type_id}">
-                  <xsl:if test="//get_account/get_account/account_type_id=account_type_id or
+                  <xsl:if test="/_R_/get_account/get_account/account_type_id=account_type_id or
                   //_post/account_type_id=account_type_id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
@@ -81,27 +84,27 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/account_number"/>:
+            <xsl:value-of select="$i18n/account_number"/>:
         </td>
           <td>
             <input type="text" name="account_number" required="1"
                 err="{//error[key='missing_account_number']/value}"
-                value="{//get_account/get_account/account_number|//_post/account_number}"/>
+                value="{/_R_/get_account/get_account/account_number|//_post/account_number}"/>
           </td>
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/desc"/>:
+            <xsl:value-of select="$i18n/desc"/>:
         </td>
           <td>
             <textarea name="description" cols="40" rows="6">
-              <xsl:value-of select="//get_account/get_account/description|//_post/description"/>&#160;
+              <xsl:value-of select="/_R_/get_account/get_account/description|//_post/description"/>&#160;
             </textarea>
           </td>
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/has_checks"/>:
+            <xsl:value-of select="$i18n/has_checks"/>:
         </td>
           <td>
             <input type="radio" name="has_checks" value="on">
@@ -118,7 +121,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/takes_deposits"/>:
+            <xsl:value-of select="$i18n/takes_deposits"/>:
         </td>
           <td>
             <input type="radio" name="takes_deposits" value="on">
@@ -135,7 +138,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/accounts_receivable_account"/>:
+            <xsl:value-of select="$i18n/accounts_receivable_account"/>:
         </td>
           <td>
             <input type="radio" name="accounts_receivable_account" value="on">
@@ -152,7 +155,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/cash_account"/>:</td>
+            <xsl:value-of select="$i18n/cash_account"/>:</td>
           <td>
             <input type="radio" name="cash_account" value="on">
               <xsl:if test="/_R_/get_account/get_account/cash_account='on'">
@@ -169,7 +172,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/group"/>:
+            <xsl:value-of select="$i18n/group"/>:
         </td>
           <td>
             <select name="group_id">
@@ -189,7 +192,7 @@ and set appropriate parameter "my_action" -->
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/hide"/>:
+            <xsl:value-of select="$i18n/hide"/>:
         </td>
           <td>
             <input type="checkbox" name="hide">
@@ -201,8 +204,8 @@ and set appropriate parameter "my_action" -->
         </tr>
       </table>
       <div style="text-align: center; margin-top: 20px;">
-        <input type="submit" value="{/_R_/i18n/save}" name="submit" />
-        <input type="button" value="{/_R_/i18n/cancel}"
+        <input type="submit" value="{$i18n/save}" name="submit" />
+        <input type="button" value="{$i18n/cancel}"
             onclick="window.location.href='{/_R_/runtime/link_prefix}accounts'"/>
       </div>
     </form>
