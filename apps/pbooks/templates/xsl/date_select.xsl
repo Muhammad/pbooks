@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<xsl:variable name="link_prefix">
 			<xsl:value-of select="/_R_/runtime/link_prefix"/>
 		</xsl:variable>
-		<a>
+		<a title="Previous Period">
 			<xsl:attribute name="href">
 				<xsl:value-of select="$link_prefix"/>
 				<xsl:value-of select="/_R_/_get/nid"/>
@@ -46,11 +46,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
 		</a>
 
-		From <input type="text" name="from_date" class="date_input" value="{$my_from_date}"/>
+		From <input type="text" name="from_date" size="12" class="date_input" value="{$my_from_date}"/>
 
-		To <input type="text" name="to_date" class="date_input" value="{/_R_/runtime/to_date}"/>
+		To <input type="text" name="to_date"  size="12" class="date_input" value="{/_R_/runtime/to_date}"/>
 
-		<a>
+		<a title="Next Period">
 			<xsl:attribute name="href">
 				<xsl:value-of select="$link_prefix"/>
 				<xsl:value-of select="/_R_/_get/nid"/>

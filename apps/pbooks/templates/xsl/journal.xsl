@@ -32,9 +32,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:variable name="get_all_entry_amounts"
       select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
 
-
-
-<!-- POST JOURNAL ENTRY TO LEDGER -->
+		<!-- POST JOURNAL ENTRY TO LEDGER -->
     <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
         $.post("<xsl:value-of select="$link_prefix"/>ledger-create",
@@ -51,7 +49,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         document.getElementById(entry_amount_id).innerHTML="";
     }
     </script>
-<!-- buttons on the right hand side -->
+		<!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
 
       <a href="{$link_prefix}journal-new" class="generic-button" id="new_journal_entry">
@@ -59,7 +57,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:value-of select="$i18n/new_entry"/>
       </a>
     </div>
-<br/><br/>
+		<br/><br/>
     <table width="100%">
       <tr>
         <td>
@@ -75,15 +73,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
       </tr>
     </table>
     <form action="{$link_prefix}journal-delete" method="post">
-<!-- this is the table of journal entries. we don't use the tablesorter here 
+		<!-- this is the table of journal entries. we don't use the tablesorter here 
 because of the dynamic number of rows per entry. -->
       <table class="journal-table">
         <thead>
           <tr>
-            <th></th>
-            <th>
-              <xsl:value-of select="$i18n/id"/>
-            </th>
             <th>
               <xsl:value-of select="$i18n/date"/>
             </th>
@@ -101,11 +95,16 @@ because of the dynamic number of rows per entry. -->
             <th>
               <xsl:value-of select="$i18n/credit"/>
             </th>
+            <th>
+              <xsl:value-of select="$i18n/id"/>
+            </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-    <!-- each journal entry is comprised of the entry itself, plus several entry amounts and accounts which are descendent from it. 
-    The outer loop goes through each entry, and the inner loop iterates through each entry amount. -->
+    <!-- each journal entry is comprised of the entry itself, plus several entry
+		amounts and accounts which are descendent from it. The outer loop goes
+		through each entry, and the inner loop iterates through each entry amount. -->
 
     <!-- OUTER LOOP -->
           <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
@@ -117,16 +116,6 @@ because of the dynamic number of rows per entry. -->
             </xsl:variable>
             <tr class="row2">
               <td valign="top" class="journal-data">
-                <input type="checkbox" name="entry_id[]" value="{entry_id}"/>
-              </td>
-
-              <td valign="top" class="journal-data">
-                <a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
-                  <xsl:value-of select="entry_id"/>
-                </a>
-              </td>
-
-              <td valign="top" class="journal-data">
                 <xsl:value-of select="entry_datetime"/>
               </td>
 
@@ -135,6 +124,14 @@ because of the dynamic number of rows per entry. -->
                 <a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
                   <xsl:value-of select="memorandum"/>
                 </a>
+              </td>
+              <td valign="top" class="journal-data">
+                <a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
+                  <xsl:value-of select="entry_id"/>
+                </a>
+              </td>
+              <td align="right" valign="top" class="journal-data">
+                <input type="checkbox" name="entry_id[]" value="{entry_id}"/>
               </td>
             </tr>
 
@@ -155,15 +152,15 @@ because of the dynamic number of rows per entry. -->
               <xsl:if test="not($this_entry_debit_total=$this_entry_credit_total)">red</xsl:if>
             </xsl:variable>
 
-   <!--  INNER LOOP -->
+						<!--  INNER LOOP -->
             <xsl:for-each select="$get_all_entry_amounts[entry_id=$this_entry_id]">
               <xsl:variable name="posi">
                 <xsl:value-of select="position()"/>
               </xsl:variable>
               <tr class="row{$posa}">
-                <td colspan="5" class="row{$posa}"></td>
+                <td colspan="3" class="row{$posa}"></td>
 
- <!-- 
+								<!-- 
      These table cells contain the account name and amount for each 
      transaction in each entry. If the entry has not yet been posted to the 
      general ledger, and the entry is in balance, then a "+" link will be 
@@ -178,8 +175,10 @@ because of the dynamic number of rows per entry. -->
                     <!-- This make an AJAX request to post the entry to the ledger,
                     and then removes the plus sign -->
                       <div id="{entry_amount_id}">
-                        <a href="{$link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}" onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
-                          <div class="journal-post-plus" style="background-image: url({$path_prefix}{/_R_/runtime/icon_set}add.png);">&#160;</div>
+                        <a href="{$link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}"
+													onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
+                          <div class="journal-post-plus"
+														style="background-image: url({$path_prefix}{/_R_/runtime/icon_set}add.png);">&#160;</div>
                         </a>
                       </div>
                     </xsl:if>
@@ -207,6 +206,7 @@ because of the dynamic number of rows per entry. -->
                   </td>
                   <td class="journal-data">&#160;</td>
                 </xsl:if>
+								<td class="journal-data" colspan="2">&#160;</td>
 
               </tr>
             </xsl:for-each>
@@ -227,9 +227,10 @@ because of the dynamic number of rows per entry. -->
         </xsl:variable>
 
 
-    <!-- This row shows the total of the credits and the debits, which should be equal. If they are unequal, PBooks will complain to the user. -->
+    <!-- This row shows the total of the credits and the debits, which should be equal.
+			If they are unequal, PBooks will complain to the user. -->
         <tr>
-          <td colspan="7" align="right">
+          <td colspan="5" align="right">
             <xsl:if test="not($total_credits=$total_debits)">
               <div style="color: red;" id="error_match">
                 <xsl:value-of select="$i18n/error_match"/>:
@@ -242,17 +243,19 @@ because of the dynamic number of rows per entry. -->
           <td class="journal-data">
             <xsl:value-of select="$total_credits"/>
           </td>
+					<td class="journal-data" colspan="2">&#160;</td>
         </tr>
       </table>
       <xsl:call-template name="previous_next"/>
 
-<!-- only display the form controls for the journal, not other pages which use this template -->
+			<!-- only display the form controls for the journal,
+				not other pages which use this template -->
       <xsl:if test="/_R_/_get/nid='journal'">
-        <input type="button" id="new_entry_button" value="{$i18n/new_entry}" 
+        <input type="button" id="new_entry_button" value="{$i18n/new_entry}"
           onclick="document.location.href='{$link_prefix}journal-new'"/>
-    <!-- Delete selected entries 
+					<!-- Delete selected entries 
     TODO - only display this function in training mode -->
-        <input type="submit" value="{$i18n/delete_entries}" 
+        <input type="submit" value="{$i18n/delete_entries}"
           onclick="return confirm('Are you sure you want to delete these entries?')"/>
       </xsl:if>
     </form>
