@@ -55,13 +55,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
-      <xsl:if test="/_R_/show_all_accounts">
+      <xsl:if test="/_R_/runtime/show_all_accounts='on'">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=off">
           <xsl:value-of select="$i18n/hide_accounts"/>
         </a>
       </xsl:if>
 
-      <xsl:if test="not(/_R_/show_all_accounts)">
+      <xsl:if test="not(/_R_/runtime/show_all_accounts) or /_R_/runtime/show_all_accounts='off'">
         <a href="{$link_prefix}accounts&amp;show_all_accounts=on">
           <xsl:value-of select="$i18n/show_accounts"/>
         </a>
