@@ -4,7 +4,7 @@ Component: account_duplicate_check.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -18,23 +18,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_duplicate_check">
-    <connection>&pb_connection_read;</connection>
-    <params>
-		<param name="_post/account_number" type="text" default="-999"/>
+	<connection>&pb_connection_read;</connection>
+	<params>
+		<param name="_post/account_number" type="integer" default="-999"/>
 		<param name="_post/name" type="text" default="-999"/>
-		<param name="_post/account_id" type="text" default="0"/>
+		<param name="_post/account_id" type="integer" default="0"/>
 	</params>
-    <sql>
-        SELECT *
-        FROM &pb_accounts;
-        
-		WHERE 
-        (account_number=? OR name=?)
-        AND id!=?
-    </sql>
+	<sql>
+		SELECT id FROM &pb_accounts; WHERE (account_number=? OR name=?) AND id!=?
+	</sql>
 </query>

@@ -18,19 +18,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_create_meta" loop="//account_meta/meta" default="1">
-    <connection>&pb_connection;</connection>
-    <params>
+	<connection>&pb_connection;</connection>
+	<params>
 		<param name="//get_account/id" type="text" default="-999"/>
 		<param array="//account_meta/meta/meta_key" type="text"/>
 		<param array="//_post/*[name()=//account_meta/meta/meta_key]/." type="text" default=""/>
 	</params>
-    <sql>
-        INSERT INTO &pb_accounts_meta;
-		(account_id,meta_key,meta_value) VALUES (?,?,?)
-    </sql>
+	<sql>
+		INSERT INTO &pb_accounts_meta; (account_id,meta_key,meta_value) VALUES (?,?,?)
+	</sql>
 </query>

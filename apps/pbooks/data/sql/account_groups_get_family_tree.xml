@@ -18,20 +18,16 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_account_group_family_tree">
-    <connection>&pb_connection_read;</connection>
-    <params>
+	<connection>&pb_connection_read;</connection>
+	<params>
 	</params>
-    <sql>
-        SELECT 
-        &pb_account_group_parents;.*
-        
-        FROM &pb_account_group_parents;
-        
-    
-    </sql>
+	<sql>
+		SELECT *
+		FROM &pb_account_group_parents;
+	</sql>
 </query>

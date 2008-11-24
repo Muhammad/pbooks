@@ -23,19 +23,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_account_group_by_id">
-    <connection>&pb_connection;</connection>
-    <params>
-        <param name="_get/group_id" type="integer"/>
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="_get/group_id" type="integer"/>
 	</params>
-    <sql>
-        SELECT &pb_account_groups;.*, 
-        &pb_account_group_parents;.parent_group_id
-        
-        FROM &pb_account_groups;
-        
-        LEFT JOIN &pb_account_group_parents;
-        ON &pb_account_groups;.id = &pb_account_group_parents;.account_group_id
-        
-        WHERE ID=?
-    </sql>
+	<sql>
+		SELECT &pb_account_groups;.*,
+		&pb_account_group_parents;.parent_group_id
+		FROM &pb_account_groups;
+		LEFT JOIN &pb_account_group_parents;
+		ON &pb_account_groups;.id = &pb_account_group_parents;.account_group_id
+		WHERE ID=?
+	</sql>
 </query>

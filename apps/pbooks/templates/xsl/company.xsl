@@ -18,28 +18,30 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:include href="main.xsl"/>
-<xsl:template name="content">
-<form method="post">
-<table>
-<xsl:for-each select="//company_options/option">
-    <xsl:variable name="my_option"><xsl:value-of select="option_key"/></xsl:variable>
-    <tr>
-        <td>
-            <xsl:value-of select="title"/>:
-        </td>
-        <td>
-            <input type="text" name="{option_key}" 
-                value="{//option_get[option_key=$my_option]/option_value}"/>
-        </td>
-    </tr>
-</xsl:for-each>
-</table>
-<input type="submit"/>
-</form>
-</xsl:template> 
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:include href="main.xsl"/>
+	<xsl:template name="content">
+		<form method="post">
+			<table>
+				<xsl:for-each select="/_R_/company_options/option">
+					<xsl:variable name="my_option">
+						<xsl:value-of select="option_key"/>
+					</xsl:variable>
+					<tr>
+						<td>
+							<xsl:value-of select="title"/>:
+						</td>
+						<td>
+							<input type="text" name="{option_key}"
+								value="{/_R_/option_get[option_key=$my_option]/option_value}"/>
+						</td>
+					</tr>
+				</xsl:for-each>
+			</table>
+			<input type="submit"/>
+		</form>
+	</xsl:template>
 </xsl:stylesheet>

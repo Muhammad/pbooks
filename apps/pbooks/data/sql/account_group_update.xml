@@ -18,20 +18,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_group_update">
-    <connection>&pb_connection;</connection>
-    <params>
-        <param name="_post/name" type="text"/>
-        <param name="_post/description" type="text"/>
-        <param name="_post/group_id" type="integer"/>
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="_post/name" type="text"/>
+		<param name="_post/description" type="text"/>
+		<param name="_post/group_id" type="integer"/>
 	</params>
-    <sql>
-        UPDATE &pb_account_groups;
-        SET name=?, description=?
-        WHERE id=?
-    </sql>
+	<sql>
+		UPDATE &pb_account_groups; SET name=?, description=? WHERE id=?
+	</sql>
 </query>

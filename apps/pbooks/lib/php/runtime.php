@@ -27,13 +27,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 /* Default fiscal start */
 $default_fiscal_start = Nexista_Config::get("./default_fiscal_start");
-if(empty($default_fiscal_start)) { 
+if(empty($default_fiscal_start)) {
     $default_fiscal_start = "01-01";
 }
 
 
 
-// Moved from other runtime: 
+// Moved from other runtime:
 $debug = Nexista_Config::get('./runtime/debug');
 $top_left_logo = "s/images/pbooks-logo_120x60.png";
 
@@ -43,28 +43,27 @@ $path_prefix = dirname($path)."/";
 $link_prefix = $path."?nid=";
 $utcdate = gmdate('Y-m-d H:i:s');
 
-
 $db_version = rtrim(file_get_contents(PROJECT_ROOT.'/config/db_version.txt'));
 $default_selected_lang = Nexista_Config::get("./defaults/default_selected_lang");
-if(empty($default_selected_lang)) { 
+if(empty($default_selected_lang)) {
     $default_selected_lang = "en_US";
 }
 
 $default_theme = Nexista_Config::get("./defaults/default_theme");
-if(empty($default_theme)) { 
+if(empty($default_theme)) {
     $default_theme = "default";
 }
 $default_icon_set = Nexista_Config::get("./defaults/default_icon_set");
-if(empty($default_icon_set)) { 
+if(empty($default_icon_set)) {
     $default_icon_set = "images/icons/famfamfam/";
 }
 $default_currency_unit = Nexista_Config::get("./defaults/default_currency_unit");
-if(empty($default_currency_unit)) { 
+if(empty($default_currency_unit)) {
     $default_currency_unit = "$";
 }
 
 $default_invoice_print_vertical = Nexista_Config::get("./defaults/default_invoice_print_vertical");
-if(empty($default_invoice_print_vertical)) { 
+if(empty($default_invoice_print_vertical)) {
     $default_invoice_print_vertical = "-22";
 }
 
@@ -86,7 +85,7 @@ if(isset($_GET['month'])) {
 }
 
 /*
- * Which date span source should I use? 
+ * Which date span source should I use?
  */
 
 if(isset($_GET['month'])) {
@@ -128,31 +127,32 @@ if(isset($_SESSION['show_all_accounts'])) {
 }
 
 
-$runtime = array('host_name' => $_SERVER['SERVER_NAME'],
-                'path_prefix' => $path_prefix,
-                'link_prefix' => $link_prefix,
-                'right_now' => $utcdate,
-                'utcdate' => $utcdate,
-                'current_user_id' => $current_user_id,
-                'default_currency_unit' => $default_currency_unit,
-                'default_invoice_print_vertical' => $default_invoice_print_vertical,
-                'debug' => $debug,
-                'top_left_logo' => $top_left_logo,
-                'db_version' => $db_version,
-                'from_date' => $from_date,
-                'to_date' => $to_date,
-                'prev_to_date' => $prev_to_date,
-                'prev_from_date' => $prev_from_date,
-                'next_to_date' => $next_to_date,
-                'next_from_date' => $next_from_date,
-                'sorting' => 'ASC',
-                'show_all_accounts' => $show_all_accounts,
-                'selected_lang' => $default_selected_lang,
-                'theme' => $theme,
-                'icon_set' => $default_icon_set,
-                'fiscal_start' => $default_fiscal_start,
-                'request_uri' => $_SERVER['REQUEST_URI'],
-                );
+$runtime = array(
+    'host_name' => $_SERVER['SERVER_NAME'],
+    'path_prefix' => $path_prefix,
+    'link_prefix' => $link_prefix,
+    'right_now' => $utcdate,
+    'utcdate' => $utcdate,
+    'current_user_id' => $current_user_id,
+    'default_currency_unit' => $default_currency_unit,
+    'default_invoice_print_vertical' => $default_invoice_print_vertical,
+    'debug' => $debug,
+    'top_left_logo' => $top_left_logo,
+    'db_version' => $db_version,
+    'from_date' => $from_date,
+    'to_date' => $to_date,
+    'prev_to_date' => $prev_to_date,
+    'prev_from_date' => $prev_from_date,
+    'next_to_date' => $next_to_date,
+    'next_from_date' => $next_from_date,
+    'sorting' => 'ASC',
+    'show_all_accounts' => $show_all_accounts,
+    'selected_lang' => $default_selected_lang,
+    'theme' => $theme,
+    'icon_set' => $default_icon_set,
+    'fiscal_start' => $default_fiscal_start,
+    'request_uri' => $_SERVER['REQUEST_URI'],
+    );
 
 Nexista_Flow::add("runtime",$runtime,false);
 

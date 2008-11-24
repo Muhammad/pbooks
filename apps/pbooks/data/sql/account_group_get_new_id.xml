@@ -13,24 +13,22 @@ the Free Software Foundation; either version 3 of the License, or
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_group_get_new_id">
-    <!-- this query needs to run against the primary database -->
-    <connection>&pb_connection;</connection>
-    <params>
-        <param name="_post/name" type="text"/>
+	<!-- this query needs to run against the primary database -->
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="_post/name" type="text"/>
 	</params>
-    <sql>
-        SELECT id AS group_id
-        FROM &pb_account_groups;
-        WHERE name=?
-    </sql>
+	<sql>
+		SELECT id AS group_id FROM &pb_account_groups; WHERE name=?
+	</sql>
 </query>

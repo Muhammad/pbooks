@@ -23,10 +23,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-
-
-
-
   <xsl:template name="accounting-menu">
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">table-menu</xsl:with-param>
@@ -37,14 +33,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
   </xsl:template>
 
-
 <!-- Original vertical table menu -->
 <!-- Should work with all browsers -->
   <xsl:template name="table-menu">
 
-
     <table cellpadding="0" cellspacing="0" border="0" width="{//left_column/width}">
-
 
       <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
         <xsl:call-template name="button">
@@ -57,10 +50,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </xsl:call-template>
       </xsl:for-each>
 
-
     </table>
   </xsl:template>
-<!-- table menu buttons -->
+	<!-- table menu buttons -->
   <xsl:template name="button">
     <xsl:param name="key"/>
     <tr>
@@ -73,7 +65,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:value-of select="key"/>
       </xsl:variable>
       <tr>
-        <td class="menu-sub" onclick="window.location.href='{//runtime/link_prefix}{url}';">
+        <td class="menu-sub"
+					onclick="window.location.href='{//runtime/link_prefix}{url}';">
           <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
             <xsl:if test="//show_tool_tips='yes'">
               <xsl:attribute name="title">
@@ -87,7 +80,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
   </xsl:template>
 
-<!-- Alternative vertical accordian menus -->
+	<!-- Alternative vertical accordian menus -->
   <xsl:template name="accordian-menu">
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">accordian-menu</xsl:with-param>
@@ -117,10 +110,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
   </xsl:template>
 
-
-
-
-<!-- Alternative horizontal drop down menus -->
+	<!-- Alternative horizontal drop down menus -->
   <xsl:template name="main-menu">
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">main-menu</xsl:with-param>

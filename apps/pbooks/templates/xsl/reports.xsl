@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="main.xsl"/>
   <xsl:include href="date_select.xsl"/>
   <xsl:template name="content">
-<!-- Main reports -->
+	<!-- Main reports -->
     <h2>
       <xsl:value-of select="/_R_/i18n/report_type"/>
     </h2>

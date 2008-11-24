@@ -18,21 +18,16 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="account_groups_get_accounts" loop="//account_sub_groups/groups/group" default="1">
-    <connection>&pb_connection_read;</connection>
-    <params>
-        <param array="account_sub_groups/groups/group" type="integer"/>
+	<connection>&pb_connection_read;</connection>
+	<params>
+		<param array="account_sub_groups/groups/group" type="integer"/>
 	</params>
-    <sql>
-        SELECT &pb_accounts;.group_id, &pb_accounts;.name,  &pb_accounts;.id
-
-        FROM &pb_accounts;
-
-        WHERE
-        &pb_accounts;.group_id=?
-    </sql>
+	<sql>
+		SELECT group_id,name,id FROM &pb_accounts; WHERE group_id=?
+	</sql>
 </query>

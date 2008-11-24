@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:value-of select="$i18n/pbooks_manual"/>
     </h2>
     <a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank">
-        <xsl:value-of select="$i18n/pbooks_user_manual"/>
+			<xsl:value-of select="$i18n/pbooks_user_manual"/>
     </a>
 
     <h2>
@@ -63,10 +63,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <xsl:value-of select="$i18n/savonix"/>
     </a>.
 
-<xsl:value-of select="$i18n/consulting_services"/>
+		<xsl:value-of select="$i18n/consulting_services"/>
 
     <a href="mailto:support@savonix.com">
       <xsl:value-of select="$i18n/support"/>
     </a>.
-</xsl:template>
+	</xsl:template>
 </xsl:stylesheet>

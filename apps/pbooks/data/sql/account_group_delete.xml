@@ -18,18 +18,16 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="delete_account_group">
-    <connection>&pb_connection;</connection>
-    <params>
-        <param name="_post/group_id" type="integer"/>
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="_post/group_id" type="integer" default="-23764"/>
 	</params>
-    <sql>        
-        DELETE FROM &pb_account_groups;
-        WHERE id=?
-        LIMIT 1
-    </sql>
+	<sql>
+		DELETE FROM &pb_account_groups; WHERE id=?
+	</sql>
 </query>

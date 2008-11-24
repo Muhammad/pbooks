@@ -18,7 +18,7 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     select="/_R_/get_journal_entry/get_journal_entry"/>
     <xsl:variable name="business_object_get_metadata"
       select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
-  <xsl:variable name ="i18n" select="/_R_/i18n/label"/>
+		<xsl:variable name ="i18n" select="/_R_/i18n/label"/>
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
@@ -61,8 +61,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </h2>
 
     <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
-        method="post" onSubmit="return validateStandard(this, 'myerror');">
-	<!-- If there is more than one deposit account, the user needs to select
+			method="post" onSubmit="return validateStandard(this, 'myerror');">
+			<!-- If there is more than one deposit account, the user needs to select
 	which one the deposit is being made into -->
       <xsl:if test="count($account_business_objects) &gt; 1">
         <select name="deposit_account_id" required="1" exclude="-1"
@@ -83,7 +83,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
       <!-- If there is only one deposit account, just use that id -->
       <xsl:if test="count($account_business_objects) = 1">
-          <input type="hidden" name="deposit_account_id" value="{$account_business_objects/id}"/>
+          <input type="hidden" name="deposit_account_id"
+						value="{$account_business_objects/id}"/>
       </xsl:if>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <div id="business_object_slip">
@@ -108,7 +109,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <td>
                   <xsl:value-of select="/_R_/i18n/amount"/>
                 </td>
-                <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
+                <td>
+									<xsl:value-of select="/_R_/i18n/invoice"/>
+								</td>
                 <td>
                   <xsl:value-of select="/_R_/i18n/source"/>
                 </td>
@@ -163,7 +166,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <td>
                 <xsl:value-of select="/_R_/i18n/amount"/>
               </td>
-              <td><xsl:value-of select="/_R_/i18n/invoice"/></td>
+              <td>
+								<xsl:value-of select="/_R_/i18n/invoice"/>
+							</td>
               <td>
                 <xsl:value-of select="/_R_/i18n/source"/>
               </td>
@@ -189,13 +194,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <xsl:if test="position() &gt; 1">
                     <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
                         onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-                      <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
+                      <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" />
                     </a>
                   </xsl:if>
                 </td>
                 <!-- OUTSTANDING INVOICES DROP DOWN LIST HERE -->
                 <td>
-                  <select name="from_account_id" required="0" exclude="-1" err="{/_R_/i18n/error_select_credit}">
+                  <select name="from_account_id" required="0"
+										exclude="-1" err="{/_R_/i18n/error_select_credit}">
                     <option value="-1">
                       <xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
                     </option>
@@ -255,7 +261,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </tr>
           </table>
 
-        <!-- Link to journal entry form. -->
+					<!-- Link to journal entry form. -->
           <div style="float: right">
             <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
               <xsl:value-of select="/_R_/i18n/edit_journal_entry"/>
