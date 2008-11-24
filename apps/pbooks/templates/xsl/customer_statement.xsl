@@ -27,6 +27,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		
+
 	</xsl:template>
 </xsl:stylesheet>

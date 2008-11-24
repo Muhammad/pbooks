@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
 						<td>
 							<input type="text" name="{option_key}"
-								value="{/_R_/option_get[option_key=$my_option]/option_value}"/>
+								value="{/_R_/option_get/option_get[option_key=$my_option]/option_value}"/>
 						</td>
 					</tr>
 				</xsl:for-each>

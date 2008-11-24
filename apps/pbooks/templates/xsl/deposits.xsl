@@ -18,19 +18,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
-
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
-<!-- This calls a template from pager.xsl which loads the javascript -->
+		<!-- This calls a template from pager.xsl which loads the javascript -->
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myDeposits</xsl:with-param>
     </xsl:call-template>
@@ -41,9 +40,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <xsl:value-of select="$i18n/new_deposit"/>
       </a>
     </div>
-<!-- Page title -->
+		<!-- Page title -->
     <strong>
-      <xsl:value-of select="$i18n/recent_deposits"/>:</strong>
+      <xsl:value-of select="$i18n/recent_deposits"/>:
+		</strong>
     <table class="tablesorter" id="myDeposits">
       <thead>
         <tr>
@@ -62,13 +62,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
       </thead>
       <tbody>
-    <!-- START LOOP -->
+			<!-- START LOOP -->
         <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
           <xsl:variable name="my_entry_id">
             <xsl:value-of select="entry_id"/>
           </xsl:variable>
           <tr onmouseover="oldClass=this.className; this.className='active'"
-          onmouseout="this.className=oldClass">
+          	onmouseout="this.className=oldClass">
             <td>
               <a href="{$link_prefix}deposit-edit&amp;entry_id={entry_id}">
                 <xsl:value-of select="entry_id"/>
@@ -89,7 +89,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </td>
           </tr>
         </xsl:for-each>
-    <!-- END LOOP -->
+				<!-- END LOOP -->
       </tbody>
     </table>
     <xsl:call-template name="pager">

@@ -42,10 +42,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </th>
           <th>
             <xsl:value-of select="$i18n/date"/>:
-        </th>
+					</th>
           <th>
             Memo.
-        </th>
+					</th>
           <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
             <th>
               <xsl:value-of select="$i18n/account"/>
@@ -73,10 +73,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="entry_datetime"/>
           </xsl:variable>
 
-        <!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE -->
-        <!-- only show the similar ones - first check if there is an unmatched transaction and an existing entry on the same day, then check for equal amounts (and abs val)-->
+					<!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE -->
+					<!-- only show the similar ones - first check if there is an unmatched
+						transaction and an existing entry on the same day, then check for
+						equal amounts (and abs val)-->
           <xsl:if test=" (transaction_id and (entry_amount=/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount)) or (not(transaction_id) and (entry_amount=/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount)) ">
-        <!-- END MOST IMPORTANT PART -->
+					<!-- END MOST IMPORTANT PART -->
             <tr>
               <td></td>
               <td>
