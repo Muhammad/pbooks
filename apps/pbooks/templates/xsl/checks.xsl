@@ -24,7 +24,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
-
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -42,11 +41,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
     <strong>
       <xsl:value-of select="$i18n/recent_checks"/>:
-</strong>
+		</strong>
     <div style="min-height: 400px;" id="myChecksDiv">
       <script type="text/javascript">
-document.getElementById('myChecksDiv').style.visibility = 'hidden';
-</script>
+				document.getElementById('myChecksDiv').style.visibility = 'hidden';
+			</script>
       <table id="myChecks" class="tablesorter">
         <thead>
           <tr>
@@ -71,7 +70,7 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
           </tr>
         </thead>
         <tbody>
-    <!-- Start LOOP -->
+				<!-- Start LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
             <xsl:variable name="my_entry_id">
               <xsl:value-of select="entry_id"/>
@@ -104,13 +103,12 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
               </td>
             </tr>
           </xsl:for-each>
-    <!-- END LOOP -->
+					<!-- END LOOP -->
         </tbody>
       </table>
       <xsl:call-template name="pager">
         <xsl:with-param name="my-table">myChecks</xsl:with-param>
       </xsl:call-template>
     </div>
-
   </xsl:template>
 </xsl:stylesheet>

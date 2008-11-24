@@ -48,7 +48,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <thead>
         <tr>
           <th>
-            <xsl:value-of select="$i18n/id"/>
+            <xsl:value-of select="$i18n/date"/>
           </th>
           <th>
             <xsl:value-of select="$i18n/memo"/>
@@ -57,7 +57,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/amount"/>
           </th>
           <th>
-            <xsl:value-of select="$i18n/date"/>
+            <xsl:value-of select="$i18n/id"/>
           </th>
         </tr>
       </thead>
@@ -70,11 +70,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr onmouseover="oldClass=this.className; this.className='active'"
           	onmouseout="this.className=oldClass">
             <td>
-              <a href="{$link_prefix}deposit-edit&amp;entry_id={entry_id}">
-                <xsl:value-of select="entry_id"/>
-              </a>
-            <!--
-            <xsl:value-of select="entry_id"/>-->
+              <xsl:value-of select="entry_datetime"/>
             </td>
             <td>
               <a href="{$link_prefix}deposit-edit&amp;entry_id={entry_id}">
@@ -85,7 +81,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <xsl:value-of select="entry_amount"/>
             </td>
             <td>
-              <xsl:value-of select="entry_datetime"/>
+              <a href="{$link_prefix}deposit-edit&amp;entry_id={entry_id}">
+                <xsl:value-of select="entry_id"/>
+              </a>
             </td>
           </tr>
         </xsl:for-each>

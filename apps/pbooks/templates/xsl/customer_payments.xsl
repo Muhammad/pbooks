@@ -50,9 +50,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/date"/>
           </th>
           <th>
-            <xsl:value-of select="$i18n/id"/>
-          </th>
-          <th>
             <xsl:value-of select="$i18n/customer"/>
           </th>
           <th>
@@ -60,6 +57,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </th>
           <th>
             <xsl:value-of select="$i18n/amount"/>
+          </th>
+          <th>
+            <xsl:value-of select="$i18n/id"/>
           </th>
         </tr>
       </thead>
@@ -75,13 +75,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<xsl:value-of select="entry_datetime"/>
 					</td>
-					<td>
-						<a href="{$link_prefix}customer-payment-edit&amp;entry_id={entry_id}">
-							<xsl:value-of select="entry_id"/>
-						</a>
-					<!--
-					<xsl:value-of select="entry_id"/>-->
-					</td>
           <td>
 						<a href="{$link_prefix}ledger&amp;account_id={$my_customer_id}">
 	            <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
@@ -94,6 +87,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<xsl:value-of select="entry_amount"/>
+					</td>
+					<td>
+						<a href="{$link_prefix}customer-payment-edit&amp;entry_id={entry_id}">
+							<xsl:value-of select="entry_id"/>
+						</a>
 					</td>
 				</tr>
 			</xsl:for-each>
