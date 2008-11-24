@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: account_meta.xml
+Component: user_types.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,21 +21,21 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<account_meta>
-	<meta>
-		<meta_key>has_checks</meta_key>
-		<meta_type>text</meta_type>
-	</meta>
-	<meta>
-		<meta_key>takes_deposits</meta_key>
-		<meta_type>text</meta_type>
-	</meta>
-	<meta>
-		<meta_key>accounts_receivable_account</meta_key>
-		<meta_type>text</meta_type>
-	</meta>
-	<meta>
-		<meta_key>cash_account</meta_key>
-		<meta_type>text</meta_type>
-	</meta>
-</account_meta>
+<user_types>
+	<user_type>
+		<user_type_id>1</user_type_id>
+		<user_type_key>super_user</user_type_key>
+	</user_type>
+	<user_type>
+		<user_type_id>2</user_type_id>
+		<user_type_key>accountant</user_type_key>
+	</user_type>
+	<user_type>
+		<user_type_id>3</user_type_id>
+		<user_type_key>bookkeeping</user_type_key>
+	</user_type>
+	<user_type>
+		<user_type_id>4</user_type_id>
+		<user_type_key>data_entry</user_type_key>
+	</user_type>
+</user_types>
