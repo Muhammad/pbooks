@@ -1,3 +1,109 @@
+<!--
+Program: PBooks
+Component: pbooks_data_model.sql.xsl
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+-->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
+<xsl:template match="/">
+
+
+<xsl:variable name="engine_default_timestamp">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite'">
+			<xsl:text>NULL</xsl:text>
+	</xsl:if>
+</xsl:variable>
+<xsl:variable name="engine_auto_increment">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>int(11) NOT NULL auto_increment</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite'">
+			<xsl:text> INTEGER PRIMARY KEY</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='postgres'">
+			<xsl:text>integer</xsl:text>
+	</xsl:if>
+</xsl:variable>
+<xsl:variable name="engine_increment_start">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>AUTO_INCREMENT=1</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite'">
+			<xsl:text></xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='postgres'">
+			<xsl:text></xsl:text>
+	</xsl:if>
+</xsl:variable>
+
+
+
+
+<xsl:variable name="engine_auto_increment_b">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>, PRIMARY KEY (category_id)</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite'">
+			<xsl:text></xsl:text>
+	</xsl:if>
+</xsl:variable>
+
+<xsl:variable name="innodb_engine">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>ENGINE=InnoDB</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite' or //engine='postgres'">
+			<xsl:text></xsl:text>
+	</xsl:if>
+</xsl:variable>
+<xsl:variable name="myisam_engine">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>ENGINE=MyISAM</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite' or //engine='postgres'">
+			<xsl:text></xsl:text>
+	</xsl:if>
+</xsl:variable>
+
+
+<xsl:variable name="if_not_exists">
+	<xsl:if test="//engine='mysqli'">
+			<xsl:text>IF NOT EXISTS</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='sqlite' or //engine='postgres'">
+			<xsl:text></xsl:text>
+	</xsl:if>
+</xsl:variable>
+
+<xsl:variable name="integer">
+	<xsl:if test="//engine='sqlite' or //engine='mysqli'">
+			<xsl:text>int(10)</xsl:text>
+	</xsl:if>
+	<xsl:if test="//engine='postgres'">
+			<xsl:text>integer</xsl:text>
+	</xsl:if>
+</xsl:variable>
 
 
 CREATE TABLE IF NOT EXISTS `pb_accounts` (
@@ -180,3 +286,6 @@ ALTER TABLE `pb_entry_metadata`
 ALTER TABLE `pb_general_ledger`
   ADD CONSTRAINT `pb_general_ledger_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `pb_accounts` (`id`),
   ADD CONSTRAINT `pb_general_ledger_ibfk_2` FOREIGN KEY (`entry_id`) REFERENCES `pb_entries` (`entry_id`) ON DELETE CASCADE;
+
+	</xsl:template>
+</xsl:stylesheet>
