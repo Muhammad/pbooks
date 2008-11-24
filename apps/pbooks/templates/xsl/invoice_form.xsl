@@ -27,12 +27,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-<!-- Add / delete items -->
+    <xsl:param name="i18n"/>
+		<!-- Add / delete items -->
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
       $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete",
       {
-          'entry_amount_id': entry_amount_id
+				'entry_amount_id': entry_amount_id
       },
       function (data){
       });
@@ -42,26 +43,27 @@ Fifth Floor, Boston, MA 02110-1301  USA
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
       $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
       {
-          'entry_id': entry_id,
-          'entry_datetime': entry_date
+				'entry_id': entry_id,
+				'entry_datetime': entry_date
       },
       function (data){
-          setTimeout('window.location.reload()',200);
+				setTimeout('window.location.reload()',200);
       });
 		}
 		function add_line_item() {
 		}
-</script>
+		</script>
 
     <h2>
-      <xsl:value-of select="/_R_/i18n/new_invoice"/>:</h2>
+      <xsl:value-of select="$i18n/new_invoice"/>:</h2>
     <form method="post" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <table border="0" id="invoice_form_table">
         <tbody>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/i18n/date"/>:</td>
+              <xsl:value-of select="$i18n/date"/>:
+						</td>
             <td colspan="8">
               <input type="text" name="entry_datetime"
                   id="invoice_date" value="{//get_journal_entry/entry_datetime}"/>
@@ -69,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/i18n/customer"/>:</td>
+              <xsl:value-of select="$i18n/customer"/>:</td>
             <td colspan="7">
               <select name="debit_account_id">
                 <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
@@ -89,7 +91,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/i18n/invoice_number"/>:</td>
+              <xsl:value-of select="$i18n/invoice_number"/>:
+						</td>
             <td colspan="8">
               <input type="text" name="invoice_number">
                 <xsl:attribute name="value">
@@ -105,7 +108,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/i18n/due_date"/>:</td>
+              <xsl:value-of select="$i18n/due_date"/>:</td>
             <td colspan="8">
               <input type="text" name="due_date" value="{//get_some_business_objects/due_date}">
                 <xsl:if test="not(//get_some_business_objects/due_date)">
@@ -116,34 +119,34 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/i18n/paid_status"/>:</td>
+              <xsl:value-of select="$i18n/paid_status"/>:</td>
             <td colspan="8">
               <input type="radio" name="paid_status" value="paid_in_full">
                 <xsl:if test="//business_object_get_metadata/paid_status='paid_in_full'">
                   <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
               </input>
-              <xsl:value-of select="/_R_/i18n/paid_in_full"/>
+              <xsl:value-of select="$i18n/paid_in_full"/>
               <br/>
               <input type="radio" name="paid_status" value="partial_payment">
                 <xsl:if test="//business_object_get_metadata/paid_status='partial_payment'">
                   <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
               </input>
-              <xsl:value-of select="/_R_/i18n/paid"/>
+              <xsl:value-of select="$i18n/paid"/>
               <br/>
               <input type="radio" name="paid_status" value="unpaid">
                 <xsl:if test="not(//business_object_get_metadata/paid_status) or //business_object_get_metadata/paid_status='unpaid'">
                   <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
               </input>
-              <xsl:value-of select="/_R_/i18n/unpaid"/>
+              <xsl:value-of select="$i18n/unpaid"/>
               <br/>
             </td>
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="/_R_/i18n/paid_in_full_date"/>: </td>
+              <xsl:value-of select="$i18n/paid_in_full_date"/>: </td>
             <td colspan="8">
               <input type="text" name="paid_in_full_date" value="{//business_object_get_metadata/paid_in_full_date}"/>
             </td>
@@ -152,28 +155,28 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <tbody>
           <tr>
             <td colspan="8">
-              <xsl:value-of select="/_R_/i18n/billable_items"/>:</td>
+              <xsl:value-of select="$i18n/billable_items"/>:</td>
           </tr>
           <tr>
             <td>ID</td>
             <td>
-              <xsl:value-of select="/_R_/i18n/revenue"/>
+              <xsl:value-of select="$i18n/revenue"/>
             </td>
             <td>
-              <xsl:value-of select="/_R_/i18n/desc"/>
+              <xsl:value-of select="$i18n/desc"/>
             </td>
             <td width="240"></td>
             <td>
-              <xsl:value-of select="/_R_/i18n/quantity"/>
+              <xsl:value-of select="$i18n/quantity"/>
             </td>
             <td>
-              <xsl:value-of select="/_R_/i18n/price"/>
+              <xsl:value-of select="$i18n/price"/>
             </td>
             <td>
-              <xsl:value-of select="/_R_/i18n/total"/>
+              <xsl:value-of select="$i18n/total"/>
             </td>
             <td>
-              <xsl:value-of select="/_R_/i18n/edit"/>
+              <xsl:value-of select="$i18n/edit"/>
             </td>
           </tr>
 
@@ -189,7 +192,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <td>
                 <select name="credit_account_1[]">
                   <option>
-                    <xsl:value-of select="/_R_/i18n/select_one"/>
+                    <xsl:value-of select="$i18n/select_one"/>
                   </option>
                   <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
                     <xsl:variable name="my_account_id">

@@ -102,11 +102,11 @@ because of the dynamic number of rows per entry. -->
           </tr>
         </thead>
         <tbody>
-    <!-- each journal entry is comprised of the entry itself, plus several entry
-		amounts and accounts which are descendent from it. The outer loop goes
-		through each entry, and the inner loop iterates through each entry amount. -->
+				<!-- each journal entry is comprised of the entry itself, plus several entry
+				amounts and accounts which are descendent from it. The outer loop goes
+				through each entry, and the inner loop iterates through each entry amount. -->
 
-    <!-- OUTER LOOP -->
+				<!-- OUTER LOOP -->
           <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
             <xsl:variable name="this_entry_id">
               <xsl:value-of select="entry_id"/>
@@ -135,8 +135,8 @@ because of the dynamic number of rows per entry. -->
               </td>
             </tr>
 
-     <!-- These variables are used inside the loop to select specific nodes using xpath -->
-     <!-- This should likely be moved to processing instruction of action -->
+					 <!-- These variables are used inside the loop to select specific nodes using xpath -->
+					 <!-- This should likely be moved to processing instruction of action -->
             <xsl:variable name="this_entry_debit_total">
               <xsl:value-of
                 select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
@@ -210,12 +210,12 @@ because of the dynamic number of rows per entry. -->
 
               </tr>
             </xsl:for-each>
-    <!-- END INNER LOOP -->
+						<!-- END INNER LOOP -->
             <tr>
               <td colspan="9" class="separator"></td>
             </tr>
           </xsl:for-each>
-     <!-- END OUTER LOOP -->
+					<!-- END OUTER LOOP -->
         </tbody>
         <xsl:variable name="total_debits">
           <xsl:value-of
@@ -227,7 +227,7 @@ because of the dynamic number of rows per entry. -->
         </xsl:variable>
 
 
-    <!-- This row shows the total of the credits and the debits, which should be equal.
+				<!-- This row shows the total of the credits and the debits, which should be equal.
 			If they are unequal, PBooks will complain to the user. -->
         <tr>
           <td colspan="5" align="right">

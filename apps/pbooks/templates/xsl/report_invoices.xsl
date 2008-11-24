@@ -26,6 +26,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table"></xsl:with-param>
     </xsl:call-template>
@@ -33,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <!-- Net change -->
     <div class="generic-button" style="float: right;">
       <b>
-        <xsl:value-of select="/_R_/i18n/net_change"/>
+        <xsl:value-of select="$i18n/net_change"/>
       </b>: 
     <xsl:value-of
       select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
@@ -52,16 +54,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <xsl:value-of select="$link_prefix"/>reports-invoices&amp;month=<xsl:if test="/_R_/_get/month &lt;= 10">0</xsl:if>
                   <xsl:value-of select="/_R_/_get/month - 1"/>
                 </xsl:attribute>
-                <img src="{/_R_/runtime/path_prefix}/images/buttons/out.gif"/>
+                <img src="{$path_prefix}/images/buttons/out.gif"/>
               </a>
             </xsl:if>
             <xsl:if test="not(/_R_/_get/month >= 1)">
-              <img src="{/_R_/runtime/path_prefix}/images/buttons/out_d.gif"/>
+              <img src="{$path_prefix}/images/buttons/out_d.gif"/>
             </xsl:if>
           </td>
 
           <td>
-            <xsl:value-of select="/_R_/i18n/month"/>:</td>
+            <xsl:value-of select="$i18n/month"/>:</td>
           <td>
             <select name="month" onchange="this.form.submit();">
               <option value="%">All</option>
@@ -77,20 +79,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
           <td>
             <xsl:if test="/_R_/_get/month &gt;= 12">
-              <img src="{/_R_/runtime/path_prefix}/images/buttons/in_d.gif"/>
+              <img src="{$path_prefix}/images/buttons/in_d.gif"/>
             </xsl:if>
             <xsl:if test="not(/_R_/_get/month)">
               <a href="{$link_prefix}reports-invoices&amp;month=01">
-                <img src="{/_R_/runtime/path_prefix}/images/buttons/in.gif"/>
+                <img src="{$path_prefix}/images/buttons/in.gif"/>
               </a>
             </xsl:if>
             <xsl:if test="(/_R_/_get/month &lt; 12)">
               <a>
                 <xsl:attribute name="href">
-                  <xsl:value-of select="$link_prefix"/>reports-invoices&amp;month=<xsl:if test="/_R_/_get/month &lt; 9">0</xsl:if>
-                  <xsl:value-of select="/_R_/_get/month + 1"/>
+                  <xsl:value-of select="$link_prefix"/>
+										<xsl:text>reports-invoices&amp;month=</xsl:text>
+										<xsl:if test="/_R_/_get/month &lt; 9">
+											<xsl:text>0</xsl:text>
+										</xsl:if>
+										<xsl:value-of select="/_R_/_get/month + 1"/>
                 </xsl:attribute>
-                <img src="{/_R_/runtime/path_prefix}/images/buttons/in.gif"/>
+                <img src="{$path_prefix}/images/buttons/in.gif"/>
               </a>
             </xsl:if>
           </td>
@@ -101,24 +107,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/id"/>
+              <xsl:value-of select="$i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/client"/>
+              <xsl:value-of select="$i18n/client"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/memo"/>
+              <xsl:value-of select="$i18n/memo"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/amount"/>
+              <xsl:value-of select="$i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/date"/>
+              <xsl:value-of select="$i18n/date"/>
             </th>
           </tr>
         </thead>
         <tbody>
-    <!-- LOOP -->
+				<!-- LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects">
             <xsl:variable name="my_entry_id">
               <xsl:value-of select="entry_id"/>
@@ -157,7 +163,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td colspan="3" style="text-align: right;">Total:</td>
             <td>
               <xsl:value-of
-                select=" format-number( sum( /_R_/get_some_business_objects/invoice_total ),'#########.##') "/>
+                select=" format-number( sum( /_R_/get_some_business_objects/get_some_business_objects/invoice_total ),'#########.##') "/>
             </td>
             <td></td>
           </tr>

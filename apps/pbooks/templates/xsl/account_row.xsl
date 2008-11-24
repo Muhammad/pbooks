@@ -24,9 +24,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<!-- This is the account table row -->
   <xsl:template name="account-row">
-    <xsl:variable name="my_link_prefix">
-      <xsl:value-of select="/_R_/runtime/link_prefix"/>
-    </xsl:variable>
+    <xsl:variable name="my_link_prefix" select="/_R_/runtime/link_prefix"/>
 
 		<!-- these rows contain ids for use in testing, do not remove! -->
     <tr onmouseover="oldClass=this.className; this.className='active'"

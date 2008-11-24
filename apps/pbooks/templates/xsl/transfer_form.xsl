@@ -24,6 +24,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:param name="i18n"/>
     <form action="{/_R_/runtime/link_prefix}transfer-submit&amp;entry_id={/_R_/_get/entry_id}"
       method="post"
       onSubmit="return validateStandard(this, 'myerror');">
@@ -31,15 +34,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <table>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/date"/>:
-        </td>
+            <xsl:value-of select="$i18n/date"/>:
+					</td>
           <td>
             <input type="text" name="entry_datetime" value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
           </td>
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/memo"/>:
+            <xsl:value-of select="$i18n/memo"/>:
           </td>
           <td>
             <input type="text" name="memorandum"/>
@@ -47,7 +50,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/amount"/>:
+            <xsl:value-of select="$i18n/amount"/>:
           </td>
           <td>
             <input type="text" name="transfer_amount"/>
@@ -55,13 +58,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/from"/>:
+            <xsl:value-of select="$i18n/from"/>:
           </td>
           <td>
             <select name="from_account_id" required="1" exclude="-1"
-              err="{/_R_/i18n/error_select_credit}">
+              err="{$i18n/error_select_credit}">
               <option value="-1">
-                <xsl:value-of select="/_R_/i18n/from_account"/>
+                <xsl:value-of select="$i18n/from_account"/>
               </option>
               <xsl:for-each select="//get_all_accounts">
                 <option value="{id}">
@@ -76,12 +79,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/to"/>:
+            <xsl:value-of select="$i18n/to"/>:
           </td>
           <td>
-            <select name="to_account_id" required="1" exclude="-1" err="{/_R_/i18n/error_select_credit}">
+            <select name="to_account_id" required="1" exclude="-1" err="{$i18n/error_select_credit}">
               <option value="-1">
-                <xsl:value-of select="/_R_/i18n/to_account"/>
+                <xsl:value-of select="$i18n/to_account"/>
               </option>
               <xsl:for-each select="//get_all_accounts">
                 <option value="{id}">
@@ -97,15 +100,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <input type="hidden" name="transfer_id" value="{/_R_/_get/entry_id}"/>
         <tr>
           <td>
-            <xsl:value-of select="/_R_/i18n/method"/>:
+            <xsl:value-of select="$i18n/method"/>:
           </td>
           <td>
             <select name="method">
               <option value="check">
-                <xsl:value-of select="/_R_/i18n/by_check"/>
+                <xsl:value-of select="$i18n/by_check"/>
               </option>
               <option value="electronic">
-                <xsl:value-of select="/_R_/i18n/electronic"/>
+                <xsl:value-of select="$i18n/electronic"/>
               </option>
             </select>
           </td>

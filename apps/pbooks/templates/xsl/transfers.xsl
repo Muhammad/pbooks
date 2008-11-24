@@ -25,18 +25,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myTransfers</xsl:with-param>
       <xsl:with-param name="my-table-div">myTransfersDiv</xsl:with-param>
     </xsl:call-template>
     <div class="generic-button" style="float: right;">
-      <a href="{/_R_/runtime/link_prefix}transfer-create" id="transfer-create">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="/_R_/i18n/new_transfer"/>
+      <a href="{$link_prefix}transfer-create" id="transfer-create">
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
+        <xsl:value-of select="$i18n/new_transfer"/>
       </a>
     </div>
     <strong>
-      <xsl:value-of select="/_R_/i18n/recent_transfers"/>:
+      <xsl:value-of select="$i18n/recent_transfers"/>:
 </strong>
     <div style="min-height: 400px;" id="myTransfersDiv">
       <script type="text/javascript">
@@ -46,25 +49,25 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="/_R_/i18n/date"/>
+              <xsl:value-of select="$i18n/date"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/id"/>
+              <xsl:value-of select="$i18n/id"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/memo"/>
+              <xsl:value-of select="$i18n/memo"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/amount"/>
+              <xsl:value-of select="$i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/from_account"/>
+              <xsl:value-of select="$i18n/from_account"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/to_account"/>
+              <xsl:value-of select="$i18n/to_account"/>
             </th>
             <th>
-              <xsl:value-of select="/_R_/i18n/method"/>
+              <xsl:value-of select="$i18n/method"/>
             </th>
           </tr>
         </thead>
@@ -80,7 +83,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:value-of select="entry_datetime"/>
               </td>
               <td id="{$my_entry_id}">
-                <a href="{/_R_/runtime/link_prefix}transfer-edit&amp;entry_id={entry_id}">
+                <a href="{$link_prefix}transfer-edit&amp;entry_id={entry_id}">
                   <xsl:value-of select="entry_id"/>
                 </a>
               </td>

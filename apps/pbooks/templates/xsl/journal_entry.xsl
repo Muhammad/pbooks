@@ -41,45 +41,45 @@ Sorry for all the white space! Hard to navigate without.
     <xsl:call-template name="jquery-setup-simple"/>
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
-            {
-                'entry_amount_id': entry_amount_id
-            },
-            function (data){
-            });
-            myTable = document.getElementById("entry_form_table");
-            if(myTable.getElementsByTagName('tr').length > 4) {
-                myTable.deleteRow(row);
-            } else {
-                setTimeout('window.location.reload()',200);
-            }
+			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
+			{
+					'entry_amount_id': entry_amount_id
+			},
+			function (data){
+			});
+			myTable = document.getElementById("entry_form_table");
+			if(myTable.getElementsByTagName('tr').length > 4) {
+					myTable.deleteRow(row);
+			} else {
+					setTimeout('window.location.reload()',200);
+			}
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-            $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
-            {
-                'entry_id': entry_id,
-                'entry_datetime': entry_date
-            }, 
-            function (data){
-                setTimeout('window.location.reload()',200);
-            });
+			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+			{
+					'entry_id': entry_id,
+					'entry_datetime': entry_date
+			},
+			function (data){
+					setTimeout('window.location.reload()',200);
+			});
     }
-    
-    function debits_summarize() {
-        mysum = "";
-        for (i=0; i &lt; document.forms[0].length; i++) {
-            if(document.forms[0].elements[i].name == "debit_amount_1[]") {
-                mysum = (mysum * 1) + (1 * document.forms[0].elements[i].value);
-            } else if (document.forms[0].elements[i].name == "credit_amount_1[]") {
-                mytarget = document.forms[0].elements[i];
-            } else {
-            }
-        }
-        mytarget.value = mysum;
-    }
-</script>
 
-<!-- Non existent entry_id error -->
+    function debits_summarize() {
+			mysum = "";
+			for (i=0; i &lt; document.forms[0].length; i++) {
+				if(document.forms[0].elements[i].name == "debit_amount_1[]") {
+						mysum = (mysum * 1) + (1 * document.forms[0].elements[i].value);
+				} else if (document.forms[0].elements[i].name == "credit_amount_1[]") {
+						mytarget = document.forms[0].elements[i];
+				} else {
+				}
+			}
+			mytarget.value = mysum;
+    }
+		</script>
+
+		<!-- Non existent entry_id error -->
     <xsl:if test="not($get_journal_entry)">
       <div class="error">
         <xsl:value-of select="//errors/error[key='non_existent_entry_id']/value"/>
@@ -103,18 +103,18 @@ Sorry for all the white space! Hard to navigate without.
         </tr>
       </table>
     </xsl:if>
-<!-- End error message -->
+		<!-- End error message -->
 
 
 
 
 
-<!-- Check to make sure entry_id exists -->
+		<!-- Check to make sure entry_id exists -->
     <xsl:if test="$get_journal_entry">
-<!-- The journal entry form -->
+		<!-- The journal entry form -->
       <xsl:comment>
     start journal entry form table
-</xsl:comment>
+		</xsl:comment>
       <form name="myform" method="post" onSubmit="return validateStandard(this, 'error');" action="{$link_prefix}journal-edit-submit&amp;entry_id={/_R_/_get/entry_id}">
         <xsl:if test="/_R_/_get/entry_id">
           <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
@@ -124,7 +124,7 @@ Sorry for all the white space! Hard to navigate without.
             <tr>
               <td>
                 <xsl:value-of select="$i18n/entry"/> :
-        </td>
+							</td>
               <td>
                 <xsl:value-of select="/_R_/_get/entry_id"/>
               </td>
@@ -132,7 +132,7 @@ Sorry for all the white space! Hard to navigate without.
             <tr>
               <td>
                 <xsl:value-of select="$i18n/date"/> :
-        </td>
+							</td>
               <td>
                 <input type="text" name="entry_datetime" id="entry_datetime"
                 value="{$get_journal_entry/entry_datetime}"/>
@@ -143,14 +143,14 @@ Sorry for all the white space! Hard to navigate without.
               <xsl:if test="/_R_/_get/transaction_id">
                 <input type="hidden" name="transaction_id" value="{/_R_/_get/transaction_id}"/>
                 <input type="hidden" name="transaction_amount" value="{//entry_amount}"/>
-                <input type="hidden" name="transaction_account_id" 
-                value="{$get_journal_entry/account_id}"/>
+                <input type="hidden" name="transaction_account_id"
+	                value="{$get_journal_entry/account_id}"/>
               </xsl:if>
             </tr>
             <tr>
               <td colspan="2">
                 <xsl:value-of select="$i18n/amount"/> :
-        </td>
+							</td>
             </tr>
             <tr>
               <td colspan="2">
@@ -159,18 +159,22 @@ Sorry for all the white space! Hard to navigate without.
                     <tr>
                       <th></th>
                       <th>
-                        <xsl:value-of select="$i18n/type"/> :</th>
+                        <xsl:value-of select="$i18n/type"/> :
+											</th>
                       <th>
-                        <xsl:value-of select="$i18n/accounts"/> :</th>
+                        <xsl:value-of select="$i18n/accounts"/> :
+											</th>
                       <th>
-                        <xsl:value-of select="$i18n/debit"/> :</th>
+                        <xsl:value-of select="$i18n/debit"/> :
+											</th>
                       <th>
-                        <xsl:value-of select="$i18n/credit"/> :</th>
+                        <xsl:value-of select="$i18n/credit"/> :
+											</th>
                       <th width="20"></th>
                     </tr>
                   </thead>
                   <tbody>
-            <!-- Recursive, aka looping, template for debits
+									<!-- Recursive, aka looping, template for debits
                  calls the journal entry row templates, see below
                  -->
                     <xsl:for-each select="$get_journal_entry[entry_type_id='Debit']">
@@ -186,9 +190,10 @@ Sorry for all the white space! Hard to navigate without.
                           <xsl:value-of select="$path_prefix"/>
                         </xsl:with-param>
                         <xsl:with-param name="i18n" select="$i18n"/>
-                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/></xsl:call-template>
+                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
+											</xsl:call-template>
                     </xsl:for-each>
-            <!-- for broken journal entries without a debit -->
+										<!-- for broken journal entries without a debit -->
                     <xsl:if test="not($get_journal_entry[entry_type_id='Debit'])">
                       <xsl:call-template name="debit">
                         <xsl:with-param name="link_prefix">
@@ -198,10 +203,11 @@ Sorry for all the white space! Hard to navigate without.
                           <xsl:value-of select="$path_prefix"/>
                         </xsl:with-param>
                         <xsl:with-param name="i18n" select="$i18n"/>
-                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/></xsl:call-template>
+                        <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
+											</xsl:call-template>
                     </xsl:if>
 
-            <!-- Recursive, aka looping, template for credits -->
+										<!-- Recursive, aka looping, template for credits -->
                     <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
                       <xsl:variable name="my_account_id">
                         <xsl:value-of select="account_id"/>
@@ -224,7 +230,7 @@ Sorry for all the white space! Hard to navigate without.
                       </xsl:call-template>
                     </xsl:for-each>
 
-            <!-- for broken journal entries without a credit -->
+										<!-- for broken journal entries without a credit -->
                     <xsl:if test="not($get_journal_entry[entry_type_id='Credit'])">
                       <xsl:call-template name="credit">
                         <xsl:with-param name="link_prefix">
@@ -247,7 +253,7 @@ Sorry for all the white space! Hard to navigate without.
               </td>
               <td>
                 <textarea type="text" name="memorandum" rows="5" cols="35" required="1" err="Please enter a memo.">
-            <!-- don't show placeholders -->
+								<!-- don't show placeholders -->
                   <xsl:if test=" not ( contains($get_journal_entry/memorandum,'__') ) and 
                     ( not($get_journal_entry=9) ) ">
                     <xsl:value-of select="$get_journal_entry/memorandum"/>
@@ -257,8 +263,6 @@ Sorry for all the white space! Hard to navigate without.
             </tr>
             <tr>
               <td colspan="2">
-
-
                 <table>
                   <tr>
                   <!-- this is an arrow which links to the previous entry_id in the journal -->
@@ -271,30 +275,39 @@ Sorry for all the white space! Hard to navigate without.
                     <!-- Submit the entry -->
                     <td colspan="3" style="text-align: center">
                       <input type="submit" name="submit" id="submit" value="Submit" class="generic-button"/>
-
-            <!-- Cancel the entry, if this is from a transaction, 
+											<!-- Cancel the entry, if this is from a transaction, 
                 the entry must be deleted -->
                       <input type="button" class="generic-button" value="Cancel">
                         <xsl:if test="/_R_/_get/transaction_id">
-                          <xsl:attribute name="onclick">window.location.href='<xsl:value-of select="$link_prefix"/>journal-cancel&amp;transaction_id=<xsl:value-of select="/_R_/_get/transaction_id"/>'</xsl:attribute>
+                          <xsl:attribute name="onclick">
+														<xsl:text>window.location.href='</xsl:text>
+														<xsl:value-of select="$link_prefix"/>
+														<xsl:text>journal-cancel&amp;transaction_id=</xsl:text>
+														<xsl:value-of select="/_R_/_get/transaction_id"/>
+														<xsl:text>'</xsl:text>
+													</xsl:attribute>
                         </xsl:if>
                         <xsl:if test="not(/_R_/_get/transaction_id)">
-                          <xsl:attribute name="onclick">window.location.href='<xsl:value-of select="$link_prefix"/>journal"'</xsl:attribute>
+                          <xsl:attribute name="onclick">
+														<xsl:text>window.location.href='</xsl:text>
+														<xsl:value-of select="$link_prefix"/>
+														<xsl:text>journal"'</xsl:text>
+													</xsl:attribute>
                         </xsl:if>
                       </input>
 
                       <!-- only display in training mode -->
                       <xsl:if test="//books_mode='training' and //flip_entry_button='on'">
-            <!-- The flip function should only be used in training mode. -->
-                        <script language="javascript">
-            function confirmFlip () { 
-                var flip=confirm('<xsl:value-of select="$i18n/confirm_flip"/>.');
-                if(flip)
-                    window.location.href= location.href + '&amp;flip=true';
-                else 
-                    return false;
-            }
-            </script>
+											<!-- The flip function should only be used in training mode. -->
+											<script language="javascript">
+											function confirmFlip () {
+												var flip=confirm('<xsl:value-of select="$i18n/confirm_flip"/>.');
+												if(flip)
+														window.location.href= location.href + '&amp;flip=true';
+												else
+														return false;
+											}
+											</script>
                         <input type="button" class="generic-button" value="Flip" onclick="return confirmFlip();"/>
                       </xsl:if>
                       <!-- end flip comment -->
@@ -335,7 +348,7 @@ If you want to complete this process, continue as usual. For more information, s
           </form>
         </div>
       </xsl:if>
-<!-- end training mode -->
+			<!-- end training mode -->
     </xsl:if>
 
 
@@ -346,7 +359,7 @@ function get_entry_date()
 }
 </script>
   </xsl:template>
-<!-- end form template -->
+	<!-- end form template -->
 
 
 
@@ -417,7 +430,7 @@ function get_entry_date()
               </option>
             </xsl:for-each>
 
-        <!-- HIDDEN ACCOUNT -->
+						<!-- HIDDEN ACCOUNT -->
             <xsl:if test="not($get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id=//get_all_accounts/get_all_accounts/id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
               <option value="{$get_journal_entry/account_id}" selected="selected">
                 <xsl:value-of select="$i18n/account_hidden"/>
@@ -429,7 +442,8 @@ function get_entry_date()
       <td></td>
       <td style="white-space: nowrap;">
         <xsl:value-of select="//runtime/default_currency_unit"/>
-        <input name="credit_amount_1[]" type="text" size="6" required="1" equals="sum(debit_amount_1)" err="Credit and Debit amounts must be equal. ">
+        <input name="credit_amount_1[]" type="text" size="6" required="1"
+					equals="sum(debit_amount_1)" err="Credit and Debit amounts must be equal.">
           <xsl:attribute name="value">
             <xsl:if test="not(/_R_/_get/transaction_id)">
               <xsl:value-of select="entry_amount"/>
@@ -487,7 +501,8 @@ function get_entry_date()
         </xsl:if>
       </td>
       <td>
-        <xsl:value-of select="$i18n/debit"/>:</td>
+        <xsl:value-of select="$i18n/debit"/>:
+			</td>
       <td>
         <select name="debit_account_1[]" required="1" exclude="-1"
           err="Please select a debit account.">
@@ -523,8 +538,8 @@ function get_entry_date()
               <xsl:value-of select="name"/>
             </option>
           </xsl:for-each>
-            
-            <!-- HIDDEN ACCOUNT -->
+
+					<!-- HIDDEN ACCOUNT -->
           <xsl:if test="not($get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts//id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
             <option value="{$get_journal_entry/account_id}" selected="selected">
               <xsl:value-of select="$i18n/account_hidden"/>

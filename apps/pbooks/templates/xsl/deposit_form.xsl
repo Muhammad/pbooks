@@ -26,13 +26,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
+  <xsl:param name="i18n"/>
   <xsl:variable name="account_business_objects"
     select="/_R_/account_business_objects/account_business_objects"/>
   <xsl:variable name="get_journal_entry"
     select="/_R_/get_journal_entry/get_journal_entry"/>
     <xsl:variable name="business_object_get_metadata"
       select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
-		<xsl:variable name ="i18n" select="/_R_/i18n/label"/>
+		<xsl:variable name ="i18n" select="$i18n/label"/>
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
@@ -57,7 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     }
     </script>
     <h2>
-      <xsl:value-of select="/_R_/i18n/make_deposits"/>
+      <xsl:value-of select="$i18n/make_deposits"/>
     </h2>
 
     <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
@@ -68,7 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <select name="deposit_account_id" required="1" exclude="-1"
             err="{/_R_/i18n/error_select_debit}">
           <option value="-1">
-            <xsl:value-of select="/_R_/i18n/deposit_account"/>
+            <xsl:value-of select="$i18n/deposit_account"/>
           </option>
           <xsl:for-each select="$account_business_objects">
             <option value="{id}">
@@ -90,12 +91,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <div id="business_object_slip">
         <div id="my_deposit_account_id"></div>
         <div id="deposit_date">
-          <xsl:value-of select="/_R_/i18n/date"/>:
+          <xsl:value-of select="$i18n/date"/>:
           <input type="text" name="entry_datetime"
           value="{$get_journal_entry/entry_date}"/>
         </div>
         <div id="deposit_memo">
-          <xsl:value-of select="/_R_/i18n/memo"/>:
+          <xsl:value-of select="$i18n/memo"/>:
           <input type="text" name="memorandum"
           value="{$get_journal_entry/memorandum}"/>
         </div>
@@ -104,16 +105,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:if test="//deposits_cash='yes'">
               <tr>
                 <td>
-                  <xsl:value-of select="/_R_/i18n/cash"/>
+                  <xsl:value-of select="$i18n/cash"/>
                 </td>
                 <td>
-                  <xsl:value-of select="/_R_/i18n/amount"/>
+                  <xsl:value-of select="$i18n/amount"/>
                 </td>
                 <td>
-									<xsl:value-of select="/_R_/i18n/invoice"/>
+									<xsl:value-of select="$i18n/invoice"/>
 								</td>
                 <td>
-                  <xsl:value-of select="/_R_/i18n/source"/>
+                  <xsl:value-of select="$i18n/source"/>
                 </td>
               </tr>
               <tr>
@@ -132,10 +133,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <select name="from_account_id" required="0" exclude="-1"
                   err="{/_R_/i18n/error_select_credit}">
                     <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
+                      <xsl:value-of select="$i18n/outstanding_invoices"/>
                     </option>
                     <option value="0">
-                      <xsl:value-of select="/_R_/i18n/not_applicable"/>
+                      <xsl:value-of select="$i18n/not_applicable"/>
                     </option>
                     <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
                       <xsl:variable name="my_new_entry_id">
@@ -161,19 +162,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </xsl:if>
             <tr>
               <td>
-                <xsl:value-of select="/_R_/i18n/checks"/>
+                <xsl:value-of select="$i18n/checks"/>
               </td>
               <td>
-                <xsl:value-of select="/_R_/i18n/amount"/>
+                <xsl:value-of select="$i18n/amount"/>
               </td>
               <td>
-								<xsl:value-of select="/_R_/i18n/invoice"/>
+								<xsl:value-of select="$i18n/invoice"/>
 							</td>
               <td>
-                <xsl:value-of select="/_R_/i18n/source"/>
+                <xsl:value-of select="$i18n/source"/>
               </td>
             </tr>
-            <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
+            <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
               <xsl:variable name="my_entry_amount_id">
                 <xsl:value-of select="entry_amount_id"/>
               </xsl:variable>
@@ -203,10 +204,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <select name="from_account_id" required="0"
 										exclude="-1" err="{/_R_/i18n/error_select_credit}">
                     <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/outstanding_invoices"/>
+                      <xsl:value-of select="$i18n/outstanding_invoices"/>
                     </option>
                     <option value="0">
-                      <xsl:value-of select="/_R_/i18n/not_applicable"/>
+                      <xsl:value-of select="$i18n/not_applicable"/>
                     </option>
                     <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
                       <xsl:variable name="my_new_entry_id">
@@ -231,9 +232,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <td>
                   <!-- need to select where the money is coming from - or is it accounts receivable? -->
                   <select name="revenue_account_id" required="1" exclude="-1"
-                  err="{/_R_/i18n/error_select_credit}">
+                  err="{$i18n/error_select_credit}">
                     <option value="-1">
-                      <xsl:value-of select="/_R_/i18n/credit_account"/>
+                      <xsl:value-of select="$i18n/credit_account"/>
                     </option>
                     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
                       <option value="{id}">
@@ -264,13 +265,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<!-- Link to journal entry form. -->
           <div style="float: right">
             <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
-              <xsl:value-of select="/_R_/i18n/edit_journal_entry"/>
+              <xsl:value-of select="$i18n/edit_journal_entry"/>
             </a>
           </div>
         </div>
       </div>
-
-
       <input type="submit" id="submit-me"/>
     </form>
 

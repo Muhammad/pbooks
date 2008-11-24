@@ -79,8 +79,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:if>
 
 
-
-
     <xsl:if test="/_R_/_get/print='true'">
       <div style="padding: 20px; width: 600px;">
           <xsl:call-template name="content">
@@ -95,6 +93,4 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </div>
     </xsl:if>
   </xsl:template>
-
-
 </xsl:stylesheet>

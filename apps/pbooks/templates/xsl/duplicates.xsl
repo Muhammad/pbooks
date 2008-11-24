@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -32,9 +32,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:call-template>
 
     <xsl:value-of select="$i18n/duplicates_info"/>
-    <xsl:variable name="my_link_prefix">
-      <xsl:value-of select="$link_prefix"/>
-    </xsl:variable>
     <br/>
     <br/>
     <table class="tablesorter" id="myDups">
@@ -59,7 +56,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </th>
           <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">
             <th>
-                Balance
+							Balance
             </th>
           </xsl:if>
         </tr>
@@ -83,7 +80,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <tr>
               <td></td>
               <td>
-                <a href="{$my_link_prefix}journal&amp;from_date={entry_datetime}">
+                <a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
                   <xsl:value-of select="entry_datetime"/>
                 </a>
               </td>
@@ -91,7 +88,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <xsl:value-of select="substring(memorandum[not(.='NULL')],0,20)"/>
               </td>
               <td>
-                <a href="{$my_link_prefix}ledger&amp;account_id={account_id}">
+                <a href="{$link_prefix}ledger&amp;account_id={account_id}">
                   <xsl:value-of select="name"/>
                 </a>
               </td>

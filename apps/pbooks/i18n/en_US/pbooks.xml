@@ -2,7 +2,7 @@
   <chart_of_accounts>Chart of Accounts</chart_of_accounts>
   <default_page_title>PBooks Open Source Accounting and Bookkeeping System</default_page_title>
   <main_menu>Main Menu</main_menu>
-  <accounts>Chart of Accounts</accounts>
+  <accounts>Accounts</accounts>
   <account-groups>Account Groups</account-groups>
   <customer-accounts>Customers</customer-accounts>
   <welcome>Welcome</welcome>
