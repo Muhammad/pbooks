@@ -23,13 +23,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="entry_delete_placeholder">
-    <connection>&pb_connection;</connection>
-    <params>
+	<connection>&pb_connection;</connection>
+	<params>
 	</params>
-    <sql>
-        DELETE FROM &pb_entries;
-        WHERE
-        memorandum = 'PLACEHOLDER'
-        OR entry_id = 0
-    </sql>
+	<sql>
+		DELETE FROM &pb_entries;
+		WHERE memorandum = 'PLACEHOLDER' OR entry_id = 0
+	</sql>
 </query>

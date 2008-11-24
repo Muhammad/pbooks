@@ -23,17 +23,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="new_journal_entry_credit" loop="//_post/credit_amount_1" default="1">
-    <connection>&pb_connection;</connection>
-    <params>
+	<connection>&pb_connection;</connection>
+	<params>
 		<param name="get_this_entry_id/get_this_entry_id/entry_id" type="integer"/>
 		<param array="//credit_account_1" type="integer" default="0"/>
 		<param array="//credit_amount_1" type="text" default="0"/>
 		<param array="//_post/memorandum" type="text" default="0"/>
 	</params>
-    <sql>
-        INSERT INTO &pb_entry_amounts; 
-		(entry_id, entry_type_id, account_id, entry_amount,memorandum)
+	<sql>
+		INSERT INTO &pb_entry_amounts;
+		(entry_id, entry_type_id, account_id, entry_amount, memorandum)
 		VALUES
-		(?, 'Credit', ?, ?,?)
-    </sql>
+		(?, 'Credit', ?, ?, ?)
+	</sql>
 </query>

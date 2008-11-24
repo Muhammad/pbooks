@@ -18,21 +18,21 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="new_journal_entry_debit">
-    <connection>&pb_connection;</connection>
-    <params>
+	<connection>&pb_connection;</connection>
+	<params>
 		<param name="//get_this_entry_id/entry_id" type="integer"/>
 		<param name="//_post/deposit_account_id" type="integer" default="0"/>
 		<param name="//deposit_get_total/deposit_total" type="text" default="0"/>
 	</params>
-    <sql>
-        INSERT INTO &pb_entry_amounts;
+	<sql>
+		INSERT INTO &pb_entry_amounts;
 		(entry_id, entry_type_id, account_id, entry_amount)
 		VALUES
 		(?, 'Debit', ?, ?)
-    </sql>
+	</sql>
 </query>

@@ -23,16 +23,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="new_journal_entry_debit">
-    <connection>&pb_connection;</connection>
-    <params>
-		<param name="//get_this_entry_id/entry_id" type="integer"/>
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="//get_this_entry_id/get_this_entry_id/entry_id" type="integer"/>
 		<param name="//_post/deposit_account_id" type="integer" default="0"/>
 		<param name="//deposit_get_total/deposit_total" type="text" default="0"/>
 	</params>
-    <sql>
+	<sql>
 		INSERT INTO &pb_entry_amounts;
 		(entry_id, entry_type_id, account_id, entry_amount)
 		VALUES
 		(?, 'Debit', ?, ?)
-    </sql>
+	</sql>
 </query>
