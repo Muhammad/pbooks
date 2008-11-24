@@ -51,7 +51,7 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
         <thead>
           <tr>
             <th>
-              <xsl:value-of select="$i18n/id"/>
+              <xsl:value-of select="$i18n/date"/>
             </th>
             <th>
               <xsl:value-of select="$i18n/check_number"/>
@@ -66,7 +66,7 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
               <xsl:value-of select="$i18n/amount"/>
             </th>
             <th>
-              <xsl:value-of select="$i18n/date"/>
+              <xsl:value-of select="$i18n/id"/>
             </th>
           </tr>
         </thead>
@@ -76,11 +76,10 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
             <xsl:variable name="my_entry_id">
               <xsl:value-of select="entry_id"/>
             </xsl:variable>
-            <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
+            <tr onmouseover="oldClass=this.className; this.className='active'"
+							onmouseout="this.className=oldClass">
               <td>
-                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="entry_id"/>
-                </a>
+                <xsl:value-of select="entry_datetime"/>
               </td>
               <td>
                 <xsl:value-of select="check_number"/>
@@ -99,7 +98,9 @@ document.getElementById('myChecksDiv').style.visibility = 'hidden';
                 <xsl:value-of select="entry_amount"/>
               </td>
               <td>
-                <xsl:value-of select="entry_datetime"/>
+                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
+                  <xsl:value-of select="entry_id"/>
+                </a>
               </td>
             </tr>
           </xsl:for-each>
