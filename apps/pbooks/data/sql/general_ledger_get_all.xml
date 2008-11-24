@@ -4,7 +4,7 @@ Component: general_ledger_get_all.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
-http://www.gnu.org/licenses 
+http://www.gnu.org/licenses
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -18,45 +18,45 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_transactions">
-    <connection>&pb_connection_read;</connection>
-    <params>
-        <param name="runtime/from_date" type="text"/>
-        <param name="runtime/to_date" type="text"/>
-        <param name="//option_get_company_name/fiscal_period_id" type="text" default="%"/>
-        <param name="runtime/sorting" type="text" default="ASC"/>
-        <param name="runtime/sorting" type="text" default="ASC"/>
-        <param name="_get/start" type="integer" default="0"/>
-        <param name="option_get/display_num_trans" type="integer" default="1000"/>
-    </params>
-    <sql>
-        SELECT &pb_general_ledger;.transaction_id,
-        &pb_general_ledger;.entry_amount,
-        &pb_general_ledger;.account_id,
-        &pb_general_ledger;.entry_id,
-        &pb_general_ledger;.entry_amount_id,
-        &pb_general_ledger;.entry_datetime,
-        &pb_general_ledger;.memorandum,
-        &pb_accounts;.name
+	<connection>&pb_connection_read;</connection>
+	<params>
+		<param name="runtime/from_date" type="text"/>
+		<param name="runtime/to_date" type="text"/>
+		<param name="//option_get_company_name/fiscal_period_id" type="text" default="%"/>
+		<param name="runtime/sorting" type="text" default="ASC"/>
+		<param name="runtime/sorting" type="text" default="ASC"/>
+		<param name="_get/start" type="integer" default="0"/>
+		<param name="option_get/display_num_trans" type="integer" default="1000"/>
+	</params>
+	<sql>
+		SELECT &pb_general_ledger;.transaction_id,
+		&pb_general_ledger;.entry_amount,
+		&pb_general_ledger;.account_id,
+		&pb_general_ledger;.entry_id,
+		&pb_general_ledger;.entry_amount_id,
+		&pb_general_ledger;.entry_datetime,
+		&pb_general_ledger;.memorandum,
+		&pb_accounts;.name
 
-        FROM &pb_general_ledger;, &pb_accounts;
+		FROM &pb_general_ledger;, &pb_accounts;
 
-        WHERE
+		WHERE
 
-        &pb_general_ledger;.entry_datetime &gt;= ?
-        AND &pb_general_ledger;.entry_datetime &lt;= ?
+		&pb_general_ledger;.entry_datetime &gt;= ?
+		AND &pb_general_ledger;.entry_datetime &lt;= ?
 
-        AND &pb_general_ledger;.account_id=&pb_accounts;.id
-				AND &pb_general_ledger;.fiscal_period_id LIKE ?
+		AND &pb_general_ledger;.account_id=&pb_accounts;.id
+		AND &pb_general_ledger;.fiscal_period_id LIKE ?
 
-        ORDER BY 
-        CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_datetime END ASC, 
-        CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_datetime END DESC,
-        &pb_general_ledger;.entry_id
-        LIMIT ?,?
-    </sql>
+		ORDER BY
+		CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_datetime END ASC,
+		CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_datetime END DESC,
+		&pb_general_ledger;.entry_id
+		LIMIT ?,?
+	</sql>
 </query>

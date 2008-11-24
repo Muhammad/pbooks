@@ -30,9 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</params>
 	<sql>
 		SELECT max(entry_id) as entry_id
-
 		FROM &pb_entries;
-
 		WHERE entry_datetime=? AND memorandum=?
 	</sql>
 </query>

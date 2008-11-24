@@ -23,21 +23,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_journal_entry">
-    <!-- Needs primary db -->
-    <connection>&pb_connection;</connection>
-    <params>
+	<!-- Needs primary db -->
+	<connection>&pb_connection;</connection>
+	<params>
 		<param name="_post/entry_id" type="integer"/>
 		<param name="_post/account_id" type="integer"/>
 		<param name="_post/entry_amount_id" type="integer"/>
 	</params>
-    <sql>
-        SELECT *,&pb_entries;.memorandum as entry_memo FROM
-        &pb_accounts;,&pb_entries;,&pb_entry_amounts;
-        WHERE
-        &pb_entry_amounts;.account_id = &pb_accounts;.id
-        AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
-        AND &pb_entry_amounts;.entry_id = ?
-        AND &pb_entry_amounts;.account_id = ?
-        AND &pb_entry_amounts;.entry_amount_id = ?
-    </sql>
+	<sql>
+		SELECT *,&pb_entries;.memorandum as entry_memo FROM
+		&pb_accounts;,&pb_entries;,&pb_entry_amounts;
+		WHERE
+		&pb_entry_amounts;.account_id = &pb_accounts;.id
+		AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
+		AND &pb_entry_amounts;.entry_id = ?
+		AND &pb_entry_amounts;.account_id = ?
+		AND &pb_entry_amounts;.entry_amount_id = ?
+	</sql>
 </query>

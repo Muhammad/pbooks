@@ -23,15 +23,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="select_account_stats">
-    <connection>&pb_connection_read;</connection>
-    <params>
+	<connection>&pb_connection_read;</connection>
+	<params>
 	</params>
-    <sql>
-        SELECT
-            (SELECT count(&pb_accounts;.id) FROM &pb_accounts;)  as account_stats, 
-            (SELECT count(&pb_entries;.entry_id)FROM &pb_entries; WHERE &pb_entries;.status !=9) as entry_stats,
-            (SELECT count(&pb_entry_amounts;.entry_amount_id) FROM &pb_entry_amounts;) as entry_amounts_stats,
-            (SELECT count(&pb_general_ledger;.transaction_id) FROM &pb_general_ledger; WHERE &pb_general_ledger;.entry_amount IS NOT NULL 
-        AND &pb_general_ledger;.entry_amount!='0') as gl_stats
-    </sql>
+	<sql>
+		SELECT
+		(SELECT count(&pb_accounts;.id) FROM &pb_accounts;) as account_stats,
+		(SELECT count(&pb_entries;.entry_id)FROM &pb_entries; WHERE &pb_entries;.status !=9) as entry_stats,
+		(SELECT count(&pb_entry_amounts;.entry_amount_id) FROM &pb_entry_amounts;) as entry_amounts_stats,
+		(SELECT count(&pb_general_ledger;.transaction_id) FROM &pb_general_ledger; WHERE &pb_general_ledger;.entry_amount IS NOT NULL 
+		AND &pb_general_ledger;.entry_amount!='0') as gl_stats
+	</sql>
 </query>

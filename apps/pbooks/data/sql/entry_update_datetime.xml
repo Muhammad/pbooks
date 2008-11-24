@@ -28,7 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_get/entry_datetime" type="text"/>
 	</params>
 	<sql>
-		UPDATE &pb_entries; SET entry_datetime=?
-		WHERE entry_id=?
+		UPDATE &pb_entries; SET entry_datetime=? WHERE entry_id=?
 	</sql>
 </query>
