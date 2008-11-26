@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-    <form action="{/_R_/runtime/link_prefix}transfer-submit&amp;entry_id={/_R_/_get/entry_id}"
+    <form action="{$link_prefix}transfer-submit&amp;entry_id={/_R_/_get/entry_id}"
       method="post"
       onSubmit="return validateStandard(this, 'myerror');">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
@@ -37,7 +37,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="$i18n/date"/>:
 					</td>
           <td>
-            <input type="text" name="entry_datetime" value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
+            <input type="text" name="entry_datetime"
+							value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
           </td>
         </tr>
         <tr>
@@ -82,7 +83,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <xsl:value-of select="$i18n/to"/>:
           </td>
           <td>
-            <select name="to_account_id" required="1" exclude="-1" err="{$i18n/error_select_credit}">
+            <select name="to_account_id" required="1" exclude="-1"
+							err="{$i18n/error_select_credit}">
               <option value="-1">
                 <xsl:value-of select="$i18n/to_account"/>
               </option>

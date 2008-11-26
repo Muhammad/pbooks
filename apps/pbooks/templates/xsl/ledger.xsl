@@ -29,8 +29,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="get_equation" select="/_R_/get_equation/get_equation"/>
-		<xsl:variable name="get_transactions" select="/_R_/get_all_transactions/get_all_transactions"/>
+		<xsl:variable name="get_equation"
+			select="/_R_/get_equation/get_equation"/>
+		<xsl:variable name="get_transactions"
+			select="/_R_/get_all_transactions/get_all_transactions"/>
 
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">myLedger</xsl:with-param>
@@ -158,7 +160,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 										</a>
 									</xsl:when>
 									<xsl:otherwise>
-										<a href="{$link_prefix}ledger-delete&amp;transaction_id={transaction_id}" onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
+										<a href="{$link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
+											onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x"/>
 										</a>
                 &#160;

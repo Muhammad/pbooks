@@ -28,8 +28,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 
-		<!-- The form is validated via a javascript library included in the end of main.xsl.
-		Form input elements have attributes like required="1" if they are to be validated. -->
+		<!--
+		The form is validated via a javascript library included in the end
+		of main.xsl. Form input elements have attributes like required="1" if they
+		are to be validated.
+		-->
 		<form method="post"
 			onSubmit="return validateStandard(this, 'myerror');">
 
@@ -63,8 +66,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:value-of select="$i18n/customer_name"/>:
 					</td>
 					<td>
-						<input type="text" name="name" value="{//get_account/name|//_post/name}"
-								required="1" err="{//error[key='missing_account_name']/value}"/>
+						<input type="text" name="name"
+							value="{//get_account/get_account/name|//_post/name}" required="1"
+							err="{//error[key='missing_account_name']/value}"/>
 					</td>
 				</tr>
 
@@ -74,7 +78,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<input type="hidden" name="accounts_receivable_account" value="on"/>
 				<input type="hidden" name="cash_account" value="off"/>
 				<!-- Follow a similar pattern as company options -->
-				<xsl:for-each select="//account_meta/meta/meta_key[@category='address']">
+				<xsl:for-each select="//account_meta/account_meta/meta/meta_key[@category='address']">
 					<xsl:variable name="my_option">
 						<xsl:value-of select="."/>
 					</xsl:variable>
@@ -84,7 +88,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
 						<td>
 							<input type="text" name="{$my_option}"
-								value="{//account_meta_get[meta_key=$my_option]/meta_value}"/>
+								value="{//account_meta_get/account_meta_get[meta_key=$my_option]/meta_value}"/>
 						</td>
 					</tr>
 				</xsl:for-each>
@@ -96,7 +100,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<input type="text" name="account_number" required="1"
 							err="{//error[key='missing_account_number']/value}"
-							value="{//get_account/account_number|//_post/account_number}"/>
+							value="{//get_account/get_account/account_number|//_post/account_number}"/>
 					</td>
 				</tr>
 				<tr>
@@ -105,7 +109,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<textarea name="description" cols="40" rows="6">
-							<xsl:value-of select="//get_account/get_account/description|//_post/description"/>&#160;
+							<xsl:value-of
+								select="//get_account/get_account/description|//_post/description"/>&#160;
 						</textarea>
 					</td>
 				</tr>
@@ -115,12 +120,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<select name="group_id">
-							<xsl:for-each select="//get_account_groups">
+							<xsl:for-each select="//get_account_groups/get_account_groups">
 								<xsl:variable name="my_group_id">
 									<xsl:value-of select="id"/>
 								</xsl:variable>
 								<option value="{id}">
-									<xsl:if test="//get_account/group_id=id">
+									<xsl:if test="//get_account/get_account/group_id=id">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
 									<xsl:value-of select="name"/>
@@ -135,7 +140,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="checkbox" name="hide">
-							<xsl:if test="//get_account/hide='on'">
+							<xsl:if test="//get_account/get_account/hide='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>

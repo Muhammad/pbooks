@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -135,7 +135,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 </xsl:if>
                 <xsl:if test="not(paid_status='paid_in_full')">
                 <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
-								href="{$link_prefix}invoice-paid&amp;invoice_number={invoice_number}&amp;entry_id={$my_entry_id}">
+									href="{$link_prefix}invoice-paid&amp;invoice_number={invoice_number}&amp;entry_id={$my_entry_id}">
 								  Unpaid
                 </a>
                 </xsl:if>

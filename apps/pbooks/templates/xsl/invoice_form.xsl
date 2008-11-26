@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -28,6 +28,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+		
 		<!-- Add / delete items -->
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
@@ -65,13 +66,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <xsl:value-of select="$i18n/date"/>:
 						</td>
             <td colspan="8">
-              <input type="text" name="entry_datetime"
-                  id="invoice_date" value="{//get_journal_entry/entry_datetime}"/>
+              <input type="text" name="entry_datetime" id="invoice_date"
+								value="{//get_journal_entry/entry_datetime}"/>
             </td>
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="$i18n/customer"/>:</td>
+              <xsl:value-of select="$i18n/customer"/>:
+						</td>
             <td colspan="7">
               <select name="debit_account_id">
                 <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
@@ -108,10 +110,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="$i18n/due_date"/>:</td>
+              <xsl:value-of select="$i18n/due_date"/>:
+						</td>
             <td colspan="8">
-              <input type="text" name="due_date" value="{//get_some_business_objects/due_date}">
-                <xsl:if test="not(//get_some_business_objects/due_date)">
+              <input type="text" name="due_date"
+								value="{//get_some_business_objects/get_some_business_objects/due_date}">
+                <xsl:if test="not(//get_some_business_objects/get_some_business_objects/due_date)">
                   <xsl:attribute name="value">On Receipt</xsl:attribute>
                 </xsl:if>
               </input>
@@ -119,7 +123,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="$i18n/paid_status"/>:</td>
+              <xsl:value-of select="$i18n/paid_status"/>:
+						</td>
             <td colspan="8">
               <input type="radio" name="paid_status" value="paid_in_full">
                 <xsl:if test="//business_object_get_metadata/paid_status='paid_in_full'">
@@ -146,19 +151,23 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="$i18n/paid_in_full_date"/>: </td>
+              <xsl:value-of select="$i18n/paid_in_full_date"/>: 
+						</td>
             <td colspan="8">
-              <input type="text" name="paid_in_full_date" value="{//business_object_get_metadata/paid_in_full_date}"/>
+              <input type="text" name="paid_in_full_date"
+								value="{//business_object_get_metadata/paid_in_full_date}"/>
             </td>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <td colspan="8">
-              <xsl:value-of select="$i18n/billable_items"/>:</td>
+              <xsl:value-of select="$i18n/billable_items"/>:
+						</td>
           </tr>
           <tr>
-            <td>ID</td>
+            <td>ID
+						</td>
             <td>
               <xsl:value-of select="$i18n/revenue"/>
             </td>
@@ -208,7 +217,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 </select>
               </td>
               <td colspan="2">
-                <input type="text" name="memorandum[]" style="width: 20em;" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
+                <input type="text" name="memorandum[]" style="width: 20em;"
+									value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
               </td>
               <td>
                 <input type="text" name="quantity" size="4"/>
@@ -217,7 +227,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <input type="text" name="price" size="4"/>
               </td>
               <td>
-                <input type="text" name="credit_amount_1[]" size="6" value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
+                <input type="text" name="credit_amount_1[]" size="6"
+									value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
               </td>
               <td>
                 <xsl:if test="position() &gt; 1">
@@ -229,13 +240,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
               </td>
             </tr>
           </xsl:for-each>
-        <!-- END LINE ITEMS -->
+          <!-- END LINE ITEMS -->
           <tr>
             <td colspan="7"></td>
             <td>
               <a href="{/_R_/runtime/link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                 <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-                    src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
+									src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" />
               </a>
             </td>
           </tr>

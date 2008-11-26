@@ -44,7 +44,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:variable name="option_get" select="/_R_/option_get/option_get"/>
 		<tr>
 			<td>
-				<xsl:value-of select="title"/>: </td>
+				<xsl:value-of select="title"/>:
+			</td>
 			<td>
 				<xsl:if test="option_type='text'">
 					<input type="{option_type}" name="{option_key}">

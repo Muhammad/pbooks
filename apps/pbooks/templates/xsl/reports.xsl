@@ -76,7 +76,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<ul style="big">
 				<xsl:for-each select="//reports_saved/report">
 					<li>
-						<a href="{/_R_/runtime/link_prefix}reports-build&amp;{link}">
+						<a href="{$link_prefix}reports-build&amp;{link}">
 							<xsl:value-of select="label"/>
 						</a>
 					</li>
@@ -89,17 +89,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</h2>
 			<ul style="big">
 				<li>
-					<a href="{/_R_/runtime/link_prefix}reports-simple-cash-flow">
+					<a href="{$link_prefix}reports-simple-cash-flow">
 						<xsl:value-of select="$i18n/simple_monthly_cash_flow"/>
 					</a>
 				</li>
 				<li>
-					<a href="{/_R_/runtime/link_prefix}reports-group-cash-flow">
+					<a href="{$link_prefix}reports-group-cash-flow">
 						<xsl:value-of select="$i18n/group_monthly_cash_flow"/>
 					</a>
 				</li>
 				<li>
-					<a href="{/_R_/runtime/link_prefix}reports-invoices">
+					<a href="{$link_prefix}reports-invoices">
 						<xsl:value-of select="$i18n/report_invoices"/>
 					</a>
 				</li>

@@ -18,27 +18,29 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
-    <xsl:param name="link_prefix"/>
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:param name="i18n"/>
     <div style="padding: 25px;">
 
-      <xsl:value-of select="/_R_/i18n/wicked_cool"/>
+      <xsl:value-of select="$i18n/wicked_cool"/>
       <br/>
       <br/>
       <b>
-        <xsl:value-of select="/_R_/i18n/get_started"/>
+        <xsl:value-of select="$i18n/get_started"/>
       </b>
       <br/>
       <br/>
       <ul>
         <xsl:for-each select="//quick_links/link">
           <li>
-            <a href="{//runtime/link_prefix}{link}">
+            <a href="{$link_prefix}{link}">
               <xsl:value-of select="label"/>
             </a>
           </li>
@@ -57,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <tr>
                   <th colspan="2">
                     <b>
-                      <xsl:value-of select="/_R_/i18n/quick_stats"/>
+                      <xsl:value-of select="$i18n/quick_stats"/>
                     </b>
                   </th>
                 </tr>
@@ -66,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <tr>
                   <td>
                     <a href="{$link_prefix}accounts">
-                      <xsl:value-of select="/_R_/i18n/accounts"/>
+                      <xsl:value-of select="$i18n/accounts"/>
                     </a>
                   </td>
                   <td>
@@ -76,7 +78,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <tr>
                   <td>
                     <a href="{$link_prefix}ledger">
-                      <xsl:value-of select="/_R_/i18n/ledger_transactions"/>
+                      <xsl:value-of select="$i18n/ledger_transactions"/>
                     </a>
                   </td>
                   <td>
@@ -86,7 +88,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <tr>
                   <td>
                     <a href="{$link_prefix}journal">
-                      <xsl:value-of select="/_R_/i18n/journal_entry_amounts"/>
+                      <xsl:value-of select="$i18n/journal_entry_amounts"/>
                     </a>
                   </td>
                   <td>
@@ -96,7 +98,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <tr>
                   <td>
                     <a href="{$link_prefix}journal">
-                      <xsl:value-of select="/_R_/i18n/journal_entries"/>
+                      <xsl:value-of select="$i18n/journal_entries"/>
                     </a>
                   </td>
                   <td>
@@ -113,7 +115,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
                 <tr>
                   <th colspan="2">
                     <b>
-                      <xsl:value-of select="/_R_/i18n/recent_activity"/>
+                      <xsl:value-of select="$i18n/recent_activity"/>
                     </b>
                   </th>
                 </tr>
@@ -121,13 +123,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
               <tbody>
                 <tr>
                   <td>
-                    <xsl:value-of select="/_R_/i18n/invoices"/>
+                    <xsl:value-of select="$i18n/invoices"/>
                   </td>
                   <td></td>
                 </tr>
                 <tr>
                   <td>
-                    <xsl:value-of select="/_R_/i18n/checks"/>
+                    <xsl:value-of select="$i18n/checks"/>
                   </td>
                   <td></td>
                 </tr>
@@ -139,7 +141,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
       <br/>
       <br/>
-      <xsl:value-of select="/_R_/i18n/number_transactions"/>
+      <xsl:value-of select="$i18n/number_transactions"/>
     </div>
   </xsl:template>
 </xsl:stylesheet>

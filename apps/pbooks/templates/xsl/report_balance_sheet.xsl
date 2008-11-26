@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="i18n"/>
 		<xsl:variable name="get_all_entry_amounts"
-				select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+			select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
 		<div style="text-align: center;">
 			<h2>
 				<xsl:value-of select="//company_name"/>
@@ -171,9 +171,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td class="journal-data" style="text-indent: 16px;">
 						<xsl:value-of select="$i18n/total_liabilities_equity"/>
 					</td>
-        
-        <!-- This is really obtuse for testing purposes, and so developers can understand what's going on. 
-        Will be cleaned up in the near future.-->
+
+					<!-- This is really obtuse for testing purposes,
+					and so developers can understand what's going on.
+					Will be cleaned up in the near future.-->
 					<td align="right" class="journal-data">
 						<b>
 							<xsl:value-of select="format-number(( sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount)- sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) - ( sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+ sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount) ) + (sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=30000]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=30000]/entry_amount)) ),'#,###,###.##')"/>

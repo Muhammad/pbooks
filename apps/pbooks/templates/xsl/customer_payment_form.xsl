@@ -27,10 +27,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="account_business_objects" select="/_R_/account_business_objects/account_business_objects"/>
-		<xsl:variable name="get_journal_entry" select="/_R_/get_journal_entry/get_journal_entry"/>
-		<xsl:variable name="business_object_get_metadata" select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
-		<xsl:variable name="i18n" select="$i18n/label"/>
+		<xsl:variable name="account_business_objects"
+			select="/_R_/account_business_objects/account_business_objects"/>
+		<xsl:variable name="get_journal_entry"
+			select="/_R_/get_journal_entry/get_journal_entry"/>
+		<xsl:variable name="business_object_get_metadata"
+			select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
 
 		<script type="text/javascript">
 		function journal_entry_amount_delete(entry_amount_id,row) {
@@ -71,7 +73,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</div>
 				<div id="payment_memo">
 					<xsl:value-of select="$i18n/memo"/>:
-          <input type="text" name="memorandum" style="width: 20em;" value="{$get_journal_entry/memorandum}"/>
+          <input type="text" name="memorandum" style="width: 20em;"
+						value="{$get_journal_entry/memorandum}"/>
 				</div>
 				<div id="payment_payee">
 					<table border="0" id="payment_form_table">
@@ -107,7 +110,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:if test="position() &gt; 1">
 										<a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
 											onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
+											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" />
 										</a>
 									</xsl:if>
 								</td>

@@ -77,7 +77,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </a>
     </div>
 
-
     <br/>
     <br/>
 
@@ -117,7 +116,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
           <xsl:for-each select="$all_accounts[accounts_receivable_account='on']">
             <xsl:sort select="account_number"/>
-            <xsl:call-template name="account-row"/>
+            <xsl:call-template name="account-row">
+							<xsl:with-param name="link_prefix" select="$link_prefix"/>
+							<xsl:with-param name="i18n" select="$i18n"/>
+						</xsl:call-template>
           </xsl:for-each>
 
         </tbody>
@@ -127,7 +129,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
     </form>
     <br/>
-
 
   </xsl:template>
 </xsl:stylesheet>

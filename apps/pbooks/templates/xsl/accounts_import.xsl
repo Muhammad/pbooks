@@ -18,20 +18,23 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
 
     <h2>
-      <xsl:value-of select="/_R_/i18n/import_csv_accounts"/>
+      <xsl:value-of select="$i18n/import_csv_accounts"/>
     </h2>
 
     <xsl:if test="/_R_/_get/error">
       <div class="error" id="function-error">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
         <xsl:value-of select="//errors/error[key='general_error']/value"/>
       </div>
       <br/>
@@ -40,9 +43,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <form method="post"
         onsubmit="return validateStandard(this, 'error');">
       <textarea id="csv_import" name="csv_accounts_import" rows="14" cols="80">
-10000,1234,"testing","this is a test account"
-10000,4567,"testing 2","this is another test account"
-</textarea>
+			<xsl:text>10000,1234,"testing","this is a test account"
+			10000,4567,"testing 2","this is another test account"</xsl:text>
+			</textarea>
       <br/>
       <input type="submit"/>
     </form>

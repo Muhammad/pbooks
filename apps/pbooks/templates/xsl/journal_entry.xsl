@@ -37,7 +37,9 @@ Sorry for all the white space! Hard to navigate without.
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:variable name="get_journal_entry" select="/_R_/get_journal_entry/get_journal_entry"/>
+    <xsl:variable name="get_journal_entry"
+			select="/_R_/get_journal_entry/get_journal_entry"/>
+
     <xsl:call-template name="jquery-setup-simple"/>
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
@@ -105,17 +107,14 @@ Sorry for all the white space! Hard to navigate without.
     </xsl:if>
 		<!-- End error message -->
 
-
-
-
-
 		<!-- Check to make sure entry_id exists -->
     <xsl:if test="$get_journal_entry">
 		<!-- The journal entry form -->
-      <xsl:comment>
+		<xsl:comment>
     start journal entry form table
 		</xsl:comment>
-      <form name="myform" method="post" onSubmit="return validateStandard(this, 'error');" action="{$link_prefix}journal-edit-submit&amp;entry_id={/_R_/_get/entry_id}">
+      <form name="myform" method="post" onSubmit="return validateStandard(this, 'error');"
+				action="{$link_prefix}journal-edit-submit&amp;entry_id={/_R_/_get/entry_id}">
         <xsl:if test="/_R_/_get/entry_id">
           <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
         </xsl:if>
@@ -274,9 +273,10 @@ Sorry for all the white space! Hard to navigate without.
 
                     <!-- Submit the entry -->
                     <td colspan="3" style="text-align: center">
-                      <input type="submit" name="submit" id="submit" value="Submit" class="generic-button"/>
-											<!-- Cancel the entry, if this is from a transaction, 
-                the entry must be deleted -->
+                      <input type="submit" name="submit" id="submit"
+												value="Submit" class="generic-button"/>
+											<!-- Cancel the entry, if this is from a transaction,
+											the entry must be deleted -->
                       <input type="button" class="generic-button" value="Cancel">
                         <xsl:if test="/_R_/_get/transaction_id">
                           <xsl:attribute name="onclick">
@@ -308,7 +308,9 @@ Sorry for all the white space! Hard to navigate without.
 														return false;
 											}
 											</script>
-                        <input type="button" class="generic-button" value="Flip" onclick="return confirmFlip();"/>
+
+											<input type="button" class="generic-button" value="Flip"
+												onclick="return confirmFlip();"/>
                       </xsl:if>
                       <!-- end flip comment -->
                     </td>
@@ -329,7 +331,6 @@ You are creating a journal entry from a transaction. This is good! However, if y
 If you want to complete this process, continue as usual. For more information, see <a href="http://www.pbooks.org/trac/ticket/91" target="_blank">http://www.pbooks.org/trac/ticket/91</a>.
 </xsl:if>
 <!-- end note -->
-
 
               </td>
             </tr>
@@ -360,17 +361,6 @@ function get_entry_date()
 </script>
   </xsl:template>
 	<!-- end form template -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -405,7 +395,8 @@ function get_entry_date()
     </td>
       <td>
         <div style="padding-left: 40px;">
-          <select name="credit_account_1[]" required="1" exclude="-1" err="Please select a credit account.">
+          <select name="credit_account_1[]" required="1" exclude="-1"
+						err="Please select a credit account.">
             <option value="-1">
               <xsl:value-of select="$i18n/credit_account"/>
             </option>
@@ -479,11 +470,7 @@ function get_entry_date()
   </xsl:template>
 
 
-
-
-
-
-<!-- DEBIT -->
+	<!-- DEBIT -->
   <xsl:template name="debit">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -575,8 +562,6 @@ function get_entry_date()
       </td>
     </tr>
   </xsl:template>
-
-
 
   <xsl:template name="abs-amount">
     <xsl:param name="get_journal_entry"/>

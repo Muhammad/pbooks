@@ -33,7 +33,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     select="/_R_/get_journal_entry/get_journal_entry"/>
     <xsl:variable name="business_object_get_metadata"
       select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
-		<xsl:variable name ="i18n" select="$i18n/label"/>
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {

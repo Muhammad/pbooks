@@ -25,6 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:include href="main.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
+    <xsl:param name="i18n"/>
 		<form method="post" onSubmit="return validateStandard(this, 'myerror');">
 			<xsl:if test="/_R_/_get/group_id">
 				<input type="hidden" name="my_action" value="update"/>
@@ -36,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<table class="form-table" cellpadding="10" cellspacing="0" border="0" align="center">
 				<tr>
 					<td>
-						<xsl:value-of select="//i18n/label[key='group_name']/value"/>:
+						<xsl:value-of select="$i18n/group_name"/>:
         </td>
 					<td>
 						<input type="text" name="name" value="{//get_account_group_by_id/name|//_post/name}"
@@ -45,18 +46,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 				<tr>
 					<td>
-						<xsl:value-of select="//i18n/label[key='desc']/value"/>
+						<xsl:value-of select="$i18n/desc"/>
 					</td>
 					<td>
 						<textarea name="description" cols="40" rows="6">
 							<xsl:value-of
-								select="//get_account_group_by_id/get_account_group_by_id/description|//_post/description"/>
+								select="/_R_/get_account_group_by_id/get_account_group_by_id/description|//_post/description"/>
 						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<xsl:value-of select="//i18n/label[key='parent_group']/value"/>
+						<xsl:value-of select="$i18n/parent_group"/>
 					</td>
 					<td>
 						<select multiple="multiple" name="account_group_parents[]">
@@ -80,16 +81,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 				<tr>
 					<td>
-						<xsl:value-of select="//i18n/label[key='sub_group']/value"/>
+						<xsl:value-of select="$i18n/sub_group"/>
 					</td>
 					<td>
 						<textarea readonly="readonly" cols="30" rows="8">
-							<xsl:for-each select="//account_sub_groups/groups/group[not(.=/_R_/_get/group_id)]">
+							<xsl:for-each select="//account_sub_groups/account_sub_groups/groups/group[not(.=/_R_/_get/group_id)]">
 								<xsl:variable name="my_group_id">
 									<xsl:value-of select="."/>
 								</xsl:variable>
-								<xsl:value-of select="/_R_/get_account_groups[id=$my_group_id]/name"/>
-            <!-- This is a newline character -->
+								<xsl:value-of select="/_R_/get_account_groups/get_account_groups[id=$my_group_id]/name"/>
+								<!-- This is a newline character -->
 								<xsl:text>&#10;</xsl:text>
 							</xsl:for-each>
 						</textarea>
@@ -97,10 +98,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 				<tr>
 					<td>
-						<xsl:value-of select="//i18n/titles/title[key='accounts-edit']/value"/>
+						<xsl:value-of select="$i18n/accounts-edit"/>
 					</td>
 					<td>
-						<xsl:for-each select="//account_groups_get_accounts">
+						<xsl:for-each select="//account_groups_get_accounts/account_groups_get_accounts">
 							<a href="{$link_prefix}accounts-edit&amp;id={id}"
 									id="{account_number}-e">
 								<xsl:value-of select="name"/>

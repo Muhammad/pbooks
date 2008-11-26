@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="main.xsl"/>
@@ -40,11 +40,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </div>
     <strong>
       <xsl:value-of select="$i18n/recent_transfers"/>:
-</strong>
+		</strong>
     <div style="min-height: 400px;" id="myTransfersDiv">
-      <script type="text/javascript">
+		<script type="text/javascript">
     document.getElementById('myTransfersDiv').style.visibility = 'hidden';
-</script>
+		</script>
       <table class="tablesorter" id="myTransfers">
         <thead>
           <tr>
@@ -72,7 +72,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
           </tr>
         </thead>
         <tbody>
-    <!-- LOOP -->
+				<!-- LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
             <xsl:variable name="my_entry_id">
               <xsl:value-of select="entry_id"/>

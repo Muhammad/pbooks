@@ -42,7 +42,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </div>
 		<!-- Page title -->
     <strong>
-      <xsl:value-of select="$i18n/customer_payments"/>:</strong>
+      <xsl:value-of select="$i18n/customer_payments"/>:
+		</strong>
     <table class="tablesorter" id="mypayments">
       <thead>
         <tr>
@@ -71,7 +72,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:variable>
 				<xsl:variable name="my_customer_id" select="account_id"/>
 				<tr onmouseover="oldClass=this.className; this.className='active'"
-				onmouseout="this.className=oldClass">
+					onmouseout="this.className=oldClass">
 					<td>
 						<xsl:value-of select="entry_datetime"/>
 					</td>

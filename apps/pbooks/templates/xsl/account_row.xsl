@@ -24,12 +24,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<!-- This is the account table row -->
   <xsl:template name="account-row">
-    <xsl:variable name="my_link_prefix" select="/_R_/runtime/link_prefix"/>
+		<xsl:param name="link_prefix"/>
+    <xsl:param name="i18n"/>
 
 		<!-- these rows contain ids for use in testing, do not remove! -->
     <tr onmouseover="oldClass=this.className; this.className='active'"
         onmouseout="this.className=oldClass"
-        onclick="location.href='{$my_link_prefix}ledger&amp;account_id={id}';"
+        onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';"
 				style="cursor: pointer;">
 
 			<!-- Show account checkbox -->
@@ -50,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 			<!-- Account name -->
       <td>
-        <a href="{$my_link_prefix}ledger&amp;account_id={id}">
+        <a href="{$link_prefix}ledger&amp;account_id={id}">
           <xsl:value-of select="name"/>
         </a>
       </td>
@@ -58,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!-- Account type -->
       <xsl:if test="not(/_R_/_get/nid='customer-accounts')">
         <td>
-          <a href="{$my_link_prefix}accounts&amp;account_type_id={account_type_id}">
+          <a href="{$link_prefix}accounts&amp;account_type_id={account_type_id}">
             <xsl:value-of select="account_type_id"/>
           </a>
         </td>
@@ -72,9 +73,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!-- Account Edit -->
       <xsl:if test="/_R_/_get/nid='accounts'">
         <td>
-          <a href="{$my_link_prefix}accounts-edit&amp;account_id={id}"
+          <a href="{$link_prefix}accounts-edit&amp;account_id={id}"
             id="{account_number}-e">
-            <xsl:value-of select="/_R_/i18n/edit"/>
+            <xsl:value-of select="$i18n/edit"/>
           </a>
         </td>
       </xsl:if>
@@ -82,9 +83,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!-- Is this a customer account or a regular account? -->
       <xsl:if test="/_R_/_get/nid='customer-accounts'">
         <td>
-          <a href="{$my_link_prefix}customer-edit&amp;account_id={id}"
+          <a href="{$link_prefix}customer-edit&amp;account_id={id}"
             id="{account_number}-e">
-            <xsl:value-of select="/_R_/i18n/edit"/>
+            <xsl:value-of select="$i18n/edit"/>
           </a>
         </td>
       </xsl:if>
@@ -93,7 +94,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <a id="{account_number}-d"
 					href="{/_R_/runtime/link_prefix}accounts-delete&amp;account_id={id}"
 					onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
-          <xsl:value-of select="/_R_/i18n/delete"/>
+          <xsl:value-of select="$i18n/delete"/>
         </a>
       </td>
     </tr>
