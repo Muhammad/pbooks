@@ -18,18 +18,18 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:template name="footer">
-    <xsl:call-template name="source_spacer">
-      <xsl:with-param name="section_start">footer</xsl:with-param>
-    </xsl:call-template>
-    <div id="footer">
-      <footer>
-        <xsl:comment>You must keep this copyright notice intact.</xsl:comment>
-        <a href="http://www.pbooks.org/" target="_blank">
+	<xsl:template name="footer">
+		<xsl:call-template name="source_spacer">
+			<xsl:with-param name="section_start">footer</xsl:with-param>
+		</xsl:call-template>
+		<div id="footer">
+			<footer>
+				<xsl:comment>You must keep this copyright notice intact.</xsl:comment>
+				<a href="http://www.pbooks.org/" target="_blank">
         PBooks</a> version
         <xsl:value-of select="//pbooks_code_version"/>,
         DB Version: <xsl:value-of select="/_R_/runtime/db_version"/>,
@@ -39,14 +39,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <a href="{/_R_/runtime/link_prefix}license">
             AGPL v3
         </a>.
-        <a href="http://www.pbooks.org/blog/download/">
+        <a href="http://www.pbooks.org/pub/">
             Download source
         </a>.
-    <!-- Link to download source, as required by AGPL -->
-      </footer>
-    </div>
-    <xsl:call-template name="source_spacer">
-      <xsl:with-param name="section_end">footer</xsl:with-param>
-    </xsl:call-template>
-  </xsl:template>
+				<!-- Link to download source, as required by AGPL -->
+			</footer>
+		</div>
+		<xsl:call-template name="source_spacer">
+			<xsl:with-param name="section_end">footer</xsl:with-param>
+		</xsl:call-template>
+	</xsl:template>
 </xsl:stylesheet>
