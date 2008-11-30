@@ -27,10 +27,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <params>
   </params>
   <sql>
-    SELECT meta_value
-
+    SELECT max(meta_value) as meta_value
     FROM &pb_entry_metadata;
-
     WHERE &pb_entry_metadata;.meta_key='invoice_number'
     AND meta_value &gt; 0
     ORDER BY meta_value DESC

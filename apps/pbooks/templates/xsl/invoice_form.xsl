@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-		
+
 		<!-- Add / delete items -->
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
@@ -56,7 +56,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</script>
 
     <h2>
-      <xsl:value-of select="$i18n/new_invoice"/>:</h2>
+      <xsl:value-of select="$i18n/new_invoice"/>:
+    </h2>
     <form method="post" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <table border="0" id="invoice_form_table">
@@ -67,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
             <td colspan="8">
               <input type="text" name="entry_datetime" id="invoice_date"
-								value="{//get_journal_entry/entry_datetime}"/>
+								value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
             </td>
           </tr>
           <tr>
@@ -98,11 +99,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td colspan="8">
               <input type="text" name="invoice_number">
                 <xsl:attribute name="value">
-                  <xsl:if test="//get_some_business_objects/invoice_number">
-                    <xsl:value-of select="//get_some_business_objects/invoice_number"/>
+                  <xsl:if test="//get_some_business_objects/get_some_business_objects/invoice_number">
+                    <xsl:value-of select="//get_some_business_objects/get_some_business_objects/invoice_number"/>
                   </xsl:if>
-                  <xsl:if test="not(//get_some_business_objects/invoice_number)">
-                    <xsl:value-of select="//get_last_meta_id + 1"/>
+                  <xsl:if test="not(//get_some_business_objects/get_some_business_objects/invoice_number)">
+                    <xsl:value-of select="//get_last_meta_id/meta_value + 1"/>
                   </xsl:if>
                 </xsl:attribute>
               </input>
@@ -127,14 +128,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
             <td colspan="8">
               <input type="radio" name="paid_status" value="paid_in_full">
-                <xsl:if test="//business_object_get_metadata/paid_status='paid_in_full'">
+                <xsl:if test="//business_object_get_metadata/business_object_get_metadata/paid_status='paid_in_full'">
                   <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
               </input>
               <xsl:value-of select="$i18n/paid_in_full"/>
               <br/>
               <input type="radio" name="paid_status" value="partial_payment">
-                <xsl:if test="//business_object_get_metadata/paid_status='partial_payment'">
+                <xsl:if test="//business_object_get_metadata/business_object_get_metadata/paid_status='partial_payment'">
                   <xsl:attribute name="checked">checked</xsl:attribute>
                 </xsl:if>
               </input>
@@ -151,11 +152,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </tr>
           <tr>
             <td>
-              <xsl:value-of select="$i18n/paid_in_full_date"/>: 
+              <xsl:value-of select="$i18n/paid_in_full_date"/>:
 						</td>
             <td colspan="8">
               <input type="text" name="paid_in_full_date"
-								value="{//business_object_get_metadata/paid_in_full_date}"/>
+								value="{//business_object_get_metadata/business_object_get_metadata/paid_in_full_date}"/>
             </td>
           </tr>
         </tbody>
