@@ -400,7 +400,7 @@ function get_entry_date()
             <option value="-1">
               <xsl:value-of select="$i18n/credit_account"/>
             </option>
-            <xsl:for-each select="//get_all_accounts">
+            <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
               <option value="{id}">
                 <xsl:if test="id=$get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id and not(/_R_/_get/transaction_id)">
                   <xsl:attribute name="selected">selected</xsl:attribute>
