@@ -18,12 +18,20 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:include href="main.xsl"/>
-<xsl:template name="content">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:include href="main.xsl"/>
+  <xsl:template name="content">
+    This page will allow the customization of workflow for business objects.
 
-</xsl:template>
+    <h3>Checks</h3>
+    When a check is written, it...
+
+    <h3>Deposits</h3>
+
+    <h3>Payments</h3>
+
+  </xsl:template>
 </xsl:stylesheet>
