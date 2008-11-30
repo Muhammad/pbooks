@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="_post/entry_id" type="text"/>
 		<param array="//entry_meta/meta/meta_key" type="text" default=""/>
-		<!-- This xpath deserves an explanation. An XML doc supplies the key 
+		<!--This xpath deserves an explanation. An XML doc supplies the key 
 		to locate the corresponding value! See ../xml/invoice_meta.xml -->
 		<param array="//*[name()=//entry_meta/meta/meta_key]/." type="text"/>
 	</params>

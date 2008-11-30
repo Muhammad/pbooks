@@ -27,8 +27,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="_post/entry_id" type="integer"/>
 	</params>
-	<!-- This sets the entry to not have been posted to the ledger yet, 
-	so that a plus sign appears next to it which can be clicked on to do so -->
+	<!--
+  This sets the entry to not have been posted to the ledger yet,
+	so that a plus sign appears next to it which can be clicked on to do so
+  -->
 	<sql>
 		UPDATE &pb_entries; SET status=20
 		WHERE entry_id=?

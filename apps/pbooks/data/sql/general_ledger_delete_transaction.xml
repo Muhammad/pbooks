@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="//_get/transaction_id" type="integer"/>
 	</params>
 	<sql>
-		DELETE FROM &pb_general_ledger; WHERE transaction_id=?
+  DELETE FROM &pb_general_ledger; WHERE transaction_id=?
 	</sql>
 </query>

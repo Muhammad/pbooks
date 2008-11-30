@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="flip_entry_amounts">
@@ -28,12 +28,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<param name="_get/entry_id" type="integer"/>
 	</params>
 	<sql>
-		<!-- This should only be used in training mode. -->
-		UPDATE &pb_entry_amounts;
-		SET entry_type_id = CASE
-		WHEN (entry_type_id="Credit") THEN "Debit"
-		WHEN (entry_type_id="Debit") THEN "Credit"
-		ELSE entry_type_id END
-		WHERE entry_id=?
+  <!--
+  This should only be used in training mode.
+  -->
+  UPDATE &pb_entry_amounts;
+  SET entry_type_id = CASE
+  WHEN (entry_type_id="Credit") THEN "Debit"
+  WHEN (entry_type_id="Debit") THEN "Credit"
+  ELSE entry_type_id END
+  WHERE entry_id=?
 	</sql>
 </query>

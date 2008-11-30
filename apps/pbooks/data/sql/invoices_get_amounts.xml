@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param array="//get_some_business_objects/get_some_business_objects/entry_id" type="integer"/>
 	</params>
-	<!-- SQL taken from and should be the same as entries_get_some.xml -->
+	<!--SQL taken from and should be the same as entries_get_some.xml -->
 	<sql>
 		SELECT DISTINCT &pb_entry_amounts;.entry_id,
 		&pb_entry_amounts;.account_id,

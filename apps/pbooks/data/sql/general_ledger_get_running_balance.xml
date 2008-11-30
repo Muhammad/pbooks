@@ -58,8 +58,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 			AND &pb_general_ledger;.account_id LIKE ?
 
-			<!-- this searches for previously occuring transactions, as well as
-			transactions that happened the same day with less than or equal to entry amounts -->
+			<!--
+      this searches for previously occuring transactions, as well as
+			transactions that happened the same day with less than or equal
+      to entry amounts
+      -->
 			AND (
 			((b.entry_datetime = &pb_general_ledger;.entry_datetime)
 			AND (b.entry_amount &gt;= &pb_general_ledger;.entry_amount)) OR

@@ -18,8 +18,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="general_ledger_update_entry_id">
@@ -28,8 +28,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		<param name="//get_this_entry_id/get_this_entry_id/entry_id" type="integer"/>
 		<param name="//_get/transaction_id" type="integer"/>
 	</params>
-	<!-- correlate the transaction with the journal entry -->
+	<!--
+  correlate the transaction with the journal entry
+  -->
 	<sql>
-		UPDATE &pb_general_ledger; SET entry_id = ? WHERE transaction_id=?
+  UPDATE &pb_general_ledger; SET entry_id = ? WHERE transaction_id=?
 	</sql>
 </query>

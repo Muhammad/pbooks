@@ -18,33 +18,33 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_entry_amounts">
-    <connection>&pb_connection_read;</connection>
-    <params>
-        <param name="runtime/from_date" type="text" default="2006-01-01"/>
-        <param name="runtime/to_date" type="text" default="2009-01-01"/>
-	</params>
-    <sql>
-        <!-- This query is used by the income statement report -->
-        SELECT SUM(&pb_entry_amounts;.entry_amount) as entry_amount, 
-        &pb_entry_amounts;.account_id,
-        &pb_accounts;.account_type_id,
-        entry_datetime as entry_month
-
-		FROM &pb_entries;,&pb_entry_amounts;,&pb_accounts;
-
-		WHERE &pb_entries;.entry_datetime &gt;= ?
-        AND &pb_entries;.entry_datetime &lt;= ?
-        AND &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
-        AND &pb_accounts;.id = &pb_entry_amounts;.account_id
-        AND (
-            &pb_accounts;.account_type_id = 40000
-            OR &pb_accounts;.account_type_id = 50000
-            )
-        GROUP BY account_id, entry_month
-    </sql>
+  <connection>&pb_connection_read;</connection>
+  <params>
+    <param name="runtime/from_date" type="text" default="2006-01-01"/>
+    <param name="runtime/to_date" type="text" default="2009-01-01"/>
+  </params>
+  <sql>
+  <!--This query is used by the income statement report -->
+  SELECT SUM(&pb_entry_amounts;.entry_amount) as entry_amount, 
+  &pb_entry_amounts;.account_id,
+  &pb_accounts;.account_type_id,
+  entry_datetime as entry_month
+  
+  FROM &pb_entries;,&pb_entry_amounts;,&pb_accounts;
+  
+  WHERE &pb_entries;.entry_datetime &gt;= ?
+  AND &pb_entries;.entry_datetime &lt;= ?
+  AND &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
+  AND &pb_accounts;.id = &pb_entry_amounts;.account_id
+  AND (
+  &pb_accounts;.account_type_id = 40000
+  OR &pb_accounts;.account_type_id = 50000
+  )
+  GROUP BY account_id, entry_month
+  </sql>
 </query>
