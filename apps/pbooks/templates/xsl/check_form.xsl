@@ -129,7 +129,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
 					test="
 					not(//get_journal_entry/get_journal_entry/account_id=//get_all_accounts/get_all_accounts/account_id) and
 					not(//get_journal_entry/get_journal_entry/status=9)">
-          <option value="{//get_journal_entry/account_id}">
+          <option value="{/_R_/get_journal_entry/get_journal_entry/account_id}">
             <xsl:value-of select="$i18n/account_hidden"/>
           </option>
         </xsl:if>

@@ -27,6 +27,7 @@
   <payments>Payments</payments>
   <new_payment>New Payment</new_payment>
   <customer_payments>Customer Payments</customer_payments>
+  <statement>Statement</statement>
   <bills>Bills</bills>
   <invoices>Invoices</invoices>
   <transfers>Transfers</transfers>

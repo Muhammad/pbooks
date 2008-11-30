@@ -637,9 +637,13 @@ This makes it easier to maintain persistence. -->
 		</map:if>
 		<map:action type="redirect" params="{/_R_/runtime/link_prefix}customer-payments"/>
 	</map:gate>
-  
-  
-  
+
+  <!-- Statements -->
+	<map:gate name="customer-statement" role="pb_admin">
+		<map:xsl src="templates/xsl/customer_statement.xsl" />
+	</map:gate>
+
+
 <!-- LEDGER	-->
 	<map:gate name="ledger" role="pb_admin" cache="600" client_cache="600">
 		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>

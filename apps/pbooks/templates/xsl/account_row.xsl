@@ -70,6 +70,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:value-of select="running_balance"/>
       </td>
 
+
 			<!-- Account Edit -->
       <xsl:if test="/_R_/_get/nid='accounts'">
         <td>
@@ -82,6 +83,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 			<!-- Is this a customer account or a regular account? -->
       <xsl:if test="/_R_/_get/nid='customer-accounts'">
+        <td>
+          <a href="{$link_prefix}customer-statement&amp;account_id={id}">
+            <xsl:value-of select="$i18n/statement"/>
+          </a>
+        </td>
         <td>
           <a href="{$link_prefix}customer-edit&amp;account_id={id}"
             id="{account_number}-e">

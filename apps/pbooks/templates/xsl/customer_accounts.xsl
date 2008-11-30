@@ -26,8 +26,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="pager.xsl"/>
   <xsl:include href="account_row.xsl"/>
   <xsl:template name="content">
-  <xsl:param name="link_prefix"/>
-  <xsl:param name="i18n"/>
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
@@ -35,12 +35,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:with-param>
     </xsl:call-template>
 
-		<xsl:variable name="all_accounts"
-			select="/_R_/get_all_accounts/get_all_accounts"/>
+    <xsl:variable name="all_accounts" select="/_R_/get_all_accounts/get_all_accounts"/>
 
 		<!-- Confirm account deletion -->
     <script type="text/javascript">
-    var question = '<xsl:value-of select="/_R_/i18n/delete_account"/>?';
+    var question = '<xsl:value-of select="$i18n/delete_account"/>?';
     function account_delete(id,row) {
         if(confirm(question)) {
             $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'id': id},
@@ -99,6 +98,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <xsl:value-of select="$i18n/balance"/>
             </th>
             <th>
+              <xsl:value-of select="$i18n/statement"/>
+            </th>
+            <th>
               <xsl:value-of select="$i18n/edit"/>
             </th>
             <th>
@@ -117,9 +119,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:for-each select="$all_accounts[accounts_receivable_account='on']">
             <xsl:sort select="account_number"/>
             <xsl:call-template name="account-row">
-							<xsl:with-param name="link_prefix" select="$link_prefix"/>
-							<xsl:with-param name="i18n" select="$i18n"/>
-						</xsl:call-template>
+              <xsl:with-param name="link_prefix" select="$link_prefix"/>
+              <xsl:with-param name="i18n" select="$i18n"/>
+            </xsl:call-template>
           </xsl:for-each>
 
         </tbody>
@@ -129,6 +131,5 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
     </form>
     <br/>
-
   </xsl:template>
 </xsl:stylesheet>
