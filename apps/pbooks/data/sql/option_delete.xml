@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param array="//option/option_key" type="text"/>
 	</params>
 	<sql>
-		DELETE from &pb_options; WHERE option_key=?
+  DELETE from &pb_options; WHERE option_key=?
 	</sql>
 </query>

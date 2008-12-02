@@ -24,12 +24,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="entry_amount_delete">
 	<connection>&pb_connection;</connection>
-	<params>
-	</params>
+	<params></params>
 	<sql>
-		DELETE FROM &pb_general_ledger;
-		WHERE entry_amount='0.00'
-		AND entry_id=0
-		AND entry_amount_id=0
+  DELETE FROM &pb_general_ledger; WHERE entry_amount='0.00' AND entry_id=0 AND entry_amount_id=0
 	</sql>
 </query>

@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param array="//*[name()=//entry_meta/meta/meta_key]/." type="text"/>
 	</params>
 	<sql>
-		INSERT INTO &pb_entry_metadata;
-		(entry_id,meta_key,meta_value) VALUES (?,?,?)
+  INSERT INTO &pb_entry_metadata; (entry_id,meta_key,meta_value) VALUES (?,?,?)
 	</sql>
 </query>

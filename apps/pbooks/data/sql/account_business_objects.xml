@@ -28,10 +28,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <param name="//account_meta_key" type="text"/>
   </params>
   <sql>
-    SELECT *
-    FROM &pb_accounts;,&pb_accounts_meta;
-    WHERE &pb_accounts;.id=&pb_accounts_meta;.account_id
-    AND &pb_accounts_meta;.meta_key=?
-    AND &pb_accounts_meta;.meta_value='on'
+  SELECT *
+  FROM &pb_accounts;,&pb_accounts_meta;
+  WHERE &pb_accounts;.id=&pb_accounts_meta;.account_id
+  AND &pb_accounts_meta;.meta_key=?
+  AND &pb_accounts_meta;.meta_value='on'
   </sql>
 </query>

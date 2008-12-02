@@ -23,13 +23,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="deposit_get_total">
-    <connection>&pb_connection_read;</connection>
-    <params>
-		<param name="_post/entry_id" type="integer"/>
-	</params>
-    <sql>
-        SELECT SUM(entry_amount) as deposit_total
-        FROM &pb_entry_amounts;
-		WHERE entry_id=?
-    </sql>
+  <connection>&pb_connection_read;</connection>
+  <params>
+    <param name="_post/entry_id" type="integer"/>
+  </params>
+  <sql>
+  SELECT SUM(entry_amount) as deposit_total FROM &pb_entry_amounts; WHERE entry_id=?
+  </sql>
 </query>

@@ -22,12 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="get_account">
+<query name="account_get_by_id">
 	<connection>&pb_connection_read;</connection>
 	<params>
 		<param name="_get/account_id" type="integer" default="-999"/>
 	</params>
 	<sql>
-		SELECT * FROM &pb_accounts; WHERE id = ?
+  SELECT * FROM &pb_accounts; WHERE id=?
 	</sql>
 </query>

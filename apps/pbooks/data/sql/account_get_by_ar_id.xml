@@ -28,8 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="//accounts_get_accounts_receivable_id/accounts_receivable_id" type="text" default="-999"/>
 	</params>
 	<sql>
-		SELECT *
-		FROM &pb_accounts;
-		WHERE id=?
+  SELECT * FROM &pb_accounts; WHERE id=?
 	</sql>
 </query>

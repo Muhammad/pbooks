@@ -30,13 +30,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
   </params>
   <sql>
   <!--This query is used by the income statement report -->
-  SELECT SUM(&pb_entry_amounts;.entry_amount) as entry_amount, 
+  SELECT SUM(&pb_entry_amounts;.entry_amount) as entry_amount,
   &pb_entry_amounts;.account_id,
   &pb_accounts;.account_type_id,
   entry_datetime as entry_month
-  
+
   FROM &pb_entries;,&pb_entry_amounts;,&pb_accounts;
-  
+
   WHERE &pb_entries;.entry_datetime &gt;= ?
   AND &pb_entries;.entry_datetime &lt;= ?
   AND &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
