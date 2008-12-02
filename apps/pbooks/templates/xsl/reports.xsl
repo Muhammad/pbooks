@@ -59,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<xsl:call-template name="date_select">
 							<xsl:with-param name="my_from_date">
-								<xsl:value-of select="//fiscal_start"/>
+								<xsl:value-of select="substring(/_R_/runtime/prev_from_date,0,5)"/>-<xsl:value-of select="//fiscal_start"/>
 							</xsl:with-param>
 						</xsl:call-template>
 					</td>
