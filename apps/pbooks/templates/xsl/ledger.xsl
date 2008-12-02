@@ -82,11 +82,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tr>
 					<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 					<td>
-						<xsl:value-of select="$i18n/select_one"/>:</td>
+						<xsl:value-of select="$i18n/select_one"/>:
+          </td>
 					<td align="right">
 						<select name="account_id" onchange="this.form.submit();">
 							<option value="%">
-								<xsl:value-of select="$i18n/titles/title[key='ledger']/value"/>
+								<xsl:value-of select="$i18n/ledger"/>
 							</option>
 
 							<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
@@ -122,7 +123,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:value-of select="$i18n/memo"/>
 						</th>
 
-        <!-- Exclude account column if only one account selected-->
+            <!-- Exclude account column if only one account selected-->
 						<xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
 							<th>
 								<xsl:value-of select="$i18n/account"/>
@@ -164,8 +165,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 											onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x"/>
 										</a>
-                &#160;
-                <!-- create new matching entry -->
+                    &#160;
+                    <!-- create new matching entry -->
 										<a href="{$link_prefix}journal-new-from-transaction&amp;transaction_id={transaction_id}">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" alt="+"/>
 										</a>
@@ -235,17 +236,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<thead>
 					<tr>
 						<th>
-							<xsl:value-of select="$i18n/assets"/> +</th>
+							<xsl:value-of select="$i18n/assets"/> +
+            </th>
 						<th>
-							<xsl:value-of select="$i18n/expenses"/> =</th>
+							<xsl:value-of select="$i18n/expenses"/> =
+            </th>
 						<th>
-							<xsl:value-of select="$i18n/sub_total"/> =</th>
+							<xsl:value-of select="$i18n/sub_total"/> =
+            </th>
 						<th>
-							<xsl:value-of select="$i18n/liabilities"/> +</th>
+							<xsl:value-of select="$i18n/liabilities"/> +
+            </th>
 						<th>
-							<xsl:value-of select="$i18n/equity"/> +</th>
+							<xsl:value-of select="$i18n/equity"/> +
+            </th>
 						<th>
-							<xsl:value-of select="$i18n/revenue"/> = </th>
+							<xsl:value-of select="$i18n/revenue"/> = 
+            </th>
 						<th>
 							<xsl:value-of select="$i18n/total"/>
 						</th>
@@ -254,18 +261,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody>
 					<tr>
 						<td>
-							<xsl:value-of select="$get_equation/asset_total"/> +</td>
+							<xsl:value-of select="$get_equation/asset_total"/> +
+            </td>
 						<td>
-							<xsl:value-of select="$get_equation/expenses_total"/> =</td>
+							<xsl:value-of select="$get_equation/expenses_total"/> =
+            </td>
 						<td>
 							<xsl:if test="$get_equation/asset_total + $get_equation/expenses_total">
 								<xsl:value-of select="$get_equation/asset_total + $get_equation/expenses_total"/>
 							</xsl:if>
 						</td>
 						<td>
-							<xsl:value-of select="$get_equation/liabilities_total"/> +</td>
+							<xsl:value-of select="$get_equation/liabilities_total"/> +
+            </td>
 						<td>
-							<xsl:value-of select="$get_equation/equity_total"/> +</td>
+							<xsl:value-of select="$get_equation/equity_total"/> +
+            </td>
 						<td>
 							<xsl:value-of select="$get_equation/revenue_total"/>
 						</td>
