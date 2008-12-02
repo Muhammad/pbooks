@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:template name="interactive">
 
 .menu-sub:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 

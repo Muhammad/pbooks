@@ -25,37 +25,37 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="layout">
 #main {
-    width: 980px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+  width: 980px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #primary_logo {
-    height: <xsl:value-of select="//header/height"/>;
-    text-align: center;
-    background-color: white;
-    display: block;
+  height: <xsl:value-of select="//header/height"/>;
+  text-align: center;
+  background-color: white;
+  display: block;
 }
 #primary_logo_span {
-    padding: 12px;
+  padding: 12px;
 }
 #company-name {
-    float: right;
-    margin-right: .4em;
+  float: right;
+  margin-right: .4em;
 }
 
 #header {
-    height: <xsl:value-of select="//header/height"/>;
-    letter-spacing: 1px;
-    display: block;
-    margin-left: <xsl:value-of select="//left_column/width"/>;
+  height: <xsl:value-of select="//header/height"/>;
+  letter-spacing: 1px;
+  display: block;
+  margin-left: <xsl:value-of select="//left_column/width"/>;
 }
 #leftcol {
-    float: left;
-    width: <xsl:value-of select="//left_column/width"/>;
-    margin: 0;
-    min-height: 600px;
+  float: left;
+  width: <xsl:value-of select="//left_column/width"/>;
+  margin: 0;
+  min-height: 600px;
 }
 
 #content:after{
@@ -69,142 +69,142 @@ Fifth Floor, Boston, MA 02110-1301 USA
   visibility: hidden;
 }
 #content {
-    padding: 12px;
-    margin-left: <xsl:value-of select="//left_column/width"/>;
+  padding: 12px;
+  margin-left: <xsl:value-of select="//left_column/width"/>;
 }
 
 
 #company-name {
-    text-align: right;
-    padding-right: 10px;
-    color: #EEE;
-    position: relative;
+  text-align: right;
+  padding-right: 10px;
+  color: #EEE;
+  position: relative;
 }
 
 #print-button {
-    float: right;
-    padding: 20px;
-    padding-top: 50px;
-    color: red;
-    position: relative;
+  float: right;
+  padding: 20px;
+  padding-top: 50px;
+  color: red;
+  position: relative;
 }
 
 #footer {
-    display: block;
-    margin-bottom: 2em;: 
+  display: block;
+  margin-bottom: 2em;
 }
 
 
 
 .generic-button {
-    text-align: center;
-    margin-left: 5px;
+  text-align: center;
+  margin-left: 5px;
 }
 
 .generic-button a {
-    padding: 2px 5px 2px 5px;
-    border: 2px;
-    border-style: solid;
-    text-align: center;
+  padding: 2px 5px 2px 5px;
+  border: 2px;
+  border-style: solid;
+  text-align: center;
 }
 
 .generic-button img {
-    margin-bottom: -4px;
-    margin-right: 6px;
+  margin-bottom: -4px;
+  margin-right: 6px;
 }
 
 a.generic-button {
-    padding: 2px 5px 2px 5px;
-    border: 2px;
-    border-style: solid;
-    text-align: center;
+  padding: 2px 5px 2px 5px;
+  border: 2px;
+  border-style: solid;
+  text-align: center;
 }
 
 .menu-sub, .menu-sub-selected {
-    align: left;
-    padding: 5px;
+  align: left;
+  padding: 5px;
 }
 
 
 /* tables */
 .simpletable {
-    background-color: #222;
-    border-collapse: collapse;
+  background-color: #222;
+  border-collapse: collapse;
 }
 
 table.simpletable thead th, table.simpletable tbody tr td {
 	background-color: #FFF;
-    text-align: left;
-    padding: 4px;
-    margin: 0px;
-    border: 1px;
-    border-color: #555;
-    border-style: solid;
+  text-align: left;
+  padding: 4px;
+  margin: 0px;
+  border: 1px;
+  border-color: #555;
+  border-style: solid;
 }
 
 /* Business Objects */
 #business_object_slip {
-    width: 500px;
-    height: 200px;
-    border: 1px;
-    border-style: solid;
-    padding: 5px;
+  width: 500px;
+  height: 200px;
+  border: 1px;
+  border-style: solid;
+  padding: 5px;
 }
 
 /* Check form */
 #check_date {
-    float: left;
+  float: left;
 }
 #check_number {
-    float: right;
+  float: right;
 }
 #check_payee {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 #check_memo {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 /* Deposit slip */
 #deposit_date {
-    float: left;
+  float: left;
 }
 #deposit_number {
-    float: right;
+  float: right;
 }
 #deposit_payee {
-    margin-top: 40px;
-    float:right;
+  margin-top: 40px;
+  float:right;
 }
 #deposit_memo {
-    float:right;
+  float:right;
 }
 
 
 /* Payment form */
 #payment_date {
-    float: right;
+  float: right;
 }
 
 #payment_payee {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 #payment_memo {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 
 
 
 #journal-entry-form table {
-     width: 100%;
-     text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 #journal-entry-form tr td {
-     text-align: left;
-     padding: 5px;
+  text-align: left;
+  padding: 5px;
 }
 
 

@@ -25,34 +25,34 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="colors">
 body {
-    background: #7B8F8F;
+  background: #7B8F8F;
 }
 #footer {
-    border: 0;
-    border-top: 1em;
-    border-color: #7D0000;
-    border-style: solid;
-    background: #142738;
-    color: #C4C4C4;
+  border: 0;
+  border-top: 1em;
+  border-color: #7D0000;
+  border-style: solid;
+  background: #142738;
+  color: #C4C4C4;
 }
 #footer a {
-    color: #C4C4C4;
+  color: #C4C4C4;
 }
 #main {
-    background: #C4C4C4;
+  background: #C4C4C4;
 }
 #header {
-    background-color: #142738;
+  background-color: #142738;
 }
 #content {
-    background: #FFF;
+  background: #FFF;
 }
 
 #company-name {
-    color: #FFC508;
+  color: #FFC508;
 }
 .page-title {
-    color: #FFC508; /* #D6B28D; */
+  color: #FFC508; /* #D6B28D; */
 }
 
 .row0 td {
@@ -65,11 +65,11 @@ body {
 
 .row2 td {
 	background-color: #DDDDDD;
-    margin: 1px;
+  margin: 1px;
 }
 .row2:hover td {
-    background-color: #CCFFFF;
-    cursor: pointer;
+  background-color: #CCFFFF;
+  cursor: pointer;
 }
 
 .row3 td {
@@ -89,40 +89,40 @@ body {
 }
 
 .menu-sub-selected {
-    background-color: #AAA;
-    color: #FFF;
+  background-color: #AAA;
+  color: #FFF;
 }
 .menu-sub {
 	background: #C4C4C4;
 }
 .menu-sub:hover {
-    background: #F7F7F7; /* 7D0000 */
+  background: #F7F7F7; /* 7D0000 */
 }
 a {
-    color: #222222;
+  color: #222222;
 }
 
 a:visited {
-    color: #222222;
+  color: #222222;
 }
 
 a:hover {
-    color: #7D0000;
+  color: #7D0000;
 }
 
 
 .generic-button a {
-    border-color: #BBB;
+  border-color: #BBB;
 }
 
 a.generic-button {
-    border-color: #BBB;
+  border-color: #BBB;
 }
 
 
 #active {
   color: red;
   background: pink;
-  }
+}
 </xsl:template>
 </xsl:stylesheet>

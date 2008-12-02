@@ -26,24 +26,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:template name="typography">
 
 body {
-    font: small sans-serif;
+  font: small sans-serif;
 }
 
 .page-title {
-    font-size: 2.6em;
-    line-height: 1.4em;
-    text-indent: .5em;
-    font-family: serif;
+  font-size: 2.6em;
+  line-height: 1.4em;
+  text-indent: .5em;
+  font-family: serif;
 }
 
 #journal-entry-form table {
-     font-size: 12px;
+   font-size: 12px;
 }
 #footer {
-    padding: 3px;
-    font-size: .83em;
-    line-height: 2.4em;
-    text-align: center;
+  padding: 3px;
+  font-size: .83em;
+  line-height: 2.4em;
+  text-align: center;
 }
 
 
@@ -55,8 +55,8 @@ body {
 	white-space: nowrap;
 }
 .menu-sub:hover, .menu-sub a:hover {
-    text-decoration: underline;
-    color: #700000;
+  text-decoration: underline;
+  color: #700000;
 }
 
 .journal-data-wrap td {
@@ -64,26 +64,26 @@ body {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .journal-table {
-     border: 0;
-     width: 100%;
-     padding: 2px;
-     border-spacing: 0px;
+   border: 0;
+   width: 100%;
+   padding: 2px;
+   border-spacing: 0px;
 }
 
 .journal-table thead th {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 </xsl:template>
