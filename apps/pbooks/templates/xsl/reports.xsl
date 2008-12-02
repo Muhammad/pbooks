@@ -65,12 +65,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 				</tr>
 			</table>
-			<div style="text-align: center; margin-top: 20px;">
+			<div style="text-align: center; margin-top:2em;">
 				<input type="submit" value="{$i18n/build_report}" name="submit" />
 			</div>
 
       <!-- Saved reports -->
-			<h2>
+			<h2 style="margin-top:2em;">
 				<xsl:value-of select="$i18n/saved_reports"/>
 			</h2>
 			<ul style="big">
@@ -84,7 +84,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</ul>
 
       <!-- Additional reports -->
-			<h2>
+			<h2 style="margin-top:2em;">
 				<xsl:value-of select="$i18n/additional_reports"/>
 			</h2>
 			<ul style="big">
