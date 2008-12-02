@@ -29,10 +29,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:param name="i18n"/>
   <xsl:variable name="account_business_objects"
     select="/_R_/account_business_objects/account_business_objects"/>
-  <xsl:variable name="get_journal_entry"
+
+    <xsl:variable name="get_journal_entry"
     select="/_R_/get_journal_entry/get_journal_entry"/>
+
     <xsl:variable name="business_object_get_metadata"
-      select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
+    select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
@@ -173,7 +175,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="$i18n/source"/>
               </td>
             </tr>
-            <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
+            <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
               <xsl:variable name="my_entry_amount_id">
                 <xsl:value-of select="entry_amount_id"/>
               </xsl:variable>

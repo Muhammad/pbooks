@@ -41,11 +41,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			or editing and existing one,
 			and set appropriate parameter "my_action"
 			-->
-			<xsl:if test="/_R_/get_account/get_account/id">
+			<xsl:if test="/_R_/account_get_by_id/account_get_by_id/id">
 				<input type="hidden" name="my_action" value="update"/>
 				<input type="hidden" value="{/_R_/_get/account_id}" name="account_id"/>
 			</xsl:if>
-			<xsl:if test="not(/_R_/get_account/get_account/id)">
+			<xsl:if test="not(/_R_/account_get_by_id/account_get_by_id/id)">
 				<input type="hidden" name="my_action" value="create"/>
 			</xsl:if>
 
@@ -67,7 +67,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="text" name="name"
-							value="{//get_account/get_account/name|//_post/name}" required="1"
+							value="{//account_get_by_id/account_get_by_id/name|//_post/name}" required="1"
 							err="{//error[key='missing_account_name']/value}"/>
 					</td>
 				</tr>
@@ -100,7 +100,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<input type="text" name="account_number" required="1"
 							err="{//error[key='missing_account_number']/value}"
-							value="{//get_account/get_account/account_number|//_post/account_number}"/>
+							value="{//account_get_by_id/account_get_by_id/account_number|//_post/account_number}"/>
 					</td>
 				</tr>
 				<tr>
@@ -110,7 +110,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<textarea name="description" cols="40" rows="6">
 							<xsl:value-of
-								select="//get_account/get_account/description|//_post/description"/>&#160;
+								select="//account_get_by_id/account_get_by_id/description|//_post/description"/>&#160;
 						</textarea>
 					</td>
 				</tr>
@@ -125,7 +125,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:value-of select="id"/>
 								</xsl:variable>
 								<option value="{id}">
-									<xsl:if test="//get_account/get_account/group_id=id">
+									<xsl:if test="//account_get_by_id/account_get_by_id/group_id=id">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
 									<xsl:value-of select="name"/>
@@ -140,7 +140,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="checkbox" name="hide">
-							<xsl:if test="//get_account/get_account/hide='on'">
+							<xsl:if test="//account_get_by_id/account_get_by_id/hide='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>
