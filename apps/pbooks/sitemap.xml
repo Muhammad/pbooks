@@ -676,7 +676,7 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 
-	<map:gate name="matching" role="pb_admin" cache="30">
+	<map:gate name="matching" role="pb_admin" cache="3">
 		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:query src="data/sql/general_ledger_get_unmatched.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>

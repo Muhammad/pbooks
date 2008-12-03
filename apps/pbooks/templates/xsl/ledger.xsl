@@ -34,14 +34,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:variable name="get_transactions"
 			select="/_R_/get_all_transactions/get_all_transactions"/>
 
-		<xsl:call-template name="jquery-setup">
-			<xsl:with-param name="my-table">myLedger</xsl:with-param>
-			<xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
-			<xsl:with-param name="my-sort-column">
-        ,widthFixed: true
-        <xsl:if test="/_R_/_get/account_id">,sortList: [[0,1],[3,0]]</xsl:if>
-			</xsl:with-param>
-		</xsl:call-template>
+		<xsl:if test="not(/_R_/_get/nid='matching')">
+			<xsl:call-template name="jquery-setup">
+				<xsl:with-param name="my-table">myLedger</xsl:with-param>
+				<xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
+				<xsl:with-param name="my-sort-column">
+					,widthFixed: true
+					<xsl:if test="/_R_/_get/account_id">,sortList: [[0,1],[3,0]]</xsl:if>
+				</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>
+		<xsl:if test="/_R_/_get/nid='matching'">
+			<xsl:call-template name="jquery-setup"/>
+		</xsl:if>
     <!-- Need this action to retain any account selection -->
 		<form method="get">
 			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
@@ -105,9 +110,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</form>
 		</table>
 		<div style="min-height: 400px;" id="myLedgerDiv">
+			<xsl:if test="not(/_R_/_get/nid='matching')">
 			<script type="text/javascript">
       document.getElementById('myLedgerDiv').style.visibility = 'hidden';
       </script>
+			</xsl:if>
 			<table id="myLedger" class="tablesorter">
 				<thead>
 					<tr>
@@ -201,9 +208,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</xsl:for-each>
 				</tbody>
 			</table>
-			<xsl:call-template name="pager">
-				<xsl:with-param name="my-table">myLedger</xsl:with-param>
-			</xsl:call-template>
+			<xsl:if test="not(/_R_/_get/nid='matching')">
+				<xsl:call-template name="pager">
+					<xsl:with-param name="my-table">myLedger</xsl:with-param>
+				</xsl:call-template>
+			</xsl:if>
 		</div>
 		<a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
 
