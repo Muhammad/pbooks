@@ -345,7 +345,7 @@ If you want to complete this process, continue as usual. For more information, s
         <div class="generic-button">
           <form method="post" action="{$link_prefix}journal-delete">
             <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-            <input type="submit" value="Delete this entry" onclick="return confirm('{$i18n/confirm_flip}');"/>
+            <input type="submit" value="Delete this entry" onclick="return confirm('{$i18n/confirm_delete}');"/>
           </form>
         </div>
       </xsl:if>
