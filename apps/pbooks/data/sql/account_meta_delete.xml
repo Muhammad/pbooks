@@ -22,12 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="account_create_meta">
+<query name="account_meta_delete">
 	<connection>&pb_connection;</connection>
 	<params>
 		<param name="_post/account_id" type="text" default="-999"/>
 	</params>
 	<sql>
-		DELETE FROM &pb_accounts_meta; WHERE account_id=?
+	DELETE FROM &pb_accounts_meta; WHERE account_id=?
 	</sql>
 </query>

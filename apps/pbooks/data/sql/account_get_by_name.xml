@@ -22,13 +22,14 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="get_account">
+<query name="account_get_by_id">
 	<!--This query needs to use the primary dsn -->
 	<connection>&pb_connection;</connection>
 	<params>
 		<param name="//_post/name" type="text"/>
 	</params>
 	<sql>
+	<!-- THIS QUERY SHOULD NO LONGER BE NEEDED - USE account_get_by_id.xml INSTEAD 2008-12 -->
   SELECT * FROM &pb_accounts; WHERE name=?
 	</sql>
 </query>

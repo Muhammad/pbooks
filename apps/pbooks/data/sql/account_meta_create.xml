@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="account_create_meta" loop="//account_meta/meta" default="1">
+<query name="account_meta_create" loop="//account_meta/meta" default="1">
 	<connection>&pb_connection;</connection>
 	<params>
 		<param name="//account_get_by_id/account_get_by_id/id" type="text" default="-999"/>
