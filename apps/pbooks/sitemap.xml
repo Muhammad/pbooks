@@ -482,7 +482,7 @@ This makes it easier to maintain persistence. -->
 							</map:switch>
 						</map:block>
 						<map:xml src="data/xml/account_meta.xml"/>
-						<map:query src="data/sql/account_get_by_name.xml" />
+						<map:query src="data/sql/account_get_by_id.xml" />
 						<map:query src="data/sql/account_meta_create.xml" />
 					</map:false>
 				</map:if>
@@ -570,14 +570,14 @@ This makes it easier to maintain persistence. -->
 						<map:query src="data/sql/account_update.xml" />
 						<map:query src="data/sql/account_meta_delete.xml" />
 						<map:xml src="data/xml/customer_meta.xml"/>
-						<map:query src="data/sql/account_get_by_name.xml" />
+						<map:query src="data/sql/account_get_by_id.xml" />
 						<map:query src="data/sql/account_meta_create.xml" />
 						<map:action type="redirect" params="{//link_prefix}customer-accounts"/>
 					</map:true>
 					<map:false>
 						<map:insert name="create-account"/>
 						<map:xml src="data/xml/customer_meta.xml"/>
-						<map:query src="data/sql/account_get_by_name.xml" />
+						<map:query src="data/sql/account_get_by_id.xml" />
 						<map:query src="data/sql/account_meta_create.xml" />
 						<map:action type="redirect" params="{//link_prefix}customer-accounts"/>
 					</map:false>
@@ -821,7 +821,7 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/entry_update_placeholder.xml"/>
 				<map:script src="lib/php/import_into_pbooks.php"/>
 				<map:query src="data/sql/general_ledger_import.xml" />
-				<map:action type="redirect" params="{//link_prefix}ledger"/>
+				<map:action type="redirect" params="{//link_prefix}matching"/>
 			</map:true>
 			<map:false></map:false>
 		</map:if>
