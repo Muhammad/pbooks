@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<head>
 			<title>
 				<xsl:value-of select="/_R_/i18n/default_page_title"/>: 
-		<xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
+        <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
 			</title>
 			<link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js"></script>
