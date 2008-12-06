@@ -89,11 +89,4 @@ used for a single or several applications. -->
         <debug>0</debug>
     </runtime>
 
-
-    <extensions>
-        <nx_auth>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/nx_auth.php</source>
-        </nx_auth>
-    </extensions>
 </config>
