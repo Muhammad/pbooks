@@ -15,11 +15,11 @@ and overlapping information will override settings in the main configuration fil
             <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
             <excludes>ledger-export,x--,dynamic-css,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
         </dev_buffer>
-        <nx_auth>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/nx_auth.php</source>
-            <login>auth.php?nid=login</login>
-        </nx_auth>
+        <nexista_auth>
+          <placement>prepend</placement>
+          <source>&includepath;extensions/nexista_auth.php</source>
+          <login>auth.php?nid=login</login>
+        </nexista_auth>
         <!--
         <nx_cache>
             <placement>prepend</placement>
