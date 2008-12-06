@@ -44,7 +44,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</strong>
     <div style="min-height: 400px;" id="myChecksDiv">
       <script type="text/javascript">
-				document.getElementById('myChecksDiv').style.visibility = 'hidden';
+      document.getElementById('myChecksDiv').style.visibility = 'hidden';
 			</script>
       <table id="myChecks" class="tablesorter">
         <thead>

@@ -38,6 +38,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
     <form action="{$link_prefix}check-submit&amp;entry_id={/_R_/_get/entry_id}"
 			method="post" onSubmit="return validateStandard(this, 'myerror');">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
+      <input type="hidden" name="fiscal_period_id" value="{$get_journal_entry/fiscal_period_id}"/>
       <div id="business_object_slip">
         <div id="check_account_id"></div>
         <div id="check_date">
@@ -83,12 +84,12 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
             <option value="-1">
               <xsl:value-of select="$i18n/checking_account"/>
             </option>
-            <xsl:for-each select="//account_business_objects/account_business_objects">
+            <xsl:for-each select="/_R_/account_business_objects/account_business_objects">
               <xsl:variable name="my_account_id">
                 <xsl:value-of select="account_id"/>
               </xsl:variable>
               <option value="{id}">
-                <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id and //get_journal_entry/get_journal_entry[account_id=$my_account_id]/entry_type_id='Debit'">
+                <xsl:if test="//get_journal_entry/get_journal_entry[account_id=$my_account_id]/entry_type_id='Credit'">
                   <xsl:attribute name="selected">selected</xsl:attribute>
                 </xsl:if>
                 <xsl:value-of select="name"/>
@@ -107,33 +108,33 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
 			Select the expense account.
 			-->
       <select name="expense_account_id" required="1" exclude="-1"
-				err="Please select a credit account.">
+				err="Please select a debit account.">
         <option value="-1">
-          <xsl:value-of select="$i18n/credit_account"/>
+          <xsl:value-of select="$i18n/debit_account"/>
         </option>
 
         <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
           <xsl:variable name="my_account_id">
-            <xsl:value-of select="account_id"/>
+            <xsl:value-of select="id"/>
           </xsl:variable>
           <option value="{id}">
             <xsl:if
-							test="id=//get_journal_entry/get_journal_entry/account_id and //get_journal_entry/get_journal_entry[account_id=$my_account_id]/entry_type_id='Credit'">
+							test="//get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id=$my_account_id">
               <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
             <xsl:value-of select="name"/>
           </option>
         </xsl:for-each>
-
         <xsl:if
 					test="
-					not(//get_journal_entry/get_journal_entry/account_id=//get_all_accounts/get_all_accounts/account_id) and
+					not(//get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id=//get_all_accounts/get_all_accounts/id) and
 					not(//get_journal_entry/get_journal_entry/status=9)">
-          <option value="{/_R_/get_journal_entry/get_journal_entry/account_id}">
+          <option value="{/_R_/get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id}">
             <xsl:value-of select="$i18n/account_hidden"/>
           </option>
         </xsl:if>
       </select>
+
       <br/>
       <br/>
       <input type="submit"/>
