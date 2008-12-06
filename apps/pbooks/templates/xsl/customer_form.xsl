@@ -78,7 +78,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<input type="hidden" name="accounts_receivable_account" value="on"/>
 				<input type="hidden" name="cash_account" value="off"/>
 				<!-- Follow a similar pattern as company options -->
-				<xsl:for-each select="//account_meta/account_meta/meta/meta_key[@category='address']">
+				<xsl:for-each select="//meta/meta_key[@category='address']">
 					<xsl:variable name="my_option">
 						<xsl:value-of select="."/>
 					</xsl:variable>
