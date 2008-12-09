@@ -48,6 +48,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
         });
         document.getElementById(entry_amount_id).innerHTML="";
     }
+
+    function journal_entry_location(entry_id) {
+        location.href = "<xsl:value-of select="$link_prefix"/>journal-entry&amp;entry_id="+entry_id;
+      }
     </script>
 		<!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
@@ -114,7 +118,7 @@ because of the dynamic number of rows per entry. -->
             <xsl:variable name="posa">
               <xsl:value-of select="position() mod 2"/>
             </xsl:variable>
-            <tr class="row2">
+            <tr class="row2" onclick="journal_entry_location({entry_id});">
               <td valign="top" class="journal-data">
                 <xsl:value-of select="entry_datetime"/>
               </td>

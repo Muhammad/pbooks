@@ -37,7 +37,10 @@ body {
 }
 
 #journal-entry-form table {
-   font-size: 12px;
+   font-size: 11px;
+}
+table.tablesorter {
+   font-size: 11px !important;
 }
 #footer {
   padding: 3px;
@@ -61,6 +64,7 @@ body {
 
 .journal-data-wrap td {
 	white-space: normal;
+  font-size: 11px;
 }
 
 a {
@@ -76,10 +80,11 @@ a:hover {
 }
 
 .journal-table {
-   border: 0;
-   width: 100%;
-   padding: 2px;
-   border-spacing: 0px;
+  border: 0;
+  width: 100%;
+  padding: 2px;
+  border-spacing: 0px;
+  font-size: 11px;
 }
 
 .journal-table thead th {

@@ -82,6 +82,8 @@ Sorry for all the white space! Hard to navigate without.
     }
 		</script>
 
+    <a class="generic-button" style="float: right;" href="{$link_prefix}journal">Go to Journal</a>
+    
 		<!-- Non existent entry_id error -->
     <xsl:if test="not($get_journal_entry)">
       <div class="error">
@@ -378,7 +380,7 @@ If you want to complete this process, continue as usual. For more information, s
     <tr class="odd">
       <td>
         <xsl:if test="count($get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not($get_journal_entry[entry_type_id='Debit']))">
-          <a onclick="journal_entry_amount_create('credit'); return false;">
+          <a onclick="journal_entry_amount_create('credit'); return false;" href="">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
           </a>
         </xsl:if>
@@ -475,7 +477,7 @@ If you want to complete this process, continue as usual. For more information, s
     <tr>
       <td>
         <xsl:if test="count($get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not($get_journal_entry[entry_type_id='Credit']))">
-          <a onclick="journal_entry_amount_create('debit'); return false;">
+          <a href="" onclick="journal_entry_amount_create('debit'); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
           </a>
         </xsl:if>

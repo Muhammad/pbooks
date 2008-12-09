@@ -64,7 +64,7 @@ body {
 }
 
 .row2 td {
-	background-color: #DDDDDD;
+	background-color: #DDDDEE;
   margin: 1px;
 }
 .row2:hover td {
