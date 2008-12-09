@@ -98,7 +98,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 				<tr>
 					<td>
-						<xsl:value-of select="$i18n/accounts-edit"/>
+						<xsl:value-of select="$i18n/accounts"/>
 					</td>
 					<td>
 						<xsl:for-each select="//account_groups_get_accounts/account_groups_get_accounts">
