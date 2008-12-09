@@ -56,11 +56,12 @@ Sorry for all the white space! Hard to navigate without.
 					setTimeout('window.location.reload()',200);
 			}
     }
-    function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+    function journal_entry_amount_create(entry_type_id) {
+			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id=<xsl:value-of select="//_get/entry_id"/>",
 			{
-					'entry_id': entry_id,
-					'entry_datetime': entry_date
+					'entry_id': <xsl:value-of select="//_get/entry_id"/>,
+					'entry_datetime': document.getElementById("entry_datetime").value,
+					'memorandum': document.getElementById("memorandum").value
 			},
 			function (data){
 					setTimeout('window.location.reload()',200);
@@ -251,7 +252,7 @@ Sorry for all the white space! Hard to navigate without.
                 <xsl:value-of select="$i18n/memorandum"/>:
               </td>
               <td>
-                <textarea type="text" name="memorandum" rows="5" cols="35" required="1" err="Please enter a memo.">
+                <textarea type="text" name="memorandum" id="memorandum" rows="5" cols="35" required="1" err="Please enter a memo.">
 								<!-- don't show placeholders -->
                   <xsl:if test=" not ( contains($get_journal_entry/memorandum,'__') ) and 
                     ( not($get_journal_entry=9) ) ">
@@ -266,7 +267,7 @@ Sorry for all the white space! Hard to navigate without.
                   <tr>
                   <!-- this is an arrow which links to the previous entry_id in the journal -->
                     <td>
-                      <a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
+                      <a href="{$link_prefix}{//_get/nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
                         <img src="{$path_prefix}s/images/buttons/out.gif"/>
                       </a>
                     </td>
@@ -351,14 +352,6 @@ If you want to complete this process, continue as usual. For more information, s
       </xsl:if>
 			<!-- end training mode -->
     </xsl:if>
-
-
-<script type="text/javascript">
-function get_entry_date()
-{
-    return document.getElementById("entry_datetime").value;
-}
-</script>
   </xsl:template>
 	<!-- end form template -->
 
@@ -385,7 +378,7 @@ function get_entry_date()
     <tr class="odd">
       <td>
         <xsl:if test="count($get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not($get_journal_entry[entry_type_id='Debit']))">
-          <a onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id},get_entry_date()); return false;">
+          <a onclick="journal_entry_amount_create('credit'); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
           </a>
         </xsl:if>
@@ -482,7 +475,7 @@ function get_entry_date()
     <tr>
       <td>
         <xsl:if test="count($get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not($get_journal_entry[entry_type_id='Credit']))">
-          <a onclick="journal_entry_amount_create('debit',{/_R_/_get/entry_id},get_entry_date()); return false;">
+          <a onclick="journal_entry_amount_create('debit'); return false;">
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png"/>
           </a>
         </xsl:if>

@@ -90,19 +90,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<map:gate name="journal-entry-new-credit" role="pb_admin">
 		<map:query src="data/sql/entry_get_id.xml"/>
 		<map:query src="data/sql/entry_amount_credit_create_get.xml"/>
-		<map:block name="entry_update_datetime">
-			<map:if name="/_R_/_get/entry_datetime">
-				<map:true>
-					<map:query src="data/sql/entry_update_datetime.xml"/>
-				</map:true>
-				<map:false></map:false>
-			</map:if>
-		</map:block>
+    <map:query src="data/sql/entry_update_datetime.xml"/>
 	</map:gate>
 	<map:gate name="journal-entry-new-debit" role="pb_admin">
 		<map:query src="data/sql/entry_get_id.xml"/>
 		<map:query src="data/sql/entry_amount_debit_create_get.xml"/>
-		<map:insert name="entry_update_datetime"/>
+    <map:query src="data/sql/entry_update_datetime.xml"/>
 	</map:gate>
 
 	<map:gate name="journal-entry" role="pb_admin" cache="30">
