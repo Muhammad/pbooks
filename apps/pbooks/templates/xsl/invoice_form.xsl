@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- Add / delete items -->
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id,row) {
-      $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-amount-delete",
+      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
       {
 				'entry_amount_id': entry_amount_id
       },
@@ -42,7 +42,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       myTable.deleteRow(row);
     }
     function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
-      $.post("<xsl:value-of select="/_R_/runtime/link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
       {
 				'entry_id': entry_id,
 				'entry_datetime': entry_date
@@ -58,7 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <h2>
       <xsl:value-of select="$i18n/new_invoice"/>:
     </h2>
-    <form method="post" action="{/_R_/runtime/link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
+    <form method="post" action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <table border="0" id="invoice_form_table">
         <tbody>
@@ -87,7 +87,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </xsl:for-each>
               </select>&#160;
             <a href="{$link_prefix}customer-edit&amp;print=true&amp;keepThis=true&amp;TB_iframe=true&amp;height=300&amp;width=500" title="Add New Customer" class="thickbox">
-            <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
+            <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
               </a>
             </td>
             <td></td>
@@ -233,9 +233,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
               <td>
                 <xsl:if test="position() &gt; 1">
-                  <a href="{/_R_/runtime/link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
+                  <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
                       onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
-                    <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
+                    <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
                   </a>
                 </xsl:if>
               </td>
@@ -245,9 +245,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr>
             <td colspan="7"></td>
             <td>
-              <a href="{/_R_/runtime/link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
+              <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                 <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
-									src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" />
+									src="{$path_prefix}{/_R_/runtime/icon_set}add.png" />
               </a>
             </td>
           </tr>
