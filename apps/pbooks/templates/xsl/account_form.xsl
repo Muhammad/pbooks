@@ -98,7 +98,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </td>
 					<td>
 						<textarea name="description" cols="40" rows="6">
-							<xsl:value-of select="/_R_/account_get_by_id/account_get_by_id/description|//_post/description"/>&#160;
+							<xsl:value-of select="/_R_/account_get_by_id/account_get_by_id/description|//_post/description"/>
             </textarea>
 					</td>
 				</tr>
