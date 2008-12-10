@@ -517,7 +517,8 @@ If you want to complete this process, continue as usual. For more information, s
                 </xsl:if>
                 <!-- If not, does the memo match up with an account's metadata? -->
                 <xsl:if test="($get_journal_entry/entry_amount &gt;0 and ($get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000)) or ($get_journal_entry/entry_amount &lt;0 and ($get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000))">
-                  <xsl:if test="contains(description,substring($get_journal_entry/memorandum,1,7)) or contains(description,$get_journal_entry/entry_amount)">
+                  <xsl:if test="not(description='' or description=' ') and (contains(description,substring($get_journal_entry/memorandum,1,7)) or contains(description,$get_journal_entry/entry_amount)
+    or contains($get_journal_entry/memorandum,description))">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                 </xsl:if>
