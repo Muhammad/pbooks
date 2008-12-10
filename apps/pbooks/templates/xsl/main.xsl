@@ -22,74 +22,60 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:include href="html_shell.xsl"/>
-  <xsl:include href="html_head.xsl"/>
-  <xsl:include href="html_header.xsl"/>
-  <xsl:include href="accounting_menu.xsl"/>
-  <xsl:include href="html_footer.xsl"/>
-  <xsl:include href="source_spacer.xsl"/>
-  <xsl:template name="main">
-    <xsl:param name="link_prefix"/>
-    <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
+	<xsl:include href="html_shell.xsl"/>
+	<xsl:include href="html_head.xsl"/>
+	<xsl:include href="html_header.xsl"/>
+	<xsl:include href="accounting_menu.xsl"/>
+	<xsl:include href="html_footer.xsl"/>
+	<xsl:include href="source_spacer.xsl"/>
+	<xsl:template name="main">
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:param name="i18n"/>
 
-    <xsl:if test="not(/_R_/_get/print='true')">
-      <xsl:call-template name="source_spacer">
-        <xsl:with-param name="section_start">main</xsl:with-param>
-      </xsl:call-template>
-      <div id="main">
-        <div id="leftcol">
-          <div id="primary_logo">
-            <div id="primary_logo_span">
-              <a href="{/_R_/runtime/link_prefix}welcome">
-                <img src="{/_R_/runtime/top_left_logo}" alt="PBooks Logo"/>
-              </a>
-            </div>
-          </div>
-          <xsl:if test="not(/_R_/_get/nid='login') and
-            not(/_R_/_get/nid='logout') and
-            not(/_R_/_get/nid='development-data-generator') and
-            not(contains(/_R_/_get/nid,'user')) and
-            not(/_R_/_get/nid='group') and
-            not(/_R_/_get/nid='group/edit') and
-            not(contains(/_R_/_get/nid,'role'))">
-            <xsl:call-template name="accounting-menu"/>
-          </xsl:if>
-        </div>
+		<xsl:if test="not(/_R_/_get/print='true')">
+			<xsl:call-template name="source_spacer">
+				<xsl:with-param name="section_start">main</xsl:with-param>
+			</xsl:call-template>
+			<div id="main">
+				<div id="leftcol">
+					<div id="primary_logo">
+						<div id="primary_logo_span">
+							<a href="{$runtime}welcome">
+								<img src="{/_R_/runtime/top_left_logo}" alt="PBooks Logo"/>
+							</a>
+						</div>
+					</div>
+					<xsl:if test="not(/_R_/_get/nid='login') and not(/_R_/_get/nid='logout') and not(/_R_/_get/nid='development-data-generator') and not(contains(/_R_/_get/nid,'user')) and not(/_R_/_get/nid='group') and not(/_R_/_get/nid='group/edit') and not(contains(/_R_/_get/nid,'role'))">
+						<xsl:call-template name="accounting-menu"/>
+					</xsl:if>
+				</div>
 
-        <xsl:call-template name="header">
-          <xsl:with-param name="i18n" select="$i18n"/>
+				<xsl:call-template name="header">
+					<xsl:with-param name="i18n" select="$i18n"/>
 				</xsl:call-template>
-        <div id="content">
-          <xsl:call-template name="content">
-            <xsl:with-param name="link_prefix">
-              <xsl:value-of select="$link_prefix"/>
-            </xsl:with-param>
-            <xsl:with-param name="path_prefix">
-              <xsl:value-of select="$path_prefix"/>
-            </xsl:with-param>
-            <xsl:with-param name="i18n" select="$i18n"/>
-          </xsl:call-template>
-        </div>
-        <xsl:call-template name="footer"/>
-      </div>
-      <xsl:call-template name="source_spacer">
-        <xsl:with-param name="section_end">main</xsl:with-param>
-      </xsl:call-template>
-    </xsl:if>
+				<div id="content">
+					<xsl:call-template name="content">
+						<xsl:with-param name="link_prefix" select="$link_prefix"/>
+						<xsl:with-param name="path_prefix" select="$path_prefix"/>
+						<xsl:with-param name="i18n" select="$i18n"/>
+					</xsl:call-template>
+				</div>
+				<xsl:call-template name="footer"/>
+			</div>
+			<xsl:call-template name="source_spacer">
+				<xsl:with-param name="section_end">main</xsl:with-param>
+			</xsl:call-template>
+		</xsl:if>
 
-    <xsl:if test="/_R_/_get/print='true'">
-      <div style="padding: 20px; width: 600px;">
-          <xsl:call-template name="content">
-            <xsl:with-param name="link_prefix">
-              <xsl:value-of select="$link_prefix"/>
-            </xsl:with-param>
-            <xsl:with-param name="path_prefix">
-              <xsl:value-of select="$path_prefix"/>
-            </xsl:with-param>
-            <xsl:with-param name="i18n" select="$i18n"/>
-          </xsl:call-template>
-      </div>
-    </xsl:if>
-  </xsl:template>
+		<xsl:if test="/_R_/_get/print='true'">
+			<div style="padding: 20px; width: 600px;">
+				<xsl:call-template name="content">
+					<xsl:with-param name="link_prefix" select="$link_prefix"/>
+					<xsl:with-param name="path_prefix" select="$path_prefix"/>
+					<xsl:with-param name="i18n" select="$i18n"/>
+				</xsl:call-template>
+			</div>
+		</xsl:if>
+	</xsl:template>
 </xsl:stylesheet>
