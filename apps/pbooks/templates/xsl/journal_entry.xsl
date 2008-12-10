@@ -25,12 +25,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
 
-<!-- This template requires explanation. The form contains at least two entry
+<!--
+This template requires explanation. The form contains at least two entry
 amounts - one credit and one debit. These are created by templates located
-further down the page ( I may separate them into separate files ). If there is 
-more than one debit or credit, there can only be one of the other type. 
-
-Sorry for all the white space! Hard to navigate without.
+further down the page ( I may separate them into separate files ). If there is
+more than one debit or credit, there can only be one of the other type.
 -->
 
   <xsl:template name="content">
@@ -83,7 +82,7 @@ Sorry for all the white space! Hard to navigate without.
 		</script>
 
     <a class="generic-button" style="float: right;" href="{$link_prefix}journal">Go to Journal</a>
-    
+
 		<!-- Non existent entry_id error -->
     <xsl:if test="not($get_journal_entry)">
       <div class="error">
@@ -93,7 +92,7 @@ Sorry for all the white space! Hard to navigate without.
       <table cellpadding="5" align="center">
         <tr>
           <td>
-            <a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
+            <a href="{$link_prefix}{//_get/nid}&amp;entry_id={/_R_/_get/entry_id - 1}">
               <img src="{$path_prefix}s/images/buttons/out.gif"/>
             </a>
           </td>
@@ -101,7 +100,7 @@ Sorry for all the white space! Hard to navigate without.
             <input type="button" style="padding: 5px;" value="Go Back" onclick="history.go(-1)"/>
           </td>
           <td>
-            <a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
+            <a href="{$link_prefix}{//_get/nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
               <img src="{$path_prefix}s/images/buttons/in.gif"/>
             </a>
           </td>
@@ -140,7 +139,7 @@ Sorry for all the white space! Hard to navigate without.
                 value="{$get_journal_entry/entry_datetime}"/>
 								Fiscal period: 
                 <input type="text" name="fiscal_period_id" id="fiscal_period_id" size="4"
-                value="{$get_journal_entry/fiscal_period_id|//option_get_company_name/fiscal_period_id}"/>
+                value="{$get_journal_entry/fiscal_period_id|//_get/option_get_company_name/option_get_company_name/fiscal_period_id}"/>
               </td>
               <xsl:if test="/_R_/_get/transaction_id">
                 <input type="hidden" name="transaction_id" value="{/_R_/_get/transaction_id}"/>
@@ -185,12 +184,8 @@ Sorry for all the white space! Hard to navigate without.
                       </xsl:variable>
                       <xsl:call-template name="debit">
                         <xsl:with-param name="my_entry_id" value="{entry_id}"/>
-                        <xsl:with-param name="link_prefix">
-                          <xsl:value-of select="$link_prefix"/>
-                        </xsl:with-param>
-                        <xsl:with-param name="path_prefix">
-                          <xsl:value-of select="$path_prefix"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                        <xsl:with-param name="path_prefix" select="$path_prefix"/>
                         <xsl:with-param name="i18n" select="$i18n"/>
                         <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
 											</xsl:call-template>
@@ -198,12 +193,8 @@ Sorry for all the white space! Hard to navigate without.
 										<!-- for broken journal entries without a debit -->
                     <xsl:if test="not($get_journal_entry[entry_type_id='Debit'])">
                       <xsl:call-template name="debit">
-                        <xsl:with-param name="link_prefix">
-                          <xsl:value-of select="$link_prefix"/>
-                        </xsl:with-param>
-                        <xsl:with-param name="path_prefix">
-                          <xsl:value-of select="$path_prefix"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                        <xsl:with-param name="path_prefix" select="$path_prefix"/>
                         <xsl:with-param name="i18n" select="$i18n"/>
                         <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
 											</xsl:call-template>
@@ -215,18 +206,10 @@ Sorry for all the white space! Hard to navigate without.
                         <xsl:value-of select="account_id"/>
                       </xsl:variable>
                       <xsl:call-template name="credit">
-                        <xsl:with-param name="my_entry_id">
-                          <xsl:value-of select="entry_amount"/>
-                        </xsl:with-param>
-                        <xsl:with-param name="my_entry_amount_id">
-                          <xsl:value-of select="entry_amount_id"/>
-                        </xsl:with-param>
-                        <xsl:with-param name="link_prefix">
-                          <xsl:value-of select="$link_prefix"/>
-                        </xsl:with-param>
-                        <xsl:with-param name="path_prefix">
-                          <xsl:value-of select="$path_prefix"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="my_entry_id" select="entry_amount"/>
+                        <xsl:with-param name="my_entry_amount_id" select="entry_amount_id"/>
+                        <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                        <xsl:with-param name="path_prefix" select="$path_prefix"/>
                         <xsl:with-param name="i18n" select="$i18n"/>
                         <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
                       </xsl:call-template>
@@ -235,12 +218,8 @@ Sorry for all the white space! Hard to navigate without.
 										<!-- for broken journal entries without a credit -->
                     <xsl:if test="not($get_journal_entry[entry_type_id='Credit'])">
                       <xsl:call-template name="credit">
-                        <xsl:with-param name="link_prefix">
-                          <xsl:value-of select="$link_prefix"/>
-                        </xsl:with-param>
-                        <xsl:with-param name="path_prefix">
-                          <xsl:value-of select="$path_prefix"/>
-                        </xsl:with-param>
+                        <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                        <xsl:with-param name="path_prefix" select="$path_prefix"/>
                         <xsl:with-param name="i18n" select="$i18n"/>
                         <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
                       </xsl:call-template>
@@ -278,8 +257,10 @@ Sorry for all the white space! Hard to navigate without.
                     <td colspan="3" style="text-align: center">
                       <input type="submit" name="submit" id="submit"
 												value="Submit" class="generic-button"/>
-											<!-- Cancel the entry, if this is from a transaction,
-											the entry must be deleted -->
+											<!--
+											Cancel the entry, if this is from a transaction,
+											the entry must be deleted
+											-->
                       <input type="button" class="generic-button" value="Cancel">
                         <xsl:if test="/_R_/_get/transaction_id">
                           <xsl:attribute name="onclick">
@@ -371,12 +352,8 @@ If you want to complete this process, continue as usual. For more information, s
     <xsl:param name="get_journal_entry"/>
     <xsl:param name="i18n"/>
     <xsl:param name="get_journal_entry"/>
-    <xsl:variable name="my_account_id">
-      <xsl:value-of select="account_id"/>
-    </xsl:variable>
-    <xsl:variable name="my_entry_amount_id">
-      <xsl:value-of select="entry_amount_id"/>
-    </xsl:variable>
+    <xsl:variable name="my_account_id" select="account_id"/>
+    <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
     <tr class="odd">
       <td>
         <xsl:if test="count($get_journal_entry[entry_type_id='Debit'])&lt;2 and (entry_amount=0 or /_R_/_get/transaction_id or not(entry_amount) or not($get_journal_entry[entry_type_id='Debit']))">
@@ -447,7 +424,17 @@ If you want to complete this process, continue as usual. For more information, s
 							</xsl:call-template>
             </xsl:if>
           </xsl:attribute>
-          <xsl:if test=" ( $get_journal_entry/entry_amount &gt;0 and ( $get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000 ) ) or ( $get_journal_entry/entry_amount &lt;0 and ( $get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000 ) ) ">
+          <xsl:if test=" (
+						$get_journal_entry/entry_amount &gt; 0 and (
+							$get_journal_entry/account_type_id=20000 or
+							$get_journal_entry/account_type_id=30000 or
+							$get_journal_entry/account_type_id=40000 )
+						) or (
+							$get_journal_entry/entry_amount &lt;0 and
+								( $get_journal_entry/account_type_id=10000 or
+									$get_journal_entry/account_type_id=50000
+								)
+						)">
             <xsl:if test="not(id=$get_journal_entry/account_id)">
               <xsl:attribute name="readonly">readonly</xsl:attribute>
             </xsl:if>
@@ -478,9 +465,7 @@ If you want to complete this process, continue as usual. For more information, s
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
     <xsl:param name="get_journal_entry"/>
-    <xsl:variable name="my_entry_amount">
-      <xsl:value-of select="entry_amount"/>
-    </xsl:variable>
+    <xsl:variable name="my_entry_amount" select="entry_amount"/>
     <tr>
       <td>
         <xsl:if test="count($get_journal_entry[entry_type_id='Credit'])&lt;2 and (entry_amount=0.00 or not(entry_amount) or /_R_/_get/transaction_id or not($get_journal_entry[entry_type_id='Credit']))">
@@ -509,7 +494,7 @@ If you want to complete this process, continue as usual. For more information, s
                 <!-- Is the transaction a debit? -->
                 <xsl:if test="($get_journal_entry/entry_amount &lt;0 and ($get_journal_entry/account_type_id=20000 or $get_journal_entry/account_type_id=30000 or $get_journal_entry/account_type_id=40000)) or ($get_journal_entry/entry_amount &gt;0 and ($get_journal_entry/account_type_id=10000 or $get_journal_entry/account_type_id=50000))">
                   <xsl:if test="id=$get_journal_entry/account_id">
-                    <xsl:attribute name="selected">selected="selected"</xsl:attribute>
+                    <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:if test="not(id=$get_journal_entry/account_id)">
                     <xsl:attribute name="disabled">disabled</xsl:attribute>
@@ -524,13 +509,12 @@ If you want to complete this process, continue as usual. For more information, s
                 </xsl:if>
 
               </xsl:if>
-                <!--<xsl:value-of select="account_type_id"/> -->
               <xsl:value-of select="name"/>
             </option>
           </xsl:for-each>
 
 					<!-- HIDDEN ACCOUNT -->
-          <xsl:if test="not($get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts//id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
+          <xsl:if test="not($get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts/get_all_accounts/id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
             <option value="{$get_journal_entry/account_id}" selected="selected">
               <xsl:value-of select="$i18n/account_hidden"/>
             </option>
