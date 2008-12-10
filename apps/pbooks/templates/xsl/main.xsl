@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<div id="leftcol">
 					<div id="primary_logo">
 						<div id="primary_logo_span">
-							<a href="{$runtime}welcome">
+							<a href="{$link_prefix}welcome">
 								<img src="{/_R_/runtime/top_left_logo}" alt="PBooks Logo"/>
 							</a>
 						</div>
