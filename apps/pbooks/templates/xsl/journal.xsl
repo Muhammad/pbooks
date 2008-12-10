@@ -77,8 +77,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </tr>
     </table>
     <form action="{$link_prefix}journal-delete" method="post">
-		<!-- this is the table of journal entries. we don't use the tablesorter here 
-because of the dynamic number of rows per entry. -->
+		<!--
+		This is the table of journal entries. we don't use the tablesorter here
+		because of the dynamic number of rows per entry.
+		-->
       <table class="journal-table">
         <thead>
           <tr>
@@ -106,9 +108,11 @@ because of the dynamic number of rows per entry. -->
           </tr>
         </thead>
         <tbody>
-				<!-- each journal entry is comprised of the entry itself, plus several entry
+				<!--
+				Each journal entry is comprised of the entry itself, plus several entry
 				amounts and accounts which are descendent from it. The outer loop goes
-				through each entry, and the inner loop iterates through each entry amount. -->
+				through each entry, and the inner loop iterates through each entry amount.
+				-->
 
 				<!-- OUTER LOOP -->
           <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
@@ -139,8 +143,10 @@ because of the dynamic number of rows per entry. -->
               </td>
             </tr>
 
-					 <!-- These variables are used inside the loop to select specific nodes using xpath -->
-					 <!-- This should likely be moved to processing instruction of action -->
+						<!--
+						These variables are used inside the loop to select specific nodes using xpath
+						This should likely be moved to processing instruction of action.
+						-->
             <xsl:variable name="this_entry_debit_total">
               <xsl:value-of
                 select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
@@ -172,21 +178,23 @@ because of the dynamic number of rows per entry. -->
      transaction to the ledger.
     -->
                 <td>
-                <!-- All this for the plus sign! -->
-                  <xsl:if test="not(posted_account_id) or posted_account_id=''">
-                  <!-- Only allow posting of balanced entries-->
-                    <xsl:if test="$balanced='yes'">
-                    <!-- This make an AJAX request to post the entry to the ledger,
-                    and then removes the plus sign -->
-                      <div id="{entry_amount_id}">
-                        <a href="{$link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}"
-													onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
-                          <div class="journal-post-plus"
-														style="background-image: url({$path_prefix}{/_R_/runtime/icon_set}add.png);">&#160;</div>
-                        </a>
-                      </div>
-                    </xsl:if>
-                  </xsl:if>
+                <!--
+								All this for the plus sign!
+								Only allow posting of balanced entries
+								-->
+									<xsl:if test="(not(posted_account_id) or posted_account_id='') and $balanced='yes'">
+									<!--
+									This make an AJAX request to post the entry to the ledger,
+									and then removes the plus sign
+									-->
+										<div id="{entry_amount_id}">
+											<a href="{$link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}"
+												onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
+												<div class="journal-post-plus"
+													style="background-image: url({$path_prefix}{/_R_/runtime/icon_set}add.png);"/>
+											</a>
+										</div>
+								</xsl:if>
                 </td>
                 <xsl:if test="entry_type_id='Credit'">
                   <td class="journal-data" align="right">
@@ -231,8 +239,10 @@ because of the dynamic number of rows per entry. -->
         </xsl:variable>
 
 
-				<!-- This row shows the total of the credits and the debits, which should be equal.
-			If they are unequal, PBooks will complain to the user. -->
+				<!--
+				This row shows the total of the credits and the debits, which should be equal.
+				If they are unequal, PBooks will complain to the user.
+				-->
         <tr>
           <td colspan="5" align="right">
             <xsl:if test="not($total_credits=$total_debits)">

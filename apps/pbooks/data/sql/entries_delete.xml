@@ -22,13 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="entries_delete" loop="//_post/entry_id">
-    <connection>&pb_connection_read;</connection>
-    <params>
+<query name="entries_delete" loop="//_post/entry_id" default="1">
+	<connection>&pb_connection;</connection>
+	<params>
 		<param array="//_post/entry_id" type="integer"/>
 	</params>
-    <sql>
-        DELETE FROM &pb_entries;
-        WHERE entry_id=?
-    </sql>
+	<sql>
+	DELETE FROM &pb_entries; WHERE entry_id=?
+	</sql>
 </query>
