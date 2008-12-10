@@ -212,9 +212,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:call-template name="pager">
 					<xsl:with-param name="my-table">myLedger</xsl:with-param>
 				</xsl:call-template>
-			</xsl:if>
+			    <a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
+            </xsl:if>
 		</div>
-		<a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
 
 		<!-- If an account_id has been selected, only show how much it has changed.-->
 		<xsl:if test="(/_R_/_get/account_id &gt; 0)">
