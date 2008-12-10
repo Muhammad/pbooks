@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
             <td colspan="8">
               <input type="text" name="entry_datetime" id="invoice_date"
-								value="{//get_journal_entry/get_journal_entry/entry_datetime}"/>
+								value="{/_R_/get_journal_entry/get_journal_entry/entry_datetime}"/>
             </td>
           </tr>
           <tr>
