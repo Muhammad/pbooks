@@ -175,9 +175,10 @@ more than one debit or credit, there can only be one of the other type.
                     </tr>
                   </thead>
                   <tbody>
-									<!-- Recursive, aka looping, template for debits
-                 calls the journal entry row templates, see below
-                 -->
+									<!--
+									Recursive, aka looping, template for debits
+									calls the journal entry row templates, see below
+									-->
                     <xsl:for-each select="$get_journal_entry[entry_type_id='Debit']">
                       <xsl:variable name="my_account_id">
                         <xsl:value-of select="account_id"/>
@@ -233,9 +234,10 @@ more than one debit or credit, there can only be one of the other type.
                 <xsl:value-of select="$i18n/memorandum"/>:
               </td>
               <td>
-                <textarea type="text" name="memorandum" id="memorandum" rows="5" cols="35" required="1" err="Please enter a memo.">
+                <textarea type="text" name="memorandum" id="memorandum"
+									rows="5" cols="35" required="1" err="Please enter a memo.">
 								<!-- don't show placeholders -->
-                  <xsl:if test=" not ( contains($get_journal_entry/memorandum,'__') ) and 
+                  <xsl:if test=" not ( contains($get_journal_entry/memorandum,'__') ) and
                     ( not($get_journal_entry=9) ) ">
                     <xsl:value-of select="$get_journal_entry/memorandum"/>
                   </xsl:if>
