@@ -82,6 +82,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="parent_gid">0</xsl:param>
 		<xsl:param name="generation">0</xsl:param>
 		<xsl:param name="link_prefix"/>
+		<xsl:param name="i18n"/>
 		<xsl:variable name="my_group_id">
 			<xsl:value-of select="group_id"/>
 		</xsl:variable>
@@ -124,12 +125,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</tr>
 		<xsl:apply-templates select="group">
 			<xsl:with-param name="link_prefix" select="$link_prefix"/>
-			<xsl:with-param name="parent_gid">
-				<xsl:value-of select="$my_group_id"/>
-			</xsl:with-param>
-			<xsl:with-param name="generation">
-				<xsl:value-of select="$generation+1"/>
-			</xsl:with-param>
+			<xsl:with-param name="parent_gid" select="$my_group_id"/>
+			<xsl:with-param name="i18n" select="$i18n"/>
+			<xsl:with-param name="generation" select="$generation+1"/>
 		</xsl:apply-templates>
 	</xsl:template>
 
@@ -138,9 +136,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:if test="$iterator &gt; '0'">
 			<span style="margin-left: {20 * $iterator}px;"></span>
 			<xsl:call-template name="generation_indent">
-				<xsl:with-param name="iterator">
-					<xsl:value-of select="$iterator - 1"/>
-				</xsl:with-param>
+				<xsl:with-param name="iterator" select="$iterator - 1"/>
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
