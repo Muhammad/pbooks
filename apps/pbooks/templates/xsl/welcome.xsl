@@ -49,15 +49,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<br/><br/>
 
       <!-- strict layout table -->
-      <table cellpadding="20">
+      <table>
         <tr>
-          <td>
+          <td style="padding-right: 20px;" valign="top">
 
           <!-- This table displays some basic information about the books -->
             <table class="simpletable" width="300">
               <thead>
                 <tr>
-                  <th colspan="2">
+                  <th colspan="2" style="background-color: #DDD">
                     <b>
                       <xsl:value-of select="$i18n/quick_stats"/>
                     </b>
@@ -108,12 +108,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </tbody>
             </table>
           </td>
-          <td>
+          <td valign="top">
           <!-- This table displays some recent entries and transactions -->
             <table class="simpletable" width="300">
               <thead>
                 <tr>
-                  <th colspan="2">
+                  <th colspan="2" style="background-color: #DDD">
                     <b>
                       <xsl:value-of select="$i18n/recent_activity"/>
                     </b>
