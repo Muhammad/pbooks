@@ -62,6 +62,11 @@ if(empty($default_currency_unit)) {
     $default_currency_unit = "$";
 }
 
+$payment_account_id = Nexista_Config::get("./defaults/payment_account_id");
+if(empty($payment_account_id)) {
+    $payment_account_id = 0;
+}
+
 $default_invoice_print_vertical = Nexista_Config::get("./defaults/default_invoice_print_vertical");
 if(empty($default_invoice_print_vertical)) {
     $default_invoice_print_vertical = "-22";
@@ -152,6 +157,7 @@ $runtime = array(
     'icon_set' => $default_icon_set,
     'fiscal_start' => $default_fiscal_start,
     'request_uri' => $_SERVER['REQUEST_URI'],
+    'payment_account_id' => $payment_account_id,
     );
 
 Nexista_Flow::add("runtime",$runtime,false);

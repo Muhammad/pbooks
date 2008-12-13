@@ -65,6 +65,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 			<input type="hidden" name="customer_payment" value="true"/>
 			<input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
+      <input type="hidden" name="fiscal_period_id" value="{$get_journal_entry/fiscal_period_id}"/>
+			<input type="hidden" name="payment_account_id" value="{//runtime/payment_account_id}"/>
 			<div id="business_object_slip">
 				<div id="payment_date">
 					<xsl:value-of select="$i18n/date"/>:
