@@ -3,6 +3,7 @@
   <default_page_title>PBooks Open Source Accounting and Bookkeeping System</default_page_title>
   <main_menu>Main Menu</main_menu>
   <accounts>Accounts</accounts>
+  <account_closed>Account Closed</account_closed>
   <account-groups>Account Groups</account-groups>
   <customer-accounts>Customers</customer-accounts>
   <welcome>Welcome</welcome>
