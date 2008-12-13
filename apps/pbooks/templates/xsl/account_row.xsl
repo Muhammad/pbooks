@@ -98,7 +98,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
       <td>
         <a id="{account_number}-d"
-					href="{/_R_/runtime/link_prefix}accounts-delete&amp;account_id={id}"
+					href="{$link_prefix}accounts-delete&amp;account_id={id}"
 					onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
           <xsl:value-of select="$i18n/delete"/>
         </a>

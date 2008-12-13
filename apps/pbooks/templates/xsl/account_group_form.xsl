@@ -34,11 +34,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<xsl:if test="not(/_R_/_get/group_id)">
 				<input type="hidden" name="my_action" value="create"/>
 			</xsl:if>
-			<table class="form-table" cellpadding="10" cellspacing="0" border="0" align="center">
+			<table class="form-table">
 				<tr>
 					<td>
 						<xsl:value-of select="$i18n/group_name"/>:
-        </td>
+					</td>
 					<td>
 						<input type="text" name="name" value="{//get_account_group_by_id/get_account_group_by_id/name|//_post/name}"
 							required="1" err="{//error[key='missing_account_name']/value}"/>

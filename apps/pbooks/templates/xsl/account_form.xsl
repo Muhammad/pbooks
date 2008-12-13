@@ -207,7 +207,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<div style="text-align: center; margin-top: 20px;">
 				<input type="submit" value="{$i18n/save}" name="submit" />
 				<input type="button" value="{$i18n/cancel}"
-						onclick="window.location.href='{/_R_/runtime/link_prefix}accounts'"/>
+					onclick="window.location.href='{$link_prefix}accounts'"/>
 			</div>
 		</form>
 	</xsl:template>
