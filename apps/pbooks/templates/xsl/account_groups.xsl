@@ -111,14 +111,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<td>
 				<a href="{$link_prefix}account-group-edit&amp;group_id={group_id}"
 					id="{account_number}-e">
-					<xsl:value-of select="/_R_/i18n/edit"/>
+					<xsl:value-of select="$i18n/edit"/>
 				</a>
 			</td>
 			<td>
 				<a href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
 					 id="{account_group}-d"
 					 onclick="account_group_delete({group_id},this.parentNode.parentNode.rowIndex); return false;">
-					<xsl:value-of select="/_R_/i18n/delete"/>
+					<xsl:value-of select="$i18n/delete"/>
 				</a>
 			</td>
 		</tr>

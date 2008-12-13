@@ -97,7 +97,9 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
             </xsl:for-each>
           </select>
         </xsl:if>
-				<!-- Only one checking account. -->
+				<!--
+				Only one checking account.
+				-->
         <xsl:if test="count(/_R_/account_get_checking_accounts/account_get_checking_accounts/account_id)=1">
           <input type="hidden" name="checking_account_id"
 						value="{/_R_/account_get_checking_accounts/account_get_checking_accounts/account_id}"/>

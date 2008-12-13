@@ -45,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!-- If there is already an account with the same name, display error. -->
 			<xsl:if test="//account_duplicate_check">
 				<div class="error" id="my_error">
-					<img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
+					<img src="{$path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
 					Error: <xsl:value-of select="//error[key='account_duplicate']/value"/>
 				</div>
 			</xsl:if>
@@ -177,7 +177,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<select name="group_id">
-							<xsl:for-each select="//get_account_groups">
+							<xsl:for-each select="//get_account_groups/get_account_groups">
 								<xsl:variable name="my_group_id">
 									<xsl:value-of select="id"/>
 								</xsl:variable>

@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:value-of select="$i18n/group_name"/>:
         </td>
 					<td>
-						<input type="text" name="name" value="{//get_account_group_by_id/name|//_post/name}"
+						<input type="text" name="name" value="{//get_account_group_by_id/get_account_group_by_id/name|//_post/name}"
 							required="1" err="{//error[key='missing_account_name']/value}"/>
 					</td>
 				</tr>

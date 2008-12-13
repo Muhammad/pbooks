@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
         , headers: { 3: {sorter: false}, 4: {sorter: false} }
-    </xsl:with-param>
+			</xsl:with-param>
     </xsl:call-template>
 
     <xsl:variable name="all_accounts" select="/_R_/get_all_accounts/get_all_accounts"/>
@@ -110,11 +110,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </thead>
         <tbody>
 
-					<!-- These are the account table rows.
-							The tests are to decide how the table should be displayed,
-							i.e. whether or not an account type is selected, or whether
-							the account balance should be displayed.
-							See account_row.xsl for the actual row data. -->
+					<!--
+					These are the account table rows.
+					The tests are to decide how the table should be displayed,
+					i.e. whether or not an account type is selected, or whether
+					the account balance should be displayed.
+					See account_row.xsl for the actual row data.
+					-->
 
           <xsl:for-each select="$all_accounts[accounts_receivable_account='on']">
             <xsl:sort select="account_number"/>

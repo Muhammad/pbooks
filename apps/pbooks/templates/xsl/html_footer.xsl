@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: footer.xsl
+Component: html_footer.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -23,6 +23,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template name="footer">
+    <xsl:param name="link_prefix"/>
 		<xsl:call-template name="source_spacer">
 			<xsl:with-param name="section_start">footer</xsl:with-param>
 		</xsl:call-template>
@@ -36,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         Copyright 
         <a href="http://www.savonix.com" target="_blank">
             Savonix</a>, all rights reserved. License:
-        <a href="{/_R_/runtime/link_prefix}license">
+        <a href="{$link_prefix}license">
             AGPL v3
         </a>.
         <a href="http://www.pbooks.org/pub/">

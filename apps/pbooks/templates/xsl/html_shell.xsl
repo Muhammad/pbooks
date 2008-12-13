@@ -28,22 +28,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
     doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
   <xsl:template match="/">
     <html>
-      <xsl:variable name="link_prefix">
-        <xsl:value-of select="/_R_/runtime/link_prefix"/>
-      </xsl:variable>
-      <xsl:variable name="path_prefix">
-        <xsl:value-of select="/_R_/runtime/path_prefix"/>
-      </xsl:variable>
+      <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
+      <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
       <xsl:variable name="my18n"
         select="document('../../i18n/en_US/pbooks.xml')/i18n"/>
 
       <xsl:call-template name="head">
-        <xsl:with-param name="link_prefix">
-          <xsl:value-of select="$link_prefix"/>
-        </xsl:with-param>
-        <xsl:with-param name="path_prefix">
-          <xsl:value-of select="$path_prefix"/>
-        </xsl:with-param>
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
+        <xsl:with-param name="path_prefix" select="$path_prefix"/>
       </xsl:call-template>
       <body>
         <xsl:for-each select="//pre_body_content">
@@ -52,12 +44,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
 
         <xsl:call-template name="main">
-          <xsl:with-param name="link_prefix">
-            <xsl:value-of select="$link_prefix"/>
-          </xsl:with-param>
-          <xsl:with-param name="path_prefix">
-            <xsl:value-of select="$path_prefix"/>
-          </xsl:with-param>
+        <xsl:with-param name="link_prefix" select="$link_prefix"/>
+        <xsl:with-param name="path_prefix" select="$path_prefix"/>
           <xsl:with-param name="i18n" select="$my18n"/>
         </xsl:call-template>
 
