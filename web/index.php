@@ -3,8 +3,12 @@
 
 // Where is nexista? This path should be to a folder containing nexista
 // This is the only thing you may need to edit:
-define('NX_PATH_BASE', "../nexista/");
-
+if(file_exists("../nexista/")) {
+    define('NX_PATH_BASE', "../nexista/");
+} 
+if (file_exists("../../nexista/")) {
+    define('NX_PATH_BASE', "../../nexista/");
+}
 
 
 /* Probably don't need to edit anything under this line. */
