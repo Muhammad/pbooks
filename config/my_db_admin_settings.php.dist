@@ -2,9 +2,9 @@
 
 /*
 
-This file is used only for installation, allowing you 
-to specify a different user (probably with higher privileges) to 
-the installation process. 
+This file is used only for installation, allowing you
+to specify a different user (probably with higher privileges) to
+the installation process.
 
 The ADMIN_USER must have enough privileges to create a database
 and grant privileges.
@@ -17,8 +17,8 @@ This script is not used on Windows or with SQLite.
 
 $HOST = "";
 $DATABASE = "";
-$ADMIN_USER = "";
-$ADMIN_PASS = "";
+$USER = "";
+$PASS = "";
 $PBOOKS_USER = "";
 $PBOOKS_PASS = "";
 // In the case of XAMPP you would include "/opt/lampp/bin" in the 
