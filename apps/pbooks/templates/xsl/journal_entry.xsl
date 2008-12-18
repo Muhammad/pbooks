@@ -81,7 +81,10 @@ more than one debit or credit, there can only be one of the other type.
     }
 		</script>
 
-    <a class="generic-button" style="float: right;" href="{$link_prefix}journal">Go to Journal</a>
+    <a class="generic-button" style="float: right;" href="{$link_prefix}journal">
+			<img style="margin-bottom: 0px;" src="{$path_prefix}s/images/buttons/in.gif"/>
+			Go to Journal
+		</a>
 
 		<!-- Non existent entry_id error -->
     <xsl:if test="not($get_journal_entry)">
@@ -315,8 +318,8 @@ more than one debit or credit, there can only be one of the other type.
 You are creating a journal entry from a transaction. This is good! However, if you plan to abort this process, please use the cancel button. Otherwise the transaction will be associated with an unfinished journal entry. This can be recovered, but it will be much easier if you click the cancel button instead of simply navigating away.
 
 If you want to complete this process, continue as usual. For more information, see <a href="http://www.pbooks.org/trac/ticket/91" target="_blank">http://www.pbooks.org/trac/ticket/91</a>.
-</xsl:if>
-<!-- end note -->
+								</xsl:if>
+								<!-- end note -->
 
               </td>
             </tr>

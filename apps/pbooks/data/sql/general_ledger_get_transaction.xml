@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="get_journal_entry">
+<query name="general_ledger_get_transaction">
 	<connection>&pb_connection_read;</connection>
 	<params>
 		<param name="//_get/transaction_id" type="text" default="%"/>
