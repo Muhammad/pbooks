@@ -13,7 +13,7 @@ and overlapping information will override settings in the main configuration fil
             <placement>prepend</placement>
             <sitemap>&includepath;extensions/dev_buffer/sitemap.xml</sitemap>
             <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
-            <excludes>ledger-export,x--,dynamic-css,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
+            <excludes>ledger-export,x--,dynamic-css,dynamic-database-model,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
         </dev_buffer>
         <nexista_auth>
           <placement>prepend</placement>
