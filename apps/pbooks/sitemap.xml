@@ -809,10 +809,15 @@ This makes it easier to maintain persistence. -->
 						<map:query src="data/sql/account_create_ignore_placeholder.xml"/>
 					</map:false>
 				</map:if>
-        <!-- This will delete all the imported transactions too -->
-				<map:query src="data/sql/entry_delete_placeholder.xml"/>
-				<map:query src="data/sql/entry_create_ignore_placeholder.xml"/>
-				<map:query src="data/sql/entry_update_placeholder.xml"/>
+				<map:query src="data/sql/entry_check_placeholder.xml"/>
+				<map:if name="//entry_check_placeholder">
+					<map:true></map:true>
+					<map:false>
+						<map:query src="data/sql/entry_delete_placeholder.xml"/>
+						<map:query src="data/sql/entry_create_ignore_placeholder.xml"/>
+						<map:query src="data/sql/entry_update_placeholder.xml"/>
+					</map:false>
+				</map:if>
 				<map:script src="lib/php/import_into_pbooks.php"/>
 				<map:query src="data/sql/general_ledger_import.xml" />
 				<map:action type="redirect" params="{//link_prefix}matching"/>

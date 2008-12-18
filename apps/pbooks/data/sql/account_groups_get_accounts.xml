@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param array="account_sub_groups/groups/group" type="integer"/>
 	</params>
 	<sql>
-		SELECT group_id,name,id FROM &pb_accounts; WHERE group_id=?
+	SELECT group_id,name,id FROM &pb_accounts; WHERE group_id=?
 	</sql>
 </query>

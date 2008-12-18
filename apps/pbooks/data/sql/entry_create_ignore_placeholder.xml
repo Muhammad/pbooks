@@ -24,12 +24,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="entry_placeholder">
 	<connection>&pb_connection;</connection>
-	<params>
-	</params>
+	<params/>
 	<sql>
-		INSERT INTO &pb_entries;
-		(memorandum)
-		VALUES
-		('PLACEHOLDER');
+	INSERT INTO &pb_entries; (memorandum) VALUES ('PLACEHOLDER');
 	</sql>
 </query>

@@ -29,10 +29,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_get/id" type="integer" default="-10000"/>
 	</params>
 	<sql>
-		SELECT *
-		FROM &pb_entry_amounts;
-		WHERE
-		account_id=?
-		OR account_id=?
+	SELECT * FROM &pb_entry_amounts; WHERE account_id=? OR account_id=?
 	</sql>
 </query>
