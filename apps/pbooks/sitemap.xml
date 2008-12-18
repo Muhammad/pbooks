@@ -947,6 +947,18 @@ files. -->
 	</map:gate>
 
 
+	<map:gate name="dynamic-database-model">
+		<map:if name="//defaults/install_settings">
+			<map:true></map:true>
+			<map:false>
+			</map:false>
+		</map:if>
+		<map:set name="engine" value="mysql"/>
+		<map:xml src="data/model/db_engines.mysql.xml"/>
+		<map:action type="header" params="Content-type,text/plain"/>
+		<map:xsl src="data/model/pbooks_data_model.sql.xsl"/>
+	</map:gate>
+
 
 	<map:gate name="xml-sitemap">
 		<map:xml src="config/sitemap.xml"/>
