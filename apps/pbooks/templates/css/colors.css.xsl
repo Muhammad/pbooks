@@ -114,11 +114,18 @@ a:hover {
 .generic-button a {
   border-color: #BBB;
 }
+.form-table tr td {
+  border-color: #CCC;
+}
 
 a.generic-button {
   border-color: #BBB;
 }
 
+
+.journal-table tbody tr td {
+  border-color: #CCC;
+}
 
 #active {
   color: red;

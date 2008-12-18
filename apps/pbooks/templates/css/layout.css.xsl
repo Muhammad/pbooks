@@ -24,6 +24,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="layout">
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
 #main {
   width: 980px;
   text-align: left;
@@ -95,7 +100,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 }
 
 .form-table tr td {
-	padding: 2px;
+	padding: 5px;
+	border-width: 0;
+  border-bottom-width: 1px;
+  border-style: solid;
 }
 
 .generic-button {
@@ -128,7 +136,18 @@ a.generic-button {
 }
 
 
+
 /* tables */
+
+.journal-table tbody tr td {
+  height: 24px;
+  border-style: solid;
+  border-width: 0;
+  border-top-width: 1px;
+  padding: 2px;
+  vertical-align: middle;
+}
+
 .simpletable {
   background-color: #222;
   border-collapse: collapse;
