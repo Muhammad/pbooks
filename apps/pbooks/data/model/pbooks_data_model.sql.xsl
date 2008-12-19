@@ -122,11 +122,11 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
   PRIMARY KEY  (`option_id`)
 ) <xsl:value-of select="//db_engines/myisam_engine/text"/>;
 
-INSERT INTO `pb_options` (`option_key`,`option_value`,`option_type`) VALUES ('pbooks_database_version','e','other');
+INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_options` (`option_key`,`option_value`,`option_type`) VALUES ('pbooks_database_version','e','other');
 
 
 ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata`
-  ADD CONSTRAINT `pb_accounts_metadata_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `pb_accounts` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `pb_accounts_metadata_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_account_group_parents`
   ADD CONSTRAINT `pb_account_group_parents_ibfk_1` FOREIGN KEY (`parent_group_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_account_groups` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
@@ -134,7 +134,7 @@ ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_account_group_parent
 
 ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_entry_amounts`
   ADD CONSTRAINT `pb_entry_amounts_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (`id`),
-  ADD CONSTRAINT `pb_entry_amounts_ibfk_2` FOREIGN KEY (`entry_id`) REFERENCES `pb_entries` (`entry_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `pb_entry_amounts_ibfk_2` FOREIGN KEY (`entry_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`) ON DELETE CASCADE;
 
 ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_entry_metadata`
   ADD CONSTRAINT `pb_entry_metadata_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
