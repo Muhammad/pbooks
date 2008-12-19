@@ -51,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   </if_not_exists>
 
   <integer>
-      <text>int(10)</text>
+      <text>int(11) NOT NULL default 0</text>
   </integer>
 
 </db_engines>

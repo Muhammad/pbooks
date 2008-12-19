@@ -59,10 +59,9 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
 
 
 CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_account_group_parents` (
-  `account_group_id` smallint(8) NOT NULL default '0',
-  `parent_group_id` smallint(8) NOT NULL default '0',
-  UNIQUE KEY `account_group_id` (`account_group_id`,`parent_group_id`),
-  KEY `pb_account_group_parents_ibfk_1` (`parent_group_id`)
+  `account_group_id` <xsl:value-of select="//db_engines/integer/text"/>,
+  `parent_group_id` <xsl:value-of select="//db_engines/integer/text"/>,
+  UNIQUE KEY `account_group_id` (`account_group_id`,`parent_group_id`)
 ) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
 
 
@@ -72,7 +71,7 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
   `memorandum` text,
   `entry_type` enum('adjusting','budget','comparative','external-accountant','standard','passed-adjusting','eliminating','proposed','recurring','reclassifying','simulated','tax','other') NOT NULL default 'standard',
   `status` tinyint(2) default 2,
-  `fiscal_period_id` int(20) NOT NULL default '0',
+  `fiscal_period_id` <xsl:value-of select="//db_engines/integer/text"/>,
   PRIMARY KEY  (`entry_id`),
   KEY `entry_datetime` (`entry_datetime`)
 ) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
@@ -126,22 +125,22 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
 INSERT INTO `pb_options` (`option_key`,`option_value`,`option_type`) VALUES ('pbooks_database_version','e','other');
 
 
-ALTER TABLE `pb_accounts_metadata`
+ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata`
   ADD CONSTRAINT `pb_accounts_metadata_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `pb_accounts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `pb_account_group_parents`
-  ADD CONSTRAINT `pb_account_group_parents_ibfk_1` FOREIGN KEY (`parent_group_id`) REFERENCES `pb_account_groups` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pb_account_group_parents_ibfk_2` FOREIGN KEY (`account_group_id`) REFERENCES `pb_account_groups` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_account_group_parents`
+  ADD CONSTRAINT `pb_account_group_parents_ibfk_1` FOREIGN KEY (`parent_group_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_account_groups` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pb_account_group_parents_ibfk_2` FOREIGN KEY (`account_group_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_account_groups` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
-ALTER TABLE `pb_entry_amounts`
-  ADD CONSTRAINT `pb_entry_amounts_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `pb_accounts` (`id`),
+ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_entry_amounts`
+  ADD CONSTRAINT `pb_entry_amounts_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (`id`),
   ADD CONSTRAINT `pb_entry_amounts_ibfk_2` FOREIGN KEY (`entry_id`) REFERENCES `pb_entries` (`entry_id`) ON DELETE CASCADE;
 
-ALTER TABLE `pb_entry_metadata`
-  ADD CONSTRAINT `pb_entry_metadata_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `pb_entries` (`entry_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_entry_metadata`
+  ADD CONSTRAINT `pb_entry_metadata_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
-ALTER TABLE `pb_general_ledger`
-  ADD CONSTRAINT `pb_general_ledger_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `pb_accounts` (`id`),
-  ADD CONSTRAINT `pb_general_ledger_ibfk_2` FOREIGN KEY (`entry_id`) REFERENCES `pb_entries` (`entry_id`) ON DELETE CASCADE;
+ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_general_ledger`
+  ADD CONSTRAINT `pb_general_ledger_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (`id`),
+  ADD CONSTRAINT `pb_general_ledger_ibfk_2` FOREIGN KEY (`entry_id`) REFERENCES `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`) ON DELETE CASCADE;
 </xsl:template>
 </xsl:stylesheet>
