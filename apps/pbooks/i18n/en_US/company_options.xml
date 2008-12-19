@@ -21,57 +21,59 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA 
 -->
-<!-- TODO - this should be split into xml/data for options, and 
-i18n for labels. -->
+<!--
+TODO - this should be split into xml/data for options, and 
+i18n for labels.
+-->
 <company_options lang="en-us">
-    <option>
-        <option_key>company_name</option_key>
-        <option_type>text</option_type>
-        <title>Company name</title>
-    </option>
-    <option>
-        <option_key>ein_number</option_key>
-        <option_type>text</option_type>
-        <title>EIN</title>
-    </option>
-    <option>
-        <option_key>fiscal_start</option_key>
-        <option_type>text</option_type>
-        <title>Start of fiscal year (MM-DD)</title>
-    </option>
-    <option>
-        <option_key>company_address_1</option_key>
-        <option_type>text</option_type>
-        <title>Address</title>
-    </option>
-    <option>
-        <option_key>company_address_2</option_key>
-        <option_type>text</option_type>
-        <title>Address</title>
-    </option>
-    <option>
-        <option_key>company_city</option_key>
-        <option_type>text</option_type>
-        <title>City</title>
-    </option>
-    <option>
-        <option_key>company_state</option_key>
-        <option_type>text</option_type>
-        <title>State</title>
-    </option>
-    <option>
-        <option_key>company_zip</option_key>
-        <option_type>text</option_type>
-        <title>Zip Code</title>
-    </option>
-    <option>
-        <option_key>books_mode</option_key>
-        <option_type>text</option_type>
-        <title>Books Mode</title>
-    </option>
-    <option>
-        <option_key>fiscal_period_id</option_key>
-        <option_type>text</option_type>
-        <title>Current Period</title>
-    </option>
+	<option>
+		<option_key>company_name</option_key>
+		<option_type>text</option_type>
+		<title>Company name</title>
+	</option>
+	<option>
+		<option_key>ein_number</option_key>
+		<option_type>text</option_type>
+		<title>EIN</title>
+	</option>
+	<option>
+		<option_key>fiscal_start</option_key>
+		<option_type>text</option_type>
+		<title>Start of fiscal year (MM-DD)</title>
+	</option>
+	<option>
+		<option_key>company_address_1</option_key>
+		<option_type>text</option_type>
+		<title>Address</title>
+	</option>
+	<option>
+		<option_key>company_address_2</option_key>
+		<option_type>text</option_type>
+		<title>Address</title>
+	</option>
+	<option>
+		<option_key>company_city</option_key>
+		<option_type>text</option_type>
+		<title>City</title>
+	</option>
+	<option>
+		<option_key>company_state</option_key>
+		<option_type>text</option_type>
+		<title>State</title>
+	</option>
+	<option>
+		<option_key>company_zip</option_key>
+		<option_type>text</option_type>
+		<title>Zip Code</title>
+	</option>
+	<option>
+		<option_key>books_mode</option_key>
+		<option_type>text</option_type>
+		<title>Books Mode</title>
+	</option>
+	<option>
+		<option_key>fiscal_period_id</option_key>
+		<option_type>text</option_type>
+		<title>Current Period</title>
+	</option>
 </company_options>
