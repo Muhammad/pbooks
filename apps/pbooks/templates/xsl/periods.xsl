@@ -29,6 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">periods_table</xsl:with-param>
     </xsl:call-template>
+    <xsl:value-of select="$i18n/period_info"/>
     <table class="tablesorter" id="periods_table">
       <thead>
         <tr>
@@ -53,6 +54,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
       </tbody>
     </table>
-    <xsl:value-of select="$i18n/period_info"/>
+		<br/>
+		<form method="post">
+			Create new period:
+			<br/>
+			<table>
+				<tr>
+					<td>From date:</td>
+					<td><input type="text" name="from_date"/></td>
+				</tr>
+				<tr>
+					<td>To date:</td>
+					<td><input type="text" name="to_date"/></td>
+				</tr>
+			</table>
+			<input type="submit"/>
+		</form>
   </xsl:template>
 </xsl:stylesheet>
