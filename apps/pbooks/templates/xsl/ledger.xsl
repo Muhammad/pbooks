@@ -151,23 +151,31 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <!-- General ledger -->
 				<tbody>
 					<xsl:for-each select="$get_transactions">
+						<xsl:if test="((not(//_get/account_id) or /_R_/_get/account_id='%')  and not(entry_amount=0.00)) or (not(/_R_/_get/account_id='%') and /_R_/_get/account_id)">
 						<tr onmouseover="oldClass=this.className; this.className='active'"
 							onmouseout="this.className=oldClass">
               <!-- This cell will be used for a star or flag with notations -->
               <!--<td>FPO</td>-->
 							<td>
-								<a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
-									<xsl:value-of select="entry_datetime"/>
-								</a>
+								<xsl:choose>
+									<xsl:when test="entry_id &gt; 0">
+										<a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
+											<xsl:value-of select="entry_datetime"/>
+										</a>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="entry_datetime"/>
+									</xsl:otherwise>
+								</xsl:choose>
 							</td>
 							<td>
 								<xsl:choose>
-									<xsl:when test="not(entry_id='0')">
+									<xsl:when test="entry_id &gt; 1">
 										<a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
 											<xsl:value-of select="entry_id"/>
 										</a>
 									</xsl:when>
-									<xsl:otherwise>
+									<xsl:when test="entry_id = 0">
 										<a href="{$link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
 											onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x"/>
@@ -177,14 +185,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
 										<a href="{$link_prefix}journal-new-from-transaction&amp;transaction_id={transaction_id}">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" alt="+"/>
 										</a>
+									</xsl:when>
+									<xsl:otherwise>
 									</xsl:otherwise>
 								</xsl:choose>
 							</td>
 
 							<td nowrap="nowrap">
-								<a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
-									<xsl:value-of select="substring(memorandum,0,42)"/>
-								</a>
+								<xsl:choose>
+									<xsl:when test="entry_id &gt; 0">
+										<a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
+											<xsl:value-of select="substring(memorandum,0,42)"/>
+										</a>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="substring(memorandum,0,42)"/>
+									</xsl:otherwise>
+								</xsl:choose>
 							</td>
 
 							<xsl:if test="/_R_/_get/account_id='%' or not(/_R_/_get/account_id)">
@@ -196,7 +213,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</xsl:if>
 
 							<td>
-								<xsl:value-of select="entry_amount"/>
+								<xsl:choose>
+									<xsl:when test="entry_id &gt; 0">
+										<xsl:value-of select="entry_amount"/>
+									</xsl:when>
+									<xsl:otherwise>
+									</xsl:otherwise>
+								</xsl:choose>
 							</td>
 
 							<xsl:if test="not(/_R_/_get/account_id='%') and /_R_/_get/account_id">
@@ -205,6 +228,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</td>
 							</xsl:if>
 						</tr>
+						</xsl:if>
 					</xsl:for-each>
 				</tbody>
 			</table>

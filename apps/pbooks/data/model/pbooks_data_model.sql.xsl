@@ -125,7 +125,9 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of se
 INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_options` (`option_key`,`option_value`,`option_type`) VALUES ('pbooks_database_version','e','other');
 
 
-
+INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`, `entry_datetime`, `memorandum`, `entry_type`, `status`, `fiscal_period_id`) VALUES
+(-1, '2008-12-17 18:05:33', 'PLACEHOLDER', 'standard', 2, 0),
+(0, '2008-12-17 18:05:33', 'PLACEHOLDER', 'standard', 2, 0);
 
 
 ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata`
