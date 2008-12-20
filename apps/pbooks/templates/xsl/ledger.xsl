@@ -214,7 +214,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 							<td>
 								<xsl:choose>
-									<xsl:when test="entry_id &gt; 0">
+									<xsl:when test="entry_id &gt; 0 or not(entry_id='0.00')">
 										<xsl:value-of select="entry_amount"/>
 									</xsl:when>
 									<xsl:otherwise>
@@ -237,7 +237,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:with-param name="my-table">myLedger</xsl:with-param>
 				</xsl:call-template>
 			    <a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
-            </xsl:if>
+				</xsl:if>
 		</div>
 
 		<!-- If an account_id has been selected, only show how much it has changed.-->
