@@ -5,7 +5,7 @@
 // This is the only thing you may need to edit:
 if(file_exists("../nexista/")) {
     define('NX_PATH_BASE', "../nexista/");
-} 
+}
 if (file_exists("../../nexista/")) {
     define('NX_PATH_BASE', "../../nexista/");
 }
