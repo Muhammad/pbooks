@@ -85,9 +85,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
               <xsl:value-of select="$i18n/checking_account"/>
             </option>
             <xsl:for-each select="/_R_/account_business_objects/account_business_objects">
-              <xsl:variable name="my_account_id">
-                <xsl:value-of select="account_id"/>
-              </xsl:variable>
+              <xsl:variable name="my_account_id" select="account_id"/>
               <option value="{id}">
                 <xsl:if test="//get_journal_entry/get_journal_entry[account_id=$my_account_id]/entry_type_id='Credit'">
                   <xsl:attribute name="selected">selected</xsl:attribute>
@@ -116,9 +114,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
         </option>
 
         <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-          <xsl:variable name="my_account_id">
-            <xsl:value-of select="id"/>
-          </xsl:variable>
+          <xsl:variable name="my_account_id" select="id"/>
           <option value="{id}">
             <xsl:if
 							test="//get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id=$my_account_id">
