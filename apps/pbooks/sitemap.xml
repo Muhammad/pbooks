@@ -659,6 +659,7 @@ This makes it easier to maintain persistence. -->
 		</map:if>
 		<map:query src="data/sql/general_ledger_get_equation.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
+		<map:action type="number_format" params="//get_all_transactions/entry_amount,2,.,"/>
 		<map:xsl src="templates/xsl/ledger.xsl" />
 	</map:gate>
 
@@ -765,6 +766,7 @@ This makes it easier to maintain persistence. -->
 			<map:case value="1">
 				<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 				<map:action type="datetime" params="//get_all_transactions/entry_month,datetime,m"/>
+				<map:action type="number_format" params="/_R_/get_all_transactions/get_all_transactions/entry_amount,0,."/>
 				<map:xsl src="templates/xsl/report_cash_flow.xsl" />
 			</map:case>
         <!-- Profit and Loss -->

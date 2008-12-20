@@ -306,7 +306,7 @@ more than one debit or credit, there can only be one of the other type.
 
                     <!-- this is an arrow which links to the next entry_id in the journal -->
                     <td>
-                      <a href="{$link_prefix}{//nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
+                      <a href="{$link_prefix}{//_get/nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
                         <img src="{$path_prefix}s/images/buttons/in.gif"/>
                       </a>
                     </td>
