@@ -25,6 +25,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">notes_table</xsl:with-param>
     </xsl:call-template>
@@ -32,10 +35,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <thead>
         <tr>
           <th>
-            <xsl:value-of select="/_R_/i18n/note_id"/>
+            <xsl:value-of select="$i18n/note_id"/>
           </th>
           <th>
-            <xsl:value-of select="/_R_/i18n/note_value"/>
+            <xsl:value-of select="$i18n/note_value"/>
           </th>
         </tr>
       </thead>
@@ -52,6 +55,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
       </tbody>
     </table>
-    <xsl:value-of select="/_R_/i18n/note_info"/>
+    <xsl:value-of select="$i18n/note_info"/>
   </xsl:template>
 </xsl:stylesheet>
