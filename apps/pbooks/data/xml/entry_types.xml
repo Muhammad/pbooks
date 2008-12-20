@@ -18,16 +18,16 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA  
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <entry_types>
-        <entry_type>
-                <entry_id>0</entry_id>
-                <entry_name>Debit</entry_name>
-        </entry_type>
-        <entry_type>
-                <entry_id>1</entry_id>
-                <entry_name>Credit</entry_name>
-        </entry_type>
+	<entry_type>
+		<entry_id>0</entry_id>
+		<entry_name>Debit</entry_name>
+	</entry_type>
+	<entry_type>
+		<entry_id>1</entry_id>
+		<entry_name>Credit</entry_name>
+	</entry_type>
 </entry_types>

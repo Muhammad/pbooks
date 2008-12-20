@@ -18,15 +18,15 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <page>
-    <number>2</number>
-    <left_column>
-        <width>140px</width>
-    </left_column>
-    <header>
-        <height>80px</height>
-    </header>
+	<number>2</number>
+	<left_column>
+		<width>140px</width>
+	</left_column>
+	<header>
+		<height>80px</height>
+	</header>
 </page>

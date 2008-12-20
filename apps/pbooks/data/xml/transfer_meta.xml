@@ -22,12 +22,12 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA 
 -->
 <entry_meta>
-    <meta>
-        <meta_key>transfer_id</meta_key>
-        <meta_type>integer</meta_type>
-    </meta>
-    <meta>
-        <meta_key>method</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
+	<meta>
+		<meta_key>transfer_id</meta_key>
+		<meta_type>integer</meta_type>
+	</meta>
+	<meta>
+		<meta_key>method</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
 </entry_meta>

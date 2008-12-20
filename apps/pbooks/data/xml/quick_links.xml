@@ -21,23 +21,25 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA 
 -->
-<!-- This is a work in-progress for quick links - they'll eventually be
-    managed from the webGUI. -->
+<!--
+This is a work in-progress for quick links - they'll eventually be
+managed from the webGUI.
+-->
 <quick_links>
-    <link active="1">
-        <label>View the ledger</label>
-        <link>ledger</link>
-    </link>
-    <link active="1">
-        <label>Make a journal entry</label>
-        <link>journal-new</link>
-    </link>
-    <link active="1">
-        <label>View the journal</label>
-        <link>journal</link>
-    </link>
-    <link active="1">
-        <label>Reports</label>
-        <link>reports</link>
-    </link>
+	<link active="1">
+		<label>View the ledger</label>
+		<link>ledger</link>
+	</link>
+	<link active="1">
+		<label>Make a journal entry</label>
+		<link>journal-new</link>
+	</link>
+	<link active="1">
+		<label>View the journal</label>
+		<link>journal</link>
+	</link>
+	<link active="1">
+		<label>Reports</label>
+		<link>reports</link>
+	</link>
 </quick_links>

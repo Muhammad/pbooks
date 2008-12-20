@@ -18,16 +18,16 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA 
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <entry_meta>
-    <meta>
-        <meta_key>check_number</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key>check_payee</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
+	<meta>
+		<meta_key>check_number</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key>check_payee</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
 </entry_meta>
