@@ -232,13 +232,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</xsl:for-each>
 				</tbody>
 			</table>
-			<xsl:if test="not(/_R_/_get/nid='matching')">
-				<xsl:call-template name="pager">
-					<xsl:with-param name="my-table">myLedger</xsl:with-param>
-				</xsl:call-template>
-			    <a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
-				</xsl:if>
 		</div>
+		<xsl:if test="not(/_R_/_get/nid='matching')">
+			<xsl:call-template name="pager">
+				<xsl:with-param name="my-table">myLedger</xsl:with-param>
+			</xsl:call-template>
+			<a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
+		</xsl:if>
 
 		<!-- If an account_id has been selected, only show how much it has changed.-->
 		<xsl:if test="(/_R_/_get/account_id &gt; 0)">

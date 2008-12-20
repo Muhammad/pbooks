@@ -23,13 +23,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template name="date_select">
-		<xsl:param name="my_from_date">
-			<xsl:value-of select="/_R_/runtime/from_date"/>
-		</xsl:param>
+		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
-		<xsl:variable name="link_prefix">
-			<xsl:value-of select="/_R_/runtime/link_prefix"/>
-		</xsl:variable>
+		<xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
 		<a title="Previous Period">
 			<xsl:attribute name="href">
 				<xsl:value-of select="$link_prefix"/>
