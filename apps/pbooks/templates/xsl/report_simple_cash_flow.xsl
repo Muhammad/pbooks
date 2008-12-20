@@ -111,7 +111,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<th>
 							<xsl:value-of select="$i18n/post"/>
 						</th>
-						<th>
+						<th style="width:4em;">
 							<xsl:value-of select="$i18n/date"/>:
 						</th>
 						<th>Memo.</th>
@@ -163,7 +163,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:value-of select="entry_datetime"/>
 								</a>
 							</td>
-							<td>
+							<td nowrap="nowrap">
 								<xsl:value-of select="substring(memorandum[not(.='NULL')],0,32)"/>
 							</td>
 							<td>
