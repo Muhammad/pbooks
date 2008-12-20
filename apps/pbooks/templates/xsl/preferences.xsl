@@ -38,9 +38,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 	</xsl:template>
 	<xsl:template name="option_row">
-		<xsl:variable name="my_option">
-			<xsl:value-of select="option_key"/>
-		</xsl:variable>
+		<xsl:variable name="my_option" select="option_key"/>
 		<xsl:variable name="option_get" select="/_R_/option_get/option_get"/>
 		<tr>
 			<td>
