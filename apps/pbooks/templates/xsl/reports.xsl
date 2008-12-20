@@ -42,9 +42,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<select name="report_type_id">
 							<xsl:for-each select="//report_types/report_type">
-								<xsl:variable name="mykey">
-									<xsl:value-of select="@key"/>
-								</xsl:variable>
+								<xsl:variable name="mykey" select="@key"/>
 								<option value="{@id}">
 									<xsl:value-of select="$i18n/*[local-name()=$mykey]"/>
 								</option>

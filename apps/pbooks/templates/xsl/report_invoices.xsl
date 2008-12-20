@@ -51,7 +51,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:if test="/_R_/_get/month >= 1">
               <a>
                 <xsl:attribute name="href">
-                  <xsl:value-of select="$link_prefix"/>reports-invoices&amp;month=<xsl:if test="/_R_/_get/month &lt;= 10">0</xsl:if>
+                  <xsl:value-of select="$link_prefix"/>
+									<xsl:text>reports-invoices&amp;month=</xsl:text>
+									<xsl:if test="/_R_/_get/month &lt;= 10">0</xsl:if>
                   <xsl:value-of select="/_R_/_get/month - 1"/>
                 </xsl:attribute>
                 <img src="{$path_prefix}/images/buttons/out.gif"/>
@@ -132,7 +134,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:variable name="my_customer_id">
               <xsl:value-of select="customer_id"/>
             </xsl:variable>
-            <tr onmouseover="oldClass=this.className; this.className='active'" onmouseout="this.className=oldClass">
+            <tr onmouseover="oldClass=this.className; this.className='active'"
+							onmouseout="this.className=oldClass">
               <td id="{$my_entry_id}">
                 <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
                   <xsl:value-of select="invoice_number"/>

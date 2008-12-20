@@ -30,15 +30,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<!-- Just setting up some frequently used xpaths -->
 
-    <xsl:variable name="from_month">
-      <xsl:value-of select="substring(/_R_/_get/from_date,6,2)"/>
-    </xsl:variable>
-    <xsl:variable name="to_month">
-      <xsl:value-of select="substring(/_R_/_get/to_date,6,2)"/>
-    </xsl:variable>
-    <xsl:variable name="monthnum">
-      <xsl:value-of select="number($to_month - $from_month + 1)"/>
-    </xsl:variable>
+    <xsl:variable name="from_month" select="substring(/_R_/_get/from_date,6,2)"/>
+    <xsl:variable name="to_month" select="substring(/_R_/_get/to_date,6,2)"/>
+    <xsl:variable name="monthnum" select="number($to_month - $from_month + 1)"/>
 
     <div style="text-align: center;">
       <h2>

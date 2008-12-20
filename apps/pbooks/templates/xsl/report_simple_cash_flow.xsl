@@ -26,12 +26,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">myLedger</xsl:with-param>
+			<xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
+			<xsl:with-param name="my-sort-column">
+				,widthFixed: true
+				<xsl:if test="/_R_/_get/account_id">,sortList: [[0,0]]</xsl:if>
+			</xsl:with-param>
 		</xsl:call-template>
 
-<!-- Net change -->
+		<!-- Net change -->
 		<div class="generic-button" style="float: right;">
 			<b>
 				<xsl:value-of select="$i18n/net_change"/>
@@ -49,11 +55,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:value-of select="$link_prefix"/>reports-simple-cash-flow&amp;month=<xsl:if test="/_R_/_get/month &lt;= 10">0</xsl:if>
 									<xsl:value-of select="/_R_/_get/month - 1"/>
 								</xsl:attribute>
-								<img src="{/_R_/runtime/path_prefix}/images/buttons/out.gif"/>
+								<img src="{$path_prefix}/images/buttons/out.gif"/>
 							</a>
 						</xsl:if>
 						<xsl:if test="not(/_R_/_get/month >= 1)">
-							<img src="{/_R_/runtime/path_prefix}/images/buttons/out_d.gif"/>
+							<img src="{$path_prefix}/images/buttons/out_d.gif"/>
 						</xsl:if>
 					</td>
 
@@ -75,11 +81,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<xsl:if test="/_R_/_get/month &gt;= 12">
-							<img src="{/_R_/runtime/path_prefix}/images/buttons/in_d.gif"/>
+							<img src="{$path_prefix}/images/buttons/in_d.gif"/>
 						</xsl:if>
 						<xsl:if test="not(/_R_/_get/month)">
 							<a href="{$link_prefix}reports-simple-cash-flow&amp;month=01">
-								<img src="{/_R_/runtime/path_prefix}/images/buttons/in.gif"/>
+								<img src="{$path_prefix}/images/buttons/in.gif"/>
 							</a>
 						</xsl:if>
 						<xsl:if test="(/_R_/_get/month &lt; 12)">
@@ -88,13 +94,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:value-of select="$link_prefix"/>reports-simple-cash-flow&amp;month=<xsl:if test="/_R_/_get/month &lt; 9">0</xsl:if>
 									<xsl:value-of select="/_R_/_get/month + 1"/>
 								</xsl:attribute>
-								<img src="{/_R_/runtime/path_prefix}/images/buttons/in.gif"/>
+								<img src="{$path_prefix}/images/buttons/in.gif"/>
 							</a>
 						</xsl:if>
 					</td>
 				</tr>
 			</table>
-
+		<div style="min-height: 400px;" id="myLedgerDiv">
+			<script type="text/javascript">
+      document.getElementById('myLedgerDiv').style.visibility = 'hidden';
+      </script>
 			<table id="myLedger" class="tablesorter">
 				<thead>
 					<tr>
@@ -134,7 +143,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:otherwise>
 										<a href="{$link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
 											onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
-											<img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x"/>
+											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x"/>
 										</a>
                 &#160;
                 <!-- create new matching entry -->
@@ -144,7 +153,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 													<xsl:value-of select="/_R_/tool_tips[@lang=/_R_/selected_lang]/tip[key='create_entry']/value" />
 												</xsl:attribute>
 											</xsl:if>
-											<img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}add.png" alt="+"/>
+											<img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" alt="+"/>
 										</a>
 									</xsl:otherwise>
 								</xsl:choose>
@@ -155,11 +164,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</a>
 							</td>
 							<td>
-								<xsl:value-of select="memorandum[not(.='NULL')]"/>
+								<xsl:value-of select="substring(memorandum[not(.='NULL')],0,32)"/>
 							</td>
 							<td>
 								<a href="{$link_prefix}ledger&amp;account_id={account_id}">
-									<xsl:value-of select="name"/>
+									<xsl:value-of select="substring(name,0,20)"/>
 								</a>
 							</td>
 							<td>
@@ -169,7 +178,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</xsl:for-each>
 				</tbody>
 			</table>
-			<xsl:call-template name="pager"/>
+			</div>
+			<xsl:call-template name="pager">
+				<xsl:with-param name="my-table">myLedger</xsl:with-param>
+			</xsl:call-template>
 			<br/>
 		</form>
 	</xsl:template>

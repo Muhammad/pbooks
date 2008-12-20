@@ -52,12 +52,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/from_year"/></b>--></td>
 				</tr>
 				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='10000']">
-					<xsl:variable name="this_a_account_id">
-						<xsl:value-of select="id"/>
-					</xsl:variable>
-					<xsl:variable name="asset_value">
-						<xsl:value-of select="format-number((sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_a_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_a_account_id]/entry_amount)),'#,###,###.##')"/>
-					</xsl:variable>
+					<xsl:variable name="this_a_account_id" select="id"/>
+					<xsl:variable name="asset_value"
+						select="format-number((sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_a_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_a_account_id]/entry_amount)),'#,###,###.##')"/>
 					<xsl:if test="not($asset_value=0)">
 						<tr>
 							<td class="journal-data" style="text-indent: 16px;">
@@ -104,12 +101,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
         from_year"/></b>--></td>
 				</tr>
 				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='20000']">
-					<xsl:variable name="this_l_account_id">
-						<xsl:value-of select="id"/>
-					</xsl:variable>
-					<xsl:variable name="liability_value">
-						<xsl:value-of select="format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"/>
-					</xsl:variable>
+					<xsl:variable name="this_l_account_id" select="id"/>
+					<xsl:variable name="liability_value"
+						select="format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"/>
 					<xsl:if test="not($liability_value=0)">
 						<tr>
 							<td class="journal-data" style="text-indent: 16px;">
@@ -137,9 +131,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td colspan="3"></td>
 				</tr>
 				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='30000']">
-					<xsl:variable name="this_e_account_id">
-						<xsl:value-of select="id"/>
-					</xsl:variable>
+					<xsl:variable name="this_e_account_id" select="id"/>
 					<tr>
 						<td class="journal-data" style="text-indent: 16px;">
 							<a href="{$link_prefix}ledger&amp;account_id={id}">

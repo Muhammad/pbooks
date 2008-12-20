@@ -26,20 +26,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="i18n"/>
+
 		<!-- Set some variables -->
-		<xsl:variable name="monthnum">
-			<xsl:value-of select="number(substring(/_R_/runtime/to_date,6,2) - substring(/_R_/runtime/from_date,6,2) + 1)"/>
-		</xsl:variable>
-		<xsl:variable name="from_month">
-			<xsl:value-of select="substring(/_R_/runtime/from_date,6,2)"/>
-		</xsl:variable>
-		<xsl:variable name="to_month">
-			<xsl:value-of select="substring(/_R_/runtime/to_date,6,2)"/>
-		</xsl:variable>
+		<xsl:variable name="monthnum"
+			select="number(substring(/_R_/runtime/to_date,6,2) - substring(/_R_/runtime/from_date,6,2) + 1)"/>
+
+		<xsl:variable name="from_month" select="substring(/_R_/runtime/from_date,6,2)"/>
+
+		<xsl:variable name="to_month" select="substring(/_R_/runtime/to_date,6,2)"/>
+
 		<xsl:variable name="get_all_entry_amounts"
-				select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+			select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+
 		<xsl:variable name="get_all_accounts"
-				select="/_R_/get_all_accounts/get_all_accounts"/>
+			select="/_R_/get_all_accounts/get_all_accounts"/>
 		<!-- end variables -->
 
 
@@ -86,9 +86,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</tr>
 						<xsl:variable name="rev">40000</xsl:variable>
 						<xsl:for-each select="$get_all_accounts[account_type_id=$rev]">
-							<xsl:variable name="this_r_account_id">
-								<xsl:value-of select="id"/>
-							</xsl:variable>
+							<xsl:variable name="this_r_account_id" select="id"/>
 							<tr class="row{position() mod 2}">
 								<td class="matrix-data" style="text-indent: 16px;">
 									<a href="{$link_prefix}ledger&amp;account_id={id}">
