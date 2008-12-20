@@ -77,6 +77,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			GROUP BY  &pb_general_ledger;.transaction_id
 
 			ORDER BY
+			 ABS(&pb_general_ledger;.entry_amount) DESC,
+			 &pb_general_ledger;.entry_amount ASC,
 			 &pb_general_ledger;.entry_id,
 			CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_datetime END ASC,
 			CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_datetime END DESC,

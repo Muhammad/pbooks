@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
 				<xsl:with-param name="my-sort-column">
 					,widthFixed: true
-					<xsl:if test="/_R_/_get/account_id">,sortList: [[0,1],[3,0]]</xsl:if>
+					<xsl:if test="/_R_/_get/account_id">,sortList: [[0,0]]</xsl:if>
 				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:if>
