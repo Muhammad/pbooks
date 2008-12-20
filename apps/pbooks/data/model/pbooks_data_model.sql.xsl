@@ -25,8 +25,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (
-  `id` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (
+  `id` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `name` text,
   `account_type_id` int(11) NOT NULL default '0',
   `description` text,
@@ -37,47 +37,47 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
   `group_id` tinyint(2) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `account_number` (`account_number`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata` (
-  `meta_id` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata` (
+  `meta_id` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `account_id` int(11) NOT NULL,
   `meta_key` varchar(255) NOT NULL,
   `meta_value` varchar(255) NOT NULL,
   PRIMARY KEY  (`meta_id`),
   KEY `account_id` (`account_id`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_account_groups` (
-  `ID` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_account_groups` (
+  `ID` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `name` varchar(255) NOT NULL default 'Undefined',
   `description` varchar(255) NOT NULL default ' ',
   PRIMARY KEY  (`ID`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_account_group_parents` (
-  `account_group_id` <xsl:value-of select="//db_engines/integer/text"/>,
-  `parent_group_id` <xsl:value-of select="//db_engines/integer/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_account_group_parents` (
+  `account_group_id` <xsl:value-of select="//dbe/integer/text"/>,
+  `parent_group_id` <xsl:value-of select="//dbe/integer/text"/>,
   UNIQUE KEY `account_group_id` (`account_group_id`,`parent_group_id`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (
-  `entry_id` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (
+  `entry_id` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `entry_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `memorandum` text,
   `entry_type` enum('adjusting','budget','comparative','external-accountant','standard','passed-adjusting','eliminating','proposed','recurring','reclassifying','simulated','tax','other') NOT NULL default 'standard',
   `status` tinyint(2) default 2,
-  `fiscal_period_id` <xsl:value-of select="//db_engines/integer/text"/>,
+  `fiscal_period_id` <xsl:value-of select="//dbe/integer/text"/>,
   PRIMARY KEY  (`entry_id`),
   KEY `entry_datetime` (`entry_datetime`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entry_amounts` (
-  `entry_amount_id` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entry_amounts` (
+  `entry_amount_id` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `entry_id` int(11) NOT NULL default '0',
   `entry_type_id` enum('Credit','Debit') default NULL,
   `entry_amount` decimal(10,2) default NULL,
@@ -86,20 +86,20 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
   PRIMARY KEY  (`entry_amount_id`),
   KEY `pb_entry_amounts_ibfk_1` (`account_id`),
   KEY `entry_index` (`entry_id`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entry_metadata` (
-  `meta_id` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entry_metadata` (
+  `meta_id` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `entry_id` int(11) NOT NULL,
   `meta_key` varchar(255) NOT NULL,
   `meta_value` varchar(255) NOT NULL,
   PRIMARY KEY  (`meta_id`),
   KEY `entry_id` (`entry_id`)
-) <xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+) <xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_general_ledger` (
-  `transaction_id` <xsl:value-of select="//db_engines/engine_auto_increment/text"/>,
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_general_ledger` (
+  `transaction_id` <xsl:value-of select="//dbe/engine_auto_increment/text"/>,
   `entry_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `memorandum` text,
   `entry_amount` decimal(10,2) default NULL,
@@ -111,18 +111,21 @@ CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:valu
   KEY `pb_general_ledger_ibfk_1` (`account_id`),
   KEY `pb_general_ledger_ibfk_2` (`entry_id`),
   KEY `entry_amount_id` (`entry_amount_id`)
-)<xsl:value-of select="//db_engines/innodb_engine/text"/> <xsl:value-of select="//db_engines/engine_increment_start/text"/> ;
+)<xsl:value-of select="//dbe/innodb_engine/text"/> <xsl:value-of select="//dbe/engine_increment_start/text"/> ;
 
 
-CREATE TABLE <xsl:value-of select="//db_engines/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_options` (
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_options` (
   `option_id` smallint(11) NOT NULL auto_increment,
   `option_key` varchar(255) NOT NULL default 'untitled',
   `option_value` varchar(255) default NULL,
   `option_type` enum('text','textarea','option','select','checkbox','other') NOT NULL default 'other',
   PRIMARY KEY  (`option_id`)
-) <xsl:value-of select="//db_engines/myisam_engine/text"/>;
+) <xsl:value-of select="//dbe/myisam_engine/text"/>;
 
 INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_options` (`option_key`,`option_value`,`option_type`) VALUES ('pbooks_database_version','e','other');
+
+
+
 
 
 ALTER TABLE `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata`

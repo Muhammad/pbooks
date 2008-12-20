@@ -21,7 +21,7 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<db_engines>
+<dbe>
   <engine_default_timestamp>
     <text>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</text>
   </engine_default_timestamp>
@@ -54,4 +54,4 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <text>int(11) NOT NULL default 0</text>
   </integer>
 
-</db_engines>
+</dbe>
