@@ -219,14 +219,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </xsl:for-each>
 					<!-- END OUTER LOOP -->
         </tbody>
-        <xsl:variable name="total_debits">
-          <xsl:value-of
-            select="format-number(sum($get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
-        </xsl:variable>
-        <xsl:variable name="total_credits">
-          <xsl:value-of
-            select="format-number(sum($get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
-        </xsl:variable>
+        <xsl:variable name="total_debits"
+					select="format-number(sum($get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
+        <xsl:variable name="total_credits"
+					select="format-number(sum($get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
 
 
 				<!--
