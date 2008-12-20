@@ -78,7 +78,7 @@ if(empty($default_invoice_print_vertical)) {
  * Not posting anymore dates. Only using POST method for updating data.
  */
 if(isset($_GET['month'])) {
-    $from_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), $_GET['month'], 01, date('Y')));
+    $from_date = date('Y-m-d H:i:s',mktime(0,0,0, $_GET['month'], 01, date('Y')));
     $_SESSION['from_date'] = $from_date;
 } elseif(isset($_GET['from_date'])) {
     $_SESSION['from_date'] = $_GET['from_date'];
@@ -86,7 +86,7 @@ if(isset($_GET['month'])) {
 } elseif (isset($_SESSION['from_date'])) {
     $from_date = $_SESSION['from_date'];
 } else {
-    $from_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), date('m')-2, date('d'), date('Y')));
+    $from_date = date('Y-m-d H:i:s',mktime(0,0,0, date('m')-2, date('d'), date('Y')));
 }
 
 /*
@@ -94,27 +94,27 @@ if(isset($_GET['month'])) {
  */
 
 if(isset($_GET['month'])) {
-    $to_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), $_GET['month'], 31, date('Y')));
-    $_SESSION['to_date'] = $to_date;
+    $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, $_GET['month'], 31, date('Y')));
+    $_SESSION['to_date'] = $to_date." 23:59:59";
 } elseif(isset($_GET['to_date'])) {                       // if there is a get date, use it and save it no matter, unless its redoing balances.
-    $_SESSION['to_date'] = $_GET['to_date'];
-    $to_date = $_GET['to_date'];
+    $_SESSION['to_date'] = $_GET['to_date']." 23:59:59";
+    $to_date = $_GET['to_date']." 23:59:59";
 } elseif (isset($_SESSION['to_date'])) {            // session date, use it
-    $to_date = $_SESSION['to_date'];
+    $to_date = $_SESSION['to_date']." 23:59:59";
 } else {                                            // default
-    $to_date = date('Y-m-d',mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1, date('Y')));
+    $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, date('m'), date('d')+1, date('Y')));
 }
 
 
 
 
-$prev_to_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($to_date)),date('d',strtotime($to_date))-7, date('Y',strtotime($to_date))));
+$prev_to_date = date('Y-m-d H:i:s',mktime(23, 59, 59,date("m",strtotime($to_date)),date('d',strtotime($to_date))-7, date('Y',strtotime($to_date))));
 
-$prev_from_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($from_date)),date('d',strtotime($from_date))-7, date('Y',strtotime($from_date))));
+$prev_from_date = date('Y-m-d H:i:s',mktime(0,0,0,date("m",strtotime($from_date)),date('d',strtotime($from_date))-7, date('Y',strtotime($from_date))));
 
-$next_to_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($to_date)),date('d',strtotime($to_date))+7, date('Y',strtotime($to_date))));
+$next_to_date = date('Y-m-d H:i:s',mktime(23, 59, 59,date("m",strtotime($to_date)),date('d',strtotime($to_date))+7, date('Y',strtotime($to_date))));
 
-$next_from_date = date('Y-m-d',mktime(0,0,0,date("m",strtotime($from_date)),date('d',strtotime($from_date))+7, date('Y',strtotime($from_date))));
+$next_from_date = date('Y-m-d H:i:s',mktime(0,0,0,date("m",strtotime($from_date)),date('d',strtotime($from_date))+7, date('Y',strtotime($from_date))));
 
 
 if(isset($_GET['show_all_accounts'])) {

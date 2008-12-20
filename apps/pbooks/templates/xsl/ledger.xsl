@@ -214,7 +214,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 							<td>
 								<xsl:choose>
-									<xsl:when test="entry_id &gt; 0 or not(entry_id='0.00')">
+									<xsl:when test="entry_id &gt; 0">
 										<xsl:value-of select="entry_amount"/>
 									</xsl:when>
 									<xsl:otherwise>

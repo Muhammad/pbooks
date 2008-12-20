@@ -46,9 +46,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
 		</a>
 
-		From <input type="text" name="from_date" size="12" class="date_input" value="{$my_from_date}"/>
+		From <input type="text" name="from_date" size="12" class="date_input" value="{substring($my_from_date,0,11)}"/>
 
-		To <input type="text" name="to_date"  size="12" class="date_input" value="{/_R_/runtime/to_date}"/>
+		To <input type="text" name="to_date"  size="12" class="date_input" value="{substring(/_R_/runtime/to_date,0,11)}"/>
 
 		<a title="Next Period">
 			<xsl:attribute name="href">
