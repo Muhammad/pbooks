@@ -116,12 +116,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 				<!-- OUTER LOOP -->
           <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
-            <xsl:variable name="this_entry_id">
-              <xsl:value-of select="entry_id"/>
-            </xsl:variable>
-            <xsl:variable name="posa">
-              <xsl:value-of select="position() mod 2"/>
-            </xsl:variable>
+            <xsl:variable name="this_entry_id" select="entry_id"/>
+            <xsl:variable name="posa" select="position() mod 2"/>
             <tr class="row2" onclick="journal_entry_location({entry_id});">
               <td valign="top" class="journal-data">
                 <xsl:value-of select="entry_datetime"/>
@@ -147,14 +143,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						These variables are used inside the loop to select specific nodes using xpath
 						This should likely be moved to processing instruction of action.
 						-->
-            <xsl:variable name="this_entry_debit_total">
-              <xsl:value-of
-                select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
-            </xsl:variable>
-            <xsl:variable name="this_entry_credit_total">
-              <xsl:value-of
-                select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Credit']/entry_amount)"/>
-            </xsl:variable>
+            <xsl:variable name="this_entry_debit_total"
+							select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Debit']/entry_amount)"/>
+            <xsl:variable name="this_entry_credit_total"
+							select="sum($get_all_entry_amounts[entry_id=$this_entry_id][entry_type_id='Credit']/entry_amount)"/>
             <xsl:variable name="balanced">
               <xsl:if test="$this_entry_debit_total=$this_entry_credit_total">yes</xsl:if>
             </xsl:variable>
@@ -164,9 +156,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 						<!--  INNER LOOP -->
             <xsl:for-each select="$get_all_entry_amounts[entry_id=$this_entry_id]">
-              <xsl:variable name="posi">
-                <xsl:value-of select="position()"/>
-              </xsl:variable>
+              <xsl:variable name="posi" select="position()"/>
               <tr class="row{$posa}">
                 <td colspan="3" class="row{$posa}"></td>
 

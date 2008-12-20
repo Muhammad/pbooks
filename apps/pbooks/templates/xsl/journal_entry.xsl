@@ -206,9 +206,7 @@ more than one debit or credit, there can only be one of the other type.
 
 										<!-- Recursive, aka looping, template for credits -->
                     <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
-                      <xsl:variable name="my_account_id">
-                        <xsl:value-of select="account_id"/>
-                      </xsl:variable>
+                      <xsl:variable name="my_account_id" select="account_id"/>
                       <xsl:call-template name="credit">
                         <xsl:with-param name="my_entry_id" select="entry_amount"/>
                         <xsl:with-param name="my_entry_amount_id" select="entry_amount_id"/>
