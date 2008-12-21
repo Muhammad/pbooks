@@ -739,7 +739,17 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 	<map:gate name="notes" role="pb_admin">
+		<map:if name="//_post">
+			<map:true>
+				<map:query src="data/sql/note_create.xml" />
+				<map:action type="redirect" params="{//link_prefix}notes" />
+			</map:true>
+		</map:if>
+		<map:query src="data/sql/notes_get_all.xml" />
 		<map:xsl src="templates/xsl/notes.xsl" />
+	</map:gate>
+	<map:gate name="x-note-delete" role="pb_admin">
+		<map:query src="data/sql/note_delete.xml" />
 	</map:gate>
 
 <!-- REPORTS -->

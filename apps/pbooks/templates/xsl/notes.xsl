@@ -31,6 +31,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">notes_table</xsl:with-param>
     </xsl:call-template>
+    <xsl:value-of select="$i18n/note_info"/>
     <table class="tablesorter" id="notes_table">
       <thead>
         <tr>
@@ -40,21 +41,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <th>
             <xsl:value-of select="$i18n/note_value"/>
           </th>
+          <th>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <xsl:for-each select="/_R_/fiscal_notes/note">
+        <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
           <tr>
             <td>
               <xsl:value-of select="note_id"/>
             </td>
             <td>
-              <xsl:value-of select="note_value"/>
+              <xsl:value-of select="note"/>
+            </td>
+            <td>
+              <xsl:value-of select="note_datetime"/>
             </td>
           </tr>
         </xsl:for-each>
       </tbody>
     </table>
-    <xsl:value-of select="$i18n/note_info"/>
+		<form method="post">
+		<input type="text" name="note"/>
+		<input type="submit"/>
+		</form>
   </xsl:template>
 </xsl:stylesheet>

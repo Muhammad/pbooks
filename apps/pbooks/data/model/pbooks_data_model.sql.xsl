@@ -137,7 +137,7 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of se
   `log_id` smallint(11) NOT NULL auto_increment,
   `log_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `log` varchar(255) default NULL,
-  PRIMARY KEY  (`note_id`)
+  PRIMARY KEY  (`log_id`)
 ) <xsl:value-of select="//dbe/myisam_engine/text"/>;
 
 INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`, `entry_datetime`, `memorandum`, `entry_type`, `status`, `fiscal_period_id`) VALUES
