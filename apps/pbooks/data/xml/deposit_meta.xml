@@ -22,12 +22,12 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA 
 -->
 <entry_meta>
-    <meta>
-        <meta_key>check_number</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key>invoice_payment</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
+	<meta>
+		<meta_key>check_number</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key>invoice_payment</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
 </entry_meta>

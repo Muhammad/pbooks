@@ -18,45 +18,45 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!-- Customers are accounts in disguise -->
 <account_meta>
-    <meta>
-        <meta_key>has_checks</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key>takes_deposits</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key>accounts_receivable_account</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key>cash_account</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key category="address">address_1</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key category="address">address_2</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key category="address">city</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key category="address">state</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
-    <meta>
-        <meta_key category="address">zip</meta_key>
-        <meta_type>text</meta_type>
-    </meta>
+	<meta>
+		<meta_key>has_checks</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key>takes_deposits</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key>accounts_receivable_account</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key>cash_account</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key category="address">address_1</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key category="address">address_2</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key category="address">city</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key category="address">state</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
+	<meta>
+		<meta_key category="address">zip</meta_key>
+		<meta_type>text</meta_type>
+	</meta>
 </account_meta>
