@@ -127,6 +127,7 @@ INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_options` (`option_ke
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_notes` (
   `note_id` smallint(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL default 0,
   `note_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `note` varchar(255) default NULL,
   PRIMARY KEY  (`note_id`)
