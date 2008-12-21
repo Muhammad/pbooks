@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: notes_get_all.xml
+Component: note_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,11 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="notes_get_all">
-	<connection>&pb_connection_read;</connection>
-	<params/>
+<query name="notes_delete">
+	<connection>&pb_connection;</connection>
+	<params>
+		<param name="//_post/note_id" type="text"/>
+	</params>
 	<sql>
-		SELECT *
-		FROM &pb_notes;
+	DELETE FROM &pb_notes; WHERE note_id=?
 	</sql>
 </query>

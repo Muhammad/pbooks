@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: notes_get_all.xml
+Component: note_create.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,8 +22,8 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="notes_get_all">
-	<connection>&pb_connection_read;</connection>
+<query name="note_create">
+	<connection>&pb_connection;</connection>
 	<params>
 		<param array="//_post/note" type="text"/>
 		<param array="//runtime/utcdate" type="text"/>

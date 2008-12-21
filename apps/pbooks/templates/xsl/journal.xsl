@@ -55,7 +55,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </script>
 		<!-- buttons on the right hand side -->
     <div class="generic-button" style="float: right;">
-
       <a href="{$link_prefix}journal-new" class="generic-button" id="new_journal_entry">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
         <xsl:value-of select="$i18n/new_entry"/>

@@ -32,6 +32,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">notes_table</xsl:with-param>
     </xsl:call-template>
     <xsl:value-of select="$i18n/note_info"/>
+    <script type="text/javascript">
+    function note_delete(note_id,row) {
+        $.post("<xsl:value-of select="$link_prefix"/>x-note-delete",
+        {
+          'note_id': note_id
+        },
+        function (data){
+						myTable = document.getElementById("notes_table");
+						myTable.deleteRow(row);
+        });
+    }
+		</script>
     <table class="tablesorter" id="notes_table">
       <thead>
         <tr>
@@ -40,6 +52,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </th>
           <th>
             <xsl:value-of select="$i18n/note_value"/>
+          </th>
+          <th>
           </th>
           <th>
           </th>
@@ -56,6 +70,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
             <td>
               <xsl:value-of select="note_datetime"/>
+            </td>
+            <td>
+              <a href="{//link_prefix}notes" onclick="note_delete({note_id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>
             </td>
           </tr>
         </xsl:for-each>
