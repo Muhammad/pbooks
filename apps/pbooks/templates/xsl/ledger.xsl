@@ -109,7 +109,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 			</form>
 		</table>
-		<div style="min-height: 400px;" id="myLedgerDiv">
+		<div style="min-height: {//ledger_table/height};" id="myLedgerDiv">
 			<xsl:if test="not(/_R_/_get/nid='matching')">
 			<script type="text/javascript">
       document.getElementById('myLedgerDiv').style.visibility = 'hidden';
@@ -205,7 +205,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 
 							<xsl:if test="/_R_/_get/account_id='%' or not(/_R_/_get/account_id)">
-								<td>
+								<td nowrap="nowrap">
 									<a href="{$link_prefix}ledger&amp;account_id={account_id}">
 										<xsl:value-of select="substring(name,0,20)"/>
 									</a>
@@ -234,10 +234,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</table>
 		</div>
 		<xsl:if test="not(/_R_/_get/nid='matching')">
+			<div class="generic-box" style="font-size: 12px; float: right;">
+				<a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">
+					Export to CSV
+				</a>
+			</div>
 			<xsl:call-template name="pager">
 				<xsl:with-param name="my-table">myLedger</xsl:with-param>
 			</xsl:call-template>
-			<a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">Export to CSV</a>
 		</xsl:if>
 
 		<!-- If an account_id has been selected, only show how much it has changed.-->
