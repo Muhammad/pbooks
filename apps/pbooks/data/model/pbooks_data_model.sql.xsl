@@ -125,6 +125,20 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of se
 INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_options` (`option_key`,`option_value`,`option_type`) VALUES ('pbooks_database_version','e','other');
 
 
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_notes` (
+  `note_id` smallint(11) NOT NULL auto_increment,
+  `note_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `note` varchar(255) default NULL,
+  PRIMARY KEY  (`note_id`)
+) <xsl:value-of select="//dbe/myisam_engine/text"/>;
+
+CREATE TABLE <xsl:value-of select="//dbe/if_not_exists/text"/> `<xsl:value-of select="//_get/table_prefix"/>pb_logs` (
+  `log_id` smallint(11) NOT NULL auto_increment,
+  `log_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `log` varchar(255) default NULL,
+  PRIMARY KEY  (`note_id`)
+) <xsl:value-of select="//dbe/myisam_engine/text"/>;
+
 INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_entries` (`entry_id`, `entry_datetime`, `memorandum`, `entry_type`, `status`, `fiscal_period_id`) VALUES
 (-1, '2008-12-17 18:05:33', 'PLACEHOLDER', 'standard', 2, 0),
 (0, '2008-12-17 18:05:33', 'PLACEHOLDER', 'standard', 2, 0);
