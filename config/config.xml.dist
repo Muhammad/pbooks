@@ -7,22 +7,22 @@ used for a single or several applications. -->
         <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
-        <username>username</username>
-        <password>password</password>
+        <username>root</username>
+        <password></password>
     </datasource>
     <datasource id="pbooks_read">
         <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
-        <username>username</username>
-        <password>password</password>
+        <username>root</username>
+        <password></password>
     </datasource>
     <datasource id="auth">
         <type>mysqli</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
-        <username>username</username>
-        <password>password</password>
+        <username>root</username>
+        <password></password>
     </datasource>
 
     <!-- AUTHENTICATION-->
