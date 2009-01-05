@@ -974,8 +974,13 @@ files. -->
 
 
 	<map:gate name="xml-sitemap">
-		<map:xml src="config/sitemap.xml"/>
+		<map:xml src="sitemap.xml"/>
 		<map:xsl src="templates/xml/sitemap.xml.xsl"/>
+	</map:gate>
+	<map:gate name="x--sitetest" content_type="text/plain" cache="0">
+		<map:action type="header" params="Content-type,text/plain"/>
+		<map:xml src="sitemap.xml"/>
+		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
 	</map:gate>
 
 </map:sitemap>
