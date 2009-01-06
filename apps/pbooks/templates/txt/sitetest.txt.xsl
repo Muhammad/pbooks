@@ -25,11 +25,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes" />
   <xsl:template match="/">
       <xsl:for-each select="//*[name()='map:gate']">
+				<xsl:if test="@role='pb_admin'">
 				<tr>
 					<td>open</td>
 					<td>/pbooks/index.php?nid=<xsl:value-of select="@name"/></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td>assertElementPresent</td>
+					<td>test-token</td>
+					<td></td>
+				</tr>
+				</xsl:if>
       </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
