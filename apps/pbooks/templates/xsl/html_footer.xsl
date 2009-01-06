@@ -46,9 +46,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<!-- Link to download source, as required by AGPL -->
 			</footer>
 		</div>
-		<xsl:comment>
-		<div id="test-token"></div>
-		</xsl:comment>
+		<div id="test-token" style="display:none;"></div>
 		<xsl:call-template name="source_spacer">
 			<xsl:with-param name="section_end">footer</xsl:with-param>
 		</xsl:call-template>
