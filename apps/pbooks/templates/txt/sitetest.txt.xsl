@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: sitemap.xml.xsl
+Component: sitetest.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
