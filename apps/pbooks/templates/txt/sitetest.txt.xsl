@@ -33,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 				<tr>
 					<td>assertElementPresent</td>
-					<td>test-token</td>
+					<td>//div[@class='test-token']</td>
 					<td></td>
 				</tr>
 				</xsl:if>
