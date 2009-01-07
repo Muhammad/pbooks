@@ -37,4 +37,10 @@ These are actually more like books.
 		<from_date>2008-01-01</from_date>
 		<to_date>2008-12-31</to_date>
 	</period>
+	<period>
+		<period_id>3</period_id>
+		<period_value>2009</period_value>
+		<from_date>2009-01-01</from_date>
+		<to_date>2009-12-31</to_date>
+	</period>
 </fiscal_periods>
