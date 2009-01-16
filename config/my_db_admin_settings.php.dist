@@ -2,16 +2,9 @@
 
 /*
 
-This file is used only for installation, allowing you
-to specify a different user (probably with higher privileges) to
-the installation process.
+JANUARY 2009
 
-The ADMIN_USER must have enough privileges to create a database
-and grant privileges.
-
-The PBOOKS_USER should match the credentials supplied in config.xml.
-
-This script is not used on Windows or with SQLite.
+THIS FILE IS ONLY HERE FOR A LITTLE LONGER, IT WILL SOON BE REMOVED.
 
 */
 

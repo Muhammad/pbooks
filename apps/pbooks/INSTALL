@@ -29,15 +29,6 @@ Debian
 DATABASE INSTALLATION
 =====================
 
-1.  Edit config/my_db_admin_settings.php.dist, save as my_db_admin_settings.php
-2.  php -q install_db.php
-3.  Step 2 will install the database you chose in step 1, the default username
-    and password are demo / demo.
-4.  Login.
+Use a program like phpmyadmin to install the demo_db.sql file in the 
+pbooks/config folder.
 
-
-DATABASE UPDATE
-===============
-
-There is a file called update_db.php which can be used to update your database, 
-if necessary.

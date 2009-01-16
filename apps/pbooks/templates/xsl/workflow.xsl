@@ -25,16 +25,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="main.xsl"/>
   <xsl:template name="content">
 	<form method="post">
+		<!--
+		<xsl:comment>Hold off on this for now</xsl:comment>
     This page will allow the customization of workflow for business objects.
 
     <h3>Checks</h3>
     When a check is written, it...
 
     <h3>Deposits</h3>
-
+		-->
     <h3>Payments</h3>
 		Payments are debited to this account id:
 		<input type="text" name="payment_account_id" value="{//payment_account_id}"/>
+		<input type="submit"/>
 	</form>
   </xsl:template>
 </xsl:stylesheet>
