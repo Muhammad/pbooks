@@ -1,0 +1,35 @@
+<!-- This is a sub-config file. Additional information can be inserted here, 
+and overlapping information will override settings in the main configuration file -->
+<config>
+  <defaults>
+    <default_selected_lang>en_US</default_selected_lang>
+    <default_currency_unit>$</default_currency_unit>
+    <default_fiscal_start>01-01</default_fiscal_start>
+    <default_theme>default</default_theme>
+    <payment_account_id>1068</payment_account_id>
+    <default_icon_set>s/images/icons/famfamfam/</default_icon_set>
+  </defaults>
+  <extensions>
+    <nexista_cache>
+      <placement>prepend</placement>
+      <source>&includepath;extensions/nexista_cache.php</source>
+      <active>1</active>
+      <timer_excludes>1</timer_excludes>
+      <excludes></excludes>
+      <purge_gates>list-of-gates,logout</purge_gates>
+      <purge_gets>from_date</purge_gets>
+    </nexista_cache>
+    <dev_buffer>
+      <placement>prepend</placement>
+      <sitemap>&includepath;extensions/dev_buffer/sitemap.xml</sitemap>
+      <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
+      <excludes>ledger-export,x--,dynamic-css,dynamic-database-model,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
+    </dev_buffer>
+    <nexista_auth>
+      <placement>prepend</placement>
+      <source>&includepath;extensions/nexista_auth.php</source>
+      <login>auth.php?nid=login</login>
+    </nexista_auth>
+
+  </extensions>
+</config>
