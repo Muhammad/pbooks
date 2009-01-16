@@ -12,7 +12,7 @@ REQUIREMENTS
 2.  MySQL 5
 3.  PHP Extentions: mysqli, xslt
 4.  PEAR Libraries: Cache_Lite, MDB2, MDB2#mysqli
-5.  Nexista (included in distribution for now)
+5.  Nexista
 
 
 
@@ -38,11 +38,9 @@ Visit http://www.pbooks.org/wiki/PBooks_Installation_using_XAMPP_and_Ubuntu
 DATABASE INSTALLATION
 =====================
 
-1.  Edit config/my_db_admin_settings.php.dist, save as my_db_admin_settings.php
-2.  php install_db.php
-3.  Step 2 will install the database you chose in step 1, the default username
-    and password are demo / demo.
-4.  Login. 
+1.  Install db with phpmyadmin.
+2.  The default username and password are demo / demo.
+3.  Login.
 
 
 DATABASE UPDATE
