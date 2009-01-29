@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors',true);
+error_reporting(E_ALL ^ E_NOTICE);
 
 // Where is nexista? This path should be to a folder containing nexista
 // This is the only thing you may need to edit:
