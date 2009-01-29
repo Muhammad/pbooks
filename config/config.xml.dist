@@ -4,21 +4,21 @@ used for a single or several applications. -->
     <!-- configure both pbooks and pbooks-read, they can be the same thing, 
     or pbooks can be a remote primary, and pbooks-read a local replicant -->
     <datasource id="pbooks">
-        <type>mysqli</type>
+        <type>mysql</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
         <username>root</username>
         <password></password>
     </datasource>
     <datasource id="pbooks_read">
-        <type>mysqli</type>
+        <type>mysql</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
         <username>root</username>
         <password></password>
     </datasource>
     <datasource id="auth">
-        <type>mysqli</type>
+        <type>mysql</type>
         <hostname>127.0.0.1</hostname>
         <database>pbooks</database>
         <username>root</username>
