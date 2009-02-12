@@ -77,12 +77,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </tr>
                 <tr>
                   <td>
-                    <a href="{$link_prefix}ledger">
-                      <xsl:value-of select="$i18n/ledger_transactions"/>
+                    <a href="{$link_prefix}journal">
+                      <xsl:value-of select="$i18n/journal_entries"/>
                     </a>
                   </td>
                   <td>
-                    <xsl:value-of select="/_R_/select_account_stats/select_account_stats/gl_stats"/>
+                    <xsl:value-of select="/_R_/select_account_stats/select_account_stats/entry_stats"/>
                   </td>
                 </tr>
                 <tr>
@@ -97,12 +97,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </tr>
                 <tr>
                   <td>
-                    <a href="{$link_prefix}journal">
-                      <xsl:value-of select="$i18n/journal_entries"/>
+                    <a href="{$link_prefix}ledger">
+                      <xsl:value-of select="$i18n/ledger_transactions"/>
                     </a>
                   </td>
                   <td>
-                    <xsl:value-of select="/_R_/select_account_stats/select_account_stats/entry_stats"/>
+                    <xsl:value-of select="/_R_/select_account_stats/select_account_stats/gl_stats"/>
                   </td>
                 </tr>
               </tbody>
