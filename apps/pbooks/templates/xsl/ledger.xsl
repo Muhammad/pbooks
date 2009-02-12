@@ -235,7 +235,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
 		<xsl:if test="not(/_R_/_get/nid='matching')">
 			<div class="generic-box" style="font-size: 12px; float: right;">
-				<a href="{$link_prefix}ledger-export&amp;account_id={//_get/account_id}">
+				<a>
+					<xsl:attribute name="href">
+						<xsl:if test="//_get/from_date">
+							<xsl:value-of select="$link_prefix"/>ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+						</xsl:if>
+						<xsl:if test="not(//_get/from_date)">
+							<xsl:value-of select="$link_prefix"/>ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
+						</xsl:if>
+					</xsl:attribute>
 					Export to CSV
 				</a>
 			</div>
