@@ -22,13 +22,14 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:output method="text" indent="yes" encoding="UTF-8" 
+<xsl:output method="text" indent="yes" encoding="UTF-8"
 	omit-xml-declaration="yes"/>
 <xsl:template match="/">
+<xsl:text>Date,Amount,Balance,Memo,Entry ID,Corresponding Account(s)
+</xsl:text>
 <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
 <xsl:sort select="entry_datetime"/>
-
-<xsl:value-of select="entry_id"/>,<xsl:value-of select="substring(memorandum,0,42)"/>,<xsl:value-of select="entry_datetime"/>,<xsl:value-of select="entry_amount"/>,<xsl:value-of select="balance"/><xsl:text>
+<xsl:value-of select="entry_datetime"/>,<xsl:value-of select="entry_amount"/>,<xsl:value-of select="balance"/>,<xsl:value-of select="substring(memorandum,0,42)"/>,<xsl:value-of select="entry_id"/>,<xsl:value-of select="corraccid"/><xsl:text>
 </xsl:text>
           </xsl:for-each>
 </xsl:template>

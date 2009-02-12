@@ -1,0 +1,88 @@
+<!--
+Program: PBooks
+Component: general_ledger_get_all_plus.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+-->
+<!DOCTYPE query SYSTEM "__default_table_names__.txt">
+<query name="get_all_transactions">
+	<connection>&pb_connection_read;</connection>
+	<params>
+		<param name="_get/account_id" type="text" default="%"/>
+		<param name="runtime/from_date" type="text" />
+		<param name="runtime/to_date" type="text" />
+		<param name="//option_get_company_name/fiscal_period_id" type="text" default="%"/>
+		<param name="sorting" type="text" default="ASC"/>
+		<param name="sorting" type="text" default="ASC"/>
+		<param name="sorting" type="text" default="ASC"/>
+		<param name="sorting" type="text" default="ASC"/>
+		<param name="_get/start" type="integer" default="0"/>
+		<param name="option_get/display_num_trans" type="integer" default="1000"/>
+	</params>
+	<sql>
+  SELECT ledger.transaction_id,
+  ledger.entry_amount,
+  SUM(b.entry_amount) as balance,
+  ledger.account_id AS account_id,
+  ledger.entry_id,
+  ledger.entry_amount_id AS entry_amount_id,
+  ledger.entry_datetime,
+  ledger.memorandum,
+  &pb_accounts;.account_type_id,
+  &pb_accounts;.name
+
+  FROM &pb_general_ledger; AS ledger, &pb_accounts;
+
+  INNER JOIN &pb_general_ledger; AS b
+  WHERE
+
+  ledger.account_id=&pb_accounts;.id
+
+  AND ledger.account_id = ?
+
+  <!--
+  this searches for previously occuring transactions, as well as
+  transactions that happened the same day with less than or equal
+  to entry amounts
+  -->
+  AND (
+  ((b.entry_datetime = ledger.entry_datetime)
+  AND (b.entry_amount &gt;= ledger.entry_amount)) OR
+  (b.entry_datetime &lt; ledger.entry_datetime)
+  )
+  AND b.account_id = ledger.account_id
+  AND ledger.entry_datetime &gt;= ?
+  AND ledger.entry_datetime &lt;= ?
+  AND ledger.fiscal_period_id LIKE ?
+
+  GROUP BY  ledger.transaction_id
+
+  ORDER BY
+   ABS(ledger.entry_amount) DESC,
+   ledger.entry_amount ASC,
+   ledger.entry_id,
+  CASE ? WHEN 'ASC' THEN ledger.entry_datetime END ASC,
+  CASE ? WHEN 'DESC' THEN ledger.entry_datetime END DESC,
+  CASE ? WHEN 'ASC' THEN ledger.entry_amount END DESC,
+  CASE ? WHEN 'DESC' THEN ledger.entry_amount END ASC
+
+  LIMIT ?,?
+	</sql>
+</query>
