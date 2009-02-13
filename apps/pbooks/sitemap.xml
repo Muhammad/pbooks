@@ -671,6 +671,14 @@ This makes it easier to maintain persistence. -->
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
+	<map:gate name="x--ledger-export-dl" role="pb_admin" content_type="text/plain">
+    <map:action type="header" params="Content-Type: application/force-download"/>
+    <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.csv&quot;"/>
+		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
+		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
+		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
+	</map:gate>
+
 
 
 	<map:gate name="matching" role="pb_admin" cache="3">
