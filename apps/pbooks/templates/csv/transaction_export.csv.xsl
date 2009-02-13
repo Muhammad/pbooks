@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:text>
 <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
 <xsl:sort select="entry_datetime"/>
-<xsl:value-of select="entry_datetime"/>,<xsl:value-of select="entry_amount"/>,<xsl:value-of select="balance"/>,<xsl:value-of select="substring(memorandum,0,42)"/>,<xsl:value-of select="entry_id"/>,<xsl:value-of select="corraccid"/><xsl:text>
+<xsl:value-of select="entry_datetime"/>,<xsl:value-of select="entry_amount"/>,<xsl:value-of select="balance"/>,<xsl:value-of select="substring(memorandum,0,42)"/>,<xsl:value-of select="entry_id"/>,&quot;<xsl:value-of select="corresponding_accounts"/>&quot;<xsl:text>
 </xsl:text>
           </xsl:for-each>
 </xsl:template>

@@ -31,42 +31,50 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="//option_get_company_name/fiscal_period_id" type="text" default="%"/>
 	</params>
 	<sql>
-  <!-- First thing you need to do is get the same functionality without 
+  <!-- First thing you need to do is get the same functionality without
   using SUM in initial select -->
-  
+
   <!-- This query is supposed to do the same thing as the regular version,
   but include a cell containing the corresponding account names separated by commas -->
-  
-  SELECT &pb_general_ledger;.transaction_id,
-  &pb_general_ledger;.entry_amount,
-  &pb_general_ledger;.account_id,
-  &pb_general_ledger;.entry_id,
-  &pb_general_ledger;.entry_amount_id AS entry_amount_id,
-  &pb_general_ledger;.entry_datetime,
-  &pb_general_ledger;.memorandum,
-  &pb_accounts;.name
 
-  FROM &pb_accounts;,&pb_general_ledger;
-
-  LEFT OUTER JOIN (
-    SELECT &pb_entry_amounts;.entry_amount_id FROM &pb_entry_amounts;,&pb_general_ledger;
-    WHERE &pb_entry_amounts;.entry_amount_id = 4
-    AND &pb_entry_amounts;.entry_amount_id = &pb_general_ledger;.entry_amount_id
+  SELECT l.entry_amount,l.memorandum,l.entry_datetime,l.entry_id,
+  (
+    SELECT SUM(ll.entry_amount)
+    FROM &pb_general_ledger; AS ll
+    WHERE
+    ll.account_id = l.account_id
+    AND
+    (
+      ll.entry_datetime &lt; l.entry_datetime
+      OR
+      (
+        ll.entry_datetime = l.entry_datetime
+        AND
+        ll.entry_amount &gt;= l.entry_amount
+      )
     )
-  AS bb
-  ON bb.entry_amount_id = &pb_general_ledger;.entry_amount_id
+  ) as balance,
+  (
+    SELECT GROUP_CONCAT(aa.name) FROM &pb_entry_amounts; AS j, &pb_accounts; AS aa
+    WHERE j.entry_id = l.entry_id
+    AND j.account_id != l.account_id
+    AND aa.id = j.account_id
+  ) AS corresponding_accounts
+
+  FROM (&pb_accounts; AS a), (&pb_general_ledger; AS l)
 
   WHERE
 
-  &pb_general_ledger;.account_id = ?
+  l.account_id = ?
 
-  AND &pb_general_ledger;.account_id=&pb_accounts;.id
+  AND l.account_id=a.id
 
+  AND l.entry_datetime &gt;= ?
+  AND l.entry_datetime &lt;= ?
+  AND l.fiscal_period_id LIKE ?
 
-  AND &pb_general_ledger;.entry_datetime &gt;= ?
-  AND &pb_general_ledger;.entry_datetime &lt;= ?
-  AND &pb_general_ledger;.fiscal_period_id LIKE ?
+  GROUP BY  l.transaction_id
 
-  GROUP BY  &pb_general_ledger;.transaction_id
+  ORDER BY l.entry_datetime
 	</sql>
 </query>
