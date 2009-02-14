@@ -997,5 +997,8 @@ files. -->
 		<map:xml src="sitemap.xml"/>
 		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
 	</map:gate>
+	<map:gate name="x--ods-export" content_type="application/octet-stream" cache="0">
+		<map:script src="lib/php/export_ods.php"/>
+	</map:gate>
 
 </map:sitemap>

@@ -1,5 +1,5 @@
 <?php
-/*
+/* <!--
 Program: PBooks
 Component: import_into_pbooks.php
 Copyright: Savonix Corporation
@@ -23,7 +23,7 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA -->
 */
 
-/* Import transactions into pbooks 
+/* Import transactions into pbooks
 
 For each line of the csv file, a sql statement is made.
 
