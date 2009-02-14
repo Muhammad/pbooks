@@ -104,6 +104,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 				<tr>
 					<td>
+						<xsl:value-of select="$i18n/reconciled"/>:
+        </td>
+					<td>
+						<input type="text" name="reconciled" required="1"
+							err="{//error[key='reconciled']/value}"
+							value="{/_R_/account_meta_get/account_meta_get[meta_key='reconciled']/meta_value|//_post/reconciled}"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<xsl:value-of select="$i18n/has_checks"/>:
         </td>
 					<td>
