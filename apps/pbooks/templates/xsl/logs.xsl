@@ -28,6 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+		<!--
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">logs_table</xsl:with-param>
     </xsl:call-template>
@@ -56,5 +57,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </tbody>
     </table>
     <xsl:value-of select="$i18n/log_info"/>
+-->
+
+			<iframe style="width:600px;height:300px;" src="{$link_prefix}x--log">
+			</iframe>
   </xsl:template>
 </xsl:stylesheet>

@@ -35,6 +35,8 @@ if(empty($default_fiscal_start)) {
 
 // Moved from other runtime:
 $debug = Nexista_Config::get('./runtime/debug');
+$logging = Nexista_Config::get('./runtime/logging');
+$logfile = Nexista_Config::get('./runtime/logfile');
 $top_left_logo = "s/images/pbooks-logo_120x60.png";
 
 # This wacky path builder is required due to mod_rewrite situations
@@ -154,6 +156,8 @@ $runtime = array(
     'show_all_accounts' => $show_all_accounts,
     'selected_lang' => $default_selected_lang,
     'theme' => $theme,
+    'logging' => $logging,
+    'logfile' => $logfile,
     'icon_set' => $default_icon_set,
     'fiscal_start' => $default_fiscal_start,
     'request_uri' => $_SERVER['REQUEST_URI'],

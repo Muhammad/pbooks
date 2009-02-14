@@ -52,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/welcome.xsl"/>
 	</map:gate>
 
-<!-- JOURNAL ENTRIES -->
+  <!-- JOURNAL ENTRIES -->
 	<map:gate name="journal" role="pb_admin" cache="3000" client_cache="240">
 		<map:xml src="i18n/{/_R_/runtime/selected_lang}/user_options.xml"/>
 		<map:query src="data/sql/option_get.xml"/>
@@ -293,6 +293,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/deposits.xsl" />
 	</map:gate>
 	<map:gate name="deposit-create" role="pb_admin">
+    <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,Created new deposit entry"/>
     <!-- this account_meta_key tells the query to look for accounts
     which take deposits. similar values are set for the other business
     processes, like invoices and bills.-->
@@ -912,6 +913,9 @@ This makes it easier to maintain persistence. -->
 <!-- DIAGNOSTICS -->
 	<map:gate name="logs" role="pb_admin">
 		<map:xsl src="templates/xsl/logs.xsl" />
+	</map:gate>
+	<map:gate name="x--log" role="pb_admin" content_type="text/plain">
+		<map:raw src="../../cache/log.txt" />
 	</map:gate>
 
 
