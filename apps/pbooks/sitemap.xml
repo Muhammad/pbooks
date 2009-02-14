@@ -998,6 +998,11 @@ files. -->
 		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
 	</map:gate>
 	<map:gate name="x--ods-export" content_type="application/octet-stream" cache="0">
+    <map:action type="header" params="Content-Type: application/force-download"/>
+    <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.ods&quot;"/>
+		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
+		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
+		<map:action type="xsl" params="templates/xml/open_spreadsheet.xml.xsl,my_ledger"/>
 		<map:script src="lib/php/export_ods.php"/>
 	</map:gate>
 

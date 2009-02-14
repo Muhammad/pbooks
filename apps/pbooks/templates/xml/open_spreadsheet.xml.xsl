@@ -30,10 +30,49 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table:table table:name="Sheet1">
         <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
-            <text:p>zxs333</text:p>
+            <text:p>Date</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>Amount</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>Balance</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>Memo</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>Entry ID</text:p>
+          </table:table-cell>
+          <table:table-cell office:value-type="string">
+            <text:p>Corresponding Account(s)</text:p>
           </table:table-cell>
         </table:table-row>
+				<xsl:for-each select="/_R_/get_all_transactions/get_all_transactions">
+				<xsl:sort select="entry_datetime"/>
+					<table:table-row table:style-name="ro1">
+						<table:table-cell office:value-type="string">
+							<text:p><xsl:value-of select="entry_datetime"/></text:p>
+						</table:table-cell>
+						<table:table-cell office:value-type="string">
+							<text:p><xsl:value-of select="entry_amount"/></text:p>
+						</table:table-cell>
+						<table:table-cell office:value-type="string">
+							<text:p><xsl:value-of select="balance"/></text:p>
+						</table:table-cell>
+						<table:table-cell office:value-type="string">
+							<text:p><xsl:value-of select="substring(memorandum,0,42)"/></text:p>
+						</table:table-cell>
+						<table:table-cell office:value-type="string">
+							<text:p><xsl:value-of select="entry_id"/></text:p>
+						</table:table-cell>
+						<table:table-cell office:value-type="string">
+							<text:p><xsl:value-of select="corresponding_accounts"/></text:p>
+						</table:table-cell>
+					</table:table-row>
+				</xsl:for-each>
       </table:table>
+			<!--
       <table:table table:name="Sheet2">
         <table:table-row table:style-name="ro1">
           <table:table-cell office:value-type="string">
@@ -41,6 +80,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </table:table-cell>
         </table:table-row>
       </table:table>
+			-->
     </office:spreadsheet>
   </office:body>
 </office:document-content>

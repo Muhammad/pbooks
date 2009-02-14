@@ -36,7 +36,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:value-of select="$link_prefix"/>x--ledger-export-dl&amp;account_id=<xsl:value-of select="//_get/account_id"/>
 						</xsl:if>
 					</xsl:attribute>
-					Download
+					CSV
+				</a>
+				<a>
+					<xsl:attribute name="href">
+						<xsl:if test="//_get/from_date">
+							<xsl:value-of select="$link_prefix"/>x--ods-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+						</xsl:if>
+						<xsl:if test="not(//_get/from_date)">
+							<xsl:value-of select="$link_prefix"/>x--ods-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
+						</xsl:if>
+					</xsl:attribute>
+					ODS
 				</a>
 			</div>
 			<iframe style="width:600px;height:500px;">

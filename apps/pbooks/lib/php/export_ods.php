@@ -23,29 +23,8 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA -->
 */
 
-$sh_content = <<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" office:version="1.1">
-  <office:body>
-    <office:spreadsheet>
-      <table:table table:name="Sheet1">
-        <table:table-row table:style-name="ro1">
-          <table:table-cell office:value-type="string">
-            <text:p>zxs333</text:p>
-          </table:table-cell>
-        </table:table-row>
-      </table:table>
-      <table:table table:name="Sheet2">
-        <table:table-row table:style-name="ro1">
-          <table:table-cell office:value-type="string">
-            <text:p>abc222</text:p>
-          </table:table-cell>
-        </table:table-row>
-      </table:table>
-    </office:spreadsheet>
-  </office:body>
-</office:document-content>
-EOF;
+$sh_content = Nexista_Path::get("//my_ledger","flow");
+
 
 $manifest = <<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -68,13 +47,6 @@ if ($res === TRUE) {
 
 
 if (file_exists($tmpzip)) {
-    header('Content-Description: File Download');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename='.basename($tmpzip));
-    header('Content-Transfer-Encoding: binary');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
     header('Content-Length: ' . filesize($tmpzip));
     ob_clean();
     flush();
