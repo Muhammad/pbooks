@@ -31,12 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="//option_get_company_name/fiscal_period_id" type="text" default="%"/>
 	</params>
 	<sql>
-  <!-- First thing you need to do is get the same functionality without
-  using SUM in initial select -->
-
-  <!-- This query is supposed to do the same thing as the regular version,
-  but include a cell containing the corresponding account names separated by commas -->
-
   SELECT l.entry_amount,l.memorandum,l.entry_datetime,l.entry_id,
   (
     SELECT SUM(ll.entry_amount)

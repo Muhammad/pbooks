@@ -37,54 +37,47 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="option_get/display_num_trans" type="integer" default="1000"/>
 	</params>
 	<sql>
-			SELECT &pb_general_ledger;.transaction_id,
-			&pb_general_ledger;.entry_amount,
-			SUM(b.entry_amount) as balance,
-			&pb_general_ledger;.account_id,
-			&pb_general_ledger;.entry_id,
-			&pb_general_ledger;.entry_amount_id,
-			&pb_general_ledger;.entry_datetime,
-			&pb_general_ledger;.memorandum,
-			&pb_accounts;.account_type_id,
-			&pb_accounts;.name
+  SELECT l.entry_amount,l.memorandum,l.entry_datetime,l.entry_id,
+  (
+    SELECT SUM(ll.entry_amount)
+    FROM &pb_general_ledger; AS ll
+    WHERE
+    ll.account_id = l.account_id
+    AND
+    (
+      ll.entry_datetime &lt; l.entry_datetime
+      OR
+      (
+        ll.entry_datetime = l.entry_datetime
+        AND
+        ll.entry_amount &gt;= l.entry_amount
+      )
+    )
+  ) as balance
 
-			FROM &pb_general_ledger;, &pb_accounts;
+  FROM (&pb_accounts; AS a), (&pb_general_ledger; AS l)
 
-			INNER JOIN &pb_general_ledger; b
+  WHERE
 
-			WHERE
+  l.account_id = ?
 
-			&pb_general_ledger;.account_id=&pb_accounts;.id
+  AND l.account_id=a.id
 
-			AND &pb_general_ledger;.account_id LIKE ?
+  AND l.entry_datetime &gt;= ?
+  AND l.entry_datetime &lt;= ?
+  AND l.fiscal_period_id LIKE ?
 
-			<!--
-      this searches for previously occuring transactions, as well as
-			transactions that happened the same day with less than or equal
-      to entry amounts
-      -->
-			AND (
-			((b.entry_datetime = &pb_general_ledger;.entry_datetime)
-			AND (b.entry_amount &gt;= &pb_general_ledger;.entry_amount)) OR
-			(b.entry_datetime &lt; &pb_general_ledger;.entry_datetime)
-			)
-			AND b.account_id = &pb_general_ledger;.account_id
+  GROUP BY  l.transaction_id
 
-			AND &pb_general_ledger;.entry_datetime &gt;= ?
-			AND &pb_general_ledger;.entry_datetime &lt;= ?
-			AND &pb_general_ledger;.fiscal_period_id LIKE ?
+  ORDER BY
+  ABS(l.entry_amount) DESC,
+  l.entry_amount ASC,
+  l.entry_id,
+  CASE ? WHEN 'ASC' THEN l.entry_datetime END ASC,
+  CASE ? WHEN 'DESC' THEN l.entry_datetime END DESC,
+  CASE ? WHEN 'ASC' THEN l.entry_amount END DESC,
+  CASE ? WHEN 'DESC' THEN l.entry_amount END ASC
 
-			GROUP BY  &pb_general_ledger;.transaction_id
-
-			ORDER BY
-			 ABS(&pb_general_ledger;.entry_amount) DESC,
-			 &pb_general_ledger;.entry_amount ASC,
-			 &pb_general_ledger;.entry_id,
-			CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_datetime END ASC,
-			CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_datetime END DESC,
-			CASE ? WHEN 'ASC' THEN &pb_general_ledger;.entry_amount END DESC,
-			CASE ? WHEN 'DESC' THEN &pb_general_ledger;.entry_amount END ASC
-
-			LIMIT ?,?
+  LIMIT ?,?
 	</sql>
 </query>
