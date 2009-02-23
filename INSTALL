@@ -1,9 +1,9 @@
-PBooks Accounting Software
+PBooks Accounting Software  
 Copyright Savonix Corporation
 
 Additional and up-to-date information is available here:
 
-    http://www.pbooks.org/wiki/PBooks_Installation
+[PBooks Installation][]
 
 REQUIREMENTS
 ============
@@ -33,7 +33,7 @@ Debian
 XAMPP
 -----
 
-Visit http://www.pbooks.org/wiki/PBooks_Installation_using_XAMPP_and_Ubuntu
+Visit [PBooks Installation on Ubuntu][] for instructions on how to do this.
 
 DATABASE INSTALLATION
 =====================
@@ -46,8 +46,8 @@ DATABASE INSTALLATION
 DATABASE UPDATE
 ===============
 
-There is a file called update_db.php which can be used to update your database, 
-if necessary.
+This process is done manually, and will not be required under normal
+circumstances.
 
 
 CONFIGURATION
@@ -56,7 +56,8 @@ CONFIGURATION
 1. cd /usr/share/pbooks
 2. cp config/config.xml.dist config/config.xml
 3. vim config/config.xml
-4. cp apps/pbooks/config/config.xml.dist apps/pbooks/config/config.xml
-5. vim apps/pbooks/config/config.xml
+4. vim apps/pbooks/config/config.xml
 
 
+[PBooks Installation]: http://www.pbooks.org/wiki/PBooks_Installation "PBooks Installation"
+[PBooks Installation on Ubuntu]: http://www.pbooks.org/wiki/PBooks_Installation_using_XAMPP_and_Ubuntu "PBooks Installation on Ubuntu using XAMPP"
