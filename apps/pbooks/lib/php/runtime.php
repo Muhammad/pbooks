@@ -79,8 +79,11 @@ if(empty($default_invoice_print_vertical)) {
  * TODO What follows needs a major cleanup! Low priority though.
  * Not posting anymore dates. Only using POST method for updating data.
  */
+
+$working_year = 2007;
+// date('Y')
 if(isset($_GET['month'])) {
-    $from_date = date('Y-m-d H:i:s',mktime(0,0,0, $_GET['month'], 01, date('Y')));
+    $from_date = date('Y-m-d H:i:s',mktime(0,0,0, $_GET['month'], 01, $working_year));
     $_SESSION['from_date'] = $from_date;
 } elseif(isset($_GET['from_date'])) {
     $_SESSION['from_date'] = $_GET['from_date'];
@@ -96,7 +99,7 @@ if(isset($_GET['month'])) {
  */
 
 if(isset($_GET['month'])) {
-    $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, $_GET['month'], 31, date('Y')));
+    $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, $_GET['month'], 31, $working_year));
     $_SESSION['to_date'] = $to_date." 23:59:59";
 } elseif(isset($_GET['to_date'])) {                       // if there is a get date, use it and save it no matter, unless its redoing balances.
     $_SESSION['to_date'] = $_GET['to_date']." 23:59:59";
