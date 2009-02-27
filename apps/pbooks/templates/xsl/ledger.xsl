@@ -257,7 +257,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- Net change -->
 			<div class="generic-box" style="font-size: 18px;">
 				Net change:
-				<xsl:value-of select="sum($get_transactions/entry_amount)"/>
+				<xsl:value-of select="format-number(sum($get_transactions/entry_amount),'###,###,###')"/> | 
+				Number of transactions:
+				<xsl:value-of select="count($get_transactions)"/>
 			</div>
 			<br/>
 
