@@ -1,6 +1,9 @@
 <?php
 
 
+ini_set('display_errors',true);
+error_reporting(E_ALL ^ E_NOTICE);
+
 // Where is nexista? This path should be to a folder containing nexista
 // This is the only thing you may need to edit:
 if(file_exists("../nexista/")) {
@@ -9,8 +12,6 @@ if(file_exists("../nexista/")) {
 if (file_exists("../../nexista/")) {
     define('NX_PATH_BASE', "../../nexista/");
 }
-
-
 
 
 $server_name = $_SERVER['SERVER_NAME'];
