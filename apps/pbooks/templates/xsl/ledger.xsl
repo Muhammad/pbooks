@@ -111,9 +111,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</table>
 		<div style="min-height: {//ledger_table/height};" id="myLedgerDiv">
 			<xsl:if test="not(/_R_/_get/nid='matching')">
-			<script type="text/javascript">
-      document.getElementById('myLedgerDiv').style.visibility = 'hidden';
-      </script>
 			</xsl:if>
 			<table id="myLedger" class="tablesorter">
 				<thead>

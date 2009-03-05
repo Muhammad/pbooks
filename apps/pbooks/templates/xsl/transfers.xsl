@@ -42,9 +42,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:value-of select="$i18n/recent_transfers"/>:
 		</strong>
     <div style="min-height: 400px;" id="myTransfersDiv">
-		<script type="text/javascript">
-    document.getElementById('myTransfersDiv').style.visibility = 'hidden';
-		</script>
       <table class="tablesorter" id="myTransfers">
         <thead>
           <tr>

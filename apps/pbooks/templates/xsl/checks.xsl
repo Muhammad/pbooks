@@ -43,9 +43,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:value-of select="$i18n/recent_checks"/>:
 		</strong>
     <div style="min-height: 400px;" id="myChecksDiv">
-      <script type="text/javascript">
-      document.getElementById('myChecksDiv').style.visibility = 'hidden';
-			</script>
       <table id="myChecks" class="tablesorter">
         <thead>
           <tr>

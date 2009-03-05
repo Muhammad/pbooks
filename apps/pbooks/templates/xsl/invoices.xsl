@@ -45,7 +45,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         function (data){
           document.getElementById(invoice_number).innerHTML="Paid";
         });
-        //document.getElementById(invoice_id).innerHTML="";
     }
     </script>
 
@@ -59,9 +58,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <strong>
       <xsl:value-of select="$i18n/recent_invoices"/>:</strong>
     <div id="myInvoicesDiv" style="min-height: 400px">
-      <script type="text/javascript">
-        document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
-      </script>
 
       <table class="tablesorter" id="myInvoices">
         <thead>
