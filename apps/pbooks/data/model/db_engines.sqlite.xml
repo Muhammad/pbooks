@@ -23,35 +23,35 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <dbe>
   <engine_default_timestamp>
-    <text>NULL</text>
+    NULL
   </engine_default_timestamp>
 
   <engine_auto_increment>
-    <text> INTEGER PRIMARY KEY</text>
+     INTEGER PRIMARY KEY
   </engine_auto_increment>
 
   <engine_increment_start>
-      <text></text>
+      
   </engine_increment_start>
 
   <engine_auto_increment_b>
-    <text></text>
+    
   </engine_auto_increment_b>
 
   <innodb_engine>
-    <text></text>
+    
   </innodb_engine>
 
   <myisam_engine>
-    <text></text>
+    
   </myisam_engine>
 
   <if_not_exists>
-    <text></text>
+    
   </if_not_exists>
 
   <integer>
-    <text>int(10)</text>
+    int(10)
   </integer>
 
 </dbe>
