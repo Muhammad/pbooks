@@ -28,11 +28,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_accounts` (
   `id` <xsl:value-of select="//dbe/engine_auto_increment"/>,
   `name` text,
-  `account_type_id` int(11) NOT NULL default '0',
+  `account_type_id` <xsl:value-of select="//dbe/integer"/>,
   `description` text,
   `creation_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `account_number` int(11) default NULL,
-  `parent_account_id` int(11) default NULL,
+  `account_number` <xsl:value-of select="//dbe/integer"/>,
+  `parent_account_id` <xsl:value-of select="//dbe/integer"/>,
   `hide` enum('yes','no') default 'no',
   `group_id` tinyint(2) default NULL,
   PRIMARY KEY  (`id`),
@@ -42,7 +42,7 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select=
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_accounts_metadata` (
   `meta_id` <xsl:value-of select="//dbe/engine_auto_increment"/>,
-  `account_id` int(11) NOT NULL,
+  `account_id` <xsl:value-of select="//dbe/integer"/>,
   `meta_key` varchar(255) NOT NULL,
   `meta_value` varchar(255) NOT NULL,
   PRIMARY KEY  (`meta_id`),
@@ -78,10 +78,10 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select=
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entry_amounts` (
   `entry_amount_id` <xsl:value-of select="//dbe/engine_auto_increment"/>,
-  `entry_id` int(11) NOT NULL default '0',
+  `entry_id` <xsl:value-of select="//dbe/integer"/>,
   `entry_type_id` enum('Credit','Debit') default NULL,
   `entry_amount` decimal(10,2) default NULL,
-  `account_id` int(11) default NULL,
+  `account_id` <xsl:value-of select="//dbe/integer"/>,
   `memorandum` varchar(100) NOT NULL,
   PRIMARY KEY  (`entry_amount_id`),
   KEY `pb_entry_amounts_ibfk_1` (`account_id`),
@@ -90,7 +90,7 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select=
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_entry_metadata` (
   `meta_id` <xsl:value-of select="//dbe/engine_auto_increment"/>,
-  `entry_id` int(11) NOT NULL,
+  `entry_id` <xsl:value-of select="//dbe/integer"/>,
   `meta_key` varchar(255) NOT NULL,
   `meta_value` varchar(255) NOT NULL,
   PRIMARY KEY  (`meta_id`),
@@ -103,10 +103,10 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select=
   `entry_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `memorandum` text,
   `entry_amount` decimal(10,2) default NULL,
-  `account_id` int(11) NOT NULL default '1002',
-  `entry_id` int(11) NOT NULL default '0',
+  `account_id` <xsl:value-of select="//dbe/integer"/> default '1002',
+  `entry_id` <xsl:value-of select="//dbe/integer"/>,
   `entry_amount_id` bigint(20) NOT NULL,
-  `fiscal_period_id` int(20) NOT NULL default '0',
+  `fiscal_period_id` int(2) NOT NULL default '0',
   PRIMARY KEY  (`transaction_id`),
   KEY `pb_general_ledger_ibfk_1` (`account_id`),
   KEY `pb_general_ledger_ibfk_2` (`entry_id`),
@@ -115,7 +115,7 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select=
 
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_options` (
-  `option_id` smallint(11) NOT NULL auto_increment,
+  `option_id` small<xsl:value-of select="//dbe/integer"/> auto_increment,
   `option_key` varchar(255) NOT NULL default 'untitled',
   `option_value` varchar(255) default NULL,
   `option_type` enum('text','textarea','option','select','checkbox','other') NOT NULL default 'other',
@@ -126,15 +126,15 @@ INSERT INTO `<xsl:value-of select="//_get/table_prefix"/>pb_options` (`option_ke
 
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_notes` (
-  `note_id` smallint(11) NOT NULL auto_increment,
-  `user_id` int(11) NOT NULL default 0,
+  `note_id` small<xsl:value-of select="//dbe/integer"/> auto_increment,
+  `user_id` <xsl:value-of select="//dbe/integer"/>,
   `note_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `note` varchar(255) default NULL,
   PRIMARY KEY  (`note_id`)
 ) <xsl:value-of select="//dbe/myisam_engine"/>;
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select="//_get/table_prefix"/>pb_logs` (
-  `log_id` smallint(11) NOT NULL auto_increment,
+  `log_id` small<xsl:value-of select="//dbe/integer"/> auto_increment,
   `log_datetime` <xsl:value-of select="//dbe/engine_default_timestamp"/>,
   `log` varchar(255) default NULL,
   PRIMARY KEY  (`log_id`)
