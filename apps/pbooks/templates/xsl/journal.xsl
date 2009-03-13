@@ -125,7 +125,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <td class="journal-data"></td>
               <td valign="top" class="journal-data" colspan="5" width="100%">
                 <a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
-                  <xsl:value-of select="memorandum"/>
+                  <xsl:value-of select="substring(memorandum,0,60)"/>
+									<xsl:if test="string-length(memorandum) &gt; 60">
+										...
+									</xsl:if>
                 </a>
               </td>
               <td valign="top" class="journal-data">
