@@ -211,6 +211,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<!-- First an entry is created in the database, then the form is presented to the user. 
 This makes it easier to maintain persistence. -->
 	<map:gate name="invoice-create" role="pb_admin">
+    <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,Created invoice"/>
 		<map:set name="account_meta_key" value="accounts_receivable_account"/>
 		<map:query src="data/sql/account_business_objects.xml" />
 		<map:set name="debit_account_1" value="{//accounts_get_accounts_receivable_id/accounts_receivable_id}"/>
@@ -350,6 +351,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/checks.xsl" />
 	</map:gate>
 	<map:gate name="check-create" role="pb_admin">
+    <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,Created new check"/>
 		<map:set name="account_meta_key" value="has_checks"/>
 		<map:query src="data/sql/account_business_objects.xml"/>
 		<map:if name="/_R_/account_business_objects">
@@ -593,6 +595,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/customer_payments.xsl" />
 	</map:gate>
 	<map:gate name="customer-payment-create" role="pb_admin">
+    <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,Created new customer account."/>
     <!-- this account_meta_key tells the query to look for accounts
     which take deposits. similar values are set for the other business
     processes, like invoices and bills.-->
