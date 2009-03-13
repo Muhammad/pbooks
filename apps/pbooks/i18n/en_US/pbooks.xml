@@ -168,8 +168,15 @@ transactions to match, or entries to post.</number_transactions>
   <from_account>From Account</from_account>
   <to_account>To Account</to_account>
   <method>Method</method>
+  <company_city>City</company_city>
+  <company_state>State</company_state>
+  <company_zip>Zip</company_zip>
+  <books_mode>Mode</books_mode>
+  <fiscal_period_id>Current Fiscal Period</fiscal_period_id>
+  <ein_number>EIN</ein_number>
   <by_check>By Check</by_check>
   <electronic>Electronic</electronic>
+  <fiscal_start>Start of fiscal year (MM-DD)</fiscal_start>
   <memo>Memo</memo>
   <amount>Amount</amount>
   <from>From</from>
@@ -261,8 +268,9 @@ Edit this account.
   <resource_links>Bookkeeping and Accounting Resources</resource_links>
   <pbooks_consulting>PBooks Consulting</pbooks_consulting>
   <company_name>Company name</company_name>
-  <address_1>Address</address_1>
-  <address_2>Address</address_2>
+  <company_logo>Company Logo</company_logo>
+  <company_address_1>Address</company_address_1>
+  <company_address_2>Address</company_address_2>
   <city>City</city>
   <state>State</state>
   <zip>Zip Code</zip>

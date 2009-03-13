@@ -879,8 +879,8 @@ This makes it easier to maintain persistence. -->
 
 
 <!-- COMPANY INFO -->
-	<map:gate name="company" role="pb_admin" cache="100" client_cache="120">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/company_options.xml"/>
+	<map:gate name="company" role="pb_admin" cache="0" client_cache="0">
+		<map:xml src="data/xml/company_options.xml"/>
 		<map:if name="//_post">
 			<map:true>
 				<map:query src="data/sql/option_delete.xml"/>

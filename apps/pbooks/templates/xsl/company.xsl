@@ -24,6 +24,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:include href="main.xsl"/>
 	<xsl:template name="content">
+		<xsl:param name="i18n"/>
 		<form method="post">
 			<table>
 				<xsl:for-each select="/_R_/company_options/option">
@@ -32,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</xsl:variable>
 					<tr>
 						<td>
-							<xsl:value-of select="title"/>:
+							<xsl:value-of select="$i18n/*[local-name()=$my_option]"/>:
 						</td>
 						<td>
 							<input type="text" name="{option_key}"

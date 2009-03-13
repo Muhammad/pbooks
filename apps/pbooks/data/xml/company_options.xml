@@ -55,6 +55,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<option_type>text</option_type>
 	</option>
 	<option>
+		<option_key>company_logo</option_key>
+		<option_type>text</option_type>
+	</option>
+	<option>
 		<option_key>books_mode</option_key>
 		<option_type>text</option_type>
 	</option>
