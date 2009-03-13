@@ -7,3 +7,14 @@ Pbooks is an open-source, php-based accounting and bookkeeping system. It is
 designed for use by small business, and uses the double-entry accounting model.
 Licensed under the Affero GPL v3, beta versions are available for download
 today, or you can view a public demo accessible from our website.
+
+Requirements
+------------
+* PHP
+* MySQL
+* XSLT PHP Extension
+* Apache or similar
+
+Support
+-------
+[PBooks Website](http://www.pbooks.org/)
