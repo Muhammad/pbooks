@@ -1,5 +1,5 @@
 <?php
-/*
+/* <!--
 Program: PBooks
 Component: import_accounts_into_pbooks.php
 Copyright: Savonix Corporation
@@ -19,8 +19,8 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA -->
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA -->
 */
 
 /* Import accounts into pbooks
@@ -64,13 +64,13 @@ foreach($data_array as $value) {
         // Remove non-delineating commas
         $value = preg_replace('/\"(.+)(,)(.+)\"!\n/', '${1}${3}', $value);
         $csv_row = explode(",",$value);
-    
+
         if($debug=="true") {
             echo "=====<pre>";
             print_r($cvs_row);
             echo "</pre>";
         }
-        
+
         if(count($csv_row)=="4") {
 
             // 4 columns of data - entry_datetime, memorandum, entry_amount, balance

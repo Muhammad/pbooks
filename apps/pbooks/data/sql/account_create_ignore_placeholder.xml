@@ -26,9 +26,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>&pb_connection;</connection>
 	<params/>
 	<sql>
-		INSERT INTO &pb_accounts;
-		(id,account_type_id,account_number,name,description)
-		VALUES
-		('0','0','-1000','PLACEHOLDER','DO NOT DELETE');
+  INSERT INTO &pb_accounts;
+  (id,account_type_id,account_number,name,description)
+  VALUES
+  ('0','0','-1000','PLACEHOLDER','DO NOT DELETE');
 	</sql>
 </query>

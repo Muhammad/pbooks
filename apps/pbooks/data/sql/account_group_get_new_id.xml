@@ -29,6 +29,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_post/name" type="text"/>
 	</params>
 	<sql>
-		SELECT id AS group_id FROM &pb_account_groups; WHERE name=?
+  SELECT id AS group_id FROM &pb_account_groups; WHERE name=?
 	</sql>
 </query>
