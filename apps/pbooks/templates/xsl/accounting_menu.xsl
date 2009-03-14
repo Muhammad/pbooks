@@ -24,10 +24,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template name="accounting-menu">
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:param name="i18n"/>
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">table-menu</xsl:with-param>
     </xsl:call-template>
-    <xsl:call-template name="accordian-menu"/>
+    <xsl:call-template name="accordian-menu">
+		</xsl:call-template>
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_end">table-menu</xsl:with-param>
     </xsl:call-template>
@@ -52,6 +56,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
     </table>
   </xsl:template>
+
+
+
+
 	<!-- table menu buttons -->
   <xsl:template name="button">
     <xsl:param name="key"/>
