@@ -21,7 +21,9 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:math="http://exslt.org/math"
+	extension-element-prefixes="math">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
 
@@ -425,6 +427,9 @@ If you want to complete this process, continue as usual. For more information, s
               <xsl:call-template name="abs-amount">
 								<xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
 							</xsl:call-template>
+							<!--
+							<xsl:value-of select="math:abs($get_journal_entry/entry_amount)"/>
+							-->
             </xsl:if>
           </xsl:attribute>
           <xsl:if test=" (
