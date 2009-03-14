@@ -44,9 +44,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
           'account_type_id': account_type_id
         },
         function (data){
-          document.getElementById(entry_amount_id).innerHTML="";
+          $(entry_amount_id).remove();
         });
-        document.getElementById(entry_amount_id).innerHTML="";
+				$(entry_amount_id).remove();
     }
 
     function journal_entry_location(entry_id) {

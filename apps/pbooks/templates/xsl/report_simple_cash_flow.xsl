@@ -101,9 +101,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 			</table>
 		<div style="min-height: 400px;" id="myLedgerDiv">
-			<script type="text/javascript">
-      document.getElementById('myLedgerDiv').style.visibility = 'hidden';
-      </script>
 			<table id="myLedger" class="tablesorter">
 				<thead>
 					<tr>

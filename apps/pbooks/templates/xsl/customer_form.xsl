@@ -37,8 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			onSubmit="return validateStandard(this, 'myerror');">
 
 			<!--
-			Check if the user is creating a new account
-			or editing and existing one,
+			Check if the user is creating a new account or editing and existing one,
 			and set appropriate parameter "my_action"
 			-->
 			<xsl:if test="/_R_/account_get_by_id/account_get_by_id/id">

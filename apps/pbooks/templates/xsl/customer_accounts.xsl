@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:include href="account_row.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
@@ -71,7 +72,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
 
       <a href="{$link_prefix}customer-edit" class="generic-button">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
+        <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
         <xsl:value-of select="$i18n/new_customer"/>
       </a>
     </div>

@@ -43,9 +43,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					'entry_id': entry_id
         },
         function (data){
-          document.getElementById(invoice_number).innerHTML="Paid";
+          $invoice_number).replaceWith="Paid";
         });
-        //document.getElementById(invoice_id).innerHTML="";
     }
     </script>
 
@@ -59,9 +58,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <strong>
       <xsl:value-of select="$i18n/recent_invoices"/>:</strong>
     <div id="myInvoicesDiv" style="min-height: 400px">
-      <script type="text/javascript">
-        document.getElementById('myInvoicesDiv').style.visibility = 'hidden';
-      </script>
 
       <table class="tablesorter" id="myInvoices">
         <thead>
@@ -81,9 +77,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <th>
               <xsl:value-of select="$i18n/amount"/>
             </th>
-        <!--
-        <th><xsl:value-of select="$i18n/due_date"/></th>
-        -->
+						<!--
+						<th><xsl:value-of select="$i18n/due_date"/></th>
+						-->
             <th>
               <xsl:value-of select="$i18n/paid"/>&#160;
             <!--<sup>[<a onclick="alert('')">?</a>]</sup>-->
@@ -128,7 +124,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <!--
               <td><xsl:value-of select="due_date"/></td>
               -->
-              <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
               <td id="{invoice_number}">
                 <xsl:if test="paid_status='paid_in_full'">
                   Paid

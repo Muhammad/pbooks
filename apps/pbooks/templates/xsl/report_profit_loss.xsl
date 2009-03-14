@@ -52,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<tr>
 				<td align="center">
 					<xsl:value-of select="$i18n/income_statement"/>&#160;
-        <xsl:value-of select="/_R_/runtime/from_date"/>
+					<xsl:value-of select="/_R_/runtime/from_date"/>
 					<xsl:value-of select="$i18n/through"/>
 					<xsl:value-of select="/_R_/runtime/to_date"/>
 				</td>
@@ -130,7 +130,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               &#160;
               </td>
 						</tr>
-			<!--  Expenses -->
+						<!--  Expenses -->
 						<tr>
 							<td class="matrix-data">
 								<xsl:value-of select="$i18n/expenses"/>
@@ -192,7 +192,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
 						</tr>
 
-			<!-- NET PROFIT -->
+						<!-- NET PROFIT -->
 						<tr>
 							<td class="matrix-data">
 								<xsl:value-of select="$i18n/net_profit"/>

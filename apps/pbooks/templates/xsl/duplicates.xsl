@@ -62,7 +62,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tr>
       </thead>
 
-    <!-- ROWS OF POTENTIALLY DUPLICATE ENTRIES -->
+			<!-- ROWS OF POTENTIALLY DUPLICATE ENTRIES -->
       <tbody>
         <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions|/_R_/get_all_entry_amounts/get_all_entry_amounts">
           <xsl:sort select="entry_datetime"/>

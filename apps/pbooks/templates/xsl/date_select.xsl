@@ -23,9 +23,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template name="date_select">
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:param name="i18n"/>
 		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
-		<xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
 		<a title="Previous Period">
 			<xsl:attribute name="href">
 				<xsl:value-of select="$link_prefix"/>
@@ -39,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:value-of select="//_get/account_id"/>
 				</xsl:if>
 			</xsl:attribute>
-			<img style="padding-right: 5px;" src="{/_R_/runtime/path_prefix}s/images/buttons/out.gif"/>
+			<img style="padding-right: 5px;" src="{$path_prefix}s/images/buttons/out.gif"/>
 		</a>
 
 		From <input type="text" name="from_date" size="12" class="date_input" value="{substring($my_from_date,0,11)}"/>
@@ -60,7 +62,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:if>
 			</xsl:attribute>
 			<img style="padding-right: 5px;"
-				src="{/_R_/runtime/path_prefix}s/images/buttons/in.gif"/>
+				src="{$path_prefix}s/images/buttons/in.gif"/>
 		</a>
 
 

@@ -124,7 +124,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <!--
               <td><xsl:value-of select="due_date"/></td>
               -->
-              <!-- TODO - Use AJAX to quickly convert paid status - triggering db update and entries -->
               <td id="{invoice_number}">
                 <xsl:if test="paid_status='paid_in_full'">
                   Paid

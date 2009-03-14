@@ -28,9 +28,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <xsl:variable name="get_journal_entry"
 			select="/_R_/get_journal_entry/get_journal_entry"/>
-		<!-- This template references data from the business_object_get_metadata nodes
-which stem from a generic query called business_object_get_metadata.xml.
-It is used to gather entry metadata for all business objects: checks, bills.. -->
+		<!--
+		This template references data from the business_object_get_metadata nodes
+		which stem from a generic query called business_object_get_metadata.xml.
+		It is used to gather entry metadata for all business objects: checks, bills.
+		-->
     <h2>
       <xsl:value-of select="$i18n/write_check"/>
     </h2>
@@ -75,7 +77,7 @@ It is used to gather entry metadata for all business objects: checks, bills.. --
           </a>
         </div>
 
-				<!-- 
+				<!--
         Select a checking account, if more than one exists.
         -->
         <xsl:if test="count(/_R_/account_business_objects/account_business_objects/account_id) &gt; 1">

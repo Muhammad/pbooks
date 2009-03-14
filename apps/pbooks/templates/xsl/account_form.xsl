@@ -28,8 +28,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 
-		<!-- The form is validated via a javascript library included in the end of main.xsl.
-		Form input elements have attributes like required="1" if they are to be validated. -->
+		<!--
+		The form is validated via a javascript library included in the end of
+		main.xsl. Form input elements have attributes like required="1" if they are
+		to be validated.
+		-->
 		<form method="post" onSubmit="return validateStandard(this, 'myerror');">
 
 			<!-- Check if the user is creating a new account or editing and existing one,

@@ -44,7 +44,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         onsubmit="return validateStandard(this, 'error');">
       <textarea id="csv_import" name="csv_accounts_import" rows="14" cols="80">
 			<xsl:text>10000,1234,"testing","this is a test account"
-			10000,4567,"testing 2","this is another test account"</xsl:text>
+10000,4567,"testing 2","this is another test account"</xsl:text>
 			</textarea>
       <br/>
       <input type="submit"/>

@@ -50,8 +50,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 
-<!-- This is the table structure only, the table cells are 
-the templates at the bottom of the file -->
+		<!--
+		This is the table structure only, the table cells are the templates at the
+		bottom of the file.
+		-->
     <table width="100%" class="matrix-table" cellspacing="1" cellpadding="2" border="0" bgcolor="gray">
       <tr>
         <td class="matrix-data"></td>
@@ -158,7 +160,7 @@ the templates at the bottom of the file -->
       <tr>
         <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
       </tr>
-    <!-- Capital Investments -->
+			<!-- Capital Investments -->
       <tr>
         <td class="matrix-data">
           <xsl:value-of select="$i18n/capital_investments"/>
@@ -172,7 +174,7 @@ the templates at the bottom of the file -->
       <tr>
         <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
       </tr>
-    <!-- Cash Flow -->
+			<!-- Cash Flow -->
       <tr>
         <td class="matrix-data">
           <xsl:value-of select="$i18n/cash_flow"/>
@@ -254,7 +256,7 @@ the templates at the bottom of the file -->
       </xsl:call-template>
     </xsl:if>
   </xsl:template>
-<!-- TOTAL DISBURSEMENTS -->
+	<!-- TOTAL DISBURSEMENTS -->
   <xsl:template name="outgoing_total_cell">
     <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
@@ -272,7 +274,7 @@ the templates at the bottom of the file -->
 
 
 
-<!-- TOTAL -->
+	<!-- TOTAL -->
   <xsl:template name="total_cell">
     <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>

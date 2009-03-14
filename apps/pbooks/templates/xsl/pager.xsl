@@ -22,13 +22,13 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="html" omit-xml-declaration="yes"/>
 	<!-- This template is used by pages which use the tablesorter and the table paginator -->
 	<xsl:template name="jquery-setup">
 		<xsl:param name="my-table"/>
 		<xsl:param name="my-table-div"/>
 		<xsl:param name="my-sort-column"/>
 		<xsl:param name="no-sort-column"/>
+		<xsl:param name="path_prefix"/>
 		<xsl:param name="my-page-num">0</xsl:param>
 		<xsl:call-template name="jquery-links"/>
 		<script type="text/javascript">
@@ -87,6 +87,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 	<xsl:template name="pager">
 		<xsl:param name="my-table"/>
+		<xsl:param name="path_prefix"/>
 		<div id="{$my-table}-pager" class="pager">
 			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="10"/>
 			<table>

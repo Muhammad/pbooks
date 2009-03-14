@@ -95,12 +95,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 						</tr>
 						<xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
-							<xsl:variable name="my_entry_amount_id">
-								<xsl:value-of select="entry_amount_id"/>
-							</xsl:variable>
-							<xsl:variable name="my_entry_id">
-								<xsl:value-of select="entry_id"/>
-							</xsl:variable>
+							<xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
+							<xsl:variable name="my_entry_id" select="entry_id"/>
 							<tr>
 								<td>
 									<input type="text" name="entry_amount[]"
