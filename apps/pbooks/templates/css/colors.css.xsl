@@ -56,7 +56,7 @@ body {
 }
 
 .reconciled {
-	background-color: red !important;
+	background-color: #9AD698 !important;
 }
 
 .row0 td {
