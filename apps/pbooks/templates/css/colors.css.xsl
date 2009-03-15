@@ -55,6 +55,10 @@ body {
   color: #FFC508; /* #D6B28D; */
 }
 
+.reconciled {
+	background-color: red !important;
+}
+
 .row0 td {
 	background-color: #FFFFFF;
 }

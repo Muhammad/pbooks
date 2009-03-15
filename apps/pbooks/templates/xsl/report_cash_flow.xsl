@@ -85,11 +85,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:with-param name="link_prefix" select="$link_prefix"/>
         </xsl:call-template>
       </tr>
-    <!-- Income / Deposits -->
+			<!-- Income / Deposits -->
       <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=10000][cash_account='on']">
-        <xsl:variable name="this_i_account_id">
-          <xsl:value-of select="id"/>
-        </xsl:variable>
+        <xsl:variable name="this_i_account_id" select="id"/>
+        <xsl:variable name="account_reconciled" select="reconciled"/>
         <tr class="row{position() mod 2}">
           <td class="matrix-data" style="text-indent: 6px;">
             <a href="{$link_prefix}ledger&amp;account_id={id}">
@@ -100,6 +99,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:with-param name="mn" select="$from_month"/>
             <xsl:with-param name="repeat" select="$monthnum"/>
             <xsl:with-param name="this_i_account_id" select="$this_i_account_id"/>
+            <xsl:with-param name="reconciled" select="$account_reconciled"/>
             <xsl:with-param name="link_prefix" select="$link_prefix"/>
           </xsl:call-template>
         </tr>
@@ -201,17 +201,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
   </xsl:template>
 
   <xsl:template name="income_cell">
+    <xsl:param name="reconciled"/>
     <xsl:param name="link_prefix"/>
     <xsl:param name="repeat">0</xsl:param>
     <xsl:param name="mn">0</xsl:param>
     <xsl:param name="this_i_account_id">0</xsl:param>
     <xsl:if test="number($repeat)>=1">
       <td class="matrix-data">
+				<xsl:if test="
+					substring(//from_date,1,4) &lt;= substring($reconciled,1,4) and
+					$mn &lt;= substring($reconciled,6,2)">
+					<xsl:attribute name="class">
+						matrix-data reconciled
+					</xsl:attribute>
+				</xsl:if>
+				<xsl:if test="debug='true'">
+					<span style="color:yellow;"><xsl:value-of select="substring(//from_date,1,4)"/>-<xsl:value-of select="substring($reconciled,1,4)"/>-31</span>
+				</xsl:if>
         <a href="{$link_prefix}ledger&amp;from_date={substring(//from_date,1,4)}-{$mn}-01&amp;to_date={substring(//from_date,1,4)}-{$mn}-31&amp;account_id={$this_i_account_id}">
           <xsl:value-of select=" sum( //get_all_transactions/get_all_transactions[entry_month=$mn][entry_amount &gt; 0][account_id=$this_i_account_id]/entry_amount ) "/>
         </a>
       </td>
       <xsl:call-template name="income_cell">
+        <xsl:with-param name="reconciled" select="$reconciled"/>
         <xsl:with-param name="repeat" select="$repeat - 1"/>
         <xsl:with-param name="mn" select="$mn + 1"/>
         <xsl:with-param name="this_i_account_id" select="$this_i_account_id"/>

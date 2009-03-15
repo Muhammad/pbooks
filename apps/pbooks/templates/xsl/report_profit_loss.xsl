@@ -48,7 +48,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:value-of select="//company_name"/>
 			</h2>
 		</div>
-		<table class="data-table" width="740" align="center">
+		<table class="data-table" width="100%" align="center">
 			<tr>
 				<td align="center">
 					<xsl:value-of select="$i18n/income_statement"/>&#160;
@@ -73,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<xsl:value-of select="$i18n/total"/>
 							</td>
 						</tr>
-			<!--  REVENUE -->
+						<!--  REVENUE -->
 						<tr>
 							<td class="matrix-data">
 								<xsl:value-of select="$i18n/revenue"/>
@@ -238,6 +238,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="this_r_account_id"/>
 		<xsl:if test="number($repeat)>=1">
 			<td class="matrix-data">
+				<xsl:if test="account_reconciled &gt; entry_datetime">
+					<xsl:attribute name="style">
+						color: red;
+					</xsl:attribute>
+				</xsl:if>
+				<xsl:value-of select="account_reconciled"/>
+				<xsl:value-of select="entry_datetime"/>
 				<a href="{$link_prefix}ledger&amp;account_id={$this_r_account_id}&amp;from_date=2007-{$mn}-01&amp;to_date=2007-{$mn}-31">
 					<xsl:value-of select="format-number(sum($my_entry_amounts[entry_month=$mn]/entry_amount),'#######')"/>
 				</a>
@@ -318,7 +325,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</xsl:if>
 	</xsl:template>
 
-<!-- NET PROFIT -->
+	<!-- NET PROFIT -->
 	<xsl:template name="net_profit">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="repeat">0</xsl:param>

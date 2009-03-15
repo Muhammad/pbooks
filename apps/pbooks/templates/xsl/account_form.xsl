@@ -138,12 +138,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="radio" name="takes_deposits" value="on">
-							<xsl:if test="/_R_/account_get_by_id/account_get_by_id/takes_deposits='on'">
+							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes<br/>
 						<input type="radio" name="takes_deposits" value="off">
-							<xsl:if test="not(/_R_/account_get_by_id/account_get_by_id/takes_deposits='on')">
+							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No
@@ -172,13 +172,31 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="radio" name="cash_account" value="on">
-							<xsl:if test="/_R_/account_get_by_id/account_get_by_id/cash_account='on'">
+							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='cash_account']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes
             <br/>
 						<input type="radio" name="cash_account" value="off">
-							<xsl:if test="not(/_R_/account_get_by_id/account_get_by_id/cash_account='on')">
+							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='cash_account']/meta_value='on')">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							</xsl:if>
+						</input>No
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<xsl:value-of select="$i18n/account_closed"/>:
+					</td>
+					<td>
+						<input type="radio" name="account_closed" value="on">
+							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='account_closed']/meta_value='on'">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							</xsl:if>
+						</input>Yes
+            <br/>
+						<input type="radio" name="account_closed" value="off">
+							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='account_closed']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No
