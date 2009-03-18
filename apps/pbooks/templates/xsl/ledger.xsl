@@ -25,7 +25,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns:math="http://exslt.org/math"
 	extension-element-prefixes="math">
 	<xsl:include href="html_main.xsl"/>
-	<xsl:include href="date_select.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
@@ -38,8 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<xsl:if test="not(/_R_/_get/nid='matching')">
 			<xsl:call-template name="jquery-setup">
-				<xsl:with-param name="my-table">myLedger</xsl:with-param>
-				<xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
+				<xsl:with-param name="my-table">my_ledger</xsl:with-param>
 				<xsl:with-param name="my-sort-column">
 					,widthFixed: true
 					<xsl:if test="/_R_/_get/account_id">,sortList: [[0,0]]</xsl:if>
@@ -52,78 +50,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:if test="/_R_/_get/nid='matching'">
 			<xsl:call-template name="jquery-setup"/>
 		</xsl:if>
-    <!-- Need this action to retain any account selection -->
-		<div style="background-color: #eee; font-size: 10px; width:80px;">
-			<span style="cursor:pointer; padding:4px;" onclick="$('#date_controls').hide();">Hide</span>
-			<span style="cursor:pointer; padding:4px;" onclick="$('#date_controls').show();">Show</span>
-		</div>
-		<div id="date_controls">
-		<form method="get">
-			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-			<xsl:if test="/_R_/_get/account_id">
-				<input type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
-			</xsl:if>
-			<table>
-				<tr>
-					<td>
-						<xsl:value-of select="$i18n/month"/>:
-          </td>
-					<td>
-						<select name="month" onchange="this.form.submit();">
-							<option value="%">All</option>
-							<xsl:for-each select="//months/option">
-								<option value="{@id}">
-									<xsl:if test="@id=/_R_/_get/month">
-										<xsl:attribute name="selected">selected</xsl:attribute>
-									</xsl:if>
-									<xsl:value-of select="@fullname"/>
-								</option>
-							</xsl:for-each>
-						</select>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<form method="get">
-			<xsl:if test="/_R_/_get/account_id">
-				<input type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
-			</xsl:if>
-			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-			<xsl:call-template name="date_select"/>
-			<input type="submit"/>
-		</form>
-		<table>
-			<form method="get">
-				<tr>
-					<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-					<td>
-						<xsl:value-of select="$i18n/select_one"/>:
-          </td>
-					<td align="right">
-						<select name="account_id" onchange="this.form.submit();">
-							<option value="%">
-								<xsl:value-of select="$i18n/ledger"/>
-							</option>
-
-							<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-								<option value="{id}">
-									<xsl:if test="id=/_R_/_get/account_id">
-										<xsl:attribute name="selected">selected</xsl:attribute>
-									</xsl:if>
-									<xsl:value-of select="name"/>
-								</option>
-							</xsl:for-each>
-						</select>
-					</td>
-					<td></td>
-				</tr>
-			</form>
-		</table>
-		</div>
-		<div style="min-height: {//ledger_table/height};" id="myLedgerDiv" class="ledgerframe">
+		<div style="min-height: {//ledger_table/height};" id="myLedgerDiv" class="tableframe">
 			<xsl:if test="not(/_R_/_get/nid='matching')">
 			</xsl:if>
-			<table id="myLedger" class="tablesorter">
+			<table id="my_ledger" class="tablesorter">
 				<thead>
 					<tr>
 						<!-- This cell will be used for a star or flag with notations -->
@@ -257,7 +187,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</div>
 			<div class="table_controls">
 			<xsl:call-template name="pager">
-				<xsl:with-param name="my-table">myLedger</xsl:with-param>
+				<xsl:with-param name="my-table">my_ledger</xsl:with-param>
 			</xsl:call-template>
 			</div>
 		</xsl:if>

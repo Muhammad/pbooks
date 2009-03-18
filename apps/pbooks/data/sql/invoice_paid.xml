@@ -26,9 +26,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<!--This connection needs to read from the primary database -->
   <connection>&pb_connection;</connection>
   <params>
-    <param name="_post/entry_id" type="integer"/>
+    <param name="_post/invoice_entry_id" type="integer"/>
   </params>
   <sql>
-  UPDATE &pb_entry_metadata; SET meta_value='paid_in_full' WHERE meta_key='paid_status' AND entry_id=?
+  INSERT INTO &pb_entry_metadata; (entry_id, meta_key, meta_value) VALUES (?, 'paid_status', 'paid_in_full');
 	</sql>
 </query>

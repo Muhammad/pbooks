@@ -35,6 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
       </h1>
     </div>
+
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_end">header</xsl:with-param>
     </xsl:call-template>

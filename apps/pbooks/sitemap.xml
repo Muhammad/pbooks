@@ -275,12 +275,16 @@ This makes it easier to maintain persistence. -->
 			<map:action type="redirect" params="{//link_prefix}invoices"/>
 		</map:if>
 	</map:gate>
-	<map:gate name="x--invoice-paid" role="pb_admin">
+	<map:gate name="x--invoice-paid" role="pb_admin" content_type="text/xml">
 		<map:if name="/_R_/_post">
 			<map:true>
+				<map:query src="data/sql/invoice_delete_paid_status.xml"/>
 				<map:query src="data/sql/invoice_paid.xml"/>
 			</map:true>
 		</map:if>
+    <map:xml src="data/xml/invoice_meta.xml"/>
+		<map:query src="data/sql/invoices_get_some.xml"/>
+		<map:xsl src="templates/xml/invoice_paid_status.xml.xsl" />
 	</map:gate>
 
 	<map:gate name="invoice-pdf">

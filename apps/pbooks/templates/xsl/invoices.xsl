@@ -36,14 +36,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<!-- INVOICE PAID -->
     <script type="text/javascript">
-    function invoice_paid(invoice_number, entry_id) {
-        $.post("<xsl:value-of select="$link_prefix"/>x--invoice-paid",
-        {
-          'invoice_number': invoice_number,
-					'entry_id': entry_id
-        },
-        function (data){
-          document.getElementById(invoice_number).innerHTML="Paid";
+    function invoice_paid(invoice_number, invoice_entry_id) {
+        $.ajax({
+					type: "POST",
+					url: "<xsl:value-of select="$link_prefix"/>x--invoice-paid",
+					data: {
+						'invoice_id': invoice_number,
+						'invoice_entry_id': invoice_entry_id
+					},
+					success: function (res){
+          	$("#p_"+invoice_number).replaceWith("Paid");
+					}
         });
     }
     </script>
@@ -55,10 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </a>
     </div>
 
-    <strong>
-      <xsl:value-of select="$i18n/recent_invoices"/>:</strong>
-    <div id="myInvoicesDiv" style="min-height: 400px">
-
+    <div id="myInvoicesDiv" class="tableframe">
       <table class="tablesorter" id="myInvoices">
         <thead>
           <tr>
@@ -124,16 +124,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <!--
               <td><xsl:value-of select="due_date"/></td>
               -->
-              <td id="{invoice_number}">
+              <td>
+								<span id="p_{invoice_number}">
                 <xsl:if test="paid_status='paid_in_full'">
                   Paid
                 </xsl:if>
                 <xsl:if test="not(paid_status='paid_in_full')">
-                <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
-									href="{$link_prefix}invoice-paid&amp;invoice_number={invoice_number}&amp;entry_id={$my_entry_id}">
+                <a onclick="invoice_paid({invoice_number},{$my_entry_id}); return false;"
+									href="{$link_prefix}invoice-paid&amp;invoice_number={invoice_number}&amp;invoice_entry_id={$my_entry_id}">
 								  Unpaid
                 </a>
                 </xsl:if>
+								</span>
               </td>
               <td>
                 <a href="{$link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
@@ -146,8 +148,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tbody>
       </table>
     </div>
+		
+		<div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myInvoices</xsl:with-param>
     </xsl:call-template>
+		</div>
   </xsl:template>
 </xsl:stylesheet>

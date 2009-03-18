@@ -281,19 +281,30 @@ table.simpletable thead th, table.simpletable tbody tr td {
 	}
 }
 #date_controls {
-	z-index: 3; background-color: white; border-style: solid; border-width: 1px; border-color: #ddd; position: absolute;
+	position: absolute;
+  top: 80px;
+  left: 300px;
+}
+#date_controller {
+	position: absolute;
+	z-index: 10;
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ddd;
 	display: none;
+	padding: 10px;
 }
 .tablesorter {
 	margin: 0 !important;
 }
-.ledgerframe
+.tableframe
 {
   position: absolute;
-  top: 140px;
+  top: 120px;
   left: 300px;
-  right: 180px;
-  bottom: 110px;
+  right: 160px;
+  bottom: 120px;
   border: 1px solid #999999;
   background-color: #F9F9F9;
   overflow: auto;
@@ -303,7 +314,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
 .table_controls
 {
   position: absolute;
-  bottom: 86px;
+  bottom: 95px;
 }
 .table_meta
 {

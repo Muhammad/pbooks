@@ -28,66 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
 		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
-		<a title="Previous Period">
-			<xsl:attribute name="href">
-				<xsl:value-of select="$link_prefix"/>
-				<xsl:value-of select="/_R_/_get/nid"/>
-				<xsl:text>&amp;from_date=</xsl:text>
-				<xsl:value-of select="/_R_/runtime/prev_from_date"/>
-				<xsl:text>&amp;to_date=</xsl:text>
-				<xsl:value-of select="/_R_/runtime/prev_to_date"/>
-				<xsl:if test="//_get/account_id">
-					<xsl:text>&amp;account_id=</xsl:text>
-					<xsl:value-of select="//_get/account_id"/>
-				</xsl:if>
-			</xsl:attribute>
-			<img style="padding-right: 5px;" src="{$path_prefix}s/images/buttons/out.gif"/>
-		</a>
-
-		From <input type="text" name="from_date" size="12" class="date_input" value="{substring($my_from_date,0,11)}"/>
-
-		To <input type="text" name="to_date"  size="12" class="date_input" value="{substring(/_R_/runtime/to_date,0,11)}"/>
-
-		<a title="Next Period">
-			<xsl:attribute name="href">
-				<xsl:value-of select="$link_prefix"/>
-				<xsl:value-of select="/_R_/_get/nid"/>
-				<xsl:text>&amp;from_date=</xsl:text>
-				<xsl:value-of select="/_R_/runtime/next_from_date"/>
-				<xsl:text>&amp;to_date=</xsl:text>
-				<xsl:value-of select="/_R_/runtime/next_to_date"/>
-				<xsl:if test="//_get/account_id">
-					<xsl:text>&amp;account_id=</xsl:text>
-					<xsl:value-of select="//_get/account_id"/>
-				</xsl:if>
-			</xsl:attribute>
-			<img style="padding-right: 5px;"
-				src="{$path_prefix}s/images/buttons/in.gif"/>
-		</a>
-
-
-		<script type="text/javascript">
-		$($.date_input.initialize);
-
-		$.extend(DateInput.DEFAULT_OPTS, {
-			stringToDate: function(string) {
-				var matches;
-				if (matches = string.match(/^(\d{4,4})-(\d{2,2})-(\d{2,2})$/)) {
-					return new Date(matches[1], matches[2] - 1, matches[3]);
-				} else {
-					return null;
-				};
-			},
-
-			dateToString: function(date) {
-				var month = (date.getMonth() + 1).toString();
-				var dom = date.getDate().toString();
-				if (month.length == 1) month = "0" + month;
-				if (dom.length == 1) dom = "0" + dom;
-				return date.getFullYear() + "-" + month + "-" + dom;
-			}
-		});
-		</script>
-
+		deprecated
 	</xsl:template>
 </xsl:stylesheet>

@@ -31,7 +31,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<!-- This calls a template from pager.xsl which loads the javascript -->
     <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">myDeposits</xsl:with-param>
+      <xsl:with-param name="my-table">my_deposits</xsl:with-param>
     </xsl:call-template>
 
     <div class="generic-button" style="float: right;">
@@ -40,11 +40,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:value-of select="$i18n/new_deposit"/>
       </a>
     </div>
-		<!-- Page title -->
-    <strong>
-      <xsl:value-of select="$i18n/recent_deposits"/>:
-		</strong>
-    <table class="tablesorter" id="myDeposits">
+		<div class="tableframe">
+    <table class="tablesorter" id="my_deposits">
       <thead>
         <tr>
           <th>
@@ -90,8 +87,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<!-- END LOOP -->
       </tbody>
     </table>
+		</div>
+		<div class="table_controls">
     <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">myDeposits</xsl:with-param>
+      <xsl:with-param name="my-table">my_deposits</xsl:with-param>
     </xsl:call-template>
+		</div>
   </xsl:template>
 </xsl:stylesheet>

@@ -29,8 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">myChecks</xsl:with-param>
-      <xsl:with-param name="my-table-div">myChecksDiv</xsl:with-param>
+      <xsl:with-param name="my-table">my_checks</xsl:with-param>
     </xsl:call-template>
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}check-create">
@@ -39,11 +38,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </a>
     </div>
 
-    <strong>
-      <xsl:value-of select="$i18n/recent_checks"/>:
-		</strong>
-    <div style="min-height: 400px;" id="myChecksDiv">
-      <table id="myChecks" class="tablesorter">
+		<div class="tableframe">
+      <table id="my_checks" class="tablesorter">
         <thead>
           <tr>
             <th>
@@ -107,8 +103,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<!-- END LOOP -->
         </tbody>
       </table>
+		</div>
+		<div class="table_controls">
       <xsl:call-template name="pager">
-        <xsl:with-param name="my-table">myChecks</xsl:with-param>
+        <xsl:with-param name="my-table">my_checks</xsl:with-param>
       </xsl:call-template>
     </div>
   </xsl:template>

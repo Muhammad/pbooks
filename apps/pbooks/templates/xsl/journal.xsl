@@ -23,7 +23,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:include href="html_main.xsl"/>
-  <xsl:include href="date_select.xsl"/>
   <xsl:include href="prev_next.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>

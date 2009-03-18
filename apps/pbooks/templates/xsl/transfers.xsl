@@ -38,10 +38,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:value-of select="$i18n/new_transfer"/>
       </a>
     </div>
-    <strong>
-      <xsl:value-of select="$i18n/recent_transfers"/>:
-		</strong>
-    <div style="min-height: 400px;" id="myTransfersDiv">
+		<div class="tableframe">
       <table class="tablesorter" id="myTransfers">
         <thead>
           <tr>
@@ -107,8 +104,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tbody>
       </table>
     </div>
+		<div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myTransfers</xsl:with-param>
     </xsl:call-template>
+		</div>
   </xsl:template>
 </xsl:stylesheet>
