@@ -280,6 +280,40 @@ table.simpletable thead th, table.simpletable tbody tr td {
 		height: auto!important
 	}
 }
-
+#date_controls {
+	z-index: 3; background-color: white; border-style: solid; border-width: 1px; border-color: #ddd; position: absolute;
+	display: none;
+}
+.tablesorter {
+	margin: 0 !important;
+}
+.ledgerframe
+{
+  position: absolute;
+  top: 140px;
+  left: 300px;
+  right: 180px;
+  bottom: 110px;
+  border: 1px solid #999999;
+  background-color: #F9F9F9;
+  overflow: auto;
+  width: expression((parseInt(document.documentElement.clientWidth)-230)+'px');
+  height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
+}
+.table_controls
+{
+  position: absolute;
+  bottom: 86px;
+}
+.table_meta
+{
+  position: absolute;
+  bottom: 80px;
+}
+#accounting_equation
+{
+  position: absolute;
+  bottom: 20px;
+}
 </xsl:template>
 </xsl:stylesheet>

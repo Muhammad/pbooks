@@ -34,8 +34,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.accordion.js"></script>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.min.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.metadata.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>

@@ -44,12 +44,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					,widthFixed: true
 					<xsl:if test="/_R_/_get/account_id">,sortList: [[0,0]]</xsl:if>
 				</xsl:with-param>
+				<xsl:with-param name="no-sort-column">
+					,headers: { 1: { sorter: false } }
+				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:if>
 		<xsl:if test="/_R_/_get/nid='matching'">
 			<xsl:call-template name="jquery-setup"/>
 		</xsl:if>
     <!-- Need this action to retain any account selection -->
+		<div style="background-color: #eee; font-size: 10px; width:80px;">
+			<span style="cursor:pointer; padding:4px;" onclick="$('#date_controls').hide();">Hide</span>
+			<span style="cursor:pointer; padding:4px;" onclick="$('#date_controls').show();">Show</span>
+		</div>
+		<div id="date_controls">
 		<form method="get">
 			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 			<xsl:if test="/_R_/_get/account_id">
@@ -111,7 +119,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 			</form>
 		</table>
-		<div style="min-height: {//ledger_table/height};" id="myLedgerDiv">
+		</div>
+		<div style="min-height: {//ledger_table/height};" id="myLedgerDiv" class="ledgerframe">
 			<xsl:if test="not(/_R_/_get/nid='matching')">
 			</xsl:if>
 			<table id="myLedger" class="tablesorter">
@@ -119,10 +128,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<!-- This cell will be used for a star or flag with notations -->
 						<!--<th>FPO</th>-->
-						<th>
+						<th width="10em;">
 							<xsl:value-of select="$i18n/date"/>:
 						</th>
-						<th>
+						<th width="8em;">
 							<xsl:value-of select="$i18n/post"/>
 						</th>
 						<th>
@@ -233,7 +242,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</table>
 		</div>
 		<xsl:if test="not(/_R_/_get/nid='matching')">
-			<div class="generic-box" style="font-size: 12px; float: right;">
+			<div class="table_meta generic-box" style="font-size: 12px; right: 200px;">
 				<a>
 					<xsl:attribute name="href">
 						<xsl:if test="//_get/from_date">
@@ -246,9 +255,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					Export to CSV
 				</a>
 			</div>
+			<div class="table_controls">
 			<xsl:call-template name="pager">
 				<xsl:with-param name="my-table">myLedger</xsl:with-param>
 			</xsl:call-template>
+			</div>
 		</xsl:if>
 
 		<!-- If an account_id has been selected, only show how much it has changed.-->
@@ -278,6 +289,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			Show the accounting equation in no specific account is selected
 		-->
 		<xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id)) and not(contains(/_R_/_get/nid,'match') )">
+			<div id="accounting_equation">
 			<table class="tablesorter">
 				<thead>
 					<tr>
@@ -334,6 +346,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 				</tbody>
 			</table>
+			</div>
 		</xsl:if>
 		<br/>
 	</xsl:template>

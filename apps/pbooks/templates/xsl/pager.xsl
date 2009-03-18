@@ -45,12 +45,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						.tablesorterPager(
 								{
 										container: $("#<xsl:value-of select="$my-table"/>-pager"),
+										size: 20,
 										positionFixed: false
 								}
 						);
-						<xsl:if test="$my-table-div">
-							document.getElementById('<xsl:value-of select="$my-table-div"/>').style.visibility = 'visible';
-						</xsl:if>
 				}
 		);
 		</script>
@@ -89,7 +87,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="my-table"/>
 		<xsl:param name="path_prefix"/>
 		<div id="{$my-table}-pager" class="pager">
-			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="10"/>
+			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
 			<table>
 				<tr>
 					<td>
@@ -97,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<img src="{/_R_/runtime/path_prefix}/s/js/blue/prev.png" class="prev"/>
 					</td>
 					<td>
-						<input type="text" class="pagedisplay" size="10" readonly="readonly"/>
+						<input type="text" class="pagedisplay" size="6" readonly="readonly"/>
 					</td>
 					<td>
 						<img src="{/_R_/runtime/path_prefix}/s/js/blue/next.png" class="next"/>
