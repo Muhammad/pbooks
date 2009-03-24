@@ -11,7 +11,13 @@ if(file_exists("../nexista/")) {
 if (file_exists("../../nexista/")) {
     define('NX_PATH_BASE', "../../nexista/");
 }
-
+// MSIE won't work with application/xhtml+xml
+if(strstr($_SERVER['HTTP_USER_AGENT'],"MSIE")) {
+    ini_set('default_mimetype','text/html');
+} else {
+    ini_set('default_mimetype','application/xhtml+xml');
+}
+//
 
 /* Probably don't need to edit anything under this line. */
 
