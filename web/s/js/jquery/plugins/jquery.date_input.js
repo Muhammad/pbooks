@@ -1,8 +1,6 @@
 /*
-Date Input 1.1.3
-Requires jQuery version: 1.2
-Requires plugins:
-  * Dimensions - http://plugins.jquery.com/files/dimensions_1.2.zip
+Date Input 1.1.8
+Requires jQuery version: 1.2.6
 
 Copyright (c) 2007-2008 Jonathan Leighton & Torchbox Ltd
 
@@ -35,7 +33,7 @@ function DateInput(el, opts) {
   $.extend(this, DateInput.DEFAULT_OPTS, opts);
   
   this.input = $(el);
-  this.bindMethodsToObj("show", "hide", "hideIfClickOutside", "selectDate", "prevMonth", "nextMonth");
+  this.bindMethodsToObj("show", "hide", "hideIfClickOutside", "hideOnEsc", "selectDate", "prevMonth", "nextMonth");
   
   this.build();
   this.selectDate();
@@ -51,9 +49,9 @@ DateInput.prototype = {
   build: function() {
     this.monthNameSpan = $('<span class="month_name"></span>');
     var monthNav = $('<p class="month_nav"></p>').append(
-      $('<a href="#" class="prev">&laquo;</a>').click(this.prevMonth),
-      " ", this.monthNameSpan, " ",
-      $('<a href="#" class="next">&raquo;</a>').click(this.nextMonth)
+      $('<a href="#" class="prev">&#171;</a> ').click(this.prevMonth),
+      this.monthNameSpan,
+      $(' <a href="#" class="next">&#187;</a>').click(this.nextMonth)
     );
     
     var tableShell = "<table><thead><tr>";
@@ -62,15 +60,10 @@ DateInput.prototype = {
     });
     tableShell += "</tr></thead><tbody></tbody></table>";
     
-    this.dateSelector = this.rootLayers = $('<div class="date_selector"></div>')
-      .css({ display: "none", position: "absolute", zIndex: 100 })
-      .append(monthNav, tableShell)
-      .appendTo(document.body);
+    this.dateSelector = this.rootLayers = $('<div class="date_selector"></div>').append(monthNav, tableShell).insertAfter(this.input);
     
     if ($.browser.msie && $.browser.version < 7) {
-      this.ieframe = $('<iframe class="date_selector_ieframe" frameborder="0" src="#"></iframe>')
-        .css({ position: "absolute", display: "none", zIndex: 99 })
-        .insertBefore(this.dateSelector);
+      this.ieframe = $('<iframe class="date_selector_ieframe" frameborder="0" src="#"></iframe>').insertBefore(this.dateSelector);
       this.rootLayers = this.rootLayers.add(this.ieframe);
     };
     
@@ -81,14 +74,14 @@ DateInput.prototype = {
   },
   
   selectMonth: function(date) {
-    this.currentMonth = date;
+    this.currentMonth = new Date(date.getFullYear(), date.getMonth(), 1);
     
     var rangeStart = this.rangeStart(date), rangeEnd = this.rangeEnd(date);
     var numDays = this.daysBetween(rangeStart, rangeEnd);
     var dayCells = "";
     
     for (var i = 0; i <= numDays; i++) {
-      var currentDay = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate() + i);
+      var currentDay = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate() + i, 12, 00);
       
       if (this.isFirstDayOfWeek(currentDay)) dayCells += "<tr>";
       
@@ -136,12 +129,14 @@ DateInput.prototype = {
     this.rootLayers.css("display", "block");
     this.setPosition();
     this.input.unbind("focus", this.show);
-    $([window, document.body]).click(this.hideIfClickOutside);
+    $("a:last", this.dateSelector).blur(this.hide);
+    $([window, document.body]).click(this.hideIfClickOutside).keyup(this.hideOnEsc);
   },
   
   hide: function() {
     this.rootLayers.css("display", "none");
-    $([window, document.body]).unbind("click", this.hideIfClickOutside);
+    $([window, document.body]).unbind("click", this.hideIfClickOutside).unbind("keyup", this.hideOnEsc);
+    $("a:last", this.dateSelector).unbind("blur", this.hide);
     this.input.focus(this.show);
   },
   
@@ -151,10 +146,16 @@ DateInput.prototype = {
     };
   },
   
+  hideOnEsc: function(event) {
+    if (event.keyCode == 27) {
+      this.hide();
+    };
+  },
+  
   stringToDate: function(string) {
     var matches;
     if (matches = string.match(/^(\d{1,2}) ([^\s]+) (\d{4,4})$/)) {
-      return new Date(matches[3], this.shortMonthNum(matches[2]), matches[1]);
+      return new Date(matches[3], this.shortMonthNum(matches[2]), matches[1], 12, 00);
     } else {
       return null;
     };
