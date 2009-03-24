@@ -29,14 +29,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<xsl:with-param name="section_start">footer</xsl:with-param>
 		</xsl:call-template>
 		<div id="footer">
-			<footer>
 				<xsl:comment>You must keep this copyright notice intact.</xsl:comment>
 				<a href="http://www.pbooks.org/" target="_blank">
         PBooks</a> version
         <xsl:value-of select="//pbooks_code_version"/>,
         DB Version: <xsl:value-of select="/_R_/runtime/db_version"/>,
         Copyright 
-        <a href="http://www.savonix.com" target="_blank">
+        <a href="http://www.savonix.com">
             Savonix</a>, all rights reserved. License:
         <a href="{$link_prefix}license">
             AGPL v3
@@ -45,7 +44,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
             Download source
         </a>.
 				<!-- Link to download source, as required by AGPL -->
-			</footer>
 		</div>
 		<div id="test-token" style="display:none;"></div>
 		<xsl:call-template name="source_spacer">

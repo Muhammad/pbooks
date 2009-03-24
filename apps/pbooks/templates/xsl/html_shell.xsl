@@ -39,10 +39,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <xsl:with-param name="path_prefix" select="$path_prefix"/>
       </xsl:call-template>
       <body>
-        <xsl:for-each select="//pre_body_content">
-          <xsl:sort select="priority"/>
-          <xsl:value-of select="string" disable-output-escaping="yes"/>
-        </xsl:for-each>
+				<xsl:for-each select="//pre_body_content">
+					<xsl:sort select="priority" order="ascending"/>
+					<xsl:apply-templates select="nodes/*"/>
+				</xsl:for-each>
 
         <xsl:call-template name="main">
         <xsl:with-param name="link_prefix" select="$link_prefix"/>
@@ -57,4 +57,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </body>
     </html>
   </xsl:template>
+	
+<xsl:template match="node()">
+<xsl:element name="{name()}">
+<xsl:apply-templates select="@*|node()"/>
+</xsl:element>
+</xsl:template>
+
+<xsl:template match="@*|text()|comment()|processing-instruction()">
+<xsl:copy/>
+</xsl:template>
 </xsl:stylesheet>

@@ -31,8 +31,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:value-of select="/_R_/i18n/default_page_title"/>: 
         <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
 			</title>
-			<link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.accordion.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.min.js"></script>
@@ -45,10 +45,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"></script>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
-			<xsl:for-each select="//in_head">
-				<xsl:sort select="priority"/>
-				<xsl:value-of select="string" disable-output-escaping="yes"/>
+			<script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script>
+      <xsl:for-each select="//head_nodes">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
 			</xsl:for-each>
 		</head>
 	</xsl:template>

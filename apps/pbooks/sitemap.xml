@@ -984,9 +984,13 @@ files. -->
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:raw src="INSTALL" />
 	</map:gate>
-	<map:gate name="dynamic-css" cache="0" nosession="true" content_type="text/css" cache_control="public, max-age=0, must-revalidate">
+	<map:gate name="x-dynamic-css" cache="0" nosession="true" content_type="text/css" cache_control="public, max-age=0, must-revalidate">
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:xsl src="templates/css/dynamic.css.xsl"/>
+	</map:gate>
+	<map:gate name="x-dynamic-js" cache="0" nosession="true" content_type="text/css" cache_control="public, max-age=0, must-revalidate">
+		<map:action type="header" params="Content-Type,application/javascript"/>
+		<map:xsl src="templates/js/html_blocks.js.xsl"/>
 	</map:gate>
 
 
