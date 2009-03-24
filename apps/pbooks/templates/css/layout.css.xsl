@@ -30,7 +30,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 }
 
 #main {
-  width: 980px;
+  width: 100%;
   text-align: left;
   margin-left: auto;
   margin-right: auto;
@@ -283,7 +283,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
 #date_controls {
 	position: absolute;
   top: 80px;
-  left: 300px;
+  left: 160px;
 }
 #date_controller {
 	position: absolute;
@@ -302,7 +302,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
 {
   position: absolute;
   top: 120px;
-  left: 300px;
+  left: 160px;
   right: 160px;
   bottom: 120px;
   border: 1px solid #999999;
