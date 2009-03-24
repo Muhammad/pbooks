@@ -61,6 +61,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<tr>
 				<td>
 					<table width="100%" class="matrix-table" cellspacing="1" cellpadding="0" border="0" bgcolor="gray">
+						<thead>
 						<tr>
 							<td class="matrix-data"></td>
 							<xsl:for-each select="//months/option">
@@ -74,6 +75,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<xsl:value-of select="$i18n/total"/>
 							</td>
 						</tr>
+						</thead>
 						<!--  REVENUE -->
 						<tr>
 							<td class="matrix-data">
