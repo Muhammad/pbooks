@@ -37,6 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<map:xml src="data/xml/main_menu.xml"/>
 				<map:xml src="i18n/en_US/pbooks.xml"/>
 				<map:xml src="i18n/en_US/errors.xml"/>
+        <map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 			</map:default>
 		</map:switch>
 	</map:prepend>
@@ -647,7 +648,6 @@ This makes it easier to maintain persistence. -->
 
 <!-- LEDGER	-->
 	<map:gate name="ledger" role="pb_admin" cache="600" client_cache="600">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:xml src="i18n/{/_R_/runtime/selected_lang}/user_options.xml"/>
 		<map:query src="data/sql/option_get.xml"/>
 		<map:if name="//_get/account_id">
