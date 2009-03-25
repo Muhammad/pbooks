@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 Program: PBooks
 Component: main_menu.xml
@@ -25,11 +26,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <footer>
   <div id="footer">
     <!--You must keep this copyright notice intact.-->
-    <a href="http://www.pbooks.org/" target="_blank">PBooks</a>
-    version 0.11, DB Version: e, Copyright 
+    <a href="http://www.pbooks.org/">PBooks</a>
+    &#160;version 0.11, DB Version: e, Copyright&#160;
     <a href="http://www.savonix.com">Savonix</a>, all rights reserved.
-    License: <a href="/a/dev/pbooks/index.php?nid=license">AGPL v3</a>.
+    License:&#160;<a href="/a/dev/pbooks/index.php?nid=license">AGPL v3</a>.&#160;
     <a href="http://www.pbooks.org/pub/">Download source</a>.
+    <div id="test-token"/>
   </div>
-  <div id="test-token"/>
 </footer>

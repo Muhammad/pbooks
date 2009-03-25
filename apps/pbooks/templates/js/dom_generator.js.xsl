@@ -25,50 +25,60 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
+	<xsl:strip-space elements="*"/>
 	<xsl:template match="/">
+<xsl:text>var html2dom_root_1 = document.createElement("div");</xsl:text>
+<xsl:apply-templates select="//footer/*">
+		<xsl:with-param name="myparent">html2dom_root</xsl:with-param>
+		<xsl:with-param name="id" select="position()"/>
+	</xsl:apply-templates>
+<xsl:text>$(document).ready(function() {
+  $("#nofooter").replaceWith(html2dom_root_1);
+});</xsl:text>
+</xsl:template>
 
-var html2dom_root_0 = document.createElement("div");
-<xsl:apply-templates select="//footer">
-	<xsl:with-param name="mynode">html2dom_root</xsl:with-param>
-	<xsl:with-param name="id">0</xsl:with-param>
-</xsl:apply-templates>
-<![CDATA[
 
-$(document).ready(function() {
-		$("#nofooter").replaceWith(html2dom_root_0);
-});
-
-			]]>
-	</xsl:template>
 
 <xsl:template match="node()">
-	<xsl:param name="mynode"/>
+	<xsl:param name="myparent"/>
 	<xsl:param name="id"/>
-	var <xsl:value-of select="name()"/>_<xsl:value-of select="$id"/> = document.createElement("<xsl:value-of select="name()"/>");
-
-
-	<xsl:value-of select="$mynode"/>_<xsl:value-of select="$id"/>.appendChild(<xsl:value-of select="name()"/>_<xsl:value-of select="$id"/>)
-	<xsl:apply-templates select="@*|node()">
+<xsl:text>var </xsl:text><xsl:value-of select="name()"/>_<xsl:value-of select="position()"/> = document.createElement("<xsl:value-of select="name()"/>");
+<xsl:value-of select="$myparent"/>_<xsl:value-of select="$id"/>.appendChild(<xsl:value-of select="name()"/>_<xsl:value-of select="position()"/>);
+<xsl:apply-templates select="@*">
 		<xsl:with-param name="mynode"><xsl:value-of select="name()"/></xsl:with-param>
-		<xsl:with-param name="id" select="$id"/>
+		<xsl:with-param name="id" select="position()"/>
+	</xsl:apply-templates>
+
+
+
+
+
+<xsl:apply-templates select="node()">
+		<xsl:with-param name="myparent"><xsl:value-of select="name()"/></xsl:with-param>
+    <xsl:with-param name="id" select="$id"/>
+    <xsl:with-param name="position" select="position()"/>
 	</xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="@*">
 	<xsl:param name="mynode"/>
 	<xsl:param name="id"/>
-	<xsl:value-of select="$mynode"/>_<xsl:value-of select="$id"/>.<xsl:value-of select="name()"/> = "<xsl:value-of select="."/>";
+<xsl:value-of select="$mynode"/>_<xsl:value-of select="$id"/>.<xsl:value-of select="name()"/> = "<xsl:value-of select="."/>";
 </xsl:template>
+
 
 <xsl:template match="comment()">
 </xsl:template>
 
+
+
+
 <xsl:template match="text()">
-<xsl:param name="mynode"/>
-<xsl:param name="id"/>
+<xsl:param name="myparent"/>
+<xsl:param name="position"/>
 <xsl:variable name="string" select="."/>
-newtextnode = document.createTextNode('<xsl:value-of select="translate($string, '&#xa;', '')"/>');
-<xsl:value-of select="$mynode"/>_<xsl:value-of select="$id"/>.appendChild(newtextnode);
+<xsl:text>newtextnode</xsl:text> = document.createTextNode("<xsl:value-of select="normalize-space($string)"/>");
+<xsl:value-of select="$myparent"/>_<xsl:value-of select="$position"/>.appendChild(newtextnode);
 </xsl:template>
 
 </xsl:stylesheet>
