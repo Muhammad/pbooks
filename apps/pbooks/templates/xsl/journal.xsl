@@ -54,27 +54,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
       }
     </script>
 		<!-- buttons on the right hand side -->
-    <div class="generic-button" style="float: right;">
+    <div class="generic-button table_meta" style="float: right;">
       <a href="{$link_prefix}journal-new" class="generic-button" id="new_journal_entry">
         <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
         <xsl:value-of select="$i18n/new_entry"/>
       </a>
     </div>
-		<br/><br/>
-    <table width="100%">
-      <tr>
-        <td>
-          <form action="{$link_prefix}journal" method="get">
-            <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-            <xsl:call-template name="date_select"/>
-            <input type="submit"/>
-          </form>
-        </td>
-        <td align="right">
-          <xsl:call-template name="previous_next"/>
-        </td>
-      </tr>
-    </table>
+
+    <div class="tableframe">
     <form action="{$link_prefix}journal-delete" method="post">
 		<!--
 		This is the table of journal entries. we don't use the tablesorter here
@@ -261,5 +248,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
           onclick="return confirm('Are you sure you want to delete these entries?')"/>
       </xsl:if>
     </form>
+    </div>
   </xsl:template>
 </xsl:stylesheet>

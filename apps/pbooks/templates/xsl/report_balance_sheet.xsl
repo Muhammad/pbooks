@@ -29,6 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
 		<xsl:variable name="get_all_entry_amounts"
 			select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+    <div class="tableframe">
 		<div style="text-align: center;">
 			<h2>
 				<xsl:value-of select="//company_name"/>
@@ -177,5 +178,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 			</table>
 		</div>
+    </div>
 	</xsl:template>
 </xsl:stylesheet>
