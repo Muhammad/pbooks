@@ -330,7 +330,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
 #accounting_equation
 {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
 }
 </xsl:template>
 </xsl:stylesheet>
