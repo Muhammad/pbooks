@@ -28,6 +28,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:call-template name="source_spacer">
 			<xsl:with-param name="section_start">footer</xsl:with-param>
 		</xsl:call-template>
+		<div id="nofooter"/>
+		<!--
 		<div id="footer">
 				<xsl:comment>You must keep this copyright notice intact.</xsl:comment>
 				<a href="http://www.pbooks.org/" target="_blank">
@@ -43,11 +45,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <a href="http://www.pbooks.org/pub/">
             Download source
         </a>.
-				<!-- Link to download source, as required by AGPL -->
+				<xsl:comment>Link to download source, as required by AGPL</xsl:comment>
 		</div>
 		<div id="test-token" style="display:none;"></div>
 		<xsl:call-template name="source_spacer">
 			<xsl:with-param name="section_end">footer</xsl:with-param>
 		</xsl:call-template>
+		-->
 	</xsl:template>
 </xsl:stylesheet>
