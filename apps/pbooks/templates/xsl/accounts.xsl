@@ -97,6 +97,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
 
 		<form method="post">
+    <div  class="tableframe">
 			<table class="tablesorter" id="accounts_table">
 				<thead>
 					<tr>
@@ -150,7 +151,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:for-each select="$all_accounts">
 								<xsl:sort select="account_number"/>
 								<xsl:if test="running_balance &gt; 0">
-									<xsl:call-template name="account-row"/>
+                  <xsl:call-template name="account-row">
+                    <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                    <xsl:with-param name="i18n" select="$i18n"/>
+                  </xsl:call-template>
 								</xsl:if>
 							</xsl:for-each>
 						</xsl:if>
@@ -161,20 +165,27 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:if test="not(/_R_/_get/nid='account-balances')">
 							<xsl:for-each select="$all_accounts[account_type_id=/_R_/_get/account_type_id]">
 								<xsl:sort select="account_number"/>
-								<xsl:call-template name="account-row"/>
+                  <xsl:call-template name="account-row">
+                    <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                    <xsl:with-param name="i18n" select="$i18n"/>
+                  </xsl:call-template>
 							</xsl:for-each>
 						</xsl:if>
 						<xsl:if test="/_R_/_get/nid='account-balances'">
 							<xsl:for-each select="$all_accounts">
 								<xsl:sort select="account_number"/>
 								<xsl:if test="running_balance &gt; 0">
-									<xsl:call-template name="account-row"/>
+                  <xsl:call-template name="account-row">
+                    <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                    <xsl:with-param name="i18n" select="$i18n"/>
+                  </xsl:call-template>
 								</xsl:if>
 							</xsl:for-each>
 						</xsl:if>
 					</xsl:if>
 				</tbody>
 			</table>
+      </div>
 			<xsl:if test="/_R_/_get/show_all_accounts='on'">
 				<input type="submit" name="submit" value="Submit"/>
 			</xsl:if>
@@ -184,8 +195,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		"An account can only be deleted when there are no journal transactions in that 
 		account. If you would like to hide the account, click edit and select the hide option."
 		-->
-		<xsl:value-of select="$i18n/account_deletion_requirement"/>
-
+		<div class="table_meta">
+    <xsl:value-of select="$i18n/account_deletion_requirement"/>
+    </div>
 	</xsl:template>
 
 	<!-- SEE FILE "account_row.xsl" for the actual table contents -->

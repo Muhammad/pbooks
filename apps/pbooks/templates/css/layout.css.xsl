@@ -95,8 +95,14 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 }
 
 #footer {
+  padding: 2px;
+  border: 0;
+  border-top: .4em;
   display: block;
-  margin-bottom: 2em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .form-table tr td {

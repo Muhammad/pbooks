@@ -28,8 +28,6 @@ body {
   background: #7B8F8F;
 }
 #footer {
-  border: 0;
-  border-top: 1em;
   border-color: #7D0000;
   border-style: solid;
   background: #142738;

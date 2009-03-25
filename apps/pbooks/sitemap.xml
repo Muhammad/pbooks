@@ -930,7 +930,6 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/logs.xsl" />
 	</map:gate>
 	<map:gate name="x--log" role="pb_admin" content_type="text/plain">
-		<map:raw src="../../cache/log.txt" />
 	</map:gate>
 
 

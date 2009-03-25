@@ -27,7 +27,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:template match="/">
-<xsl:text>var html2dom_root_1 = document.createElement("div");</xsl:text>
+<xsl:text>var html2dom_root_1 = document.createElement("div");
+</xsl:text>
 <xsl:apply-templates select="//footer/*">
 		<xsl:with-param name="myparent">html2dom_root</xsl:with-param>
 		<xsl:with-param name="id" select="position()"/>

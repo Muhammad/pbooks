@@ -49,9 +49,8 @@ table.tablesorter {
    font-size: 11px !important;
 }
 #footer {
-  padding: 3px;
-  font-size: .83em;
-  line-height: 2.4em;
+  font-size: .82em;
+  line-height: 2.2em;
   text-align: center;
 }
 
