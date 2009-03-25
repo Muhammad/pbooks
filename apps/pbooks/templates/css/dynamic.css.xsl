@@ -71,13 +71,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 
-
-
-
-
-
 .basic-table-cell, .basic-table-cell-indent{
-  align: left;
   color: black;
   font-style: normal;
 	text-indent:2px;

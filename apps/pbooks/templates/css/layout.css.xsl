@@ -137,7 +137,6 @@ a.generic-button {
 }
 
 .menu-sub, .menu-sub-selected {
-  align: left;
   padding: 5px;
 }
 
@@ -314,8 +313,10 @@ table.simpletable thead th, table.simpletable tbody tr td {
   border: 1px solid #999999;
   background-color: #F9F9F9;
   overflow: auto;
+  <xsl:if test="//browser='msie'">
   width: expression((parseInt(document.documentElement.clientWidth)-230)+'px');
   height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
+  </xsl:if>
 }
 .table_controls
 {
