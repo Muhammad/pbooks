@@ -57,6 +57,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:with-param name="i18n" select="$i18n"/>
 				</xsl:call-template>
 				<div id="content">
+					<div id="notitle"/>
 
 					<xsl:call-template name="date_select_new">
 						<xsl:with-param name="link_prefix" select="$link_prefix"/>

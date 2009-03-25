@@ -992,6 +992,10 @@ files. -->
 		<map:action type="header" params="Content-Type,application/javascript"/>
 		<map:xsl src="templates/js/html_blocks.js.xsl"/>
 	</map:gate>
+	<map:gate name="x-dom-generator-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
+		<map:xml src="data/xml/footer.xml"/>
+    <map:xsl src="templates/js/dom_generator.js.xsl"/>
+	</map:gate>
 
 
 	<map:gate name="dynamic-database-model">

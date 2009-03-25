@@ -26,13 +26,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 	<xsl:template match="/">
-			<![CDATA[
+<!--
 /*
 news=document.createElement("div");
 newtext=document.createTextNode("first");
 news.setAttribute("id","notitle");
 news.appendChild(newtext);
-*/
+
 var html2dom_root = document.createElement('div');
 html2dom_root_1_div = document.createElement("div");
 html2dom_root_1_div.setAttribute("style", "background: orange");
@@ -41,40 +41,51 @@ html2dom_root_1_div.appendChild(html2dom_root_1_div_1_text);
 html2dom_root_1_div_2_comment = document.createComment("i'm just a comment");
 html2dom_root_1_div.appendChild(html2dom_root_1_div_2_comment);
 html2dom_root.appendChild(html2dom_root_1_div);
+*/
+-->
+var html2dom_root_0 = document.createElement("div");
+<xsl:apply-templates select="//footer">
+	<xsl:with-param name="myparent">html2dom_root</xsl:with-param>
+	<xsl:with-param name="id">0</xsl:with-param>
+</xsl:apply-templates>
+<![CDATA[
 
 $(document).ready(function() {
-		$("#notitle").replaceWith(html2dom_root);
+		$("#notitle").replaceWith(html2dom_root_0);
 });
 
 			]]>
-<!-- The test
-var text = "<div/>";
-var parser=new DOMParser();
-xmlDoc=parser.parseFromString(text,"text/xml");
-newel=xmlDoc.createElement("div");
-var choice = "dm";
-var iterations = 4500;
-
-if (choice == "dom") {
-	var i=0;
-	for (i=0;i<=iterations;i++)
-	{
-		news=xmlDoc.createElement("span");
-		newel.appendChild(news);
-		newtext=xmlDoc.createTextNode("first");
-		news.appendChild(newtext);
-	}
-} else {
-	var mypostbutton = '<div>';
-	for (i=0;i<=iterations;i++)
-	{
-		mypostbutton = mypostbutton + '<span>first</span>';
-	}
-	newel = mypostbutton + '</div>';
-}
-$(document).ready(function() {
-		$("#notitle").replaceWith(newel);
-});
--->
 	</xsl:template>
+
+<xsl:template match="node()">
+	<xsl:param name="myparent"/>
+	<xsl:param name="id"/>
+	var <xsl:value-of select="name()"/>_<xsl:value-of select="$id"/> = document.createElement("<xsl:value-of select="name()"/>");
+
+
+	<xsl:value-of select="$myparent"/>_<xsl:value-of select="$id"/>.appendChild(<xsl:value-of select="name()"/>_<xsl:value-of select="$id"/>)
+	<xsl:apply-templates select="@*|node()">
+		<xsl:with-param name="mynode" select="name()"/>
+		<xsl:with-param name="myparent" select="$myparent"/>
+		<xsl:with-param name="id" select="$id"/>
+	</xsl:apply-templates>
+</xsl:template>
+
+<xsl:template match="@*">
+	<xsl:param name="mynode"/>
+	<xsl:param name="id"/>
+	<xsl:value-of select="$mynode"/>_<xsl:value-of select="$id"/>.<xsl:value-of select="name()"/> = "<xsl:value-of select="."/>";
+</xsl:template>
+
+<xsl:template match="comment()">
+</xsl:template>
+
+<xsl:template match="text()">
+<xsl:param name="mynode"/>
+<xsl:param name="id"/>
+<xsl:variable name="string" select="."/>
+newtextnode = document.createTextNode('<xsl:value-of select="translate($string, '&#xa;', '')"/>');
+<xsl:value-of select="$mynode"/>_<xsl:value-of select="$id"/>.appendChild(newtextnode);
+</xsl:template>
+
 </xsl:stylesheet>

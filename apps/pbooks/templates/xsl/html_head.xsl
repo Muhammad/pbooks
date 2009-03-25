@@ -47,7 +47,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jsval.js"></script>
-			<script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script>
+			<script type="text/javascript" src="{$link_prefix}x-dom-generator-js"></script>
       <xsl:for-each select="//head_nodes">
 				<xsl:sort select="priority" order="ascending"/>
 				<xsl:apply-templates select="nodes/*"/>
