@@ -82,6 +82,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <br/>
 
     <form method="post">
+    <div  class="tableframe">
       <table class="tablesorter" id="accounts_table">
         <thead>
           <tr>
@@ -133,6 +134,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:if test="/_R_/_get/show_all_accounts='on'">
         <input type="submit" name="submit" value="Submit"/>
       </xsl:if>
+      </div>
     </form>
     <br/>
   </xsl:template>
