@@ -359,5 +359,11 @@ white-space: nowrap;
 #sub_tableframe {
 position: absolute; bottom: 40px;
 }
+.seven {
+  width: 7em;
+}
+.five {
+  width: 5em;
+}
 </xsl:template>
 </xsl:stylesheet>

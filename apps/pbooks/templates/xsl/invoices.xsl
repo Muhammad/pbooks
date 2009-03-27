@@ -31,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myInvoices</xsl:with-param>
-      <xsl:with-param name="my-table-div">myInvoicesDiv</xsl:with-param>
       <xsl:with-param name="no-sort-column">, headers: { 6: {sorter: false} }</xsl:with-param>
     </xsl:call-template>
 
@@ -59,7 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </a>
     </div>
 
-    <div id="myInvoicesDiv" class="tableframe">
+    <div class="tableframe">
       <table class="tablesorter" id="myInvoices">
         <thead>
           <tr>

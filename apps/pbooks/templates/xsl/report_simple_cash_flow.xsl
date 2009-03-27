@@ -31,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">myLedger</xsl:with-param>
-			<xsl:with-param name="my-table-div">myLedgerDiv</xsl:with-param>
 			<xsl:with-param name="my-sort-column">
 				,widthFixed: true
 				<xsl:if test="/_R_/_get/account_id">,sortList: [[0,0]]</xsl:if>
@@ -101,7 +100,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 				</tr>
 			</table>
-		<div style="min-height: 400px;" id="myLedgerDiv">
+		<div class="tableframe">
 			<table id="myLedger" class="tablesorter">
 				<thead>
 					<tr>
@@ -177,9 +176,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
 			</table>
 			</div>
+      <div class="table_controls">
 			<xsl:call-template name="pager">
 				<xsl:with-param name="my-table">myLedger</xsl:with-param>
 			</xsl:call-template>
+      </div>
 			<br/>
 		</form>
 	</xsl:template>

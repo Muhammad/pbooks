@@ -31,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myTransfers</xsl:with-param>
-      <xsl:with-param name="my-table-div">myTransfersDiv</xsl:with-param>
     </xsl:call-template>
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}transfer-create" id="transfer-create">

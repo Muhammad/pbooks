@@ -46,19 +46,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <div id="check_account_id"></div>
         <div id="check_date">
           <xsl:value-of select="$i18n/date"/>:
-        <input type="text" name="entry_datetime" style="width: 7em;"
+        <input type="text" name="entry_datetime" class="seven"
 					value="{substring($get_journal_entry/entry_date,0,11)}"/>
         </div>
         <div id="check_number">
           <xsl:value-of select="$i18n/check_number"/>:
-        <input type="text" name="check_number" style="width: 5em;"
+        <input type="text" name="check_number" class="five"
 					value="{//get_some_business_objects/get_some_business_objects/check_number}"/>
         </div>
         <div id="check_payee">
           <xsl:value-of select="$i18n/check_payee"/>:
         <input type="text" name="check_payee"
 					value="{//get_some_business_objects/get_some_business_objects/check_payee}"/>
-        $<input type="text" name="entry_amount" style="width: 8em;"
+        $<input type="text" name="entry_amount" class="seven"
 					value="{$get_journal_entry/entry_amount}"/>
         </div>
         <div id="check_memo">
