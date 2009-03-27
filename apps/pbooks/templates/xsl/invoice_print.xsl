@@ -112,7 +112,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 				</tbody>
 			</table>
-			<div style="height: 500px; margin-top: 10px;">
+			<div id="invoice_print">
 				<table class="simpletable" style="width: 600px;">
 					<thead>
 						<tr>

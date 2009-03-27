@@ -139,7 +139,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</span>
               </td>
               <td>
-                <a href="{$link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
+                <a href="{$link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_entry_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
                   <xsl:value-of select="$i18n/print"/>
                 </a>
               </td>

@@ -82,7 +82,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </table>
     <br/><br/>
 		<form method="post">
-		<input type="text" name="note" style="width: 30em;"/>
+		<input type="text" name="note" id="new_note"/>
 		<input type="submit"/>
 		</form>
   </xsl:template>

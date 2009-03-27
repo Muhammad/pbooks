@@ -340,5 +340,12 @@ table.simpletable thead th, table.simpletable tbody tr td {
   position: absolute;
   bottom: 40px;
 }
+
+#new_note {
+  width: 40em;
+}
+#invoice_print {
+ style="height: 500px; margin-top: 10px;
+}
 </xsl:template>
 </xsl:stylesheet>
