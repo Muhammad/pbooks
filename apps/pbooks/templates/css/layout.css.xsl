@@ -347,5 +347,17 @@ table.simpletable thead th, table.simpletable tbody tr td {
 #invoice_print {
  style="height: 500px; margin-top: 10px;
 }
+#help h2 {
+  margin-top: 10px;
+}
+.credit_div {
+padding-left: 40px;
+}
+.dontwrap {
+white-space: nowrap;
+}
+#sub_tableframe {
+position: absolute; bottom: 40px;
+}
 </xsl:template>
 </xsl:stylesheet>

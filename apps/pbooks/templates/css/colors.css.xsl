@@ -129,9 +129,10 @@ a.generic-button {
   border-color: #CCC;
 }
 
-#active {
-  color: red;
-  background: pink;
+#active, #error_match {
+  color: #FF6666;
+  background: #AC2F1B;
 }
+
 </xsl:template>
 </xsl:stylesheet>

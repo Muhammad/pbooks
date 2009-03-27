@@ -103,7 +103,7 @@ more than one debit or credit, there can only be one of the other type.
             </a>
           </td>
           <td>
-            <input type="button" style="padding: 5px;" value="Go Back" onclick="history.go(-1)"/>
+            <input type="button" value="Go Back" onclick="history.go(-1)"/>
           </td>
           <td>
             <a href="{$link_prefix}{//_get/nid}&amp;entry_id={/_R_/_get/entry_id + 1}">
@@ -260,7 +260,7 @@ more than one debit or credit, there can only be one of the other type.
                     </td>
 
                     <!-- Submit the entry -->
-                    <td colspan="3" style="text-align: center">
+                    <td colspan="3">
                       <input type="submit" name="submit" id="submit"
 												value="Submit" class="generic-button"/>
 											<!--
@@ -372,7 +372,7 @@ If you want to complete this process, continue as usual. For more information, s
         <xsl:value-of select="$i18n/credit"/>:
     </td>
       <td>
-        <div style="padding-left: 40px;">
+        <div class="credit_div">
           <select name="credit_account_1[]" required="1" exclude="-1"
 						err="Please select a credit account.">
             <option value="-1">
@@ -416,7 +416,7 @@ If you want to complete this process, continue as usual. For more information, s
         </div>
       </td>
       <td></td>
-      <td style="white-space: nowrap;">
+      <td class="dontwrap">
         <xsl:value-of select="//runtime/default_currency_unit"/>
         <input name="credit_amount_1[]" type="text" size="6" required="1"
 					equals="sum(debit_amount_1)" err="Credit and Debit amounts must be equal.">
@@ -530,7 +530,7 @@ If you want to complete this process, continue as usual. For more information, s
           </xsl:if>
         </select>
       </td>
-      <td style="white-space: nowrap;">
+      <td class="dontwrap">
         <xsl:value-of select="//runtime/default_currency_unit"/>
         <input name="debit_amount_1[]" type="text" size="6" required="1" regexp="/^\d+([\.]\d\d)?$/"
         err="Please enter a monetary value for the debit and credit. Do not include $ signs.">

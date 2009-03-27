@@ -42,8 +42,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!-- Should work with all browsers -->
   <xsl:template name="table-menu">
 
-    <table cellpadding="0" cellspacing="0" border="0" width="{//left_column/width}">
-
+    <table>
       <xsl:for-each select="/_R_/menu/item[not(@active=0)]">
         <xsl:call-template name="button">
           <xsl:with-param name="key">
@@ -127,10 +126,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     $(document).ready(function()
     {
-        $('#top-main-menu').clickMenu();
+        $('#nav').droppy();
     });
     </script>
-    <ul id="top-main-menu">
+    <ul id="nav">
       <xsl:for-each select="//menu/item[not(@active=0)]">
         <xsl:call-template name="list-button">
           <xsl:with-param name="key">

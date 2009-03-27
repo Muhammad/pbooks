@@ -221,7 +221,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tr>
           <td colspan="5" align="right">
             <xsl:if test="not($total_credits=$total_debits)">
-              <div style="color: red;" id="error_match">
+              <div id="error_match">
                 <xsl:value-of select="$i18n/error_match"/>:
                 </div>
             </xsl:if>

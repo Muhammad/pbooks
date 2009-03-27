@@ -207,14 +207,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!--
 				Provide some links to related pages: gl and account edit
 			-->
-      <div style="position: absolute; bottom: 40px;">
-			<xsl:value-of select="$i18n/account_ledger_links"/>
-			<a href="{$link_prefix}ledger">
-				<xsl:value-of select="$i18n/general_ledger"/>
-			</a>
-			<a href="{$link_prefix}accounts-edit&amp;account_id={/_R_/_get/account_id}">
-				<xsl:value-of select="$i18n/account_edit"/>
-			</a>
+      <div id="sub_tableframe">
+        <xsl:value-of select="$i18n/account_ledger_links"/>
+        <a href="{$link_prefix}ledger">
+          <xsl:value-of select="$i18n/general_ledger"/>
+        </a>
+        <a href="{$link_prefix}accounts-edit&amp;account_id={/_R_/_get/account_id}">
+          <xsl:value-of select="$i18n/account_edit"/>
+        </a>
       </div>
       </xsl:if>
 
