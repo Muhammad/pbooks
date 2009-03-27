@@ -59,10 +59,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<!-- This cell will be used for a star or flag with notations -->
 						<!--<th>FPO</th>-->
-						<th width="10em;">
+						<th>
 							<xsl:value-of select="$i18n/date"/>:
 						</th>
-						<th width="8em;">
+						<th>
 							<xsl:value-of select="$i18n/post"/>
 						</th>
 						<th>
@@ -196,7 +196,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- If an account_id has been selected, only show how much it has changed.-->
 		<xsl:if test="(/_R_/_get/account_id &gt; 0)">
 		<!-- Net change -->
-			<div class="generic-box" style="font-size: 18px;">
+			<div class="generic-box table_meta" style="font-size: 18px; margin-left: 140px;">
 				Net change:
 				<xsl:value-of select="format-number(sum($get_transactions/entry_amount),'###,###,###')"/> | 
 				Number of transactions:
@@ -207,6 +207,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!--
 				Provide some links to related pages: gl and account edit
 			-->
+      <div style="position: absolute; bottom: 40px;">
 			<xsl:value-of select="$i18n/account_ledger_links"/>
 			<a href="{$link_prefix}ledger">
 				<xsl:value-of select="$i18n/general_ledger"/>
@@ -214,7 +215,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<a href="{$link_prefix}accounts-edit&amp;account_id={/_R_/_get/account_id}">
 				<xsl:value-of select="$i18n/account_edit"/>
 			</a>
-		</xsl:if>
+      </div>
+      </xsl:if>
 
 		<!--
 			Show the accounting equation in no specific account is selected

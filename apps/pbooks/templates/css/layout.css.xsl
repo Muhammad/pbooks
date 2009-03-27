@@ -289,6 +289,13 @@ table.simpletable thead th, table.simpletable tbody tr td {
 	position: absolute;
   top: 80px;
   left: 160px;
+  background-color: #eee;
+  font-size: 10px;
+  width:220px;
+}
+#date_controls span {
+  cursor:pointer;
+  padding:4px;
 }
 #date_controller {
 	position: absolute;

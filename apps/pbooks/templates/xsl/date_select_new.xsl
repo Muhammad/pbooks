@@ -31,11 +31,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
     <!-- Need this action to retain any account selection -->
 		<div id="date_controls">
-		<div style="background-color: #eee; font-size: 10px; width:80px;">
-			<span style="cursor:pointer; padding:4px;" onclick="$('#date_controller').hide();">Hide</span>
-			<span style="cursor:pointer; padding:4px;" onclick="$('#date_controller').show();">Show</span>
+		<div>
+			<span onclick="$('#date_controller').hide();">Hide</span>
+			<span onclick="$('#date_controller').show();">Show</span>
+			<span><xsl:value-of select="substring($my_from_date,0,11)"/> - 
+      <xsl:value-of select="substring(/_R_/runtime/to_date,0,11)"/></span>
 		</div>
-		<div id="date_controller">
+		<div id="date_controller" style="width: 500px;">
 		<form method="get">
 			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 			<xsl:if test="/_R_/_get/account_id">
