@@ -345,7 +345,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
   width: 40em;
 }
 #invoice_print {
- style="height: 500px; margin-top: 10px;
+ height: 500px; margin-top: 10px;
 }
 #help h2 {
   margin-top: 10px;
