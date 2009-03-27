@@ -777,6 +777,7 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 	<map:gate name="x-note-delete" role="pb_admin">
 		<map:query src="data/sql/note_delete.xml" />
+		<map:raw src="templates/xml/generic_response.xml.xsl" />
 	</map:gate>
 
 <!-- REPORTS -->

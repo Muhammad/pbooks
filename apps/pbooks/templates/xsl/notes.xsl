@@ -34,14 +34,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
     <xsl:value-of select="$i18n/note_info"/>
     <script type="text/javascript">
-    function note_delete(note_id,row) {
+    function note_delete(note_id) {
         $.post("<xsl:value-of select="$link_prefix"/>x-note-delete",
         {
           'note_id': note_id
         },
         function (data){
-						myTable = document.getElementById("notes_table");
-						myTable.deleteRow(row);
+          $("#n_"+note_id).remove();
         });
     }
 		</script>
@@ -52,9 +51,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/note_id"/>
           </th>
           <th>
-            <xsl:value-of select="$i18n/note_value"/>
+            <xsl:value-of select="$i18n/notes"/>
           </th>
           <th>
+            <xsl:value-of select="$i18n/date"/>
           </th>
           <th>
           </th>
@@ -62,7 +62,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </thead>
       <tbody>
         <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
-          <tr>
+          <tr id="n_{note_id}">
             <td>
               <xsl:value-of select="note_id"/>
             </td>
@@ -73,14 +73,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <xsl:value-of select="note_datetime"/>
             </td>
             <td>
-              <a href="{//link_prefix}notes" onclick="note_delete({note_id},this.parentNode.parentNode.rowIndex); return false;">Delete</a>
+              <a href="{$link_prefix}x-note-delete&amp;note_id={note_id}"
+                onclick="note_delete({note_id}); return false;">Delete</a>
             </td>
           </tr>
         </xsl:for-each>
       </tbody>
     </table>
+    <br/><br/>
 		<form method="post">
-		<input type="text" name="note"/>
+		<input type="text" name="note" style="width: 30em;"/>
 		<input type="submit"/>
 		</form>
   </xsl:template>
