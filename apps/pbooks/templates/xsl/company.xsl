@@ -29,9 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<form method="post">
 			<table>
 				<xsl:for-each select="/_R_/company_options/option">
-					<xsl:variable name="my_option">
-						<xsl:value-of select="option_key"/>
-					</xsl:variable>
+					<xsl:variable name="my_option" select="option_key"/>
 					<tr>
 						<td>
 							<xsl:value-of select="$i18n/*[local-name()=$my_option]"/>:

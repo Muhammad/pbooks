@@ -65,9 +65,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:value-of select="$i18n/memo"/>: 
 					<input type="text" name="memorandum">
             <xsl:if test="not(contains($get_journal_entry/memorandum,'__'))">
-                <xsl:attribute name="value">
-                    <xsl:value-of select="$get_journal_entry/memorandum"/>
-              </xsl:attribute>
+                <xsl:attribute name="value" select="$get_journal_entry/memorandum"/>
             </xsl:if>
           </input>
         </div>
