@@ -24,7 +24,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
-  <xsl:include href="date_select.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -42,17 +41,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
       myTable = document.getElementById("invoice_form_table");
       myTable.deleteRow(row);
     }
-    function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
+    function journal_entry_amount_create(entry_type_id,entry_id) {
+      var this_entry_date = $("#invoice_date").val();
+      alert(this_entry_date);
       $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
       {
 				'entry_id': entry_id,
-				'entry_datetime': entry_date
+				'entry_datetime': this_entry_date
       },
       function (data){
 				setTimeout('window.location.reload()',200);
       });
-		}
-		function add_line_item() {
 		}
 		</script>
 
@@ -193,9 +192,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
         <!-- INVOICE LINE ITEM ROWS -->
           <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
-            <xsl:variable name="my_entry_amount_id">
-              <xsl:value-of select="entry_amount_id"/>
-            </xsl:variable>
+            <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
             <tr id="i-{entry_amount_id}">
               <td>
                 <xsl:value-of select="entry_amount_id"/>
@@ -206,9 +203,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                     <xsl:value-of select="$i18n/select_one"/>
                   </option>
                   <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
-                    <xsl:variable name="my_account_id">
-                      <xsl:value-of select="id"/>
-                    </xsl:variable>
+                    <xsl:variable name="my_account_id" select="id"/>
                     <option value="{$my_account_id}">
                       <xsl:if test="/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
                         <xsl:attribute name="selected">selected</xsl:attribute>

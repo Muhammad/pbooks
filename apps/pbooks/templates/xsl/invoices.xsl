@@ -92,19 +92,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tbody>
           <!-- LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-            <xsl:variable name="my_entry_id">
-              <xsl:value-of select="entry_id"/>
-            </xsl:variable>
-            <xsl:variable name="my_customer_id">
-              <xsl:value-of select="customer_id"/>
-            </xsl:variable>
+            <xsl:variable name="my_entry_id" select="entry_id"/>
+            <xsl:variable name="my_customer_id" select="customer_id"/>
             <tr onmouseover="oldClass=this.className; this.className='active'"
               onmouseout="this.className=oldClass">
               <td>
                 <xsl:value-of select="entry_datetime"/>
               </td>
               <td id="{$my_entry_id}">
-                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
+                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={$my_entry_id}">
                   <xsl:value-of select="invoice_number"/>
                 </a>
               </td>
@@ -114,7 +110,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </a>
               </td>
               <td>
-                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_id={$my_entry_id}">
+                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={$my_entry_id}">
                   <xsl:value-of select="substring(memorandum,0,12)"/>
                 </a>
               </td>
