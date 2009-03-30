@@ -48,11 +48,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
       myTable = document.getElementById("deposit_form_table");
       myTable.deleteRow(row);
     }
-    function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
+    function journal_entry_amount_create(entry_type_id,entry_id) {
+      var this_entry_date = $("#invoice_date").val();
       $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
       {
         'entry_id': entry_id,
-        'entry_datetime': entry_date
+        'entry_datetime': this_entry_date
       },
       function (data){
         setTimeout('window.location.reload()',200);
@@ -141,12 +142,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                       <xsl:value-of select="$i18n/not_applicable"/>
                     </option>
                     <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-                      <xsl:variable name="my_new_entry_id">
-                        <xsl:value-of select="entry_id"/>
-                      </xsl:variable>
-                      <xsl:variable name="my_client_id">
-                        <xsl:value-of select="$business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
-                      </xsl:variable>
+                      <xsl:variable name="my_new_entry_id" select="entry_id"/>
+                      <xsl:variable name="my_client_id"
+                        select="$business_object_get_metadata[meta_key='client_id' and entry_id=$my_new_entry_id]/meta_value"/>
 
                       <option value="{id}">
                         <xsl:if test="id=//metadata/account_id and not(/_R_/_get/transaction_id)">
@@ -177,12 +175,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </tr>
             <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
-              <xsl:variable name="my_entry_amount_id">
-                <xsl:value-of select="entry_amount_id"/>
-              </xsl:variable>
-              <xsl:variable name="my_entry_id">
-                <xsl:value-of select="entry_id"/>
-              </xsl:variable>
+              <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
+              <xsl:variable name="my_entry_id" select="entry_id"/>
               <tr>
                 <!-- Here the check number is the equivalent of a journal entry memorandum -->
                 <td>
@@ -212,12 +206,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
                       <xsl:value-of select="$i18n/not_applicable"/>
                     </option>
                     <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-                      <xsl:variable name="my_new_entry_id">
-                        <xsl:value-of select="entry_id"/>
-                      </xsl:variable>
-                      <xsl:variable name="my_customer_id">
-                        <xsl:value-of select="customer_id"/>
-                      </xsl:variable>
+                      <xsl:variable name="my_new_entry_id" select="entry_id"/>
+                      <xsl:variable name="my_customer_id" select="customer_id"/>
 
                       <option value="{id}">
                         <xsl:if test="id=//metadata/metadata/account_id and not(/_R_/_get/transaction_id)">
