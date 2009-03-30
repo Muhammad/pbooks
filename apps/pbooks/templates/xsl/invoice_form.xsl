@@ -255,5 +255,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tbody>
       </table>
     </form>
+    <!-- Link to journal entry form. -->
+    <div style="float: right">
+      <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
+        <xsl:value-of select="$i18n/edit_journal_entry"/>
+      </a>
+    </div>
   </xsl:template>
 </xsl:stylesheet>
