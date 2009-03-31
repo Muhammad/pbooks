@@ -214,14 +214,14 @@ This makes it easier to maintain persistence. -->
 	<map:gate name="invoice-create" role="pb_admin">
     <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,Created invoice"/>
 		<map:set name="account_meta_key" value="accounts_receivable_account"/>
-		<map:query src="data/sql/account_business_objects.xml" />
+<map:query src="data/sql/account_business_objects.xml" />
 		<map:set name="debit_account_1" value="{//accounts_get_accounts_receivable_id/accounts_receivable_id}"/>
 		<map:query src="data/sql/account_get_by_ar_id.xml"/>
 		<map:if name="/_R_/account_business_objects">
 			<map:true>
 				<map:insert name="blank-entry"/>
 				<map:query src="data/sql/entry_get_by_id.xml"/>
-				<map:action type="redirect" params="{runtime/link_prefix}invoice-edit&amp;invoice_id={//get_this_entry_id/entry_id}&amp;entry_id={//get_this_entry_id/entry_id}"/>
+				<map:action type="redirect" params="{runtime/link_prefix}invoice-edit&amp;invoice_entry_id={//get_this_entry_id/entry_id}&amp;entry_id={//get_this_entry_id/entry_id}"/>
 			</map:true>
 			<map:false>
 				<map:xml src="i18n/{/_R_/runtime/selected_lang}/errors.xml"/>
