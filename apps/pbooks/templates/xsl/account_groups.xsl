@@ -84,9 +84,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="generation">0</xsl:param>
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="my_group_id">
-			<xsl:value-of select="group_id"/>
-		</xsl:variable>
+		<xsl:variable name="my_group_id" select="group_id"/>
 
 		<tr class="row2">
 			<td>
@@ -95,9 +93,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<td>
 				<xsl:if test="not($parent_gid='0')">
 					<xsl:call-template name="generation_indent">
-						<xsl:with-param name="iterator">
-							<xsl:value-of select="$generation"/>
-						</xsl:with-param>
+						<xsl:with-param name="iterator" select="$generation"/>
 					</xsl:call-template>
                 +----
             </xsl:if>

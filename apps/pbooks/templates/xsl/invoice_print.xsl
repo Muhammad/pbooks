@@ -81,9 +81,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
 			</table>
 
-			<xsl:variable name="my_client_id">
-				<xsl:value-of select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='client_id']/meta_value"/>
-			</xsl:variable>
+			<xsl:variable name="my_client_id"
+        select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='client_id']/meta_value"/>
 			<table border="0" id="client-address" style="margin-top: 100px; margin-bottom:40px;">
 				<tbody>
 					<tr>
@@ -133,9 +132,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 						<!-- INVOICE LINE ITEM ROWS -->
 						<xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
-							<xsl:variable name="my_entry_amount_id">
-								<xsl:value-of select="entry_amount_id"/>
-							</xsl:variable>
+							<xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
 							<tr>
 								<td>
 									<xsl:value-of select="$invoice_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/>
@@ -153,7 +150,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td>
 								<strong>
 									<xsl:value-of
-											select="sum($invoice_amounts[entry_type_id='Credit']/entry_amount)"/>
+                    select="sum($invoice_amounts[entry_type_id='Credit']/entry_amount)"/>
 								</strong>
 							</td>
 						</tr>

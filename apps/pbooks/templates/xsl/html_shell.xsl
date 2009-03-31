@@ -45,8 +45,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:for-each>
 
         <xsl:call-template name="main">
-        <xsl:with-param name="link_prefix" select="$link_prefix"/>
-        <xsl:with-param name="path_prefix" select="$path_prefix"/>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
           <xsl:with-param name="i18n" select="$my18n"/>
         </xsl:call-template>
 

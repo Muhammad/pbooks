@@ -67,12 +67,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <tbody>
         <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions|/_R_/get_all_entry_amounts/get_all_entry_amounts">
           <xsl:sort select="entry_datetime"/>
-          <xsl:variable name="this_entry_id">
-            <xsl:value-of select="entry_id"/>
-          </xsl:variable>
-          <xsl:variable name="my_entry_datetime">
-            <xsl:value-of select="entry_datetime"/>
-          </xsl:variable>
+          <xsl:variable name="this_entry_id" select="entry_id"/>
+          <xsl:variable name="my_entry_datetime" select="entry_datetime"/>
 
 					<!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE -->
 					<!-- only show the similar ones - first check if there is an unmatched

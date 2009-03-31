@@ -91,15 +91,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<table>
 				<tr>
 					<td>
-						<img src="{/_R_/runtime/path_prefix}/s/js/blue/first.png" class="first"/>
-						<img src="{/_R_/runtime/path_prefix}/s/js/blue/prev.png" class="prev"/>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/first.png" class="first"/>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/prev.png" class="prev"/>
 					</td>
 					<td>
 						<input type="text" class="pagedisplay" size="6" readonly="readonly"/>
 					</td>
 					<td>
-						<img src="{/_R_/runtime/path_prefix}/s/js/blue/next.png" class="next"/>
-						<img src="{/_R_/runtime/path_prefix}/s/js/blue/last.png" class="last"/>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/next.png" class="next"/>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/last.png" class="last"/>
 					</td>
 				</tr>
 			</table>

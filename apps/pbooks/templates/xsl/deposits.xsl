@@ -62,9 +62,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <tbody>
 			<!-- START LOOP -->
         <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-          <xsl:variable name="my_entry_id">
-            <xsl:value-of select="entry_id"/>
-          </xsl:variable>
+          <xsl:variable name="my_entry_id" select="entry_id"/>
           <tr onmouseover="oldClass=this.className; this.className='active'"
           	onmouseout="this.className=oldClass">
             <td>

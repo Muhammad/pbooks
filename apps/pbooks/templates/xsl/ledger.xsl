@@ -125,8 +125,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" alt="+"/>
 										</a>
 									</xsl:when>
-									<xsl:otherwise>
-									</xsl:otherwise>
+									<xsl:otherwise/>
 								</xsl:choose>
 							</td>
 

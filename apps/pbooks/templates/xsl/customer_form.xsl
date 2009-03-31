@@ -79,9 +79,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<input type="hidden" name="cash_account" value="off"/>
 				<!-- Follow a similar pattern as company options -->
 				<xsl:for-each select="//meta/meta_key[@category='address']">
-					<xsl:variable name="my_option">
-						<xsl:value-of select="."/>
-					</xsl:variable>
+					<xsl:variable name="my_option" select="."/>
 					<tr>
 						<td>
 							<xsl:value-of select="$i18n/*[local-name()=$my_option]"/>:
@@ -121,9 +119,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<select name="group_id">
 							<xsl:for-each select="//get_account_groups/get_account_groups">
-								<xsl:variable name="my_group_id">
-									<xsl:value-of select="id"/>
-								</xsl:variable>
+								<xsl:variable name="my_group_id" select="id"/>
 								<option value="{id}">
 									<xsl:if test="//account_get_by_id/account_get_by_id/group_id=id">
 										<xsl:attribute name="selected">selected</xsl:attribute>

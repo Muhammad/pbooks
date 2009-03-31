@@ -130,9 +130,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </tr>
     <!-- Disb by account -->
       <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=10000][cash_account='on']">
-        <xsl:variable name="this_d_account_id">
-          <xsl:value-of select="id"/>
-        </xsl:variable>
+        <xsl:variable name="this_d_account_id" select="id"/>
         <tr class="row{position() mod 2}">
           <td class="matrix-data" style="text-indent: 6px;">
             <a href="{$link_prefix}ledger&amp;account_id={id}">
