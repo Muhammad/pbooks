@@ -68,14 +68,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 					<tr>
 						<td>
-							<xsl:value-of select="//company_address_1"/>
+							<xsl:value-of select="//option_get/company_address_1"/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<xsl:value-of select="//company_city"/>, 
-              <xsl:value-of select="//company_state"/>&#160;
-              <xsl:value-of select="//company_zip"/>
+							<xsl:value-of select="//option_get/company_city"/>, 
+              <xsl:value-of select="//option_get/company_state"/>&#160;
+              <xsl:value-of select="//option_get/company_zip"/>
 						</td>
 					</tr>
 				</tbody>
