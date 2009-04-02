@@ -674,19 +674,19 @@ This makes it easier to maintain persistence. -->
 	<map:gate name="ledger-export" role="pb_admin">
 		<map:xsl src="templates/xsl/ledger_export.xsl" />
 	</map:gate>
-	<map:gate name="x--ledger-export" role="pb_admin" content_type="text/plain">
+	<map:gate name="x-ledger-export" role="pb_admin" content_type="text/plain">
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
-	<map:gate name="x--ledger-export-dl" role="pb_admin" content_type="application/octet-stream">
+	<map:gate name="x-ledger-export-dl" role="pb_admin" content_type="application/octet-stream">
     <map:action type="header" params="Content-Type: application/octet-stream"/>
     <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.csv&quot;"/>
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
-	<map:gate name="x--ods-export" content_type="application/octet-stream" cache="0">
+	<map:gate name="x-ods-export" content_type="application/octet-stream" cache="0">
     <map:action type="header" params="Content-Type: application/force-download"/>
     <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.ods&quot;"/>
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
@@ -930,7 +930,7 @@ This makes it easier to maintain persistence. -->
 	<map:gate name="logs" role="pb_admin">
 		<map:xsl src="templates/xsl/logs.xsl" />
 	</map:gate>
-	<map:gate name="x--log" role="pb_admin" content_type="text/plain">
+	<map:gate name="x-log" role="pb_admin" content_type="text/plain">
 	</map:gate>
 
 
