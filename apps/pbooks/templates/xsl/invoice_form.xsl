@@ -31,15 +31,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<!-- Add / delete items -->
     <script type="text/javascript">
-    function journal_entry_amount_delete(entry_amount_id,row) {
+    function journal_entry_amount_delete(entry_amount_id) {
       $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
       {
 				'entry_amount_id': entry_amount_id
       },
       function (data){
+        $("i_"+entry_amount_id).remove();
       });
-      myTable = document.getElementById("invoice_form_table");
-      myTable.deleteRow(row);
     }
     function journal_entry_amount_create(entry_type_id,entry_id) {
       var this_entry_date = $("#invoice_date").val();
@@ -192,7 +191,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <!-- INVOICE LINE ITEM ROWS -->
           <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
             <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
-            <tr id="i-{entry_amount_id}">
+            <tr id="i_{entry_amount_id}">
               <td>
                 <xsl:value-of select="entry_amount_id"/>
               </td>
@@ -229,7 +228,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <td>
                 <xsl:if test="position() &gt; 1">
                   <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
-                      onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
+                      onclick="journal_entry_amount_delete({entry_amount_id}); return false;">
                     <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
                   </a>
                 </xsl:if>

@@ -186,9 +186,7 @@ more than one debit or credit, there can only be one of the other type.
 									calls the journal entry row templates, see below
 									-->
                     <xsl:for-each select="$get_journal_entry[entry_type_id='Debit']">
-                      <xsl:variable name="my_account_id">
-                        <xsl:value-of select="account_id"/>
-                      </xsl:variable>
+                      <xsl:variable name="my_account_id"  select="account_id"/>
                       <xsl:call-template name="debit">
                         <xsl:with-param name="my_entry_id" value="{entry_id}"/>
                         <xsl:with-param name="link_prefix" select="$link_prefix"/>

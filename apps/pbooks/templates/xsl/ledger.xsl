@@ -51,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:if test="/_R_/_get/nid='matching'">
 			<xsl:call-template name="jquery-setup"/>
 		</xsl:if>
-		<div style="min-height: {//ledger_table/height};" class="tableframe">
+		<div class="tableframe">
 			<xsl:if test="not(/_R_/_get/nid='matching')">
 			</xsl:if>
 			<table id="my_ledger" class="tablesorter">
