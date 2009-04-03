@@ -60,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:value-of select="$i18n/log_info"/>
 -->
 
-			<iframe style="width:600px;height:300px;" src="{$link_prefix}x--log">
+			<iframe style="width:600px;height:300px;" src="{$link_prefix}x-log">
 			</iframe>
   </xsl:template>
 </xsl:stylesheet>
