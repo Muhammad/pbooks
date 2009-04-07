@@ -144,7 +144,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tbody>
       </table>
     </div>
-		
+    <div class="table_meta">
+    Total outstanding invoices:
+    <b><xsl:value-of select="sum(/_R_/get_some_business_objects/get_some_business_objects/invoice_total) - sum(/_R_/get_some_business_objects/get_some_business_objects[paid_status='paid_in_full']/invoice_total)"/></b>
+		</div>
 		<div class="table_controls">
     <xsl:call-template name="pager">
       <xsl:with-param name="my-table">myInvoices</xsl:with-param>

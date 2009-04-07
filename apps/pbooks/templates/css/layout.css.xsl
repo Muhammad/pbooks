@@ -333,6 +333,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
 {
   position: absolute;
   bottom: 80px;
+  right: 200px;
 }
 #accounting_equation
 {
