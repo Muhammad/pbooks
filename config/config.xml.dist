@@ -24,7 +24,6 @@ used for a single or several applications. -->
         <username>root</username>
         <password></password>
     </datasource>
-
     <!-- AUTHENTICATION-->
     <auth>
         <expire>0</expire>

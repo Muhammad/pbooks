@@ -269,6 +269,8 @@ Edit this account.
   <pbooks_consulting>PBooks Consulting</pbooks_consulting>
   <company_name>Company name</company_name>
   <company_logo>Company Logo</company_logo>
+  <address_1>Address</address_1>
+  <address_2>Address</address_2>
   <company_address_1>Address</company_address_1>
   <company_address_2>Address</company_address_2>
   <city>City</city>
