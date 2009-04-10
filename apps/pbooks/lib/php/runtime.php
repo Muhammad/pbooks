@@ -26,56 +26,57 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 /* Default fiscal start */
-$default_fiscal_start = Nexista_Config::get("./default_fiscal_start");
+$default_fiscal_start = Nexista_Config::get('./default_fiscal_start');
 if(empty($default_fiscal_start)) {
-    $default_fiscal_start = "01-01";
+    $default_fiscal_start = '01-01';
 }
 
 
 
 // Moved from other runtime:
-$debug = Nexista_Config::get('./runtime/debug');
+$debug   = Nexista_Config::get('./runtime/debug');
 $logging = Nexista_Config::get('./runtime/logging');
 $logfile = Nexista_Config::get('./runtime/logfile');
-$top_left_logo = "s/images/pbooks-logo_120x60.png";
+
+$top_left_logo = 's/images/pbooks-logo_120x60.png';
 
 # This wacky path builder is required due to mod_rewrite situations
 $path = $_SERVER['SCRIPT_NAME'];
-$path_prefix = dirname($path)."/";
-$link_prefix = $path."?nid=";
+$path_prefix = dirname($path).'/';
+$link_prefix = $path.'?nid=';
 $utcdate = gmdate('Y-m-d H:i:s');
 
 $db_version = rtrim(file_get_contents(PROJECT_ROOT.'/config/db_version.txt'));
-$default_selected_lang = Nexista_Config::get("./defaults/default_selected_lang");
+$default_selected_lang = Nexista_Config::get('./defaults/default_selected_lang');
 if(empty($default_selected_lang)) {
-    $default_selected_lang = "en_US";
+    $default_selected_lang = 'en_US';
 }
 
-$default_theme = Nexista_Config::get("./defaults/default_theme");
+$default_theme = Nexista_Config::get('./defaults/default_theme');
 if(empty($default_theme)) {
-    $default_theme = "default";
+    $default_theme = 'default';
 }
-$default_icon_set = Nexista_Config::get("./defaults/default_icon_set");
+$default_icon_set = Nexista_Config::get('./defaults/default_icon_set');
 if(empty($default_icon_set)) {
-    $default_icon_set = "images/icons/famfamfam/";
+    $default_icon_set = 'images/icons/famfamfam/';
 }
-$default_currency_unit = Nexista_Config::get("./defaults/default_currency_unit");
+$default_currency_unit = Nexista_Config::get('./defaults/default_currency_unit');
 if(empty($default_currency_unit)) {
-    $default_currency_unit = "$";
+    $default_currency_unit = '$';
 }
 
-$payment_account_id = Nexista_Config::get("./defaults/payment_account_id");
+$payment_account_id = Nexista_Config::get('./defaults/payment_account_id');
 if(empty($payment_account_id)) {
     $payment_account_id = 0;
 }
 
-$default_invoice_print_vertical = Nexista_Config::get("./defaults/default_invoice_print_vertical");
+$default_invoice_print_vertical = Nexista_Config::get('./defaults/default_invoice_print_vertical');
 if(empty($default_invoice_print_vertical)) {
-    $default_invoice_print_vertical = "-22";
+    $default_invoice_print_vertical = '-22';
 }
 
 
-/* 
+/*
  * TODO What follows needs a major cleanup! Low priority though.
  * Not posting anymore dates. Only using POST method for updating data.
  */
@@ -100,12 +101,12 @@ if(isset($_GET['month'])) {
 
 if(isset($_GET['month'])) {
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, $_GET['month'], 31, $working_year));
-    $_SESSION['to_date'] = $to_date." 23:59:59";
+    $_SESSION['to_date'] = $to_date.' 23:59:59';
 } elseif(isset($_GET['to_date'])) {                       // if there is a get date, use it and save it no matter, unless its redoing balances.
-    $_SESSION['to_date'] = $_GET['to_date']." 23:59:59";
-    $to_date = $_GET['to_date']." 23:59:59";
+    $_SESSION['to_date'] = $_GET['to_date'].' 23:59:59';
+    $to_date = $_GET['to_date'].' 23:59:59';
 } elseif (isset($_SESSION['to_date'])) {            // session date, use it
-    $to_date = $_SESSION['to_date']." 23:59:59";
+    $to_date = $_SESSION['to_date'].' 23:59:59';
 } else {                                            // default
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, date('m'), date('d')+1, date('Y')));
 }
@@ -141,7 +142,6 @@ $runtime = array(
     'host_name' => $_SERVER['SERVER_NAME'],
     'path_prefix' => $path_prefix,
     'link_prefix' => $link_prefix,
-    'right_now' => $utcdate,
     'utcdate' => $utcdate,
     'current_user_id' => $current_user_id,
     'default_currency_unit' => $default_currency_unit,
@@ -163,6 +163,8 @@ $runtime = array(
     'logfile' => $logfile,
     'icon_set' => $default_icon_set,
     'fiscal_start' => $default_fiscal_start,
+    'selected_fiscal_period_id' => $fiscal_period_id,
+    'current_fiscal_period_id' => $current_fiscal_period_id,
     'request_uri' => $_SERVER['REQUEST_URI'],
     'payment_account_id' => $payment_account_id,
     );
