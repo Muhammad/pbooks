@@ -29,32 +29,32 @@ For each line of the csv file, a sql statement is made.
 
 */
 
-$debug="false";
-$csv_string = Nexista_Path::get("//_post/csv_accounts_import","flow");
-$link_prefix = Nexista_Path::get("//link_prefix","flow");
+$debug='false';
+$csv_string = Nexista_Path::get('//_post/csv_accounts_import','flow');
+$link_prefix = Nexista_Path::get('//link_prefix','flow');
 
 
-if(empty($csv_string) || $csv_string=="") { 
-    header("Location: ".$link_prefix."accounts-import&error=import-empty");
+if(empty($csv_string) || $csv_string=='') {
+    header('Location: '.$link_prefix.'accounts-import&error=import-empty');
     exit;
 }
 
 
-if($debug=="true") {
-echo "<pre>";
+if($debug=='true') {
+echo '<pre>';
 echo $csv_string;
-echo "</pre>";
+echo '</pre>';
 }
 
 
 // Test these line feeds on different platforms (windows, mac os x, linux)
-$data_array = explode("\r\n",$csv_string);
-//$data_array = explode("\n",$csv_string);
+$data_array = explode('\r\n',$csv_string);
+//$data_array = explode('\n',$csv_string);
 
-if($debug=="true") {
-echo "<pre>";
+if($debug=='true') {
+echo '<pre>';
 print_r($data_array);
-echo "</pre>";
+echo '</pre>';
 }
 $i=0;
 foreach($data_array as $value) {
@@ -65,10 +65,10 @@ foreach($data_array as $value) {
         $value = preg_replace('/\"(.+)(,)(.+)\"!\n/', '${1}${3}', $value);
         $csv_row = explode(",",$value);
 
-        if($debug=="true") {
-            echo "=====<pre>";
+        if($debug=='true') {
+            echo '=====<pre>';
             print_r($cvs_row);
-            echo "</pre>";
+            echo '</pre>';
         }
 
         if(count($csv_row)=="4") {
@@ -80,21 +80,21 @@ foreach($data_array as $value) {
                                 'account_description' => $csv_row[3]);
 
         } else {
-            header("Location: ".$link_prefix.
-                "accounts-import&error=import-wrong-number-of-rows,".count($csv_row).",".$csv_row[4]);
+            header('Location: '.$link_prefix.
+                'accounts-import&error=import-wrong-number-of-rows,'.count($csv_row).','.$csv_row[4]);
             exit;
         }
 
     }
     $i++;
 }
-    Nexista_Flow::add("import_csv",$final_data_array);
+    Nexista_Flow::add('import_csv',$final_data_array);
 
 
-if($debug=="true") {
-echo "<pre>";
+if($debug=='true') {
+echo '<pre>';
 print_r($final_data_array);
-echo "</pre>";
+echo '</pre>';
 exit;
 }
 

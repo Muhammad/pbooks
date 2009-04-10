@@ -124,19 +124,22 @@ $next_from_date = date('Y-m-d H:i:s',mktime(0,0,0,date("m",strtotime($from_date)
 
 
 if(isset($_GET['show_all_accounts'])) {
-    if($_GET['show_all_accounts']=="on") {
-        $_SESSION['show_all_accounts']="on";
+    if($_GET['show_all_accounts']=='on') {
+        $_SESSION['show_all_accounts']='on';
     } else {
         unset($_SESSION['show_all_accounts']);
     }
 }
 
 if(isset($_SESSION['show_all_accounts'])) {
-    if($_SESSION['show_all_accounts']=="on") {
-        $show_all_accounts = "on";
+    if($_SESSION['show_all_accounts']=='on') {
+        $show_all_accounts = 'on';
     }
 }
 
+if(!$_SESSION['company_name'] || $_SESSION['company_name'] == '') {
+    $_SESSION['company_name'] = '___NOTHING___';
+}
 
 $runtime = array(
     'host_name' => $_SERVER['SERVER_NAME'],
@@ -163,13 +166,14 @@ $runtime = array(
     'logfile' => $logfile,
     'icon_set' => $default_icon_set,
     'fiscal_start' => $default_fiscal_start,
-    'selected_fiscal_period_id' => $fiscal_period_id,
+    'selected_fiscal_period_id' => $_SESSION['fiscal_period_id'],
+    'company_name' => $_SESSION['company_name'],
     'current_fiscal_period_id' => $current_fiscal_period_id,
     'request_uri' => $_SERVER['REQUEST_URI'],
     'payment_account_id' => $payment_account_id,
     );
 
-Nexista_Flow::add("runtime",$runtime,false);
+Nexista_Flow::add('runtime',$runtime,false);
 
 
 ?>

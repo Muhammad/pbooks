@@ -57,7 +57,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </body>
     </html>
   </xsl:template>
-	
+
 <xsl:template match="node()">
 <xsl:element name="{name()}">
 <xsl:apply-templates select="@*|node()"/>

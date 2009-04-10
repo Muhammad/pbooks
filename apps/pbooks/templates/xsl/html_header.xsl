@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </xsl:call-template>
     <div id="header">&#160;
     	<span id="company-name">
-        <xsl:value-of select="//company_name"/>
+        <xsl:value-of select="//runtime/company_name"/>
       </span>
       <h1 class="page-title">
         <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>

@@ -24,14 +24,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 */
 
-$domain = Nexista_Path::get("//domain","flow");
-$invoice_id = Nexista_Path::get("//_get/invoice_id","flow");
-$invoice_date = Nexista_Path::get("//get_invoice/invoice_issue_date","flow");
-$due_date = Nexista_Path::get("//get_invoice/invoice_due_date","flow");
-$client = Nexista_Path::get("//get_invoice/name","flow");
-$description = Nexista_Path::get("//get_invoice/description","flow");
-$price = Nexista_Path::get("//get_invoice/entry_amount","flow");
-$project = Nexista_Path::get("//get_invoice/project","flow");
+$domain = Nexista_Path::get('//domain','flow');
+$invoice_id = Nexista_Path::get('//_get/invoice_id','flow');
+$invoice_date = Nexista_Path::get('//get_invoice/invoice_issue_date','flow');
+$due_date = Nexista_Path::get('//get_invoice/invoice_due_date','flow');
+$client = Nexista_Path::get('//get_invoice/name','flow');
+$description = Nexista_Path::get('//get_invoice/description','flow');
+$price = Nexista_Path::get('//get_invoice/entry_amount','flow');
+$project = Nexista_Path::get('//get_invoice/project','flow');
 
 
 // Switch to using PEAR's File_PDF

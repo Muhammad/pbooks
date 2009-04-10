@@ -29,22 +29,22 @@ For each line of the csv file, a sql statement is made.
 
 */
 
-$debug="true";
-$csv_string = Nexista_Path::get("//_post/csv_import","flow");
-$account_id = Nexista_Path::get("//_post/account_id","flow");
-$link_prefix = Nexista_Path::get("//link_prefix","flow");
+$debug='true';
+$csv_string  = Nexista_Path::get('//_post/csv_import','flow');
+$account_id  = Nexista_Path::get('//_post/account_id','flow');
+$link_prefix = Nexista_Path::get('//link_prefix','flow');
 
 
-if(empty($csv_string) || $csv_string=="") { 
-        header("Location: ".$link_prefix."transactions-import&error=import-empty");
+if(empty($csv_string) || $csv_string=='') { 
+        header('Location: '.$link_prefix.'transactions-import&error=import-empty');
         exit;
 }
 
 
-if($debug=="true") {
-echo "<pre>";
+if($debug=='true') {
+echo '<pre>';
 echo $csv_string;
-echo "</pre>";
+echo '</pre>';
 }
 
 

@@ -23,14 +23,14 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA -->
 */
 
-$sh_content = Nexista_Path::get("//my_ledger","flow");
+$sh_content = Nexista_Path::get('//my_ledger','flow');
 
 
 $manifest = <<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0">
- <manifest:file-entry manifest:media-type="application/vnd.oasis.opendocument.spreadsheet" manifest:full-path="/"/>
- <manifest:file-entry manifest:media-type="text/xml" manifest:full-path="content.xml"/>
+<?xml version='1.0' encoding='UTF-8'?>
+<manifest:manifest xmlns:manifest='urn:oasis:names:tc:opendocument:xmlns:manifest:1.0'>
+ <manifest:file-entry manifest:media-type='application/vnd.oasis.opendocument.spreadsheet' manifest:full-path='/'/>
+ <manifest:file-entry manifest:media-type='text/xml' manifest:full-path='content.xml'/>
 </manifest:manifest>
 EOF;
 
