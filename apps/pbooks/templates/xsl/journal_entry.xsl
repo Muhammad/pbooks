@@ -144,8 +144,16 @@ more than one debit or credit, there can only be one of the other type.
                 <input type="text" name="entry_datetime" id="entry_datetime"
                 	value="{$get_journal_entry/entry_datetime}"/>
 								Fiscal period: 
-                <input type="text" name="fiscal_period_id" id="fiscal_period_id" size="4"
-                	value="{$get_journal_entry/fiscal_period_id|//_R_/option_get_company_name/option_get_company_name/fiscal_period_id}"/>
+                <input type="text" name="fiscal_period_id" id="fiscal_period_id" size="4">
+                  <xsl:attribute name="value">
+                    <xsl:if test="$get_journal_entry/fiscal_period_id">
+                      <xsl:value-of select="$get_journal_entry/fiscal_period_id"/>
+                    </xsl:if>
+                    <xsl:if test="not($get_journal_entry/fiscal_period_id)">
+                      <xsl:value-of select="/_R_/runtime/selected_fiscal_period_id"/>
+                    </xsl:if>
+                  </xsl:attribute>
+                </input>
               </td>
               <xsl:if test="/_R_/_get/transaction_id">
                 <input type="hidden" name="transaction_id" value="{/_R_/_get/transaction_id}"/>

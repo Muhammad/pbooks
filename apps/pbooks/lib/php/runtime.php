@@ -41,12 +41,15 @@ $logfile = Nexista_Config::get('./runtime/logfile');
 $top_left_logo = 's/images/pbooks-logo_120x60.png';
 
 # This wacky path builder is required due to mod_rewrite situations
-$path = $_SERVER['SCRIPT_NAME'];
+$path        = $_SERVER['SCRIPT_NAME'];
 $path_prefix = dirname($path).'/';
 $link_prefix = $path.'?nid=';
+
 $utcdate = gmdate('Y-m-d H:i:s');
 
 $db_version = rtrim(file_get_contents(PROJECT_ROOT.'/config/db_version.txt'));
+
+
 $default_selected_lang = Nexista_Config::get('./defaults/default_selected_lang');
 if(empty($default_selected_lang)) {
     $default_selected_lang = 'en_US';
@@ -141,6 +144,8 @@ if(!$_SESSION['company_name'] || $_SESSION['company_name'] == '') {
     $_SESSION['company_name'] = '___NOTHING___';
 }
 
+$current_fiscal_period_id = 3;
+
 $runtime = array(
     'host_name' => $_SERVER['SERVER_NAME'],
     'path_prefix' => $path_prefix,
@@ -167,8 +172,8 @@ $runtime = array(
     'icon_set' => $default_icon_set,
     'fiscal_start' => $default_fiscal_start,
     'selected_fiscal_period_id' => $_SESSION['fiscal_period_id'],
+    'current_fiscal_period_id' => $current_fiscal_period_id, // for invoices, etc.
     'company_name' => $_SESSION['company_name'],
-    'current_fiscal_period_id' => $current_fiscal_period_id,
     'request_uri' => $_SERVER['REQUEST_URI'],
     'payment_account_id' => $payment_account_id,
     );

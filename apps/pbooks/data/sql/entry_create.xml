@@ -27,7 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="entry_datetime" type="text"/>
 		<param name="temp_entry_datetime" type="text"/>
-		<param name="//option_get_company_name/fiscal_period_id" type="integer"/>
+		<param name="//_post/fiscal_period_id" type="integer"/>
 	</params>
 	<sql>
   INSERT INTO &pb_entries;

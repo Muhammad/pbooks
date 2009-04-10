@@ -58,6 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </h2>
     <form method="post" action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
+      <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
       <table border="0" id="invoice_form_table">
         <tbody>
           <tr>
