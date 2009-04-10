@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <form action="{$link_prefix}check-submit&amp;entry_id={/_R_/_get/entry_id}"
 			method="post" onSubmit="return validateStandard(this, 'myerror');">
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-      <input type="hidden" name="fiscal_period_id" value="{$get_journal_entry/fiscal_period_id}"/>
+      <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
       <div id="business_object_slip">
         <div id="check_account_id"></div>
         <div id="check_date">

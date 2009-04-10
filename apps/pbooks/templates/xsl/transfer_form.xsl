@@ -101,6 +101,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
         </tr>
         <input type="hidden" name="transfer_id" value="{/_R_/_get/entry_id}"/>
+        <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
         <tr>
           <td>
             <xsl:value-of select="$i18n/method"/>:

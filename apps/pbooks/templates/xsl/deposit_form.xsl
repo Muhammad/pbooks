@@ -28,14 +28,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
   <xsl:param name="i18n"/>
-  <xsl:variable name="account_business_objects"
-    select="/_R_/account_business_objects/account_business_objects"/>
+
+    <xsl:variable name="account_business_objects"
+      select="/_R_/account_business_objects/account_business_objects"/>
 
     <xsl:variable name="get_journal_entry"
-    select="/_R_/get_journal_entry/get_journal_entry"/>
+      select="/_R_/get_journal_entry/get_journal_entry"/>
 
     <xsl:variable name="business_object_get_metadata"
-    select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
+      select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id) {
@@ -77,8 +78,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:for-each select="$account_business_objects">
             <option value="{id}">
               <xsl:if
-              test="id=$get_journal_entry/account_id">
-                <xsl:attribute name="selected">selected</xsl:attribute>
+                test="id=$get_journal_entry/account_id">
+                  <xsl:attribute name="selected">selected</xsl:attribute>
               </xsl:if>
               <xsl:value-of select="name"/>
             </option>
@@ -91,6 +92,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						value="{$account_business_objects/id}"/>
       </xsl:if>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
+      <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
       <div id="business_object_slip">
         <div id="my_deposit_account_id"></div>
         <div id="deposit_date">
