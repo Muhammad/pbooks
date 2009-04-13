@@ -36,15 +36,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
 
 		<script type="text/javascript">
-		function journal_entry_amount_delete(entry_amount_id,row) {
-			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
+		function journal_entry_amount_delete(entry_amount_id) {
+			$.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-amount-delete",
 			{
 				'entry_amount_id': entry_amount_id
 			},
 			function (data){
+        $("#ea_"+entry_amount_id).remove();
 			});
-			myTable = document.getElementById("payment_form_table");
-			myTable.deleteRow(row);
 		}
 		function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
 			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
@@ -85,7 +84,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td>
 								<xsl:value-of select="$i18n/amount"/>
 							</td>
-							<td></td>
+							<td />
 							<td>
 								<!--
 								<xsl:value-of select="$i18n/outstanding_invoices"/>
@@ -98,7 +97,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
 							<xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
 							<xsl:variable name="my_entry_id" select="entry_id"/>
-							<tr>
+							<tr id="ea_{$my_entry_amount_id}">
 								<td>
 									<input type="text" name="entry_amount[]"
 										style="width: 60px;"

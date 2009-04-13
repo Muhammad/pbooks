@@ -178,7 +178,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<map:false></map:false>
 		</map:if>
 	</map:gate>
-	<map:gate name="journal-entry-amount-delete" role="pb_admin">
+	<map:gate name="x-journal-entry-amount-delete" role="pb_admin">
 		<map:query src="data/sql/entry_amount_delete_by_id.xml" />
 		<map:action type="redirect" params="{//link_prefix}journal-entry&amp;entry_id={//_get/entry_id}"/>
 	</map:gate>

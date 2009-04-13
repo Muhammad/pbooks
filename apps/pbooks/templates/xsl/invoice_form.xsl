@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- Add / delete items -->
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id) {
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
+      $.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-amount-delete",
       {
 				'entry_amount_id': entry_amount_id
       },
