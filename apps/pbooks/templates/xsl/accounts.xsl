@@ -41,12 +41,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- Confirm account deletion -->
 		<script type="text/javascript">
     var question = '<xsl:value-of select="$i18n/delete_account"/>?';
-    function account_delete(account_id,row) {
+    function account_delete(account_id) {
         if(confirm(question)) {
-            $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'account_id': account_id},
+            $.post("<xsl:value-of select="$link_prefix"/>x-accounts-delete", {'account_id': account_id},
             function (data){
-                myTable = document.getElementById("accounts_table");
-                myTable.deleteRow(row);
+                $("#a_"+account_id).remove();
             });
         }
     }
@@ -97,7 +96,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
 
 		<form method="post">
-    <div  class="tableframe">
+    <div class="tableframe">
 			<table class="tablesorter" id="accounts_table">
 				<thead>
 					<tr>

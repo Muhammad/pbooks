@@ -502,7 +502,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/account_form.xsl" />
 	</map:gate>
 
-	<map:gate name="accounts-delete" role="pb_admin">
+	<map:gate name="x-accounts-delete" role="pb_admin">
 		<map:query src="data/sql/entry_amounts_get_by_account_id.xml"/>
 		<map:if name="//entry_amounts_get_by_account_id">
 			<map:true>
@@ -510,6 +510,7 @@ This makes it easier to maintain persistence. -->
 			</map:true>
 			<map:false>
 				<map:query src="data/sql/account_delete.xml" />
+        <map:xsl src="templates/xml/ajax_response.xml.xsl" />
 			</map:false>
 		</map:if>
 	</map:gate>

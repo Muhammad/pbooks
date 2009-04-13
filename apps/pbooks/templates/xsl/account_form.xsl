@@ -34,7 +34,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		main.xsl. Form input elements have attributes like required="1" if they are
 		to be validated.
 		-->
-		<form method="post" onSubmit="return validateStandard(this, 'myerror');">
+
+    <form method="post" onSubmit="return validateStandard(this, 'myerror');">
+    <div class="tableframe">
 
 			<!-- Check if the user is creating a new account or editing and existing one,
 			and set appropriate parameter "my_action" -->
@@ -55,7 +57,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:if>
 			<!-- End error -->
 
-			<table class="form-table" cellpadding="10">
+			<table class="form-table" style="width: 100%">
 				<tr>
 					<td>
 						<xsl:value-of select="$i18n/account_name"/>:
@@ -101,7 +103,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:value-of select="$i18n/desc"/>:
         </td>
 					<td>
-						<textarea name="description" cols="40" rows="6">
+						<textarea name="description" cols="40" rows="2">
 							<xsl:value-of select="/_R_/account_get_by_id/account_get_by_id/description|//_post/description"/>
             </textarea>
 					</td>
@@ -236,11 +238,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 				</tr>
 			</table>
-			<div style="text-align: center; margin-top: 20px;">
-				<input type="submit" value="{$i18n/save}" name="submit" />
-				<input type="button" value="{$i18n/cancel}"
-					onclick="window.location.href='{$link_prefix}accounts'"/>
-			</div>
-		</form>
+    </div>
+    <div style="text-align: center; margin-top: 10px;" class="table_meta">
+      <input type="submit" value="{$i18n/save}" name="submit" />
+      <input type="button" value="{$i18n/cancel}"
+        onclick="window.location.href='{$link_prefix}accounts'"/>
+    </div>
+  </form>
 	</xsl:template>
 </xsl:stylesheet>

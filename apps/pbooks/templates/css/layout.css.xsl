@@ -105,7 +105,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 }
 
 .form-table tr td {
-	padding: 5px;
+	padding: 4px;
 	border-width: 0;
   border-bottom-width: 1px;
   border-style: solid;

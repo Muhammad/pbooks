@@ -31,12 +31,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- these rows contain ids for use in testing, do not remove! -->
     <tr onmouseover="oldClass=this.className; this.className='active'"
         onmouseout="this.className=oldClass"
-        onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';"
-				style="cursor: pointer;">
+				style="cursor: pointer;"
+        id="a_{id}">
 
 			<!-- Show account checkbox -->
       <xsl:if test="/_R_/_get/show_all_accounts='on'">
-        <td>
+        <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
           <input type="checkbox" name="hide[]" value="{id}">
             <xsl:if test="hide='on'">
               <xsl:attribute name="checked">checked</xsl:attribute>
@@ -46,12 +46,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
 
 			<!-- Account number -->
-      <td>
+      <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
         <xsl:value-of select="account_number"/>
       </td>
 
 			<!-- Account name -->
-      <td>
+      <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
         <a href="{$link_prefix}ledger&amp;account_id={id}">
           <xsl:value-of select="name"/>
         </a>
@@ -59,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 			<!-- Account type -->
       <xsl:if test="not(/_R_/_get/nid='customer-accounts')">
-        <td>
+        <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
           <a href="{$link_prefix}accounts&amp;account_type_id={account_type_id}">
             <xsl:value-of select="account_type_id"/>
           </a>
@@ -67,7 +67,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
 
 			<!-- Running balance -->
-      <td>
+      <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
         <xsl:value-of select="running_balance"/>
       </td>
 
@@ -99,8 +99,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
       <td>
         <a id="{account_number}-d"
-					href="{$link_prefix}accounts-delete&amp;account_id={id}"
-					onclick="account_delete({id},this.parentNode.parentNode.rowIndex); return false;">
+					href="#{$link_prefix}accounts-delete&amp;account_id={id}"
+					onclick="account_delete({id}); return false;">
           <xsl:value-of select="$i18n/delete"/>
         </a>
       </td>
