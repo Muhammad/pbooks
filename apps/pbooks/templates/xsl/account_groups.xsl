@@ -33,13 +33,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- This is the text for the deletion confirm -->
 		<script type="text/javascript">
     var question = '<xsl:value-of select="$i18n/delete_account_group"/>?';
-    function account_group_delete(group_id,row) {
+    function account_group_delete(group_id) {
       if(confirm(question)) {
         $.post("<xsl:value-of select="$link_prefix"/>account-group-delete",
         {'group_id': group_id},
         function (data){
-            myTable = document.getElementById("accounts_table");
-            myTable.deleteRow(row);
+            $("#g_"+group_id).remove();
         });
       }
     }
@@ -86,7 +85,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
 		<xsl:variable name="my_group_id" select="group_id"/>
 
-		<tr class="row2">
+		<tr class="row2" id="g_{group_id}">
 			<td>
 				<xsl:value-of select="group_id"/>
 			</td>
@@ -115,7 +114,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<td>
 				<a href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
 					 id="{account_group}-d"
-					 onclick="account_group_delete({group_id},this.parentNode.parentNode.rowIndex); return false;">
+					 onclick="account_group_delete({group_id}); return false;">
 					<xsl:value-of select="$i18n/delete"/>
 				</a>
 			</td>

@@ -27,7 +27,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:include href="html_head.xsl"/>
 	<xsl:include href="html_header.xsl"/>
 	<xsl:include href="html_menu.xsl"/>
-	<xsl:include href="html_footer.xsl"/>
 	<xsl:include href="date_select_new.xsl"/>
 	<xsl:include href="source_spacer.xsl"/>
 	<xsl:template name="main">
@@ -70,11 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:with-param name="i18n" select="$i18n"/>
 					</xsl:call-template>
 				</div>
-				<xsl:call-template name="footer">
-					<xsl:with-param name="link_prefix" select="$link_prefix"/>
-					<xsl:with-param name="path_prefix" select="$path_prefix"/>
-					<xsl:with-param name="i18n" select="$i18n"/>
-				</xsl:call-template>
+        <div id="nofooter"/>
 			</div>
 			<xsl:call-template name="source_spacer">
 				<xsl:with-param name="section_end">main</xsl:with-param>
