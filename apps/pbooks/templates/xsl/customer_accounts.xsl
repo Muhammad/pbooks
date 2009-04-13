@@ -30,6 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
@@ -42,12 +43,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- Confirm account deletion -->
     <script type="text/javascript">
     var question = '<xsl:value-of select="$i18n/delete_account"/>?';
-    function account_delete(id,row) {
+    function account_delete(id) {
         if(confirm(question)) {
             $.post("<xsl:value-of select="$link_prefix"/>accounts-delete", {'id': id},
             function (data){
-                myTable = document.getElementById("accounts_table");
-                myTable.deleteRow(row);
+              $("#a_"+id).remove();
             });
         }
     }
@@ -82,7 +82,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <br/>
 
     <form method="post">
-    <div  class="tableframe">
+    <div class="tableframe">
       <table class="tablesorter" id="accounts_table">
         <thead>
           <tr>
@@ -136,6 +136,5 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
       </div>
     </form>
-    <br/>
   </xsl:template>
 </xsl:stylesheet>

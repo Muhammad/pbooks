@@ -42,8 +42,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			and set appropriate parameter "my_action"
 			-->
 			<xsl:if test="/_R_/account_get_by_id/account_get_by_id/id">
-				<input type="hidden" name="my_action" value="update"/>
-				<input type="hidden" value="{/_R_/_get/account_id}" name="account_id"/>
+				<input type="hidden" name="my_action" value="update" />
+				<input type="hidden" value="{/_R_/_get/account_id}" name="account_id" />
 			</xsl:if>
 			<xsl:if test="not(/_R_/account_get_by_id/account_get_by_id/id)">
 				<input type="hidden" name="my_action" value="create"/>
@@ -73,10 +73,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 
 				<!-- META DATA -->
-				<input type="hidden" name="has_checks" value="off"/>
-				<input type="hidden" name="takes_deposits" value="off"/>
-				<input type="hidden" name="accounts_receivable_account" value="on"/>
-				<input type="hidden" name="cash_account" value="off"/>
+				<input type="hidden" name="has_checks"                  value="off" />
+				<input type="hidden" name="takes_deposits"              value="off" />
+				<input type="hidden" name="accounts_receivable_account" value="on"  />
+				<input type="hidden" name="cash_account"                value="off" />
 				<!-- Follow a similar pattern as company options -->
 				<xsl:for-each select="//meta/meta_key[@category='address']">
 					<xsl:variable name="my_option" select="."/>

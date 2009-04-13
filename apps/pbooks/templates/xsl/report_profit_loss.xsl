@@ -46,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<div style="text-align: center;">
 			<h2>
-				<xsl:value-of select="//company_name"/>
+				<xsl:value-of select="//runtime/company_name"/>
 			</h2>
 		</div>
 		<table class="data-table" width="100%" align="center">
@@ -60,10 +60,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</tr>
 			<tr>
 				<td>
-					<table width="100%" class="matrix-table" cellspacing="1" cellpadding="0" border="0" bgcolor="gray">
+					<table width="100%" class="matrix-table">
 						<thead>
 						<tr>
-							<td class="matrix-data"></td>
+							<td class="matrix-data" />
 							<xsl:for-each select="//months/option">
 								<xsl:if test="@id &gt;= $from_month and @id &lt;= $to_month">
 									<td class="matrix-data">
@@ -129,9 +129,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 						</tr>
 						<tr>
-							<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">
-              &#160;
-              </td>
+							<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}" />
 						</tr>
 						<!--  Expenses -->
 						<tr>
@@ -146,9 +144,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</tr>
 						<xsl:variable name="exp">50000</xsl:variable>
 						<xsl:for-each select="$get_all_accounts[account_type_id=$exp]">
-							<xsl:variable name="this_ex_account_id">
-								<xsl:value-of select="id"/>
-							</xsl:variable>
+							<xsl:variable name="this_ex_account_id" select="id"/>
 							<tr class="row{position() mod 2}">
 								<td class="matrix-data" style="text-indent: 16px;">
 									<a href="{$link_prefix}ledger&amp;account_id={id}">
