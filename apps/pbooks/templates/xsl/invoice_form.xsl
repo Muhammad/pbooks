@@ -89,7 +89,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <img src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
               </a>
             </td>
-            <td></td>
+            <td />
           </tr>
           <tr>
             <td>
@@ -217,13 +217,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
               </td>
               <td>
-                <input type="text" name="quantity" size="4"/>
+                <input type="text" name="quantity" class="five"/>
               </td>
               <td>
-                <input type="text" name="price" size="4"/>
+                <input type="text" name="price" class="five"/>
               </td>
               <td>
-                <input type="text" name="credit_amount_1[]" size="6"
+                <input type="text" name="credit_amount_1[]" class="five"
 									value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
               </td>
               <td>
@@ -238,7 +238,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </xsl:for-each>
           <!-- END LINE ITEMS -->
           <tr>
-            <td colspan="7"></td>
+            <td colspan="7" />
             <td>
               <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                 <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"

@@ -108,7 +108,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="entry_datetime"/>
               </td>
 
-              <td class="journal-data"></td>
+              <td class="journal-data" />
               <td valign="top" class="journal-data" colspan="5" width="100%">
                 <a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
                   <xsl:value-of select="substring(memorandum,0,60)"/>
@@ -180,7 +180,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                       <xsl:value-of select="name"/>
                     </a>
                   </td>
-                  <td class="journal-data"></td>
+                  <td class="journal-data" />
                   <td class="journal-data" style="color: {$my_color};">
                     <xsl:value-of select="entry_amount"/>
                   </td>
@@ -194,15 +194,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <td class="journal-data" style="color: {$my_color};">
                     <xsl:value-of select="entry_amount"/>
                   </td>
-                  <td class="journal-data">&#160;</td>
+                  <td class="journal-data" />
                 </xsl:if>
-								<td class="journal-data" colspan="2">&#160;</td>
+								<td class="journal-data" colspan="2" />
 
               </tr>
             </xsl:for-each>
 						<!-- END INNER LOOP -->
             <tr>
-              <td colspan="9" class="separator"></td>
+              <td colspan="9" class="separator" />
             </tr>
           </xsl:for-each>
 					<!-- END OUTER LOOP -->
@@ -222,7 +222,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:if test="not($total_credits=$total_debits)">
               <div id="error_match">
                 <xsl:value-of select="$i18n/error_match"/>:
-                </div>
+              </div>
             </xsl:if>
           </td>
           <td class="journal-data">
@@ -231,7 +231,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <td class="journal-data">
             <xsl:value-of select="$total_credits"/>
           </td>
-					<td class="journal-data" colspan="2">&#160;</td>
+					<td class="journal-data" colspan="2" />
         </tr>
       </table>
       <xsl:call-template name="previous_next"/>

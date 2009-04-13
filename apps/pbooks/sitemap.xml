@@ -705,7 +705,6 @@ This makes it easier to maintain persistence. -->
 
 
 	<map:gate name="matching" role="pb_admin" cache="3">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:query src="data/sql/general_ledger_get_unmatched.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/xsl/ledger.xsl" />
@@ -794,7 +793,6 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/reports.xsl" />
 	</map:gate>
 	<map:gate name="reports-build" role="pb_admin">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:switch name="//_get/report_type_id">
         <!-- Balance Sheet -->
 			<map:case value="3">
@@ -827,19 +825,16 @@ This makes it easier to maintain persistence. -->
 		</map:switch>
 	</map:gate>
 	<map:gate name="reports-simple-cash-flow" role="pb_admin">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 		<map:action type="datetime" params="/_R_/get_all_transactions/get_all_transactions/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />
 	</map:gate>
 	<map:gate name="reports-invoices" role="pb_admin">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:query src="data/sql/invoices_get_some.xml" />
 		<map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/xsl/report_invoices.xsl" />
 	</map:gate>
 	<map:gate name="reports-group-cash-flow" role="pb_admin">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml"/>
 		<map:query src="data/sql/account_groups_get_all.xml"/>
 		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 		<map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />

@@ -46,7 +46,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <form method="get">
       <input type="hidden" name="nid" value="reports-invoices"/>
       <table>
-
         <tr>
           <td>
             <xsl:if test="/_R_/_get/month >= 1">

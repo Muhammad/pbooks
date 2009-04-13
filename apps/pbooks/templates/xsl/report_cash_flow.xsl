@@ -32,12 +32,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- Just setting up some frequently used xpaths -->
 
     <xsl:variable name="from_month" select="substring(/_R_/_get/from_date,6,2)"/>
-    <xsl:variable name="to_month" select="substring(/_R_/_get/to_date,6,2)"/>
-    <xsl:variable name="monthnum" select="number($to_month - $from_month + 1)"/>
+    <xsl:variable name="to_month"   select="substring(/_R_/_get/to_date,6,2)"/>
+    <xsl:variable name="monthnum"   select="number($to_month - $from_month + 1)"/>
 
     <div style="text-align: center;">
       <h2>
-        <xsl:value-of select="//company_name"/>
+        <xsl:value-of select="//runtime/company_name"/>
       </h2>
       <xsl:value-of select="$i18n/cash_flow_statement"/>
       <xsl:value-of select="$i18n/from"/>
@@ -55,9 +55,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		This is the table structure only, the table cells are the templates at the
 		bottom of the file.
 		-->
-    <table width="100%" class="matrix-table" cellspacing="1" cellpadding="2" border="0" bgcolor="gray">
+    <table width="100%" class="matrix-table">
       <tr>
-        <td class="matrix-data"></td>
+        <td class="matrix-data" />
         <xsl:for-each select="//months/option">
           <xsl:if test="@id &gt;= $from_month and @id &lt;= $to_month">
             <td class="matrix-data">
@@ -67,7 +67,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
       </tr>
 
-    <!--  Cash Flow -->
+      <!--  Cash Flow -->
       <tr>
         <td class="matrix-data">
           <xsl:value-of select="$i18n/incoming_cash_flow_deposit"/>
@@ -116,7 +116,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:call-template>
       </tr>
       <tr>
-        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}" />
       </tr>
     <!--  Disbursements -->
       <tr>
@@ -157,7 +157,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:call-template>
       </tr>
       <tr>
-        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">&#160;</td>
+        <td class="matrix-data" colspan="{number($to_month - $from_month + 3)}" />
       </tr>
 			<!-- Capital Investments -->
       <tr>

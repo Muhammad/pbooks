@@ -144,7 +144,7 @@ more than one debit or credit, there can only be one of the other type.
                 <input type="text" name="entry_datetime" id="entry_datetime"
                 	value="{$get_journal_entry/entry_datetime}"/>
 								Fiscal period: 
-                <input type="text" name="fiscal_period_id" id="fiscal_period_id" size="4">
+                <input type="text" name="fiscal_period_id" id="fiscal_period_id" class="five">
                   <xsl:attribute name="value">
                     <xsl:if test="$get_journal_entry/fiscal_period_id">
                       <xsl:value-of select="$get_journal_entry/fiscal_period_id"/>
@@ -172,7 +172,7 @@ more than one debit or credit, there can only be one of the other type.
                 <table class="tablesorter" id="entry_form_table">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th />
                       <th>
                         <xsl:value-of select="$i18n/type"/> :
 											</th>
@@ -185,7 +185,7 @@ more than one debit or credit, there can only be one of the other type.
                       <th>
                         <xsl:value-of select="$i18n/credit"/> :
 											</th>
-                      <th width="20"></th>
+                      <th width="20" />
                     </tr>
                   </thead>
                   <tbody>

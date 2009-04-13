@@ -27,16 +27,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="get_all_entry_amounts"
-			select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+		<xsl:variable
+      name   = "get_all_entry_amounts"
+			select = "/_R_/get_all_entry_amounts/get_all_entry_amounts"
+    />
     <div class="tableframe">
 		<div style="text-align: center;">
 			<h2>
-				<xsl:value-of select="//company_name"/>
+				<xsl:value-of select="//runtime/company_name"/>
 			</h2>
 			<xsl:value-of select="$i18n/balance_sheet"/>
-    &#160;
-    <xsl:value-of select="//to_date"/>
+      &#160;
+      <xsl:value-of select="//to_date"/>
 		</div>
 		<div style="padding: 20px;">
 			<table width="100%" border="0">
@@ -81,10 +83,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:value-of select="format-number((sum($get_all_entry_amounts[account_type_id=10000][entry_type_id='Debit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=10000][entry_type_id='Credit']/entry_amount)),'#,###,###.##')"/>
 						</b>
 					</td>
-					<td align="right"></td>
+					<td align="right" />
 				</tr>
 				<tr>
-					<td colspan="3">&#160;</td>
+					<td colspan="3" />
 				</tr>
 
 
@@ -103,9 +105,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         from_year"/></b>--></td>
 				</tr>
 				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='20000']">
-					<xsl:variable name="this_l_account_id" select="id"/>
-					<xsl:variable name="liability_value"
-						select="format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"/>
+					<xsl:variable
+            name   = "this_l_account_id"
+            select = "id"
+          />
+					<xsl:variable
+            name   = "liability_value"
+						select = "format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"
+          />
 					<xsl:if test="not($liability_value=0)">
 						<tr>
 							<td class="journal-data" style="text-indent: 16px;">
@@ -148,18 +155,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<xsl:value-of select=" format-number( (sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_e_account_id]/entry_amount) - sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_e_account_id]/entry_amount) ),'#,###,###.##')"/>
 							</xsl:if>
 						</td>
-						<td align="right"></td>
+						<td align="right" />
 					</tr>
 				</xsl:for-each>
 				<tr>
 					<td class="journal-data" style="text-indent: 16px;">
 						<xsl:value-of select="$i18n/total_equity"/>
 					</td>
-					<td align="right" class="journal-data"></td>
-					<td align="right"></td>
+					<td align="right" class="journal-data" />
+					<td align="right" />
 				</tr>
 				<tr>
-					<td colspan="3">&#160;</td>
+					<td colspan="3" />
 				</tr>
 				<tr>
 					<td class="journal-data" style="text-indent: 16px;">
@@ -174,7 +181,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:value-of select="format-number(( sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount)- sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) - ( sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+ sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount) ) + (sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=30000]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=30000]/entry_amount)) ),'#,###,###.##')"/>
 						</b>
 					</td>
-					<td align="right"></td>
+					<td align="right" />
 				</tr>
 			</table>
 		</div>
