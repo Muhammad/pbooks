@@ -29,6 +29,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 
+    <xsl:variable
+      name   = "this_account"
+      select = "/_R_/account_get_by_id/account_get_by_id"
+    />
+    <xsl:variable
+      name   = "account_meta"
+      select = "/_R_/account_meta_get/account_meta_get"
+    />
+
 		<!--
 		The form is validated via a javascript library included in the end of
 		main.xsl. Form input elements have attributes like required="1" if they are
@@ -40,11 +49,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 			<!-- Check if the user is creating a new account or editing and existing one,
 			and set appropriate parameter "my_action" -->
-			<xsl:if test="//account_get_by_id/account_get_by_id/id">
+			<xsl:if test="$this_account/id">
 				<input type="hidden" name="my_action" value="update"/>
-				<input type="hidden" value="{/_R_/account_get_by_id/account_get_by_id/id}" name="account_id"/>
+				<input type="hidden" value="{$this_account/id}" name="account_id"/>
 			</xsl:if>
-			<xsl:if test="not(/_R_/account_get_by_id/account_get_by_id/id)">
+			<xsl:if test="not($this_account/id)">
 				<input type="hidden" name="my_action" value="create"/>
 			</xsl:if>
 
@@ -64,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="text" name="name"
-							value="{/_R_/account_get_by_id/account_get_by_id/name|//_post/name}"
+							value="{$this_account/name|//_post/name}"
 							required="1" err="{//error[key='missing_account_name']/value}"/>
 					</td>
 				</tr>
@@ -79,7 +88,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</option>
 							<xsl:for-each select="//account_types/account_type">
 								<option value="{account_type_id}">
-									<xsl:if test="/_R_/account_get_by_id/account_get_by_id/account_type_id=account_type_id or //_post/account_type_id=account_type_id">
+									<xsl:if test="$this_account/account_type_id=account_type_id or //_post/account_type_id=account_type_id">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
 									<xsl:value-of select="name"/>
@@ -95,7 +104,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<input type="text" name="account_number" required="1"
 							err="{//error[key='missing_account_number']/value}"
-							value="{/_R_/account_get_by_id/account_get_by_id/account_number|//_post/account_number}"/>
+							value="{$this_account/account_number|//_post/account_number}"/>
 					</td>
 				</tr>
 				<tr>
@@ -104,7 +113,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </td>
 					<td>
 						<textarea name="description" cols="40" rows="2">
-							<xsl:value-of select="/_R_/account_get_by_id/account_get_by_id/description|//_post/description"/>
+							<xsl:value-of select="$this_account/description|//_post/description"/>
             </textarea>
 					</td>
 				</tr>
@@ -115,7 +124,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<input type="text" name="reconciled" required="1"
 							err="{//error[key='reconciled']/value}"
-							value="{/_R_/account_meta_get/account_meta_get[meta_key='reconciled']/meta_value|//_post/reconciled}"/>
+							value="{$account_meta[meta_key='reconciled']/meta_value|//_post/reconciled}"/>
 					</td>
 				</tr>
 				<tr>
@@ -124,12 +133,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </td>
 					<td>
 						<input type="radio" name="has_checks" value="on">
-							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on'">
+							<xsl:if test="$account_meta[meta_key='has_checks']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes<br/>
 						<input type="radio" name="has_checks" value="off">
-							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on')">
+							<xsl:if test="not($account_meta[meta_key='has_checks']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No
@@ -141,12 +150,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="radio" name="takes_deposits" value="on">
-							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on'">
+							<xsl:if test="$account_meta[meta_key='has_checks']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes<br/>
 						<input type="radio" name="takes_deposits" value="off">
-							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='has_checks']/meta_value='on')">
+							<xsl:if test="not($account_meta[meta_key='has_checks']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No
@@ -158,12 +167,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="radio" name="accounts_receivable_account" value="on">
-							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='accounts_receivable_account']/meta_value='on'">
+							<xsl:if test="$account_meta[meta_key='accounts_receivable_account']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes<br/>
 						<input type="radio" name="accounts_receivable_account" value="off">
-							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='accounts_receivable_account']/meta_value='on')">
+							<xsl:if test="not($account_meta[meta_key='accounts_receivable_account']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No<br/>
@@ -175,13 +184,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="radio" name="cash_account" value="on">
-							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='cash_account']/meta_value='on'">
+							<xsl:if test="$account_meta[meta_key='cash_account']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes
             <br/>
 						<input type="radio" name="cash_account" value="off">
-							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='cash_account']/meta_value='on')">
+							<xsl:if test="not($account_meta[meta_key='cash_account']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No
@@ -193,13 +202,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="radio" name="account_closed" value="on">
-							<xsl:if test="/_R_/account_meta_get/account_meta_get[meta_key='account_closed']/meta_value='on'">
+							<xsl:if test="$account_meta[meta_key='account_closed']/meta_value='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>Yes
             <br/>
 						<input type="radio" name="account_closed" value="off">
-							<xsl:if test="not(/_R_/account_meta_get/account_meta_get[meta_key='account_closed']/meta_value='on')">
+							<xsl:if test="not($account_meta[meta_key='account_closed']/meta_value='on')">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>No
@@ -212,11 +221,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<select name="group_id">
 							<xsl:for-each select="//get_account_groups/get_account_groups">
-								<xsl:variable name="my_group_id">
-									<xsl:value-of select="id"/>
-								</xsl:variable>
+								<xsl:variable name="my_group_id" select="id"/>
 								<option value="{id}">
-									<xsl:if test="/_R_/account_get_by_id/account_get_by_id/group_id=id">
+									<xsl:if test="$this_account/group_id=id">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
 									<xsl:value-of select="name"/>
@@ -231,7 +238,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="checkbox" name="hide">
-							<xsl:if test="/_R_/account_get_by_id/account_get_by_id/hide='on'">
+							<xsl:if test="$this_account/hide='on'">
 								<xsl:attribute name="checked">checked</xsl:attribute>
 							</xsl:if>
 						</input>

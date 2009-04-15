@@ -29,6 +29,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 
+    <xsl:variable
+      name   = "this_account"
+      select = "/_R_/account_get_by_id/account_get_by_id"
+    />
+    <xsl:variable
+      name   = "account_meta"
+      select = "/_R_/account_meta_get/account_meta_get"
+    />
+
 		<!--
 		The form is validated via a javascript library included in the end
 		of main.xsl. Form input elements have attributes like required="1" if they
@@ -41,11 +50,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			Check if the user is creating a new account or editing and existing one,
 			and set appropriate parameter "my_action"
 			-->
-			<xsl:if test="/_R_/account_get_by_id/account_get_by_id/id">
+			<xsl:if test="$this_account/id">
 				<input type="hidden" name="my_action" value="update" />
 				<input type="hidden" value="{/_R_/_get/account_id}" name="account_id" />
 			</xsl:if>
-			<xsl:if test="not(/_R_/account_get_by_id/account_get_by_id/id)">
+			<xsl:if test="not($this_account/id)">
 				<input type="hidden" name="my_action" value="create"/>
 			</xsl:if>
 
@@ -67,7 +76,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</td>
 					<td>
 						<input type="text" name="name"
-							value="{//account_get_by_id/account_get_by_id/name|//_post/name}" required="1"
+							value="{$this_account/name|//_post/name}" required="1"
 							err="{//error[key='missing_account_name']/value}"/>
 					</td>
 				</tr>
@@ -86,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
 						<td>
 							<input type="text" name="{$my_option}"
-								value="{//account_meta_get/account_meta_get[meta_key=$my_option]/meta_value}"/>
+								value="{$account_meta[meta_key=$my_option]/meta_value}"/>
 						</td>
 					</tr>
 				</xsl:for-each>
