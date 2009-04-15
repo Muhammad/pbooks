@@ -31,10 +31,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="get_equation"
-			select="/_R_/get_equation/get_equation"/>
-		<xsl:variable name="get_transactions"
-			select="/_R_/get_all_transactions/get_all_transactions"/>
+		<xsl:variable
+      name   = "get_equation"
+			select = "/_R_/get_equation/get_equation"
+    />
+		<xsl:variable
+      name   = "get_transactions"
+			select = "/_R_/get_all_transactions/get_all_transactions"
+    />
 
 		<xsl:if test="not(/_R_/_get/nid='matching')">
 			<xsl:call-template name="jquery-setup">
@@ -155,8 +159,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									<xsl:when test="entry_id &gt; 0">
 										<xsl:value-of select="entry_amount"/>
 									</xsl:when>
-									<xsl:otherwise>
-									</xsl:otherwise>
+									<xsl:otherwise/>
 								</xsl:choose>
 							</td>
 

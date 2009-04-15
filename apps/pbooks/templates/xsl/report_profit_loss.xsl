@@ -36,11 +36,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<xsl:variable name="to_month" select="substring(/_R_/runtime/to_date,6,2)"/>
 
-		<xsl:variable name="get_all_entry_amounts"
-			select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+		<xsl:variable
+      name   = "get_all_entry_amounts"
+			select = "/_R_/get_all_entry_amounts/get_all_entry_amounts"
+    />
 
-		<xsl:variable name="get_all_accounts"
-			select="/_R_/get_all_accounts/get_all_accounts"/>
+		<xsl:variable
+      name   = "get_all_accounts"
+			select = "/_R_/get_all_accounts/get_all_accounts"
+    />
 		<!-- end variables -->
 
 

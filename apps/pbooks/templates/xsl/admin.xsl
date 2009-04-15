@@ -29,7 +29,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 		<p>
-			<xsl:value-of select="$i18n/configure"/>:</p>
+			<xsl:value-of select="$i18n/configure" />:
+    </p>
 		<h2 style="margin-top: 10px;">
 			<xsl:value-of select="$i18n/options"/>
 		</h2>

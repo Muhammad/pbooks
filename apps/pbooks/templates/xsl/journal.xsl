@@ -29,28 +29,31 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:variable name="get_all_entry_amounts"
-      select="/_R_/get_all_entry_amounts/get_all_entry_amounts"/>
+
+    <xsl:variable
+      name   = "get_all_entry_amounts"
+      select = "/_R_/get_all_entry_amounts/get_all_entry_amounts"
+    />
 
 		<!-- POST JOURNAL ENTRY TO LEDGER -->
     <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
         $.post("<xsl:value-of select="$link_prefix"/>ledger-create",
         {
-          'entry_id': entry_id,
-          'account_id': account_id,
-          'type': entry_type_id,
+          'entry_id':        entry_id,
+          'account_id':      account_id,
+          'type':            entry_type_id,
           'entry_amount_id': entry_amount_id,
           'account_type_id': account_type_id
         },
         function (data){
-          $(entry_amount_id).remove();
+          $("#"+entry_amount_id).remove();
         });
     }
 
     function journal_entry_location(entry_id) {
         location.href = "<xsl:value-of select="$link_prefix"/>journal-entry&amp;entry_id="+entry_id;
-      }
+    }
     </script>
 		<!-- buttons on the right hand side -->
     <div class="generic-button table_meta" style="float: right;">
@@ -72,11 +75,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <th>
               <xsl:value-of select="$i18n/date"/>
             </th>
-            <th></th>
+            <th />
             <th width="200">
               <xsl:value-of select="$i18n/memo"/>
             </th>
-            <th width="15"></th>
+            <th width="15" />
             <th>
               <xsl:value-of select="$i18n/accounts"/>
             </th>
@@ -89,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <th>
               <xsl:value-of select="$i18n/id"/>
             </th>
-            <th></th>
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -207,16 +210,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </xsl:for-each>
 					<!-- END OUTER LOOP -->
         </tbody>
-        <xsl:variable name="total_debits"
-					select="format-number(sum($get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"/>
-        <xsl:variable name="total_credits"
-					select="format-number(sum($get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"/>
+        <xsl:variable
+          name   = "total_debits"
+					select = "format-number(sum($get_all_entry_amounts[entry_type_id='Debit']/entry_amount),'#######.##')"
+        />
+        <xsl:variable
+          name   = "total_credits"
+					select = "format-number(sum($get_all_entry_amounts[entry_type_id='Credit']/entry_amount),'#######.##')"
+        />
 
 
 				<!--
 				This row shows the total of the credits and the debits, which should be equal.
-				If they are unequal, PBooks will complain to the user.
-				-->
+				If they are unequal, PBooks will complain to the user. -->
         <tr>
           <td colspan="5" align="right">
             <xsl:if test="not($total_credits=$total_debits)">
@@ -236,13 +242,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </table>
       <xsl:call-template name="previous_next"/>
 
-			<!-- only display the form controls for the journal,
-				not other pages which use this template -->
+			<!--
+      only display the form controls for the journal,
+      not other pages which use this template -->
       <xsl:if test="/_R_/_get/nid='journal'">
         <input type="button" id="new_entry_button" value="{$i18n/new_entry}"
           onclick="document.location.href='{$link_prefix}journal-new'"/>
-					<!-- Delete selected entries 
-    TODO - only display this function in training mode -->
+        <!--
+        Delete selected entries
+        TODO - only display this function in training mode -->
         <input type="submit" value="{$i18n/delete_entries}"
           onclick="return confirm('Are you sure you want to delete these entries?')"/>
       </xsl:if>

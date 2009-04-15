@@ -39,8 +39,10 @@ more than one debit or credit, there can only be one of the other type.
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:variable name="get_journal_entry"
-			select="/_R_/get_journal_entry/get_journal_entry"/>
+    <xsl:variable
+      name   = "get_journal_entry"
+      select = "/_R_/get_journal_entry/get_journal_entry"
+    />
 
     <xsl:call-template name="jquery-setup-simple"/>
     <script type="text/javascript">
@@ -117,8 +119,8 @@ more than one debit or credit, there can only be one of the other type.
 
 		<!-- Check to make sure entry_id exists -->
     <xsl:if test="$get_journal_entry">
-		<!-- The journal entry form -->
-		<xsl:comment>
+
+    <xsl:comment>
     start journal entry form table
 		</xsl:comment>
       <form name="myform" method="post" onSubmit="return validateStandard(this, 'error');"

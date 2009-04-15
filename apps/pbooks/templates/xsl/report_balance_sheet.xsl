@@ -31,6 +31,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       name   = "get_all_entry_amounts"
 			select = "/_R_/get_all_entry_amounts/get_all_entry_amounts"
     />
+
     <div class="tableframe">
 		<div style="text-align: center;">
 			<h2>
@@ -123,7 +124,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td align="right" class="journal-data">
 								<xsl:value-of select="$liability_value"/>
 							</td>
-							<td align="right"></td>
+							<td align="right"/>
 						</tr>
 					</xsl:if>
 				</xsl:for-each>
@@ -134,10 +135,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td align="right" class="journal-data">
 						<xsl:value-of select=" format-number( (sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) ),'#,###,###.##')"/>
 					</td>
-					<td align="right"></td>
+					<td align="right"/>
 				</tr>
 				<tr>
-					<td colspan="3"></td>
+					<td colspan="3"/>
 				</tr>
 				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='30000']">
 					<xsl:variable name="this_e_account_id" select="id"/>

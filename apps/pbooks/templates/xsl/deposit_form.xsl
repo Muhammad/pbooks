@@ -29,14 +29,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:param name="path_prefix"/>
   <xsl:param name="i18n"/>
 
-    <xsl:variable name="account_business_objects"
-      select="/_R_/account_business_objects/account_business_objects"/>
+    <xsl:variable
+      name   = "account_business_objects"
+      select = "/_R_/account_business_objects/account_business_objects"
+    />
 
-    <xsl:variable name="get_journal_entry"
-      select="/_R_/get_journal_entry/get_journal_entry"/>
+    <xsl:variable
+      name   = "get_journal_entry"
+      select = "/_R_/get_journal_entry/get_journal_entry"
+    />
 
-    <xsl:variable name="business_object_get_metadata"
-      select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
+    <xsl:variable
+      name   = "business_object_get_metadata"
+      select = "/_R_/business_object_get_metadata/business_object_get_metadata"
+    />
 
     <script type="text/javascript">
     function journal_entry_amount_delete(entry_amount_id) {
@@ -77,9 +83,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </option>
           <xsl:for-each select="$account_business_objects">
             <option value="{id}">
-              <xsl:if
-                test="id=$get_journal_entry/account_id">
-                  <xsl:attribute name="selected">selected</xsl:attribute>
+              <xsl:if test="id=$get_journal_entry/account_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
               </xsl:if>
               <xsl:value-of select="name"/>
             </option>
@@ -98,12 +103,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <div id="deposit_date">
           <xsl:value-of select="$i18n/date"/>:
           <input type="text" name="entry_datetime"
-          value="{$get_journal_entry/entry_date}"/>
+            value="{$get_journal_entry/entry_date}"
+          />
         </div>
         <div id="deposit_memo">
           <xsl:value-of select="$i18n/memo"/>:
           <input type="text" name="memorandum"
-          value="{$get_journal_entry/memorandum}"/>
+            value="{$get_journal_entry/memorandum}"
+          />
         </div>
         <div id="deposit_payee">
           <table border="0" id="deposit_form_table">
@@ -244,15 +251,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </xsl:for-each>
 
             <tr>
-              <td colspan="2"></td>
+              <td colspan="2" />
               <td>
                 <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                   <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
                   src="{$path_prefix}{/_R_/runtime/icon_set}add.png" border="0"/>
                 </a>
               </td>
-              <td></td>
-              <td></td>
+              <td colspan="2" />
             </tr>
           </table>
 

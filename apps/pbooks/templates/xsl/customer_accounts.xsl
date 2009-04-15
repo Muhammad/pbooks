@@ -31,14 +31,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
+    <xsl:variable
+      name   = "all_accounts"
+      select = "/_R_/get_all_accounts/get_all_accounts"
+    />
+
     <xsl:call-template name="jquery-setup-simple">
       <xsl:with-param name="my-table">accounts_table</xsl:with-param>
       <xsl:with-param name="no-sort-column">
         , headers: { 3: {sorter: false}, 4: {sorter: false} }
 			</xsl:with-param>
     </xsl:call-template>
-
-    <xsl:variable name="all_accounts" select="/_R_/get_all_accounts/get_all_accounts"/>
 
 		<!-- Confirm account deletion -->
     <script type="text/javascript">

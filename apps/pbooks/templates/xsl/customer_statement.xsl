@@ -56,7 +56,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </div>
 
     <strong>
-      <xsl:value-of select="$i18n/recent_invoices"/>:</strong>
+      <xsl:value-of select="$i18n/recent_invoices"/>:
+    </strong>
     <div id="tableframe">
 
       <table class="tablesorter" id="myInvoices">

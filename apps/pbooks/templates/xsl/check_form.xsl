@@ -27,8 +27,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:variable name="get_journal_entry"
-			select="/_R_/get_journal_entry/get_journal_entry"/>
+    <xsl:variable
+      name   = "get_journal_entry"
+			select = "/_R_/get_journal_entry/get_journal_entry"
+    />
 		<!--
 		This template references data from the business_object_get_metadata nodes
 		which stem from a generic query called business_object_get_metadata.xml.
@@ -88,7 +90,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:for-each select="/_R_/account_business_objects/account_business_objects">
               <xsl:variable name="my_account_id" select="account_id"/>
               <option value="{id}">
-                <xsl:if test="//get_journal_entry/get_journal_entry[account_id=$my_account_id]/entry_type_id='Credit'">
+                <xsl:if test="$get_journal_entry[account_id=$my_account_id]/entry_type_id='Credit'">
                   <xsl:attribute name="selected">selected</xsl:attribute>
                 </xsl:if>
                 <xsl:value-of select="name"/>
@@ -118,7 +120,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:variable name="my_account_id" select="id"/>
           <option value="{id}">
             <xsl:if
-							test="//get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id=$my_account_id">
+							test="$get_journal_entry[entry_type_id='Debit']/account_id=$my_account_id">
               <xsl:attribute name="selected">selected</xsl:attribute>
             </xsl:if>
             <xsl:value-of select="name"/>
@@ -126,8 +128,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
         <xsl:if
 					test="
-					not(//get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id=//get_all_accounts/get_all_accounts/id) and
-					not(//get_journal_entry/get_journal_entry/status=9)">
+					not($get_journal_entry[entry_type_id='Debit']/account_id=//get_all_accounts/get_all_accounts/id) and
+					not($get_journal_entry/status=9)">
           <option value="{/_R_/get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id}">
             <xsl:value-of select="$i18n/account_hidden"/>
           </option>

@@ -30,6 +30,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
+
+		<xsl:variable
+      name   = "all_accounts"
+			select = "/_R_/get_all_accounts/get_all_accounts"
+    />
+
 		<xsl:call-template name="jquery-setup-simple">
 			<xsl:with-param name="my-table">accounts_table</xsl:with-param>
 			<xsl:with-param name="no-sort-column">
@@ -50,8 +56,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
     }
 		</script>
-		<xsl:variable name="all_accounts"
-			select="/_R_/get_all_accounts/get_all_accounts"/>
 
 		<!-- buttons on the right hand side -->
 		<div class="generic-button" style="float: right;">
@@ -164,11 +168,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<xsl:if test="not(/_R_/_get/nid='account-balances')">
 							<xsl:for-each select="$all_accounts[account_type_id=/_R_/_get/account_type_id]">
 								<xsl:sort select="account_number"/>
-                  <xsl:call-template name="account-row">
-                    <xsl:with-param name="link_prefix" select="$link_prefix"/>
-                    <xsl:with-param name="i18n" select="$i18n"/>
-                  </xsl:call-template>
-							</xsl:for-each>
+                <xsl:call-template name="account-row">
+                  <xsl:with-param name="link_prefix" select="$link_prefix"/>
+                  <xsl:with-param name="i18n" select="$i18n"/>
+                </xsl:call-template>
+            </xsl:for-each>
 						</xsl:if>
 						<xsl:if test="/_R_/_get/nid='account-balances'">
 							<xsl:for-each select="$all_accounts">
