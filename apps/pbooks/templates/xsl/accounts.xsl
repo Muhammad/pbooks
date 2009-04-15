@@ -88,10 +88,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</option>
           <!-- Special Case -->
 					<xsl:for-each select="/_R_/account_types/account_type">
-						<option value="{account_type_id}">
-							<xsl:if test="account_type_id=/_R_/_get/account_type_id">
-								<xsl:attribute name="selected">selected</xsl:attribute>
-							</xsl:if>
+						<option value="{account_type_id}" id="at_{account_type_id}">
 							<xsl:value-of select="name"/>
 						</option>
 					</xsl:for-each>
@@ -194,14 +191,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:if>
 		</form>
 		<br/>
-		<!-- Display the text that explains when accounts can be deleted 
-		"An account can only be deleted when there are no journal transactions in that 
-		account. If you would like to hide the account, click edit and select the hide option."
-		-->
+		<!-- 
+    Display the text that explains when accounts can be deleted
+		"An account can only be deleted when there are no journal transactions in that
+		account. If you would like to hide the account, click edit and select the hide option." -->
 		<div class="table_meta">
     <xsl:value-of select="$i18n/account_deletion_requirement"/>
     </div>
-	</xsl:template>
+    <script type="text/javascript">
+      $("#at_"+<xsl:value-of select="/_R_/_get/account_type_id"/>).attr("selected","selected");
+    </script>
+  </xsl:template>
 
 	<!-- SEE FILE "account_row.xsl" for the actual table contents -->
 
