@@ -713,13 +713,8 @@ This makes it easier to maintain persistence. -->
 		<map:query src="data/sql/accounts_get_all.xml" />
 		<map:xsl src="templates/xsl/ledger_transaction_match.xsl" />
 	</map:gate>
-	<map:gate name="ledger-create" role="pb_admin">
+	<map:gate name="x-ledger-create" role="pb_admin">
 		<map:query src="data/sql/entry_get_one_by_id.xml"/>
-    <!--    TEST THIS LOGIC THOROUGHLY, AS OF DEC 2007 SEEMS OK
-            AGAIN STILL IN APRIL 2008 STILL OK
-            WOULD BE BEST TO WRITE TESTS TO ENSURE PROPER BEHAVIOR
-            FOR ALL PERMUTATIONS
-    -->
 		<map:if name="_post">
 			<map:true>
 				<map:switch name="//_post/type">
@@ -751,6 +746,7 @@ This makes it easier to maintain persistence. -->
 						</map:switch>
 					</map:default>
 				</map:switch>
+        <map:xsl src="templates/xml/ajax_response.xml.xsl" />
 			</map:true>
 		</map:if>
 		<map:query src="data/sql/entries_only_get_unposted.xml" />

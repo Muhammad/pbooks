@@ -42,7 +42,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         , headers: { 4: {sorter: false}, 5: {sorter: false} }
     </xsl:with-param>
 		</xsl:call-template>
-		<!-- PAGE CONTENT -->
 
 		<!-- Confirm account deletion -->
 		<script type="text/javascript">

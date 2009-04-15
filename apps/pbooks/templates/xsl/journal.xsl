@@ -38,7 +38,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- POST JOURNAL ENTRY TO LEDGER -->
     <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
-        $.post("<xsl:value-of select="$link_prefix"/>ledger-create",
+        $("#"+entry_amount_id).removeAttr("onclick");
+        $.post("<xsl:value-of select="$link_prefix"/>x-ledger-create",
         {
           'entry_id':        entry_id,
           'account_id':      account_id,
@@ -168,9 +169,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 									This make an AJAX request to post the entry to the ledger,
 									and then removes the plus sign
 									-->
-										<div id="{entry_amount_id}">
-											<a href="{$link_prefix}ledger-post&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}"
-												onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
+										<div id="{entry_amount_id}" onclick="post_entry({entry_id},{account_id},'{entry_type_id}',{entry_amount_id},{account_type_id}); return false;">
+											<a href="#ledger-create&amp;entry_id={entry_id}&amp;account_id={account_id}&amp;type={entry_type_id}&amp;entry_amount_id={entry_amount_id}&amp;account_type_id={account_type_id}">
 												<div class="journal-post-plus"
 													style="background-image: url({$path_prefix}{/_R_/runtime/icon_set}add.png);"/>
 											</a>
