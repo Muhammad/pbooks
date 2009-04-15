@@ -128,11 +128,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<td>
 						<select name="group_id">
 							<xsl:for-each select="//get_account_groups/get_account_groups">
-								<xsl:variable name="my_group_id" select="id"/>
-								<option value="{id}">
-									<xsl:if test="//account_get_by_id/account_get_by_id/group_id=id">
-										<xsl:attribute name="selected">selected</xsl:attribute>
-									</xsl:if>
+								<option value="{id}" id="g_{id}">
 									<xsl:value-of select="name"/>
 								</option>
 							</xsl:for-each>
@@ -158,5 +154,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					onclick="window.location.href='{$link_prefix}customer-accounts'"/>
 			</div>
 		</form>
+
+    <script type="text/javascript">
+      $("#g_"+<xsl:value-of select="//account_get_by_id/account_get_by_id/group_id"/>).attr("selected","selected");
+    </script>
 	</xsl:template>
 </xsl:stylesheet>

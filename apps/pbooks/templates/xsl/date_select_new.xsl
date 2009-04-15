@@ -34,10 +34,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div>
 			<span onclick="$('#date_controller').hide();">Hide</span>
 			<span onclick="$('#date_controller').show();">Show</span>
-			<span><xsl:value-of select="substring($my_from_date,0,11)"/> - 
-      <xsl:value-of select="substring(/_R_/runtime/to_date,0,11)"/></span>
+			<span>
+        <xsl:value-of select="substring($my_from_date,0,11)"/> - 
+        <xsl:value-of select="substring(/_R_/runtime/to_date,0,11)"/>
+      </span>
 		</div>
-		<div id="date_controller" style="width: 500px;">
+		<div id="date_controller">
 		<form method="get">
 			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 			<xsl:if test="/_R_/_get/account_id">

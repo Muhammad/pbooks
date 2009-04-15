@@ -297,6 +297,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
   padding:4px;
 }
 #date_controller {
+  width: 500px;
 	position: absolute;
 	z-index: 10;
 	background-color: white;
