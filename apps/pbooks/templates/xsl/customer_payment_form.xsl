@@ -35,16 +35,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:variable name="business_object_get_metadata"
 			select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
 
+
+    <script type="text/javascript" src="{$link_prefix}x-common-js"/>
 		<script type="text/javascript">
-		function journal_entry_amount_delete(entry_amount_id) {
-			$.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-amount-delete",
-			{
-				'entry_amount_id': entry_amount_id
-			},
-			function (data){
-        $("#ea_"+entry_amount_id).remove();
-			});
-		}
 		function journal_entry_amount_create(entry_type_id,entry_id,entry_date) {
 			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
 			{
@@ -139,7 +132,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   </select>
                 </td>
 								-->
-								<td></td>
+								<td />
 								<td>
                   <!-- Customer -->
 									<select name="revenue_account_id" required="1" exclude="-1" err="{$i18n/error_select_credit}">

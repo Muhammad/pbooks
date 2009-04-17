@@ -30,16 +30,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
 
 		<!-- Add / delete items -->
+    <script type="text/javascript" src="{$link_prefix}x-common-js"/>
     <script type="text/javascript">
-    function journal_entry_amount_delete(entry_amount_id) {
-      $.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-amount-delete",
-      {
-				'entry_amount_id': entry_amount_id
-      },
-      function (data){
-        $("#ea_"+entry_amount_id).remove();
-      });
-    }
     function journal_entry_amount_create(entry_type_id,entry_id) {
       var this_entry_date = $("#invoice_date").val();
       $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
