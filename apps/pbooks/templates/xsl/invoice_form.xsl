@@ -37,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				'entry_amount_id': entry_amount_id
       },
       function (data){
-        $("i_"+entry_amount_id).remove();
+        $("#ea_"+entry_amount_id).remove();
       });
     }
     function journal_entry_amount_create(entry_type_id,entry_id) {
@@ -192,7 +192,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <!-- INVOICE LINE ITEM ROWS -->
           <xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
             <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
-            <tr id="i_{entry_amount_id}">
+            <tr id="ea_{entry_amount_id}">
               <td>
                 <xsl:value-of select="entry_amount_id"/>
               </td>

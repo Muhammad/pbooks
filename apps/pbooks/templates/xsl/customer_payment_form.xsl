@@ -96,7 +96,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</tr>
 						<xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
 							<xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
-							<xsl:variable name="my_entry_id" select="entry_id"/>
 							<tr id="ea_{$my_entry_amount_id}">
 								<td>
 									<input type="text" name="entry_amount[]"
@@ -107,7 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<td>
 									<xsl:if test="position() &gt; 1">
 										<a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
-											onclick="journal_entry_amount_delete({entry_amount_id},this.parentNode.parentNode.rowIndex); return false;">
+											onclick="journal_entry_amount_delete({entry_amount_id}); return false;">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" />
 										</a>
 									</xsl:if>
@@ -145,7 +144,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <!-- Customer -->
 									<select name="revenue_account_id" required="1" exclude="-1" err="{$i18n/error_select_credit}">
 										<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
-											<option value="{id}">
+											<option value="{id}" id="ra_{id}">
 												<xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
 													<xsl:attribute name="selected">selected</xsl:attribute>
 												</xsl:if>
