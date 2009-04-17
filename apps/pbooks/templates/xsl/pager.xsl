@@ -95,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<img src="{/_R_/runtime/path_prefix}s/js/blue/prev.png" class="prev"/>
 					</td>
 					<td>
-						<input type="text" class="pagedisplay" size="6" readonly="readonly"/>
+						<input type="text" class="pagedisplay" size="3" readonly="readonly"/>
 					</td>
 					<td>
 						<img src="{/_R_/runtime/path_prefix}s/js/blue/next.png" class="next"/>

@@ -29,13 +29,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">myDups</xsl:with-param>
+      <xsl:with-param name="my-table">my_duplicates</xsl:with-param>
     </xsl:call-template>
 
-    <xsl:value-of select="$i18n/duplicates_info"/>
-    <br/>
-    <br/>
-    <table class="tablesorter" id="myDups">
+    <div class="tableframe">
+    <table class="tablesorter" id="my_duplicates">
       <thead>
         <tr>
           <th>
@@ -99,6 +97,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </xsl:for-each>
       </tbody>
     </table>
-    <xsl:call-template name="pager"/>
+    </div>
+    <div class="table_meta" style="padding-left:270px; bottom: 45px;right: 70px;">
+    <xsl:value-of select="$i18n/duplicates_info"/>
+    </div>
+		<div class="table_controls">
+    <xsl:call-template name="pager">
+      <xsl:with-param name="my-table">my_duplicates</xsl:with-param>
+    </xsl:call-template>
+		</div>
   </xsl:template>
 </xsl:stylesheet>
