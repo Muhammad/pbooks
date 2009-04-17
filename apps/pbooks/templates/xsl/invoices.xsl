@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">myInvoices</xsl:with-param>
+      <xsl:with-param name="my-table">my_invoices</xsl:with-param>
       <xsl:with-param name="no-sort-column">
         ,widthFixed: true, headers: { 6: {sorter: false} }
       </xsl:with-param>
@@ -61,7 +61,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </div>
 
     <div class="tableframe">
-      <table class="tablesorter" id="myInvoices">
+      <table class="tablesorter" id="my_invoices">
         <thead>
           <tr>
             <th>
@@ -94,15 +94,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tbody>
           <!-- LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-            <xsl:variable name="my_entry_id" select="entry_id"/>
             <xsl:variable name="my_customer_id" select="customer_id"/>
             <tr onmouseover="oldClass=this.className; this.className='active'"
               onmouseout="this.className=oldClass">
               <td>
                 <xsl:value-of select="entry_datetime"/>
               </td>
-              <td id="{$my_entry_id}">
-                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={$my_entry_id}">
+              <td id="{entry_id}">
+                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}">
                   <xsl:value-of select="invoice_number"/>
                 </a>
               </td>
@@ -112,7 +111,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </a>
               </td>
               <td>
-                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={$my_entry_id}">
+                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}">
                   <xsl:value-of select="substring(memorandum,0,12)"/>
                 </a>
               </td>
@@ -128,15 +127,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   Paid
                 </xsl:if>
                 <xsl:if test="not(paid_status='paid_in_full')">
-                <a onclick="invoice_paid({invoice_number},{$my_entry_id}); return false;"
-									href="{$link_prefix}invoice-paid&amp;invoice_number={invoice_number}&amp;invoice_entry_id={$my_entry_id}">
+                <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
+									href="#x-invoice-paid&amp;invoice_number={invoice_number}&amp;invoice_entry_id={entry_id}">
 								  Unpaid
                 </a>
                 </xsl:if>
 								</span>
               </td>
               <td>
-                <a href="{$link_prefix}invoice-print&amp;entry_id={$my_entry_id}&amp;invoice_entry_id={$my_entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
+                <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
                   <xsl:value-of select="$i18n/print"/>
                 </a>
               </td>
@@ -155,7 +154,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
 		<div class="table_controls">
     <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">myInvoices</xsl:with-param>
+      <xsl:with-param name="my-table">my_invoices</xsl:with-param>
     </xsl:call-template>
 		</div>
   </xsl:template>
