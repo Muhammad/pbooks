@@ -147,6 +147,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </xsl:variable>
 
 						<!--  INNER LOOP -->
+            <xsl:if test="not($get_all_entry_amounts[entry_id=$this_entry_id]/entry_amount='0.00')">
             <xsl:for-each select="$get_all_entry_amounts[entry_id=$this_entry_id]">
               <xsl:variable name="posi" select="position()"/>
               <tr class="row{$posa}">
@@ -203,6 +204,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
               </tr>
             </xsl:for-each>
+            </xsl:if>
 						<!-- END INNER LOOP -->
             <tr>
               <td colspan="9" class="separator" />
