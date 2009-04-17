@@ -33,6 +33,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- This calls a template from pager.xsl which loads the javascript -->
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">my_payments</xsl:with-param>
+      <xsl:with-param name="no-sort-column">
+        ,widthFixed: true
+      </xsl:with-param>
     </xsl:call-template>
 
     <div class="generic-button" style="float: right;">
@@ -65,7 +68,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <tbody>
 			<!-- START LOOP -->
 			<xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-				<xsl:variable name="my_entry_id" select="entry_id"/>
 				<xsl:variable name="my_customer_id" select="account_id"/>
 				<tr onmouseover="oldClass=this.className; this.className='active'"
 					onmouseout="this.className=oldClass">

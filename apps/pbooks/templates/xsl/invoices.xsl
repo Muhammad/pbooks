@@ -31,7 +31,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myInvoices</xsl:with-param>
-      <xsl:with-param name="no-sort-column">, headers: { 6: {sorter: false} }</xsl:with-param>
+      <xsl:with-param name="no-sort-column">
+        ,widthFixed: true, headers: { 6: {sorter: false} }
+      </xsl:with-param>
     </xsl:call-template>
 
 		<!-- INVOICE PAID -->

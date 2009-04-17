@@ -31,6 +31,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
     <xsl:call-template name="jquery-setup">
       <xsl:with-param name="my-table">myTransfers</xsl:with-param>
+      <xsl:with-param name="no-sort-column">
+        ,widthFixed: true
+      </xsl:with-param>
     </xsl:call-template>
     <div class="generic-button" style="float: right;">
       <a href="{$link_prefix}transfer-create" id="transfer-create">
@@ -68,7 +71,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tbody>
 				<!-- LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-            <xsl:variable name="my_entry_id" select="entry_id"/>
             <tr onmouseover="oldClass=this.className; this.className='active'"
               onmouseout="this.className=oldClass">
               <td>
