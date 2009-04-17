@@ -128,10 +128,14 @@ a.generic-button {
   border-color: #CCC;
 }
 
-#active, #error_match {
+#error_match {
   color: #FF6666;
   background: #AC2F1B;
 }
 
+.active td, .active td a{
+  color: #fff !important;
+  background-color: #AC2F1B !important;
+}
 </xsl:template>
 </xsl:stylesheet>

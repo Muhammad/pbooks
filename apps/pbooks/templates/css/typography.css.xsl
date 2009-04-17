@@ -95,5 +95,10 @@ a:hover {
   font-weight: bold;
 }
 
+.active td, .active td a{
+  color: #fff !important;
+  background-color: #AC2F1B !important;
+  font-weight: bold;
+}
 </xsl:template>
 </xsl:stylesheet>

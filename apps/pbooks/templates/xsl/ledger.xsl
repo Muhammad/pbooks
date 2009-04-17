@@ -221,8 +221,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
 
 		<!--
-			Show the accounting equation in no specific account is selected
-		-->
+    Show the accounting equation in no specific account is selected -->
 		<xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id)) and not(contains(/_R_/_get/nid,'match') )">
 			<div id="accounting_equation">
 			<table class="tablesorter">
