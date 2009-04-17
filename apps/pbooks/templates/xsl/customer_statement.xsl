@@ -37,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- INVOICE PAID -->
     <script type="text/javascript">
     function invoice_paid(invoice_number, entry_id) {
-        $.post("<xsl:value-of select="$link_prefix"/>x--invoice-paid",
+        $.post("<xsl:value-of select="$link_prefix"/>x-invoice-paid",
         {
           'invoice_number': invoice_number,
 					'entry_id': entry_id
