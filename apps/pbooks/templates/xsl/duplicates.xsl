@@ -65,7 +65,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <tbody>
         <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions|/_R_/get_all_entry_amounts/get_all_entry_amounts">
           <xsl:sort select="entry_datetime"/>
-          <xsl:variable name="this_entry_id" select="entry_id"/>
           <xsl:variable name="my_entry_datetime" select="entry_datetime"/>
 
 					<!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE -->
@@ -75,7 +74,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:if test=" (transaction_id and (entry_amount=/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount)) or (not(transaction_id) and (entry_amount=/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount)) ">
 					<!-- END MOST IMPORTANT PART -->
             <tr>
-              <td></td>
+              <td/>
               <td>
                 <a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
                   <xsl:value-of select="entry_datetime"/>

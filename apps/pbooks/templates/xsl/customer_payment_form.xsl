@@ -28,12 +28,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="account_business_objects"
-			select="/_R_/account_business_objects/account_business_objects"/>
-		<xsl:variable name="get_journal_entry"
-			select="/_R_/get_journal_entry/get_journal_entry"/>
-		<xsl:variable name="business_object_get_metadata"
-			select="/_R_/business_object_get_metadata/business_object_get_metadata"/>
+		<xsl:variable
+      name   = "account_business_objects"
+			select = "/_R_/account_business_objects/account_business_objects"
+    />
+		<xsl:variable
+      name   = "get_journal_entry"
+			select = "/_R_/get_journal_entry/get_journal_entry"
+    />
+		<xsl:variable
+      name   = "business_object_get_metadata"
+			select = "/_R_/business_object_get_metadata/business_object_get_metadata"
+    />
 
 
     <script type="text/javascript" src="{$link_prefix}x-common-js"/>

@@ -93,8 +93,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
       <!-- If there is only one deposit account, just use that id -->
       <xsl:if test="count($account_business_objects) = 1">
-          <input type="hidden" name="deposit_account_id"
-						value="{$account_business_objects/id}"/>
+        <input type="hidden" name="deposit_account_id"
+          value="{$account_business_objects/id}"/>
       </xsl:if>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
@@ -133,10 +133,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <!-- Here the check number is the equivalent of a journal entry memorandum -->
                 <td>
                   <input type="text" name="check_number[]" style="width: 40px;"
-                  value="{$get_journal_entry/entry_amount_memorandum}"/>
+                    value="{$get_journal_entry/entry_amount_memorandum}"/>
                 </td>
-                <td><input type="text" name="entry_amount[]" style="width: 60px;"
-                value="{$get_journal_entry/entry_amount}"/>
+                <td>
+                  <input type="text" name="entry_amount[]" style="width: 60px;"
+                    value="{$get_journal_entry/entry_amount}"/>
                 </td>
                 <td>
 								<!-- only one cash entry is allowed -->
