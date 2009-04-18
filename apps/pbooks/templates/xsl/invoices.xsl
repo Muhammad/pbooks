@@ -94,7 +94,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <tbody>
           <!-- LOOP -->
           <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-            <xsl:variable name="my_customer_id" select="customer_id"/>
             <tr onmouseover="oldClass=this.className; this.className='active'"
               onmouseout="this.className=oldClass">
               <td>
@@ -107,7 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
               <td>
                 <a href="#">
-                  <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
+                  <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=customer_id]/name,0,24)"/>
                 </a>
               </td>
               <td>
@@ -135,7 +134,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</span>
               </td>
               <td>
-                <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
+                <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}&amp;account_id={customer_id}&amp;print=true">
                   <xsl:value-of select="$i18n/print"/>
                 </a>
               </td>

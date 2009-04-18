@@ -29,12 +29,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
 
 		<!-- Set some variables -->
-		<xsl:variable name="monthnum"
-			select="number(substring(/_R_/runtime/to_date,6,2) - substring(/_R_/runtime/from_date,6,2) + 1)"/>
+		<xsl:variable
+      name   = "monthnum"
+			select = "number(substring(/_R_/runtime/to_date,6,2) - substring(/_R_/runtime/from_date,6,2) + 1)"
+    />
 
-		<xsl:variable name="from_month" select="substring(/_R_/runtime/from_date,6,2)"/>
+		<xsl:variable
+      name   = "from_month"
+      select = "substring(/_R_/runtime/from_date,6,2)"
+    />
 
-		<xsl:variable name="to_month" select="substring(/_R_/runtime/to_date,6,2)"/>
+		<xsl:variable
+      name   = "to_month"
+      select = "substring(/_R_/runtime/to_date,6,2)"
+    />
 
 		<xsl:variable
       name   = "get_all_entry_amounts"

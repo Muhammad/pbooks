@@ -28,7 +28,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="invoice_amounts" select="/_R_/invoices_get_amounts/invoices_get_amounts"/>
+		<xsl:variable
+      name   = "invoice_amounts"
+      select = "/_R_/invoices_get_amounts/invoices_get_amounts"
+    />
 		<div style="font-size: 14px; margin-top: {//runtime/default_invoice_print_vertical}px;">
 			<table border="0" style="float: right;">
 				<tbody>
@@ -158,7 +161,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tbody>
 				</table>
 			</div>
-			<center>Thank you for your business!</center>
+			<center><xsl:value-of select="$i18n/thank_you_for_biz"/></center>
 		</div>
 	</xsl:template>
 </xsl:stylesheet>
