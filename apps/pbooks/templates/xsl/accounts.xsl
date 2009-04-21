@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:call-template name="jquery-setup-simple">
 			<xsl:with-param name="my-table">accounts_table</xsl:with-param>
 			<xsl:with-param name="no-sort-column">
-        , headers: { 4: {sorter: false}, 5: {sorter: false} }
+        ,widthFixed: true, headers: { 4: {sorter: false}, 5: {sorter: false} }
     </xsl:with-param>
 		</xsl:call-template>
 
@@ -197,9 +197,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div class="table_meta">
     <xsl:value-of select="$i18n/account_deletion_requirement"/>
     </div>
+    <xsl:if test="/_R_/_get/account_type_id">
     <script type="text/javascript">
       $("#at_"+<xsl:value-of select="/_R_/_get/account_type_id"/>).attr("selected","selected");
     </script>
+    </xsl:if>
   </xsl:template>
 
 	<!-- SEE FILE "account_row.xsl" for the actual table contents -->
