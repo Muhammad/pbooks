@@ -29,7 +29,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<form method="post">
 				<table>
 					<xsl:for-each select="/_R_/user_options/option">
-						<xsl:call-template name="option_row"/>
+						<xsl:call-template name="option_row">
+              <xsl:with-param
+                name   = "option_get"
+                select = "/_R_/option_get/option_get"
+              />
+            </xsl:call-template>
 					</xsl:for-each>
 				</table>
 				<br/>
@@ -39,8 +44,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 	</xsl:template>
 	<xsl:template name="option_row">
+    <xsl:param name="option_get"/>
 		<xsl:variable name="my_option" select="option_key"/>
-		<xsl:variable name="option_get" select="/_R_/option_get/option_get"/>
 		<tr>
 			<td>
 				<xsl:value-of select="title"/>:

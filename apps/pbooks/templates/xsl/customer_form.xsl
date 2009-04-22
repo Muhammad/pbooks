@@ -41,15 +41,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!--
 		The form is validated via a javascript library included in the end
 		of main.xsl. Form input elements have attributes like required="1" if they
-		are to be validated.
-		-->
+		are to be validated. -->
 		<form method="post"
 			onSubmit="return validateStandard(this, 'myerror');">
 
 			<!--
 			Check if the user is creating a new account or editing and existing one,
-			and set appropriate parameter "my_action"
-			-->
+			and set appropriate parameter "my_action" -->
 			<xsl:if test="$this_account/id">
 				<input type="hidden" name="my_action" value="update" />
 				<input type="hidden" value="{/_R_/_get/account_id}" name="account_id" />
@@ -86,6 +84,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<input type="hidden" name="takes_deposits"              value="off" />
 				<input type="hidden" name="accounts_receivable_account" value="on"  />
 				<input type="hidden" name="cash_account"                value="off" />
+
 				<!-- Follow a similar pattern as company options -->
 				<xsl:for-each select="//meta/meta_key[@category='address']">
 					<xsl:variable name="my_option" select="."/>
