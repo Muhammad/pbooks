@@ -129,7 +129,6 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> `<xsl:value-of select=
   `note_id` <xsl:value-of select="//dbe/engine_auto_increment"/>,
   `user_id` <xsl:value-of select="//dbe/integer"/>,
   `note_datetime` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `note_unixtime`  <xsl:value-of select="//dbe/integer"/>,
   `note` varchar(255) default NULL,
   PRIMARY KEY  (`note_id`)
 ) <xsl:value-of select="//dbe/myisam_engine"/>;
