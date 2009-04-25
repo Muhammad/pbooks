@@ -32,7 +32,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
       name   = "invoice_amounts"
       select = "/_R_/invoices_get_amounts/invoices_get_amounts"
     />
-		<div style="font-size: 14px; margin-top: {//runtime/default_invoice_print_vertical}px;">
+		<xsl:variable
+      name   = "business_objects"
+      select = "/_R_/get_some_business_objects/get_some_business_objects"
+    />
+		<xsl:variable
+      name   = "account_meta"
+      select = "/_R_/account_meta_get/account_meta_get"
+    />
+		<xsl:variable
+      name   = "option_get"
+      select = "/_R_/option_get/option_get"
+    />
+		<div style="font-size: 14px; margin-top: {/_R_/runtime/default_invoice_print_vertical}px;">
 			<table border="0" style="float: right;">
 				<tbody>
 					<tr>
@@ -48,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:value-of select="$i18n/invoice_number"/>:
 						</td>
 						<td colspan="8">
-							<xsl:value-of select="//get_some_business_objects/get_some_business_objects/invoice_number"/>
+							<xsl:value-of select="$business_objects/invoice_number"/>
 						</td>
 					</tr>
 					<tr>
@@ -56,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:value-of select="$i18n/due_date"/>:
 						</td>
 						<td colspan="8">
-							<xsl:value-of select="//get_some_business_objects/get_some_business_objects/due_date"/>
+							<xsl:value-of select="$business_objects/due_date"/>
 						</td>
 					</tr>
 				</tbody>
@@ -66,50 +78,48 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody>
 					<tr>
 						<td>
-							<xsl:value-of select="//company_name"/>
+							<xsl:value-of select="/_R_/runtime/company_name"/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<xsl:value-of select="//option_get/company_address_1"/>
+							<xsl:value-of select="$option_get/company_address_1"/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<xsl:value-of select="//option_get/company_city"/>, 
-              <xsl:value-of select="//option_get/company_state"/>&#160;
-              <xsl:value-of select="//option_get/company_zip"/>
+							<xsl:value-of select="$option_get/company_city"/>, 
+              <xsl:value-of select="$option_get/company_state"/>&#160;
+              <xsl:value-of select="$option_get/company_zip"/>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<xsl:variable name="my_client_id"
-        select="/_R_/business_object_get_metadata/business_object_get_metadata[meta_key='client_id']/meta_value"/>
 			<table border="0" id="client-address" style="margin-top: 100px; margin-bottom:40px;">
 				<tbody>
 					<tr>
 						<td>
-							<xsl:value-of select="//get_all_accounts/get_all_accounts[id=/_R_/_get/account_id]/name"/>
+							<xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=/_R_/_get/account_id]/name"/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<xsl:value-of select="//account_meta_get/account_meta_get[meta_key='address_1']/meta_value"/>
+							<xsl:value-of select="$account_meta[meta_key='address_1']/meta_value"/>
 						</td>
 					</tr>
-					<xsl:if test="not(//account_meta_get/account_meta_get[meta_key='address_2']/meta_value='')">
+					<xsl:if test="not($account_meta[meta_key='address_2']/meta_value='')">
 						<tr>
 							<td>
-								<xsl:value-of select="//account_meta_get/account_meta_get[meta_key='address_2']/meta_value"/>
+								<xsl:value-of select="$account_meta[meta_key='address_2']/meta_value"/>
 							</td>
 						</tr>
 					</xsl:if>
 					<tr>
 						<td>
-							<xsl:value-of select="//account_meta_get/account_meta_get[meta_key='city']/meta_value"/>, 
-              <xsl:value-of select="//account_meta_get/account_meta_get[meta_key='state']/meta_value"/>&#160;
-              <xsl:value-of select="//account_meta_get/account_meta_get[meta_key='zip']/meta_value"/>
+							<xsl:value-of select="$account_meta[meta_key='city']/meta_value"/>, 
+              <xsl:value-of select="$account_meta[meta_key='state']/meta_value"/>&#160;
+              <xsl:value-of select="$account_meta[meta_key='zip']/meta_value"/>
 						</td>
 					</tr>
 				</tbody>
@@ -120,7 +130,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<tr>
 							<th colspan="2">
 								<xsl:value-of select="$i18n/billable_items"/>:
-            </th>
+              </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -134,7 +144,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</tr>
 
 						<!-- INVOICE LINE ITEM ROWS -->
-						<xsl:for-each select="//get_journal_entry/get_journal_entry[entry_type_id='Credit']">
+						<xsl:for-each select="/_R_/get_journal_entry/get_journal_entry[entry_type_id='Credit']">
 							<xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
 							<tr>
 								<td>

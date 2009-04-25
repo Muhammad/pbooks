@@ -70,7 +70,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <xsl:value-of select="note"/>
             </td>
             <td>
-              <xsl:value-of select="note_datetime"/>
+              <span class="reldate"><xsl:value-of select="note_rfc_time"/>
+              </span>
             </td>
             <td>
               <a href="{$link_prefix}x-note-delete&amp;note_id={note_id}"

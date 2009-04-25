@@ -44,6 +44,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"/>
+			<script type="text/javascript" src="{$path_prefix}s/js/time/relative_time.js"/>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jsval.js"/>
@@ -52,6 +53,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:sort select="priority" order="ascending"/>
 				<xsl:apply-templates select="nodes/*"/>
 			</xsl:for-each>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          var mytime = "";
+          var rltime = "";
+          $(".reldate").each(function () {
+            mytime = new Date($(this).text() + "(UTC)");
+            rltime = relativeDate(mytime);
+            $(this).attr("title",mytime);
+            $(this).text(rltime);
+          });
+        });
+      </script>
 		</head>
 	</xsl:template>
 </xsl:stylesheet>
