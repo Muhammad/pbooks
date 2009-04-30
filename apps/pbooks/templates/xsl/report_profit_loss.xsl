@@ -61,7 +61,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:value-of select="//runtime/company_name"/>
 			</h2>
 		</div>
-		<table class="data-table" width="100%" align="center">
+		<table class="matrix-table" width="100%" align="center">
 			<tr>
 				<td align="center">
 					<xsl:value-of select="$i18n/income_statement"/>&#160;

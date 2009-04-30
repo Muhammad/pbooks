@@ -36,12 +36,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:call-template name="interactive"/>
 <xsl:call-template name="colors"/>
 
-<xsl:if test="//path_prefix='/demo/'">
-.webads iframe {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-</xsl:if>
+
 
 <xsl:call-template name="thematic-button">
   <xsl:with-param name="button-name">basic-blue</xsl:with-param>
@@ -62,10 +57,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 
-.journal-table tbody tr td.separator {
-  height: 4px;
+.separator {
+  height: 4px !important;
   background-color: #BBBBBB;
-  border-color: #555555;
+  border-color: #555555 !important;
   border-bottom-width: 1px;
 }
 
@@ -79,13 +74,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
   padding: 2px;
 }
 
-
-
-.data-table td {
-  border-bottom-width: 1px;
-  border-bottom-color: white;
-	border-bottom-style: solid;
-}
 
 .sm_indent {
   padding-left: 15px;

@@ -982,7 +982,8 @@ files. -->
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:raw src="INSTALL" />
 	</map:gate>
-	<map:gate name="x-dynamic-css" cache="0" nosession="true" content_type="text/css" cache_control="public, max-age=0, must-revalidate">
+	<map:gate name="x-dynamic-css" cache="0" nosession="true"
+  content_type="text/css" cache_control="public, max-age=0, must-revalidate">
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:xsl src="templates/css/dynamic.css.xsl"/>
 	</map:gate>
@@ -1013,8 +1014,8 @@ files. -->
 			<map:false>
 			</map:false>
 		</map:if>
-		<map:set name="engine" value="mysql"/>
-		<map:xml src="data/model/db_engines.mysql.xml"/>
+		<map:set name="engine" value="sqlite"/>
+		<map:xml src="data/model/db_engines.sqlite.xml"/>
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xsl src="data/model/pbooks_data_model.sql.xsl"/>
 	</map:gate>
