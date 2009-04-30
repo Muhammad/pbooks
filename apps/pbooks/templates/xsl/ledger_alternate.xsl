@@ -22,7 +22,9 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:math="http://exslt.org/math"
+	extension-element-prefixes="math">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
@@ -37,7 +39,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       name   = "get_transactions"
 			select = "/_R_/get_all_transactions/get_all_transactions"
     />
-
 		<xsl:if test="not(/_R_/_get/nid='matching')">
 			<xsl:call-template name="jquery-setup">
 				<xsl:with-param name="my-table">my_ledger</xsl:with-param>
@@ -53,6 +54,39 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:if test="/_R_/_get/nid='matching'">
 			<xsl:call-template name="jquery-setup"/>
 		</xsl:if>
+    <script type="text/javascript">
+    function fixup_rows () {
+      // Has this already been done?
+			if($(".lrow:first td:nth-child(1) a").attr("href")=="#") {
+
+        $(".lrow").attr("onmouseover","oldClass=this.className; this.className='active'").attr("onmouseout","this.className=oldClass");
+        $(".c1").attr("href", function () {
+            return "<xsl:value-of select="$link_prefix"/>journal&amp;from_date="+$(this).text();
+          }
+        );
+        $(".c2").attr("href", function () {
+            return "<xsl:value-of select="$link_prefix"/>journal-entry&amp;entry_id="+$(this).text();
+          }
+        );
+        $(".c3").attr("href", function () {
+            return "<xsl:value-of select="$link_prefix"/>journal-entry&amp;entry_id="+$(this).parent().prev().children().text();
+          }
+        );
+        $(".c4").attr("href", function () {
+            return "<xsl:value-of select="$link_prefix"/>ledger&amp;account_id="+$(this).attr("href");
+          }
+        );
+
+      }
+    }
+
+    $(document).ready(function() {
+      fixup_rows();
+      $(".header").bind("mouseleave", function(e) { fixup_rows(); });
+      $(".prev,.next").bind("click", function(e) { fixup_rows(); });
+    
+    });
+    </script>
 		<div class="tableframe">
 			<xsl:if test="not(/_R_/_get/nid='matching')">
 			</xsl:if>
@@ -93,14 +127,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<tbody>
 					<xsl:for-each select="$get_transactions">
 						<xsl:if test="((not(//_get/account_id) or /_R_/_get/account_id='%')  and not(entry_amount=0.00)) or (not(/_R_/_get/account_id='%') and /_R_/_get/account_id)">
-						<tr onmouseover="oldClass=this.className; this.className='active'"
-							onmouseout="this.className=oldClass">
+						<tr class="lrow">
               <!-- This cell will be used for a star or flag with notations -->
               <!--<td>FPO</td>-->
 							<td>
 								<xsl:choose>
 									<xsl:when test="entry_id &gt; 0">
-										<a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
+										<a href="#" class="c1">
 											<xsl:value-of select="entry_datetime"/>
 										</a>
 									</xsl:when>
@@ -112,7 +145,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td>
 								<xsl:choose>
 									<xsl:when test="entry_id &gt; 1">
-										<a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
+										<a href="#" class="c2">
 											<xsl:value-of select="entry_id"/>
 										</a>
 									</xsl:when>
@@ -131,10 +164,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</xsl:choose>
 							</td>
 
-							<td nowrap="nowrap">
+							<td>
 								<xsl:choose>
 									<xsl:when test="entry_id &gt; 0">
-										<a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
+										<a href="#" class="c3">
 											<xsl:value-of select="substring(memorandum,0,42)"/>
 										</a>
 									</xsl:when>
@@ -145,8 +178,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 
 							<xsl:if test="/_R_/_get/account_id='%' or not(/_R_/_get/account_id)">
-								<td nowrap="nowrap">
-									<a href="{$link_prefix}ledger&amp;account_id={account_id}">
+								<td>
+									<a class="c4" href="{account_id}">
 										<xsl:value-of select="substring(name,0,20)"/>
 									</a>
 								</td>
