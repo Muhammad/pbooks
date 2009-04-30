@@ -22,36 +22,23 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <dbe>
-  <engine_default_timestamp>
-    NULL
-  </engine_default_timestamp>
+  <engine_default_timestamp>NULL</engine_default_timestamp>
 
-  <engine_auto_increment>
-     INTEGER PRIMARY KEY
-  </engine_auto_increment>
+  <engine_auto_increment>INTEGER PRIMARY KEY</engine_auto_increment>
 
-  <engine_increment_start>
-      
-  </engine_increment_start>
+  <engine_increment_start></engine_increment_start>
 
-  <engine_auto_increment_b>
-    
-  </engine_auto_increment_b>
+  <engine_auto_increment_b></engine_auto_increment_b>
 
-  <innodb_engine>
-    
-  </innodb_engine>
+  <innodb_engine></innodb_engine>
 
-  <myisam_engine>
-    
-  </myisam_engine>
+  <myisam_engine></myisam_engine>
 
-  <if_not_exists>
-    
-  </if_not_exists>
+  <if_not_exists></if_not_exists>
 
-  <integer>
-    int(10)
-  </integer>
+  <integer>int(10)</integer>
+
+  <varchar>text</varchar>
+
 
 </dbe>
