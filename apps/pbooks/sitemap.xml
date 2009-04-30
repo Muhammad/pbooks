@@ -1026,11 +1026,7 @@ files. -->
 	</map:gate>
 
 
-	<map:gate name="xml-sitemap">
-		<map:xml src="sitemap.xml"/>
-		<map:xsl src="templates/xml/sitemap.xml.xsl"/>
-	</map:gate>
-	<map:gate name="x--sitetest" content_type="text/plain; charset=utf-8" cache="0">
+	<map:gate name="x-sitetest" content_type="text/plain; charset=utf-8" cache="0">
 		<map:action type="header" params="Content-type,text/plain; charset=utf-8"/>
 		<map:xml src="sitemap.xml"/>
 		<map:xsl src="templates/txt/sitetest.txt.xsl"/>
