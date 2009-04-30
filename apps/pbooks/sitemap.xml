@@ -1013,8 +1013,8 @@ files. -->
 			<map:false>
 			</map:false>
 		</map:if>
-		<map:set name="engine" value="sqlite"/>
-		<map:xml src="data/model/db_engines.sqlite.xml"/>
+		<map:set name="engine" value="mysql"/>
+		<map:xml src="data/model/db_engines.mysql.xml"/>
 		<map:action type="header" params="Content-type,text/plain"/>
 		<map:xsl src="data/model/pbooks_data_model.sql.xsl"/>
 	</map:gate>
