@@ -4,6 +4,9 @@ and overlapping information will override settings in the main configuration fil
   <defaults>
     <default_selected_lang>en_US</default_selected_lang>
     <default_currency_unit>$</default_currency_unit>
+    <!-- Pound
+    <default_currency_unit>&#163;</default_currency_unit>
+    -->
     <default_fiscal_start>01-01</default_fiscal_start>
     <default_theme>default</default_theme>
     <payment_account_id>1068</payment_account_id>
