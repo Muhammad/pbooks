@@ -35,15 +35,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</xsl:apply-templates>
 <xsl:text>$(document).ready(function() {
   $("#nofooter").replaceWith(html2dom_root_1);
-});</xsl:text>
+});
+
+
+</xsl:text>
 
 <xsl:if test="//date_selector">
+<xsl:text>var html2dom_date_selector_1 = document.createElement("div");
+</xsl:text>
 <xsl:apply-templates select="//date_selector/*">
-		<xsl:with-param name="myparent">html2dom_root</xsl:with-param>
+		<xsl:with-param name="myparent">html2dom_date_selector</xsl:with-param>
 		<xsl:with-param name="id" select="position()"/>
 	</xsl:apply-templates>
 <xsl:text>$(document).ready(function() {
-  $("#date_selector").replaceWith(html2dom_root_1);
+  $("#nodate").replaceWith(html2dom_date_selector_1);
 });</xsl:text>
 </xsl:if>
 
