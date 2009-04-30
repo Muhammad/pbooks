@@ -61,21 +61,14 @@ table.tablesorter {
 	text-indent: .5em;
 	white-space: nowrap;
 }
-.menu-sub:hover, .menu-sub a:hover {
-  text-decoration: underline;
-  color: #700000;
-}
+
 
 .journal-data-wrap td {
 	white-space: normal;
   font-size: 11px;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:visited {
+a, a:visited {
   text-decoration: none;
 }
 
@@ -96,8 +89,6 @@ a:hover {
 }
 
 .active td, .active td a{
-  color: #fff !important;
-  background-color: #AC2F1B !important;
   font-weight: bold;
 }
 </xsl:template>
