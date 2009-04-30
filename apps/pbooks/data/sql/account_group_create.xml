@@ -29,6 +29,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_post/description" type="text"/>
 	</params>
 	<sql>
-		INSERT INTO &pb_account_groups; (name, description) VALUES (?,?)
+  INSERT INTO &pb_account_groups; (name, description) VALUES (?,?)
 	</sql>
 </query>
