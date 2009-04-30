@@ -39,6 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
         $("#"+entry_amount_id).removeAttr("onclick");
+        $("#"+entry_amount_id).fadeTo("slow", 0.33);
         $.post("<xsl:value-of select="$link_prefix"/>x-ledger-create",
         {
           'entry_id':        entry_id,
@@ -112,7 +113,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="entry_datetime"/>
               </td>
 
-              <td class="journal-data" />
+              <td />
               <td valign="top" class="journal-data" colspan="5" width="100%">
                 <a href="{$link_prefix}journal-entry&amp;entry_id={entry_id}">
                   <xsl:value-of select="substring(memorandum,0,60)"/>
@@ -151,7 +152,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:for-each select="$get_all_entry_amounts[entry_id=$this_entry_id]">
               <xsl:variable name="posi" select="position()"/>
               <tr class="row{$posa}">
-                <td colspan="3" class="row{$posa}"></td>
+                <td colspan="3" class="journal-fill{$posa}" />
 
 								<!-- 
      These table cells contain the account name and amount for each 
@@ -179,28 +180,28 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</xsl:if>
                 </td>
                 <xsl:if test="entry_type_id='Credit'">
-                  <td class="journal-data" align="right">
+                  <td align="right">
                     <a href="{$link_prefix}ledger&amp;account_id={account_id}">
                       <xsl:value-of select="name"/>
                     </a>
                   </td>
-                  <td class="journal-data" />
-                  <td class="journal-data" style="color: {$my_color};">
+                  <td />
+                  <td style="color: {$my_color};">
                     <xsl:value-of select="entry_amount"/>
                   </td>
                 </xsl:if>
                 <xsl:if test="entry_type_id='Debit'">
-                  <td class="journal-data">
+                  <td>
                     <a href="{$link_prefix}ledger&amp;account_id={account_id}">
                       <xsl:value-of select="name"/>
                     </a>
                   </td>
-                  <td class="journal-data" style="color: {$my_color};">
+                  <td style="color: {$my_color};">
                     <xsl:value-of select="entry_amount"/>
                   </td>
-                  <td class="journal-data" />
+                  <td />
                 </xsl:if>
-								<td class="journal-data" colspan="2" />
+								<td colspan="2" />
 
               </tr>
             </xsl:for-each>
@@ -233,13 +234,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </div>
             </xsl:if>
           </td>
-          <td class="journal-data">
+          <td>
             <xsl:value-of select="$total_debits"/>
           </td>
-          <td class="journal-data">
+          <td>
             <xsl:value-of select="$total_credits"/>
           </td>
-					<td class="journal-data" colspan="2" />
+					<td colspan="2" />
         </tr>
       </table>
       <xsl:call-template name="previous_next"/>

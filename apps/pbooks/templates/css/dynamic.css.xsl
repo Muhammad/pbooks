@@ -26,13 +26,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:include href="colors.css.xsl"/>
 <xsl:include href="layout.css.xsl"/>
 <xsl:include href="typography.css.xsl"/>
-<xsl:include href="interactive.css.xsl"/>
 <xsl:strip-space elements="*"/>
 <xsl:template match="/">
 
 <xsl:call-template name="typography"/>
 <xsl:call-template name="layout"/>
-<xsl:call-template name="interactive"/>
 <xsl:call-template name="colors"/>
 
 
@@ -54,7 +52,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 </xsl:call-template>
 
 
-
+.faded {
+  filter:alpha(opacity=25);
+  -moz-opacity:.25;
+  opacity:.25;
+}
 
 .separator {
   height: 4px !important;

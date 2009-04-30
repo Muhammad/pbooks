@@ -23,10 +23,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="layout">
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
-  margin: 0;
-  padding: 0;
-}
+
 
 #main {
   width: 100%;
@@ -68,7 +65,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
   display: block;
   font-size: 0;
   height: 0;
-  line-height: 0.0;
+  line-height: 0;
   overflow:hidden;
   visibility: hidden;
 }
@@ -137,6 +134,7 @@ a.generic-button {
 
 .menu-sub, .menu-sub-selected {
   padding: 5px;
+  cursor: pointer;
 }
 
 

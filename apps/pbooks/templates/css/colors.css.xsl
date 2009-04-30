@@ -48,8 +48,9 @@ body {
 #company-name {
   color: #FFC508;
 }
+
 .page-title {
-  color: #FFC508; /* #D6B28D; */
+  color: #FFC508;
 }
 
 .reconciled {
@@ -81,12 +82,12 @@ body {
 	background-color: #CCC;
 }
 
-.journal-table tbody tr td.row0 {
-	border-color: #FFFFFF;
+.journal-fill0 {
+	border-color: #FFF !important;
 }
 
-.journal-table tbody tr td.row1 {
-	border-color: #EEEEEE;
+.journal-fill1 {
+	border-color: #eee !important;
 }
 
 .menu-sub-selected {

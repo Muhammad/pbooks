@@ -77,10 +77,6 @@ a:hover {
 }
 
 .journal-table {
-  border: 0;
-  width: 100%;
-  padding: 2px;
-  border-spacing: 0px;
   font-size: 11px;
 }
 
@@ -88,8 +84,5 @@ a:hover {
   font-weight: bold;
 }
 
-.active td, .active td a{
-  font-weight: bold;
-}
 </xsl:template>
 </xsl:stylesheet>
