@@ -983,7 +983,7 @@ files. -->
 		<map:raw src="INSTALL" />
 	</map:gate>
 	<map:gate name="x-dynamic-css" cache="0" nosession="true"
-  content_type="text/css" cache_control="public, max-age=0, must-revalidate">
+    content_type="text/css; charset=utf-8" cache_control="public, max-age=0, must-revalidate">
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:xsl src="templates/css/dynamic.css.xsl"/>
 	</map:gate>
