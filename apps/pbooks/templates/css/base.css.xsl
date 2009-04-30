@@ -24,45 +24,5 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:template name="base">
 
-
-ul,ol {
-  list-style:none;
-}
-
-h1, h2, h3, h4, h5, h6, pre, code {
-  font-size: 1em;
-}
-
-img {
-  border: 0;
-}
-
-a {
-  outline: none;
-}
-
-table
-{
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-
-td
-{
-  text-align: left;
-  font-weight: normal;
-}
-
-input.text
-{
-  padding: 2px;
-  border: 1px solid #999999;
-}
-
-input.textarea
-{
-  padding: 2px;
-  border: 1px solid #999999;
-}
 </xsl:template>
 </xsl:stylesheet>

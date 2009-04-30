@@ -23,14 +23,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
-<xsl:include href="base.css.xsl"/>
 <xsl:include href="colors.css.xsl"/>
 <xsl:include href="layout.css.xsl"/>
 <xsl:include href="typography.css.xsl"/>
 <xsl:include href="interactive.css.xsl"/>
 <xsl:template match="/">
 
-<xsl:call-template name="base"/>
 <xsl:call-template name="typography"/>
 <xsl:call-template name="layout"/>
 <xsl:call-template name="interactive"/>

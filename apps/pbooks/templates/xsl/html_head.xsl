@@ -31,6 +31,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:value-of select="/_R_/i18n/default_page_title"/>: 
         <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
 			</title>
+      <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
 			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"/>
