@@ -22,12 +22,6 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <months>
-  <labels>
-    <label>
-      <key>month</key>
-      <value>Month</value>
-    </label>
-  </labels>
   <option fullname="January" shortname="Jan" id="01"/>
   <option fullname="February" shortname="Feb" id="02"/>
   <option fullname="March" shortname="Mar" id="03"/>
