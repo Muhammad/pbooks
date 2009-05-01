@@ -1,6 +1,15 @@
 $(document).ready(function() {
 
-  $($.date_input.initialize);
+  $('#accordion-menu').accordion({
+      active: false,
+      header: '.head',
+      navigation: true,
+      autoheight: false
+  });
+
+  $("#nofooter").replaceWith(html2dom_root_);
+  $("#nodate").replaceWith(html2dom_date_selector_);
+
   $.extend(DateInput.DEFAULT_OPTS, {
     stringToDate: function(string) {
       var matches;
@@ -30,3 +39,11 @@ $(document).ready(function() {
   });
 
 });
+
+function init_date_input() {
+
+  $("#dc27").addClass("date_input");
+  $("#dc28").addClass("date_input");
+  $($.date_input.initialize);
+
+}

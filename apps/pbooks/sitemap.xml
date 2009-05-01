@@ -990,13 +990,12 @@ files. -->
 	<map:gate name="x-xhtml2dom-js" cache="0" nosession="true"
     content_type="application/javascript; charset=utf-8" cache_control="public, max-age=30, must-revalidate">
 		<map:xml src="templates/xhtml/footer.xhtml"/>
-    <!--
     <map:action type="xsl" params="templates/xml/date_select.xml.xsl,date_selector"/>
     <map:action type="rawxml" params="date_selector"/>
--->
     <map:xsl src="templates/js/xhtml2dom.js.xsl"/>
 	</map:gate>
-	<map:gate name="x-common-js" cache="0" nosession="true" content_type="application/javascript; charset=utf-8" cache_control="public, max-age=30, must-revalidate">
+	<map:gate name="x-common-js" cache="0" nosession="true"
+  content_type="application/javascript; charset=utf-8" cache_control="public, max-age=30, must-revalidate">
     <map:xsl src="templates/js/common_js_functions.js.xsl"/>
 	</map:gate>
 	<map:gate name="x-date-select-xml" cache="0" nosession="true"

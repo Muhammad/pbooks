@@ -57,12 +57,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:call-template>
 				<div id="content">
 					<div id="notitle"/>
-          <div id="nodate"/>
-					<xsl:call-template name="date_select_new">
-						<xsl:with-param name="link_prefix" select="$link_prefix"/>
-						<xsl:with-param name="path_prefix" select="$path_prefix"/>
-						<xsl:with-param name="i18n" select="$i18n"/>
-					</xsl:call-template>
+          <div id="date_controls">
+            <span id="dc1" onclick="$('#date_controller').hide();">Hide</span>
+            <span id="dc2" onclick="$('#date_controller').show();
+            $('input[name=nid]').val('{/_R_/_get/nid}');
+            $('#dc25').attr('href','{$link_prefix}{/_R_/_get/nid}'+$('#dc25').attr('href'));
+            $('#dc29').attr('href','{$link_prefix}{/_R_/_get/nid}'+$('#dc29').attr('href'));
+            init_date_input();">Show</span>
+            <span id="dc3">
+              <xsl:value-of select="substring(/_R_/runtime/from_date,0,11)"/> - 
+              <xsl:value-of select="substring(/_R_/runtime/to_date,0,11)"/>
+            </span>
+            <div id="nodate"/>
+          </div>
 					<xsl:call-template name="content">
 						<xsl:with-param name="link_prefix" select="$link_prefix"/>
 						<xsl:with-param name="path_prefix" select="$path_prefix"/>

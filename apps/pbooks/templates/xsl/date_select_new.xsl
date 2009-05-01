@@ -30,31 +30,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
     <!-- Need this action to retain any account selection -->
-		<div id="date_controls">
-		<div>
-			<span onclick="$('#date_controller').hide();">Hide</span>
-			<span onclick="$('#date_controller').show();">Show</span>
-			<span>
-        <xsl:value-of select="substring($my_from_date,0,11)"/> - 
-        <xsl:value-of select="substring(/_R_/runtime/to_date,0,11)"/>
-      </span>
-		</div>
 		<div id="date_controller">
-		<form method="get">
-			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
+		<form method="get" id="dc4">
+			<input id="dc5" type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 			<xsl:if test="/_R_/_get/account_id">
-				<input type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
+				<input  id="dc6" type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
 			</xsl:if>
-			<table>
-				<tr>
-					<td>
+			<table id="dc7">
+				<tr id="dc8">
+					<td id="dc9">
 						<xsl:value-of select="$i18n/month"/>:
           </td>
-					<td>
-						<select name="month" onchange="this.form.submit();">
-							<option value="%">All</option>
+					<td id="dc10">
+						<select id="dc11" name="month" onchange="this.form.submit();">
+							<option id="dc12" value="%">All</option>
 							<xsl:for-each select="//months/option">
-								<option value="{@id}">
+								<option  id="dc13_{@id}" value="{@id}">
 									<xsl:if test="@id=/_R_/_get/month">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
@@ -66,29 +57,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tr>
 			</table>
 		</form>
-		<form method="get">
+		<form method="get" id="dc14">
 			<xsl:if test="/_R_/_get/account_id">
 				<input type="hidden" name="account_id" value="{/_R_/_get/account_id}"/>
 			</xsl:if>
-			<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
+			<input id="dc15" type="hidden" name="nid" value="{/_R_/_get/nid}"/>
 			<xsl:call-template name="date_select"/>
-			<input type="submit"/>
+			<input id="dc16" type="submit"/>
 		</form>
-		<table>
-			<form method="get">
-				<tr>
-					<input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-					<td>
+		<table id="dc17">
+			<form method="get" id="dc18">
+				<tr id="dc19">
+					<input id="dc20" type="hidden" name="nid" value="{/_R_/_get/nid}"/>
+					<td id="dc21">
 						<xsl:value-of select="$i18n/select_one"/>:
           </td>
-					<td align="right">
-						<select name="account_id" onchange="this.form.submit();">
-							<option value="%">
+					<td align="right" id="dc22">
+						<select name="account_id" onchange="this.form.submit();" id="dc23">
+							<option value="%" id="dc24">
 								<xsl:value-of select="$i18n/ledger"/>
 							</option>
 
 							<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-								<option value="{id}">
+								<option value="{id}" id="dc24_{id}">
 									<xsl:if test="id=/_R_/_get/account_id">
 										<xsl:attribute name="selected">selected</xsl:attribute>
 									</xsl:if>
@@ -102,7 +93,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</form>
 		</table>
 		</div>
-		</div>
 
 
 	</xsl:template>
@@ -112,10 +102,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="i18n"/>
 		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
-		<a title="Previous Period">
+		<a title="Previous Period" id="dc25">
 			<xsl:attribute name="href">
-				<xsl:value-of select="$link_prefix"/>
-				<xsl:value-of select="/_R_/_get/nid"/>
 				<xsl:text>&amp;from_date=</xsl:text>
 				<xsl:value-of select="/_R_/runtime/prev_from_date"/>
 				<xsl:text>&amp;to_date=</xsl:text>
@@ -125,17 +113,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:value-of select="//_get/account_id"/>
 				</xsl:if>
 			</xsl:attribute>
-			<img style="padding-right: 5px;" src="{$path_prefix}s/images/buttons/out.gif"/>
+			<img src="{$path_prefix}s/images/buttons/out.gif" id="dc26"/>
 		</a>
 
-		From <input type="text" name="from_date" size="12" class="date_input" value="{substring($my_from_date,0,11)}"/>
+		From <input type="text" name="from_date" size="12" value="{substring($my_from_date,0,11)}" id="dc27"/>
 
-		To <input type="text" name="to_date"  size="12" class="date_input" value="{substring(/_R_/runtime/to_date,0,11)}"/>
+		To <input type="text" name="to_date"  size="12" value="{substring(/_R_/runtime/to_date,0,11)}" id="dc28"/>
 
-		<a title="Next Period">
+		<a title="Next Period" id="dc29">
 			<xsl:attribute name="href">
-				<xsl:value-of select="$link_prefix"/>
-				<xsl:value-of select="/_R_/_get/nid"/>
 				<xsl:text>&amp;from_date=</xsl:text>
 				<xsl:value-of select="/_R_/runtime/next_from_date"/>
 				<xsl:text>&amp;to_date=</xsl:text>
@@ -145,8 +131,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:value-of select="//_get/account_id"/>
 				</xsl:if>
 			</xsl:attribute>
-			<img style="padding-right: 5px;"
-				src="{$path_prefix}s/images/buttons/in.gif"/>
+			<img
+				src="{$path_prefix}s/images/buttons/in.gif" id="dc30"/>
 		</a>
 
 

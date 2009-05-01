@@ -85,16 +85,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">accordian-menu</xsl:with-param>
     </xsl:call-template>
-    <script type="text/javascript">
-    $().ready(function(){
-      $('#accordion-menu').accordion({
-          active: false,
-          header: '.head',
-          navigation: true,
-          autoheight: false
-      });
-    });
-    </script>
     <ul id="accordion-menu">
       <xsl:for-each select="//menu/item[not(@active=0)]">
         <xsl:call-template name="list-button">
