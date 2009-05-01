@@ -7,8 +7,6 @@ $(document).ready(function() {
       autoheight: false
   });
 
-  $("#nofooter").replaceWith(html2dom_root_);
-  $("#nodate").replaceWith(html2dom_date_selector_);
 
   $.extend(DateInput.DEFAULT_OPTS, {
     stringToDate: function(string) {

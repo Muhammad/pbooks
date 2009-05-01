@@ -26,42 +26,60 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 	<xsl:strip-space elements="*"/>
-	<xsl:template match="/">
-<xsl:text>var html2dom_root_ = document.createElement("div");
-</xsl:text>
+
+
+
+
+
+
+
+
+
+<!-- This is all that needs to be edited -->
+<xsl:template match="/">
+
+var __footer_ = document.createElement("div");
 <xsl:apply-templates select="//footer/*">
-		<xsl:with-param name="myparent">html2dom_root</xsl:with-param>
-		<xsl:with-param name="id" select="@id"/>
+  <xsl:with-param name="myparent">__footer</xsl:with-param>
 	</xsl:apply-templates>
 <xsl:text>
 
 </xsl:text>
 
 <xsl:if test="//date_selector">
-<xsl:text>var html2dom_date_selector_ = document.createElement("div");
-</xsl:text>
+var __date_selector_ = document.createElement("div");
 <xsl:apply-templates select="//date_selector/*">
-		<xsl:with-param name="myparent">html2dom_date_selector</xsl:with-param>
-		<xsl:with-param name="id"><xsl:value-of select="@id"/></xsl:with-param>
-	</xsl:apply-templates>
-
+  <xsl:with-param name="myparent">__date_selector</xsl:with-param>
+</xsl:apply-templates>
 </xsl:if>
 
+$(document).ready(function() {
+  $("#nofooter").replaceWith(__footer_);
+  $("#nodate").replaceWith(__date_selector_);
+});
 </xsl:template>
+
+
+
+
+
+
+
+
+
 
 
 
 <xsl:template match="node()">
 	<xsl:param name="myparent"/>
 	<xsl:param name="id"/>
-  //<xsl:value-of select="name()"/> <xsl:text>
-  </xsl:text>
+
 <xsl:text>var </xsl:text><xsl:value-of select="name()"/>_<xsl:value-of select="@id"/> = document.createElement("<xsl:value-of select="name()"/>");
 <xsl:value-of select="$myparent"/>_<xsl:value-of select="$id"/>.appendChild(<xsl:value-of select="name()"/>_<xsl:value-of select="@id"/>);
 <xsl:apply-templates select="@*">
-		<xsl:with-param name="mynode"><xsl:value-of select="name()"/></xsl:with-param>
-		<xsl:with-param name="id"><xsl:value-of select="@id"/></xsl:with-param>
-	</xsl:apply-templates>
+  <xsl:with-param name="mynode"><xsl:value-of select="name()"/></xsl:with-param>
+  <xsl:with-param name="id"><xsl:value-of select="@id"/></xsl:with-param>
+</xsl:apply-templates>
 
 
 
