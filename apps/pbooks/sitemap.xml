@@ -347,9 +347,8 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/entry_create_meta.xml"/>
 				<map:query src="data/sql/entry_get_id.xml"/>
 				<map:query src="data/sql/entry_amounts_delete.xml" />
-				<map:query src="data/sql/entry_amount_deposit_credit.xml"/>
-				<map:query src="data/sql/deposit_get_total.xml"/>
-				<map:query src="data/sql/entry_amount_deposit_debit.xml"/>
+        <map:query src="data/sql/entry_amount_debit_create_get.xml" />
+        <map:query src="data/sql/entry_amount_credit_create_get.xml" />
 			</map:true>
 			<map:false></map:false>
 		</map:if>

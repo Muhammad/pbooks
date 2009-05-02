@@ -45,6 +45,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     />
 
     <script type="text/javascript">
+    <!--
     function journal_entry_amount_delete(entry_amount_id) {
       $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-
       ",
@@ -55,6 +56,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         $("d_"+entry_amount_id).remove();
       });
     }
+    -->
     function journal_entry_amount_create(entry_type_id,entry_id) {
       var this_entry_date = $("#invoice_date").val();
       $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
@@ -72,18 +74,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </h2>
 
     <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
-			method="post" onSubmit="return validateStandard(this, 'myerror');">
+			method="post" onSubmit="return validateStandard(this, 'myerror');
+      alert(sum(debit_amount_1[]));">
 			<!-- If there is more than one deposit account, the user needs to select
 	which one the deposit is being made into -->
       <xsl:if test="count($account_business_objects) &gt; 1">
-        <select name="deposit_account_id" required="1" exclude="-1"
+        <select name="debit_account_1[]" required="1" exclude="-1"
             err="{/_R_/i18n/error_select_debit}">
           <option value="-1">
             <xsl:value-of select="$i18n/deposit_account"/>
           </option>
           <xsl:for-each select="$account_business_objects">
             <option value="{id}">
-              <xsl:if test="id=$get_journal_entry/account_id">
+              <xsl:if test="id=$get_journal_entry[entry_type_id='Debit']/account_id">
                 <xsl:attribute name="selected">selected</xsl:attribute>
               </xsl:if>
               <xsl:value-of select="name"/>
@@ -93,7 +96,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </xsl:if>
       <!-- If there is only one deposit account, just use that id -->
       <xsl:if test="count($account_business_objects) = 1">
-        <input type="hidden" name="deposit_account_id"
+        <input type="hidden" name="debit_account_1[]"
           value="{$account_business_objects/id}"/>
       </xsl:if>
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
@@ -143,7 +146,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<!-- only one cash entry is allowed -->
 								</td>
                 <td>
-                  <select name="from_account_id" required="0" exclude="-1"
+                  <select name="invoice_id" required="0" exclude="-1"
                   err="{/_R_/i18n/error_select_credit}">
                     <option value="-1">
                       <xsl:value-of select="$i18n/outstanding_invoices"/>
@@ -192,8 +195,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
                   <input type="text" name="check_number[]" style="width: 40px;"
                   value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
                 </td>
-                <td><input type="text" name="entry_amount[]" style="width: 60px;"
-                value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"/>
+                <td>
+                  <input type="text" name="credit_amount_1[]" style="width: 60px;" id="credit_amount_{position()}"
+                    value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"
+                    onkeyup="copyValue('credit_amount_{position()}','debit_amount_{position()}');"
+                    />
+                  <input type="hidden" name="debit_amount_1[]" id="debit_amount_{position()}" />
                 </td>
                 <!-- Additional deposit line items. -->
                 <td>
@@ -206,7 +213,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </td>
                 <!-- OUTSTANDING INVOICES DROP DOWN LIST HERE -->
                 <td>
-                  <select name="from_account_id" required="0"
+                  <select name="invoice_id" required="0"
 										exclude="-1" err="{/_R_/i18n/error_select_credit}">
                     <option value="-1">
                       <xsl:value-of select="$i18n/outstanding_invoices"/>
@@ -232,14 +239,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </td>
                 <td>
                   <!-- need to select where the money is coming from - or is it accounts receivable? -->
-                  <select name="revenue_account_id" required="1" exclude="-1"
-                  err="{$i18n/error_select_credit}">
+                  <select name="credit_account_1[]" required="1" exclude="-1"
+                    err="{$i18n/error_select_credit}">
                     <option value="-1">
                       <xsl:value-of select="$i18n/credit_account"/>
                     </option>
                     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-                      <option value="{id}">
-                        <xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
+                      <xsl:variable name="my_account_id" select="id"/>
+                      <option value="{$my_account_id}">
+                        <xsl:if test="($my_account_id=$get_journal_entry[entry_type_id='Credit']/account_id) and not(/_R_/_get/transaction_id)">
                           <xsl:attribute name="selected">selected</xsl:attribute>
                         </xsl:if>
                         <xsl:value-of select="substring(name,0,16)"/>
