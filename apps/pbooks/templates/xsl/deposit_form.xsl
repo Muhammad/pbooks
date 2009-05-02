@@ -59,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     -->
     function journal_entry_amount_create(entry_type_id,entry_id) {
       var this_entry_date = $("#invoice_date").val();
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+      $.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
       {
         'entry_id': entry_id,
         'entry_datetime': this_entry_date

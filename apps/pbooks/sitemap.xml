@@ -94,15 +94,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="redirect" params="{runtime/link_prefix}journal-entry&amp;entry_id={//get_this_entry_id/entry_id}&amp;transaction_id={//_get/transaction_id}"/>
 	</map:gate>
 
-	<map:gate name="journal-entry-new-credit" role="pb_admin">
+	<map:gate name="x-journal-entry-new-credit" role="pb_admin">
 		<map:query src="data/sql/entry_get_id.xml"/>
 		<map:query src="data/sql/entry_amount_credit_create_get.xml"/>
     <map:query src="data/sql/entry_update_datetime.xml"/>
+    <map:xsl src="templates/xml/ajax_response.xml.xsl" />
 	</map:gate>
-	<map:gate name="journal-entry-new-debit" role="pb_admin">
+	<map:gate name="x-journal-entry-new-debit" role="pb_admin">
 		<map:query src="data/sql/entry_get_id.xml"/>
 		<map:query src="data/sql/entry_amount_debit_create_get.xml"/>
     <map:query src="data/sql/entry_update_datetime.xml"/>
+    <map:xsl src="templates/xml/ajax_response.xml.xsl" />
 	</map:gate>
 
 	<map:gate name="journal-entry" role="pb_admin" cache="30">
@@ -274,10 +276,9 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/entry_update.xml"/>
 				<map:query src="data/sql/entry_get_id.xml"/>
 				<map:query src="data/sql/entry_amounts_delete.xml" />
-				<map:query src="data/sql/entry_amount_credit_create_get.xml"/>
-            <!-- Probably not the best way to do this, but reliable. -->
+        <map:query src="data/sql/entry_amount_credit_create_get.xml" />
 				<map:query src="data/sql/invoice_get_total.xml"/>
-				<map:query src="data/sql/entry_amount_invoice_debit.xml"/>
+        <map:query src="data/sql/entry_amount_debit_create_get.xml" />
 			</map:true>
 			<map:false></map:false>
 			<map:action type="redirect" params="{//link_prefix}invoices"/>
@@ -350,7 +351,7 @@ This makes it easier to maintain persistence. -->
         <map:query src="data/sql/entry_amount_debit_create_get.xml" />
         <map:query src="data/sql/entry_amount_credit_create_get.xml" />
 			</map:true>
-			<map:false></map:false>
+			<map:false/>
 		</map:if>
 		<map:action type="redirect" params="{/_R_/runtime/link_prefix}deposits"/>
 	</map:gate>

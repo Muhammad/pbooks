@@ -34,13 +34,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <script type="text/javascript">
     function journal_entry_amount_create(entry_type_id,entry_id) {
       var this_entry_date = $("#invoice_date").val();
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
-      {
-				'entry_id': entry_id,
-				'entry_datetime': this_entry_date
-      },
-      function (data){
-				setTimeout('window.location.reload()',200);
+      $.ajax({
+        url: "<xsl:value-of select="$link_prefix"/>x-journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+        type: "POST",
+        async: false,
+        data: ({
+          'entry_id': entry_id,
+          'entry_datetime': this_entry_date
+        }),
+        success: function(response){
+          window.location.reload();
+        }
       });
 		}
 		</script>
@@ -67,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <xsl:value-of select="$i18n/customer"/>:
 						</td>
             <td colspan="7">
-              <select name="debit_account_id">
+              <select name="debit_account_1[]">
                 <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
                   <option value="{id}">
                     <xsl:if test="id=//get_some_business_objects/customer_id">
@@ -166,7 +170,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td>
               <xsl:value-of select="$i18n/desc"/>
             </td>
-            <td width="240"></td>
+            <td width="240"/>
             <td>
               <xsl:value-of select="$i18n/quantity"/>
             </td>
@@ -220,7 +224,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
               <td>
                 <xsl:if test="position() &gt; 1">
-                  <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
+                  <a href="#journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
                       onclick="journal_entry_amount_delete({entry_amount_id}); return false;">
                     <img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" border="0" />
                   </a>
@@ -232,7 +236,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <tr>
             <td colspan="7" />
             <td>
-              <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
+              <a href="#journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
                 <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
 									src="{$path_prefix}{/_R_/runtime/icon_set}add.png" />
               </a>

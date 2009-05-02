@@ -61,7 +61,7 @@ more than one debit or credit, there can only be one of the other type.
 			}
     }
     function journal_entry_amount_create(entry_type_id) {
-			$.post("<xsl:value-of select="$link_prefix"/>journal-entry-new-"+entry_type_id+"&amp;entry_id=<xsl:value-of select="//_get/entry_id"/>",
+			$.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-new-"+entry_type_id+"&amp;entry_id=<xsl:value-of select="//_get/entry_id"/>",
 			{
 					'entry_id': <xsl:value-of select="//_get/entry_id"/>,
 					'entry_datetime': document.getElementById("entry_datetime").value,
