@@ -45,6 +45,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"/>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.calculation.min.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/time/relative_time.js"/>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
