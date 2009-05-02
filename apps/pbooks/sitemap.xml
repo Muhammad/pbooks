@@ -702,11 +702,11 @@ This makes it easier to maintain persistence. -->
 		<map:script src="lib/php/export_ods.php"/>
 	</map:gate>
 	<map:gate name="x-ledger-export-txt" role="pb_admin" content_type="text/plain">
-    <map:set name="display_num_entries" value="800"/>
+    <map:set name="display_num_entries" value="1500"/>
 		<map:xml src="data/xml/account_types.xml"/>
 		<map:query src="data/sql/entries_only_get_some.xml" />
 		<map:query src="data/sql/entries_get_all.xml" />
-    <map:action type="pad" params="//get_all_entry_amounts/get_all_entry_amounts/account_full_name,40, "/>
+    <map:action type="pad" params="//get_all_entry_amounts/get_all_entry_amounts/account_full_name,50, "/>
 		<map:action type="datetime" params="//get_all_entries/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/txt/ledger_export.txt.xsl" />
 	</map:gate>

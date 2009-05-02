@@ -127,8 +127,8 @@ $next_from_date = date('Y-m-d H:i:s',mktime(0,0,0,date("m",strtotime($from_date)
 
 
 if($_GET['nid']=='x-ledger-export-txt') {
-    $from_date = '2006-02-01 23:59:59';
-    $to_date   = '2009-08-12 23:59:59';
+    $from_date = '2007-01-01 00:00:01';
+    $to_date   = '2007-12-31 23:59:59';
 }
 
 if(isset($_GET['show_all_accounts'])) {
