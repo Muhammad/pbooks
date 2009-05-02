@@ -33,15 +33,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
   <xsl:variable name="this_entry_id" select="entry_id"/>
-<xsl:value-of select="entry_datetime"/>&#160;'<xsl:value-of select="substring(memorandum,0,42)"/>'&#x2028;
+<xsl:value-of select="entry_datetime"/>&#160;'<xsl:value-of select="normalize-space(substring(memorandum,0,42))"/>'&#x2028;
 <xsl:for-each select="$get_all_entry_amounts[entry_id=$this_entry_id]">
 <xsl:variable name="my_account_type_id" select="account_type_id"/>
-<xsl:text>&#x0009;</xsl:text>'<xsl:value-of select="//account_type[account_type_id=$my_account_type_id]/name"/>':'<xsl:value-of select="name"/>'<xsl:text>&#x0009;&#x0009;</xsl:text>
+<xsl:text>  </xsl:text><xsl:value-of select="account_full_name"/><xsl:text>&#x0009;&#x0009;</xsl:text>
 <xsl:if test="entry_type_id='Credit'">
-  <xsl:text>&#x0009;&#x0009;-$</xsl:text>
+  <xsl:text>&#x0009;$</xsl:text><xsl:value-of select="0 - entry_amount"/>
 </xsl:if>
-<xsl:if test="entry_type_id='Debit'">$</xsl:if>
-<xsl:value-of select="entry_amount"/>
+<xsl:if test="entry_type_id='Debit'">$<xsl:value-of select="entry_amount"/></xsl:if>
 <xsl:text>
 </xsl:text></xsl:for-each>
 <xsl:text>

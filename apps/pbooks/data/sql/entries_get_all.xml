@@ -33,6 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		&pb_entry_amounts;.entry_type_id,
 		&pb_accounts;.name,
 		&pb_accounts;.account_type_id,
+    CONCAT_WS(':',CASE &pb_accounts;.account_type_id WHEN 10000 THEN 'Assets' WHEN 20000 THEN 'Liabilities' WHEN 30000 THEN 'Equity' WHEN 40000 THEN 'Income' ELSE 'Expenses' END, &pb_accounts;.name) as account_full_name,
 		&pb_general_ledger;.account_id as posted_account_id
 
 		FROM &pb_accounts;, &pb_entry_amounts;
