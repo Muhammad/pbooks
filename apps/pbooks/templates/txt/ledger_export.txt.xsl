@@ -38,10 +38,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:variable name="my_account_type_id" select="account_type_id"/>
 <xsl:text>&#x0009;</xsl:text>'<xsl:value-of select="//account_type[account_type_id=$my_account_type_id]/name"/>':'<xsl:value-of select="name"/>'<xsl:text>&#x0009;&#x0009;</xsl:text>
 <xsl:if test="entry_type_id='Credit'">
-  <xsl:text>&#x0009;&#x0009;-</xsl:text>
+  <xsl:text>&#x0009;&#x0009;-$</xsl:text>
 </xsl:if>
-<xsl:if test="entry_type_id='Debit'">
-</xsl:if>
+<xsl:if test="entry_type_id='Debit'">$</xsl:if>
 <xsl:value-of select="entry_amount"/>
 <xsl:text>
 </xsl:text></xsl:for-each>
