@@ -47,7 +47,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/memo"/>:
           </td>
           <td>
-            <input type="text" name="memorandum"/>
+            <input type="text" name="memorandum" value="{//get_some_business_objects/memorandum}"/>
           </td>
         </tr>
         <tr>
@@ -56,7 +56,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
           <td>
             <input type="text" name="credit_amount_1[]" id="credit_amount"
-              onkeyup="copyValue('credit_amount','debit_amount')"/>
+              onkeyup="copyValue('credit_amount','debit_amount')"
+               value="{//get_some_business_objects/entry_amount}"/>
 
             <input type="hidden" name="debit_amount_1[]" id="debit_amount" />
           </td>
@@ -72,8 +73,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="$i18n/from_account"/>
               </option>
               <xsl:for-each select="//get_all_accounts/get_all_accounts">
+                <xsl:variable name="my_account_id" select="id"/>
                 <option value="{id}">
-                  <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
+                  <xsl:if test="//get_journal_entry/get_journal_entry[entry_type_id='Credit']/account_id=$my_account_id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>
@@ -93,8 +95,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="$i18n/to_account"/>
               </option>
               <xsl:for-each select="//get_all_accounts/get_all_accounts">
-                <option value="{id}">
-                  <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
+                <xsl:variable name="my_d_account_id" select="id"/>
+                <option value="{$my_d_account_id}">
+                  <xsl:if test="//get_journal_entry/get_journal_entry[entry_type_id='Debit']/account_id=$my_d_account_id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>

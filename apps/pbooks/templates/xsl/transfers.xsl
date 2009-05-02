@@ -70,36 +70,35 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </thead>
         <tbody>
 				<!-- LOOP -->
-          <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-            <tr onmouseover="oldClass=this.className; this.className='active'"
-              onmouseout="this.className=oldClass">
-              <td>
-                <xsl:value-of select="entry_datetime"/>
-              </td>
-              <td id="{$my_entry_id}">
-                <a href="{$link_prefix}transfer-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="entry_id"/>
-                </a>
-              </td>
-              <td>
-                <a href="#">
-                  <xsl:value-of select="memorandum"/>
-                </a>
-              </td>
-              <td>
-                <xsl:value-of select="entry_amount"/>
-              </td>
-              <td>
-                <xsl:value-of select="from_account_name"/>
-              </td>
-              <td>
-                <xsl:value-of select="to_account_name"/>
-              </td>
-              <td>
-                <xsl:value-of select="method"/>
-              </td>
-            </tr>
-          </xsl:for-each>
+        <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
+          <tr class="lrow">
+            <td>
+              <xsl:value-of select="entry_datetime"/>
+            </td>
+            <td id="{entry_id}">
+              <a href="{$link_prefix}transfer-edit&amp;entry_id={entry_id}">
+                <xsl:value-of select="entry_id"/>
+              </a>
+            </td>
+            <td>
+              <a href="#">
+                <xsl:value-of select="memorandum"/>
+              </a>
+            </td>
+            <td>
+              <xsl:value-of select="entry_amount"/>
+            </td>
+            <td>
+              <xsl:value-of select="from_account_name"/>
+            </td>
+            <td>
+              <xsl:value-of select="to_account_name"/>
+            </td>
+            <td>
+              <xsl:value-of select="method"/>
+            </td>
+          </tr>
+        </xsl:for-each>
           <!-- END LOOP -->
         </tbody>
       </table>
