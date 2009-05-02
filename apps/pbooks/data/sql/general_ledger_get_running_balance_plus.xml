@@ -53,13 +53,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
     WHERE j.entry_id = l.entry_id
     AND j.account_id != l.account_id
     AND aa.id = j.account_id
-  ) AS corresponding_accounts
+  ) AS corresponding_accounts,
+  a.name, a.account_type_id
 
   FROM (&pb_accounts; AS a), (&pb_general_ledger; AS l)
 
   WHERE
 
-  l.account_id = ?
+  l.account_id LIKE ?
 
   AND l.account_id=a.id
 

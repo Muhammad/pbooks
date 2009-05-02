@@ -701,6 +701,13 @@ This makes it easier to maintain persistence. -->
 		<map:action type="xsl" params="templates/xml/open_spreadsheet.xml.xsl,my_ledger"/>
 		<map:script src="lib/php/export_ods.php"/>
 	</map:gate>
+	<map:gate name="x-ledger-export-txt" role="pb_admin" content_type="text/plain">
+		<map:xml src="data/xml/account_types.xml"/>
+		<map:query src="data/sql/entries_only_get_some.xml" />
+		<map:query src="data/sql/entries_get_some.xml" />
+		<map:action type="datetime" params="//get_all_entries/entry_datetime,datetime,Y-m-d"/>
+		<map:xsl src="templates/txt/ledger_export.txt.xsl" />
+	</map:gate>
 
 
 

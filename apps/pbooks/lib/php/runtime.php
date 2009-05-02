@@ -126,6 +126,11 @@ $next_to_date = date('Y-m-d H:i:s',mktime(23, 59, 59,date("m",strtotime($to_date
 $next_from_date = date('Y-m-d H:i:s',mktime(0,0,0,date("m",strtotime($from_date)),date('d',strtotime($from_date))+7, date('Y',strtotime($from_date))));
 
 
+if($_GET['nid']=='x-ledger-export-txt') {
+    $from_date = '2006-02-01 23:59:59';
+    $to_date   = '2009-08-12 23:59:59';
+}
+
 if(isset($_GET['show_all_accounts'])) {
     if($_GET['show_all_accounts']=='on') {
         $_SESSION['show_all_accounts']='on';
