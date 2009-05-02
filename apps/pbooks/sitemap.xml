@@ -114,17 +114,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<map:query src="data/sql/entry_get_by_id.xml"/>
 			</map:false>
 		</map:if>
-    <!-- this should only be allowed in training mode, its not very useful anyway. -->
+    <!-- this should only be allowed in training mode, its not very useful anyway. 
+    TODO: use post for any gate that makes a db change -->
 		<map:if name="//_get/flip">
 			<map:true>
-            <!-- This sets the entry to not have been posted to the ledger yet, 
-            so that a plus sign appears next to it which can be clicked on to do so -->
+        <!-- This sets the entry to not have been posted to the ledger yet, 
+        so that a plus sign appears next to it which can be clicked on to do so -->
 				<map:query src="data/sql/entry_set_unposted.xml"/>
 				<map:query src="data/sql/entry_amounts_flip.xml"/>
-				<map:query src="data/sql/general_ledger_delete_transactions_by_entry_id.xml"/>
+				<map:query src="data/sql/general_ledger_delete_by_entry_id.xml"/>
 				<map:action type="redirect" params="{//link_prefix}journal-entry&amp;entry_id={//_get/entry_id}"/>
 			</map:true>
-			<map:false></map:false>
+			<map:false/>
 		</map:if>
 		<map:action type="datetime" params="//get_journal_entry/entry_datetime,datetime,Y-m-d"/>
 		<map:xsl src="templates/xsl/journal_entry.xsl"/>
