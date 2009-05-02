@@ -55,7 +55,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/amount"/>:
           </td>
           <td>
-            <input type="text" name="transfer_amount"/>
+            <input type="text" name="credit_amount_1[]" id="credit_amount"
+              onkeyup="copyValue('credit_amount','debit_amount')"/>
+
+            <input type="hidden" name="debit_amount_1[]" id="debit_amount" />
           </td>
         </tr>
         <tr>
@@ -63,14 +66,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/from"/>:
           </td>
           <td>
-            <select name="from_account_id" required="1" exclude="-1"
+            <select name="credit_account_1[]" required="1" exclude="-1"
               err="{$i18n/error_select_credit}">
               <option value="-1">
                 <xsl:value-of select="$i18n/from_account"/>
               </option>
-              <xsl:for-each select="//get_all_accounts">
+              <xsl:for-each select="//get_all_accounts/get_all_accounts">
                 <option value="{id}">
-                  <xsl:if test="id=//get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
+                  <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>
@@ -84,14 +87,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="$i18n/to"/>:
           </td>
           <td>
-            <select name="to_account_id" required="1" exclude="-1"
+            <select name="debit_account_1[]" required="1" exclude="-1"
 							err="{$i18n/error_select_credit}">
               <option value="-1">
                 <xsl:value-of select="$i18n/to_account"/>
               </option>
               <xsl:for-each select="//get_all_accounts/get_all_accounts">
                 <option value="{id}">
-                  <xsl:if test="id=//get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
+                  <xsl:if test="id=//get_journal_entry/get_journal_entry/account_id and not(/_R_/_get/transaction_id)">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>

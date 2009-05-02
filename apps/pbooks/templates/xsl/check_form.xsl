@@ -31,12 +31,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       name   = "get_journal_entry"
 			select = "/_R_/get_journal_entry/get_journal_entry"
     />
-    <script type="text/javascript">
-    function copyValue(field1,field2)
-    {
-        document.getElementById(field2).value=document.getElementById(field1).value;
-    }
-    </script>
 		<!--
 		This template references data from the business_object_get_metadata nodes
 		which stem from a generic query called business_object_get_metadata.xml.
