@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	so that a plus sign appears next to it which can be clicked on to do so
   -->
 	<sql>
-		UPDATE &pb_entries; SET status=20
-		WHERE entry_id=?
+  UPDATE &pb_entries; SET status=20 WHERE entry_id=?
 	</sql>
 </query>
