@@ -31,6 +31,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
       name   = "get_journal_entry"
 			select = "/_R_/get_journal_entry/get_journal_entry"
     />
+    <script type="text/javascript">
+    function copyValue(field1,field2)
+    {
+        document.getElementById(field2).value=document.getElementById(field1).value;
+    }
+    </script>
 		<!--
 		This template references data from the business_object_get_metadata nodes
 		which stem from a generic query called business_object_get_metadata.xml.
@@ -45,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
       <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
       <div id="business_object_slip">
-        <div id="check_account_id"></div>
+        <div id="check_account_id"/>
         <div id="check_date">
           <xsl:value-of select="$i18n/date"/>:
         <input type="text" name="entry_datetime" class="seven"
@@ -60,8 +66,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <xsl:value-of select="$i18n/check_payee"/>:
         <input type="text" name="check_payee"
 					value="{//get_some_business_objects/get_some_business_objects/check_payee}"/>
-        $<input type="text" name="entry_amount" class="seven"
-					value="{$get_journal_entry/entry_amount}"/>
+        $<input type="text" name="credit_amount_1[]" id="credit_amount" class="seven"
+					value="{$get_journal_entry/entry_amount}"
+          onkeyup="copyValue('credit_amount','debit_amount')" />
+
+
+        <input type="hidden" name="debit_amount_1[]" id="debit_amount" />
         </div>
         <div id="check_memo">
           <xsl:value-of select="$i18n/memo"/>: 
@@ -82,7 +92,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         Select a checking account, if more than one exists.
         -->
         <xsl:if test="count(/_R_/account_business_objects/account_business_objects/account_id) &gt; 1">
-          <select name="checking_account_id" required="1" exclude="-1"
+          <select name="credit_account_1[]" required="1" exclude="-1"
 						err="Please select a checking account.">
             <option value="-1">
               <xsl:value-of select="$i18n/checking_account"/>
@@ -110,7 +120,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!--
 			Select the expense account.
 			-->
-      <select name="expense_account_id" required="1" exclude="-1"
+      <select name="debit_account_1[]" required="1" exclude="-1"
 				err="Please select a debit account.">
         <option value="-1">
           <xsl:value-of select="$i18n/debit_account"/>

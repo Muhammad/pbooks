@@ -34,19 +34,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="//*[display_num_entries!='NULL']/display_num_entries" type="integer" default="40"/>
 	</params>
 	<sql>
-		SELECT entry_id,
-		entry_datetime as entry_datetime,
-		memorandum as memorandum
-		FROM &pb_entries;
-		WHERE entry_id!=0
-		AND memorandum!='PLACEHOLDER'
-		AND entry_datetime &gt;= ?
-		AND entry_datetime &lt;= ?
-		AND &pb_entries;.status != 9
-		AND &pb_entries;.fiscal_period_id LIKE ?
-		ORDER BY
-		CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC,
-		CASE ? WHEN 'DESC' THEN &pb_entries;.entry_datetime END DESC
-		LIMIT ?,?
+  SELECT entry_id,
+    entry_datetime as entry_datetime,
+    memorandum as memorandum
+
+  FROM &pb_entries;
+
+  WHERE entry_id!=0
+    AND memorandum!='PLACEHOLDER'
+    AND entry_datetime &gt;= ?
+    AND entry_datetime &lt;= ?
+    AND &pb_entries;.status != 9
+    AND &pb_entries;.fiscal_period_id LIKE ?
+
+  ORDER BY
+    CASE ? WHEN 'ASC' THEN &pb_entries;.entry_datetime END ASC,
+    CASE ? WHEN 'DESC' THEN &pb_entries;.entry_datetime END DESC
+
+  LIMIT ?,?
 	</sql>
 </query>

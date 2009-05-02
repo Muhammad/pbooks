@@ -397,10 +397,10 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/entry_create_meta.xml"/>
 				<map:query src="data/sql/entry_get_id.xml"/>
 				<map:query src="data/sql/entry_amounts_delete.xml" />
-				<map:query src="data/sql/entry_amount_check_debit.xml"/>
-				<map:query src="data/sql/entry_amount_check_credit.xml"/>
+        <map:query src="data/sql/entry_amount_debit_create_get.xml"/>
+        <map:query src="data/sql/entry_amount_credit_create_get.xml"/>
 			</map:true>
-			<map:false></map:false>
+			<map:false/>
 		</map:if>
 		<map:action type="redirect" params="{/_R_/runtime/link_prefix}checks"/>
 	</map:gate>

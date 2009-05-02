@@ -39,18 +39,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	&pb_accounts;.account_type_id,
 	&pb_entries;.entry_id,
 	&pb_entries;.entry_datetime
-	
+
 	FROM &pb_accounts;, &pb_entry_amounts;, &pb_entries;
-	
+
 	WHERE
-	&pb_accounts;.id = &pb_entry_amounts;.account_id
-	AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
-	AND entry_datetime = ?
-	AND (&pb_entry_amounts;.entry_amount = ?
-	OR 0-&pb_entry_amounts;.entry_amount = ?)
-	AND &pb_entry_amounts;.account_id = ?
-	
+    &pb_accounts;.id = &pb_entry_amounts;.account_id
+    AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
+    AND entry_datetime = ?
+    AND (&pb_entry_amounts;.entry_amount = ?
+    OR 0-&pb_entry_amounts;.entry_amount = ?)
+    AND &pb_entry_amounts;.account_id = ?
+
 	ORDER BY
-	&pb_entry_amounts;.entry_type_id DESC
+  	&pb_entry_amounts;.entry_type_id DESC
 	</sql>
 </query>
