@@ -32,13 +32,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</params>
 	<sql>
 	SELECT DISTINCT &pb_entry_amounts;.entry_id,
-	&pb_entry_amounts;.account_id,
-	&pb_entry_amounts;.entry_amount,
-	&pb_entry_amounts;.entry_type_id,
-	&pb_accounts;.name,
-	&pb_accounts;.account_type_id,
-	&pb_entries;.entry_id,
-	&pb_entries;.entry_datetime
+    &pb_entry_amounts;.account_id,
+    &pb_entry_amounts;.entry_amount,
+    &pb_entry_amounts;.entry_type_id,
+    &pb_accounts;.name,
+    &pb_accounts;.account_type_id,
+    &pb_entries;.entry_id,
+    &pb_entries;.entry_datetime
 
 	FROM &pb_accounts;, &pb_entry_amounts;, &pb_entries;
 
