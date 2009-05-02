@@ -65,7 +65,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             $('#dc29').attr('href','{$link_prefix}{/_R_/_get/nid}'+$('#dc29').attr('href'));
             init_date_input();">Show</span>
             <span id="dc3">
-              <xsl:value-of select="substring(/_R_/runtime/from_date,0,11)"/> - 
+              <xsl:value-of select="substring(/_R_/runtime/from_date,0,11)"/>
+            </span>- 
+            <span id="dc3b">
               <xsl:value-of select="substring(/_R_/runtime/to_date,0,11)"/>
             </span>
             <div id="nodate"/>

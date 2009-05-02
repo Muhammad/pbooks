@@ -41,6 +41,7 @@ $(document).ready(function() {
 function init_date_input() {
 
   $("#dc27").addClass("date_input");
+  //$("#dc27").val($("#dc3").text());
   $("#dc28").addClass("date_input");
   $($.date_input.initialize);
 
