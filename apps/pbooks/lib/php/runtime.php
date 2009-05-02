@@ -179,6 +179,7 @@ $runtime = array(
     'selected_fiscal_period_id' => $_SESSION['fiscal_period_id'],
     'current_fiscal_period_id' => $current_fiscal_period_id, // for invoices, etc.
     'company_name' => $_SESSION['company_name'],
+    'books_mode' => $_SESSION['books_mode'],
     'request_uri' => $_SERVER['REQUEST_URI'],
     'payment_account_id' => $payment_account_id,
     );

@@ -338,7 +338,7 @@ If you want to complete this process, continue as usual. For more information, s
       </form>
 
       <!-- only display in training mode -->
-      <xsl:if test="//books_mode='training'">
+      <xsl:if test="/_R_/runtime/books_mode='training'">
         <br/>
         <div class="generic-button">
           <form method="post" action="{$link_prefix}journal-delete">
