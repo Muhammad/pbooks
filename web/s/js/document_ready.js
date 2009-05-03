@@ -36,6 +36,8 @@ $(document).ready(function() {
     $(this).text(rltime);
   });
 
+  $(".lrow").attr("onmouseover","oldClass=this.className; this.className='active'").attr("onmouseout","this.className=oldClass");
+
 });
 
 function init_date_input() {
@@ -45,4 +47,9 @@ function init_date_input() {
   $("#dc28").addClass("date_input");
   $($.date_input.initialize);
 
+}
+
+function copyValue(field1,field2)
+{
+    document.getElementById(field2).value=document.getElementById(field1).value;
 }
