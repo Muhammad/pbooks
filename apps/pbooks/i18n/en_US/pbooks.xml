@@ -9,6 +9,7 @@
   <welcome>Welcome</welcome>
   <workflow>Workflow</workflow>
   <ledger>General Ledger</ledger>
+  <ledger-export>Ledger Export</ledger-export>
   <journal>General Journal</journal>
   <journal-entry>Journal Entry</journal-entry>
   <reports>Reports</reports>

@@ -50,6 +50,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</xsl:attribute>
 					ODS
 				</a>
+				<a>
+					<xsl:attribute name="href">
+						<xsl:if test="//_get/from_date">
+							<xsl:value-of select="$link_prefix"/>x-ledger-export-txt&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+						</xsl:if>
+						<xsl:if test="not(//_get/from_date)">
+							<xsl:value-of select="$link_prefix"/>x-ledger-export-txt
+						</xsl:if>
+					</xsl:attribute>
+					Ledger Format
+				</a>
 			</div>
 			<iframe style="width:600px;height:500px;">
 					<xsl:attribute name="src">

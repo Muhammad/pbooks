@@ -109,6 +109,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<key>accounts-import</key>
 			<url>accounts-import</url>
 		</item>
+    <item>
+      <key>ledger-export</key>
+      <url>ledger-export</url>
+    </item>
 	</item>
 	<item>
 		<key>setup</key>
