@@ -26,9 +26,9 @@ use XML::Simple;
 use Data::Dumper;
 
 my $parser = XML::LibXML->new();
-my $flow = Apache2::Aortica::Kernel::Flow->instance();
+my $flow = Aortica::Kernel::Flow->instance();
 
-my $config  = Apache2::Aortica::Kernel::Config->instance();
+my $config  = Aortica::Kernel::Config->instance();
 
 my $defaults = $config->{ CONFIG }->{ pbooks }->{ defaults };
 
@@ -45,7 +45,7 @@ $flow->{ ROOT }->appendChild($node);
 
 
 
-my $auth = Apache2::Aortica::Kernel::Auth->new();
+my $auth = Aortica::Kernel::Auth->new();
 
 $auth_info = $auth->check_status();
 $username = $auth_info->{username};

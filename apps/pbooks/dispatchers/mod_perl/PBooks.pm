@@ -1,5 +1,5 @@
 package pbooks::apps::pbooks::dispatchers::mod_perl::PBooks;
-use Apache2::Aortica::Aortica ();
+use Aortica::Aortica ();
 use strict;
 use Data::Dumper;
 use DateTime;
@@ -17,18 +17,18 @@ our $doc;
 
 
 # Create config
-my $config = Apache2::Aortica::Kernel::Config->instance();
+my $config = Aortica::Kernel::Config->instance();
 $config->configure($srv_cfg, $app_cfg, 'pbooks');
 
 # Create fence
 my $fence_file = $config->{ CONFIG }->{ pbooks }->{build}->{sitemap};
-my $fence = Apache2::Aortica::Kernel::Fence->instance();
+my $fence = Aortica::Kernel::Fence->instance();
 $fence->set_fence($fence_file, 'pbooks');
 
-Apache2::Aortica::Kernel::Init->instance('pbooks');
-Apache2::Aortica::Modules::Handlers::QueryHandler->instance('pbooks');
-Apache2::Aortica::Modules::Handlers::XmlHandler->instance('pbooks');
-Apache2::Aortica::Modules::Handlers::XslHandler->instance('pbooks');
+Aortica::Kernel::Init->instance('pbooks');
+Aortica::Modules::Handlers::QueryHandler->instance('pbooks');
+Aortica::Modules::Handlers::XmlHandler->instance('pbooks');
+Aortica::Modules::Handlers::XslHandler->instance('pbooks');
 
 
 sub handler {
@@ -47,11 +47,11 @@ sub handler {
     my $gate_content_type = undef;
 
     # Create Gatekeeper
-    my $init = Apache2::Aortica::Kernel::Init->instance('pbooks');
+    my $init = Aortica::Kernel::Init->instance('pbooks');
 
 
     $init->start();
-    my $dbh = Apache2::Aortica::Modules::DataSources::DBIDataSource->instance();
+    my $dbh = Aortica::Modules::DataSources::DBIDataSource->instance();
     $output = $init->process_gate($nid);
 
 
@@ -70,7 +70,7 @@ sub handler {
 
     if( $req->param('view_flow') eq "true") {
         # Maybe create flow dom document, but populate it and flush it for each request
-        my $flow = Apache2::Aortica::Kernel::Flow->instance();
+        my $flow = Aortica::Kernel::Flow->instance();
         $doc  = $flow->{ DOC };
         $output .= '<textarea rows="20" style="width: 100%">'.$flow->{ DOC }->toString.'</textarea>';
     }
