@@ -63,6 +63,8 @@ sub handler {
             #unless($gate_content_type eq 'text/html') {
             $r->content_type($gate_content_type);
             #}
+        } else {
+            $r->content_type("application/xhtml+xml");
         }
     }
 
@@ -97,7 +99,7 @@ sub handler {
 
 
     unless ( $gate_content_type eq "text/xml") { 
-        $output .= $duration.$memory;
+#        $output .= $duration.$memory;
     }
     #my $length = length($output);
     #$r->set_content_length($length);
