@@ -52,6 +52,8 @@ $username = $auth_info->{username};
 my $runtime;
 my $link_prefix = '/pbooks?nid=';
 my $path_prefix = '/a/dev/pbooks/';
+my $top_lt_logo = '/a/dev/pbooks/s/images/pbooks-logo_120x60.png';
+my $default_ico = 'images/icons/famfamfam/';
 
 #print(Dumper($auth_info));
 if ($username) {
@@ -62,12 +64,15 @@ if ($username) {
         <user_id>1</user_id>
         <group_id>1</group_id>
         <username>$username</username>
+        <top_left_logo>$top_lt_logo</top_left_logo>
+        <icon_set>$default_ico</icon_set>
     </runtime>";
 } else {
     $runtime = "
     <runtime>
         <link_prefix>$link_prefix</link_prefix>
         <path_prefix>$path_prefix</path_prefix>
+        <top_left_logo>$top_lt_logo</top_left_logo>
     </runtime>";
 }
 

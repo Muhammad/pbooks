@@ -47,7 +47,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<map:xml src="data/xml/main_menu.xml" />
 				<map:xml src="i18n/en_US/pbooks.xml" />
 				<map:xml src="i18n/en_US/errors.xml" />
-        <map:xml src="i18n/{/_R_/runtime/selected_lang}/months.xml" />
+        <map:xml src="i18n/en_US/months.xml" />
 			</map:default>
 		</map:switch>
 	</map:prepend>
@@ -65,7 +65,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
   <!-- JOURNAL ENTRIES -->
 	<map:gate name="journal" role="pb_admin" cache="3000" client_cache="240">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/user_options.xml" />
+		<map:xml src="i18n/en_US/user_options.xml" />
 		<map:query src="data/sql/option_get.xml" />
 		<map:query src="data/sql/entries_only_get_some.xml" />
 		<map:query src="data/sql/entries_get_some.xml" />
@@ -194,7 +194,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 <!-- POSTING -->
 	<map:gate name="posting" role="pb_admin" cache="10">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/user_options.xml" />
+		<map:xml src="i18n/en_US/user_options.xml" />
 		<map:query src="data/sql/option_get.xml" />
 		<map:query src="data/sql/entries_only_get_unposted.xml" />
 		<map:query src="data/sql/entries_get_some.xml" />
@@ -216,7 +216,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<map:xsl src="templates/xsl/invoices.xsl" />
 			</map:true>
 			<map:false>
-				<map:xml src="i18n/{/_R_/runtime/selected_lang}/errors.xml" />
+				<map:xml src="i18n/en_US/errors.xml" />
 				<map:set name="my_error" value="no_ar_account" />
 				<map:xsl src="templates/xsl/errors.xsl" />
 			</map:false>
@@ -237,7 +237,7 @@ This makes it easier to maintain persistence. -->
 				<map:action type="redirect" params="{runtime/link_prefix}invoice-edit&amp;invoice_entry_id={//get_this_entry_id/entry_id}&amp;entry_id={//get_this_entry_id/entry_id}" />
 			</map:true>
 			<map:false>
-				<map:xml src="i18n/{/_R_/runtime/selected_lang}/errors.xml" />
+				<map:xml src="i18n/en_US/errors.xml" />
 				<map:set name="my_error" value="no_ar_account" />
 				<map:xsl src="templates/xsl/errors.xsl" />
 			</map:false>
@@ -323,7 +323,7 @@ This makes it easier to maintain persistence. -->
 				<map:action type="redirect" params="{runtime/link_prefix}deposit-edit&amp;entry_id={//get_this_entry_id/entry_id}" />
 			</map:true>
 			<map:false>
-				<map:xml src="i18n/{/_R_/runtime/selected_lang}/errors.xml" />
+				<map:xml src="i18n/en_US/errors.xml" />
 				<map:set name="my_error" value="no_deposit_account" />
 				<map:xsl src="templates/xsl/errors.xsl" />
 			</map:false>
@@ -376,7 +376,7 @@ This makes it easier to maintain persistence. -->
 				<map:action type="redirect" params="{runtime/link_prefix}check-edit&amp;entry_id={//get_this_entry_id/entry_id}" />
 			</map:true>
 			<map:false>
-				<map:xml src="i18n/{/_R_/runtime/selected_lang}/errors.xml" />
+				<map:xml src="i18n/en_US/errors.xml" />
 				<map:set name="my_error" value="no_checking_account" />
 				<map:xsl src="templates/xsl/errors.xsl" />
 			</map:false>
@@ -458,12 +458,12 @@ This makes it easier to maintain persistence. -->
 			<map:false></map:false>
 		</map:if>
 		<map:xml src="data/xml/account_types.xml" />
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/account_types.xml" />
+		<map:xml src="i18n/en_US/account_types.xml" />
 		<map:xsl src="templates/xsl/accounts.xsl" />
 	</map:gate>
 	<map:gate name="account-balances" role="pb_admin" cache="30">
 		<map:xml src="data/xml/account_types.xml" />
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/account_types.xml" />
+		<map:xml src="i18n/en_US/account_types.xml" />
 		<map:xsl src="templates/xsl/accounts.xsl" />
 	</map:gate>
 	<map:gate name="new-account">
@@ -658,7 +658,7 @@ This makes it easier to maintain persistence. -->
 
 <!-- LEDGER	-->
 	<map:gate name="ledger" role="pb_admin" cache="600" client_cache="600">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/user_options.xml" />
+		<map:xml src="i18n/en_US/user_options.xml" />
 		<map:query src="data/sql/option_get.xml" />
 		<map:if name="//_get/account_id">
 			<map:true>
@@ -895,7 +895,7 @@ This makes it easier to maintain persistence. -->
 
 <!-- PREFERENCES -->
 	<map:gate name="preferences" role="pb_admin">
-		<map:xml src="i18n/{/_R_/runtime/selected_lang}/user_options.xml" />
+		<map:xml src="i18n/en_US/user_options.xml" />
 		<map:if name="//_post">
 			<map:true>
 				<map:query src="data/sql/option_delete.xml" />
