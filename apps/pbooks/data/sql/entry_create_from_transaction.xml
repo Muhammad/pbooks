@@ -27,11 +27,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="//general_ledger_get_transaction/memorandum" type="text"/>
 		<param name="//general_ledger_get_transaction/entry_datetime" type="text"/>
+		<param name="//runtime/current_fiscal_period_id" type="integer"/>
 	</params>
 	<sql>
-	INSERT INTO &pb_entries;
-	(memorandum,entry_datetime,status)
-	VALUES
-	(?,?,9)
+	INSERT INTO &pb_entries; (memorandum,entry_datetime,status,fiscal_period_id) VALUES (?,?,9,?)
 	</sql>
 </query>

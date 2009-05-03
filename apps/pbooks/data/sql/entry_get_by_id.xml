@@ -29,22 +29,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="//_get/entry_id" type="integer"/>
 	</params>
 	<sql>
-		SELECT *,
-		&pb_entries;.memorandum as memorandum,
-		entry_datetime,
-		entry_datetime as entry_date,
-		&pb_entry_amounts;.memorandum as entry_amount_memorandum
+  SELECT *,
+    &pb_entries;.memorandum as memorandum,
+    entry_datetime,
+    entry_datetime as entry_date,
+    &pb_entry_amounts;.memorandum as entry_amount_memorandum
 
-		FROM
-		&pb_entries;
+  FROM
+    (&pb_entries;)
 
-		LEFT JOIN &pb_entry_amounts;
-		ON &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
+  LEFT JOIN &pb_entry_amounts;
+    ON &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
 
-		LEFT JOIN &pb_accounts;
-		ON &pb_entry_amounts;.account_id=&pb_accounts;.id
+  LEFT JOIN &pb_accounts;
+    ON &pb_entry_amounts;.account_id=&pb_accounts;.id
 
-		WHERE
-		&pb_entries;.entry_id=?
+  WHERE
+    &pb_entries;.entry_id=?
 	</sql>
 </query>
