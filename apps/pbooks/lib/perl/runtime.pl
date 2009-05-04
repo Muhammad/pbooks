@@ -80,4 +80,3 @@ my $xml2 = $parser->parse_string( $runtime );
 
 my $node2 = $flow->{ DOC }->importNode($xml2->documentElement());
 $flow->{ ROOT }->appendChild($node2);
-
