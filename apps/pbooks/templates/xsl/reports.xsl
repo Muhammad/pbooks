@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 		<!-- Main reports -->
-		<h2>
+			<h2 style="margin: .8em 0 .2em 0;">
 			<xsl:value-of select="$i18n/report_type"/>
 		</h2>
 		<form method="get">
@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</div>
 
       <!-- Saved reports -->
-			<h2 style="margin-top:2em;">
+			<h2 style="margin: .8em 0 .2em 0;">
 				<xsl:value-of select="$i18n/saved_reports"/>
 			</h2>
 			<ul style="big">
@@ -82,7 +82,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</ul>
 
       <!-- Additional reports -->
-			<h2 style="margin-top:2em;">
+			<h2 style="margin: .8em 0 .2em 0;">
 				<xsl:value-of select="$i18n/additional_reports"/>
 			</h2>
 			<ul style="big">

@@ -29,6 +29,13 @@ body {
   text-align: center;
 }
 
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 14px;
+}
 
 .journal-table tbody tr td {
   white-space: nowrap;
