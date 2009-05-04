@@ -31,10 +31,12 @@ body {
 
 h2 {
   font-size: 18px;
+  margin: .8em 0 .2em 0;
 }
 
 h3 {
   font-size: 14px;
+  margin: .8em 0 .2em 0;
 }
 
 .journal-table tbody tr td {
