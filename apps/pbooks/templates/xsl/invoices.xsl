@@ -111,7 +111,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </a>
               </td>
               <td>
-                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}">
+                <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}"
+                  title="{memorandum}">
                   <xsl:value-of select="substring(memorandum,0,12)"/>
                 </a>
               </td>
