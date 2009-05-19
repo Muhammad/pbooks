@@ -56,7 +56,6 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> <xsl:value-of select="
   PRIMARY KEY  (meta_id),
   KEY account_id (account_id)
   </xsl:if>
-  
 ) <xsl:value-of select="//dbe/innodb_engine"/> <xsl:value-of select="//dbe/engine_increment_start"/> ;
 
 

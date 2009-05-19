@@ -47,6 +47,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
       });
 		}
+    $(document).ready(function() {
+      $('#my_debit_amount').val($('.credit_amounts').sum());
+    });
 		</script>
 
     <h2>
@@ -219,9 +222,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <input type="text" name="price" class="five"/>
               </td>
               <td>
-                <input type="text" name="credit_amount_1[]" class="five credit_amounts"
+                <input type="text" name="credit_amount_1[]" style="width: 5em;" class="credit_amounts"
 									value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"
-                  onkeyup="$('#debit_amount').val($('.credit_amounts').sum());"/>
+                  onkeyup="$('#my_debit_amount').val($('.credit_amounts').sum());"/>
               </td>
               <td>
                 <xsl:if test="position() &gt; 1">
@@ -233,7 +236,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </tr>
           </xsl:for-each>
-          <input type="hidden" name="debit_amount_1[]" id="debit_amount" value=""/>
+          <input type="hidden" name="debit_amount_1[]" id="my_debit_amount" value=""/>
           <!-- END LINE ITEMS -->
           <tr>
             <td colspan="7" />
