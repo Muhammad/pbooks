@@ -35,9 +35,9 @@ $account_id  = Nexista_Path::get('//_post/account_id','flow');
 $link_prefix = Nexista_Path::get('//link_prefix','flow');
 
 
-if(empty($csv_string) || $csv_string=='') { 
-        header('Location: '.$link_prefix.'transactions-import&error=import-empty');
-        exit;
+if(empty($csv_string) || $csv_string=='') {
+    header('Location: '.$link_prefix.'transactions-import&error=import-empty');
+    exit;
 }
 
 
@@ -50,17 +50,17 @@ echo '</pre>';
 
 // Test these line feeds on different platforms (windows, mac os x, linux)
 $data_array = explode('\r\n',$csv_string);
-//$data_array = explode("\n",$csv_string);
+//$data_array = explode('\n',$csv_string);
 
 $i=0;
 foreach($data_array as $value) {
     if($value!='') {
-   //$final_data_array[$i] = "'".str_replace(",","','",$value)."',".$account_id;
-    //$csv_row="'".str_replace(",","','",$value)."',".$account_id;
+   //$final_data_array[$i] = '''.str_replace(',','','',$value).'','.$account_id;
+    //$csv_row='''.str_replace(',','','',$value).'','.$account_id;
 
 
     // Remove non-delineating commas
-    $value = preg_replace('/\"(.+)(,)(.+)\"!\n/', '${1}${3}', $value);
+    $value = preg_replace('/\'(.+)(,)(.+)\'!\n/', '${1}${3}', $value);
     // Remove quotes
     $value = str_replace('\'','',$value);
     $value = str_replace('$','',$value);
@@ -74,14 +74,14 @@ foreach($data_array as $value) {
             $final_data_array[] = Array('entry_datetime' => $csv_row[0],
                                 'memorandum' => $csv_row[1],
                                 'entry_amount' => number_format($csv_row[2],2,'.',''));
-    } elseif(count($csv_row)=="4") {
+    } elseif(count($csv_row)=='4') {
         // 4 columns of data - entry_datetime, memorandum, entry_amount, balance
 
             $final_data_array[] = Array('entry_datetime' => $csv_row[0],
                                 'memorandum' => $csv_row[1],
                                 'entry_amount' => $csv_row[2]);
 
-    } elseif(count($csv_row)=="5") {
+    } elseif(count($csv_row)=='5') {
         // 5 columns of data - entry_datetime, memorandum, entry_amount, balance, account_id
 
             $final_data_array[] = Array('entry_datetime' => $csv_row[0],
@@ -98,7 +98,7 @@ foreach($data_array as $value) {
 
 
 
-    // $data_array[$i] = explode(",",$value);
+    // $data_array[$i] = explode(',',$value);
     }
     $i++;
 }
