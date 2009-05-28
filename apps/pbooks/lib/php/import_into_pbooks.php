@@ -49,12 +49,12 @@ echo '</pre>';
 
 
 // Test these line feeds on different platforms (windows, mac os x, linux)
-$data_array = explode("\r\n",$csv_string);
+$data_array = explode('\r\n',$csv_string);
 //$data_array = explode("\n",$csv_string);
 
 $i=0;
-foreach($data_array as $value) { 
-    if($value!="") { 
+foreach($data_array as $value) {
+    if($value!='') {
    //$final_data_array[$i] = "'".str_replace(",","','",$value)."',".$account_id;
     //$csv_row="'".str_replace(",","','",$value)."',".$account_id;
 
@@ -62,13 +62,13 @@ foreach($data_array as $value) {
     // Remove non-delineating commas
     $value = preg_replace('/\"(.+)(,)(.+)\"!\n/', '${1}${3}', $value);
     // Remove quotes
-    $value = str_replace("\"","",$value);
-    $value = str_replace("$","",$value);
+    $value = str_replace('\'','',$value);
+    $value = str_replace('$','',$value);
 
-    $csv_row=explode(",",$value);
+    $csv_row=explode(',',$value);
     $csv_row[0] = date('Y-m-d H:i:s',strtotime($csv_row[0]));
     $csv_row[2] = number_format($csv_row[2],2,'.','');
-    if(count($csv_row)=="3") {
+    if(count($csv_row)=='3') {
         // 3 columns of data - entry_datetime, memorandum, entry_amount
 
             $final_data_array[] = Array('entry_datetime' => $csv_row[0],
@@ -91,7 +91,7 @@ foreach($data_array as $value) {
                                 'account_id' => $csv_row[4]);
 
     } else {
-        header("Location: ".$link_prefix."transactions-import&error=import-wrong-number-of-rows,".count($csv_row).",".$csv_row[4]);
+        header('Location: '.$link_prefix.'transactions-import&error=import-wrong-number-of-rows,'.count($csv_row).','.$csv_row[4]);
         exit;
     }
 
@@ -102,15 +102,15 @@ foreach($data_array as $value) {
     }
     $i++;
 }
-    Nexista_Flow::add("import_csv",$final_data_array);
+    Nexista_Flow::add('import_csv',$final_data_array);
 
 
 
 
-if($debug=="true") {
-echo "<pre>";
+if($debug=='true') {
+echo '<pre>';
 print_r($final_data_array);
-echo "</pre>";
+echo '</pre>';
 //exit;
 }
 
