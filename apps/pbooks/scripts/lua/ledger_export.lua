@@ -37,8 +37,14 @@ end
 
 myledger = ""
 
-for transaction_id in rows (con, "select transaction_id from pb_general_ledger") do
-  myledger = myledger..transaction_id.."\n"
+for transaction_id, entry_datetime,memorandum in rows (con, "select transaction_id, SUBSTRING(entry_datetime,1,10), SUBSTRING(memorandum,1,40) from pb_general_ledger LIMIT 20") do
+-- 2007-01-02 'AUTOMATIC LOAN PAY' 
+--  Expenses:Expense Account 1               		$4
+--  Assets:Bank Account1                       			$-4
+
+  myledger = myledger..entry_datetime.." '"..memorandum.."'\n"
+  myledger = myledger.."  "..transaction_id.."\n"
+
   print (string.format ("%s", myledger))
 end
 
