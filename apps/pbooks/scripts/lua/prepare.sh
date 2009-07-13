@@ -7,3 +7,4 @@
 
 cat /var/www/dev/pbooks/config/config.xml | sed "s/&//g" > /var/www/dev/pbooks/config/config_noent.xml
 xsltproc --param datasource_id 'pbooks_read' lua_tables.xsl /var/www/dev/pbooks/config/config_noent.xml > config.lua
+xsltproc lua_tables.xsl /var/www/dev/pbooks/apps/pbooks/data/xml/account_types.xml >> config.lua

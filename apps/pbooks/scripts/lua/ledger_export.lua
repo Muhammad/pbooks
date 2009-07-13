@@ -28,6 +28,17 @@ require "config"
 env = assert (luasql.mysql())
 con = assert (env:connect(dbconfig["database"],dbconfig["username"],dbconfig["password"],dbconfig["hostname"]))
 
+
+function lpad (str, len, char)
+    if char == nil then char = ' ' end
+    return str .. string.rep(char, len - #str)
+end
+
+function rpad (str, len, char)
+    if char == nil then char = ' ' end
+    return string.rep(char, len - #str) .. str
+end
+
 function rows (connection, sql_statement)
   local cursor = assert (connection:execute (sql_statement))
   return function ()
@@ -45,13 +56,14 @@ myquery = [[SELECT entry_id,
   WHERE entry_id!=0
     AND memorandum!='PLACEHOLDER'
     AND pb_entries.status != 9
-  LIMIT 30]]
+    LIMIT 200]]
 
 getallentries = [[SELECT 
     pb_entry_amounts.entry_amount,
-    RPAD(pb_accounts.name,35,' ') as name,
+    pb_accounts.name as name,
     pb_entry_amounts.memorandum as entry_amount_memorandum,
-    pb_entry_amounts.entry_type_id
+    pb_entry_amounts.entry_type_id,
+    pb_accounts.account_type_id
   FROM
     (pb_entries)
   LEFT JOIN pb_entry_amounts
@@ -70,13 +82,21 @@ for entry_id,entry_datetime,memorandum in rows (con, myquery) do
   myledger = myledger..entry_datetime.." '"..memorandum.."'\n"
   getentryamounts = getallentries..entry_id
 
-  for entry_amount,account_name,entry_amount_memorandum,entry_type_id in rows (con, getentryamounts) do
-    myledger = myledger.."  "..account_type..":"..account_name.."    "
+  for entry_amount,account_name,entry_amount_memorandum,entry_type_id,account_type_id in rows (con, getentryamounts) do
+    local myaccount = "  "..account_types[account_type_id]..":"..account_name
+    myaccount = lpad(myaccount,50)
+    myledger = myledger..myaccount
     if entry_type_id == "Credit" then
         myledger = myledger.."    "
+        myledger = myledger.."-"..entry_amount.."\n"
+    else
+        myledger = myledger..entry_amount.."\n"
     end
-    myledger = myledger..entry_amount.."\n"
   end
+  myledger = myledger.."\n"
 end
-print (string.format ("%s", myledger))
+--print (string.format ("%s", myledger))
+F = io.open("ledger.txt","w")
+F:write(string.format ("%s", myledger))
+F:close()
 

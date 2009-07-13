@@ -29,12 +29,30 @@ Fifth Floor, Boston, MA 02110-1301 USA
 />
 
 <xsl:template match="/">
+
+  <xsl:for-each select="//datasource[@id='pbooks_read']/*">
+  <xsl:if test="position()=1">
   <xsl:text>dbconfig={}
 
 </xsl:text>
-  <xsl:for-each select="//datasource[@id='pbooks_read']/*">
+  </xsl:if>
     <xsl:text>dbconfig["</xsl:text>
     <xsl:value-of select="local-name()"/>"] = "<xsl:value-of select="."/>
+    <xsl:text>"
+</xsl:text>
+  </xsl:for-each>
+  <xsl:text>
+
+
+</xsl:text>
+  <xsl:for-each select="//account_type">
+  <xsl:if test="position()=1">
+  <xsl:text>account_types={}
+
+</xsl:text>
+  </xsl:if>
+    <xsl:text>account_types["</xsl:text>
+    <xsl:value-of select="account_type_id"/>"] = "<xsl:value-of select="name"/>
     <xsl:text>"
 </xsl:text>
   </xsl:for-each>
