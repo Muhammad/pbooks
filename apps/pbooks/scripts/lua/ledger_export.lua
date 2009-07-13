@@ -34,10 +34,6 @@ function lpad (str, len, char)
     return str .. string.rep(char, len - #str)
 end
 
-function rpad (str, len, char)
-    if char == nil then char = ' ' end
-    return string.rep(char, len - #str) .. str
-end
 
 function rows (connection, sql_statement)
   local cursor = assert (connection:execute (sql_statement))
@@ -75,9 +71,6 @@ getallentries = [[SELECT
 
 
 for entry_id,entry_datetime,memorandum in rows (con, myquery) do
--- 2007-01-02 'AUTOMATIC LOAN PAY' 
---  Expenses:Expense Account 1               		$4
---  Assets:Bank Account1                       			$-4
 
   myledger = myledger..entry_datetime.." '"..memorandum.."'\n"
   getentryamounts = getallentries..entry_id
@@ -95,8 +88,8 @@ for entry_id,entry_datetime,memorandum in rows (con, myquery) do
   end
   myledger = myledger.."\n"
 end
---print (string.format ("%s", myledger))
+
+
 F = io.open("ledger.txt","w")
 F:write(string.format ("%s", myledger))
 F:close()
-
