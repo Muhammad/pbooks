@@ -1,0 +1,6912 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<database>
+
+ <name>pbooks</name>
+ <create>true</create>
+ <overwrite>false</overwrite>
+
+ <charset>utf8</charset>
+
+ <table>
+
+  <name>auth_group</name>
+
+  <declaration>
+
+   <field>
+    <name>group_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>name</name>
+    <type>text</type>
+    <fixed>true</fixed>
+    <default></default>
+    <notnull>false</notnull>
+    <length>25</length>
+   </field>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value>1</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>PBooks Admin</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value>4</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Prodgex Admin</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value>5</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>User Admin</value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+ <table>
+
+  <name>auth_group_role</name>
+
+  <declaration>
+
+   <field>
+    <name>group_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>role_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>4</length>
+   </field>
+
+   <index>
+    <name>role_id</name>
+    <field>
+     <name>role_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+   <index>
+    <name>group_id</name>
+    <field>
+     <name>group_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value>1</value>
+    </field>
+
+    <field>
+     <name>role_id</name>
+     <value>1001</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>role_id</name>
+     <value>1001</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value>4</value>
+    </field>
+
+    <field>
+     <name>role_id</name>
+     <value>1002</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>group_id</name>
+     <value>5</value>
+    </field>
+
+    <field>
+     <name>role_id</name>
+     <value>1003</value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+ <table>
+
+  <name>auth_role</name>
+
+  <declaration>
+
+   <field>
+    <name>role_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>name</name>
+    <type>text</type>
+    <default>Untitled</default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>description</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>255</length>
+   </field>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>role_id</name>
+     <value>1001</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>pb_admin</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>role_id</name>
+     <value>1002</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>prodgex</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>role_id</name>
+     <value>1003</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>user_admin</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+ <table>
+
+  <name>auth_user</name>
+
+  <declaration>
+
+   <field>
+    <name>user_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>user_name</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>60</length>
+   </field>
+
+   <field>
+    <name>user_password</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>64</length>
+   </field>
+
+   <field>
+    <name>user_nicename</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>50</length>
+   </field>
+
+   <field>
+    <name>email</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>100</length>
+   </field>
+
+   <field>
+    <name>user_url</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>100</length>
+   </field>
+
+   <field>
+    <name>user_registered</name>
+    <type>timestamp</type>
+    <default>CURRENT_TIMESTAMP</default>
+    <notnull>true</notnull>
+   </field>
+
+   <field>
+    <name>user_activation_key</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>60</length>
+   </field>
+
+   <field>
+    <name>user_status</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>display_name</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>250</length>
+   </field>
+
+   <index>
+    <name>user_login_key</name>
+    <field>
+     <name>user_name</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>user_id</name>
+     <value>1016</value>
+    </field>
+
+    <field>
+     <name>user_name</name>
+     <value>demo</value>
+    </field>
+
+    <field>
+     <name>user_password</name>
+     <value>$1$Iw/GCM2A$BNcUnIIawg7wFq9Iw3VA4/</value>
+    </field>
+
+    <field>
+     <name>user_nicename</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>email</name>
+     <value>demo</value>
+    </field>
+
+    <field>
+     <name>user_url</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>user_registered</name>
+     <value>2007-04-24 13:36:21</value>
+    </field>
+
+    <field>
+     <name>user_activation_key</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>user_status</name>
+     <value>0</value>
+    </field>
+
+    <field>
+     <name>display_name</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+ <table>
+
+  <name>auth_user_group</name>
+
+  <declaration>
+
+   <field>
+    <name>user_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>group_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <index>
+    <name>group_id</name>
+    <field>
+     <name>group_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+   <index>
+    <name>user_group_index</name>
+    <unique>true</unique>
+    <field>
+     <name>user_id</name>
+     <sorting>ascending</sorting>
+    </field>
+    <field>
+     <name>group_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>user_id</name>
+     <value>1000</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value>1</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>user_id</name>
+     <value>1000</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value>4</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>user_id</name>
+     <value>1012</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value>4</value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>user_id</name>
+     <value>1000</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value>5</value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+ <table>
+
+  <name>pb_account_group_parents</name>
+
+  <declaration>
+
+   <field>
+    <name>account_group_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>parent_group_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <index>
+    <name>pb_account_group_parents_ibfk_1</name>
+    <field>
+     <name>parent_group_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+   <index>
+    <name>account_group_id</name>
+    <unique>true</unique>
+    <field>
+     <name>account_group_id</name>
+     <sorting>ascending</sorting>
+    </field>
+    <field>
+     <name>parent_group_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_account_groups</name>
+
+  <declaration>
+
+   <field>
+    <name>ID</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>name</name>
+    <type>text</type>
+    <default>Undefined</default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>description</name>
+    <type>text</type>
+    <default> </default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_accounts</name>
+
+  <declaration>
+
+   <field>
+    <name>id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>name</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+   </field>
+
+   <field>
+    <name>account_type_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>description</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+   </field>
+
+   <field>
+    <name>creation_datetime</name>
+    <type>timestamp</type>
+    <default>CURRENT_TIMESTAMP</default>
+    <notnull>true</notnull>
+   </field>
+
+   <field>
+    <name>account_number</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>parent_account_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>hide</name>
+    <type>text</type>
+    <default>no</default>
+    <notnull>false</notnull>
+    <length>3</length>
+   </field>
+
+   <field>
+    <name>group_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>1</length>
+   </field>
+
+   <index>
+    <name>account_number</name>
+    <unique>true</unique>
+    <field>
+     <name>account_number</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>0</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>PLACEHOLDER</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>0</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value>DO NOT DELETE</value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-05-30 20:01:03</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>0</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1010</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Petty Cash</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1010</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1020</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Cash on Hand</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1020</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1030</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Cheque Accounts</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1030</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1040</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Savings Accounts</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1040</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1050</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Payroll Accounts</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1050</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1070</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Money Market Investments</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1070</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1080</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Short-Term Investments ( less than 90 days)</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1080</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1090</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Interest Receivable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1090</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1100</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accounts Receivable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1100</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1150</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Allowance for Doubtful Accounts</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1150</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Notes Receivable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1250</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Income Tax Receivable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1250</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1300</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Prepaid Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1300</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1400</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Supplies Inventory</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1400</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1420</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Raw Material Inventory</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1420</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1440</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Work in Progress Inventory</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1440</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1460</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Finished Goods Inventory</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1460</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1500</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Land</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1500</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1550</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Bonds</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1550</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1600</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Buildings</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1600</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1620</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accumulated Depreciation of Buildings</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1620</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1650</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Equipment</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1650</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1670</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accumulated Depreciation of Equipment</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1670</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1700</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Furniture and Fixtures</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1700</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1720</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Office Equipment</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1720</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1730</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accumulated Depreciation of Office Equipment</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1730</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1740</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Software</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1740</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1750</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accumulated Depreciation of Software</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1750</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1760</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Vehicles</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1760</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1770</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accumulated Depreciation Vehicles</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1770</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1780</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Other Depreciable Property</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1780</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1790</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accumulated Depreciation of Other Depreciable Prop</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1790</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1800</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Patents</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1800</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1850</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Goodwill</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1850</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>1900</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Future Income Tax Receivable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>10000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>1900</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2010</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Bank Indedebtedness (overdraft)</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2010</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2020</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Retainers or Advances on Work</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2020</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2050</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Interest Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2050</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2100</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accounts Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2100</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2150</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Goods Received Suspense</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2150</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Short-Term Loan Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2230</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Current Portion of Long-Term Debt Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2230</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2250</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Income Tax Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2250</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2340</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Payroll Tax Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2340</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2350</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Withholding Income Tax Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2350</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2360</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Other Taxes Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2360</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2400</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Employee Salaries Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2400</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2410</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Management Salaries Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2410</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2420</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Director / Partner Fees Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2420</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2450</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Health Benefits Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2450</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2460</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Pension Benefits Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2460</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2480</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Employment Insurance Premiums Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2480</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2500</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Land Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2500</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2550</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Long-Term Bank Loan</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2550</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2560</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Notes Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2560</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2720</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Office Equipment Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2720</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2740</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Vehicle Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2740</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2760</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Other Property Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2760</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2800</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Shareholder Loans</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2800</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>2900</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Suspense</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>20000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>2900</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>3100</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Capital Stock</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>30000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>3100</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>3200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Capital Surplus / Dividends</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>30000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>3200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>3300</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Dividend Taxes Payable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>30000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>3300</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>3400</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Dividend Taxes Refundable</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>30000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>3400</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>3500</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Retained Earnings</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>30000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>3500</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4100</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Product / Service Sales</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4100</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Sales Exchange Gains/Losses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4500</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Consulting Services</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4500</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4600</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Rentals</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4600</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4700</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Finance Charge Income</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4700</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4800</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Sales Returns and Allowances</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4800</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>4900</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Sales Discounts</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>40000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>4900</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>5100</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Production Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>5100</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>5200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Purchases Exchange Gains/Losses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>5200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>5500</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Direct Labour Costs</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>5500</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>5600</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Freight Charges</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>5600</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>5700</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Inventory Adjustment</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>5700</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>5900</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Purchase Discounts</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>5900</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6100</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Advertising</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6100</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6150</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Promotion</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6150</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Communications</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6250</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Meeting Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6250</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6300</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Travelling Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6300</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6400</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Delivery Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6400</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6590</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Benefits</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6590</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6600</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Other Selling Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6600</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>6900</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Professional Services</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>6900</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7040</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Management Salaries</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7040</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7050</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Management Salary deductions</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7050</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7060</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Director / Partner Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7060</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7070</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Director / Partner Deductions</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7070</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7080</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Payroll Tax</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7080</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7090</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Benefits</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7090</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7150</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Dues and Subscriptions</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7150</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7200</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Accounting Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7200</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7210</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Audit Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7210</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7220</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Banking Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7220</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7230</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Credit Card Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7230</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7240</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Consulting Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7240</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7260</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Legal Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7260</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7280</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Other Professional Fees</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7280</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7300</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Business Tax</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7300</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7350</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Property Tax</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7350</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7390</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Corporation Capital Tax</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7390</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7400</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Office Rent</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7400</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7450</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Equipment Rental</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7450</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7500</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Office Supplies</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7500</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7600</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Automotive Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7600</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7610</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Communication Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7610</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7620</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Insurance Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7620</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7640</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Miscellaneous Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7640</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7650</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Travel Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7650</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7660</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Utilities</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7660</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7700</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Ammortization Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7700</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7750</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Depreciation Expenses</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7750</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7800</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Interest Expense</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7800</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+   <insert>
+
+    <field>
+     <name>id</name>
+     <value>7900</value>
+    </field>
+
+    <field>
+     <name>name</name>
+     <value>Bad Debt Expense</value>
+    </field>
+
+    <field>
+     <name>account_type_id</name>
+     <value>50000</value>
+    </field>
+
+    <field>
+     <name>description</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>creation_datetime</name>
+     <value>2007-04-01 01:01:01</value>
+    </field>
+
+    <field>
+     <name>account_number</name>
+     <value>7900</value>
+    </field>
+
+    <field>
+     <name>parent_account_id</name>
+     <value></value>
+    </field>
+
+    <field>
+     <name>hide</name>
+     <value>no</value>
+    </field>
+
+    <field>
+     <name>group_id</name>
+     <value></value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+ <table>
+
+  <name>pb_accounts_metadata</name>
+
+  <declaration>
+
+   <field>
+    <name>meta_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>account_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>meta_key</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>meta_value</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <index>
+    <name>account_id</name>
+    <field>
+     <name>account_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_entries</name>
+
+  <declaration>
+
+   <field>
+    <name>entry_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_datetime</name>
+    <type>timestamp</type>
+    <default>CURRENT_TIMESTAMP</default>
+    <notnull>true</notnull>
+   </field>
+
+   <field>
+    <name>memorandum</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+   </field>
+
+   <field>
+    <name>entry_type</name>
+    <type>text</type>
+    <default>standard</default>
+    <notnull>true</notnull>
+    <length>19</length>
+   </field>
+
+   <field>
+    <name>status</name>
+    <type>integer</type>
+    <default>2</default>
+    <notnull>false</notnull>
+    <length>1</length>
+   </field>
+
+   <field>
+    <name>fiscal_period_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <index>
+    <name>entry_datetime</name>
+    <field>
+     <name>entry_datetime</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_entry_amounts</name>
+
+  <declaration>
+
+   <field>
+    <name>entry_amount_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_type_id</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>6</length>
+   </field>
+
+   <field>
+    <name>entry_amount</name>
+    <type>decimal</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>10</length>
+   </field>
+
+   <field>
+    <name>account_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>memorandum</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>100</length>
+   </field>
+
+   <index>
+    <name>pb_entry_amounts_ibfk_1</name>
+    <field>
+     <name>account_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+   <index>
+    <name>entry_index</name>
+    <field>
+     <name>entry_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_entry_metadata</name>
+
+  <declaration>
+
+   <field>
+    <name>meta_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>meta_key</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>meta_value</name>
+    <type>text</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <index>
+    <name>entry_id</name>
+    <field>
+     <name>entry_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_general_ledger</name>
+
+  <declaration>
+
+   <field>
+    <name>transaction_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_datetime</name>
+    <type>timestamp</type>
+    <default>CURRENT_TIMESTAMP</default>
+    <notnull>true</notnull>
+   </field>
+
+   <field>
+    <name>memorandum</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+   </field>
+
+   <field>
+    <name>entry_amount</name>
+    <type>decimal</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>10</length>
+   </field>
+
+   <field>
+    <name>account_id</name>
+    <type>integer</type>
+    <default>1002</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <field>
+    <name>entry_amount_id</name>
+    <type>integer</type>
+    <default></default>
+    <notnull>true</notnull>
+    <length>8</length>
+   </field>
+
+   <field>
+    <name>fiscal_period_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>4</length>
+   </field>
+
+   <index>
+    <name>pb_general_ledger_ibfk_1</name>
+    <field>
+     <name>account_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+   <index>
+    <name>pb_general_ledger_ibfk_2</name>
+    <field>
+     <name>entry_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+   <index>
+    <name>entry_amount_id</name>
+    <field>
+     <name>entry_amount_id</name>
+     <sorting>ascending</sorting>
+    </field>
+   </index>
+
+  </declaration>
+
+ </table>
+
+ <table>
+
+  <name>pb_options</name>
+
+  <declaration>
+
+   <field>
+    <name>option_id</name>
+    <type>integer</type>
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>2</length>
+   </field>
+
+   <field>
+    <name>option_key</name>
+    <type>text</type>
+    <default>untitled</default>
+    <notnull>true</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>option_value</name>
+    <type>text</type>
+    <default></default>
+    <notnull>false</notnull>
+    <length>255</length>
+   </field>
+
+   <field>
+    <name>option_type</name>
+    <type>text</type>
+    <default>other</default>
+    <notnull>true</notnull>
+    <length>8</length>
+   </field>
+
+  </declaration>
+
+  <initialization>
+
+   <insert>
+
+    <field>
+     <name>option_id</name>
+     <value>1</value>
+    </field>
+
+    <field>
+     <name>option_key</name>
+     <value>pbooks_database_version</value>
+    </field>
+
+    <field>
+     <name>option_value</name>
+     <value>e</value>
+    </field>
+
+    <field>
+     <name>option_type</name>
+     <value>other</value>
+    </field>
+
+   </insert>
+
+  </initialization>
+
+ </table>
+
+</database>
