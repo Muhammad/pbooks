@@ -124,7 +124,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <tbody>
                 <tr>
                   <td>
-                    <xsl:value-of select="$i18n/invoices"/>
+                    <a href="{//link_prefix}invoices"><xsl:value-of select="$i18n/invoices"/></a>
                   </td>
                   <td></td>
                 </tr>
