@@ -25,30 +25,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 
-/* Default fiscal start */
-$default_fiscal_start = Nexista_Config::get('./default_fiscal_start');
+// Default fiscal start
+$default_fiscal_start = Nexista_Config::get('./defaults/default_fiscal_start');
 if(empty($default_fiscal_start)) {
     $default_fiscal_start = '01-01';
 }
-
-
 
 // Moved from other runtime:
 $debug   = Nexista_Config::get('./runtime/debug');
 $logging = Nexista_Config::get('./runtime/logging');
 $logfile = Nexista_Config::get('./runtime/logfile');
 
-$top_left_logo = 's/images/pbooks-logo_120x60.png';
+$top_left_logo = Nexista_Config::get('./defaults/top_left_logo');;
 
-# This wacky path builder is required due to mod_rewrite situations
+// This wacky path builder is required due to mod_rewrite situations
 $path        = $_SERVER['SCRIPT_NAME'];
 $path_prefix = dirname($path).'/';
 $link_prefix = $path.'?nid=';
 
+
+// Deprecate this
 $utcdate = gmdate('Y-m-d H:i:s');
 
 $db_version = rtrim(file_get_contents(PROJECT_ROOT.'/config/db_version.txt'));
-
 
 $default_selected_lang = Nexista_Config::get('./defaults/default_selected_lang');
 if(empty($default_selected_lang)) {
@@ -61,7 +60,7 @@ if(empty($default_theme)) {
 }
 $default_icon_set = Nexista_Config::get('./defaults/default_icon_set');
 if(empty($default_icon_set)) {
-    $default_icon_set = 'images/icons/famfamfam/';
+    $default_icon_set = 's/images/icons/famfamfam/';
 }
 $default_currency_unit = Nexista_Config::get('./defaults/default_currency_unit');
 if(empty($default_currency_unit)) {
@@ -84,8 +83,8 @@ if(empty($default_invoice_print_vertical)) {
  * Not posting anymore dates. Only using POST method for updating data.
  */
 
-$working_year = 2007;
-// date('Y')
+$working_year = date('Y');
+
 if(isset($_GET['month'])) {
     $from_date = date('Y-m-d H:i:s',mktime(0,0,0, $_GET['month'], 01, $working_year));
     $_SESSION['from_date'] = $from_date;
@@ -113,8 +112,6 @@ if(isset($_GET['month'])) {
 } else {                                            // default
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, date('m'), date('d')+1, date('Y')));
 }
-
-
 
 
 $prev_to_date = date('Y-m-d H:i:s',mktime(23, 59, 59,date("m",strtotime($to_date)),date('d',strtotime($to_date))-7, date('Y',strtotime($to_date))));
@@ -146,7 +143,7 @@ if(isset($_SESSION['show_all_accounts'])) {
 }
 
 if(!$_SESSION['company_name'] || $_SESSION['company_name'] == '') {
-    $_SESSION['company_name'] = '___NOTHING___';
+    $_SESSION['company_name'] = '_';
 }
 
 $current_fiscal_period_id = 3;

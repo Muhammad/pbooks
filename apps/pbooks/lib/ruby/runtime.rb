@@ -1,4 +1,5 @@
 =begin
+<!--
 Program: PBooks
 Component: runtime.rb
 Copyright: Savonix Corporation
@@ -18,8 +19,13 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+-->
 =end
 
+require 'nokogiri'
 
+
+$default_fiscal_start = '01-01'
+$top_left_logo = 's/images/pbooks-logo_120x60.png';

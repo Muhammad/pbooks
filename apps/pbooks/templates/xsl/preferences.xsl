@@ -54,12 +54,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:if test="option_type='text'">
 					<input type="{option_type}" name="{option_key}">
 						<xsl:attribute name="value">
-							<xsl:if test="$option_get[option_key=$my_option]/option_value='NULL' or $option_get[option_key=$my_option]/option_value=''">
+							<xsl:if test="
+              $option_get[option_key=$my_option]/option_value='NULL' or
+              $option_get[option_key=$my_option]/option_value=''
+              ">
 								<xsl:value-of select="default"/>
 							</xsl:if>
-							<xsl:if test="not($option_get[option_key=$my_option]/option_value='NULL' or $option_get[option_key=$my_option]/option_value='')">
+
+							<xsl:if test="
+              not($option_get[option_key=$my_option]/option_value='NULL' or $option_get[option_key=$my_option]/option_value='')
+              ">
 								<xsl:value-of select="$option_get[option_key=$my_option]/option_value"/>
 							</xsl:if>
+
 						</xsl:attribute>
 					</input>
 				</xsl:if>
