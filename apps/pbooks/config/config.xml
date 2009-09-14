@@ -11,12 +11,14 @@ and overlapping information will override settings in the main configuration fil
     <top_left_logo>s/images/pbooks-logo_120x60.png</top_left_logo>
   </defaults>
   <extensions>
+  <!--
     <dev_buffer>
       <placement>prepend</placement>
       <sitemap>/var/www/dev/nexista/extensions/dev_buffer/sitemap.xml</sitemap>
       <source>/var/www/dev/nexista/extensions/dev_buffer/dev_buffer.php</source>
       <excludes>x-,dynamic-css,dynamic-database-model,xml-sitemap,account-groups-xml,account-sub-groups-xml,invoice-print</excludes>
     </dev_buffer>
+    -->
     <nexista_auth>
       <placement>prepend</placement>
       <source>/var/www/dev/nexista/extensions/nexista_auth.php</source>
