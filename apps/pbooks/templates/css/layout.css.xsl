@@ -340,7 +340,7 @@ table.simpletable thead th, table.simpletable tbody tr td {
   bottom: 40px;
 }
 
-#new_note {
+#note_field {
   width: 40em;
 }
 #invoice_print {

@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<form method="post">
     <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
 		  <input type="hidden" name="note_id" value="{note_id}"/>
-		  <input type="text" name="note" value="{note}"/>
+		  <input type="text" name="note" value="{note}" id="note_field"/>
 		</xsl:for-each>
 		<input type="submit"/>
 		</form>

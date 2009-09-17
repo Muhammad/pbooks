@@ -795,7 +795,7 @@ This makes it easier to maintain persistence. -->
 			</map:true>
 		</map:if>
 		<map:query src="data/sql/notes_get_all.xml" />
-		<map:xsl src="templates/xsl/notes.xsl" />
+		<map:xsl src="templates/xsl/note_edit.xsl" />
 	</map:gate>
 	<map:gate name="x-note-delete" role="pb_admin">
 		<map:query src="data/sql/note_delete.xml" />
