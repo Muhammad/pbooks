@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: note_delete.xml
+Component: note_edit.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,13 +21,24 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="notes_delete">
-	<connection>&pb_connection;</connection>
-	<params>
-		<param name="//_post/note_id" type="integer"/>
-	</params>
-	<sql>
-	DELETE FROM &pb_notes; WHERE note_id=?
-	</sql>
-</query>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://www.w3.org/1999/xhtml">
+  <xsl:include href="html_main.xsl"/>
+  <xsl:include href="pager.xsl"/>
+  <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
+    <xsl:call-template name="jquery-setup-simple">
+      <xsl:with-param name="my-table">notes_table</xsl:with-param>
+    </xsl:call-template>
+
+		<form method="post">
+    <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
+		  <input type="hidden" name="note_id" value="{note_id}"/>
+		  <input type="text" name="note" value="{note}"/>
+		</xsl:for-each>
+		<input type="submit"/>
+		</form>
+  </xsl:template>
+</xsl:stylesheet>

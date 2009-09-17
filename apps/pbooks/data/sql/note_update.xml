@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: note_delete.xml
+Component: note_update.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,12 +22,13 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="notes_delete">
+<query name="note_update">
 	<connection>&pb_connection;</connection>
 	<params>
+		<param name="//_post/note" type="text"/>
 		<param name="//_post/note_id" type="integer"/>
 	</params>
 	<sql>
-	DELETE FROM &pb_notes; WHERE note_id=?
+	UPDATE &pb_notes; SET note=? WHERE note_id=?
 	</sql>
 </query>

@@ -74,6 +74,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </span>
             </td>
             <td>
+              <a href="{$link_prefix}note-edit&amp;note_id={note_id}">Edit</a> / 
               <a href="{$link_prefix}x-note-delete&amp;note_id={note_id}"
                 onclick="note_delete({note_id}); return false;">Delete</a>
             </td>
