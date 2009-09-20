@@ -59,5 +59,14 @@ CONFIGURATION
 4. vim apps/pbooks/config/config.xml
 
 
+GENERAL NOTES
+=============
+
+* The [PBooks forums][] are checked regularly.
+* The [PBooks mailing lists][] are low volume and actively monitored.
+
+
 [PBooks Installation]: http://www.pbooks.org/wiki/PBooks_Installation "PBooks Installation"
 [PBooks Installation on Ubuntu]: http://www.pbooks.org/wiki/PBooks_Installation_using_XAMPP_and_Ubuntu "PBooks Installation on Ubuntu using XAMPP"
+[PBooks forums](http://www.pbooks.org/forums/)
+[PBooks mailing lists](http://www.pbooks.org/cgi-bin/mailman/listinfo)
