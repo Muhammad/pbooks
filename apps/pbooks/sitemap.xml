@@ -1034,6 +1034,5 @@ files. -->
 		<map:xml src="sitemap.xml" />
 		<map:xsl src="templates/txt/sitetest.txt.xsl" />
 	</map:gate>
-	<!-- testing svn diff -->
 
 </map:sitemap>
