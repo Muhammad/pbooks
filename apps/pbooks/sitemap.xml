@@ -1035,4 +1035,5 @@ files. -->
 		<map:xsl src="templates/txt/sitetest.txt.xsl" />
 	</map:gate>
 
+	<!-- it should work now -->
 </map:sitemap>
