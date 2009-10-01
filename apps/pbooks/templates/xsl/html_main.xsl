@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 
-		<xsl:if test="not(/_R_/_get/print='true')">
+		<xsl:if test="not(/_R_/_get/print='true') and not(/_R_/got_print='true')">
 			<xsl:call-template name="source_spacer">
 				<xsl:with-param name="section_start">main</xsl:with-param>
 			</xsl:call-template>
@@ -85,7 +85,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:call-template>
 		</xsl:if>
 
-		<xsl:if test="/_R_/_get/print='true'">
+		<xsl:if test="/_R_/_get/print='true' or /_R_/got_print='true'">
 			<div style="padding: 20px; width: 600px;">
 				<xsl:call-template name="content">
 					<xsl:with-param name="link_prefix" select="$link_prefix"/>

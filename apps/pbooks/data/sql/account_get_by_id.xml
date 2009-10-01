@@ -26,9 +26,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>&pb_connection_read;</connection>
 	<params>
 		<param name="_get/account_id" type="integer" default="-999"/>
+		<param name="got_account_id" type="integer" default="-999"/>
 		<param name="//_post/name" type="text" default="__NOTHING__"/>
 	</params>
 	<sql>
-  SELECT * FROM &pb_accounts; WHERE id=? OR name=?
+  SELECT * FROM &pb_accounts; WHERE id=? OR id=? OR name=?
 	</sql>
 </query>

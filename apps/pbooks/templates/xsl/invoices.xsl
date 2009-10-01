@@ -34,14 +34,14 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:variable name="all_accounts"
     select="/_R_/get_all_accounts/get_all_accounts" />
 
+
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
-
 
 <div class="generic-button" style="float: right;">
   <a href="{$link_prefix}invoice-create" id="invoice-create">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-    <xsl:value-of select="$i18n/new_invoice"/>
+    <span id="i18n-new_invoice">New Invoice</span>
   </a>
 </div>
 
@@ -117,7 +117,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
             </span>
           </td>
           <td>
-            <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;print=true">
+            <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}">
               <span id="i18n-print">Print</span>
             </a>
           </td>
@@ -136,9 +136,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
   </b>
 </div>
 <div class="table_controls">
-<xsl:call-template name="pager">
-  <xsl:with-param name="my-table">my_invoices</xsl:with-param>
-</xsl:call-template>
+  <xsl:call-template name="pager">
+    <xsl:with-param name="my-table">my_invoices</xsl:with-param>
+  </xsl:call-template>
 </div>
 
 

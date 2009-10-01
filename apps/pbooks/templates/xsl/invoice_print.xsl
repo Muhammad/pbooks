@@ -28,150 +28,152 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable
-      name   = "invoice_amounts"
-      select = "/_R_/invoices_get_amounts/invoices_get_amounts"
-    />
-		<xsl:variable
-      name   = "business_objects"
-      select = "/_R_/get_some_business_objects/get_some_business_objects"
-    />
-		<xsl:variable
-      name   = "account_meta"
-      select = "/_R_/account_meta_get/account_meta_get"
-    />
-		<xsl:variable
-      name   = "option_get"
-      select = "/_R_/option_get/option_get"
-    />
-		<div style="font-size: 14px; margin-top: {/_R_/runtime/default_invoice_print_vertical}px;">
-			<table border="0" style="float: right;">
-				<tbody>
-					<tr>
-						<td>
-							<xsl:value-of select="$i18n/date"/>:
-						</td>
-						<td colspan="8">
-							<xsl:value-of select="/_R_/get_journal_entry/get_journal_entry/entry_datetime"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<xsl:value-of select="$i18n/invoice_number"/>:
-						</td>
-						<td colspan="8">
-							<xsl:value-of select="$business_objects/invoice_number"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<xsl:value-of select="$i18n/due_date"/>:
-						</td>
-						<td colspan="8">
-							<xsl:value-of select="$business_objects/due_date"/>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<xsl:variable name="all_accounts"
+		select="/_R_/get_all_accounts/get_all_accounts" />
+		<xsl:variable name="journal_entry"
+		select="/_R_/get_journal_entry/get_journal_entry" />
+		<xsl:variable name="invoice_amts"
+		select="/_R_/invoices_get_amounts/invoices_get_amounts" />
+		<xsl:variable name="business_objects"
+		select="/_R_/get_some_business_objects/get_some_business_objects" />
+		<xsl:variable name="account_meta"
+		select="/_R_/account_meta_get/account_meta_get" />
+		<xsl:variable name="option_get" select="/_R_/option_get/option_get" />
 
-			<table border="0" id="return-address">
-				<tbody>
-					<tr>
-						<td>
-							<xsl:value-of select="/_R_/runtime/company_name"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<xsl:value-of select="$option_get/company_address_1"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<xsl:value-of select="$option_get/company_city"/>, 
-              <xsl:value-of select="$option_get/company_state"/>&#160;
-              <xsl:value-of select="$option_get/company_zip"/>
-						</td>
-					</tr>
-				</tbody>
-			</table>
 
-			<table border="0" id="client-address" style="margin-top: 100px; margin-bottom:40px;">
-				<tbody>
-					<tr>
-						<td>
-							<xsl:value-of select="/_R_/get_all_accounts/get_all_accounts[id=/_R_/_get/account_id]/name"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<xsl:value-of select="$account_meta[meta_key='address_1']/meta_value"/>
-						</td>
-					</tr>
-					<xsl:if test="not($account_meta[meta_key='address_2']/meta_value='')">
-						<tr>
-							<td>
-								<xsl:value-of select="$account_meta[meta_key='address_2']/meta_value"/>
-							</td>
-						</tr>
-					</xsl:if>
-					<tr>
-						<td>
-							<xsl:value-of select="$account_meta[meta_key='city']/meta_value"/>, 
-              <xsl:value-of select="$account_meta[meta_key='state']/meta_value"/>&#160;
-              <xsl:value-of select="$account_meta[meta_key='zip']/meta_value"/>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<div id="invoice_print">
-				<table class="simpletable" style="width: 600px;">
-					<thead>
-						<tr>
-							<th colspan="2">
-								<xsl:value-of select="$i18n/billable_items"/>:
-              </th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td width="360">
-								<xsl:value-of select="$i18n/desc"/>
-							</td>
-							<td>
-								<xsl:value-of select="$i18n/total"/>
-							</td>
-						</tr>
+<div style="font-size:14px;margin-top:{//default_invoice_print_vertical}px;">
+  <table style="float: right;">
+    <tbody>
+      <tr>
+        <th>
+          <span id="i18n-date">Date</span>
+        </th>
+        <td>
+          <xsl:value-of select="$journal_entry/entry_datetime"/>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <span id="i18n-invoice_number">Invoice Number</span>
+        </th>
+        <td>
+          <xsl:value-of select="$business_objects/invoice_number"/>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          <span id="i18n-due_date">Due Date</span>
+        </th>
+        <td>
+          <xsl:value-of select="$business_objects/due_date"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-						<!-- INVOICE LINE ITEM ROWS -->
-						<xsl:for-each select="/_R_/get_journal_entry/get_journal_entry[entry_type_id='Credit']">
-							<xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
-							<tr>
-								<td>
-									<xsl:value-of select="$invoice_amounts[entry_amount_id=$my_entry_amount_id]/memorandum"/>
-								</td>
-								<td>
-									<xsl:value-of select="$invoice_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount"/>
-								</td>
-							</tr>
-						</xsl:for-each>
-						<!-- END LINE ITEMS -->
+  <table id="return-address">
+    <tbody>
+      <tr>
+        <td>
+          <xsl:value-of select="/_R_/runtime/company_name"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xsl:value-of select="$option_get/company_address_1"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xsl:value-of select="$option_get/company_city"/>, 
+          <xsl:value-of select="$option_get/company_state"/>&#160;
+          <xsl:value-of select="$option_get/company_zip"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-						<!-- TODO: i18n -->
-						<tr>
-							<td style="text-align: right;">Grand total:</td>
-							<td>
-								<strong>
-									<xsl:value-of
-                    select="sum($invoice_amounts[entry_type_id='Credit']/entry_amount)"/>
-								</strong>
-							</td>
-						</tr>
+  <table id="client-address" style="margin-top:100px;margin-bottom:40px;">
+    <tbody>
+      <tr>
+        <td>
+          <xsl:value-of select="$all_accounts[id=/_R_/got_account_id]/name"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <xsl:value-of select="$account_meta[meta_key='address_1']/meta_value"/>
+        </td>
+      </tr>
+      <xsl:if test="not($account_meta[meta_key='address_2']/meta_value='')">
+        <tr>
+          <td>
+            <xsl:value-of select="$account_meta[meta_key='address_2']/meta_value"/>
+          </td>
+        </tr>
+      </xsl:if>
+      <tr>
+        <td>
+          <xsl:value-of select="$account_meta[meta_key='city']/meta_value"/>, 
+          <xsl:value-of select="$account_meta[meta_key='state']/meta_value"/>&#160;
+          <xsl:value-of select="$account_meta[meta_key='zip']/meta_value"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="invoice_print">
+    <table class="simpletable" style="width: 600px;">
+      <thead>
+        <tr>
+          <th colspan="2">
+            <span id="i18n-billable_items">Billable Items</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th style="width:360px;">
+            <span id="i18n-desc">Description</span>
+          </th>
+          <th style="width:360px;">
+            <span id="i18n-total">Total</span>
+          </th>
+        </tr>
 
-					</tbody>
-				</table>
-			</div>
-			<center><xsl:value-of select="$i18n/thank_you_for_biz"/></center>
-		</div>
+        <!-- INVOICE LINE ITEM ROWS -->
+        <xsl:for-each select="$journal_entry[entry_type_id='Credit']">
+          <xsl:variable name="this_eaid" select="entry_amount_id"/>
+          <xsl:variable name="this_entry_amount"
+          select="$invoice_amts[entry_amount_id=$this_eaid]"/>
+          <tr>
+            <td>
+              <xsl:value-of select="$this_entry_amount/memorandum"/>
+            </td>
+            <td>
+              <xsl:value-of select="$this_entry_amount/entry_amount"/>
+            </td>
+          </tr>
+        </xsl:for-each>
+        <!-- END LINE ITEMS -->
+
+        <tr>
+          <th style="text-align: right;">
+            <span id="i18n-grand_total">Grand total</span>
+          </th>
+          <td>
+            <strong>
+              <xsl:value-of
+              select="sum($invoice_amts[entry_type_id='Credit']/entry_amount)"/>
+            </strong>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <center><xsl:value-of select="$i18n/thank_you_for_biz"/></center>
+</div>
+
+
 	</xsl:template>
 </xsl:stylesheet>

@@ -252,6 +252,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/invoice_form.xsl" />
 	</map:gate>
 	<map:gate name="invoice-print" role="pb_admin">
+	  <map:set name="got_print" value="true" />
 		<map:xml src="data/xml/company_options.xml" />
 		<map:query src="data/sql/option_get.xml" />
 		<map:query src="data/sql/entry_get_by_id.xml" />
@@ -260,6 +261,7 @@ This makes it easier to maintain persistence. -->
 		<map:query src="data/sql/invoices_get_some.xml" />
 		<map:query src="data/sql/invoices_get_amounts.xml" />
 		<map:query src="data/sql/business_object_get_metadata.xml" />
+		<map:set name="got_account_id" value="{/_R_/get_some_business_objects/get_some_business_objects/customer_id}"/>
 		<map:query src="data/sql/account_get_by_id.xml" />
 		<map:xml src="data/xml/customer_meta.xml" />
 		<map:query src="data/sql/account_meta_get.xml" />

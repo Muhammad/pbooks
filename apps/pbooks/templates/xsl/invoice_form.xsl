@@ -50,7 +50,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
     <tbody>
       <tr>
         <th>
-          <span id="i18n-date">DueDate</span>
+          <span id="i18n-date">Date</span>
         </th>
         <td>
           <input type="text" name="entry_datetime" id="invoice_date"
