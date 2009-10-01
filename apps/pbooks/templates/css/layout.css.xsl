@@ -155,7 +155,7 @@ a.generic-button {
   border-collapse: collapse;
 }
 
-table.simpletable thead th, table.simpletable tbody tr td {
+table.simpletable th, table.simpletable td {
 	background-color: #FFF;
   text-align: left;
   padding: 4px;
@@ -346,6 +346,14 @@ table.simpletable thead th, table.simpletable tbody tr td {
 #invoice_print {
  height: 500px; margin-top: 10px;
 }
+
+.invoice_form_table th {
+  background-color: #eee!important;
+}
+.invoice_form_table td, .invoice_form_table th {
+  border-color: #ddd!important;
+}
+
 #help h2 {
   margin-top: 10px;
 }

@@ -50,5 +50,25 @@ function invoice_paid(invoice_number, invoice_entry_id) {
       }
     });
 }
+
+function journal_entry_amount_create(entry_type_id,entry_id) {
+  var this_entry_date = $("#invoice_date").val();
+  $.ajax({
+    url: "<xsl:value-of select="//link_prefix"/>x-journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
+    type: "POST",
+    async: false,
+    data: ({
+      'entry_id': entry_id,
+      'entry_datetime': this_entry_date
+    }),
+    success: function(response){
+      window.location.reload();
+    }
+  });
+}
+
+$(document).ready(function() {
+  $('#my_debit_amount').val($('.credit_amounts').sum());
+});
   </xsl:template>
 </xsl:stylesheet>
