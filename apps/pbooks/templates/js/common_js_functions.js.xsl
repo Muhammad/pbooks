@@ -27,14 +27,28 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:template match="/">
-		function journal_entry_amount_delete(entry_amount_id) {
-			$.post("<xsl:value-of select="//link_prefix"/>x-journal-entry-amount-delete",
-			{
-				'entry_amount_id': entry_amount_id
-			},
-			function (data){
-        $("#ea_"+entry_amount_id).remove();
-			});
-		}
+function journal_entry_amount_delete(entry_amount_id) {
+  $.post("<xsl:value-of select="//link_prefix"/>x-journal-entry-amount-delete",
+  {
+    'entry_amount_id': entry_amount_id
+  },
+  function (data){
+    $("#ea_"+entry_amount_id).remove();
+  });
+}
+
+function invoice_paid(invoice_number, invoice_entry_id) {
+    $.ajax({
+      type: "POST",
+      url: "<xsl:value-of select="//link_prefix"/>x-invoice-paid",
+      data: {
+        'invoice_id': invoice_number,
+        'invoice_entry_id': invoice_entry_id
+      },
+      success: function (res){
+        $("#p_"+invoice_number).replaceWith("Paid");
+      }
+    });
+}
   </xsl:template>
 </xsl:stylesheet>

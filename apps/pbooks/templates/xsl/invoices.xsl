@@ -22,33 +22,19 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+    <xsl:variable name="business_objects"
+    select="/_R_/get_some_business_objects/get_some_business_objects" />
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 
-<!-- INVOICE PAID -->
-<script type="text/javascript">
-function invoice_paid(invoice_number, invoice_entry_id) {
-    $.ajax({
-      type: "POST",
-      url: "<xsl:value-of select="$link_prefix"/>x-invoice-paid",
-      data: {
-        'invoice_id': invoice_number,
-        'invoice_entry_id': invoice_entry_id
-      },
-      success: function (res){
-        $("#p_"+invoice_number).replaceWith("Paid");
-      }
-    });
-}
-</script>
 
 <div class="generic-button" style="float: right;">
   <a href="{$link_prefix}invoice-create" id="invoice-create">
@@ -62,35 +48,36 @@ function invoice_paid(invoice_number, invoice_entry_id) {
     <thead>
       <tr>
         <th>
-          <xsl:value-of select="$i18n/date"/>
+          <span id="i18n-date">Date</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/id"/>
+          <span id="i18n-id">ID</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/client"/>
+          <span id="i18n-client">Client</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/memo"/>
+          <span id="i18n-memorandum">Memorandum</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/amount"/>
+          <span id="i18n-amount">Amount</span>
         </th>
-    <!--
-    <th><xsl:value-of select="$i18n/due_date"/></th>
-    -->
+        <!--
+        <th><xsl:value-of select="$i18n/due_date"/></th>
+        -->
         <th>
-          <xsl:value-of select="$i18n/paid"/>&#160;
+          <span id="i18n-paid">Paid</span>
         <!--<sup>[<a onclick="alert('')">?</a>]</sup>-->
         </th>
         <th>
-          <xsl:value-of select="$i18n/print"/>
+          <span id="i18n-print">Print</span>
         </th>
       </tr>
     </thead>
     <tbody>
       <!-- LOOP -->
-      <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
+      <xsl:for-each
+      select="/_R_/get_some_business_objects/get_some_business_objects">
         <xsl:variable name="my_customer_id" select="customer_id"/>
         <tr onmouseover="oldClass=this.className; this.className='active'"
           onmouseout="this.className=oldClass">
@@ -122,19 +109,19 @@ function invoice_paid(invoice_number, invoice_entry_id) {
           <td>
             <span id="p_{invoice_number}">
             <xsl:if test="paid_status='paid_in_full'">
-              Paid
+              <span id="i18n-paid">Paid</span>
             </xsl:if>
             <xsl:if test="not(paid_status='paid_in_full')">
             <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
-              href="#x-invoice-paid&amp;invoice_number={invoice_number}&amp;invoice_entry_id={entry_id}">
-              Unpaid
+            href="#x-invoice-paid&amp;invoice_number={invoice_number}&amp;invoice_entry_id={entry_id}">
+              <span id="i18n-unpaid">Unpaid</span>
             </a>
             </xsl:if>
             </span>
           </td>
           <td>
             <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}&amp;account_id={customer_id}&amp;print=true">
-              <xsl:value-of select="$i18n/print"/>
+              <span id="i18n-print">Print</span>
             </a>
           </td>
         </tr>
@@ -144,11 +131,12 @@ function invoice_paid(invoice_number, invoice_entry_id) {
   </table>
 </div>
 <div class="table_meta">
-Total outstanding invoices:
-<b><xsl:value-of
-  select="sum(/_R_/get_some_business_objects/get_some_business_objects/invoice_total) - 
-    sum(/_R_/get_some_business_objects/get_some_business_objects[paid_status='paid_in_full']/invoice_total)"/>
-</b>
+  <span id="i18n-total_invoices">Total outstanding invoices</span>
+  <b>
+    <xsl:value-of
+    select="sum($business_objects/invoice_total) -
+    sum($business_objects[paid_status='paid_in_full']/invoice_total)"/>
+  </b>
 </div>
 <div class="table_controls">
 <xsl:call-template name="pager">
