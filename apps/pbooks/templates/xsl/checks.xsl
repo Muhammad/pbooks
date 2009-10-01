@@ -29,86 +29,86 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">my_checks</xsl:with-param>
-      <xsl:with-param name="no-sort-column">
-        ,widthFixed: true
-      </xsl:with-param>
-    </xsl:call-template>
-    <div class="generic-button" style="float: right;">
-      <a href="{$link_prefix}check-create">
-        <img style="" src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-        <xsl:value-of select="$i18n/write_check"/>
-      </a>
-    </div>
 
-		<div class="tableframe">
-      <table id="my_checks" class="tablesorter">
-        <thead>
-          <tr>
-            <th>
-              <xsl:value-of select="$i18n/date"/>
-            </th>
-            <th>
-              <xsl:value-of select="$i18n/check_number"/>
-            </th>
-            <th>
-              <xsl:value-of select="$i18n/payee"/>
-            </th>
-            <th>
-              <xsl:value-of select="$i18n/memo"/>
-            </th>
-            <th>
-              <xsl:value-of select="$i18n/amount"/>
-            </th>
-            <th>
-              <xsl:value-of select="$i18n/id"/>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-				  <!-- Start LOOP -->
-          <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
-            <tr onmouseover="oldClass=this.className; this.className='active'"
-							onmouseout="this.className=oldClass">
-              <td>
-                <xsl:value-of select="entry_datetime"/>
-              </td>
-              <td>
-                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="check_number"/>
-                </a>
-              </td>
-              <td>
-                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="check_payee"/>
-                </a>
-              </td>
-              <td>
-                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="memorandum"/>
-                </a>
-              </td>
-              <td>
-                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="entry_amount"/>
-                </a>
-              </td>
-              <td>
-                <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
-                  <xsl:value-of select="entry_id"/>
-                </a>
-              </td>
-            </tr>
-          </xsl:for-each>
-					<!-- END LOOP -->
-        </tbody>
-      </table>
-		</div>
-		<div class="table_controls">
-      <xsl:call-template name="pager">
-        <xsl:with-param name="my-table">my_checks</xsl:with-param>
-      </xsl:call-template>
-    </div>
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_checks" />
+
+<div class="generic-button" style="float: right;">
+  <a href="{$link_prefix}check-create">
+    <img style="" src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
+    <xsl:value-of select="$i18n/write_check"/>
+  </a>
+</div>
+
+<div class="tableframe">
+  <table id="my_checks" class="tablesorter">
+    <thead>
+      <tr>
+        <th>
+          <span if="i18n-date">Date</span>
+        </th>
+        <th>
+          <span if="i18n-check_number">Check Number</span>
+        </th>
+        <th>
+          <span if="i18n-payee">Payee</span>
+        </th>
+        <th>
+          <span if="i18n-memo">Memorandum</span>
+        </th>
+        <th>
+          <span if="i18n-amount">Amount</span>
+        </th>
+        <th>
+          <span if="i18n-id">ID</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Start LOOP -->
+      <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
+        <tr onmouseover="oldClass=this.className; this.className='active'"
+          onmouseout="this.className=oldClass">
+          <td>
+            <xsl:value-of select="entry_datetime"/>
+          </td>
+          <td>
+            <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
+              <xsl:value-of select="check_number"/>
+            </a>
+          </td>
+          <td>
+            <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
+              <xsl:value-of select="check_payee"/>
+            </a>
+          </td>
+          <td>
+            <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
+              <xsl:value-of select="memorandum"/>
+            </a>
+          </td>
+          <td>
+            <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
+              <xsl:value-of select="entry_amount"/>
+            </a>
+          </td>
+          <td>
+            <a href="{$link_prefix}check-edit&amp;entry_id={entry_id}">
+              <xsl:value-of select="entry_id"/>
+            </a>
+          </td>
+        </tr>
+      </xsl:for-each>
+      <!-- END LOOP -->
+    </tbody>
+  </table>
+</div>
+<div class="table_controls">
+  <xsl:call-template name="pager">
+    <xsl:with-param name="my-table">my_checks</xsl:with-param>
+  </xsl:call-template>
+</div>
+
+
   </xsl:template>
 </xsl:stylesheet>
