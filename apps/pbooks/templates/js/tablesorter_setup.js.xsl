@@ -28,11 +28,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:strip-space elements="*"/>
 	<xsl:template match="/">
 
+
+<xsl:if test="not(//_get/simple='true')">
 <xsl:text>
 $(document).ready(function(){
   $("#</xsl:text><xsl:value-of select="//_get/selector"/><xsl:text>").tablesorter(
       {
-          widgets:['zebra','cookie']
+          widgets:['zebra','cookie'],
+          widthFixed: true
       }
   ).tablesorterPager(
       {
@@ -43,6 +46,21 @@ $(document).ready(function(){
   );
 });
 </xsl:text>
+</xsl:if>
+
+
+<xsl:if test="//_get/simple='true'">
+<xsl:text>
+$(document).ready(function(){
+  $("#</xsl:text><xsl:value-of select="//_get/selector"/><xsl:text>").tablesorter(
+      {
+          widgets:['zebra','cookie']
+      }
+  );
+});
+</xsl:text>
+</xsl:if>
+
 
   </xsl:template>
 </xsl:stylesheet>

@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:include href="account_row.xsl"/>
@@ -34,12 +34,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		select="/_R_/get_all_accounts/get_all_accounts" />
 
 
-<xsl:call-template name="jquery-setup-simple">
-  <xsl:with-param name="my-table">accounts_table</xsl:with-param>
-  <xsl:with-param name="no-sort-column">
-    ,widthFixed: true, headers: { 4: {sorter: false}, 5: {sorter: false} }
-</xsl:with-param>
-</xsl:call-template>
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple=true" />
 
 <!-- Confirm account deletion -->
 <script type="text/javascript">
@@ -62,9 +58,10 @@ function account_delete(account_id) {
     </a>
   </xsl:if>
 
-  <xsl:if test="not(/_R_/runtime/show_all_accounts) or /_R_/runtime/show_all_accounts='off'">
+  <xsl:if test="not(/_R_/runtime/show_all_accounts) or
+  /_R_/runtime/show_all_accounts='off'">
     <a href="{$link_prefix}accounts&amp;show_all_accounts=on">
-      <xsl:value-of select="$i18n/show_accounts"/>
+      <span id="i18n-show_accounts">Show Accounts</span>
     </a>
   </xsl:if>
 
@@ -104,10 +101,10 @@ function account_delete(account_id) {
           </th>
         </xsl:if>
         <th>
-          <xsl:value-of select="$i18n/number"/>
+          <span id="i18n-number">Number</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/account_name"/>
+          <span id="i18n-account_name">Account Name</span>
         </th>
         <th>
           <xsl:value-of select="$i18n/type"/>

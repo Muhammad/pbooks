@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
@@ -30,45 +30,47 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
+
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_checks" />
 
 <div class="generic-button" style="float: right;">
   <a href="{$link_prefix}check-create">
-    <img style="" src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-    <xsl:value-of select="$i18n/write_check"/>
+    <img alt="" src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
+    <span if="i18n-write_check">Write Check</span>
   </a>
 </div>
 
 <div class="tableframe">
   <table id="my_checks" class="tablesorter">
     <thead>
-      <tr>
+      <tr class="i18n">
         <th>
-          <span if="i18n-date">Date</span>
+          <span id="i18n-date">Date</span>
         </th>
         <th>
-          <span if="i18n-check_number">Check Number</span>
+          <span id="i18n-check_number">Check Number</span>
         </th>
         <th>
-          <span if="i18n-payee">Payee</span>
+          <span id="i18n-payee">Payee</span>
         </th>
         <th>
-          <span if="i18n-memo">Memorandum</span>
+          <span id="i18n-memo">Memorandum</span>
         </th>
         <th>
-          <span if="i18n-amount">Amount</span>
+          <span id="i18n-amount">Amount</span>
         </th>
         <th>
-          <span if="i18n-id">ID</span>
+          <span id="i18n-id">ID</span>
         </th>
       </tr>
     </thead>
     <tbody>
       <!-- Start LOOP -->
-      <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
+      <xsl:for-each
+      select="/_R_/get_some_business_objects/get_some_business_objects">
         <tr onmouseover="oldClass=this.className; this.className='active'"
-          onmouseout="this.className=oldClass">
+        onmouseout="this.className=oldClass">
           <td>
             <xsl:value-of select="entry_datetime"/>
           </td>
