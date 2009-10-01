@@ -29,43 +29,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		doctype-public="-//W3C//DTD XHTML 1.1//EN"/>
   <xsl:strip-space elements="*"/>
   <xsl:template match="/">
-    <html>
-      <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
-      <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
-      <xsl:variable name="my18n"
-        select="document('../../i18n/en_US/pbooks.xml')/i18n"/>
-
-      <xsl:call-template name="head">
-        <xsl:with-param name="link_prefix" select="$link_prefix"/>
-        <xsl:with-param name="path_prefix" select="$path_prefix"/>
-      </xsl:call-template>
-      <body>
-				<xsl:for-each select="//pre_body_content">
-					<xsl:sort select="priority" order="ascending"/>
-					<xsl:apply-templates select="nodes/*"/>
-				</xsl:for-each>
-
-        <xsl:call-template name="main">
-          <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="path_prefix" select="$path_prefix"/>
-          <xsl:with-param name="i18n" select="$my18n"/>
-        </xsl:call-template>
-
-        <xsl:for-each select="//footer_nodes">
-          <xsl:sort select="priority" order="ascending"/>
-          <xsl:apply-templates select="nodes/*"/>
-        </xsl:for-each>
-      </body>
-    </html>
+    <!-- DEPRECATED DO NOT USE. SEE html_custom.xsl -->
   </xsl:template>
-
-<xsl:template match="node()">
-<xsl:element name="{name()}">
-<xsl:apply-templates select="@*|node()"/>
-</xsl:element>
-</xsl:template>
-
-<xsl:template match="@*|text()|comment()|processing-instruction()">
-<xsl:copy/>
-</xsl:template>
 </xsl:stylesheet>

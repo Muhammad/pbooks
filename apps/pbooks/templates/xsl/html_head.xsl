@@ -24,40 +24,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="head">
-		<xsl:param name="link_prefix"/>
-		<xsl:param name="path_prefix"/>
-		<head>
-			<title>
-				<xsl:value-of select="/_R_/i18n/default_page_title"/>: 
-        <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
-			</title>
-      <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
-			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.accordion.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.tablesorter.min.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/jquery.metadata.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/pkgs/tablesorter/addons/pager/jquery.tablesorter.pager.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.calculation.min.js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/time/relative_time.js"/>
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css" />
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
-			<script type="text/javascript" src="{$path_prefix}s/js/jsval.js"/>
-			<script type="text/javascript" src="{$link_prefix}x-common-js"/>
-			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"/>
-			<script type="text/javascript" src="{$path_prefix}s/js/document_ready.js"/>
-      <xsl:for-each select="//head_nodes">
-				<xsl:sort select="priority" order="ascending"/>
-				<xsl:apply-templates select="nodes/*"/>
-			</xsl:for-each>
-		</head>
+		<!-- DEPRECATED DO NOT USE. SEE html_custom.xsl -->
 	</xsl:template>
 </xsl:stylesheet>

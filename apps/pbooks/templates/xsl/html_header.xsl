@@ -22,23 +22,8 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="header">
-    <xsl:param name="i18n"/>
-    <xsl:call-template name="source_spacer">
-      <xsl:with-param name="section_start">header</xsl:with-param>
-    </xsl:call-template>
-    <div id="header">&#160;
-    	<span id="company-name">
-        <xsl:value-of select="//runtime/company_name"/>
-      </span>
-      <h1 class="page-title">
-        <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
-      </h1>
-    </div>
-
-    <xsl:call-template name="source_spacer">
-      <xsl:with-param name="section_end">header</xsl:with-param>
-    </xsl:call-template>
+    <!-- DEPRECATED DO NOT USE. SEE html_custom.xsl -->
   </xsl:template>
 </xsl:stylesheet>
