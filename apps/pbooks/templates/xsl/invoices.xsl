@@ -31,6 +31,8 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:param name="i18n"/>
     <xsl:variable name="business_objects"
     select="/_R_/get_some_business_objects/get_some_business_objects" />
+    <xsl:variable name="all_accounts"
+    select="/_R_/get_all_accounts/get_all_accounts" />
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
@@ -62,12 +64,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
         <th>
           <span id="i18n-amount">Amount</span>
         </th>
-        <!--
-        <th><xsl:value-of select="$i18n/due_date"/></th>
-        -->
         <th>
           <span id="i18n-paid">Paid</span>
-        <!--<sup>[<a onclick="alert('')">?</a>]</sup>-->
         </th>
         <th>
           <span id="i18n-print">Print</span>
@@ -85,17 +83,18 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
             <xsl:value-of select="entry_datetime"/>
           </td>
           <td id="{entry_id}">
-            <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}">
+            <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}">
               <xsl:value-of select="invoice_number"/>
             </a>
           </td>
           <td>
             <a href="#">
-              <xsl:value-of select="substring(/_R_/get_all_accounts/get_all_accounts[id=$my_customer_id]/name,0,24)"/>
+              <xsl:value-of
+              select="substring($all_accounts[id=$my_customer_id]/name,0,24)"/>
             </a>
           </td>
           <td>
-            <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}"
+            <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}"
               title="{memorandum}">
               <xsl:value-of select="substring(memorandum,0,12)"/>
             </a>
@@ -103,24 +102,22 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
           <td>
             <xsl:value-of select="invoice_total"/>
           </td>
-          <!--
-          <td><xsl:value-of select="due_date"/></td>
-          -->
           <td>
             <span id="p_{invoice_number}">
             <xsl:if test="paid_status='paid_in_full'">
               <span id="i18n-paid">Paid</span>
             </xsl:if>
             <xsl:if test="not(paid_status='paid_in_full')">
-            <a onclick="invoice_paid({invoice_number},{entry_id}); return false;"
-            href="#x-invoice-paid&amp;invoice_number={invoice_number}&amp;invoice_entry_id={entry_id}">
-              <span id="i18n-unpaid">Unpaid</span>
-            </a>
+              <a onclick="invoice_paid({invoice_number},{entry_id});"
+              title="Entry ID: {entry_id}; Invoice #: {invoice_number}"
+              href="#invoice_entry_id={entry_id}">
+                <span id="i18n-unpaid">Unpaid</span>
+              </a>
             </xsl:if>
             </span>
           </td>
           <td>
-            <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;invoice_entry_id={entry_id}&amp;account_id={customer_id}&amp;print=true">
+            <a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;print=true">
               <span id="i18n-print">Print</span>
             </a>
           </td>

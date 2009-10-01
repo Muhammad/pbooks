@@ -37,13 +37,13 @@ function journal_entry_amount_delete(entry_amount_id) {
   });
 }
 
-function invoice_paid(invoice_number, invoice_entry_id) {
+function invoice_paid(invoice_number, entry_id) {
     $.ajax({
       type: "POST",
       url: "<xsl:value-of select="//link_prefix"/>x-invoice-paid",
       data: {
         'invoice_id': invoice_number,
-        'invoice_entry_id': invoice_entry_id
+        'entry_id': entry_id
       },
       success: function (res){
         $("#p_"+invoice_number).replaceWith("Paid");
