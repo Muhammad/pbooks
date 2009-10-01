@@ -33,11 +33,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:variable name="invoice_amounts"
     select="/_R_/invoices_get_amounts/invoices_get_amounts" />
     <xsl:variable name="business_object_metadata"
-    select="/_R_/business_object_get_metadata/business_object_get_metadata" />
+    select="/_R_/get_some_business_objects/get_some_business_objects" />
+    <xsl:variable name="all_accounts"
+    select="/_R_/get_all_accounts/get_all_accounts" />
 
 
 <h2>
-  <xsl:value-of select="$i18n/new_invoice"/>:
+  <span id="i18n-new_invoice">New Invoice</span>
 </h2>
 <form method="post"
 action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
@@ -48,7 +50,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
     <tbody>
       <tr>
         <th>
-          <xsl:value-of select="$i18n/date"/>:
+          <span id="i18n-date">DueDate</span>
         </th>
         <td>
           <input type="text" name="entry_datetime" id="invoice_date"
@@ -57,11 +59,12 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       </tr>
       <tr>
         <th>
-          <xsl:value-of select="$i18n/customer"/>:
+          <span id="i18n-customer">Customer</span>
         </th>
         <td>
           <select name="debit_account_1[]">
-            <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
+            <xsl:for-each
+            select="$all_accounts[accounts_receivable_account='on']">
               <option value="{id}">
                 <xsl:if test="id=//get_some_business_objects/customer_id">
                   <xsl:attribute name="selected">selected</xsl:attribute>
@@ -117,7 +120,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
           <xsl:value-of select="$i18n/paid_in_full"/>
           <br/>
           <input type="radio" name="paid_status" value="partial_payment">
-            <xsl:if test="$business_object_metadata/paid_status='partial_payment'">
+            <xsl:if test="$business_object_metadata/paid_status='partial'">
               <xsl:attribute name="checked">checked</xsl:attribute>
             </xsl:if>
           </input>
@@ -182,6 +185,8 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       <!-- INVOICE LINE ITEM ROWS -->
       <xsl:for-each select="//get_journal_entry[entry_type_id='Credit']">
         <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
+        <xsl:variable name="invoice_amount"
+        select="$invoice_amounts[entry_amount_id=$my_entry_amount_id]"/>
         <tr id="ea_{entry_amount_id}">
           <td>
             <xsl:value-of select="entry_amount_id"/>
@@ -191,10 +196,10 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
               <option>
                 <xsl:value-of select="$i18n/select_one"/>
               </option>
-              <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id=40000]">
+              <xsl:for-each select="$all_accounts[account_type_id=40000]">
                 <xsl:variable name="my_account_id" select="id"/>
                 <option value="{$my_account_id}">
-                  <xsl:if test="$invoice_amounts[entry_amount_id=$my_entry_amount_id]/account_id=$my_account_id">
+                  <xsl:if test="$invoice_amount/account_id=$my_account_id">
                     <xsl:attribute name="selected">selected</xsl:attribute>
                   </xsl:if>
                   <xsl:value-of select="name"/>
@@ -204,18 +209,18 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
           </td>
           <td>
             <input type="text" name="memorandum[]" style="width: 20em;"
-            value="{$invoice_amounts[entry_amount_id=$my_entry_amount_id]/memorandum}"/>
+            value="{$invoice_amount/memorandum}"/>
           </td>
           <td>
-            <input type="text" name="quantity" class="five"/>
+            <input type="text" name="quantity" id="quantity" class="five"/>
           </td>
           <td>
-            <input type="text" name="price" class="five"/>
+            <input type="text" name="price" id="price" class="five"/>
           </td>
           <td>
             <input type="text" name="credit_amount_1[]" style="width: 5em;"
             class="credit_amounts"
-            value="{/_R_/invoices_get_amounts/invoices_get_amounts[entry_amount_id=$my_entry_amount_id]/entry_amount}"
+            value="{$invoice_amount/entry_amount}"
             onkeyup="$('#my_debit_amount').val($('.credit_amounts').sum());"/>
           </td>
           <td>

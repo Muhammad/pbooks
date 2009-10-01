@@ -67,6 +67,26 @@ function journal_entry_amount_create(entry_type_id,entry_id) {
   });
 }
 
+function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_type_id) {
+  $("#"+entry_amount_id).removeAttr("onclick");
+  $("#"+entry_amount_id).fadeTo("slow", 0.33);
+  $.post("<xsl:value-of select="//link_prefix"/>x-ledger-create",
+  {
+    'entry_id':        entry_id,
+    'account_id':      account_id,
+    'type':            entry_type_id,
+    'entry_amount_id': entry_amount_id,
+    'account_type_id': account_type_id
+  },
+  function (data){
+    $("#"+entry_amount_id).remove();
+  });
+}
+
+function journal_entry_location(entry_id) {
+  location.href = "<xsl:value-of select="//link_prefix"/>journal-entry&amp;entry_id="+entry_id;
+}
+
 $(document).ready(function() {
   $('#my_debit_amount').val($('.credit_amounts').sum());
 });
