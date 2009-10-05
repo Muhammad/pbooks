@@ -30,15 +30,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		SELECT
 		sum(pea.entry_amount) as outstanding_invoice_total
 
-		FROM &pb_entries; as pbe
-
-		LEFT JOIN &pb_entry_metadata; AS mymeta3
-		ON (mymeta3.entry_id = pbe.entry_id
-		AND mymeta3.meta_key='paid_status'
-		AND mymeta3.meta_value != 'paid_in_full')
+		FROM &pb_entries; as pbe,
+		&pb_entry_amounts; as pea,
+		&pb_entry_metadata; AS mymeta3
 
 		WHERE pbe.entry_id!=0
 		AND pbe.memorandum!='PLACEHOLDER'
 		AND pbe.status != 9
+		AND pea.entry_id = pbe.entry_id
+		AND pea.entry_type_id = 'Debit'
+		AND mymeta3.entry_id = pbe.entry_id
+		AND mymeta3.meta_key='paid_status'
+		AND mymeta3.meta_value != 'paid_in_full'
 	</sql>
 </query>
