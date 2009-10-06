@@ -22,37 +22,41 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-		<p>
-			<xsl:value-of select="$i18n/configure" />:
-    </p>
-		<h2 style="margin-top: 10px;">
-			<xsl:value-of select="$i18n/options"/>
-		</h2>
-		<h2 style="margin-top: 10px;">
-			<xsl:value-of select="$i18n/plugins"/>
-		</h2>
-		<xsl:for-each select="//plugins_list">
-			<xsl:value-of select="."/>
-			<br/>
-		</xsl:for-each>
-		<h2 style="margin-top: 10px;">
-			<xsl:value-of select="$i18n/themes"/>
-		</h2>
 
-		<!-- User Admin Link -->
-		<h2 style="margin-top: 10px;">
-			<xsl:value-of select="$i18n/user_admin"/>
-		</h2>
-		<xsl:value-of select="$i18n/enter_user_manager"/>, 
-		<a href="user.php?nid=user">
-			<xsl:value-of select="$i18n/click_here"/>
-		</a>.
-		<xsl:value-of select="$i18n/return_user_admin"/>.
+
+<p>
+  <xsl:value-of select="$i18n/configure" />:
+</p>
+<h2 style="margin-top: 10px;">
+  <xsl:value-of select="$i18n/options"/>
+</h2>
+<h2 style="margin-top: 10px;">
+  <xsl:value-of select="$i18n/plugins"/>
+</h2>
+<xsl:for-each select="//plugins_list">
+  <xsl:value-of select="."/>
+  <br/>
+</xsl:for-each>
+<h2 style="margin-top: 10px;">
+  <xsl:value-of select="$i18n/themes"/>
+</h2>
+
+<!-- User Admin Link -->
+<h2 style="margin-top: 10px;">
+  <xsl:value-of select="$i18n/user_admin"/>
+</h2>
+<xsl:value-of select="$i18n/enter_user_manager"/>, 
+<a href="user.php?nid=user">
+  <xsl:value-of select="$i18n/click_here"/>
+</a>.
+<xsl:value-of select="$i18n/return_user_admin"/>.
+
+
   </xsl:template>
 </xsl:stylesheet>

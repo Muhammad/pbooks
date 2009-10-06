@@ -22,34 +22,36 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
-    <h2>
-      <xsl:value-of select="$i18n/import_csv_accounts"/>
-    </h2>
 
-    <xsl:if test="/_R_/_get/error">
-      <div class="error" id="function-error">
-        <img src="{$path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
-        <xsl:value-of select="//errors/error[key='general_error']/value"/>
-      </div>
-      <br/>
-    </xsl:if>
+<h2>
+  <xsl:value-of select="$i18n/import_csv_accounts"/>
+</h2>
 
-    <form method="post"
-        onsubmit="return validateStandard(this, 'error');">
-      <textarea id="csv_import" name="csv_accounts_import" rows="14" cols="80">
-			<xsl:text>10000,1234,"testing","this is a test account"
+<xsl:if test="/_R_/_get/error">
+  <div class="error" id="function-error">
+    <img src="{$path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
+    <xsl:value-of select="//errors/error[key='general_error']/value"/>
+  </div>
+  <br/>
+</xsl:if>
+
+<form method="post"
+    onsubmit="return validateStandard(this, 'error');">
+  <textarea id="csv_import" name="csv_accounts_import" rows="14" cols="80">
+  <xsl:text>10000,1234,"testing","this is a test account"
 10000,4567,"testing 2","this is another test account"</xsl:text>
-			</textarea>
-      <br/>
-      <input type="submit"/>
-    </form>
+  </textarea>
+  <br/>
+  <input type="submit"/>
+</form>
+
 
   </xsl:template>
 </xsl:stylesheet>
