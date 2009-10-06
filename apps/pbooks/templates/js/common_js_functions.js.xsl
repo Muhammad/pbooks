@@ -37,6 +37,15 @@ function journal_entry_amount_delete(entry_amount_id) {
   });
 }
 
+function account_delete(id) {
+    if(confirm('Are you sure?')) {
+        $.post("<xsl:value-of select="//link_prefix"/>accounts-delete", {'id': id},
+        function (data){
+          $("#a_"+id).remove();
+        });
+    }
+}
+
 // I think this can be deleted 2009-10-05
 function not_journal_entry_amount_delete(entry_amount_id,row) {
   $.post("<xsl:value-of select="//link_prefix"/>journal-entry-amount-delete",
