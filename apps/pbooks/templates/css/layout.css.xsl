@@ -101,7 +101,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
   right: 0;
 }
 
-.form-table tr td {
+.form-table {
+margin-top: 0px;
+}
+.form-table td, .form-table th {
 	padding: 4px;
 	border-width: 0;
   border-bottom-width: 1px;
@@ -222,15 +225,19 @@ table.simpletable th, table.simpletable td {
 
 #journal-entry-form table {
   width: 100%;
+  float: left;
   text-align: center;
 }
 
-#journal-entry-form tr td {
+#journal-entry-form td,#journal-entry-form th {
   text-align: left;
   padding: 5px;
 }
 
-
+#delete-journal-entry-button {
+  float:left;
+  margin-top: 10px;
+}
 
 
 #accordion-menu {

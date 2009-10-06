@@ -37,6 +37,43 @@ function journal_entry_amount_delete(entry_amount_id) {
   });
 }
 
+// I think this can be deleted 2009-10-05
+functionnot_journal_entry_amount_delete(entry_amount_id,row) {
+  $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
+  {
+      'entry_amount_id': entry_amount_id
+  },
+  function (data){
+  });
+  myTable = document.getElementById("entry_form_table");
+  if(myTable.getElementsByTagName('tr').length > 4) {
+      myTable.deleteRow(row);
+  } else {
+      setTimeout('window.location.reload()',200);
+  }
+}
+
+function confirmFlip () {
+  var flip=confirm('Are you sure?');
+  if(flip)
+      window.location.href= location.href + '&amp;flip=true';
+  else
+      return false;
+}
+
+function debits_summarize() {
+  mysum = "";
+  for (i=0; i &lt; document.forms[0].length; i++) {
+    if(document.forms[0].elements[i].name == "debit_amount_1[]") {
+        mysum = (mysum * 1) + (1 * document.forms[0].elements[i].value);
+    } else if (document.forms[0].elements[i].name == "credit_amount_1[]") {
+        mytarget = document.forms[0].elements[i];
+    } else {
+    }
+  }
+  mytarget.value = mysum;
+}
+
 function invoice_paid(invoice_number, entry_id) {
     $.ajax({
       type: "POST",

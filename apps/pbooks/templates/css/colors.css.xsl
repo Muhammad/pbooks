@@ -116,7 +116,7 @@ a:hover {
 .generic-button a {
   border-color: #BBB;
 }
-.form-table tr td {
+.form-table td, .form-table th {
   border-color: #CCC;
 }
 

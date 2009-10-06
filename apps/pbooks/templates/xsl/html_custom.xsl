@@ -22,11 +22,11 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:output method="xml" indent="yes" encoding="UTF-8"
-    omit-xml-declaration="no"
-		doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
-		doctype-public="-//W3C//DTD XHTML 1.1//EN"/>
+  omit-xml-declaration="no"
+  doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+  doctype-public="-//W3C//DTD XHTML 1.1//EN"/>
   <xsl:strip-space elements="*"/>
   <xsl:template match="/">
     <html>
@@ -99,11 +99,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</xsl:template>
 
   <xsl:template name="header">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="i18n"/>
     <xsl:call-template name="source_spacer">
       <xsl:with-param name="section_start">header</xsl:with-param>
     </xsl:call-template>
-    <div id="header">&#160;
+    <div id="header">
+      <div style="float:right;margin: 4px;">
+        <form action="index.php" method="get">
+          <input type="hidden" name="nid" value="journal-search" />
+          <input type="text" name="entry_search" />
+          <input type="submit" />
+        </form>
+      </div>
     	<span id="company-name">
         <xsl:value-of select="//runtime/company_name"/>
       </span>
@@ -142,6 +150,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 				<xsl:call-template name="header">
 					<xsl:with-param name="i18n" select="$i18n"/>
+					<xsl:with-param name="link_prefix" select="$link_prefix"/>
 				</xsl:call-template>
 				<div id="content">
 					<div id="notitle"/>
