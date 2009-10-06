@@ -189,8 +189,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="redirect" params="{//link_prefix}journal-entry&amp;entry_id={//_get/entry_id}" />
 	</map:gate>
 
-
-
 <!-- POSTING -->
 	<map:gate name="posting" role="pb_admin" cache="10">
 		<map:xml src="i18n/en_US/user_options.xml" />
