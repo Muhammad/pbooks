@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
@@ -30,101 +30,91 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup-simple"/>
-		<!-- This is the text for the deletion confirm -->
-		<script type="text/javascript">
-    var question = '<xsl:value-of select="$i18n/delete_account_group"/>?';
-    function account_group_delete(group_id) {
-      if(confirm(question)) {
-        $.post("<xsl:value-of select="$link_prefix"/>account-group-delete",
-        {'group_id': group_id},
-        function (data){
-            $("#g_"+group_id).remove();
-        });
-      }
-    }
-    </script>
 
-		<div class="generic-button" style="text-align: right;">
-			<a href="{$link_prefix}account-group-edit">
-				<img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-				<xsl:value-of select="$i18n/new_account_group"/>
-			</a>
-		</div>
 
-		<table class="tablesorter" id="accounts_table">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>
-						<xsl:value-of select="$i18n/group_name"/>
-					</th>
-					<th>
-						<xsl:value-of select="$i18n/desc"/>
-					</th>
-					<th>
-						<xsl:value-of select="$i18n/edit"/>
-					</th>
-					<th>
-						<xsl:value-of select="$i18n/delete"/>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<xsl:apply-templates select="//groups/group">
-					<xsl:with-param name="link_prefix" select="$link_prefix"/>
-					<xsl:with-param name="i18n" select="$i18n"/>
-				</xsl:apply-templates>
-			</tbody>
-		</table>
-	</xsl:template>
+<div class="generic-button" style="text-align: right;">
+  <a href="{$link_prefix}account-group-edit">
+    <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
+    <xsl:value-of select="$i18n/new_account_group"/>
+  </a>
+</div>
 
-	<xsl:template match="group">
-		<xsl:param name="parent_gid">0</xsl:param>
-		<xsl:param name="generation">0</xsl:param>
-		<xsl:param name="link_prefix"/>
-		<xsl:param name="i18n"/>
-		<xsl:variable name="my_group_id" select="group_id"/>
+<table class="tablesorter" id="accounts_table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>
+        <xsl:value-of select="$i18n/group_name"/>
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/desc"/>
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/edit"/>
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/delete"/>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <xsl:apply-templates select="//groups/group">
+      <xsl:with-param name="link_prefix" select="$link_prefix"/>
+      <xsl:with-param name="i18n" select="$i18n"/>
+    </xsl:apply-templates>
+  </tbody>
+</table>
+</xsl:template>
 
-		<tr class="row2" id="g_{group_id}">
-			<td>
-				<xsl:value-of select="group_id"/>
-			</td>
-			<td>
-				<xsl:if test="not($parent_gid='0')">
-					<xsl:call-template name="generation_indent">
-						<xsl:with-param name="iterator" select="$generation"/>
-					</xsl:call-template>
-                +----
-            </xsl:if>
-				<a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
-					<xsl:value-of select="name"/>
-				</a>
-			</td>
-			<td>
-				<a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
-					<xsl:value-of select="description"/>
-				</a>
-			</td>
-			<td>
-				<a href="{$link_prefix}account-group-edit&amp;group_id={group_id}"
-					id="{account_number}-e">
-					<xsl:value-of select="$i18n/edit"/>
-				</a>
-			</td>
-			<td>
-				<a href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
-					 id="{account_group}-d"
-					 onclick="account_group_delete({group_id}); return false;">
-					<xsl:value-of select="$i18n/delete"/>
-				</a>
-			</td>
-		</tr>
-		<xsl:apply-templates select="group">
-			<xsl:with-param name="link_prefix" select="$link_prefix"/>
-			<xsl:with-param name="parent_gid" select="$my_group_id"/>
-			<xsl:with-param name="i18n" select="$i18n"/>
-			<xsl:with-param name="generation" select="$generation+1"/>
-		</xsl:apply-templates>
+<xsl:template match="group">
+<xsl:param name="parent_gid">0</xsl:param>
+<xsl:param name="generation">0</xsl:param>
+<xsl:param name="link_prefix"/>
+<xsl:param name="i18n"/>
+<xsl:variable name="my_group_id" select="group_id"/>
+
+<tr class="row2" id="g_{group_id}">
+  <td>
+    <xsl:value-of select="group_id"/>
+  </td>
+  <td>
+    <xsl:if test="not($parent_gid='0')">
+      <xsl:call-template name="generation_indent">
+        <xsl:with-param name="iterator" select="$generation"/>
+      </xsl:call-template>
+            +----
+        </xsl:if>
+    <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
+      <xsl:value-of select="name"/>
+    </a>
+  </td>
+  <td>
+    <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}">
+      <xsl:value-of select="description"/>
+    </a>
+  </td>
+  <td>
+    <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}"
+      id="{account_number}-e">
+      <xsl:value-of select="$i18n/edit"/>
+    </a>
+  </td>
+  <td>
+    <a href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
+       id="{account_group}-d"
+       onclick="account_group_delete({group_id}); return false;">
+      <xsl:value-of select="$i18n/delete"/>
+    </a>
+  </td>
+</tr>
+<xsl:apply-templates select="group">
+  <xsl:with-param name="link_prefix" select="$link_prefix"/>
+  <xsl:with-param name="parent_gid" select="$my_group_id"/>
+  <xsl:with-param name="i18n" select="$i18n"/>
+  <xsl:with-param name="generation" select="$generation+1"/>
+</xsl:apply-templates>
+
+
 	</xsl:template>
 
 	<xsl:template name="generation_indent">

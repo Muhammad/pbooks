@@ -46,6 +46,16 @@ function account_delete(id) {
     }
 }
 
+function account_group_delete(group_id) {
+  if(confirm('Are you sure?')) {
+    $.post("<xsl:value-of select="//link_prefix"/>account-group-delete",
+    {'group_id': group_id},
+    function (data){
+        $("#g_"+group_id).remove();
+    });
+  }
+}
+
 // I think this can be deleted 2009-10-05
 function not_journal_entry_amount_delete(entry_amount_id,row) {
   $.post("<xsl:value-of select="//link_prefix"/>journal-entry-amount-delete",
