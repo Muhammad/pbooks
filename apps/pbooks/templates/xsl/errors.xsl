@@ -22,15 +22,19 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
-  	<h2>
-		<xsl:value-of select="/_R_/i18n/errors/error[key='error']/value"/>:
-    </h2>
-    <div class="error" id="general-error">
-      <img src="{/_R_/runtime/path_prefix}/{/_R_/runtime/icon_set}/exclamation.png"/>
-      <xsl:value-of select="//error[key=//my_error]/value"/>
-    </div>
+
+
+<h2>
+<xsl:value-of select="/_R_/i18n/errors/error[key='error']/value"/>:
+</h2>
+<div class="error" id="general-error">
+  <img src="{/_R_/runtime/path_prefix}/{/_R_/runtime/icon_set}/exclamation.png"/>
+  <xsl:value-of select="//error[key=//my_error]/value"/>
+</div>
+
+
   </xsl:template>
 </xsl:stylesheet>

@@ -22,54 +22,57 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
-  <xsl:param name="i18n"/>
-  <div id="help">
-  <h2>
-    <xsl:value-of select="$i18n/pbooks_manual"/>
-  </h2>
-  <a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank">
-			<xsl:value-of select="$i18n/pbooks_user_manual"/>
+    <xsl:param name="i18n"/>
+
+<div id="help">
+<h2>
+  <xsl:value-of select="$i18n/pbooks_manual"/>
+</h2>
+<a href="http://www.pbooks.org/wiki/PBooks_User_Manual" target="_blank">
+    <xsl:value-of select="$i18n/pbooks_user_manual"/>
+</a>
+
+<h2>
+  <xsl:value-of select="$i18n/resource_links"/>
+</h2>
+<ul>
+  <li>
+  <a href="http://www.pbooks.org/" target="_blank">
+    <xsl:value-of select="$i18n/pbooks_homepage"/>
   </a>
+  </li>
+  <li>
+  <a href="http://www.informedbanking.com/index.html" target="_blank">
+    <xsl:value-of select="$i18n/informed"/>
+  </a>
+  </li>
+  <li>
+  <a href="http://www.sb-info.com/wiki/Main_Page" target="_blank">
+    <xsl:value-of select="$i18n/small_business_info"/>
+  </a>
+  </li>
+</ul>
 
-  <h2>
-    <xsl:value-of select="$i18n/resource_links"/>
-  </h2>
-  <ul>
-    <li>
-    <a href="http://www.pbooks.org/" target="_blank">
-      <xsl:value-of select="$i18n/pbooks_homepage"/>
-    </a>
-    </li>
-    <li>
-    <a href="http://www.informedbanking.com/index.html" target="_blank">
-      <xsl:value-of select="$i18n/informed"/>
-    </a>
-    </li>
-    <li>
-    <a href="http://www.sb-info.com/wiki/Main_Page" target="_blank">
-      <xsl:value-of select="$i18n/small_business_info"/>
-    </a>
-    </li>
-  </ul>
+<h2>
+  <xsl:value-of select="$i18n/pbooks_consulting"/>
+</h2>
 
-  <h2>
-    <xsl:value-of select="$i18n/pbooks_consulting"/>
-  </h2>
+<xsl:value-of select="$i18n/written"/>
 
-  <xsl:value-of select="$i18n/written"/>
+<a href="http://www.savonix.com" target="_blank">
+  <xsl:value-of select="$i18n/savonix"/>
+</a>.
 
-  <a href="http://www.savonix.com" target="_blank">
-    <xsl:value-of select="$i18n/savonix"/>
-  </a>.
+  <xsl:value-of select="$i18n/consulting_services"/>
 
-		<xsl:value-of select="$i18n/consulting_services"/>
+<a href="mailto:support@savonix.com">
+  <xsl:value-of select="$i18n/support"/>
+</a>.
+</div>
 
-  <a href="mailto:support@savonix.com">
-    <xsl:value-of select="$i18n/support"/>
-  </a>.
-  </div>
+
 	</xsl:template>
 </xsl:stylesheet>

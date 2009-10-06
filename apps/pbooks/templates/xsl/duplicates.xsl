@@ -32,82 +32,83 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">my_duplicates</xsl:with-param>
     </xsl:call-template>
 
-    <div class="tableframe">
-    <table class="tablesorter" id="my_duplicates">
-      <thead>
+
+<div class="tableframe">
+<table class="tablesorter" id="my_duplicates">
+  <thead>
+    <tr>
+      <th>
+        <xsl:value-of select="$i18n/post"/>
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/date"/>:
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/memo"/>
+      </th>
+      <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
+        <th>
+          <xsl:value-of select="$i18n/account"/>
+        </th>
+      </xsl:if>
+      <th>
+        <xsl:value-of select="$i18n/amount"/>
+      </th>
+      <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">
+        <th>
+          <xsl:value-of select="$i18n/balance"/>
+        </th>
+      </xsl:if>
+    </tr>
+  </thead>
+
+  <!-- ROWS OF POTENTIALLY DUPLICATE ENTRIES -->
+  <tbody>
+    <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions|/_R_/get_all_entry_amounts/get_all_entry_amounts">
+      <xsl:sort select="entry_datetime"/>
+      <xsl:variable name="my_entry_datetime" select="entry_datetime"/>
+
+      <!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE
+        only show the similar ones - first check if there is an unmatched
+        transaction and an existing entry on the same day, then check for
+        equal amounts (and abs val)-->
+      <xsl:if test="
+        (transaction_id and (entry_amount=/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount))
+        or
+        (not(transaction_id) and (entry_amount=/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount))
+      ">
+      <!-- END MOST IMPORTANT PART -->
         <tr>
-          <th>
-            <xsl:value-of select="$i18n/post"/>
-          </th>
-          <th>
-            <xsl:value-of select="$i18n/date"/>:
-					</th>
-          <th>
-            <xsl:value-of select="$i18n/memo"/>
-					</th>
-          <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
-            <th>
-              <xsl:value-of select="$i18n/account"/>
-            </th>
-          </xsl:if>
-          <th>
-            <xsl:value-of select="$i18n/amount"/>
-          </th>
-          <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">
-            <th>
-							<xsl:value-of select="$i18n/balance"/>
-            </th>
-          </xsl:if>
+          <td/>
+          <td>
+            <a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
+              <xsl:value-of select="entry_datetime"/>
+            </a>
+          </td>
+          <td>
+            <xsl:value-of select="substring(memorandum[not(.='NULL')],0,20)"/>
+          </td>
+          <td>
+            <a href="{$link_prefix}ledger&amp;account_id={account_id}">
+              <xsl:value-of select="name"/>
+            </a>
+          </td>
+          <td colspan="3">
+            <xsl:value-of select="entry_amount"/>
+          </td>
         </tr>
-      </thead>
-
-			<!-- ROWS OF POTENTIALLY DUPLICATE ENTRIES -->
-      <tbody>
-        <xsl:for-each select="/_R_/get_all_transactions/get_all_transactions|/_R_/get_all_entry_amounts/get_all_entry_amounts">
-          <xsl:sort select="entry_datetime"/>
-          <xsl:variable name="my_entry_datetime" select="entry_datetime"/>
-
-					<!-- THIS IS THE MOST IMPORTANT PART OF THIS FILE
-					  only show the similar ones - first check if there is an unmatched
-						transaction and an existing entry on the same day, then check for
-						equal amounts (and abs val)-->
-          <xsl:if test="
-            (transaction_id and (entry_amount=/_R_/get_all_entry_amounts/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_entry_amounts[entry_datetime=$my_entry_datetime]/entry_amount))
-            or
-            (not(transaction_id) and (entry_amount=/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount or entry_amount=0-/_R_/get_all_transactions/get_all_transactions[entry_datetime=$my_entry_datetime]/entry_amount))
-          ">
-					<!-- END MOST IMPORTANT PART -->
-            <tr>
-              <td/>
-              <td>
-                <a href="{$link_prefix}journal&amp;from_date={entry_datetime}">
-                  <xsl:value-of select="entry_datetime"/>
-                </a>
-              </td>
-              <td>
-                <xsl:value-of select="substring(memorandum[not(.='NULL')],0,20)"/>
-              </td>
-              <td>
-                <a href="{$link_prefix}ledger&amp;account_id={account_id}">
-                  <xsl:value-of select="name"/>
-                </a>
-              </td>
-              <td colspan="3">
-                <xsl:value-of select="entry_amount"/>
-              </td>
-            </tr>
-          </xsl:if>
-        </xsl:for-each>
-      </tbody>
-    </table>
-    </div>
-    <div class="table_meta" style="padding-left:270px; bottom: 45px;right: 70px;">
-    <xsl:value-of select="$i18n/duplicates_info"/>
-    </div>
-		<div class="table_controls">
-    <xsl:call-template name="pager">
-      <xsl:with-param name="my-table">my_duplicates</xsl:with-param>
-    </xsl:call-template>
-		</div>
+      </xsl:if>
+    </xsl:for-each>
+  </tbody>
+</table>
+</div>
+<div class="table_meta" style="padding-left:270px; bottom: 45px;right: 70px;">
+<xsl:value-of select="$i18n/duplicates_info"/>
+</div>
+<div class="table_controls">
+<xsl:call-template name="pager">
+  <xsl:with-param name="my-table">my_duplicates</xsl:with-param>
+</xsl:call-template>
+</div>
   </xsl:template>
 </xsl:stylesheet>
