@@ -163,6 +163,7 @@ INSERT INTO <xsl:value-of select="//_get/table_prefix"/>pb_options (option_key,o
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> <xsl:value-of select="//_get/table_prefix"/>pb_notes (
   note_id <xsl:value-of select="//dbe/engine_auto_increment"/>,
   user_id <xsl:value-of select="//dbe/integer"/>,
+  note_status_id <xsl:value-of select="//dbe/integer"/>,
   note_datetime timestamp NOT NULL default CURRENT_TIMESTAMP,
   note <xsl:value-of select="//dbe/varchar"/>
   <xsl:if test="//engine='mysql'">,PRIMARY KEY  (note_id)</xsl:if>

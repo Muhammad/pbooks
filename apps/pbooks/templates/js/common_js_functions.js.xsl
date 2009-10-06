@@ -38,8 +38,8 @@ function journal_entry_amount_delete(entry_amount_id) {
 }
 
 // I think this can be deleted 2009-10-05
-functionnot_journal_entry_amount_delete(entry_amount_id,row) {
-  $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-delete",
+function not_journal_entry_amount_delete(entry_amount_id,row) {
+  $.post("<xsl:value-of select="//link_prefix"/>journal-entry-amount-delete",
   {
       'entry_amount_id': entry_amount_id
   },
@@ -120,6 +120,25 @@ function post_entry(entry_id,account_id,entry_type_id,entry_amount_id,account_ty
   });
 }
 
+function note_delete(note_id) {
+    $.post("<xsl:value-of select="//link_prefix"/>x-note-delete",
+    {
+      'note_id': note_id
+    },
+    function (data){
+      $("#n_"+note_id).remove();
+    });
+}
+
+function note_archive(note_id) {
+    $.post("<xsl:value-of select="//link_prefix"/>x-note-archive",
+    {
+      'note_id': note_id
+    },
+    function (data){
+      $("#n_"+note_id).remove();
+    });
+}
 function journal_entry_location(entry_id) {
   location.href = "<xsl:value-of select="//link_prefix"/>journal-entry&amp;entry_id="+entry_id;
 }
@@ -127,5 +146,6 @@ function journal_entry_location(entry_id) {
 $(document).ready(function() {
   $('#my_debit_amount').val($('.credit_amounts').sum());
 });
+
   </xsl:template>
 </xsl:stylesheet>

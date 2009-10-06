@@ -806,6 +806,10 @@ This makes it easier to maintain persistence. -->
 		<map:query src="data/sql/note_delete.xml" />
 		<map:raw src="templates/xml/ajax_response.xml.xsl" />
 	</map:gate>
+	<map:gate name="x-note-archive" role="pb_admin">
+		<map:query src="data/sql/note_archive.xml" />
+		<map:raw src="templates/xml/ajax_response.xml.xsl" />
+	</map:gate>
 
 <!-- REPORTS -->
 	<map:gate name="reports" role="pb_admin" cache="300" client_cache="60">

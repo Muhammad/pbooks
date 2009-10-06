@@ -32,5 +32,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
   SELECT *, DATE_FORMAT(note_datetime,'%a, %d %b %Y %H:%i:%s +0000 UTC') AS note_rfc_time
   FROM &pb_notes;
   WHERE note_id LIKE ?
+  AND note_status_id &gt; 1
 	</sql>
 </query>

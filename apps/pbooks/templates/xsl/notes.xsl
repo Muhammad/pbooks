@@ -35,17 +35,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:with-param name="my-table">notes_table</xsl:with-param>
 </xsl:call-template>
 <xsl:value-of select="$i18n/note_info"/>
-<script type="text/javascript">
-function note_delete(note_id) {
-    $.post("<xsl:value-of select="$link_prefix"/>x-note-delete",
-    {
-      'note_id': note_id
-    },
-    function (data){
-      $("#n_"+note_id).remove();
-    });
-}
-</script>
 <table class="tablesorter" id="notes_table">
   <thead>
     <tr>
@@ -78,7 +67,9 @@ function note_delete(note_id) {
         <td>
           <a href="{$link_prefix}note-edit&amp;note_id={note_id}">Edit</a> / 
           <a href="{$link_prefix}x-note-delete&amp;note_id={note_id}"
-            onclick="note_delete({note_id}); return false;">Delete</a>
+          onclick="note_delete({note_id}); return false;">Delete</a> / 
+          <a href="#x-note-archive&amp;note_id={note_id}"
+          onclick="note_archive({note_id}); return false;">Archive</a>
         </td>
       </tr>
     </xsl:for-each>
