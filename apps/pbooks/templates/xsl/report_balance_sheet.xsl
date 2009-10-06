@@ -22,170 +22,171 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable
-      name   = "get_all_entry_amounts"
-			select = "/_R_/get_all_entry_amounts/get_all_entry_amounts"
-    />
-
-    <div class="tableframe">
-		<div style="text-align: center;">
-			<h2>
-				<xsl:value-of select="//runtime/company_name"/>
-			</h2>
-			<xsl:value-of select="$i18n/balance_sheet"/>
-      &#160;
-      <xsl:value-of select="//to_date"/>
-		</div>
-		<div style="padding: 20px;">
-			<table width="100%" border="0">
-				<tr class="row1">
-					<td>
-						<b>
-							<xsl:value-of select="$i18n/assetsb"/>
-						</b>
-					</td>
-					<td align="right">
-						<b>
-							<xsl:value-of select="/_R_/runtime/to_date"/>
-						</b>
-					</td>
-					<td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/from_year"/></b>--></td>
-				</tr>
-				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='10000']">
-					<xsl:variable name="this_a_account_id" select="id"/>
-					<xsl:variable name="asset_value"
-						select="format-number((sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_a_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_a_account_id]/entry_amount)),'#,###,###.##')"/>
-					<xsl:if test="not($asset_value=0)">
-						<tr>
-							<td class="journal-data" style="text-indent: 16px;">
-								<a href="{$link_prefix}ledger&amp;account_id={id}">
-									<xsl:value-of select="name"/>
-								</a>
-							</td>
-							<td align="right" class="journal-data">
-								<xsl:value-of select="$asset_value"/>
-							</td>
-							<td align="right"></td>
-						</tr>
-					</xsl:if>
-				</xsl:for-each>
-
-				<tr>
-					<td class="journal-data" style="text-indent: 16px;">
-						<xsl:value-of select="$i18n/total_assets"/>
-					</td>
-					<td align="right" class="journal-data">
-						<b>
-							<xsl:value-of select="format-number((sum($get_all_entry_amounts[account_type_id=10000][entry_type_id='Debit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=10000][entry_type_id='Credit']/entry_amount)),'#,###,###.##')"/>
-						</b>
-					</td>
-					<td align="right" />
-				</tr>
-				<tr>
-					<td colspan="3" />
-				</tr>
+		<xsl:variable name="get_all_entry_amounts"
+    select="/_R_/get_all_entry_amounts/get_all_entry_amounts" />
 
 
-				<tr class="row1">
-					<td>
-						<b>
-							<xsl:value-of select="$i18n/liabilities_equity"/>
-						</b>
-					</td>
-					<td align="right">
-						<b>
-							<xsl:value-of select="//to_date"/>
-						</b>
-					</td>
-					<td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/
-        from_year"/></b>--></td>
-				</tr>
-				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='20000']">
-					<xsl:variable
-            name   = "this_l_account_id"
-            select = "id"
-          />
-					<xsl:variable
-            name   = "liability_value"
-						select = "format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"
-          />
-					<xsl:if test="not($liability_value=0)">
-						<tr>
-							<td class="journal-data" style="text-indent: 16px;">
-								<a href="{$link_prefix}ledger&amp;account_id={id}">
-									<xsl:value-of select="name"/>
-								</a>
-							</td>
-							<td align="right" class="journal-data">
-								<xsl:value-of select="$liability_value"/>
-							</td>
-							<td align="right"/>
-						</tr>
-					</xsl:if>
-				</xsl:for-each>
-				<tr>
-					<td class="journal-data" style="text-indent: 16px;">
-						<xsl:value-of select="$i18n/total_liabilities"/>
-					</td>
-					<td align="right" class="journal-data">
-						<xsl:value-of select=" format-number( (sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) ),'#,###,###.##')"/>
-					</td>
-					<td align="right"/>
-				</tr>
-				<tr>
-					<td colspan="3"/>
-				</tr>
-				<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='30000']">
-					<xsl:variable name="this_e_account_id" select="id"/>
-					<tr>
-						<td class="journal-data" style="text-indent: 16px;">
-							<a href="{$link_prefix}ledger&amp;account_id={id}">
-								<xsl:value-of select="name"/>
-							</a>
-						</td>
-						<td align="right" class="journal-data">
-							<xsl:if test="name='Retained Earnings'">
-								<xsl:value-of select="format-number( sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+ sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount) ,'####,###.##')"/>
-							</xsl:if>
-							<xsl:if test="not(name='Retained Earnings')">
-								<xsl:value-of select=" format-number( (sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_e_account_id]/entry_amount) - sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_e_account_id]/entry_amount) ),'#,###,###.##')"/>
-							</xsl:if>
-						</td>
-						<td align="right" />
-					</tr>
-				</xsl:for-each>
-				<tr>
-					<td class="journal-data" style="text-indent: 16px;">
-						<xsl:value-of select="$i18n/total_equity"/>
-					</td>
-					<td align="right" class="journal-data" />
-					<td align="right" />
-				</tr>
-				<tr>
-					<td colspan="3" />
-				</tr>
-				<tr>
-					<td class="journal-data" style="text-indent: 16px;">
-						<xsl:value-of select="$i18n/total_liabilities_equity"/>
-					</td>
+<div class="tableframe">
+<div style="text-align: center;">
+  <h2>
+    <xsl:value-of select="//runtime/company_name"/>
+  </h2>
+  <xsl:value-of select="$i18n/balance_sheet"/>
+  &#160;
+  <xsl:value-of select="//to_date"/>
+</div>
+<div style="padding: 20px;">
+  <table width="100%" border="0">
+    <tr class="row1">
+      <td>
+        <b>
+          <xsl:value-of select="$i18n/assetsb"/>
+        </b>
+      </td>
+      <td align="right">
+        <b>
+          <xsl:value-of select="/_R_/runtime/to_date"/>
+        </b>
+      </td>
+      <td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/from_year"/></b>--></td>
+    </tr>
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='10000']">
+      <xsl:variable name="this_a_account_id" select="id"/>
+      <xsl:variable name="asset_value"
+        select="format-number((sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_a_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_a_account_id]/entry_amount)),'#,###,###.##')"/>
+      <xsl:if test="not($asset_value=0)">
+        <tr>
+          <td class="journal-data" style="text-indent: 16px;">
+            <a href="{$link_prefix}ledger&amp;account_id={id}">
+              <xsl:value-of select="name"/>
+            </a>
+          </td>
+          <td align="right" class="journal-data">
+            <xsl:value-of select="$asset_value"/>
+          </td>
+          <td align="right"></td>
+        </tr>
+      </xsl:if>
+    </xsl:for-each>
 
-					<!-- This is really obtuse for testing purposes,
-					and so developers can understand what's going on.
-					Will be cleaned up in the near future.-->
-					<td align="right" class="journal-data">
-						<b>
-							<xsl:value-of select="format-number(( sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount)- sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) - ( sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+ sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount) ) + (sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=30000]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=30000]/entry_amount)) ),'#,###,###.##')"/>
-						</b>
-					</td>
-					<td align="right" />
-				</tr>
-			</table>
-		</div>
-    </div>
+    <tr>
+      <td class="journal-data" style="text-indent: 16px;">
+        <xsl:value-of select="$i18n/total_assets"/>
+      </td>
+      <td align="right" class="journal-data">
+        <b>
+          <xsl:value-of select="format-number((sum($get_all_entry_amounts[account_type_id=10000][entry_type_id='Debit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=10000][entry_type_id='Credit']/entry_amount)),'#,###,###.##')"/>
+        </b>
+      </td>
+      <td align="right" />
+    </tr>
+    <tr>
+      <td colspan="3" />
+    </tr>
+
+
+    <tr class="row1">
+      <td>
+        <b>
+          <xsl:value-of select="$i18n/liabilities_equity"/>
+        </b>
+      </td>
+      <td align="right">
+        <b>
+          <xsl:value-of select="//to_date"/>
+        </b>
+      </td>
+      <td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/
+    from_year"/></b>--></td>
+    </tr>
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='20000']">
+      <xsl:variable
+        name   = "this_l_account_id"
+        select = "id"
+      />
+      <xsl:variable
+        name   = "liability_value"
+        select = "format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"
+      />
+      <xsl:if test="not($liability_value=0)">
+        <tr>
+          <td class="journal-data" style="text-indent: 16px;">
+            <a href="{$link_prefix}ledger&amp;account_id={id}">
+              <xsl:value-of select="name"/>
+            </a>
+          </td>
+          <td align="right" class="journal-data">
+            <xsl:value-of select="$liability_value"/>
+          </td>
+          <td align="right"/>
+        </tr>
+      </xsl:if>
+    </xsl:for-each>
+    <tr>
+      <td class="journal-data" style="text-indent: 16px;">
+        <xsl:value-of select="$i18n/total_liabilities"/>
+      </td>
+      <td align="right" class="journal-data">
+        <xsl:value-of select=" format-number( (sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) ),'#,###,###.##')"/>
+      </td>
+      <td align="right"/>
+    </tr>
+    <tr>
+      <td colspan="3"/>
+    </tr>
+    <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='30000']">
+      <xsl:variable name="this_e_account_id" select="id"/>
+      <tr>
+        <td class="journal-data" style="text-indent: 16px;">
+          <a href="{$link_prefix}ledger&amp;account_id={id}">
+            <xsl:value-of select="name"/>
+          </a>
+        </td>
+        <td align="right" class="journal-data">
+          <xsl:if test="name='Retained Earnings'">
+            <xsl:value-of select="format-number( sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+ sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount) ,'####,###.##')"/>
+          </xsl:if>
+          <xsl:if test="not(name='Retained Earnings')">
+            <xsl:value-of select=" format-number( (sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_e_account_id]/entry_amount) - sum($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_e_account_id]/entry_amount) ),'#,###,###.##')"/>
+          </xsl:if>
+        </td>
+        <td align="right" />
+      </tr>
+    </xsl:for-each>
+    <tr>
+      <td class="journal-data" style="text-indent: 16px;">
+        <xsl:value-of select="$i18n/total_equity"/>
+      </td>
+      <td align="right" class="journal-data" />
+      <td align="right" />
+    </tr>
+    <tr>
+      <td colspan="3" />
+    </tr>
+    <tr>
+      <td class="journal-data" style="text-indent: 16px;">
+        <xsl:value-of select="$i18n/total_liabilities_equity"/>
+      </td>
+
+      <!-- This is really obtuse for testing purposes,
+      and so developers can understand what's going on.
+      Will be cleaned up in the near future.-->
+      <td align="right" class="journal-data">
+        <b>
+          <xsl:value-of select="format-number(( sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount)- sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) - ( sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=40000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=40000]/entry_amount)+ sum($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=50000]/entry_amount)- sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=50000]/entry_amount) ) + (sum($get_all_entry_amounts[entry_type_id='Credit'][account_type_id=30000]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_type_id=30000]/entry_amount)) ),'#,###,###.##')"/>
+        </b>
+      </td>
+      <td align="right" />
+    </tr>
+  </table>
+</div>
+</div>
+
+
 	</xsl:template>
 </xsl:stylesheet>
