@@ -22,70 +22,74 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:call-template name="jquery-setup-simple">
-      <xsl:with-param name="my-table">notes_table</xsl:with-param>
-    </xsl:call-template>
-    <xsl:value-of select="$i18n/note_info"/>
-    <script type="text/javascript">
-    function note_delete(note_id) {
-        $.post("<xsl:value-of select="$link_prefix"/>x-note-delete",
-        {
-          'note_id': note_id
-        },
-        function (data){
-          $("#n_"+note_id).remove();
-        });
-    }
-		</script>
-    <table class="tablesorter" id="notes_table">
-      <thead>
-        <tr>
-          <th>
-            <xsl:value-of select="$i18n/note_id"/>
-          </th>
-          <th>
-            <xsl:value-of select="$i18n/notes"/>
-          </th>
-          <th>
-            <xsl:value-of select="$i18n/date"/>
-          </th>
-          <th>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
-          <tr id="n_{note_id}">
-            <td>
-              <xsl:value-of select="note_id"/>
-            </td>
-            <td>
-              <xsl:value-of select="note"/>
-            </td>
-            <td>
-              <span class="reldate"><xsl:value-of select="note_rfc_time"/>
-              </span>
-            </td>
-            <td>
-              <a href="{$link_prefix}note-edit&amp;note_id={note_id}">Edit</a> / 
-              <a href="{$link_prefix}x-note-delete&amp;note_id={note_id}"
-                onclick="note_delete({note_id}); return false;">Delete</a>
-            </td>
-          </tr>
-        </xsl:for-each>
-      </tbody>
-    </table>
-    <br/><br/>
-		<form method="post">
-		<input type="text" name="note" id="note_field"/>
-		<input type="submit"/>
-		</form>
+
+
+<xsl:call-template name="jquery-setup-simple">
+  <xsl:with-param name="my-table">notes_table</xsl:with-param>
+</xsl:call-template>
+<xsl:value-of select="$i18n/note_info"/>
+<script type="text/javascript">
+function note_delete(note_id) {
+    $.post("<xsl:value-of select="$link_prefix"/>x-note-delete",
+    {
+      'note_id': note_id
+    },
+    function (data){
+      $("#n_"+note_id).remove();
+    });
+}
+</script>
+<table class="tablesorter" id="notes_table">
+  <thead>
+    <tr>
+      <th>
+        <xsl:value-of select="$i18n/note_id"/>
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/notes"/>
+      </th>
+      <th>
+        <xsl:value-of select="$i18n/date"/>
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
+      <tr id="n_{note_id}">
+        <td>
+          <xsl:value-of select="note_id"/>
+        </td>
+        <td>
+          <xsl:value-of select="note"/>
+        </td>
+        <td>
+          <span class="reldate"><xsl:value-of select="note_rfc_time"/>
+          </span>
+        </td>
+        <td>
+          <a href="{$link_prefix}note-edit&amp;note_id={note_id}">Edit</a> / 
+          <a href="{$link_prefix}x-note-delete&amp;note_id={note_id}"
+            onclick="note_delete({note_id}); return false;">Delete</a>
+        </td>
+      </tr>
+    </xsl:for-each>
+  </tbody>
+</table>
+<br/><br/>
+<form method="post">
+<input type="text" name="note" id="note_field"/>
+<input type="submit"/>
+</form>
+
+
   </xsl:template>
 </xsl:stylesheet>

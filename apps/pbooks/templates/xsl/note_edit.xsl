@@ -22,7 +22,7 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
@@ -33,12 +33,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:with-param name="my-table">notes_table</xsl:with-param>
     </xsl:call-template>
 
-		<form method="post">
-    <xsl:for-each select="/_R_/notes_get_all/notes_get_all">
-		  <input type="hidden" name="note_id" value="{note_id}"/>
-		  <input type="text" name="note" value="{note}" id="note_field"/>
-		</xsl:for-each>
-		<input type="submit"/>
-		</form>
+
+<form method="post">
+<xsl:for-each select="/_R_/notes_get_all/notes_get_all">
+  <input type="hidden" name="note_id" value="{note_id}"/>
+  <input type="text" name="note" value="{note}" id="note_field"/>
+</xsl:for-each>
+<input type="submit"/>
+</form>
+
+
   </xsl:template>
 </xsl:stylesheet>

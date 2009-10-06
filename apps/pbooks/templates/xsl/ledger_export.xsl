@@ -22,55 +22,59 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-	    <div class="generic-button" style="float: right;">
-				<a>
-					<xsl:attribute name="href">
-						<xsl:if test="//_get/from_date">
-							<xsl:value-of select="$link_prefix"/>x-ledger-export-dl&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
-						</xsl:if>
-						<xsl:if test="not(//_get/from_date)">
-							<xsl:value-of select="$link_prefix"/>x-ledger-export-dl&amp;account_id=<xsl:value-of select="//_get/account_id"/>
-						</xsl:if>
-					</xsl:attribute>
-					CSV
-				</a>
-				<a>
-					<xsl:attribute name="href">
-						<xsl:if test="//_get/from_date">
-							<xsl:value-of select="$link_prefix"/>x-ods-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
-						</xsl:if>
-						<xsl:if test="not(//_get/from_date)">
-							<xsl:value-of select="$link_prefix"/>x-ods-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
-						</xsl:if>
-					</xsl:attribute>
-					ODS
-				</a>
-				<a>
-					<xsl:attribute name="href">
-						<xsl:if test="//_get/from_date">
-							<xsl:value-of select="$link_prefix"/>x-ledger-export-txt&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
-						</xsl:if>
-						<xsl:if test="not(//_get/from_date)">
-							<xsl:value-of select="$link_prefix"/>x-ledger-export-txt
-						</xsl:if>
-					</xsl:attribute>
-					Ledger Format
-				</a>
-			</div>
-			<iframe style="width:600px;height:500px;">
-					<xsl:attribute name="src">
-						<xsl:if test="//_get/from_date">
-							<xsl:value-of select="$link_prefix"/>x-ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
-						</xsl:if>
-						<xsl:if test="not(//_get/from_date)">
-							<xsl:value-of select="$link_prefix"/>x-ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
-						</xsl:if>
-					</xsl:attribute>
-			</iframe>
+
+
+<div class="generic-button" style="float: right;">
+  <a>
+    <xsl:attribute name="href">
+      <xsl:if test="//_get/from_date">
+        <xsl:value-of select="$link_prefix"/>x-ledger-export-dl&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+      </xsl:if>
+      <xsl:if test="not(//_get/from_date)">
+        <xsl:value-of select="$link_prefix"/>x-ledger-export-dl&amp;account_id=<xsl:value-of select="//_get/account_id"/>
+      </xsl:if>
+    </xsl:attribute>
+    CSV
+  </a>
+  <a>
+    <xsl:attribute name="href">
+      <xsl:if test="//_get/from_date">
+        <xsl:value-of select="$link_prefix"/>x-ods-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+      </xsl:if>
+      <xsl:if test="not(//_get/from_date)">
+        <xsl:value-of select="$link_prefix"/>x-ods-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
+      </xsl:if>
+    </xsl:attribute>
+    ODS
+  </a>
+  <a>
+    <xsl:attribute name="href">
+      <xsl:if test="//_get/from_date">
+        <xsl:value-of select="$link_prefix"/>x-ledger-export-txt&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+      </xsl:if>
+      <xsl:if test="not(//_get/from_date)">
+        <xsl:value-of select="$link_prefix"/>x-ledger-export-txt
+      </xsl:if>
+    </xsl:attribute>
+    Ledger Format
+  </a>
+</div>
+<iframe style="width:600px;height:500px;">
+    <xsl:attribute name="src">
+      <xsl:if test="//_get/from_date">
+        <xsl:value-of select="$link_prefix"/>x-ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+      </xsl:if>
+      <xsl:if test="not(//_get/from_date)">
+        <xsl:value-of select="$link_prefix"/>x-ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
+      </xsl:if>
+    </xsl:attribute>
+</iframe>
+
+
 	</xsl:template>
 </xsl:stylesheet>
