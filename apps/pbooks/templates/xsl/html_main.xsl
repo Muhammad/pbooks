@@ -32,6 +32,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<xsl:param name="path_prefix"/>
 		<xsl:param name="i18n"/>
 
+
 		<!-- THE PURPOSE OF THIS TEMPLATE IS TO PROVIDE A LAYER OF ABSTRACTION. -->
     <xsl:call-template name="body">
       <xsl:with-param name="link_prefix" select="$link_prefix"/>
