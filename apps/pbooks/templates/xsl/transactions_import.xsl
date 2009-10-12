@@ -22,47 +22,49 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
-    <h2>
-      <xsl:value-of select="$i18n/import_csv"/>
-    </h2>
+<h2>
+	<xsl:value-of select="$i18n/import_csv"/>
+</h2>
 
-    <xsl:if test="/_R_/_get/error">
-      <div class="error" id="function-error">
-        <img src="{/_R_/runtime/path_prefix}{/_R_/runtime/icon_set}/exclamation.png"/>
-        <xsl:value-of select="//errors/error[key='general_error']/value"/>
-      </div>
-      <br/>
-    </xsl:if>
+<xsl:if test="/_R_/_get/error">
+	<div class="error" id="function-error">
+		<img src="{/_R_/runtime/path_prefix}{//runtime/icon_set}/exclamation.png"/>
+		<xsl:value-of select="//errors/error[key='general_error']/value"/>
+	</div>
+	<br/>
+</xsl:if>
 
-    <form method="post"
-        onsubmit="return validateStandard(this, 'error');">
-      <textarea id="csv_import" name="csv_import" rows="14" cols="80">
-        <xsl:value-of select="//text[key='import_instructions']/value"/>
-      </textarea>
-      <br/>
-      <select name="account_id" required="1" exclude="-1"
-          err="Please select an account to post your transactions to.">
-        <option value="-1">
-          <xsl:value-of select="$i18n/select_one"/>
-        </option>
-        <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
-          <option value="{id}">
-            <xsl:if test="id=/_R_/_get/account_id">
-              <xsl:attribute name="selected">selected</xsl:attribute>
-            </xsl:if>
-            <xsl:value-of select="name"/>
-          </option>
-        </xsl:for-each>
-      </select>
-      <input type="submit"/>
-    </form>
+<form method="post"
+		onsubmit="return validateStandard(this, 'error');">
+	<textarea id="csv_import" name="csv_import" rows="14" cols="80">
+		<xsl:value-of select="//text[key='import_instructions']/value"/>
+	</textarea>
+	<br/>
+	<select name="account_id" required="1" exclude="-1"
+			err="Please select an account to post your transactions to.">
+		<option value="-1">
+			<xsl:value-of select="$i18n/select_one"/>
+		</option>
+		<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+			<option value="{id}">
+				<xsl:if test="id=/_R_/_get/account_id">
+					<xsl:attribute name="selected">selected</xsl:attribute>
+				</xsl:if>
+				<xsl:value-of select="name"/>
+			</option>
+		</xsl:for-each>
+	</select>
+	<input type="submit"/>
+</form>
+
+
 
   </xsl:template>
 </xsl:stylesheet>
