@@ -22,57 +22,60 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:include href="pager.xsl"/>
   <xsl:template name="content">
+    <xsl:param name="link_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:call-template name="jquery-setup-simple">
-      <xsl:with-param name="my-table">periods_table</xsl:with-param>
-    </xsl:call-template>
-    <xsl:value-of select="$i18n/period_info"/>
-    <table class="tablesorter" id="periods_table">
-      <thead>
-        <tr>
-          <th>
-            <xsl:value-of select="$i18n/period_id"/>
-          </th>
-          <th>
-            <xsl:value-of select="$i18n/period_value"/>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <xsl:for-each select="/_R_/fiscal_periods/period">
-          <tr>
-            <td>
-              <xsl:value-of select="period_id"/>
-            </td>
-            <td>
-              <xsl:value-of select="period_value"/>
-            </td>
-          </tr>
-        </xsl:for-each>
-      </tbody>
-    </table>
-		<br/>
-		<!--
-		TODO: This doesn't work yet!
-		-->
-		<form method="post">
-			Create new period:
-			<br/>
-			<table>
-				<tr>
-					<td>From date:</td>
-					<td><input type="text" name="from_date"/></td>
-				</tr>
-				<tr>
-					<td>To date:</td>
-					<td><input type="text" name="to_date"/></td>
-				</tr>
-			</table>
-			<input type="submit"/>
-		</form>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=periods_table&amp;simple=true" />
+
+<xsl:value-of select="$i18n/period_info"/>
+<table class="tablesorter" id="periods_table">
+	<thead>
+		<tr>
+			<th>
+				<xsl:value-of select="$i18n/period_id"/>
+			</th>
+			<th>
+				<xsl:value-of select="$i18n/period_value"/>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<xsl:for-each select="/_R_/fiscal_periods/period">
+			<tr>
+				<td>
+					<xsl:value-of select="period_id"/>
+				</td>
+				<td>
+					<xsl:value-of select="period_value"/>
+				</td>
+			</tr>
+		</xsl:for-each>
+	</tbody>
+</table>
+<br/>
+<!-- TODO: This doesn't work yet! -->
+<form method="post">
+	Create new period:
+	<br/>
+	<table>
+		<tr>
+			<td>From date:</td>
+			<td><input type="text" name="from_date"/></td>
+		</tr>
+		<tr>
+			<td>To date:</td>
+			<td><input type="text" name="to_date"/></td>
+		</tr>
+	</table>
+	<input type="submit"/>
+</form>
+
+
   </xsl:template>
 </xsl:stylesheet>
