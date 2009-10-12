@@ -162,6 +162,15 @@ function journal_entry_location(entry_id) {
   location.href = "<xsl:value-of select="//link_prefix"/>journal-entry&amp;entry_id="+entry_id;
 }
 
+function update_date_selector_account_id(account_id) {
+	if (account_id == '') {
+  	$('#hidden_account_id_input').remove();
+	} else {
+  	$('#hidden_account_id_input').attr('value',account_id);
+  	$('#dc23').val(account_id);
+  }
+}
+
 $(document).ready(function() {
   $('#my_debit_amount').val($('.credit_amounts').sum());
 });
