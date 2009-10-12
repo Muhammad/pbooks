@@ -81,6 +81,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 					<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
 						<option value="{id}" id="dc24_{id}">
+							<!-- RETAIN SUPPORT FOR NON-JAVASCRIPT CLIENTS? -->
 							<xsl:if test="id=/_R_/_get/account_id">
 								<xsl:attribute name="selected">selected</xsl:attribute>
 							</xsl:if>
@@ -104,6 +105,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
 <!-- DATES -->
+<!-- TODO: RETAIN ACCOUNT_ID -->
 <a title="Previous Period" id="dc25">
 	<xsl:attribute name="href">
 		<xsl:text>&amp;from_date=</xsl:text>
