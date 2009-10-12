@@ -166,7 +166,7 @@ function update_date_selector_account_id(account_id) {
 	if (account_id == '') {
   	$('#hidden_account_id_input').remove();
 	} else {
-  	$('#hidden_account_id_input').attr('value',account_id);
+  	//$('#hidden_account_id_input').attr('value',account_id);
   	$('#dc23').val(account_id);
   }
 }

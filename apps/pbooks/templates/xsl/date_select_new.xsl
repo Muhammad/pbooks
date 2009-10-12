@@ -60,12 +60,29 @@ xmlns="http://www.w3.org/1999/xhtml">
 </form>
 <form method="get" id="dc14">
 	<input id="dc15" type="hidden" name="nid" value="{/_R_/_get/nid}"/>
-	<input type="hidden" name="account_id" id="hidden_account_id_input" value=""/>
 	<xsl:call-template name="date_select"/>
+	<br/>
+	<select name="account_id" onchange="this.form.submit();" id="dc23">
+		<option value="%" id="dc24">
+			<xsl:value-of select="$i18n/ledger"/>
+		</option>
+
+		<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
+			<option value="{id}" id="dc24_{id}">
+				<!-- RETAIN SUPPORT FOR NON-JAVASCRIPT CLIENTS? -->
+				<xsl:if test="id=/_R_/_get/account_id">
+					<xsl:attribute name="selected">selected</xsl:attribute>
+				</xsl:if>
+				<xsl:value-of select="name"/>
+			</option>
+		</xsl:for-each>
+	</select>
+	<br/>
 	<input id="dc16" type="submit"/>
 </form>
 
 <!-- SELECT BY ACCOUNT -->
+<!--
 <table id="dc17">
 	<form method="get" id="dc18">
 		<tr id="dc19">
@@ -81,7 +98,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 					<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
 						<option value="{id}" id="dc24_{id}">
-							<!-- RETAIN SUPPORT FOR NON-JAVASCRIPT CLIENTS? -->
 							<xsl:if test="id=/_R_/_get/account_id">
 								<xsl:attribute name="selected">selected</xsl:attribute>
 							</xsl:if>
@@ -94,6 +110,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</tr>
 	</form>
 </table>
+-->
 </div>
 
 
