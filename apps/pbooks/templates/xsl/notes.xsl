@@ -31,9 +31,9 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:param name="i18n"/>
 
 
-<xsl:call-template name="jquery-setup-simple">
-  <xsl:with-param name="my-table">notes_table</xsl:with-param>
-</xsl:call-template>
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=true" />
+
 <xsl:value-of select="$i18n/note_info"/>
 <table class="tablesorter" id="notes_table">
   <thead>

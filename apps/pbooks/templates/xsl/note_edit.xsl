@@ -29,9 +29,6 @@ xmlns="http://www.w3.org/1999/xhtml">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <xsl:call-template name="jquery-setup-simple">
-      <xsl:with-param name="my-table">notes_table</xsl:with-param>
-    </xsl:call-template>
 
 
 <form method="post">
