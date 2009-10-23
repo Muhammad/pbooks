@@ -74,7 +74,14 @@ if(empty($payment_account_id)) {
 
 $default_invoice_print_vertical = Nexista_Config::get('./defaults/default_invoice_print_vertical');
 if(empty($default_invoice_print_vertical)) {
-    $default_invoice_print_vertical = '-22';
+    // $default_invoice_print_vertical = '-22'; // Firefox?
+    $default_invoice_print_vertical = '6'; // Google Chrome
+}
+
+$default_invoice_print_horiz = Nexista_Config::get('./defaults/default_invoice_print_horiz');
+if(empty($default_invoice_print_horiz)) {
+    // $default_invoice_print_horiz = '0'; // Firefox
+    $default_invoice_print_horiz = '10'; // Google Chrome
 }
 
 
@@ -156,6 +163,7 @@ $runtime = array(
     'current_user_id' => $current_user_id,
     'default_currency_unit' => $default_currency_unit,
     'default_invoice_print_vertical' => $default_invoice_print_vertical,
+    'default_invoice_print_horiz' => $default_invoice_print_horiz,
     'debug' => $debug,
     'top_left_logo' => $top_left_logo,
     'db_version' => $db_version,

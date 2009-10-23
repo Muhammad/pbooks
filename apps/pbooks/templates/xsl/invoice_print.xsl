@@ -41,7 +41,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:variable name="option_get" select="/_R_/option_get/option_get" />
 
 
-<div style="font-size:14px;margin-top:{//default_invoice_print_vertical}px;">
+<div style="font-size:14px;margin-top:{//default_invoice_print_vertical}px;
+margin-left:{//default_invoice_print_horiz}px;">
   <table style="float: right;">
     <tbody>
       <tr>
