@@ -171,6 +171,7 @@ CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> <xsl:value-of select="
 
 CREATE TABLE <xsl:value-of select="//dbe/if_not_exists"/> <xsl:value-of select="//_get/table_prefix"/>pb_logs (
   log_id <xsl:value-of select="//dbe/engine_auto_increment"/>,
+  user_id <xsl:value-of select="//dbe/integer"/>,
   log_datetime <xsl:value-of select="//dbe/engine_default_timestamp"/>,
   log <xsl:value-of select="//dbe/varchar"/>
   <xsl:if test="//engine='mysql'">,PRIMARY KEY  (log_id)</xsl:if>

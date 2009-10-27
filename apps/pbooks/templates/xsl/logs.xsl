@@ -62,6 +62,10 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 <iframe style="width:600px;height:300px;" src="{$link_prefix}x-log">
 </iframe>
+<br/>
+<!--<xsl:if test="//runtime_mode='development'">-->
+<a href="{$link_prefix}x-test-log">Test Log Function</a>
+
 
 
   </xsl:template>

@@ -155,12 +155,15 @@ if(!$_SESSION['company_name'] || $_SESSION['company_name'] == '') {
 
 $current_fiscal_period_id = 3;
 
+$auth = &new Nexista_Auth();
+$uid = $auth->getSessionData('uid');
+
 $runtime = array(
     'host_name' => $_SERVER['SERVER_NAME'],
     'path_prefix' => $path_prefix,
     'link_prefix' => $link_prefix,
     'utcdate' => $utcdate,
-    'current_user_id' => $current_user_id,
+    'uid' => $uid,
     'default_currency_unit' => $default_currency_unit,
     'default_invoice_print_vertical' => $default_invoice_print_vertical,
     'default_invoice_print_horiz' => $default_invoice_print_horiz,
