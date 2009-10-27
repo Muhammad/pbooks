@@ -37,18 +37,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple=true" />
 
-<!-- Confirm account deletion -->
-<script type="text/javascript">
-var question = '<xsl:value-of select="$i18n/delete_account"/>?';
-function account_delete(account_id) {
-    if(confirm(question)) {
-        $.post("<xsl:value-of select="$link_prefix"/>x-accounts-delete", {'account_id': account_id},
-        function (data){
-            $("#a_"+account_id).remove();
-        });
-    }
-}
-</script>
 
 <!-- buttons on the right hand side -->
 <div class="generic-button" style="float: right;">
@@ -112,10 +100,10 @@ function account_delete(account_id) {
         <th>
           <xsl:value-of select="$i18n/balance"/>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <xsl:value-of select="$i18n/edit"/>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <xsl:value-of select="$i18n/delete"/>
         </th>
       </tr>

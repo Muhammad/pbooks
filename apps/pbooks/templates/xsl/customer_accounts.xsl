@@ -83,10 +83,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table" />
         <th>
           <xsl:value-of select="$i18n/statement"/>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <xsl:value-of select="$i18n/edit"/>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <xsl:value-of select="$i18n/delete"/>
         </th>
       </tr>

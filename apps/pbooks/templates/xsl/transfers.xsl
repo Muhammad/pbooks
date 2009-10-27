@@ -32,7 +32,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 <script type="text/javascript"
-src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myTransfers" />
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_transfers" />
 
 <div class="generic-button" style="float: right;">
 	<a href="{$link_prefix}transfer-create" id="transfer-create">
@@ -41,7 +41,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myTransfers" />
 	</a>
 </div>
 <div class="tableframe">
-	<table class="tablesorter" id="myTransfers">
+	<table class="tablesorter" id="my_transfers">
 		<thead>
 			<tr>
 				<th>

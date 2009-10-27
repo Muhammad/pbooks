@@ -41,6 +41,20 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 <xsl:if test="/_R_/_get/nid='matching'">
 	<xsl:call-template name="jquery-setup"/>
 </xsl:if>
+<div class="generic-button" style="float: right;">
+  <a>
+    <xsl:attribute name="href">
+      <xsl:if test="//_get/from_date">
+        <xsl:value-of select="$link_prefix"/>ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
+      </xsl:if>
+      <xsl:if test="not(//_get/from_date)">
+        <xsl:value-of select="$link_prefix"/>ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
+      </xsl:if>
+    </xsl:attribute>
+    Export to CSV
+  </a>
+</div>
+
 <div class="tableframe">
 	<xsl:if test="not(/_R_/_get/nid='matching')">
 	</xsl:if>
@@ -49,13 +63,13 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 			<tr>
 				<!-- This cell will be used for a star or flag with notations -->
 				<!--<th>FPO</th>-->
-				<th>
+				<th class="{{sorter: 'text'}}">
 					<xsl:value-of select="$i18n/date"/>:
 				</th>
 				<th>
 					<xsl:value-of select="$i18n/post"/>
 				</th>
-				<th>
+				<th class="{{sorter: false}}">
 					<xsl:value-of select="$i18n/memo"/>
 				</th>
 
@@ -161,19 +175,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 	</table>
 </div>
 <xsl:if test="not(/_R_/_get/nid='matching')">
-	<div class="table_meta generic-box" style="font-size: 12px; right: 200px;">
-		<a>
-			<xsl:attribute name="href">
-				<xsl:if test="//_get/from_date">
-					<xsl:value-of select="$link_prefix"/>ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>&amp;from_date=<xsl:value-of select="//_get/from_date"/>&amp;to_date=<xsl:value-of select="//_get/to_date"/>
-				</xsl:if>
-				<xsl:if test="not(//_get/from_date)">
-					<xsl:value-of select="$link_prefix"/>ledger-export&amp;account_id=<xsl:value-of select="//_get/account_id"/>
-				</xsl:if>
-			</xsl:attribute>
-			Export to CSV
-		</a>
-	</div>
 	<div class="table_controls">
 	<xsl:call-template name="pager">
 		<xsl:with-param name="my-table">my_ledger</xsl:with-param>
