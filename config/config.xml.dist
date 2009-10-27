@@ -86,6 +86,8 @@ used for a single or several applications. -->
 	<!-- 0 = false, anything else = true -->
     <runtime>
         <debug>0</debug>
+        <logging>0</logging>
+        <logfile>/tmp/pbooks_log</logfile>
     </runtime>
 
 </config>
