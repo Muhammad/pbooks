@@ -46,6 +46,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<!-- end variables -->
 
 
+<div class="tableframe">
 <div style="text-align: center;">
 	<h2>
 		<xsl:value-of select="//runtime/company_name"/>
@@ -216,6 +217,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</td>
 	</tr>
 </table>
+</div>
 
 
 	</xsl:template>
