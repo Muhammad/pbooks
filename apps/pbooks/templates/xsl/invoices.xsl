@@ -64,10 +64,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
         <th>
           <span id="i18n-amount">Amount</span>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <span id="i18n-paid">Paid</span>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <span id="i18n-print">Print</span>
         </th>
       </tr>

@@ -62,7 +62,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myTransfers" />
 				<th>
 					<xsl:value-of select="$i18n/to_account"/>
 				</th>
-				<th>
+				<th class="{{sorter: false}}">
 					<xsl:value-of select="$i18n/method"/>
 				</th>
 			</tr>

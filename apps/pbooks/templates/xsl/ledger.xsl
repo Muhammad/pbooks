@@ -35,16 +35,8 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 <xsl:if test="not(/_R_/_get/nid='matching')">
-	<xsl:call-template name="jquery-setup">
-		<xsl:with-param name="my-table">my_ledger</xsl:with-param>
-		<xsl:with-param name="my-sort-column">
-			,widthFixed: true
-			<xsl:if test="/_R_/_get/account_id">,sortList: [[0,0]]</xsl:if>
-		</xsl:with-param>
-		<xsl:with-param name="no-sort-column">
-			,headers: { 1: { sorter: false } }
-		</xsl:with-param>
-	</xsl:call-template>
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 </xsl:if>
 <xsl:if test="/_R_/_get/nid='matching'">
 	<xsl:call-template name="jquery-setup"/>
