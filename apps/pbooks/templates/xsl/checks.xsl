@@ -60,7 +60,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_checks" />
         <th>
           <span id="i18n-amount">Amount</span>
         </th>
-        <th>
+        <th class="{{sorter: false}}">
           <span id="i18n-id">ID</span>
         </th>
       </tr>

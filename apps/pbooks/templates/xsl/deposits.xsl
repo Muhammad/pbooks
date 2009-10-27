@@ -53,7 +53,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_deposits" />
       <th>
         <xsl:value-of select="$i18n/amount"/>
       </th>
-      <th>
+      <th class="{{sorter: false}}">
         <xsl:value-of select="$i18n/id"/>
       </th>
     </tr>
