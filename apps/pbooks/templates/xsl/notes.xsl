@@ -47,7 +47,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=tr
       <th>
         <xsl:value-of select="$i18n/date"/>
       </th>
-      <th>
+      <th class="{{sorter: false}}">
       </th>
     </tr>
   </thead>
@@ -61,8 +61,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=tr
           <xsl:value-of select="note"/>
         </td>
         <td>
-          <span class="reldate"><xsl:value-of select="note_rfc_time"/>
-          </span>
+          <span class="reldate"><xsl:value-of select="note_rfc_time"/></span>
         </td>
         <td>
           <a href="{$link_prefix}note-edit&amp;note_id={note_id}">Edit</a> / 

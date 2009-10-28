@@ -143,8 +143,9 @@ if(isset($_GET['show_all_accounts'])) {
     }
 }
 
-if(isset($_SESSION['show_all_accounts'])) {
-    if($_SESSION['show_all_accounts']=='on') {
+// TODO - FIX THIS AT LEAST SO IT DOESN'T USE "nid"
+if(isset($_SESSION['show_all_accounts']) || $_GET['nid']=='reports-build') {
+    if($_SESSION['show_all_accounts']=='on' || $_GET['nid']=='reports-build') {
         $show_all_accounts = 'on';
     }
 }
