@@ -50,6 +50,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 <!-- TODO BEGINNING AND FINAL CASH BALANCE -->
+<!-- SHOULD THE CASH FLOW REPORT BE PRODUCED FROM THE JOURNAL? -->
 
 <!--
 This is the table structure only, the table cells are the templates at the
