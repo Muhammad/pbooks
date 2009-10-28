@@ -508,6 +508,10 @@ This makes it easier to maintain persistence. -->
 		<map:xml src="data/xml/account_types.xml" />
 		<map:xsl src="templates/xsl/account_form.xsl" />
 	</map:gate>
+	<map:gate name="x-account-balance" role="pb_admin">
+		<map:query src="data/sql/account_get_balance_by_date.xml" />
+    <map:xsl src="templates/xml/account_balances.xml.xsl" />
+	</map:gate>
 
 	<map:gate name="x-accounts-delete" role="pb_admin">
 		<map:query src="data/sql/entry_amounts_get_by_account_id.xml" />
