@@ -55,7 +55,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 This is the table structure only, the table cells are the templates at the
 bottom of the file.
 -->
+<div class="tableframe" style="margin-top:2.5em;">
 <table width="100%" class="matrix-table">
+  <tbody>
 	<tr>
 		<td class="matrix-data" />
 		<xsl:for-each select="//months/option">
@@ -116,7 +118,9 @@ bottom of the file.
 		</xsl:call-template>
 	</tr>
 	<tr>
-		<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}" />
+		<td class="matrix-data" colspan="{number($to_month - $from_month + 3)}">
+		&#160;
+		</td>
 	</tr>
 <!--  Disbursements -->
 	<tr>
@@ -176,7 +180,7 @@ bottom of the file.
 	<!-- Cash Flow -->
 	<tr>
 		<td class="matrix-data">
-			<xsl:value-of select="$i18n/cash_flow"/>
+			<span id="i18n-cash_flow">CASH FLOW</span>
 		</td>
 		<xsl:call-template name="total_cell">
 			<xsl:with-param name="mn" select="$from_month"/>
@@ -184,8 +188,9 @@ bottom of the file.
 			<xsl:with-param name="link_prefix" select="$link_prefix"/>
 		</xsl:call-template>
 	</tr>
+	</tbody>
 </table>
-
+</div>
 
   </xsl:template>
 <!-- These are the individual cells -->
