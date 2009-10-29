@@ -122,7 +122,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<xsl:param name="my_from_date" select="/_R_/runtime/from_date"/>
 
 <!-- DATES -->
-<!-- TODO: RETAIN ACCOUNT_ID -->
 <a title="Previous Period" id="dc25">
 	<xsl:attribute name="href">
 		<xsl:text>&amp;from_date=</xsl:text>

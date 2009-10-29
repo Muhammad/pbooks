@@ -151,6 +151,13 @@ xmlns="http://www.w3.org/1999/xhtml">
 					<xsl:with-param name="i18n" select="$i18n"/>
 					<xsl:with-param name="link_prefix" select="$link_prefix"/>
 				</xsl:call-template>
+				
+        <xsl:variable name="my_account_id">
+          <xsl:if test="/_R_/_get/account_id='%'"/>
+          <xsl:if test="not(/_R_/_get/account_id='%')">
+            <xsl:value-of select="/_R_/_get/account_id"/>
+          </xsl:if>
+        </xsl:variable>
 				<div id="content">
 					<div id="notitle"/>
           <div id="date_controls">
@@ -160,7 +167,7 @@ xmlns="http://www.w3.org/1999/xhtml">
             $('#dc25').attr('href','{$link_prefix}{/_R_/_get/nid}'+$('#dc25').attr('href'));
             $('#dc29').attr('href','{$link_prefix}{/_R_/_get/nid}'+$('#dc29').attr('href'));
             init_date_input();
-            update_date_selector_account_id({/_R_/_get/account_id});">Show</span>
+            update_date_selector_account_id({$my_account_id});">Show</span>
             <span id="dc3">
               <xsl:value-of select="substring(/_R_/runtime/from_date,0,11)"/>
             </span>- 
