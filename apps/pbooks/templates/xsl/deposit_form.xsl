@@ -38,31 +38,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:variable name="business_object_get_metadata"
     select="/_R_/business_object_get_metadata/business_object_get_metadata" />
 
-    <script type="text/javascript">
-    <!--
-    function journal_entry_amount_delete(entry_amount_id) {
-      $.post("<xsl:value-of select="$link_prefix"/>journal-entry-amount-
-      ",
-      {
-        'entry_amount_id': entry_amount_id
-      },
-      function (data){
-        $("d_"+entry_amount_id).remove();
-      });
-    }
-    -->
-    function journal_entry_amount_create(entry_type_id,entry_id) {
-      var this_entry_date = $("#invoice_date").val();
-      $.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-new-"+entry_type_id+"&amp;entry_id="+entry_id,
-      {
-        'entry_id': entry_id,
-        'entry_datetime': this_entry_date
-      },
-      function (data){
-        setTimeout('window.location.reload()',200);
-      });
-    }
-    </script>
     <h2>
       <xsl:value-of select="$i18n/make_deposits"/>
     </h2>
