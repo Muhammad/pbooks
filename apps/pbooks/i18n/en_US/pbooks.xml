@@ -174,7 +174,8 @@ transactions to match, or entries to post.</number_transactions>
   <company_state>State</company_state>
   <company_zip>Zip</company_zip>
   <books_mode>Mode</books_mode>
-  <fiscal_period_id>Current Fiscal Period</fiscal_period_id>
+  <selected_fiscal_period_id>Selected Fiscal Period</selected_fiscal_period_id>
+  <current_fiscal_period_id>Current Fiscal Period</current_fiscal_period_id>
   <ein_number>EIN</ein_number>
   <by_check>By Check</by_check>
   <electronic>Electronic</electronic>

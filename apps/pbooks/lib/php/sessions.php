@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 $_SESSION['company_name']     = Nexista_Path::get('//option_get_company_settings/option_get_company_settings/company_name','flow');
-$_SESSION['fiscal_period_id'] = Nexista_Path::get('//option_get_company_settings/option_get_company_settings/fiscal_period_id','flow');
+$_SESSION['selected_fiscal_period_id'] = Nexista_Path::get('//option_get_company_settings/option_get_company_settings/selected_fiscal_period_id','flow');
 $_SESSION['books_mode']       = Nexista_Path::get('//option_get_company_settings/option_get_company_settings/books_mode','flow');
 
 ?>

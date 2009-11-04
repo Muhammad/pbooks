@@ -27,29 +27,31 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="runtime/from_date" type="text" default="2007-04-01"/>
 		<param name="runtime/to_date" type="text" default="2008-01-01"/>
+		<param name="runtime/selected_fiscal_period_id" type="text" default="%"/>
   </params>
 	<sql>
-  SELECT DISTINCT &pb_entries;.entry_id,
-    &pb_entry_amounts;.entry_id,
-    &pb_entry_amounts;.account_id,
-    &pb_entry_amounts;.entry_amount_id,
-    &pb_entry_amounts;.entry_amount,
-    &pb_entry_amounts;.entry_type_id,
-    &pb_accounts;.name,
-    &pb_accounts;.account_type_id,
-    CONCAT_WS(':',CASE &pb_accounts;.account_type_id WHEN 10000 THEN 'Assets' WHEN 20000 THEN 'Liabilities' WHEN 30000 THEN 'Equity' WHEN 40000 THEN 'Income' ELSE 'Expenses' END, &pb_accounts;.name) as account_full_name,
-    &pb_general_ledger;.account_id as posted_account_id
+SELECT DISTINCT &pb_entries;.entry_id,
+  &pb_entry_amounts;.entry_id,
+  &pb_entry_amounts;.account_id,
+  &pb_entry_amounts;.entry_amount_id,
+  &pb_entry_amounts;.entry_amount,
+  &pb_entry_amounts;.entry_type_id,
+  &pb_accounts;.name,
+  &pb_accounts;.account_type_id,
+  CONCAT_WS(':',CASE &pb_accounts;.account_type_id WHEN 10000 THEN 'Assets' WHEN 20000 THEN 'Liabilities' WHEN 30000 THEN 'Equity' WHEN 40000 THEN 'Income' ELSE 'Expenses' END, &pb_accounts;.name) as account_full_name,
+  &pb_general_ledger;.account_id as posted_account_id
 
-  FROM (&pb_accounts;, &pb_entry_amounts;, &pb_entries;)
+FROM (&pb_accounts;, &pb_entry_amounts;, &pb_entries;)
 
-  LEFT JOIN (&pb_general_ledger;)
-    ON (&pb_general_ledger;.entry_amount_id=&pb_entry_amounts;.entry_amount_id)
+LEFT JOIN (&pb_general_ledger;)
+  ON (&pb_general_ledger;.entry_amount_id=&pb_entry_amounts;.entry_amount_id)
 
-  WHERE
-    &pb_accounts;.id = &pb_entry_amounts;.account_id
-    AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
-    AND &pb_entries;.entry_datetime &gt;= ?
-    AND &pb_entries;.entry_datetime &lt;= ?
+WHERE
+  &pb_accounts;.id = &pb_entry_amounts;.account_id
+  AND &pb_entries;.entry_id = &pb_entry_amounts;.entry_id
+  AND &pb_entries;.entry_datetime &gt;= ?
+  AND &pb_entries;.entry_datetime &lt;= ?
+  AND &pb_entries;.fiscal_period_id LIKE ?
 
 	</sql>
 </query>

@@ -113,6 +113,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       </div>
     	<span id="company-name">
         <xsl:value-of select="//runtime/company_name"/>
+        <xsl:value-of select="//runtime/selected_fiscal_period_id"/>
       </span>
       <h1 class="page-title">
         <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
