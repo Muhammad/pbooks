@@ -28,4 +28,8 @@ $_SESSION['company_name']     = Nexista_Path::get('//option_get_company_settings
 $_SESSION['selected_fiscal_period_id'] = Nexista_Path::get('//option_get_company_settings/option_get_company_settings/selected_fiscal_period_id','flow');
 $_SESSION['books_mode']       = Nexista_Path::get('//option_get_company_settings/option_get_company_settings/books_mode','flow');
 
+$_SESSION['display_num_entries']       = Nexista_Path::get('//option_get/display_num_entries','flow');
+$_SESSION['display_num_trans']       = Nexista_Path::get('//option_get/display_num_trans','flow');
+$_SESSION['display_num_accounts']       = Nexista_Path::get('//option_get/display_num_accounts','flow');
+
 ?>
