@@ -30,7 +30,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_get/entry_id" type="text" default="%"/>
 		<param name="_get/start" type="integer" default="0"/>
 		<param name="runtime/display_num_entries" type="integer" default="400"/>
-		<param name="runtime/selected_fiscal_period_id" type="integer" default="{//runtime/current_fiscal_period_id}"/>
+		<param name="runtime/selected_fiscal_period_id" type="integer"
+		default="{//runtime/current_fiscal_period_id}"/>
 	</params>
 	<sql>
 		SELECT pbe.entry_id,

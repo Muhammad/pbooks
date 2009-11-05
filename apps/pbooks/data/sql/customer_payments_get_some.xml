@@ -33,8 +33,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <params>
     <param name="_get/entry_id" type="text" default="%"/>
     <param name="_get/start" type="integer" default="0"/>
-    <param name="option_get[display_num_entries!='NULL']/display_num_entries"
-      type="integer" default="40"/>
+    <param name="runtime/display_num_entries" type="integer" default="40"/>
+		<param name="runtime/selected_fiscal_period_id" type="integer"
+		default="{//runtime/current_fiscal_period_id}"/>
   </params>
   <sql>
   SELECT &pb_entries;.entry_id,entry_datetime,
@@ -48,6 +49,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     AND &pb_entries;.memorandum!='PLACEHOLDER'
     AND &pb_entries;.entry_id LIKE ?
     AND &pb_entries;.status != 9
+    AND &pb_entries;.fiscal_period_id = ?
     AND &pb_entry_metadata;.entry_id=&pb_entries;.entry_id
     AND &pb_entry_metadata;.meta_key='customer_payment'
     AND &pb_entry_amounts;.entry_id=&pb_entries;.entry_id
