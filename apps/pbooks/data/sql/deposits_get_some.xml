@@ -23,23 +23,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_some_business_objects">
-    <!--this query and queries like it are based on entries_only_get_some.xml,
-    but optimized for a specific business object type. This saves a lot of
-    complex XSL in the end.
-      This query only selects deposits, and does so by using a metadata key.
-      I would like to use the status flag for this purpose if possible
-        -->
+  <!--this query and queries like it are based on entries_only_get_some.xml,
+  but optimized for a specific business object type. This saves a lot of
+  complex XSL in the end.
+  This query only selects deposits, and does so by using a metadata key.
+  I would like to use the status flag for this purpose if possible
+  -->
   <connection>&pb_connection_read;</connection>
   <params>
     <param name="_get/entry_id" type="text" default="%"/>
+		<param name="runtime/selected_fiscal_period_id" type="integer" default="%"/>
     <param name="_get/start" type="integer" default="0"/>
-    <param name="runtime/display_num_entries"
-    type="integer" default="40"/>
-		<param name="runtime/selected_fiscal_period_id" type="integer"
-		default="{//runtime/current_fiscal_period_id}"/>
+    <param name="runtime/display_num_entries" type="integer" default="40"/>
   </params>
   <sql>
-  SELECT &pb_entries;.entry_id,entry_datetime,
+  SELECT 'deposits' AS business_object_type, &pb_entries;.entry_id,entry_datetime,
 
   &pb_entries;.memorandum, &pb_entry_amounts;.entry_amount,
   meta_value as invoice_payment

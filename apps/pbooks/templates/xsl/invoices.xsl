@@ -75,7 +75,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
     <tbody>
       <!-- LOOP -->
       <xsl:for-each
-      select="/_R_/get_some_business_objects/get_some_business_objects">
+      select="/_R_/get_some_business_objects/get_some_business_objects[business_object_type='invoices']">
         <xsl:variable name="my_customer_id" select="customer_id"/>
         <tr onmouseover="oldClass=this.className; this.className='active'"
           onmouseout="this.className=oldClass">

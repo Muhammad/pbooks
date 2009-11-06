@@ -45,7 +45,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <map:default/>
         </map:switch>
 				<map:query src="data/sql/accounts_get_all.xml" />
-				<map:query src="data/sql/account_business_objects.xml" />
 				<map:xml src="data/xml/main_menu.xml" />
 				<map:xml src="i18n/en_US/pbooks.xml" />
 				<map:xml src="i18n/en_US/errors.xml" />
@@ -84,7 +83,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<map:query src="data/sql/entry_amount_debit_create_get.xml" />
 			<map:query src="data/sql/entry_amount_credit_create_get.xml" />
 		</map:block>
-		<map:action type="redirect" params="{runtime/link_prefix}journal-entry&amp;entry_id={//get_this_entry_id/entry_id}" />
+		<map:action type="redirect"
+		params="{runtime/link_prefix}journal-entry&amp;entry_id={//get_this_entry_id/entry_id}" />
 	</map:gate>
 
 	<map:gate name="journal-search" role="pb_admin">
@@ -100,7 +100,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:query src="data/sql/general_ledger_update_entry_id.xml" />
 		<map:query src="data/sql/entry_amount_debit_create_get.xml" />
 		<map:query src="data/sql/entry_amount_credit_create_get.xml" />
-		<map:action type="redirect" params="{runtime/link_prefix}journal-entry&amp;entry_id={//get_this_entry_id/entry_id}&amp;transaction_id={//_get/transaction_id}" />
+		<map:action type="redirect"
+		params="{runtime/link_prefix}journal-entry&amp;entry_id={//get_this_entry_id/entry_id}&amp;transaction_id={//_get/transaction_id}" />
 	</map:gate>
 
 	<map:gate name="x-journal-entry-new-credit" role="pb_admin">
@@ -277,9 +278,6 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/entry_meta_delete.xml" />
 				<map:xml src="data/xml/invoice_meta.xml" />
 				<map:query src="data/sql/entry_create_meta.xml" />
-        <!--
-        <map:action type="concat" params="{//_post/client_id},{//_post/invoice_number},//_post/client_id" />
-        -->
 				<map:query src="data/sql/entry_update.xml" />
 				<map:query src="data/sql/entry_get_id.xml" />
 				<map:query src="data/sql/entry_amounts_delete.xml" />
@@ -326,7 +324,6 @@ This makes it easier to maintain persistence. -->
 				<map:action type="redirect" params="{runtime/link_prefix}deposit-edit&amp;entry_id={//get_this_entry_id/entry_id}" />
 			</map:true>
 			<map:false>
-				<map:xml src="i18n/en_US/errors.xml" />
 				<map:set name="my_error" value="no_deposit_account" />
 				<map:xsl src="templates/xsl/errors.xsl" />
 			</map:false>
@@ -339,7 +336,7 @@ This makes it easier to maintain persistence. -->
 		<map:xml src="data/xml/deposit_meta.xml" />
 		<map:query src="data/sql/deposits_get_some.xml" />
 		<map:query src="data/sql/business_object_get_metadata.xml" />
-		<map:query src="data/sql/invoices_get_some.xml" />
+		<map:query src="data/sql/invoices_get_unpaid.xml" />
 		<map:query src="data/sql/business_object_get_metadata.xml" />
 		<map:action type="datetime" params="/_R_/get_journal_entry/get_journal_entry/entry_date,datetime,Y-m-d" />
 		<map:xsl src="templates/xsl/deposit_form.xsl" />

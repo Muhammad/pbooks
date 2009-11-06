@@ -29,26 +29,26 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</params>
 	<!--SQL taken from and should be the same as entries_get_some.xml -->
 	<sql>
-		SELECT DISTINCT &pb_entry_amounts;.entry_id,
-		&pb_entry_amounts;.account_id,
-		&pb_entry_amounts;.entry_amount_id,
-		&pb_entry_amounts;.entry_amount,
-		&pb_entry_amounts;.entry_type_id,
-		&pb_entry_amounts;.memorandum,
-		&pb_accounts;.name,
-		&pb_accounts;.account_type_id,
-		&pb_general_ledger;.account_id as posted_account_id
+SELECT DISTINCT &pb_entry_amounts;.entry_id,
+&pb_entry_amounts;.account_id,
+&pb_entry_amounts;.entry_amount_id,
+&pb_entry_amounts;.entry_amount,
+&pb_entry_amounts;.entry_type_id,
+&pb_entry_amounts;.memorandum,
+&pb_accounts;.name,
+&pb_accounts;.account_type_id,
+&pb_general_ledger;.account_id as posted_account_id
 
-		FROM &pb_accounts;, &pb_entry_amounts;
+FROM &pb_accounts;, &pb_entry_amounts;
 
-		LEFT JOIN &pb_general_ledger;
-		ON &pb_general_ledger;.entry_amount_id=&pb_entry_amounts;.entry_amount_id
+LEFT JOIN &pb_general_ledger;
+ON &pb_general_ledger;.entry_amount_id=&pb_entry_amounts;.entry_amount_id
 
-		WHERE
-		&pb_entry_amounts;.entry_id LIKE ?
-		AND &pb_accounts;.id = &pb_entry_amounts;.account_id
+WHERE
+&pb_entry_amounts;.entry_id LIKE ?
+AND &pb_accounts;.id = &pb_entry_amounts;.account_id
 
-		ORDER BY
-		&pb_entry_amounts;.entry_type_id DESC
+ORDER BY
+&pb_entry_amounts;.entry_type_id DESC
 	</sql>
 </query>

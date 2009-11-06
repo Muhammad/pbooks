@@ -33,50 +33,50 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="runtime/display_num_entries" type="integer" default="400"/>
 	</params>
 	<sql>
-		SELECT pbe.entry_id,
-		entry_datetime,
-		pbe.memorandum,
-		pea.entry_amount as invoice_total,
-		mymeta.meta_value as invoice_number,
-		pea.account_id as customer_id,
-		mymeta2.meta_value as due_date,
-		mymeta3.meta_value as paid_status,
-		mymeta4.meta_value as paid_in_full_date
+  SELECT 'invoices' AS business_object_type, pbe.entry_id,
+  entry_datetime,
+  pbe.memorandum,
+  pea.entry_amount as invoice_total,
+  mymeta.meta_value as invoice_number,
+  pea.account_id as customer_id,
+  mymeta2.meta_value as due_date,
+  mymeta3.meta_value as paid_status,
+  mymeta4.meta_value as paid_in_full_date
 
-		FROM &pb_entries; as pbe
+  FROM &pb_entries; as pbe
 
-		INNER JOIN &pb_entry_amounts; as pea
-		ON (pea.entry_id = pbe.entry_id
-		AND pea.entry_type_id = 'Debit')
+  INNER JOIN &pb_entry_amounts; as pea
+  ON (pea.entry_id = pbe.entry_id
+  AND pea.entry_type_id = 'Debit')
 
-		INNER JOIN &pb_entry_metadata; as pem
-		<!--metadata required to only select invoices -->
-		ON (pem.entry_id=pbe.entry_id
-		AND pem.meta_key='invoice_number')
+  INNER JOIN &pb_entry_metadata; as pem
+  <!--metadata required to only select invoices -->
+  ON (pem.entry_id=pbe.entry_id
+  AND pem.meta_key='invoice_number')
 
-		LEFT JOIN &pb_entry_metadata; AS mymeta
-		ON (mymeta.entry_id = pbe.entry_id
-		AND mymeta.meta_key='invoice_number')
+  LEFT JOIN &pb_entry_metadata; AS mymeta
+  ON (mymeta.entry_id = pbe.entry_id
+  AND mymeta.meta_key='invoice_number')
 
-		LEFT JOIN &pb_entry_metadata; AS mymeta2
-		ON (mymeta2.entry_id = pbe.entry_id
-		AND mymeta2.meta_key='due_date')
+  LEFT JOIN &pb_entry_metadata; AS mymeta2
+  ON (mymeta2.entry_id = pbe.entry_id
+  AND mymeta2.meta_key='due_date')
 
-		LEFT JOIN &pb_entry_metadata; AS mymeta3
-		ON (mymeta3.entry_id = pbe.entry_id
-		AND mymeta3.meta_key='paid_status')
+  LEFT JOIN &pb_entry_metadata; AS mymeta3
+  ON (mymeta3.entry_id = pbe.entry_id
+  AND mymeta3.meta_key='paid_status')
 
-		LEFT JOIN &pb_entry_metadata; AS mymeta4
-		ON (mymeta4.entry_id = pbe.entry_id
-		AND mymeta4.meta_key='paid_in_full_date')
+  LEFT JOIN &pb_entry_metadata; AS mymeta4
+  ON (mymeta4.entry_id = pbe.entry_id
+  AND mymeta4.meta_key='paid_in_full_date')
 
-		WHERE pbe.entry_id!=0
-		AND pbe.memorandum!='PLACEHOLDER'
-		AND pbe.entry_datetime &gt;= ?
-		AND pbe.entry_datetime &lt;= ?
-		AND pbe.entry_id LIKE ?
-		AND pbe.status != 9
-    AND pbe.fiscal_period_id LIKE ?
-		LIMIT ?,?
+  WHERE pbe.entry_id!=0
+  AND pbe.memorandum!='PLACEHOLDER'
+  AND pbe.entry_datetime &gt;= ?
+  AND pbe.entry_datetime &lt;= ?
+  AND pbe.entry_id LIKE ?
+  AND pbe.status != 9
+  AND pbe.fiscal_period_id LIKE ?
+  LIMIT ?,?
 	</sql>
 </query>
