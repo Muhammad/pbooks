@@ -210,8 +210,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:query src="data/sql/invoices_get_some.xml" />
 		<map:set name="account_meta_key" value="accounts_receivable_account" />
 		<map:query src="data/sql/account_business_objects.xml" />
-		<map:set name="debit_account_1" value="{accounts_receivable_id}" />
-		<map:query src="data/sql/account_get_by_ar_id.xml" />
 		<map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d" />
 		<map:if name="/_R_/account_business_objects">
 			<map:true>
@@ -230,8 +228,6 @@ This makes it easier to maintain persistence. -->
     <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,{runtime/current_user_id} Created invoice" />
 		<map:set name="account_meta_key" value="accounts_receivable_account" />
     <map:query src="data/sql/account_business_objects.xml" />
-		<map:set name="debit_account_1" value="{//accounts_get_accounts_receivable_id/accounts_receivable_id}" />
-		<map:query src="data/sql/account_get_by_ar_id.xml" />
 		<map:if name="/_R_/account_business_objects">
 			<map:true>
 				<map:insert name="blank-entry" />
