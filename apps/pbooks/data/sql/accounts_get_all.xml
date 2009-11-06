@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="get_all_accounts">
 	<connection>&pb_connection_read;</connection>
 	<params>
-		<param name="//option_get_company_name/fiscal_period_id" type="text" default="%"/>
+		<param name="runtime/fiscal_period_id" type="text" default="%"/>
 		<param name="_get/account_type_id" type="text" default="%"/>
 		<param name="runtime/show_all_accounts" type="text" default="off"/>
 	</params>

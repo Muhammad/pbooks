@@ -59,7 +59,11 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=periods_table&amp;simple=
 	</tbody>
 </table>
 <br/>
-<!-- TODO: This doesn't work yet! -->
+<p>
+To add a new period, edit the data/xml/fiscal_periods.xml file.
+</p>
+<!-- TODO: THIS IS DONE IN AN XML FILE -->
+<!--
 <form method="post">
 	Create new period:
 	<br/>
@@ -75,7 +79,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=periods_table&amp;simple=
 	</table>
 	<input type="submit"/>
 </form>
-
+-->
 
   </xsl:template>
 </xsl:stylesheet>
