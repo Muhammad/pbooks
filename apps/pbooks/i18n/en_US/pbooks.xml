@@ -243,6 +243,9 @@ Edit this account.
   <quantity>Quantity</quantity>
   <price>Price</price>
   <recent_invoices>Recent Invoices</recent_invoices>
+  <mail_invoices>Mail Invoices</mail_invoices>
+  <email_invoices>Email Invoices</email_invoices>
+  <email_address>Email Address</email_address>
   <paid_status>Paid Status</paid_status>
   <paid_in_full_date>Payment Date</paid_in_full_date>
   <unpaid>Unpaid</unpaid>

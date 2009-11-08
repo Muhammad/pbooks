@@ -131,10 +131,29 @@ are to be validated. -->
 		</tr>
 		<tr>
 			<td>
-				<xsl:value-of select="$i18n/hide"/>:
+				<xsl:value-of select="$i18n/email_invoices"/>:
 			</td>
 			<td>
-				<input type="checkbox" name="hide">
+				<input type="checkbox" name="email_invoices"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<xsl:value-of select="$i18n/mail_invoices"/>:
+			</td>
+			<td>
+				<input type="checkbox" name="mail_invoices"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			  <!-- NEW i18n TECHNIQUE AS OF NOV 2009 -->
+				<label for="hide">
+				  <span id="i18n-hide_this_account">Hide Account</span>
+        </label>:
+			</td>
+			<td>
+				<input type="checkbox" name="hide" id="hide">
 					<xsl:if test="//account_get_by_id/account_get_by_id/hide='on'">
 						<xsl:attribute name="checked">checked</xsl:attribute>
 					</xsl:if>
