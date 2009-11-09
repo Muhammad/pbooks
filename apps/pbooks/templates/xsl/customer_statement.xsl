@@ -64,12 +64,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 				<th>
 					<xsl:value-of select="$i18n/amount"/>
 				</th>
-				<!--
-				<th><xsl:value-of select="$i18n/due_date"/></th>
-				-->
 				<th>
 					<xsl:value-of select="$i18n/paid"/>&#160;
-				<!--<sup>[<a onclick="alert('')">?</a>]</sup>-->
 				</th>
 				<th>
 					<xsl:value-of select="$i18n/print"/>
@@ -103,9 +99,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 					<td>
 						<xsl:value-of select="invoice_total"/>
 					</td>
-					<!--
-					<td><xsl:value-of select="due_date"/></td>
-					-->
 					<td id="{invoice_number}">
 						<xsl:if test="paid_status='paid_in_full'">
 							Paid

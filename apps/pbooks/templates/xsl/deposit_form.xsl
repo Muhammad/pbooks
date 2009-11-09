@@ -40,14 +40,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 <h2>
-  <xsl:value-of select="$i18n/make_deposits"/>
+  <span id="$i18n-make_deposits">Make Deposits</span>
 </h2>
 
 <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"
   method="post" onSubmit="return validateStandard(this, 'myerror');
   alert(sum(debit_amount_1[]));">
-  <!-- If there is more than one deposit account, the user needs to select
-which one the deposit is being made into -->
+
+  <!-- SELECT DEPOSIT ACCOUNT -->
   <xsl:if test="count($account_business_objects) &gt; 1">
     <select name="debit_account_1[]" required="1" exclude="-1"
         err="{/_R_/i18n/error_select_debit}">
@@ -64,10 +64,11 @@ which one the deposit is being made into -->
       </xsl:for-each>
     </select>
   </xsl:if>
-  <!-- If there is only one deposit account, just use that id -->
+
+  <!-- ONLY ONE DEPOSIT ACCOUNT -->
   <xsl:if test="count($account_business_objects) = 1">
     <input type="hidden" name="debit_account_1[]"
-      value="{$account_business_objects/id}"/>
+    value="{$account_business_objects/id}"/>
   </xsl:if>
   <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
   <input type="hidden" name="fiscal_period_id" value="{/_R_/runtime/current_fiscal_period_id}"/>
@@ -90,16 +91,16 @@ which one the deposit is being made into -->
         <xsl:if test="//deposits_cash='yes'">
           <tr>
             <td>
-              <xsl:value-of select="$i18n/cash"/>
+              <span id="i18n-cash">Cash</span>
             </td>
             <td>
-              <xsl:value-of select="$i18n/amount"/>
+              <span id="i18n-amount">Amount</span>
             </td>
             <td>
-              <xsl:value-of select="$i18n/invoice"/>
+              <span id="i18n-invoice">Invoice</span>
             </td>
             <td>
-              <xsl:value-of select="$i18n/source"/>
+              <span id="i18n-source">Source</span>
             </td>
           </tr>
           <tr>
@@ -112,7 +113,7 @@ which one the deposit is being made into -->
                 value="{$get_journal_entry/entry_amount}"/>
             </td>
             <td>
-            <!-- only one cash entry is allowed -->
+            <!-- ONLY ONE CASH ENTRY IS SUPPORTED FOR NOW -->
             </td>
             <td>
               <select name="invoice_id" required="0" exclude="-1"
@@ -144,16 +145,16 @@ which one the deposit is being made into -->
         </xsl:if>
         <tr>
           <td>
-            <xsl:value-of select="$i18n/checks"/>
+            <span id="i18n-checks">Checks</span>
           </td>
           <td>
-            <xsl:value-of select="$i18n/amount"/>
+            <span id="i18n-amount">Amount</span>
           </td>
           <td>
-            <xsl:value-of select="$i18n/invoice"/>
+            <span id="i18n-invoice">Invoice</span>
           </td>
           <td>
-            <xsl:value-of select="$i18n/source"/>
+            <span id="i18n-source">Source</span>
           </td>
         </tr>
         <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">

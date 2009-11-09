@@ -31,7 +31,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 <h2>
-  <xsl:value-of select="$i18n/import_csv_accounts"/>
+  <span id="i18n-import_csv_accounts">Import Accounts in CSV Format</span>
 </h2>
 
 <xsl:if test="/_R_/_get/error">
@@ -42,8 +42,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <br/>
 </xsl:if>
 
-<form method="post"
-    onsubmit="return validateStandard(this, 'error');">
+<form method="post" onsubmit="return validateStandard(this, 'error');">
   <textarea id="csv_import" name="csv_accounts_import" rows="14" cols="80">
   <xsl:text>10000,1234,"testing","this is a test account"
 10000,4567,"testing 2","this is another test account"</xsl:text>

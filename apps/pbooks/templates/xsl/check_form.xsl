@@ -82,9 +82,7 @@ It is used to gather entry metadata for all business objects: checks, bills.
       </a>
     </div>
 
-    <!--
-    Select a checking account, if more than one exists.
-    -->
+    <!-- Select a checking account, if more than one exists. -->
     <xsl:if test="count(/_R_/account_business_objects/account_business_objects/account_id) &gt; 1">
       <select name="credit_account_1[]" required="1" exclude="-1"
         err="Please select a checking account.">
@@ -102,18 +100,14 @@ It is used to gather entry metadata for all business objects: checks, bills.
         </xsl:for-each>
       </select>
     </xsl:if>
-    <!--
-    Only one checking account.
-    -->
+    <!-- Only one checking account. -->
     <xsl:if test="count(/_R_/account_get_checking_accounts/account_get_checking_accounts/account_id)=1">
       <input type="hidden" name="checking_account_id"
         value="{/_R_/account_get_checking_accounts/account_get_checking_accounts/account_id}"/>
     </xsl:if>
   </div>
 
-  <!--
-  Select the expense account.
-  -->
+  <!-- Select the expense account. -->
   <select name="debit_account_1[]" required="1" exclude="-1"
     err="Please select a debit account.">
     <option value="-1">

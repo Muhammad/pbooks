@@ -40,9 +40,7 @@ of main.xsl. Form input elements have attributes like required="1" if they
 are to be validated. -->
 <form method="post" onSubmit="return validateStandard(this, 'myerror');">
 
-	<!--
-	Check if the user is creating a new account or editing and existing one,
-	and set appropriate parameter "my_action" -->
+	<!-- UPDATE OR CREATE -->
 	<xsl:if test="$this_account/id">
 		<input type="hidden" name="my_action" value="update" />
 		<input type="hidden" value="{/_R_/_get/account_id}" name="account_id" />
