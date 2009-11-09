@@ -844,6 +844,11 @@ This makes it easier to maintain persistence. -->
 			</map:default>
 		</map:switch>
 	</map:gate>
+	<map:gate name="reports-trial-balance" role="pb_admin">
+		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
+		<map:action type="datetime" params="/_R_/get_all_transactions/get_all_transactions/entry_datetime,datetime,Y-m-d" />
+		<map:xsl src="templates/xsl/report_trial_balance.xsl" />
+	</map:gate>
 	<map:gate name="reports-simple-cash-flow" role="pb_admin">
 		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 		<map:action type="datetime" params="/_R_/get_all_transactions/get_all_transactions/entry_datetime,datetime,Y-m-d" />

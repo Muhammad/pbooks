@@ -89,6 +89,11 @@ xmlns="http://www.w3.org/1999/xhtml">
 	</h2>
 	<ul style="big">
 		<li>
+			<a href="{$link_prefix}reports-trial-balance">
+				<span id="i18n_trial-balance">Trial Balance</span>
+			</a>
+		</li>
+		<li>
 			<a href="{$link_prefix}reports-simple-cash-flow">
 				<xsl:value-of select="$i18n/simple_monthly_cash_flow"/>
 			</a>
