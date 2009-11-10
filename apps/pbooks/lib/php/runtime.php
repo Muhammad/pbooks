@@ -110,16 +110,19 @@ if(isset($_GET['month'])) {
 
 if(isset($_GET['month'])) {
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, $_GET['month'], 31, $working_year));
-    $_SESSION['to_date'] = $to_date.' 23:59:59';
+    $_SESSION['to_date'] = $to_date;
 } elseif(isset($_GET['to_date'])) {                       // if there is a get date, use it and save it no matter, unless its redoing balances.
-    $_SESSION['to_date'] = $_GET['to_date'].' 23:59:59';
-    $to_date = $_GET['to_date'].' 23:59:59';
+    $_SESSION['to_date'] = $_GET['to_date'];
+    $to_date = $_GET['to_date'];
 } elseif (isset($_SESSION['to_date'])) {            // session date, use it
-    $to_date = $_SESSION['to_date'].' 23:59:59';
+    $to_date = $_SESSION['to_date'];
 } else {                                            // default
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, date('m'), date('d')+1, date('Y')));
 }
 
+if (!strpos($to_date,'23:59:59')) {
+    $to_date = $to_date.' 23:59:59';
+}
 
 $prev_to_date = date('Y-m-d H:i:s',mktime(23, 59, 59,date("m",strtotime($to_date)),date('d',strtotime($to_date))-7, date('Y',strtotime($to_date))));
 

@@ -25,7 +25,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="get_all_accounts">
 	<connection>&pb_connection_read;</connection>
 	<params>
-		<param name="runtime/fiscal_period_id" type="text" default="%"/>
+		<param name="runtime/to_date" type="text"/>
+		<param name="runtime/selected_fiscal_period_id" type="text" default="%"/>
 		<param name="_get/account_type_id" type="text" default="%"/>
 		<param name="runtime/show_all_accounts" type="text" default="off"/>
 	</params>
@@ -39,7 +40,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	&pb_accounts;.hide,
 	&pb_general_ledger;.account_id,
 	CASE WHEN &pb_accounts_meta;.meta_key='has_checks' THEN &pb_accounts_meta;.meta_value END as has_checks,
-	SUM(&pb_general_ledger;.entry_amount) as running_balance,
+	(
+    SELECT SUM(ll.entry_amount)
+    FROM &pb_general_ledger; AS ll
+    WHERE
+    ll.account_id = &pb_accounts;.id
+    AND ll.entry_datetime &lt; ?
+    AND ll.fiscal_period_id = ?
+  ) as running_balance,
 	mymeta.meta_value as takes_deposits,
 	mymeta2.meta_value as cash_account,
 	mymeta3.meta_value as accounts_receivable_account,
@@ -49,7 +57,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 	LEFT JOIN &pb_general_ledger;
 	ON &pb_accounts;.id = &pb_general_ledger;.account_id
-	AND &pb_general_ledger;.fiscal_period_id LIKE ?
 
 	LEFT JOIN &pb_accounts_meta;
 	ON &pb_accounts;.id = &pb_accounts_meta;.account_id

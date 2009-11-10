@@ -31,9 +31,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- these rows contain ids for use in testing, do not remove! -->
 <tr onmouseover="oldClass=this.className; this.className='active'"
-    onmouseout="this.className=oldClass"
-    style="cursor: pointer;"
-    id="a_{id}">
+onmouseout="this.className=oldClass" style="cursor: pointer;" id="a_{id}">
 
   <!-- Show account checkbox -->
   <xsl:if test="/_R_/_get/show_all_accounts='on'">
@@ -52,8 +50,8 @@ xmlns="http://www.w3.org/1999/xhtml">
   </td>
 
   <!-- Account name -->
-  <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
-    <a href="{$link_prefix}ledger&amp;account_id={id}">
+  <td>
+    <a href="{$link_prefix}ledger&amp;account_id={id}" title="account_id: {id}">
       <xsl:value-of select="name"/>
     </a>
   </td>
@@ -77,7 +75,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:if test="/_R_/_get/nid='accounts'">
     <td>
       <a href="{$link_prefix}accounts-edit&amp;account_id={id}"
-        id="{account_number}-e">
+      id="{account_number}-e" title="account_id: {id}">
         <xsl:value-of select="$i18n/edit"/>
       </a>
     </td>

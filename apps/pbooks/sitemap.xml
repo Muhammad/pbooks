@@ -445,7 +445,7 @@ This makes it easier to maintain persistence. -->
 
 
 <!-- ACCOUNT CHARTER -->
-	<map:gate name="accounts" role="pb_admin" cache="600" client_cache="600">
+	<map:gate name="accounts" role="pb_admin" cache="10" client_cache="10">
 		<map:if name="_post/submit">
 			<map:true>
 				<map:query src="data/sql/account_hide_delete.xml" />

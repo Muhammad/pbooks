@@ -109,13 +109,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
       </tr>
     </thead>
     <tbody>
-
-    <!--
-    These are the account table rows. The tests are to decide how the table
-    should be displayed, i.e. whether or not an account type is selected,
-    or whether the account balance should be displayed
-    -->
-
       <!-- No specific account type selected, show all -->
       <xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
         <xsl:for-each select="$all_accounts">
@@ -150,7 +143,7 @@ Display the text that explains when accounts can be deleted
 "An account can only be deleted when there are no journal transactions in that
 account. If you would like to hide the account, click edit and select the hide option." -->
 <div class="table_meta">
-<xsl:value-of select="$i18n/account_deletion_requirement"/>
+  <xsl:value-of select="$i18n/account_deletion_requirement"/>
 </div>
 <xsl:if test="/_R_/_get/account_type_id">
 <script type="text/javascript">
