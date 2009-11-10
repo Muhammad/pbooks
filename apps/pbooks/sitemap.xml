@@ -458,9 +458,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/accounts.xsl" />
 	</map:gate>
 	<map:gate name="account-balances" role="pb_admin" cache="30">
-		<map:xml src="data/xml/account_types.xml" />
-		<map:xml src="i18n/en_US/account_types.xml" />
-		<map:xsl src="templates/xsl/accounts.xsl" />
+		<map:action type="redirect" params="{/_R_/runtime/link_prefix}accounts" />
 	</map:gate>
 	<map:gate name="new-account">
 		<map:action type="redirect" params="{/_R_/runtime/link_prefix}accounts-edit" />

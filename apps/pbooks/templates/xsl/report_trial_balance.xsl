@@ -27,8 +27,13 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="i18n"/>
-		<xsl:variable name="get_all_entry_amounts"
-    select="/_R_/get_all_entry_amounts/get_all_entry_amounts" />
+		<xsl:variable name="all_accounts"
+		select="/_R_/get_all_accounts/get_all_accounts" />
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple=true" />
+
 
 
 <div class="tableframe">

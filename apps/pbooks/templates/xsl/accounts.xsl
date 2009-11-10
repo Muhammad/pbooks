@@ -59,7 +59,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
   </a>
 </div>
 
-<!-- drop down menu for the account selection -->
+<!-- drop down menu for the account type selection -->
 <div style="float: top;">
   <form method="get" action="{$link_prefix}">
     <input type="hidden" name="nid" value="{/_R_/_get/nid}"/>
@@ -95,16 +95,16 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
           <span id="i18n-account_name">Account Name</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/type"/>
+          <span id="i18n-type">Type</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/balance"/>
+          <span id="i18n-balance">Balance</span>
         </th>
         <th class="{{sorter: false}}">
-          <xsl:value-of select="$i18n/edit"/>
+          <span id="i18n-edit">Edit</span>
         </th>
         <th class="{{sorter: false}}">
-          <xsl:value-of select="$i18n/delete"/>
+          <span id="i18n-delete">Delete</span>
         </th>
       </tr>
     </thead>
@@ -118,52 +118,24 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
 
       <!-- No specific account type selected, show all -->
       <xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
-        <xsl:if test="not(/_R_/_get/nid='account-balances')">
-          <xsl:for-each select="$all_accounts">
-            <xsl:sort select="account_number"/>
-            <xsl:call-template name="account-row">
-              <xsl:with-param name="link_prefix" select="$link_prefix"/>
-              <xsl:with-param name="i18n" select="$i18n"/>
-            </xsl:call-template>
-          </xsl:for-each>
-        </xsl:if>
-
-
-        <xsl:if test="/_R_/_get/nid='account-balances'">
-          <xsl:for-each select="$all_accounts">
-            <xsl:sort select="account_number"/>
-            <xsl:if test="running_balance &gt; 0">
-              <xsl:call-template name="account-row">
-                <xsl:with-param name="link_prefix" select="$link_prefix"/>
-                <xsl:with-param name="i18n" select="$i18n"/>
-              </xsl:call-template>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:if>
+        <xsl:for-each select="$all_accounts">
+          <xsl:sort select="account_number"/>
+          <xsl:call-template name="account-row">
+            <xsl:with-param name="link_prefix" select="$link_prefix"/>
+            <xsl:with-param name="i18n" select="$i18n"/>
+          </xsl:call-template>
+        </xsl:for-each>
       </xsl:if>
 
       <!-- Specific account type selected, only show that one -->
       <xsl:if test="/_R_/_get/account_type_id">
-        <xsl:if test="not(/_R_/_get/nid='account-balances')">
-          <xsl:for-each select="$all_accounts[account_type_id=/_R_/_get/account_type_id]">
-            <xsl:sort select="account_number"/>
-            <xsl:call-template name="account-row">
-              <xsl:with-param name="link_prefix" select="$link_prefix"/>
-              <xsl:with-param name="i18n" select="$i18n"/>
-            </xsl:call-template>
+        <xsl:for-each select="$all_accounts[account_type_id=/_R_/_get/account_type_id]">
+          <xsl:sort select="account_number"/>
+          <xsl:call-template name="account-row">
+            <xsl:with-param name="link_prefix" select="$link_prefix"/>
+            <xsl:with-param name="i18n" select="$i18n"/>
+          </xsl:call-template>
         </xsl:for-each>
-        </xsl:if>
-        <xsl:if test="/_R_/_get/nid='account-balances'">
-          <xsl:for-each select="$all_accounts">
-            <xsl:sort select="account_number"/>
-            <xsl:if test="running_balance &gt; 0">
-              <xsl:call-template name="account-row">
-                <xsl:with-param name="link_prefix" select="$link_prefix"/>
-                <xsl:with-param name="i18n" select="$i18n"/>
-              </xsl:call-template>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:if>
       </xsl:if>
     </tbody>
   </table>
