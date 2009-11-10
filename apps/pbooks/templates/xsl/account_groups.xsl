@@ -35,7 +35,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 <div class="generic-button" style="text-align: right;">
   <a href="{$link_prefix}account-group-edit">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-    <xsl:value-of select="$i18n/new_account_group"/>
+    <span id="i18n-new_account_group">New Account Group</span>
   </a>
 </div>
 
@@ -44,16 +44,16 @@ xmlns="http://www.w3.org/1999/xhtml">
     <tr>
       <th>ID</th>
       <th>
-        <xsl:value-of select="$i18n/group_name"/>
+        <span id="i18n-group_name">Group Name</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/desc"/>
+        <span id="i18n-desc">Description</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/edit"/>
+        <span id="i18n-edit">Edit</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/delete"/>
+        <span id="i18n-delete">Delete</span>
       </th>
     </tr>
   </thead>
@@ -95,15 +95,15 @@ xmlns="http://www.w3.org/1999/xhtml">
   </td>
   <td>
     <a href="{$link_prefix}account-group-edit&amp;group_id={group_id}"
-      id="{account_number}-e">
-      <xsl:value-of select="$i18n/edit"/>
+    id="{account_number}-e">
+      <span id="i18n-edit">Edit</span>
     </a>
   </td>
   <td>
     <a href="{$link_prefix}account-group-delete&amp;group_id={group_id}"
-       id="{account_group}-d"
-       onclick="account_group_delete({group_id}); return false;">
-      <xsl:value-of select="$i18n/delete"/>
+   id="{account_group}-d"
+   onclick="account_group_delete({group_id}); return false;">
+      <span id="i18n-delete">Delete</span>
     </a>
   </td>
 </tr>
