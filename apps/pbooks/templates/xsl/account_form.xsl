@@ -69,7 +69,6 @@ to be validated.
             <span id="i18n-account_name">Account Name</span>
           </label>
         </th>
-        </td>
         <td>
           <input type="text" name="name" id="name"
           value="{$this_account/name|//_post/name}"
@@ -261,6 +260,7 @@ to be validated.
           </input>
         </td>
       </tr>
+      </tbody>
     </table>
   </div>
   <div style="text-align: center; margin-top: 10px;" class="table_meta">
