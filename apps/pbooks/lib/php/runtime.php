@@ -85,6 +85,10 @@ if(empty($default_invoice_print_horiz)) {
 }
 
 
+
+
+
+
 /*
  * TODO What follows needs a major cleanup! Low priority though.
  * Not posting anymore dates. Only using POST method for updating data.
@@ -104,9 +108,7 @@ if(isset($_GET['month'])) {
     $from_date = date('Y-m-d H:i:s',mktime(0,0,0, date('m')-2, date('d'), date('Y')));
 }
 
-/*
- * Which date span source should I use?
- */
+/* TO DATE */
 
 if(isset($_GET['month'])) {
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, $_GET['month'], 31, $working_year));
@@ -119,6 +121,9 @@ if(isset($_GET['month'])) {
 } else {                                            // default
     $to_date = date('Y-m-d H:i:s',mktime(23, 59, 59, date('m'), date('d')+1, date('Y')));
 }
+
+/* TODO: A change in selected fiscal period id overrides the sessoin date. */
+
 
 if (!strpos($to_date,'23:59:59')) {
     $to_date = $to_date.' 23:59:59';

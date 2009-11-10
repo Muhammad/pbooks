@@ -22,25 +22,25 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <fiscal_periods>
-	<period>
+	<period id="1">
 		<period_id>1</period_id>
 		<period_value>2007</period_value>
 		<from_date>2007-01-01</from_date>
 		<to_date>2007-12-31</to_date>
 	</period>
-	<period>
+	<period id="2">
 		<period_id>2</period_id>
 		<period_value>2008</period_value>
 		<from_date>2008-01-01</from_date>
 		<to_date>2008-12-31</to_date>
 	</period>
-	<period>
+	<period id="3">
 		<period_id>3</period_id>
 		<period_value>2009</period_value>
 		<from_date>2009-01-01</from_date>
 		<to_date>2009-12-31</to_date>
 	</period>
-	<period>
+	<period id="4">
 		<period_id>4</period_id>
 		<period_value>2010</period_value>
 		<from_date>2010-01-01</from_date>
