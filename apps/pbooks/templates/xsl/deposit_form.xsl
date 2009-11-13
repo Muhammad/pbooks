@@ -52,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <select name="debit_account_1[]" required="1" exclude="-1"
         err="{/_R_/i18n/error_select_debit}">
       <option value="-1">
-        <xsl:value-of select="$i18n/deposit_account"/>
+        <span id="i18n-deposit_account">Deposit Account</span>
       </option>
       <xsl:for-each select="$account_business_objects">
         <option value="{id}">
@@ -75,42 +75,39 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <div id="business_object_slip">
     <div id="my_deposit_account_id"></div>
     <div id="deposit_date">
-      <xsl:value-of select="$i18n/date"/>:
-      <input type="text" name="entry_datetime"
-        value="{$get_journal_entry/entry_date}"
-      />
+      <label for="entry_datetime">
+        <span id="i18n-date">Date</span>
+      </label>
+      <input type="text" name="entry_datetime" id="entry_datetime"
+      value="{$get_journal_entry/entry_date}"/>
     </div>
     <div id="deposit_memo">
-      <xsl:value-of select="$i18n/memo"/>:
+      <span id="i18n-memo">Memorandum</span>:
       <input type="text" name="memorandum"
-        value="{$get_journal_entry/memorandum}"
-      />
+      value="{$get_journal_entry/memorandum}" />
     </div>
     <div id="deposit_payee">
       <table border="0" id="deposit_form_table">
         <xsl:if test="//deposits_cash='yes'">
+          <thead>
           <tr>
-            <td>
-              <span id="i18n-cash">Cash</span>
-            </td>
-            <td>
+            <th>
               <span id="i18n-amount">Amount</span>
-            </td>
-            <td>
+            </th>
+            <th/>
+            <th>
               <span id="i18n-invoice">Invoice</span>
-            </td>
-            <td>
+            </th>
+            <th>
               <span id="i18n-source">Source</span>
-            </td>
+            </th>
           </tr>
+          </thead>
+          <tbody>
           <tr>
-            <td>
-              <input type="text" name="check_number[]" style="width: 40px;"
-              value="{$get_journal_entry/entry_amount_memorandum}"/>
-            </td>
             <td>
               <input type="text" name="entry_amount[]" style="width: 60px;"
-                value="{$get_journal_entry/entry_amount}"/>
+              value="{$get_journal_entry/entry_amount}"/>
             </td>
             <td>
             <!-- ONLY ONE CASH ENTRY IS SUPPORTED FOR NOW -->
@@ -119,10 +116,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
               <select name="invoice_id" required="0" exclude="-1"
               err="{/_R_/i18n/error_select_credit}">
                 <option value="-1">
-                  <xsl:value-of select="$i18n/outstanding_invoices"/>
+                  <span id="i18n-outstanding_invoices">Outstanding Invoices</span>
                 </option>
                 <option value="0">
-                  <xsl:value-of select="$i18n/not_applicable"/>
+                  <span id="i18n-not_applicable">Not Applicable</span>
                 </option>
                 <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
                   <xsl:variable name="my_new_entry_id" select="entry_id"/>
@@ -142,38 +139,33 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </select>
             </td>
           </tr>
+        </tbody>
         </xsl:if>
+        <thead>
         <tr>
-          <td>
-            <span id="i18n-checks">Checks</span>
-          </td>
-          <td>
+          <th>
             <span id="i18n-amount">Amount</span>
-          </td>
-          <td>
+          </th>
+          <th/>
+          <th>
             <span id="i18n-invoice">Invoice</span>
-          </td>
-          <td>
+          </th>
+          <th>
             <span id="i18n-source">Source</span>
-          </td>
+          </th>
         </tr>
+        </thead>
+        <tbody>
         <xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
           <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
           <tr id="d_{$my_entry_amount_id}">
-            <!-- Here the check number is the equivalent of a journal entry memorandum -->
-            <td>
-              <input type="text" name="check_number[]" style="width: 40px;"
-              value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount_memorandum}"/>
-            </td>
             <td>
               <input type="text" name="credit_amount_1[]" style="width: 60px;" id="credit_amount_{position()}"
-                value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"
-                onkeyup="copyValue('credit_amount_{position()}','debit_amount_{position()}');"
-                />
+              value="{$get_journal_entry[entry_amount_id=$my_entry_amount_id]/entry_amount}"
+              onkeyup="copyValue('credit_amount_{position()}','debit_amount_{position()}');"/>
               <input type="hidden" name="debit_amount_1[]" id="debit_amount_{position()}" />
             </td>
             <!-- Additional deposit line items. -->
-            <!--
             <td>
               <xsl:if test="position() &gt; 1">
                 <a href="{$link_prefix}journal_entry_amount_delete&amp;entry_amount_id={entry_amount_id}"
@@ -182,16 +174,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 </a>
               </xsl:if>
             </td>
-            -->
             <!-- OUTSTANDING INVOICES DROP DOWN LIST HERE -->
             <td>
               <select name="invoice_id" required="0"
               exclude="-1" err="{/_R_/i18n/error_select_credit}">
                 <option value="-1">
-                  <xsl:value-of select="$i18n/outstanding_invoices"/>
+                  <span id="i18n-outstanding_invoices">Outstanding Invoices</span>
                 </option>
                 <option value="0">
-                  <xsl:value-of select="$i18n/not_applicable"/>
+                  <span id="i18n-not_applicable">Not Applicable</span>
                 </option>
                 <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects[business_object_type='invoices']">
                   <xsl:variable name="my_new_entry_id" select="entry_id"/>
@@ -212,9 +203,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td>
               <!-- need to select where the money is coming from - or is it accounts receivable? -->
               <select name="credit_account_1[]" required="1" exclude="-1"
-                err="{$i18n/error_select_credit}">
+              err="{$i18n/error_select_credit}">
                 <option value="-1">
-                  <xsl:value-of select="$i18n/credit_account"/>
+                  <span id="i18n-credit_account">Credit Account</span>
                 </option>
                 <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
                   <xsl:variable name="my_account_id" select="id"/>
@@ -229,9 +220,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
           </tr>
         </xsl:for-each>
-        <!--
         <tr>
-          <td colspan="2" />
+          <td />
           <td>
             <a href="{$link_prefix}journal-entry-new-credit&amp;entry_id={/_R_/_get/entry_id}">
               <img onclick="journal_entry_amount_create('credit',{/_R_/_get/entry_id}); return false;"
@@ -240,13 +230,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </td>
           <td colspan="2" />
         </tr>
-        -->
+        </tbody>
       </table>
 
       <!-- Link to journal entry form. -->
       <div style="float: right">
         <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
-          <xsl:value-of select="$i18n/edit_journal_entry"/>
+          <span id="i18n-edit_journal_entry">Edit Journal Entry</span>
         </a>
       </div>
     </div>
