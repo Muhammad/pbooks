@@ -93,15 +93,30 @@ function debits_summarize() {
 }
 
 function invoice_paid(invoice_number, entry_id) {
+    var ts = Math.round(new Date().getTime() / 1000);
     $.ajax({
       type: "POST",
       url: "<xsl:value-of select="//link_prefix"/>x-invoice-paid",
       data: {
         'invoice_id': invoice_number,
-        'entry_id': entry_id
+        'entry_id': entry_id,
+        'timestamp': ts
       },
       success: function (res){
         $("#p_"+invoice_number).replaceWith("Paid");
+      }
+    });
+}
+function invoice_unpaid(invoice_number, entry_id) {
+    $.ajax({
+      type: "POST",
+      url: "<xsl:value-of select="//link_prefix"/>x-invoice-unpaid",
+      data: {
+        'invoice_id': invoice_number,
+        'entry_id': entry_id
+      },
+      success: function (res){
+        $("#p_"+invoice_number).replaceWith("Unpaid");
       }
     });
 }

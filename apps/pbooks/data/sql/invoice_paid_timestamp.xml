@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: invoice_paid.xml
+Component: invoice_paid_timestamp.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,13 +22,13 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="invoice_paid">
+<query name="invoice_paid_timestamp">
   <connection>&pb_connection;</connection>
   <params>
     <param name="_post/entry_id" type="integer"/>
+    <param name="_post/timestamp" type="integer"/>
   </params>
   <sql>
-  DELETE FROM &pb_entry_metadata; WHERE entry_id=? AND
-  (meta_key='paid_status' OR meta_key='paid_in_full_date');
+  INSERT INTO &pb_entry_metadata; (entry_id, meta_key, meta_value) VALUES (?, 'paid_in_full_date', ?);
 	</sql>
 </query>

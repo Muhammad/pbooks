@@ -106,6 +106,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
             <span id="p_{invoice_number}">
             <xsl:if test="paid_status='paid_in_full'">
               <span id="i18n-paid">Paid</span>
+              <a onclick="invoice_unpaid({invoice_number},{entry_id});"
+              title="Entry ID: {entry_id}; Invoice #: {invoice_number}"
+              href="#invoice_entry_id={entry_id}">x</a>
             </xsl:if>
             <xsl:if test="not(paid_status='paid_in_full')">
               <a onclick="invoice_paid({invoice_number},{entry_id});"
