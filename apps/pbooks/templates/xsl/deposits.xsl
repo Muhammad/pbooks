@@ -28,7 +28,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <script type="text/javascript"
@@ -37,7 +36,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_deposits" />
 <div class="generic-button" style="float: right;">
   <a href="{$link_prefix}deposit-create" id="deposit-create">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-    <xsl:value-of select="$i18n/new_deposit"/>
+    <span id="i18n-new_deposit">New Deposit</span>
   </a>
 </div>
 <div class="tableframe">
@@ -45,16 +44,16 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_deposits" />
   <thead>
     <tr>
       <th>
-        <xsl:value-of select="$i18n/date"/>
+        <span id="i18n-date">Date</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/memo"/>
+        <span id="i18n-memo">Memorandum</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/amount"/>
+        <span id="i18n-amount">Amount</span>
       </th>
       <th class="{{sorter: false}}">
-        <xsl:value-of select="$i18n/id"/>
+        <span id="i18n-id">ID</span>
       </th>
     </tr>
   </thead>
