@@ -71,7 +71,8 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_deposits" />
           </a>
         </td>
         <td>
-          <xsl:value-of select="entry_amount"/>
+          <xsl:value-of select="entry_amount"/>,
+          <xsl:value-of select="invoice_payment"/>
         </td>
         <td>
           <a href="{$link_prefix}deposit-edit&amp;entry_id={entry_id}">
