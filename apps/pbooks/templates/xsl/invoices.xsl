@@ -133,8 +133,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 <div class="table_meta">
   <span id="i18n-total_invoices">Total outstanding invoices</span>
   <b>
-    <xsl:value-of
-    select="sum($business_objects/invoice_total) -
+    <xsl:value-of select="sum($business_objects/invoice_total) -
     sum($business_objects[paid_status='paid_in_full']/invoice_total)"/>
   </b>
 </div>
