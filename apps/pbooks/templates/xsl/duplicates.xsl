@@ -38,25 +38,25 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <thead>
     <tr>
       <th>
-        <xsl:value-of select="$i18n/post"/>
+        <span id="i18n-post">Post</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/date"/>:
+        <span id="i18n-date">Date</span>:
       </th>
       <th>
-        <xsl:value-of select="$i18n/memo"/>
+        <span id="i18n-memo">Memorandum</span>
       </th>
       <xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
         <th>
-          <xsl:value-of select="$i18n/account"/>
+          <span id="i18n-account">Account</span>
         </th>
       </xsl:if>
       <th>
-        <xsl:value-of select="$i18n/amount"/>
+        <span id="i18n-amount">Amount</span>
       </th>
       <xsl:if test="(not(/_R_/_get/account_id='%') and _R_/_get/account_id)">
         <th>
-          <xsl:value-of select="$i18n/balance"/>
+          <span id="i18n-balance">Balance</span>
         </th>
       </xsl:if>
     </tr>
