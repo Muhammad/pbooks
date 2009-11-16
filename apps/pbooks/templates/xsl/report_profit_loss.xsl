@@ -55,9 +55,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 <table class="matrix-table" width="100%" align="center">
 	<tr>
 		<td align="center">
-			<xsl:value-of select="$i18n/income_statement"/>&#160;
-			<xsl:value-of select="/_R_/runtime/from_date"/>
-			<xsl:value-of select="$i18n/through"/>
+			<span id="i18n-income_statement">Income Statement</span>&#160;
+			<xsl:value-of select="/_R_/runtime/from_date"/>&#160;
+			<span id="i18n-through">through</span>&#160;
 			<xsl:value-of select="/_R_/runtime/to_date"/>
 		</td>
 	</tr>
@@ -75,14 +75,14 @@ xmlns="http://www.w3.org/1999/xhtml">
 						</xsl:if>
 					</xsl:for-each>
 					<td class="matrix-data">
-						<xsl:value-of select="$i18n/total"/>
+						<span id="i18n-total">Total</span>
 					</td>
 				</tr>
 				</thead>
 				<!--  REVENUE -->
 				<tr>
 					<td class="matrix-data">
-						<xsl:value-of select="$i18n/revenue"/>
+						<span id="i18n-revenue">Revenue</span>
 					</td>
 
 					<xsl:call-template name="empty_cell">
@@ -110,7 +110,8 @@ xmlns="http://www.w3.org/1999/xhtml">
 						</xsl:call-template>
 
 						<td class="matrix-data">
-							<xsl:value-of select="sum($get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id]/entry_amount)"/>
+							<xsl:value-of
+							select="sum($get_all_entry_amounts[account_type_id=$rev][account_id=$this_r_account_id]/entry_amount)"/>
 						</td>
 					</tr>
 				</xsl:for-each>
@@ -137,7 +138,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 				<!--  Expenses -->
 				<tr>
 					<td class="matrix-data">
-						<xsl:value-of select="$i18n/expenses"/>
+						<span id="i18n-expenses">Expenses</span>
 					</td>
 
 					<xsl:call-template name="empty_cell">
@@ -173,7 +174,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 				<tr>
 					<td class="matrix-data" style="text-indent: 16px;">
 						<b>
-							<xsl:value-of select="$i18n/total_expenses"/>
+							<span id="i18n-total_expenses">EXPENSES</span>
 						</b>
 					</td>
 

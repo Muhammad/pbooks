@@ -41,8 +41,8 @@ xmlns="http://www.w3.org/1999/xhtml">
 <div class="generic-button table_meta" style="float: right;">
   <a href="{$link_prefix}journal-new" class="generic-button"
   id="new_journal_entry">
-    <img src="{//path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-    <xsl:value-of select="$i18n/new_entry"/>
+    <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
+    <span id="i18n-new_entry">New Entry</span>
   </a>
 </div>
 

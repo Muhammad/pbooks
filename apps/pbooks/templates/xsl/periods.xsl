@@ -38,10 +38,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=periods_table&amp;simple=
 	<thead>
 		<tr>
 			<th>
-				<xsl:value-of select="$i18n/period_id"/>
+				<span id="i18n-period_id">Period ID</span>
 			</th>
 			<th>
-				<xsl:value-of select="$i18n/period_value"/>
+				<span id="i18n-period_value">Period Value</span>
 			</th>
 		</tr>
 	</thead>

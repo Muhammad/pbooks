@@ -39,13 +39,13 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=tr
   <thead>
     <tr>
       <th>
-        <xsl:value-of select="$i18n/note_id"/>
+        <span id="i18n-note_id">ID</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/notes"/>
+        <span id="i18n-notes">Notes</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/date"/>
+        <span id="i18n-date">Date</span>
       </th>
       <th class="{{sorter: false}}">
       </th>
