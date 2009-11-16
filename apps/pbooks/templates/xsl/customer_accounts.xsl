@@ -42,19 +42,19 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table" />
 <div class="generic-button" style="float: right;">
   <xsl:if test="/_R_/runtime/show_all_accounts">
     <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=off">
-      <xsl:value-of select="$i18n/hide_accounts"/>
+      <span id="i18n-hide_accounts"/>
     </a>
   </xsl:if>
 
   <xsl:if test="not(/_R_/runtime/show_all_accounts)">
     <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=on">
-      <xsl:value-of select="$i18n/show_accounts"/>
+      <span id="i18n-show_accounts"/>
     </a>
   </xsl:if>
 
   <a href="{$link_prefix}customer-edit" class="generic-button">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-    <xsl:value-of select="$i18n/new_customer"/>
+    <span id="i18n-new_customer"/>
   </a>
 </div>
 
@@ -72,22 +72,22 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table" />
           </th>
         </xsl:if>
         <th>
-          <xsl:value-of select="$i18n/number"/>
+          <span id="i18n-number"/>
         </th>
         <th>
-          <xsl:value-of select="$i18n/customer_name"/>
+          <span id="i18n-customer_name">Customer Name</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/balance"/>
+          <span id="i18n-balance">Balance</span>
         </th>
         <th>
-          <xsl:value-of select="$i18n/statement"/>
+          <span id="i18n-statement">Statement</span>
         </th>
         <th class="{{sorter: false}}">
-          <xsl:value-of select="$i18n/edit"/>
+          <span id="i18n-edit">Edit</span>
         </th>
         <th class="{{sorter: false}}">
-          <xsl:value-of select="$i18n/delete"/>
+          <span id="i18n-delete">Delete</span>
         </th>
       </tr>
     </thead>

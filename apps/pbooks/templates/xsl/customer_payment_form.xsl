@@ -38,7 +38,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 <h2>
-	<xsl:value-of select="$i18n/customer_payments"/>
+	<span id="i18n-customer_payments">Customer Payments</span>
 </h2>
 
 <form action="{$link_prefix}customer-payment-submit&amp;entry_id={/_R_/_get/entry_id}"
@@ -50,12 +50,12 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 	<input type="hidden" name="payment_account_id" value="{//runtime/payment_account_id}"/>
 	<div id="business_object_slip">
 		<div id="payment_date">
-			<xsl:value-of select="$i18n/date"/>:
+			<span id="i18n-date">Date</span>:
 			<input type="text" name="entry_datetime"
 			style="width: 6em;" value="{$get_journal_entry/entry_date}"/>
 		</div>
 		<div id="payment_memo">
-			<xsl:value-of select="$i18n/memo"/>:
+			<span id="i18n-memo">Memorandum</span>:
 			<input type="text" name="memorandum" style="width: 20em;"
 			value="{$get_journal_entry/memorandum}"/>
 		</div>
@@ -63,7 +63,7 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 			<table border="0" id="payment_form_table">
 				<tr>
 					<td>
-						<xsl:value-of select="$i18n/amount"/>
+						<span id="i18n-amount">Amount</span>
 					</td>
 					<td />
 					<td>
@@ -72,7 +72,7 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 						-->
 					</td>
 					<td>
-						<xsl:value-of select="$i18n/customer"/>
+						<span id="i18n-customer">Customer</span>
 					</td>
 				</tr>
 				<xsl:for-each select="$get_journal_entry[entry_type_id='Credit']">
@@ -139,7 +139,7 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 			<!-- Link to journal entry form. -->
 			<div style="float: right">
 				<a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
-					<xsl:value-of select="$i18n/edit_journal_entry"/>
+					<span id="i18n-edit_journal_entry">Edit Journal Entry</span>
 				</a>
 			</div>
 		</div>
