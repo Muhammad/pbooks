@@ -1,6 +1,6 @@
 <!--
 Program: PBooks
-Component: tablesorter_setup.js.xsl
+Component: common_js_functions.js.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -28,36 +28,10 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template match="/">
 
 
-<xsl:if test="not(//_get/simple='true')">
-<xsl:text>
-$(document).ready(function(){
-  $("#</xsl:text><xsl:value-of select="//_get/selector"/><xsl:text>").tablesorter(
-      {
-          widgets:['zebra','cookie'],
-          widthFixed: true
-      }
-  ).tablesorterPager(
-      {
-          container: $("#</xsl:text><xsl:value-of select="//_get/selector"/><xsl:text>-pager"),
-          size: 16,
-          positionFixed: false
-      }
-  );
+<xsl:if test="//_get/function='setup_rows'">
+$(document).ready(function() {
+  setup_rows("<xsl:value-of select="//_get/selector"/>");
 });
-</xsl:text>
-</xsl:if>
-
-
-<xsl:if test="//_get/simple='true'">
-<xsl:text>
-$(document).ready(function(){
-  $("#</xsl:text><xsl:value-of select="//_get/selector"/><xsl:text>").tablesorter(
-      {
-          widgets:['zebra','cookie']
-      }
-  );
-});
-</xsl:text>
 </xsl:if>
 
 

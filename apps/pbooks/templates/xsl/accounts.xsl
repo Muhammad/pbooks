@@ -37,12 +37,14 @@ xmlns="http://www.w3.org/1999/xhtml">
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple=true" />
 
+<script type="text/javascript"
+src="{$link_prefix}x-page-js&amp;selector=%23accounts_table_body%20tr&amp;function=setup_rows" />
 
 <!-- buttons on the right hand side -->
 <div class="generic-button" style="float: right;">
   <xsl:if test="/_R_/runtime/show_all_accounts='on'">
     <a href="{$link_prefix}accounts&amp;show_all_accounts=off">
-      <xsl:value-of select="$i18n/hide_accounts"/>
+      <span id="i18n-hide_accounts">Hide Accounts</span>
     </a>
   </xsl:if>
 
@@ -55,7 +57,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
 
   <a href="{$link_prefix}accounts-edit" class="generic-button" id="new_account">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-    <xsl:value-of select="$i18n/new_account"/>
+    <span id="i18n-new_account">New Account</span>
   </a>
 </div>
 
@@ -66,7 +68,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
     <!-- Select one type of account -->
     <select name="account_type_id" onchange="this.form.submit();">
       <option value="%">
-        <xsl:value-of select="$i18n/all"/>
+        <span id="i18n-all">All</span>
       </option>
       <!-- Special Case -->
       <xsl:for-each select="/_R_/account_types/account_type">
@@ -108,7 +110,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="accounts_table_body">
       <!-- No specific account type selected, show all -->
       <xsl:if test="not(/_R_/_get/account_type_id) or /_R_/_get/account_type_id='%'">
         <xsl:for-each select="$all_accounts">
@@ -147,7 +149,9 @@ account. If you would like to hide the account, click edit and select the hide o
 </div>
 <xsl:if test="/_R_/_get/account_type_id">
 <script type="text/javascript">
+$(document).ready(function() {
   $("#at_"+<xsl:value-of select="/_R_/_get/account_type_id"/>).attr("selected","selected");
+});
 </script>
 </xsl:if>
 </xsl:template>

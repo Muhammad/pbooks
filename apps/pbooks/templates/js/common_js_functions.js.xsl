@@ -185,6 +185,18 @@ function update_date_selector_account_id(account_id) {
   }
 }
 
+function setup_rows(row_class) {
+  $(row_class).hover(
+    function () {
+      $(this).addClass("active");
+    },
+    function () {
+      $(this).removeClass("active");
+    }
+  );
+}
+
+
 $(document).ready(function() {
   $('#my_debit_amount').val($('.credit_amounts').sum());
 });

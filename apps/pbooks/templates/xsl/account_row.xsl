@@ -30,8 +30,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
 <!-- these rows contain ids for use in testing, do not remove! -->
-<tr onmouseover="oldClass=this.className; this.className='active'"
-onmouseout="this.className=oldClass" style="cursor: pointer;" id="a_{id}">
+<tr style="cursor: pointer;" id="a_{id}">
 
   <!-- Show account checkbox -->
   <xsl:if test="/_R_/_get/show_all_accounts='on'">
