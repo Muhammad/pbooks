@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <param array="//import_csv/memorandum" type="text"/>
     <param array="//import_csv/entry_amount" type="text"/>
     <param name="//_post/account_id" type="integer"/>
-		<param name="//option_get_company_name/fiscal_period_id" type="integer"/>
+		<param name="//runtime/current_fiscal_period_id" type="integer"/>
   </params>
   <sql>
    INSERT INTO &pb_general_ledger;

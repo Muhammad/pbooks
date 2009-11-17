@@ -126,7 +126,7 @@ start journal entry form table
                   <xsl:value-of select="$get_journal_entry/fiscal_period_id"/>
                 </xsl:if>
                 <xsl:if test="not($get_journal_entry/fiscal_period_id)">
-                  <xsl:value-of select="/_R_/runtime/selected_fiscal_period_id"/>
+                  <xsl:value-of select="/_R_/runtime/current_fiscal_period_id"/>
                 </xsl:if>
               </xsl:attribute>
             </input>
