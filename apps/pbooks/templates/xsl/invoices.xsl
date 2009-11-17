@@ -53,7 +53,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
           <span id="i18n-date">Date</span>
         </th>
         <th>
-          <span id="i18n-id">ID</span>
+          <span id="i18n-invoice_number">Invoice Number</span>
         </th>
         <th>
           <span id="i18n-client">Client</span>
@@ -83,7 +83,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
             <xsl:value-of select="entry_datetime"/>
           </td>
           <td id="{entry_id}">
-            <a href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}">
+            <a rel="{invoice_number}" href="{$link_prefix}invoice-edit&amp;entry_id={entry_id}">
               <xsl:value-of select="invoice_number"/>
             </a>
           </td>
