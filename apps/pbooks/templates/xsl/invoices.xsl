@@ -43,6 +43,10 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
     <span id="i18n-new_invoice">New Invoice</span>
   </a>
+  &#160;
+  <a href="{$link_prefix}x-invoices-export" id="invoices-export">
+    <span id="i18n-export_invoices">Export Invoices</span>
+  </a>
 </div>
 
 <div class="tableframe">
