@@ -36,7 +36,8 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table" />
-
+<script type="text/javascript"
+src="{$link_prefix}x-page-js&amp;selector=%23customers_table_body%20tr&amp;function=setup_rows" />
 
 <!-- buttons on the right hand side -->
 <div class="generic-button" style="float: right;">
@@ -91,7 +92,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table" />
         </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="customers_table_body">
 
       <!--
       These are the account table rows.
