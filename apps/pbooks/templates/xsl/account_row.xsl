@@ -34,7 +34,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
   <!-- Show account checkbox -->
   <xsl:if test="/_R_/_get/show_all_accounts='on'">
-    <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
+    <td>
       <input type="checkbox" name="hide[]" value="{id}">
         <xsl:if test="hide='on'">
           <xsl:attribute name="checked">checked</xsl:attribute>
