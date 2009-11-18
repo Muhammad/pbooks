@@ -34,6 +34,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_payments" />
 
+<script type="text/javascript"
+src="{$link_prefix}x-page-js&amp;selector=%23my_payments%20tbody%20tr&amp;function=setup_rows" />
+
 <div class="generic-button" style="float: right;">
   <a href="{$link_prefix}customer-payment-create" id="customer-payment-create">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
@@ -65,8 +68,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_payments" />
   <!-- START LOOP -->
   <xsl:for-each select="/_R_/get_some_business_objects/get_some_business_objects">
     <xsl:variable name="my_customer_id" select="account_id"/>
-    <tr onmouseover="oldClass=this.className; this.className='active'"
-      onmouseout="this.className=oldClass">
+    <tr>
       <td>
         <xsl:value-of select="entry_datetime"/>
       </td>

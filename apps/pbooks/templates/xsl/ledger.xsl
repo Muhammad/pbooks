@@ -34,6 +34,10 @@ xmlns="http://www.w3.org/1999/xhtml">
 		select="/_R_/get_all_transactions/get_all_transactions" />
 
 
+
+<script type="text/javascript"
+src="{$link_prefix}x-page-js&amp;selector=%23my_ledger%20tbody%20tr&amp;function=setup_rows" />
+
 <xsl:if test="not(/_R_/_get/nid='matching')">
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
@@ -95,8 +99,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 		<tbody>
 			<xsl:for-each select="$get_transactions">
 				<xsl:if test="((not(//_get/account_id) or /_R_/_get/account_id='%')  and not(entry_amount=0.00)) or (not(/_R_/_get/account_id='%') and /_R_/_get/account_id)">
-				<tr onmouseover="oldClass=this.className; this.className='active'"
-					onmouseout="this.className=oldClass">
+				<tr>
 					<!-- This cell will be used for a star or flag with notations -->
 					<!--<td>FPO</td>-->
 					<td>
