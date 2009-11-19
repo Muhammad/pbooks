@@ -68,24 +68,24 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 				<!-- This cell will be used for a star or flag with notations -->
 				<!--<th>FPO</th>-->
 				<th class="{{sorter: 'text'}}">
-					<xsl:value-of select="$i18n/date"/>:
+					<span id="i18n-date">Date</span>:
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/post"/>
+					<span id="i18n-post">Post</span>
 				</th>
 				<th class="{{sorter: false}}">
-					<xsl:value-of select="$i18n/memo"/>
+					<span id="i18n-memo">Memorandum</span>
 				</th>
 
 				<!-- Exclude account column if only one account selected-->
 				<xsl:if test="(/_R_/_get/account_id='%' or not(/_R_/_get/account_id))">
 					<th>
-						<xsl:value-of select="$i18n/account"/>
+						<span id="i18n-account">Account</span>
 					</th>
 				</xsl:if>
 
 				<th>
-					<xsl:value-of select="$i18n/amount"/>
+					<span id="i18n-amount">Amount</span>
 				</th>
 
 				<xsl:if test="not(/_R_/_get/account_id='%') and /_R_/_get/account_id">
@@ -198,12 +198,12 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_ledger" />
 
 	<!-- Provide some links to related pages: gl and account edit -->
 	<div id="sub_tableframe">
-		<xsl:value-of select="$i18n/account_ledger_links"/>
+		<span id="i18n-account_ledger_links">Account Ledger Links</span>
 		<a href="{$link_prefix}ledger">
-			<xsl:value-of select="$i18n/general_ledger"/>
+			<span id="i18n-general_ledger">General Ledger</span>
 		</a>
 		<a href="{$link_prefix}accounts-edit&amp;account_id={/_R_/_get/account_id}">
-			<xsl:value-of select="$i18n/account_edit"/>
+			<span id="i18n-account_edit">Account Edit</span>
 		</a>
 	</div>
 </xsl:if>
@@ -216,25 +216,25 @@ Show the accounting equation in no specific account is selected -->
 		<thead>
 			<tr>
 				<th>
-					<xsl:value-of select="$i18n/assets"/> +
+					<span id="i18n-assets">Assets</span> +
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/expenses"/> =
+					<span id="i18n-expenses">Expenses</span> =
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/sub_total"/> =
+					<span id="i18n-sub_total">Sub-Total</span> =
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/liabilities"/> +
+					<span id="i18n-liabilities">Liabilities</span> +
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/equity"/> +
+					<span id="i18n-equity">Equity</span> +
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/revenue"/> = 
+					<span id="i18n-revenue">Revenue</span> = 
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/total"/>
+					<span id="i18n-total">Total</span>
 				</th>
 			</tr>
 		</thead>
