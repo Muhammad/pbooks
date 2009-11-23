@@ -1,85 +1,110 @@
-<table>
-  <name>accounts</name>
-  <class>Account</class>
-  <declaration>
+<database>
+  <table>
+    <name>accounts</name>
+    <class>Account</class>
+    <declaration>
+  
+     <field>
+      <name>id</name>
+      <type>integer</type>
+      <default>0</default>
+      <notnull>true</notnull>
+      <autoincrement>1</autoincrement>
+      <length>4</length>
+     </field>
+  
+     <field>
+      <name>number</name>
+      <type>integer</type>
+      <default></default>
+      <notnull>false</notnull>
+      <length>11</length>
+     </field>
+  
+     <field>
+      <name>name</name>
+      <type>text</type>
+      <default></default>
+      <notnull>false</notnull>
+     </field>
+  
+     <field>
+      <name>type_id</name>
+      <type>integer</type>
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>4</length>
+     </field>
+  
+     <field>
+      <name>description</name>
+      <type>text</type>
+      <default></default>
+      <notnull>false</notnull>
+     </field>
+  
+     <field>
+      <name>created_on</name>
+      <type>timestamp</type>
+      <default>CURRENT_TIMESTAMP</default>
+      <notnull>true</notnull>
+     </field>
+  
+     <field>
+      <name>closed_on</name>
+      <type>timestamp</type>
+      <default></default>
+      <notnull>false</notnull>
+     </field>
+  
+     <field>
+      <name>hide</name>
+      <type>text</type>
+      <default>no</default>
+      <notnull>false</notnull>
+      <length>3</length>
+     </field>
+  
+     <field>
+      <name>group_id</name>
+      <type>integer</type>
+      <default></default>
+      <notnull>false</notnull>
+      <length>1</length>
+     </field>
 
-   <field>
-    <name>id</name>
-    <type>integer</type>
-    <default>0</default>
-    <notnull>true</notnull>
-    <autoincrement>1</autoincrement>
-    <length>4</length>
-   </field>
-
-   <field>
-    <name>number</name>
-    <type>integer</type>
-    <default></default>
-    <notnull>false</notnull>
-    <length>11</length>
-   </field>
-
-   <field>
-    <name>name</name>
-    <type>text</type>
-    <default></default>
-    <notnull>false</notnull>
-   </field>
-
-   <field>
-    <name>type_id</name>
-    <type>integer</type>
-    <default>0</default>
-    <notnull>true</notnull>
-    <length>4</length>
-   </field>
-
-   <field>
-    <name>description</name>
-    <type>text</type>
-    <default></default>
-    <notnull>false</notnull>
-   </field>
-
-   <field>
-    <name>created_on</name>
-    <type>timestamp</type>
-    <default>CURRENT_TIMESTAMP</default>
-    <notnull>true</notnull>
-   </field>
-
-   <field>
-    <name>closed_on</name>
-    <type>timestamp</type>
-    <default></default>
-    <notnull>false</notnull>
-   </field>
-
-   <field>
-    <name>hide</name>
-    <type>text</type>
-    <default>no</default>
-    <notnull>false</notnull>
-    <length>3</length>
-   </field>
-
-   <field>
-    <name>group_id</name>
-    <type>integer</type>
-    <default></default>
-    <notnull>false</notnull>
-    <length>1</length>
-   </field>
-
-   <index>
-    <name>account_number</name>
-    <unique>true</unique>
-    <field>
-     <name>account_number</name>
-     <sorting>ascending</sorting>
-    </field>
-   </index>
-
-  </declaration>
-</table>
+   </declaration>
+    <has_n>credits</has_n>
+    <has_n>debits</has_n>
+  </table>
+  <table>
+    <name>entries</name>
+    <class>Entry</class>
+    <declaration>
+      <field>
+      </field>
+    </declaration>
+    <has_n>credits</has_n>
+    <has_n>debits</has_n>
+  </table>
+  <table>
+    <name>credits</name>
+    <class>Credit</class>
+    <declaration>
+      <field>
+      </field>
+    </declaration>
+    <belongs_to>entry</belongs_to>
+    <belongs_to>account</belongs_to>
+  </table>
+  <table>
+    <name>transactions</name>
+    <class>Transaction</class>
+    <declaration>
+      <field>
+      </field>
+    </declaration>
+    <belongs_to>entry</belongs_to>
+    <belongs_to>account</belongs_to>
+  </table>
+</database>
