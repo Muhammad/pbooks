@@ -25,6 +25,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
   xmlns:map="http://www.nexista.org/sitemap">
   <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes" />
   <xsl:template match="/">
+    <xsl:if test="//_get/type='nginx'">
+      <xsl:call-template name="nginx"/>
+    </xsl:if>
+    <xsl:if test="//_get/type='sinatra'">
+      <xsl:call-template name="nginx"/>
+    </xsl:if>
+  </xsl:template>
+  
+  
+  
+  <xsl:template name="nginx">
     <xsl:variable name="proxyhost">192.168.8.48</xsl:variable>
     <xsl:variable name="app_root">/var/www/dev/pbooks/apps/pbooks</xsl:variable>
       <xsl:for-each select="//*[name()='map:gate']">
@@ -34,4 +45,18 @@ location /<xsl:value-of select="@name"/> {
 }
       </xsl:for-each>
   </xsl:template>
+  
+  <xsl:template name="sinatra">
+require 'xml/libxml'
+require 'xml/libxslt'
+    <xsl:variable name="proxyhost">192.168.8.48</xsl:variable>
+    <xsl:variable name="app_root">/var/www/dev/pbooks/apps/pbooks</xsl:variable>
+      <xsl:for-each select="//*[name()='map:gate']">
+get /<xsl:value-of select="@name"/> {
+  # <xsl:value-of select="map:xml/@src"/>
+  xslt_stylesheet <xsl:value-of select="$app_root"/>/<xsl:value-of select="map:xsl/@src"/>;
+end
+      </xsl:for-each>
+  </xsl:template>
+  
 </xsl:stylesheet>
