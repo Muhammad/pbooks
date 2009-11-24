@@ -22,12 +22,11 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
     <xsl:variable name="this_account"
     select="/_R_/account_get_by_id/account_get_by_id" />
     <xsl:variable name="account_meta"
@@ -84,7 +83,7 @@ to be validated.
         <td>
           <select name="account_type_id" id="account_type_id">
             <option>
-              <xsl:value-of select="$i18n/select_one"/>
+              <span id="i18n-select_one"/>
             </option>
             <xsl:for-each select="//account_types/account_type">
               <option value="{account_type_id}">
@@ -179,7 +178,7 @@ to be validated.
       </tr>
       <tr>
         <td>
-          <xsl:value-of select="$i18n/accounts_receivable_account"/>:
+          <span id="i18n-accounts_receivable_account">Accounts Receivable</span>:
         </td>
         <td>
           <input type="radio" name="accounts_receivable_account" value="on">
@@ -196,7 +195,7 @@ to be validated.
       </tr>
       <tr>
         <td>
-          <xsl:value-of select="$i18n/cash_account"/>:
+          <span id="i18n-cash_account">Cash Account</span>:
         </td>
         <td>
           <input type="radio" name="cash_account" value="on">
@@ -214,7 +213,7 @@ to be validated.
       </tr>
       <tr>
         <td>
-          <xsl:value-of select="$i18n/account_closed"/>:
+          <span id="i18n-account_closed">Account Closed</span>:
         </td>
         <td>
           <input type="radio" name="account_closed" value="on">
@@ -232,7 +231,7 @@ to be validated.
       </tr>
       <tr>
         <td>
-          <xsl:value-of select="$i18n/group"/>:
+          <span id="i18n-group">Group</span>:
         </td>
         <td>
           <select name="group_id">
@@ -250,7 +249,7 @@ to be validated.
       </tr>
       <tr>
         <td>
-          <xsl:value-of select="$i18n/hide"/>:
+          <span id="i18n-hide">Hide</span>:
         </td>
         <td>
           <input type="checkbox" name="hide">
@@ -264,9 +263,9 @@ to be validated.
     </table>
   </div>
   <div style="text-align: center; margin-top: 10px;" class="table_meta">
-    <input type="submit" value="{$i18n/save}" name="submit" />
-    <input type="button" value="{$i18n/cancel}"
-      onclick="window.location.href='{$link_prefix}accounts'"/>
+    <input type="submit" value="Save" name="submit" />
+    <input type="button" value="Cancel"
+    onclick="window.location.href='{$link_prefix}accounts'"/>
   </div>
 </form>
 
