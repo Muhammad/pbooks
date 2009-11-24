@@ -29,6 +29,11 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:strip-space elements="*"/>
   <xsl:template match="/">
     <html>
+      <!-- FOR EXPERIMENTING WITH NGINX XSLT -->
+      <!--
+      <xsl:variable name="path_prefix">http://dev-48-gl.savonix.com/a/dev/pbooks/</xsl:variable>
+      <xsl:variable name="link_prefix">http://dev-48-gl.savonix.com/a/dev/pbooks/index.php?nid=</xsl:variable>
+    -->
       <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
       <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
       <xsl:variable name="my18n"
