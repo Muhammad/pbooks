@@ -173,8 +173,8 @@
     <inherits>amount</inherits>
   </table>
   <table>
-    <name>transactions</name>
-    <class>Transaction</class>
+    <name>ledgers</name>
+    <class>Ledger</class>
     <declaration>
 
    <field name="id" type="integer">
