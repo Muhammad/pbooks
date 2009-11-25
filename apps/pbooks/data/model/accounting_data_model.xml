@@ -81,7 +81,7 @@
         <signed>false</signed>
       </field>
       
-      <field name="fiscal_period_id" type="integer" specific_type="tinyint">
+      <field name="fiscal_period_id" type="integer" specific_type="smallint">
         <default>0</default>
         <notnull>true</notnull>
         <length>3</length>
@@ -122,10 +122,10 @@
       <notnull>false</notnull>
     </field>
     
-    <field name="amount" type="bigdecimal" specific_type="decimal(20,2)">
-      <default></default>
-      <notnull>false</notnull>
-      <length>22</length>
+    <field name="amount" type="integer" specific_type="integer">
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>11</length>
     </field>
     
     <field name="account_id" type="integer" specific_type="mediumint">
@@ -176,8 +176,54 @@
     <name>transactions</name>
     <class>Transaction</class>
     <declaration>
-      <field>
-      </field>
+
+   <field name="id" type="integer">
+    <default>0</default>
+    <notnull>true</notnull>
+    <autoincrement>1</autoincrement>
+    <length>4</length>
+   </field>
+
+   <field name="posted_on" type="integer" specific_type="timestamp">
+    <default>CURRENT_TIMESTAMP</default>
+    <notnull>true</notnull>
+   </field>
+
+   <field name="memorandum" type="string" specific_type="varchar(255)">
+    <default></default>
+    <notnull>false</notnull>
+   </field>
+
+    <field name="amount" type="integer" specific_type="integer">
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>11</length>
+    </field>
+
+   <field name="account_id" type="integer" specific_type="mediumint">
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>8</length>
+   </field>
+
+   <field name="entry_id" type="integer" specific_type="integer">
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>11</length>
+   </field>
+
+   <field name="entry_amount_id" type="integer" specific_type="integer">
+    <default></default>
+    <notnull>true</notnull>
+    <length>11</length>
+   </field>
+
+   <field name="fiscal_period_id" type="integer" specific_type="smallint">
+    <default>0</default>
+    <notnull>true</notnull>
+    <length>5</length>
+   </field>
+
     </declaration>
     <belongs_to>entry</belongs_to>
     <belongs_to>account</belongs_to>
