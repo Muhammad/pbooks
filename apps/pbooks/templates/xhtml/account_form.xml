@@ -22,8 +22,10 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 
-
 <form method="post">
+  <h2>
+    <span class="i18n-account_form">Account Form</span>
+  </h2>
   <div class="tableframe">
     <input type="hidden" name="my_action" value="create"/>
     <div id="account_form_notice" class="hidden_div" />
@@ -55,6 +57,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tr>
         <tr>
           <th>
+            <span class="i18n-group">Group</span>
+          </th>
+          <td>
+            <select name="group_id"></select>
+          </td>
+        </tr>
+        <tr>
+          <th>
             <label for="account_number">
               <span class="i18n-account_number">Account Number</span>
             </label>
@@ -75,28 +85,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
         </tr>
         <tr>
           <th>
-            <label for="reconciled">
-              <span class="i18n-reconciled">Reconciled</span>
-            </label>
-          </th>
-          <td>
-            <input type="text" name="reconciled" id="reconciled" required="1" />
-          </td>
-        </tr>
-        <tr>
-          <th>
             <span class="i18n-has_checks">Has Checks</span>
           </th>
           <td>
-            <input type="radio" name="has_checks" id="hc_on" value="on"></input>
-            <label for="hc_on">
-              <span class="i18n-yes">Yes</span>
-            </label>
-            <br/>
-            <input type="radio" name="has_checks" id="hc_off" value="off" />
-            <label for="hc_off">
-              <span class="i18n-no">No</span>
-            </label>
+            <input type="checkbox" name="has_checks" />
           </td>
         </tr>
         <tr>
@@ -106,11 +98,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </label>
           </th>
           <td>
-            <input type="radio" name="takes_deposits" value="on" />
-            <span class="i18n-yes">Yes</span>
-            <br/>
-            <input type="radio" name="takes_deposits" value="off" />
-            <span class="i18n-no">No</span>
+            <input type="checkbox" name="takes_deposits" />
           </td>
         </tr>
         <tr>
@@ -118,12 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <span class="i18n-accounts_receivable">Accounts Receivable</span>
           </th>
           <td>
-            <input type="radio" name="accounts_receivable_account" value="on" />
-            <span class="i18n-yes">Yes</span>
-            <br/>
-            <input type="radio" name="accounts_receivable_account" value="off" />
-            <span class="i18n-no">No</span>
-            <br/>
+            <input type="checkbox" name="accounts_receivable" />
           </td>
         </tr>
         <tr>
@@ -131,11 +114,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <span class="i18n-cash_account">Cash Account</span>
           </th>
           <td>
-            <input type="radio" name="cash_account" value="on" />
-            <span class="i18n-yes">Yes</span>
-            <br/>
-            <input type="radio" name="cash_account" value="off" />
-            <span class="i18n-no">No</span>
+            <input type="checkbox" name="cash_account" />
           </td>
         </tr>
         <tr>
@@ -143,19 +122,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <span class="i18n-account_closed">Account Closed</span>
           </th>
           <td>
-            <input type="radio" name="account_closed" value="on" />
-            <span class="i18n-yes">Yes</span>
-            <br/>
-            <input type="radio" name="account_closed" value="off" />
-            <span class="i18n-no">No</span>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <span class="i18n-group">Group</span>
-          </th>
-          <td>
-            <select name="group_id"></select>
+            <input type="checkbox" name="account_closed" />
           </td>
         </tr>
         <tr>
@@ -169,7 +136,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </tbody>
     </table>
   </div>
-  <div style="text-align: center; margin-top: 10px;" class="table_meta">
+  <div class="table_meta">
     <input type="submit" value="Save" name="submit" />
   </div>
 </form>
