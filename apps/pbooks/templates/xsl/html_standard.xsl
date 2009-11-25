@@ -27,7 +27,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
 doctype-public="-//W3C//DTD XHTML 1.1//EN" indent="yes"/>
   <xsl:strip-space elements="*"/>
-
+  <xsl:param name="my18n"/>
 
 	<!-- UI PRIMARY MENU -->
   <xsl:template name="main-menu">
@@ -92,7 +92,7 @@ doctype-public="-//W3C//DTD XHTML 1.1//EN" indent="yes"/>
         <xsl:call-template name="main">
           <xsl:with-param name="link_prefix" select="$link_prefix"/>
           <xsl:with-param name="path_prefix" select="$path_prefix"/>
-          <xsl:with-param name="i18n" select="$i18n"/>
+          <xsl:with-param name="i18n" select="$my18n"/>
         </xsl:call-template>
 
         <xsl:for-each select="//footer_nodes">
