@@ -1,6 +1,6 @@
 <!--
 Program: Numerous
-Component: html_stdtmpl.xsl
+Component: xhtml1.1_standard.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -23,11 +23,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:output method="xml" indent="yes" encoding="UTF-8"
-  omit-xml-declaration="no"
-  doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
-  doctype-public="-//W3C//DTD XHTML 1.1//EN"/>
+  <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no"
+doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+doctype-public="-//W3C//DTD XHTML 1.1//EN" indent="yes"/>
   <xsl:strip-space elements="*"/>
+
 
 	<!-- UI PRIMARY MENU -->
   <xsl:template name="main-menu">
@@ -92,7 +92,7 @@ xmlns="http://www.w3.org/1999/xhtml">
         <xsl:call-template name="main">
           <xsl:with-param name="link_prefix" select="$link_prefix"/>
           <xsl:with-param name="path_prefix" select="$path_prefix"/>
-          <xsl:with-param name="i18n" select="$my18n"/>
+          <xsl:with-param name="i18n" select="$i18n"/>
         </xsl:call-template>
 
         <xsl:for-each select="//footer_nodes">
@@ -109,9 +109,15 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<xsl:param name="path_prefix"/>
 		<head>
 			<title>
-				STANDARD TEMPLATES
+			<xsl:value-of select="(//h1|//h2)[1]" />
 			</title>
 		</head>
+	</xsl:template>
+  <!-- HTML MAIN -->
+	<xsl:template name="main">
+		<xsl:param name="link_prefix"/>
+		<xsl:param name="path_prefix"/>
+		<xsl:apply-templates />
 	</xsl:template>
 
   <!-- XHTML FRIENDLY IDENTITY TEMPLATE FOR ELEMENTS-->
@@ -121,8 +127,12 @@ xmlns="http://www.w3.org/1999/xhtml">
     </xsl:element>
   </xsl:template>
 
-  <!-- XHTML FRIENDLY IDENTITY TEMPLATE FOR CONTENT AND NODES -->
-  <xsl:template match="@*|text()|comment()|processing-instruction()">
+  <!-- XHTML FRIENDLY IDENTITY TEMPLATE FOR CONTENT AND ATTRIBUTES -->
+  <xsl:template match="@*|text()|processing-instruction()">
+    <xsl:copy/>
+  </xsl:template>
+  
+  <xsl:template match="comment()">
     <xsl:copy/>
   </xsl:template>
 
