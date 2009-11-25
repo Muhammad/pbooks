@@ -57,6 +57,7 @@
    </declaration>
     <has_n>credits</has_n>
     <has_n>debits</has_n>
+    <has_n>ledgers</has_n>
   </table>
   <table>
     <name>entries</name>
@@ -98,6 +99,7 @@
     </declaration>
     <has_n>credits</has_n>
     <has_n>debits</has_n>
+    <has_n>ledgers</has_n>
   </table>
 
   <table>
@@ -139,8 +141,6 @@
       <length>255</length>
     </field>
 
-    <belongs_to>entry</belongs_to>
-    <belongs_to>account</belongs_to>
     <index>
     <name>pb_entry_amounts_ibfk_1</name>
     <field>
@@ -159,6 +159,7 @@
     
 
     </declaration>
+    <has_1>ledgers</has_1>
     <belongs_to>entry</belongs_to>
     <belongs_to>account</belongs_to>
   </table>
@@ -225,7 +226,8 @@
    </field>
 
     </declaration>
-    <belongs_to>entry</belongs_to>
     <belongs_to>account</belongs_to>
+    <belongs_to>entry</belongs_to>
+    <belongs_to>amount</belongs_to>
   </table>
 </database>
