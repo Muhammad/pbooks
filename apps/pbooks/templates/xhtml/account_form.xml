@@ -1,0 +1,175 @@
+<!--
+Program: PBooks
+Component: account_form.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+-->
+
+
+<form method="post">
+  <div class="tableframe">
+    <input type="hidden" name="my_action" value="create"/>
+    <div id="account_form_notice" class="hidden_div" />
+    <table class="form-table" style="width: 100%">
+      <tbody>
+        <tr>
+          <th>
+            <label for="name">
+              <span class="i18n-account_name">Account Name</span>
+            </label>
+          </th>
+          <td>
+            <input type="text" name="name" id="name" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="account_type_id">
+              <span class="i18n-account_type">Account Type</span>
+            </label>
+          </th>
+          <td>
+            <select name="account_type_id" id="account_type_id">
+              <option>
+                <span class="i18n-select_one">Select One</span>
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="account_number">
+              <span class="i18n-account_number">Account Number</span>
+            </label>
+          </th>
+          <td>
+            <input type="text" name="account_number" required="1" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="description">
+              <span class="i18n-description">Description</span>
+            </label>
+          </th>
+          <td>
+            <textarea name="description" id="description" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="reconciled">
+              <span class="i18n-reconciled">Reconciled</span>
+            </label>
+          </th>
+          <td>
+            <input type="text" name="reconciled" id="reconciled" required="1" />
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="i18n-has_checks">Has Checks</span>
+          </th>
+          <td>
+            <input type="radio" name="has_checks" id="hc_on" value="on"></input>
+            <label for="hc_on">
+              <span class="i18n-yes">Yes</span>
+            </label>
+            <br/>
+            <input type="radio" name="has_checks" id="hc_off" value="off" />
+            <label for="hc_off">
+              <span class="i18n-no">No</span>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="takes_deposits">
+              <span class="i18n-takes_deposits">Takes Deposits</span>
+            </label>
+          </th>
+          <td>
+            <input type="radio" name="takes_deposits" value="on" />
+            <span class="i18n-yes">Yes</span>
+            <br/>
+            <input type="radio" name="takes_deposits" value="off" />
+            <span class="i18n-no">No</span>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="i18n-accounts_receivable">Accounts Receivable</span>
+          </th>
+          <td>
+            <input type="radio" name="accounts_receivable_account" value="on" />
+            <span class="i18n-yes">Yes</span>
+            <br/>
+            <input type="radio" name="accounts_receivable_account" value="off" />
+            <span class="i18n-no">No</span>
+            <br/>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="i18n-cash_account">Cash Account</span>
+          </th>
+          <td>
+            <input type="radio" name="cash_account" value="on" />
+            <span class="i18n-yes">Yes</span>
+            <br/>
+            <input type="radio" name="cash_account" value="off" />
+            <span class="i18n-no">No</span>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="i18n-account_closed">Account Closed</span>
+          </th>
+          <td>
+            <input type="radio" name="account_closed" value="on" />
+            <span class="i18n-yes">Yes</span>
+            <br/>
+            <input type="radio" name="account_closed" value="off" />
+            <span class="i18n-no">No</span>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="i18n-group">Group</span>
+          </th>
+          <td>
+            <select name="group_id"></select>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <span class="i18n-hide">Hide</span>
+          </th>
+          <td>
+            <input type="checkbox" name="hide" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align: center; margin-top: 10px;" class="table_meta">
+    <input type="submit" value="Save" name="submit" />
+  </div>
+</form>
