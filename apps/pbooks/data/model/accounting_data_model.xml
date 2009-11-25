@@ -140,6 +140,12 @@
       <notnull>false</notnull>
       <length>255</length>
     </field>
+    
+    <field name="currency_id" type="integer" specific_type="smallint">
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>5</length>
+    </field>
 
     <index>
     <name>pb_entry_amounts_ibfk_1</name>
@@ -224,6 +230,12 @@
     <notnull>true</notnull>
     <length>5</length>
    </field>
+    
+    <field name="currency_id" type="integer" specific_type="smallint">
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>5</length>
+    </field>
 
     </declaration>
     <belongs_to>account</belongs_to>
