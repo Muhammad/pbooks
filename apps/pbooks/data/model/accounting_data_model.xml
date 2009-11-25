@@ -3,74 +3,55 @@
     <name>accounts</name>
     <class>Account</class>
     <declaration>
-  
-     <field>
-      <name>id</name>
-      <type>integer</type>
+
+     <field name="id" type="integer" specific_type="mediumint">
       <default>0</default>
       <notnull>true</notnull>
       <autoincrement>1</autoincrement>
-      <length>4</length>
+      <length>8</length>
+      <signed>false</signed>
      </field>
-  
-     <field>
-      <name>number</name>
-      <type>integer</type>
-      <default></default>
-      <notnull>false</notnull>
-      <length>11</length>
-     </field>
-  
-     <field>
-      <name>name</name>
-      <type>text</type>
-      <default></default>
-      <notnull>false</notnull>
-     </field>
-  
-     <field>
-      <name>type_id</name>
-      <type>integer</type>
+
+     <field name="number" type="string" specific_type="varchar(255)">
       <default>0</default>
       <notnull>true</notnull>
-      <length>4</length>
+      <length>255</length>
      </field>
-  
-     <field>
-      <name>description</name>
-      <type>text</type>
+
+     <field name="name" type="string" specific_type="varchar(255)">
       <default></default>
       <notnull>false</notnull>
      </field>
   
-     <field>
-      <name>created_on</name>
-      <type>timestamp</type>
+     <field name="type_id" type="integer" specific_type="smallint">
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>5</length>
+      <signed>false</signed>
+     </field>
+  
+     <field name="description" type="text" specific_type="text">
+      <default></default>
+      <notnull>false</notnull>
+     </field>
+  
+     <field name="created_on" type="integer" specific_type="timestamp">
       <default>CURRENT_TIMESTAMP</default>
       <notnull>true</notnull>
      </field>
   
-     <field>
-      <name>closed_on</name>
-      <type>timestamp</type>
-      <default></default>
+     <field name="closed_on" type="integer" specific_type="timestamp">
       <notnull>false</notnull>
      </field>
-  
-     <field>
-      <name>hide</name>
-      <type>text</type>
-      <default>no</default>
+
+     <field name="hide" type="boolean" specific_type="tinyint">
+      <default>false</default>
       <notnull>false</notnull>
-      <length>3</length>
      </field>
-  
-     <field>
-      <name>group_id</name>
-      <type>integer</type>
-      <default></default>
+
+     <field name="group_id" type="integer" specific_type="mediumint">
       <notnull>false</notnull>
-      <length>1</length>
+      <length>8</length>
      </field>
 
    </declaration>
@@ -81,21 +62,115 @@
     <name>entries</name>
     <class>Entry</class>
     <declaration>
-      <field>
+      <field name="id" type="integer" specific_type="mediumint">
+        <default>0</default>
+        <notnull>true</notnull>
+        <autoincrement>1</autoincrement>
+        <length>8</length>
+        <signed>false</signed>
       </field>
+      <field name="memorandum" type="string" specific_type="varchar(255)">
+        <default></default>
+        <notnull>false</notnull>
+      </field>
+      
+      <field name="status" type="integer" specific_type="tinyint">
+        <default>2</default>
+        <notnull>false</notnull>
+        <length>3</length>
+        <signed>false</signed>
+      </field>
+      
+      <field name="fiscal_period_id" type="integer" specific_type="tinyint">
+        <default>0</default>
+        <notnull>true</notnull>
+        <length>3</length>
+        <signed>false</signed>
+      </field>
+      
+      <index>
+      <name>entry_datetime</name>
+      <field>
+      <name>entry_datetime</name>
+      <sorting>ascending</sorting>
+      </field>
+      </index>
     </declaration>
     <has_n>credits</has_n>
     <has_n>debits</has_n>
   </table>
+
   <table>
-    <name>credits</name>
-    <class>Credit</class>
+    <name>amounts</name>
+    <class>Amount</class>
     <declaration>
-      <field>
-      </field>
+    <field name="id" type="integer" specific_type="integer">
+      <default>0</default>
+      <notnull>true</notnull>
+      <autoincrement>1</autoincrement>
+      <length>10</length>
+    </field>
+    
+    <field name="entry_id" type="integer" specific_type="mediumint">
+      <default>0</default>
+      <notnull>true</notnull>
+      <length>8</length>
+    </field>
+    
+    <field name="type" type="discriminator" specific_type="enum('credit','debit')">
+      <default></default>
+      <notnull>false</notnull>
+    </field>
+    
+    <field name="amount" type="bigdecimal" specific_type="decimal(20,2)">
+      <default></default>
+      <notnull>false</notnull>
+      <length>22</length>
+    </field>
+    
+    <field name="account_id" type="integer" specific_type="mediumint">
+      <default>0</default>
+      <notnull>false</notnull>
+      <length>8</length>
+    </field>
+    
+    <field name="memorandum" type="string" specific_type="varchar(255)">
+      <notnull>false</notnull>
+      <length>255</length>
+    </field>
+
+    <belongs_to>entry</belongs_to>
+    <belongs_to>account</belongs_to>
+    <index>
+    <name>pb_entry_amounts_ibfk_1</name>
+    <field>
+    <name>account_id</name>
+    <sorting>ascending</sorting>
+    </field>
+    </index>
+    
+    <index>
+    <name>entry_index</name>
+    <field>
+    <name>entry_id</name>
+    <sorting>ascending</sorting>
+    </field>
+    </index>
+    
+
     </declaration>
     <belongs_to>entry</belongs_to>
     <belongs_to>account</belongs_to>
+  </table>
+  <table inherit_class="Amount">
+    <name>credits</name>
+    <class>Credit</class>
+    <inherits>amount</inherits>
+  </table>
+  <table inherit_class="Amount">
+    <name>debits</name>
+    <class>Debit</class>
+    <inherits>amount</inherits>
   </table>
   <table>
     <name>transactions</name>
