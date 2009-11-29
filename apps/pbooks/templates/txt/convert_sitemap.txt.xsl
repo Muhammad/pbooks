@@ -49,10 +49,11 @@ location /<xsl:value-of select="@name"/> {
   <xsl:template name="sinatra">
 require 'xml/libxml'
 require 'xml/libxslt'
+
     <xsl:variable name="proxyhost">192.168.8.48</xsl:variable>
     <xsl:variable name="app_root">/var/www/dev/pbooks/apps/pbooks</xsl:variable>
       <xsl:for-each select="//*[name()='map:gate']">
-get /<xsl:value-of select="@name"/> {
+get '/<xsl:value-of select="@name"/>' do
   # <xsl:value-of select="map:xml/@src"/>
   # <xsl:value-of select="map:query/@src"/>
   # <xsl:value-of select="map:xsl/@src"/>
