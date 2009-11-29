@@ -58,7 +58,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="redirect" params="{//link_prefix}index" />
 	</map:gate>
 
-	<map:gate name="index" role="pb_admin" cache="600" client_cache="600">
+	<map:gate name="index" http_method="get" role="pb_admin" cache="600" client_cache="600">
 		<map:query src="data/sql/select_account_stats.xml" />
 		<map:query src="data/sql/invoices_get_unpaid_total.xml" />
 		<map:xml src="data/xml/quick_links.xml" />
@@ -397,29 +397,24 @@ This makes it easier to maintain persistence. -->
 			</map:false>
 		</map:if>
 	</map:gate>
-	<map:gate name="check-edit" role="pb_admin">
+	<map:gate name="check-edit" role="pb_admin" http_method="get">
 		<map:set name="account_meta_key" value="has_checks" />
 		<map:query src="data/sql/account_business_objects.xml" />
 		<map:query src="data/sql/entry_get_by_id.xml" />
 		<map:query src="data/sql/checks_get_some.xml" />
 		<map:xsl src="templates/xsl/check_form.xsl" />
 	</map:gate>
-	<map:gate name="check-submit" role="pb_admin">
-		<map:if name="/_R_/_post">
-			<map:true>
-				<map:xml src="data/xml/strip_chars.xml" />
-				<map:action type="strip" params="//_post/entry_amount,//strip_chars/entry_amounts/char" />
-				<map:query src="data/sql/entry_update.xml" />
-				<map:query src="data/sql/entry_meta_delete.xml" />
-				<map:xml src="data/xml/check_meta.xml" />
-				<map:query src="data/sql/entry_create_meta.xml" />
-				<map:query src="data/sql/entry_get_id.xml" />
-				<map:query src="data/sql/entry_amounts_delete.xml" />
-        <map:query src="data/sql/entry_amount_debit_create_get.xml" />
-        <map:query src="data/sql/entry_amount_credit_create_get.xml" />
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="check-submit" role="pb_admin" http_method="post">
+    <map:xml src="data/xml/strip_chars.xml" />
+    <map:action type="strip" params="//_post/entry_amount,//strip_chars/entry_amounts/char" />
+    <map:query src="data/sql/entry_update.xml" />
+    <map:query src="data/sql/entry_meta_delete.xml" />
+    <map:xml src="data/xml/check_meta.xml" />
+    <map:query src="data/sql/entry_create_meta.xml" />
+    <map:query src="data/sql/entry_get_id.xml" />
+    <map:query src="data/sql/entry_amounts_delete.xml" />
+    <map:query src="data/sql/entry_amount_debit_create_get.xml" />
+    <map:query src="data/sql/entry_amount_credit_create_get.xml" />
 		<map:action type="redirect" params="{/_R_/runtime/link_prefix}checks" />
 	</map:gate>
 
@@ -445,21 +440,16 @@ This makes it easier to maintain persistence. -->
 		<map:query src="data/sql/business_object_get_metadata.xml" />
 		<map:xsl src="templates/xsl/transfer_form.xsl" />
 	</map:gate>
-	<map:gate name="transfer-submit" role="pb_admin">
-		<map:if name="/_R_/_post">
-			<map:true>
-				<map:query src="data/sql/entry_update.xml" />
-				<map:query src="data/sql/entry_meta_delete.xml" />
-				<map:xml src="data/xml/transfer_meta.xml" />
-				<map:query src="data/sql/entry_create_meta.xml" />
-				<map:query src="data/sql/entry_get_id.xml" />
-				<map:query src="data/sql/entry_amounts_delete.xml" />
-        <map:query src="data/sql/entry_amount_debit_create_get.xml" />
-        <map:query src="data/sql/entry_amount_credit_create_get.xml" />
-				<map:action type="redirect" params="{/_R_/runtime/link_prefix}transfers" />
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="transfer-submit" role="pb_admin" http_method="post">
+    <map:query src="data/sql/entry_update.xml" />
+    <map:query src="data/sql/entry_meta_delete.xml" />
+    <map:xml src="data/xml/transfer_meta.xml" />
+    <map:query src="data/sql/entry_create_meta.xml" />
+    <map:query src="data/sql/entry_get_id.xml" />
+    <map:query src="data/sql/entry_amounts_delete.xml" />
+    <map:query src="data/sql/entry_amount_debit_create_get.xml" />
+    <map:query src="data/sql/entry_amount_credit_create_get.xml" />
+    <map:action type="redirect" params="{/_R_/runtime/link_prefix}transfers" />
 	</map:gate>
 
 
@@ -470,7 +460,7 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/account_hide_delete.xml" />
 				<map:query src="data/sql/account_hide_update.xml" />
 			</map:true>
-			<map:false></map:false>
+			<map:false/>
 		</map:if>
 		<map:xml src="data/xml/account_types.xml" />
 		<map:xml src="i18n/en_US/account_types.xml" />
@@ -548,25 +538,24 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/account_groups.xsl" />
 	</map:gate>
 
-	<map:gate name="account-group-edit" role="pb_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:switch name="//_post/my_action">
-					<map:case value="create">
-						<map:query src="data/sql/account_group_create.xml" />
-						<map:query src="data/sql/account_group_get_new_id.xml" />
-						<map:query src="data/sql/account_group_new_parents_create.xml" />
-						<map:action type="redirect" params="{//link_prefix}account-groups" />
-					</map:case>
-					<map:default>
-						<map:query src="data/sql/account_group_update.xml" />
-						<map:query src="data/sql/account_group_parents_delete.xml" />
-						<map:query src="data/sql/account_group_parents_create.xml" />
-					</map:default>
-				</map:switch>
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="account-group-edit" role="pb_admin" http_method="post">
+    <map:switch name="//_post/my_action">
+      <map:case value="create">
+        <map:query src="data/sql/account_group_create.xml" />
+        <map:query src="data/sql/account_group_get_new_id.xml" />
+        <map:query src="data/sql/account_group_new_parents_create.xml" />
+        <map:action type="redirect" params="{//link_prefix}account-groups" />
+      </map:case>
+      <map:default>
+        <map:query src="data/sql/account_group_update.xml" />
+        <map:query src="data/sql/account_group_parents_delete.xml" />
+        <map:query src="data/sql/account_group_parents_create.xml" />
+      </map:default>
+    </map:switch>
+    <map:action type="redirect" params="{/_R_/runtime/link_prefix}account-groups" />
+  </map:gate>
+
+	<map:gate name="account-group-edit" role="pb_admin" http_method="get">
 		<map:xml src="data/xml/account_types.xml" />
 		<map:query src="data/sql/account_groups_get_all.xml" />
 		<map:query src="data/sql/account_groups_get_family_tree.xml" />
@@ -580,7 +569,7 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 
-	<map:gate name="account-group-delete" role="pb_admin">
+	<map:gate name="account-group-delete" role="pb_admin" http_method="post">
 		<map:query src="data/sql/account_group_delete.xml" />
 	</map:gate>
 
@@ -588,32 +577,28 @@ This makes it easier to maintain persistence. -->
 
 
 <!-- CUSTOMER ACCOUNTS -->
-	<map:gate name="customer-accounts" role="pb_admin">
+	<map:gate name="customer-accounts" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/customer_accounts.xsl" />
 	</map:gate>
-	<map:gate name="customer-edit" role="pb_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:if test="//_post/account_id">
-					<map:true>
-						<map:query src="data/sql/account_update.xml" />
-						<map:query src="data/sql/account_meta_delete.xml" />
-						<map:xml src="data/xml/customer_meta.xml" />
-						<map:query src="data/sql/account_get_by_id.xml" />
-						<map:query src="data/sql/account_meta_create.xml" />
-						<map:action type="redirect" params="{//link_prefix}customer-accounts" />
-					</map:true>
-					<map:false>
-						<map:insert name="create-account" />
-						<map:xml src="data/xml/customer_meta.xml" />
-						<map:query src="data/sql/account_get_by_id.xml" />
-						<map:query src="data/sql/account_meta_create.xml" />
-						<map:action type="redirect" params="{//link_prefix}customer-accounts" />
-					</map:false>
-				</map:if>
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="customer-edit" role="pb_admin" http_method="post">
+    <map:if test="//_post/account_id">
+      <map:true>
+        <map:query src="data/sql/account_update.xml" />
+        <map:query src="data/sql/account_meta_delete.xml" />
+        <map:xml src="data/xml/customer_meta.xml" />
+        <map:query src="data/sql/account_get_by_id.xml" />
+        <map:query src="data/sql/account_meta_create.xml" />
+      </map:true>
+      <map:false>
+        <map:insert name="create-account" />
+        <map:xml src="data/xml/customer_meta.xml" />
+        <map:query src="data/sql/account_get_by_id.xml" />
+        <map:query src="data/sql/account_meta_create.xml" />
+      </map:false>
+    </map:if>
+    <map:action type="redirect" params="{//link_prefix}customer-accounts" />
+  </map:gate>
+  <map:gate name="customer-edit" role="pb_admin"  http_method="get">
 		<map:query src="data/sql/account_groups_get_all.xml" />
 		<map:query src="data/sql/account_get_by_id.xml" />
 		<map:xml src="data/xml/customer_meta.xml" />
@@ -622,12 +607,12 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
   <!-- Payments -->
-	<map:gate name="customer-payments" role="pb_admin">
+	<map:gate name="customer-payments" role="pb_admin" http_method="get">
 		<map:query src="data/sql/customer_payments_get_some.xml" />
 		<map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/xsl/customer_payments.xsl" />
 	</map:gate>
-	<map:gate name="customer-payment-create" role="pb_admin">
+	<map:gate name="customer-payment-create" role="pb_admin" http_method="get">
     <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,Created new customer account." />
     <!-- this account_meta_key tells the query to look for accounts
     which take deposits. similar values are set for the other business
@@ -637,7 +622,7 @@ This makes it easier to maintain persistence. -->
 		<map:query src="data/sql/entry_get_by_id.xml" />
 		<map:action type="redirect" params="{runtime/link_prefix}customer-payment-edit&amp;entry_id={//get_this_entry_id/entry_id}" />
 	</map:gate>
-	<map:gate name="customer-payment-edit" role="pb_admin">
+	<map:gate name="customer-payment-edit" role="pb_admin" http_method="get">
 		<map:set name="account_meta_key" value="customer_payment" />
 		<map:query src="data/sql/entry_get_by_id.xml" />
 		<map:query src="data/sql/account_business_objects.xml" />
@@ -650,31 +635,27 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/customer_payment_form.xsl" />
 	</map:gate>
 
-	<map:gate name="customer-payment-submit" role="pb_admin">
-		<map:if name="/_R_/_post">
-			<map:true>
-				<map:query src="data/sql/entry_update.xml" />
-				<map:query src="data/sql/account_business_objects.xml" />
-				<map:query src="data/sql/entry_meta_delete.xml" />
-				<map:xml src="data/xml/customer_payment_meta.xml" />
-				<map:query src="data/sql/entry_create_meta.xml" />
-				<map:query src="data/sql/entry_get_id.xml" />
-				<map:query src="data/sql/entry_amounts_delete.xml" />
-        <map:query src="data/sql/entry_amount_debit_create_get.xml" />
-        <map:query src="data/sql/entry_amount_credit_create_get.xml" />
-			</map:true>
-		</map:if>
+	<map:gate name="customer-payment-submit" role="pb_admin" http_method="post">
+    <map:query src="data/sql/entry_update.xml" />
+    <map:query src="data/sql/account_business_objects.xml" />
+    <map:query src="data/sql/entry_meta_delete.xml" />
+    <map:xml src="data/xml/customer_payment_meta.xml" />
+    <map:query src="data/sql/entry_create_meta.xml" />
+    <map:query src="data/sql/entry_get_id.xml" />
+    <map:query src="data/sql/entry_amounts_delete.xml" />
+    <map:query src="data/sql/entry_amount_debit_create_get.xml" />
+    <map:query src="data/sql/entry_amount_credit_create_get.xml" />
 		<map:action type="redirect" params="{/_R_/runtime/link_prefix}customer-payments" />
 	</map:gate>
 
   <!-- Statements -->
-	<map:gate name="customer-statement" role="pb_admin">
+	<map:gate name="customer-statement" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/customer_statement.xsl" />
 	</map:gate>
 
 
 <!-- LEDGER	-->
-	<map:gate name="ledger" role="pb_admin" cache="600" client_cache="600">
+	<map:gate name="ledger" role="pb_admin" cache="600" client_cache="600" http_method="get">
 		<map:if name="//_get/account_id">
 			<map:true>
 				<map:switch name="//_get/account_id">
@@ -696,22 +677,22 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/ledger.xsl" />
 	</map:gate>
 
-	<map:gate name="ledger-export" role="pb_admin">
+	<map:gate name="ledger-export" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/ledger_export.xsl" />
 	</map:gate>
-	<map:gate name="x-ledger-export" role="pb_admin" content_type="text/plain">
+	<map:gate name="x-ledger-export" role="pb_admin" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
-	<map:gate name="x-ledger-export-dl" role="pb_admin" content_type="application/octet-stream">
+	<map:gate name="x-ledger-export-dl" role="pb_admin" content_type="application/octet-stream" http_method="get">
     <map:action type="header" params="Content-Type: application/octet-stream" />
     <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.csv&quot;" />
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
-	<map:gate name="x-ods-export" content_type="application/octet-stream" cache="0">
+	<map:gate name="x-ods-export" content_type="application/octet-stream" cache="0" http_method="get">
     <map:action type="header" params="Content-Type: application/force-download" />
     <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.ods&quot;" />
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
@@ -719,7 +700,7 @@ This makes it easier to maintain persistence. -->
 		<map:action type="xsl" params="templates/xml/open_spreadsheet.xml.xsl,my_ledger" />
 		<map:script src="lib/php/export_ods.php" />
 	</map:gate>
-	<map:gate name="x-ledger-export-txt" role="pb_admin" content_type="text/plain">
+	<map:gate name="x-ledger-export-txt" role="pb_admin" content_type="text/plain" http_method="get">
     <map:set name="display_num_entries" value="100" />
 		<map:xml src="data/xml/account_types.xml" />
 		<map:query src="data/sql/entries_only_get_some.xml" />
@@ -731,51 +712,46 @@ This makes it easier to maintain persistence. -->
 
 
 
-	<map:gate name="matching" role="pb_admin" cache="3">
+	<map:gate name="matching" role="pb_admin" cache="3" http_method="get">
 		<map:query src="data/sql/general_ledger_get_unmatched.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/xsl/ledger.xsl" />
 	</map:gate>
-	<map:gate name="ledger-match" role="pb_admin">
+	<map:gate name="ledger-match" role="pb_admin" http_method="get">
 		<map:query src="data/sql/accounts_get_all.xml" />
 		<map:xsl src="templates/xsl/ledger_transaction_match.xsl" />
 	</map:gate>
-	<map:gate name="x-ledger-create" role="pb_admin">
+	<map:gate name="x-ledger-create" role="pb_admin" http_method="post">
 		<map:query src="data/sql/entry_get_one_by_id.xml" />
-		<map:if name="_post">
-			<map:true>
-				<map:switch name="//_post/type">
-					<map:case value="Credit">
-						<map:switch name="//_post/account_type_id">
-							<map:case value="10000">
-								<map:query src="data/sql/general_ledger_new_neg_transaction.xml" />
-							</map:case>
-							<map:case value="50000">
-								<map:query src="data/sql/general_ledger_new_neg_transaction.xml" />
-							</map:case>
-							<map:default>
-								<map:query src="data/sql/general_ledger_new_transaction.xml" />
-							</map:default>
-						</map:switch>
-					</map:case>
-        <!-- Debit -->
-					<map:default>
-						<map:switch name="//_post/account_type_id">
-							<map:case value="10000">
-								<map:query src="data/sql/general_ledger_new_transaction.xml" />
-							</map:case>
-							<map:case value="50000">
-								<map:query src="data/sql/general_ledger_new_transaction.xml" />
-							</map:case>
-							<map:default>
-								<map:query src="data/sql/general_ledger_new_neg_transaction.xml" />
-							</map:default>
-						</map:switch>
-					</map:default>
-				</map:switch>
-        <map:xsl src="templates/xml/ajax_response.xml.xsl" />
-			</map:true>
-		</map:if>
+    <map:switch name="//_post/type">
+      <map:case value="Credit">
+        <map:switch name="//_post/account_type_id">
+          <map:case value="10000">
+            <map:query src="data/sql/general_ledger_new_neg_transaction.xml" />
+          </map:case>
+          <map:case value="50000">
+            <map:query src="data/sql/general_ledger_new_neg_transaction.xml" />
+          </map:case>
+          <map:default>
+            <map:query src="data/sql/general_ledger_new_transaction.xml" />
+          </map:default>
+        </map:switch>
+      </map:case>
+    <!-- Debit -->
+      <map:default>
+        <map:switch name="//_post/account_type_id">
+          <map:case value="10000">
+            <map:query src="data/sql/general_ledger_new_transaction.xml" />
+          </map:case>
+          <map:case value="50000">
+            <map:query src="data/sql/general_ledger_new_transaction.xml" />
+          </map:case>
+          <map:default>
+            <map:query src="data/sql/general_ledger_new_neg_transaction.xml" />
+          </map:default>
+        </map:switch>
+      </map:default>
+    </map:switch>
 		<map:query src="data/sql/entries_only_get_unposted.xml" />
 		<map:query src="data/sql/entries_get_unposted.xml" />
 		<map:if name="//get_all_entry_amounts/get_all_entry_amounts/entry_id">
@@ -783,42 +759,44 @@ This makes it easier to maintain persistence. -->
 				<map:query src="data/sql/entry_set_fully_posted.xml" />
 			</map:false>
 		</map:if>
+    <map:xsl src="templates/xml/ajax_response.xml.xsl" />
 	</map:gate>
 
-	<map:gate name="ledger-delete" role="pb_admin">
+	<!-- THIS SHOULD BE ELIMINATED ab8bea -->
+	<map:gate name="ledger-delete" role="pb_admin" http_method="post">
 		<map:query src="data/sql/general_ledger_delete_transaction.xml" />
 		<map:action type="redirect" params="{//link_prefix}ledger" />
 	</map:gate>
+	<!-- END ELIMINATION -->
 
 	<map:gate name="ledger-delete-empties" role="pb_admin">
 		<map:query src="data/sql/general_ledger_delete_empties.xml" />
 	</map:gate>
 
-	<map:gate name="notes" role="pb_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:query src="data/sql/note_create.xml" />
-				<map:action type="redirect" params="{//link_prefix}notes" />
-			</map:true>
-		</map:if>
+
+	<!-- NOTES -->
+	<map:gate name="notes" role="pb_admin" http_method="get">
 		<map:query src="data/sql/notes_get_all.xml" />
 		<map:xsl src="templates/xsl/notes.xsl" />
 	</map:gate>
-	<map:gate name="note-edit" role="pb_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:query src="data/sql/note_update.xml" />
-				<map:action type="redirect" params="{//link_prefix}notes" />
-			</map:true>
-		</map:if>
+	<map:gate name="notes" role="pb_admin" http_method="post">
+    <map:query src="data/sql/note_create.xml" />
+    <map:action type="redirect" params="{//link_prefix}notes" />
+  </map:gate>
+
+	<map:gate name="note-edit" role="pb_admin" http_method="get">
 		<map:query src="data/sql/notes_get_all.xml" />
 		<map:xsl src="templates/xsl/note_edit.xsl" />
 	</map:gate>
-	<map:gate name="x-note-delete" role="pb_admin">
+	<map:gate name="note-edit" role="pb_admin" http_method="post">
+    <map:query src="data/sql/note_update.xml" />
+    <map:action type="redirect" params="{//link_prefix}notes" />
+  </map:gate>
+	<map:gate name="x-note-delete" role="pb_admin" http_method="post">
 		<map:query src="data/sql/note_delete.xml" />
 		<map:raw src="templates/xml/ajax_response.xml.xsl" />
 	</map:gate>
-	<map:gate name="x-note-archive" role="pb_admin">
+	<map:gate name="x-note-archive" role="pb_admin" http_method="post">
 		<map:query src="data/sql/note_archive.xml" />
 		<map:raw src="templates/xml/ajax_response.xml.xsl" />
 	</map:gate>

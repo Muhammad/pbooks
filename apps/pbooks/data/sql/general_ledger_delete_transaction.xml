@@ -23,6 +23,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="get_all_transactions">
+  <!-- THIS SHOULD BE UPDATED TO USE POST ab8bea -->
 	<connection>&pb_connection;</connection>
 	<params>
 		<param name="//_get/transaction_id" type="integer"/>

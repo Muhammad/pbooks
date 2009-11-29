@@ -149,8 +149,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 											<xsl:value-of select="entry_id"/>
 										</a>
 									</xsl:when>
+									<!-- TODO FIXME ab8bea -->
 									<xsl:when test="entry_id = 0">
-										<a href="{$link_prefix}ledger-delete&amp;transaction_id={transaction_id}"
+										<a href="#ledger-delete&amp;transaction_id={transaction_id}"
 											onclick="return confirm('Are you sure you want to delete this ledger transaction?')">
 											<img src="{$path_prefix}{/_R_/runtime/icon_set}delete.png" alt="x"/>
 										</a>
