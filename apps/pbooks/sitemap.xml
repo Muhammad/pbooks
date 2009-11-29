@@ -1067,12 +1067,16 @@ files. -->
 		<map:action type="header" params="Content-type,text/plain" />
 		<map:xsl src="data/model/pbooks_data_model.sql.xsl" />
 	</map:gate>
+	<map:gate name="x-database-schema-convert">
+		<map:xml src="data/model/accounting_data_model.xml" />
+		<map:action type="header" params="Content-type,text/plain" />
+		<map:xsl src="templates/txt/schema2any.txt.xsl" />
+	</map:gate>
 
-
-	<map:gate name="x-nginx-sitemap" content_type="text/plain; charset=utf-8" cache="0">
+	<map:gate name="x-sitemap-convert" content_type="text/plain; charset=utf-8" cache="0">
 		<map:action type="header" params="Content-type,text/plain; charset=utf-8" />
 		<map:xml src="sitemap.xml" />
-		<map:xsl src="templates/txt/nginx_sitemap.txt.xsl" />
+		<map:xsl src="templates/txt/convert_sitemap.txt.xsl" />
 	</map:gate>
 
 	<map:gate name="x-sitetest" content_type="text/plain; charset=utf-8" cache="0">
