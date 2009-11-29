@@ -890,70 +890,65 @@ This makes it easier to maintain persistence. -->
 
 
 <!-- COMPANY INFO -->
-	<map:gate name="company" role="pb_admin" cache="0" client_cache="0">
+	<map:gate name="company" role="pb_admin" cache="0" client_cache="0" http_method="get">
 		<map:xml src="data/xml/company_options.xml" />
-		<map:if name="//_post">
-			<map:true>
-				<map:query src="data/sql/option_delete.xml" />
-				<map:query src="data/sql/option_update.xml" />
-        <map:insert name="reset_session"/>
-				<map:action type="redirect" params="{//link_prefix}company" />
-			</map:true>
-			<map:false/>
-		</map:if>
 		<map:query src="data/sql/option_get.xml" />
 		<map:xsl src="templates/xsl/company.xsl" />
+	</map:gate>
+	<map:gate name="company" role="pb_admin" cache="0" client_cache="0" http_method="post">
+		<map:xml src="data/xml/company_options.xml" />
+    <map:query src="data/sql/option_delete.xml" />
+    <map:query src="data/sql/option_update.xml" />
+    <map:insert name="reset_session"/>
+    <map:action type="redirect" params="{//link_prefix}company" />
 	</map:gate>
 
 
 <!-- PREFERENCES -->
-	<map:gate name="preferences" role="pb_admin">
+	<map:gate name="preferences" role="pb_admin" http_method="get">
 		<map:xml src="i18n/en_US/user_options.xml" />
-		<map:if name="//_post">
-			<map:true>
-				<map:query src="data/sql/option_delete.xml" />
-				<map:query src="data/sql/option_update.xml" />
-				<map:action type="redirect" params="{//link_prefix}preferences" />
-			</map:true>
-			<map:false/>
-		</map:if>
 		<map:query src="data/sql/option_get.xml" />
 		<map:xsl src="templates/xsl/preferences.xsl" />
 	</map:gate>
-
+	<map:gate name="preferences" role="pb_admin" http_method="post">
+		<map:xml src="i18n/en_US/user_options.xml" />
+    <map:query src="data/sql/option_delete.xml" />
+    <map:query src="data/sql/option_update.xml" />
+    <map:action type="redirect" params="{//link_prefix}preferences" />
+  </map:gate>
 <!-- PERIODS -->
-	<map:gate name="periods" role="pb_admin" cache="300">
+	<map:gate name="periods" role="pb_admin" cache="300" http_method="get">
 		<map:xml src="data/xml/fiscal_periods.xml" />
 		<map:xsl src="templates/xsl/periods.xsl" />
 	</map:gate>
 
 
 <!-- ADMIN -->
-	<map:gate name="admin" role="pb_admin" cache="300">
+	<map:gate name="admin" role="pb_admin" cache="300" http_method="get">
 		<map:xsl src="templates/xsl/admin.xsl" />
 	</map:gate>
 
 <!-- DIAGNOSTICS -->
-	<map:gate name="logs" role="pb_admin">
+	<map:gate name="logs" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/logs.xsl" />
 	</map:gate>
-	<map:gate name="x-log" role="pb_admin" content_type="text/plain">
+	<map:gate name="x-log" role="pb_admin" content_type="text/plain" http_method="get">
 		<map:raw src="{runtime/logfile}" />
 	</map:gate>
 
-	<map:gate name="x-test-log" role="pb_admin" cache="0">
+	<map:gate name="x-test-log" role="pb_admin" cache="0" http_method="get">
     <map:action type="log" params="{runtime/logging},{runtime/logfile},INFO,{runtime/uid} Testing logs" />
 		<map:xsl src="templates/xsl/logs.xsl" />
 	</map:gate>
 
 
 <!-- TAXES -->
-	<map:gate name="taxes">
+	<map:gate name="taxes" http_method="get">
 		<map:xsl src="templates/xsl/taxes.xsl" />
 	</map:gate>
 
 <!-- WORKFLOW -->
-	<map:gate name="workflow">
+	<map:gate name="workflow" http_method="get">
 		<map:xsl src="templates/xsl/workflow.xsl" />
 	</map:gate>
 
@@ -961,7 +956,7 @@ This makes it easier to maintain persistence. -->
 
 
 
-	<map:gate name="duplicates" role="pb_admin">
+	<map:gate name="duplicates" role="pb_admin" http_method="get">
 		<map:query src="data/sql/option_get.xml" />
 		<map:set name="display_num_entries" value="200" />
 		<map:query src="data/sql/general_ledger_get_unmatched.xml" />
@@ -972,12 +967,12 @@ This makes it easier to maintain persistence. -->
 
 
 <!-- HELP -->
-	<map:gate name="help" role="pb_admin" cache="300" client_cache="120">
+	<map:gate name="help" role="pb_admin" cache="300" client_cache="120" http_method="get">
 		<map:xsl src="templates/xsl/help.xsl" />
 	</map:gate>
 
 <!-- Logout -->
-	<map:gate name="logout" role="pb_admin">
+	<map:gate name="logout" role="pb_admin" http_method="get">
 		<map:action type="redirect" params="auth.php?nid=logout" />
 	</map:gate>
 
@@ -989,43 +984,43 @@ security hole, so make sure to only serve hard-coded,
 or mostly hard-coded files, i.e. have an array of allowed
 files. -->
 <!-- If you use the header action, you must set the cache to 0 -->
-	<map:gate name="license" cache="0">
+	<map:gate name="license" cache="0" http_method="get">
 		<map:action type="header" params="Content-Type,text/plain" />
 		<map:raw src="LICENSE" />
 	</map:gate>
-	<map:gate name="install" cache="0">
+	<map:gate name="install" cache="0" http_method="get">
 		<map:action type="header" params="Content-Type,text/plain" />
 		<map:raw src="INSTALL" />
 	</map:gate>
-	<map:gate name="x-dynamic-css" cache="0" nosession="true"
+	<map:gate name="x-dynamic-css" cache="0" nosession="true" http_method="get"
     content_type="text/css; charset=utf-8" cache_control="public, max-age=0, must-revalidate">
 		<map:action type="header" params="Content-Type,text/css" />
 		<map:xsl src="templates/css/dynamic.css.xsl" />
 	</map:gate>
-	<map:gate name="x-xhtml2dom-js" cache="30" nosession="true"
+	<map:gate name="x-xhtml2dom-js" cache="30" nosession="true" http_method="get"
     content_type="application/javascript; charset=utf-8" cache_control="public, max-age=30, must-revalidate">
 		<map:xml src="templates/xhtml/footer.xhtml" />
     <map:action type="xsl" params="templates/xml/date_select.xml.xsl,date_selector" />
     <map:action type="rawxml" params="date_selector" />
     <map:xsl src="templates/js/xhtml2dom.js.xsl" />
 	</map:gate>
-	<map:gate name="x-common-js" cache="0" nosession="true"
+	<map:gate name="x-common-js" cache="0" nosession="true" http_method="get"
   content_type="application/javascript; charset=utf-8" cache_control="public, max-age=30, must-revalidate">
     <map:xsl src="templates/js/common_js_functions.js.xsl" />
 	</map:gate>
-	<map:gate name="x-page-js" cache="0" nosession="true"
+	<map:gate name="x-page-js" cache="0" nosession="true" http_method="get"
   content_type="application/javascript; charset=utf-8" cache_control="no-store">
     <map:xsl src="templates/js/page_specific_js_functions.js.xsl" />
 	</map:gate>
-	<map:gate name="x-tablesorter-setup-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=10, must-revalidate">
+	<map:gate name="x-tablesorter-setup-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=10, must-revalidate" http_method="get">
     <map:xsl src="templates/js/tablesorter_setup.js.xsl"/>
 	</map:gate>
-	<map:gate name="x-date-select-xml" cache="0" nosession="true"
+	<map:gate name="x-date-select-xml" cache="0" nosession="true" http_method="get"
     content_type="application/xhtml+xml; charset=utf-8"
     cache_control="public, max-age=30, must-revalidate">
 		<map:xsl src="templates/xml/date_select.xml.xsl" />
 	</map:gate>
-	<map:gate name="x-date-select-js" cache="0" nosession="true"
+	<map:gate name="x-date-select-js" cache="0" nosession="true" http_method="get"
     content_type="application/javascript; charset=utf-8"
     cache_control="public, max-age=30, must-revalidate">
     <map:action type="xsl" params="templates/xml/date_select.xml.xsl,date_selector" />
@@ -1034,7 +1029,7 @@ files. -->
 	</map:gate>
 
 
-	<map:gate name="dynamic-database-model">
+	<map:gate name="dynamic-database-model" http_method="get">
 		<map:if name="//defaults/install_settings">
 			<map:true></map:true>
 			<map:false>
@@ -1045,19 +1040,19 @@ files. -->
 		<map:action type="header" params="Content-type,text/plain" />
 		<map:xsl src="data/model/pbooks_data_model.sql.xsl" />
 	</map:gate>
-	<map:gate name="x-database-schema-convert">
+	<map:gate name="x-database-schema-convert" http_method="get">
 		<map:xml src="data/model/accounting_data_model.xml" />
 		<map:action type="header" params="Content-type,text/plain" />
 		<map:xsl src="templates/txt/schema2any.txt.xsl" />
 	</map:gate>
 
-	<map:gate name="x-sitemap-convert" content_type="text/plain; charset=utf-8" cache="0">
+	<map:gate name="x-sitemap-convert" content_type="text/plain; charset=utf-8" cache="0" http_method="get">
 		<map:action type="header" params="Content-type,text/plain; charset=utf-8" />
 		<map:xml src="sitemap.xml" />
 		<map:xsl src="templates/txt/convert_sitemap.txt.xsl" />
 	</map:gate>
 
-	<map:gate name="x-sitetest" content_type="text/plain; charset=utf-8" cache="0">
+	<map:gate name="x-sitetest" content_type="text/plain; charset=utf-8" cache="0" http_method="get">
 		<map:action type="header" params="Content-type,text/plain; charset=utf-8" />
 		<map:xml src="sitemap.xml" />
 		<map:xsl src="templates/txt/sitetest.txt.xsl" />
