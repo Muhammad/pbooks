@@ -54,7 +54,8 @@ require 'xml/libxslt'
       <xsl:for-each select="//*[name()='map:gate']">
 get /<xsl:value-of select="@name"/> {
   # <xsl:value-of select="map:xml/@src"/>
-  xslt_stylesheet <xsl:value-of select="$app_root"/>/<xsl:value-of select="map:xsl/@src"/>;
+  # <xsl:value-of select="map:query/@src"/>
+  # <xsl:value-of select="map:xsl/@src"/>
 end
       </xsl:for-each>
   </xsl:template>
