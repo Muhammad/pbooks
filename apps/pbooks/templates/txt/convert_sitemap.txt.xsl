@@ -61,7 +61,7 @@ location /<xsl:value-of select="@name"/> {
   <xsl:variable name="app_root">/var/www/dev/pbooks/apps/pbooks</xsl:variable>
     <xsl:for-each select="//*[name()='map:gate']">
     <xsl:text>&#x0D;</xsl:text>
-    <xsl:value-of select="@http_method"/> <xsl:text>'/</xsl:text>
+    <xsl:value-of select="@http_method"/> <xsl:text> '/</xsl:text>
     <xsl:value-of select="@name"/>
     <xsl:text>' do&#x0D;</xsl:text>
       <xsl:if test="map:xml">
