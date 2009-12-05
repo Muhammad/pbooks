@@ -284,7 +284,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xml/invoice_paid_status.xml.xsl" />
 	</map:gate>
 
-	<map:gate name="invoice-pdf" http_method="gett">
+	<map:gate name="invoice-pdf" http_method="get">
 		<map:script src="lib/php/invoice_pdf.php" />
 	</map:gate>
 
@@ -771,12 +771,12 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 <!-- REPORTS -->
-	<map:gate name="reports" role="pb_admin" cache="300" client_cache="60">
+	<map:gate name="reports" role="pb_admin" cache="300" client_cache="60" http_method="get">
 		<map:xml src="data/xml/report_types.xml" />
 		<map:xml src="data/xml/reports_saved.xml" />
 		<map:xsl src="templates/xsl/reports.xsl" />
 	</map:gate>
-	<map:gate name="reports-build" role="pb_admin">
+	<map:gate name="reports-build" role="pb_admin" http_method="get">
 		<map:switch name="//_get/report_type_id">
         <!-- Balance Sheet -->
 			<map:case value="3">
@@ -808,22 +808,22 @@ This makes it easier to maintain persistence. -->
 			</map:default>
 		</map:switch>
 	</map:gate>
-	<map:gate name="reports-trial-balance" role="pb_admin">
+	<map:gate name="reports-trial-balance" role="pb_admin" http_method="get">
 		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 		<map:action type="datetime" params="/_R_/get_all_transactions/get_all_transactions/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/xsl/report_trial_balance.xsl" />
 	</map:gate>
-	<map:gate name="reports-simple-cash-flow" role="pb_admin">
+	<map:gate name="reports-simple-cash-flow" role="pb_admin" http_method="get">
 		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 		<map:action type="datetime" params="/_R_/get_all_transactions/get_all_transactions/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />
 	</map:gate>
-	<map:gate name="reports-invoices" role="pb_admin">
+	<map:gate name="reports-invoices" role="pb_admin" http_method="get">
 		<map:query src="data/sql/invoices_get_some.xml" />
 		<map:action type="datetime" params="//get_some_business_objects/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/xsl/report_invoices.xsl" />
 	</map:gate>
-	<map:gate name="reports-group-cash-flow" role="pb_admin">
+	<map:gate name="reports-group-cash-flow" role="pb_admin" http_method="get">
 		<map:query src="data/sql/account_groups_get_all.xml" />
 		<map:query src="data/sql/general_ledger_get_cash_flow.xml" />
 		<map:xsl src="templates/xsl/report_simple_cash_flow.xsl" />
@@ -831,28 +831,22 @@ This makes it easier to maintain persistence. -->
 
 
 <!-- FUNCTIONS -->
-	<map:gate name="transactions-import" role="pb_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:script src="lib/php/import_into_pbooks.php" />
-				<map:query src="data/sql/general_ledger_import.xml" />
-				<map:action type="redirect" params="{//link_prefix}matching" />
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="transactions-import" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/transactions_import.xsl" />
 	</map:gate>
+	<map:gate name="transactions-import" role="pb_admin" http_method="post">
+    <map:script src="lib/php/import_into_pbooks.php" />
+    <map:query src="data/sql/general_ledger_import.xml" />
+    <map:action type="redirect" params="{//link_prefix}matching" />
+	</map:gate>
 
-	<map:gate name="accounts-import" role="pb_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:script src="lib/php/import_accounts_into_pbooks.php" />
-				<map:query src="data/sql/accounts_import.xml" />
-				<map:action type="redirect" params="{//link_prefix}accounts" />
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="accounts-import" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/accounts_import.xsl" />
+	</map:gate>
+	<map:gate name="accounts-import" role="pb_admin" http_method="post">
+    <map:script src="lib/php/import_accounts_into_pbooks.php" />
+    <map:query src="data/sql/accounts_import.xml" />
+    <map:action type="redirect" params="{//link_prefix}accounts" />
 	</map:gate>
 
 
@@ -998,12 +992,7 @@ files. -->
 	</map:gate>
 
 
-	<map:gate name="dynamic-database-model" http_method="get">
-		<map:if name="//defaults/install_settings">
-			<map:true></map:true>
-			<map:false>
-			</map:false>
-		</map:if>
+	<map:gate name="x-dynamic-database-model" http_method="get">
 		<map:set name="engine" value="sqlite" />
 		<map:xml src="data/model/db_engines.sqlite.xml" />
 		<map:action type="header" params="Content-type,text/plain" />

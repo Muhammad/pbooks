@@ -23,13 +23,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:map="http://www.nexista.org/sitemap">
-  <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes" />
+  <xsl:output method="html" encoding="iso-8859-1" omit-xml-declaration="yes" />
   <xsl:template match="/">
     <xsl:if test="//_get/type='nginx'">
       <xsl:call-template name="nginx"/>
     </xsl:if>
     <xsl:if test="//_get/type='sinatra'">
       <xsl:call-template name="sinatra"/>
+    </xsl:if>
+    <xsl:if test="//_get/type='simple'">
+      <xsl:call-template name="simple"/>
     </xsl:if>
   </xsl:template>
   
@@ -45,20 +48,54 @@ location /<xsl:value-of select="@name"/> {
 }
       </xsl:for-each>
   </xsl:template>
-  
-  <xsl:template name="sinatra">
-require 'xml/libxml'
-require 'xml/libxslt'
 
-    <xsl:variable name="proxyhost">192.168.8.48</xsl:variable>
-    <xsl:variable name="app_root">/var/www/dev/pbooks/apps/pbooks</xsl:variable>
-      <xsl:for-each select="//*[name()='map:gate']">
-get '/<xsl:value-of select="@name"/>' do
-  # <xsl:value-of select="map:xml/@src"/>
-  # <xsl:value-of select="map:query/@src"/>
-  # <xsl:value-of select="map:xsl/@src"/>
-end
-      </xsl:for-each>
+
+
+
+
+
+
+
+<xsl:template name="sinatra">
+  <xsl:variable name="proxyhost">192.168.8.48</xsl:variable>
+  <xsl:variable name="app_root">/var/www/dev/pbooks/apps/pbooks</xsl:variable>
+    <xsl:for-each select="//*[name()='map:gate']">
+    <xsl:text>&#x0D;</xsl:text>
+    <xsl:value-of select="@http_method"/> <xsl:text>'/</xsl:text>
+    <xsl:value-of select="@name"/>
+    <xsl:text>' do&#x0D;</xsl:text>
+      <xsl:if test="map:xml">
+        <xsl:text>&#160;&#160;#</xsl:text>
+        <xsl:value-of select="map:xml/@src"/>
+        <xsl:text>&#x0D;</xsl:text>
+      </xsl:if>
+      <xsl:if test="map:query">
+        <xsl:text>&#160;&#160;#</xsl:text>
+        <xsl:value-of select="map:query/@src"/>
+        <xsl:text>&#x0D;</xsl:text>
+      </xsl:if>
+      <xsl:if test="map:xsl">
+        <xsl:text>&#160;&#160;#</xsl:text>
+        <xsl:value-of select="map:xsl/@src"/>
+        <xsl:text>&#x0D;</xsl:text>
+      </xsl:if>
+      <xsl:if test="map:action/@type='redirect'">
+        <xsl:text>&#160;&#160;#</xsl:text>
+        <xsl:value-of select="map:action/@type"/>
+        <xsl:text>&#160;</xsl:text>
+        <xsl:value-of select="map:action/@params"/>
+        <xsl:text>&#x0D;</xsl:text>
+      </xsl:if>
+      <xsl:text>end&#x0D;</xsl:text>
+    </xsl:for-each>
+</xsl:template>
+
+
+  <xsl:template name="simple">
+    <xsl:for-each select="//*[name()='map:gate']">
+      <xsl:sort select="@name"/>
+      <xsl:value-of select="@name"/>
+      <xsl:text>&#x0D;</xsl:text>
+    </xsl:for-each>
   </xsl:template>
-  
 </xsl:stylesheet>
