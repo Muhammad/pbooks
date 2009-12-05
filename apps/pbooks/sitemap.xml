@@ -442,40 +442,31 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/xsl/account_form.xsl" />
 	</map:gate>
 	<map:gate name="accounts-edit" role="pb_admin" http_method="post">
-		<map:if name="//_post">
-			<map:true>
-				<map:query src="data/sql/account_duplicate_check.xml" />
-				<map:if name="/_R_/account_duplicate_check/account_duplicate_check/id">
-					<map:true>
-						<map:query src="data/sql/account_get_by_id.xml" />
-						<map:xml src="data/xml/account_types.xml" />
-						<map:xsl src="templates/xsl/account_form.xsl" />
-					</map:true>
-					<map:false>
-						<map:block name="create-account">
-							<map:switch name="//_post/my_action">
-								<map:case value="create">
-									<map:query src="data/sql/account_create.xml" />
-								</map:case>
-								<map:case value="update">
-									<map:query src="data/sql/account_update.xml" />
-									<map:query src="data/sql/account_meta_delete.xml" />
-								</map:case>
-								<map:default></map:default>
-							</map:switch>
-						</map:block>
-						<map:xml src="data/xml/account_meta.xml" />
-						<map:query src="data/sql/account_get_by_id.xml" />
-						<map:query src="data/sql/account_meta_create.xml" />
-					</map:false>
-				</map:if>
-			</map:true>
-		</map:if>
-		<map:query src="data/sql/account_groups_get_all.xml" />
-		<map:query src="data/sql/account_get_by_id.xml" />
-		<map:query src="data/sql/account_meta_get.xml" />
-		<map:xml src="data/xml/account_types.xml" />
-		<map:xsl src="templates/xsl/account_form.xsl" />
+    <map:query src="data/sql/account_duplicate_check.xml" />
+    <map:if name="/_R_/account_duplicate_check/account_duplicate_check/id">
+      <map:true>
+        <map:query src="data/sql/account_get_by_id.xml" />
+        <map:xml src="data/xml/account_types.xml" />
+        <map:xsl src="templates/xsl/account_form.xsl" />
+      </map:true>
+      <map:false>
+        <map:block name="create-account">
+          <map:switch name="//_post/my_action">
+            <map:case value="create">
+              <map:query src="data/sql/account_create.xml" />
+            </map:case>
+            <map:case value="update">
+              <map:query src="data/sql/account_update.xml" />
+              <map:query src="data/sql/account_meta_delete.xml" />
+            </map:case>
+            <map:default></map:default>
+          </map:switch>
+        </map:block>
+        <map:xml src="data/xml/account_meta.xml" />
+        <map:query src="data/sql/account_get_by_id.xml" />
+        <map:query src="data/sql/account_meta_create.xml" />
+      </map:false>
+    </map:if>
 	</map:gate>
 	<map:gate name="x-account-balance" role="pb_admin" http_method="get">
 		<map:query src="data/sql/account_get_balance_by_date.xml" />
