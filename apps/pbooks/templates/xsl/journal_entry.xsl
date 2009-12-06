@@ -142,7 +142,7 @@ start journal entry form table
         </tr>
         <tr>
           <td colspan="2">
-            <xsl:value-of select="$i18n/amount"/> :
+            <span class="i18n-amount">Amount</span> :
           </td>
         </tr>
         <tr>
@@ -152,16 +152,16 @@ start journal entry form table
                 <tr>
                   <th />
                   <th>
-                    <xsl:value-of select="$i18n/type"/> :
+                    <span class="i18n-type">Type</span> :
                   </th>
                   <th>
-                    <xsl:value-of select="$i18n/accounts"/> :
+                    <span class="i18n-accounts">Accounts</span> :
                   </th>
                   <th>
-                    <xsl:value-of select="$i18n/debit"/> :
+                    <span class="i18n-debit">Debit</span> :
                   </th>
                   <th>
-                    <xsl:value-of select="$i18n/credit"/> :
+                    <span class="i18n-credit">Credit</span> :
                   </th>
                   <th width="20" />
                 </tr>
@@ -177,7 +177,6 @@ start journal entry form table
                     <xsl:with-param name="my_entry_id" value="{entry_id}"/>
                     <xsl:with-param name="link_prefix" select="$link_prefix"/>
                     <xsl:with-param name="path_prefix" select="$path_prefix"/>
-                    <xsl:with-param name="i18n" select="$i18n"/>
                     <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
                   </xsl:call-template>
                 </xsl:for-each>
@@ -186,7 +185,6 @@ start journal entry form table
                   <xsl:call-template name="debit">
                     <xsl:with-param name="link_prefix" select="$link_prefix"/>
                     <xsl:with-param name="path_prefix" select="$path_prefix"/>
-                    <xsl:with-param name="i18n" select="$i18n"/>
                     <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
                   </xsl:call-template>
                 </xsl:if>
@@ -219,7 +217,7 @@ start journal entry form table
         </tr>
         <tr>
           <td>
-            <xsl:value-of select="$i18n/memorandum"/>:
+            <span class="i18n-memorandum">Memorandum</span>:
           </td>
           <td>
             <textarea type="text" name="memorandum" id="memorandum"
@@ -269,14 +267,6 @@ start journal entry form table
                       </xsl:attribute>
                     </xsl:if>
                   </input>
-
-                  <!-- only display in training mode -->
-                  <xsl:if test="//books_mode='training' and //flip_entry_button='on'">
-                  <!-- The flip function should only be used in training mode. -->
-                  <input type="button" class="generic-button" value="Flip"
-                  onclick="return confirmFlip();"/>
-                  </xsl:if>
-                  <!-- end flip comment -->
                 </td>
 
                 <!-- this is an arrow which links to the next entry_id in the journal -->
@@ -330,7 +320,6 @@ TODO: Clean these up!
 <xsl:param name="link_prefix"/>
 <xsl:param name="path_prefix"/>
 <xsl:param name="get_journal_entry"/>
-<xsl:param name="i18n"/>
 <xsl:param name="get_journal_entry"/>
 <xsl:variable name="my_account_id" select="account_id"/>
 <xsl:variable name="my_entry_amount_id" select="entry_amount_id"/>
@@ -343,14 +332,14 @@ TODO: Clean these up!
     </xsl:if>
   </td>
   <td>
-    <xsl:value-of select="$i18n/credit"/>:
+    <span class="i18n-credit">Credit</span>:
 </td>
   <td>
     <div class="credit_div">
       <select name="credit_account_1[]" required="1" exclude="-1"
         err="Please select a credit account.">
         <option value="-1">
-          <xsl:value-of select="$i18n/credit_account"/>
+          <span class="i18n-credit_account">Credit Account</span>
         </option>
         <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
           <option value="{id}">
@@ -383,7 +372,7 @@ or contains($get_journal_entry/memorandum,description)) ">
         <!-- HIDDEN ACCOUNT -->
         <xsl:if test="not($get_journal_entry[entry_amount_id=$my_entry_amount_id]/account_id=//get_all_accounts/get_all_accounts/id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
           <option value="{$get_journal_entry/account_id}" selected="selected">
-            <xsl:value-of select="$i18n/account_hidden"/>
+            <span class="i18n-account_hidden">Account Hidden</span>
           </option>
         </xsl:if>
       </select>
@@ -446,7 +435,6 @@ or contains($get_journal_entry/memorandum,description)) ">
 <xsl:template name="debit">
 <xsl:param name="link_prefix"/>
 <xsl:param name="path_prefix"/>
-<xsl:param name="i18n"/>
 <xsl:param name="get_journal_entry"/>
 <xsl:variable name="my_entry_amount" select="entry_amount"/>
 <tr>
@@ -458,13 +446,13 @@ or contains($get_journal_entry/memorandum,description)) ">
     </xsl:if>
   </td>
   <td>
-    <xsl:value-of select="$i18n/debit"/>:
+    <span class="i18n-debit">Debit</span>:
   </td>
   <td>
     <select name="debit_account_1[]" required="1" exclude="-1"
       err="Please select a debit account.">
       <option value="-1">
-        <xsl:value-of select="$i18n/debit_account"/>
+        <span class="i18n-debit_account">Debit Account</span>
       </option>
       <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
         <option value="{id}">
@@ -499,7 +487,7 @@ or contains($get_journal_entry/memorandum,description))">
       <!-- HIDDEN ACCOUNT -->
       <xsl:if test="not($get_journal_entry[entry_type_id='Debit'][entry_amount=$my_entry_amount]/account_id=//get_all_accounts/get_all_accounts/id) and not($get_journal_entry/status=9) and not(/_R_/_get/transaction_id)">
         <option value="{$get_journal_entry/account_id}" selected="selected">
-          <xsl:value-of select="$i18n/account_hidden"/>
+          <span class="i18n-account_hidden">Account Hidden</span>
         </option>
       </xsl:if>
     </select>
