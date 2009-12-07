@@ -486,6 +486,11 @@ This makes it easier to maintain persistence. -->
 		</map:if>
 	</map:gate>
 
+	<map:gate name="x-accounts-export" cache="10" client_cache="10" http_method="get">
+		<map:xml src="data/xml/account_types.xml" />
+		<map:xml src="i18n/en_US/account_types.xml" />
+		<map:xsl src="templates/xml/accounts.xml.xsl" />
+	</map:gate>
 
 
 <!-- ACCOUNT GROUPS -->
@@ -990,6 +995,11 @@ files. -->
 		<map:xsl src="data/model/pbooks_data_model.sql.xsl" />
 	</map:gate>
 	<map:gate name="x-database-schema-convert" http_method="get">
+		<map:xml src="data/model/accounting_data_model.xml" />
+		<map:action type="header" params="Content-type,text/plain" />
+		<map:xsl src="templates/txt/schema2any.txt.xsl" />
+	</map:gate>
+	<map:gate name="x-schema-account-form" http_method="get">
 		<map:xml src="data/model/accounting_data_model.xml" />
 		<map:action type="header" params="Content-type,text/plain" />
 		<map:xsl src="templates/txt/schema2any.txt.xsl" />

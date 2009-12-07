@@ -4,7 +4,7 @@
     <class>Account</class>
     <declaration>
 
-     <field name="id" type="integer" specific_type="mediumint">
+     <field name="id" type="integer" specific_type="mediumint" access="private">
       <default>0</default>
       <notnull>true</notnull>
       <autoincrement>1</autoincrement>
@@ -12,44 +12,44 @@
       <signed>false</signed>
      </field>
 
-     <field name="number" type="string" specific_type="varchar(255)">
+     <field name="number" type="string" specific_type="varchar(255)" access="public" label="Account Number" i18n="account_number">
       <default>0</default>
       <notnull>true</notnull>
       <length>255</length>
      </field>
 
-     <field name="name" type="string" specific_type="varchar(255)">
+     <field name="name" type="string" specific_type="varchar(255)" access="public" label="Account Name" i18n="account_name">
       <default></default>
       <notnull>false</notnull>
      </field>
   
-     <field name="type_id" type="integer" specific_type="smallint">
+     <field name="type_id" type="integer" specific_type="smallint" access="public" label="Account Type" i18n="account_type">
       <default>0</default>
       <notnull>true</notnull>
       <length>5</length>
       <signed>false</signed>
      </field>
   
-     <field name="description" type="text" specific_type="text">
+     <field name="description" type="text" specific_type="text" access="public" label="Description" i18n="description">
       <default></default>
       <notnull>false</notnull>
      </field>
   
-     <field name="created_on" type="integer" specific_type="timestamp">
+     <field name="created_on" type="integer" specific_type="timestamp" access="private">
       <default>CURRENT_TIMESTAMP</default>
       <notnull>true</notnull>
      </field>
   
-     <field name="closed_on" type="integer" specific_type="timestamp">
+     <field name="closed_on" type="integer" specific_type="timestamp" access="private">
       <notnull>false</notnull>
      </field>
 
-     <field name="hide" type="boolean" specific_type="tinyint">
+     <field name="hide" type="boolean" specific_type="tinyint" access="public" label="Hide" i18n="hide">
       <default>false</default>
       <notnull>false</notnull>
      </field>
 
-     <field name="group_id" type="integer" specific_type="mediumint">
+     <field name="group_id" type="integer" specific_type="mediumint" access="public" label="Group" i18n="group">
       <notnull>false</notnull>
       <length>8</length>
      </field>
