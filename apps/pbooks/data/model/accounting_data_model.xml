@@ -43,6 +43,9 @@
      <field name="closed_on" type="integer" specific_type="timestamp" access="private">
       <notnull>false</notnull>
      </field>
+     <field name="balance" type="integer" specific_type="bigint" access="private">
+      <notnull>false</notnull>
+     </field>
 
      <field name="hide" type="boolean" specific_type="tinyint" access="public" label="Hide" i18n="hide">
       <default>false</default>
