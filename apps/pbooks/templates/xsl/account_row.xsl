@@ -65,9 +65,21 @@ xmlns="http://www.w3.org/1999/xhtml">
   </xsl:if>
 
   <!-- Running balance -->
+  <xsl:if test="account_type_id='20000' or account_type_id='30000' or account_type_id='40000'">
+  <td>
+  </td>
   <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
     <xsl:value-of select="running_balance"/>
   </td>
+  </xsl:if>
+  <!-- Running balance -->
+  <xsl:if test="account_type_id='10000' or account_type_id='50000'">
+  <td onclick="location.href='{$link_prefix}ledger&amp;account_id={id}';">
+    <xsl:value-of select="running_balance"/>
+  </td>
+  <td>
+  </td>
+  </xsl:if>
 
 
   <!-- Account Edit -->

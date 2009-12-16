@@ -90,16 +90,16 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<script type="text/javascript" src="{$link_prefix}x-common-js"/>
 			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/document_ready.js"/>
-      <xsl:for-each select="//head_nodes">
-				<xsl:sort select="priority" order="ascending"/>
-				<xsl:apply-templates select="nodes/*"/>
-			</xsl:for-each>
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/pkgs/yui-app-theme/css/yuiapp.css" />
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css" />
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
+      <xsl:for-each select="//head_nodes">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
+			</xsl:for-each>
 		</head>
 	</xsl:template>
 

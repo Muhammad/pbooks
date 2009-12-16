@@ -100,7 +100,10 @@ src="{$link_prefix}x-page-js&amp;selector=%23accounts_table_body%20tr&amp;functi
           <span id="i18n-type">Type</span>
         </th>
         <th>
-          <span id="i18n-balance">Balance</span>
+          <span id="i18n-debit_balance">Debit Balance</span>
+        </th>
+        <th>
+          <span id="i18n-credit_balance">Credit Balance</span>
         </th>
         <th class="{{sorter: false}}">
           <span id="i18n-edit">Edit</span>
@@ -133,6 +136,36 @@ src="{$link_prefix}x-page-js&amp;selector=%23accounts_table_body%20tr&amp;functi
         </xsl:for-each>
       </xsl:if>
     </tbody>
+    <tfoot>
+      <tr>
+        <xsl:if test="/_R_/_get/show_all_accounts='on'">
+          <th>
+            <input type="checkbox"/>
+          </th>
+        </xsl:if>
+        <th>
+          <span id="i18n-number">Number</span>
+        </th>
+        <th>
+          <span id="i18n-account_name">Account Name</span>
+        </th>
+        <th>
+          <span id="i18n-type">Type</span>
+        </th>
+        <th>
+          <xsl:value-of select="sum($all_accounts[running_balance > 0][account_type_id='20000' or account_type_id='30000' or account_type_id='40000']/running_balance)"/>
+        </th>
+        <th>
+          <xsl:value-of select="sum($all_accounts[running_balance > 0][account_type_id='10000' or account_type_id='50000']/running_balance)"/>
+        </th>
+        <th class="{{sorter: false}}">
+          <span id="i18n-edit">Edit</span>
+        </th>
+        <th class="{{sorter: false}}">
+          <span id="i18n-delete">Delete</span>
+        </th>
+      </tr>
+    </tfoot>
   </table>
   </div>
   <xsl:if test="/_R_/_get/show_all_accounts='on'">
