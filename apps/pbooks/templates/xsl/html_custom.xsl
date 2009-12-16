@@ -72,8 +72,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 				<xsl:value-of select="/_R_/i18n/default_page_title"/>: 
         <xsl:value-of select="/_R_/i18n/*[name()=/_R_/_get/nid]"/>
 			</title>
-      <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
-			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery-1.3.2.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.accordion.js"/>
@@ -88,9 +86,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/thickbox.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.calculation.min.js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/time/relative_time.js"/>
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css" />
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
 			<script type="text/javascript" src="{$path_prefix}s/js/jsval.js"/>
 			<script type="text/javascript" src="{$link_prefix}x-common-js"/>
 			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"/>
@@ -99,6 +94,12 @@ xmlns="http://www.w3.org/1999/xhtml">
 				<xsl:sort select="priority" order="ascending"/>
 				<xsl:apply-templates select="nodes/*"/>
 			</xsl:for-each>
+      <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/pkgs/yui-app-theme/css/yuiapp.css" />
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css" />
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
+			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 		</head>
 	</xsl:template>
 
