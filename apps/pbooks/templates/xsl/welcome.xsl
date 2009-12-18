@@ -56,22 +56,17 @@ xmlns="http://www.w3.org/1999/xhtml">
     <tr>
       <td style="padding-right: 20px;" valign="top">
 
-      <!-- This table displays some basic information about the books -->
-        <table class="simpletable" width="300">
-          <thead>
-            <tr>
-              <th colspan="2" style="background-color: #DDD">
-                <b>
-                  <xsl:value-of select="$i18n/quick_stats"/>
-                </b>
-              </th>
-            </tr>
-          </thead>
+      <div class="block">
+        <div class="hd">
+          <span class="i18n-quick_stats">Quick Stats</span>
+        </div>
+        <div class="bd">
+        <table class="zebra" width="300">
           <tbody>
             <tr>
               <td>
                 <a href="{$link_prefix}accounts">
-                  <xsl:value-of select="$i18n/accounts"/>
+                  <span class="i18n-accounts">Accounts</span>
                 </a>
               </td>
               <td>
@@ -81,7 +76,7 @@ xmlns="http://www.w3.org/1999/xhtml">
             <tr>
               <td>
                 <a href="{$link_prefix}journal">
-                  <xsl:value-of select="$i18n/journal_entries"/>
+                  <span class="i18n-journal_entries">Journal Entries</span>
                 </a>
               </td>
               <td>
@@ -91,7 +86,7 @@ xmlns="http://www.w3.org/1999/xhtml">
             <tr>
               <td>
                 <a href="{$link_prefix}journal">
-                  <xsl:value-of select="$i18n/journal_entry_amounts"/>
+                  <span class="i18n-journal_entry_amounts">Journal Entry Amounts</span>
                 </a>
               </td>
               <td>
@@ -101,7 +96,7 @@ xmlns="http://www.w3.org/1999/xhtml">
             <tr>
               <td>
                 <a href="{$link_prefix}ledger">
-                  <xsl:value-of select="$i18n/ledger_transactions"/>
+                  <span class="i18n-ledger_transactions">Ledger Transactions</span>
                 </a>
               </td>
               <td>
@@ -110,34 +105,32 @@ xmlns="http://www.w3.org/1999/xhtml">
             </tr>
           </tbody>
         </table>
+        </div></div>
       </td>
       <td valign="top">
       <!-- This table displays some recent entries and transactions -->
-        <table class="simpletable" width="300">
-          <thead>
-            <tr>
-              <th colspan="2" style="background-color: #DDD">
-                <b>
-                  <xsl:value-of select="$i18n/recent_activity"/>
-                </b>
-              </th>
-            </tr>
-          </thead>
+        <div class="block">
+          <div class="hd">
+            <span class="i18n-recent_activity">Recent Activity</span>
+          </div>
+          <div class="bd">
+          <table class="zebra">
           <tbody>
             <tr>
               <td>
-                <a href="{//link_prefix}invoices"><xsl:value-of select="$i18n/invoices"/></a>
+                <a href="{//link_prefix}invoices"><span class="i18n-invoices">Invoices</span></a>
               </td>
               <td><xsl:value-of select="//outstanding_invoice_total"/></td>
             </tr>
             <tr>
               <td>
-                <xsl:value-of select="$i18n/checks"/>
+                <span class="i18n-checks">Checks</span>
               </td>
               <td></td>
             </tr>
           </tbody>
         </table>
+        </div></div>
       </td>
     </tr>
   </table>
