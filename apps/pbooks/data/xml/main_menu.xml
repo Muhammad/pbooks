@@ -136,10 +136,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<key>workflow</key>
 			<url>workflow</url>
 		</item>
-		<item>
-			<key>admin</key>
-			<url>admin</url>
-		</item>
 	</item>
 	<item>
 		<key>diagnostics</key>
