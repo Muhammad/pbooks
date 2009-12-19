@@ -27,13 +27,11 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=true" />
 
-<xsl:value-of select="$i18n/note_info"/>
 <table class="tablesorter" id="notes_table">
   <thead>
     <tr>

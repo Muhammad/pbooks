@@ -27,10 +27,9 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 <h2>
-	<xsl:value-of select="$i18n/import_csv"/>
+	<span class="i18n-import_csv">Import CSV</span>
 </h2>
 
 <xsl:if test="/_R_/_get/error">
@@ -50,7 +49,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<select name="account_id" required="1" exclude="-1"
 			err="Please select an account to post your transactions to.">
 		<option value="-1">
-			<xsl:value-of select="$i18n/select_one"/>
+			<span class="i18n-select_one">Select One</span>
 		</option>
 		<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts">
 			<option value="{id}">

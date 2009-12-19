@@ -195,7 +195,6 @@ View the general ledger.
   <account_edit>
 Edit this account.
 </account_edit>
-  <period_info>Periods are similar to "books", in that you can have separate accounting periods, which are mutually exclusive by date.</period_info>
   <period_id>ID</period_id>
   <period_value>Period</period_value>
   <report_type>Report Type</report_type>

@@ -27,26 +27,25 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
 
 
 <!-- Main reports -->
 <h2>
-	<xsl:value-of select="$i18n/report_type"/>
+	<span class="i18n-report_type">Report Type</span>
 </h2>
 <form method="get">
 	<input type="hidden" name="nid" value="{/_R_/_get/nid}-build"/>
 	<table>
 		<tr>
 			<td>
-				<xsl:value-of select="$i18n/report_type"/>:
+				<span class="i18n-report_type">Report Type</span>:
 			</td>
 			<td>
 				<select name="report_type_id">
 					<xsl:for-each select="//report_types/report_type">
 						<xsl:variable name="mykey" select="@key"/>
 						<option value="{@id}">
-							<xsl:value-of select="$i18n/*[local-name()=$mykey]"/>
+							<xsl:value-of select="//i18n/*[local-name()=$mykey]"/>
 						</option>
 					</xsl:for-each>
 				</select>
@@ -54,7 +53,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</tr>
 		<tr>
 			<td valign="top">
-				<xsl:value-of select="$i18n/period"/>:
+				<span class="i18n-period">Period</span>:
 			</td>
 			<td>
 				<xsl:call-template name="date_select">
@@ -71,7 +70,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 	<!-- Saved reports -->
 	<h2>
-		<xsl:value-of select="$i18n/saved_reports"/>
+		<span class="i18n-saved_reports">Saved Reports</span>
 	</h2>
 	<ul style="big">
 		<xsl:for-each select="//reports_saved/report">
@@ -85,7 +84,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 	<!-- Additional reports -->
 	<h2>
-		<xsl:value-of select="$i18n/additional_reports"/>
+		<span class="i18n-additional_reports">Additional Reports</span>
 	</h2>
 	<ul style="big">
 		<li>
@@ -95,17 +94,17 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</li>
 		<li>
 			<a href="{$link_prefix}reports-simple-cash-flow">
-				<xsl:value-of select="$i18n/simple_monthly_cash_flow"/>
+				<span class="i18n-simple_monthly_cash_flow">Simple Monthly Cash Flow</span>
 			</a>
 		</li>
 		<li>
 			<a href="{$link_prefix}reports-group-cash-flow">
-				<xsl:value-of select="$i18n/group_monthly_cash_flow"/>
+				<span class="i18n-group_monthly_cash_flow">Account Group Monthly Cash Flow</span>
 			</a>
 		</li>
 		<li>
 			<a href="{$link_prefix}reports-invoices">
-				<xsl:value-of select="$i18n/report_invoices"/>
+				<span class="i18n-report_invoices">Invoices Report</span>
 			</a>
 		</li>
 	</ul>

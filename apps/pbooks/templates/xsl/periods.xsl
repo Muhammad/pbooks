@@ -26,13 +26,14 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=periods_table&amp;simple=true" />
 
-<xsl:value-of select="$i18n/period_info"/>
+<span class="i18n-period_info">Periods are similar to "books", in that you can 
+have separate accounting periods, which are mutually exclusive by date.</span>
+
 <table class="tablesorter" id="periods_table">
 	<thead>
 		<tr>
@@ -61,24 +62,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=periods_table&amp;simple=
 <p>
 To add a new period, edit the data/xml/fiscal_periods.xml file.
 </p>
-<!-- TODO: THIS IS DONE IN AN XML FILE -->
-<!--
-<form method="post">
-	Create new period:
-	<br/>
-	<table>
-		<tr>
-			<td>From date:</td>
-			<td><input type="text" name="from_date"/></td>
-		</tr>
-		<tr>
-			<td>To date:</td>
-			<td><input type="text" name="to_date"/></td>
-		</tr>
-	</table>
-	<input type="submit"/>
-</form>
--->
+
 
   </xsl:template>
 </xsl:stylesheet>

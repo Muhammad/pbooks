@@ -352,4 +352,16 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</div>
 	</xsl:template>
 
+<xsl:template name="source_spacer">
+<xsl:param name="section_start"></xsl:param>
+<xsl:param name="section_end"></xsl:param>
+
+<xsl:if test="not($section_end='')">
+<xsl:comment><xsl:value-of select="$section_end"/> end</xsl:comment>
+</xsl:if>
+
+<xsl:if test="not($section_start='')">
+<xsl:comment><xsl:value-of select="$section_start"/> start</xsl:comment>
+</xsl:if>
+</xsl:template>
 </xsl:stylesheet>

@@ -27,7 +27,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 		<!-- Just setting up some frequently used xpaths -->
     <xsl:variable name="from_month" select="substring(/_R_/_get/from_date,6,2)"/>
@@ -39,10 +38,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<h2>
 		<xsl:value-of select="//runtime/company_name"/>
 	</h2>
-	<xsl:value-of select="$i18n/cash_flow_statement"/>
-	<xsl:value-of select="$i18n/from"/>
+	<span class="i18n-cash_flow_statement">Cash Flow Statement</span>
+	<span class="i18n-from">From</span>
 	<xsl:value-of select="/_R_/runtime/from_date"/>
-	<xsl:value-of select="$i18n/through"/>
+	<span class="i18n-through">Through</span>
 	<xsl:value-of select="/_R_/runtime/to_date"/>
 
 </div>
@@ -73,7 +72,7 @@ bottom of the file.
 	<!--  Cash Flow -->
 	<tr>
 		<td class="matrix-data">
-			<xsl:value-of select="$i18n/incoming_cash_flow_deposit"/>
+			<span class="i18n-incoming_cash_flow_deposit">Incoming Cash Flow</span>
 		</td>
 		<xsl:call-template name="empty_cell">
 			<xsl:with-param name="repeat" select="$monthnum"/>
@@ -82,7 +81,7 @@ bottom of the file.
 	</tr>
 	<tr>
 		<td class="matrix-data" style="padding-left: 6px;">
-			<xsl:value-of select="$i18n/beginning_balance"/>
+			<span class="i18n-beginning_balance">Beginning Balance</span>
 		</td>
 		<xsl:call-template name="empty_cell">
 			<xsl:with-param name="repeat" select="$monthnum"/>
@@ -110,7 +109,7 @@ bottom of the file.
 	</xsl:for-each>
 	<tr class="row{position() mod 2}">
 		<td class="matrix-data">
-			<xsl:value-of select="$i18n/total_cash_inflow"/>
+			<span class="i18n-total_cash_inflow">TOTAL CASH INFLOW</span>
 		</td>
 		<xsl:call-template name="income_total_cell">
 			<xsl:with-param name="mn" select="$from_month"/>
@@ -126,7 +125,7 @@ bottom of the file.
 <!--  Disbursements -->
 	<tr>
 		<td class="matrix-data">
-			<xsl:value-of select="$i18n/disbursements"/>
+			<span class="i18n-disbursements">Disbursements</span>
 		</td>
 		<xsl:call-template name="empty_cell">
 			<xsl:with-param name="repeat" select="$monthnum"/>
@@ -153,7 +152,7 @@ bottom of the file.
 <!-- Total disbursements -->
 	<tr class="row{position() mod 2}">
 		<td class="matrix-data">
-			<xsl:value-of select="$i18n/total_cash_outflow"/>
+			<span class="i18n-total_cash_outflow">TOTAL CASH OUTFLOW</span>
 		</td>
 		<xsl:call-template name="outgoing_total_cell">
 			<xsl:with-param name="mn" select="$from_month"/>
@@ -167,7 +166,7 @@ bottom of the file.
 	<!-- Capital Investments -->
 	<tr>
 		<td class="matrix-data">
-			<xsl:value-of select="$i18n/capital_investments"/>
+			<span class="i18n-capital_investments">CAPITAL INVESTMENTS</span>
 		</td>
 		<xsl:call-template name="empty_cell">
 			<xsl:with-param name="repeat" select="$monthnum"/>

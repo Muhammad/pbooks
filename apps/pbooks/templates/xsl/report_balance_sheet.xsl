@@ -26,7 +26,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
-		<xsl:param name="i18n"/>
 		<xsl:variable name="get_all_entry_amounts"
     select="/_R_/get_all_entry_amounts/get_all_entry_amounts" />
 
@@ -36,7 +35,7 @@ xmlns="http://www.w3.org/1999/xhtml">
   <h2>
     <xsl:value-of select="//runtime/company_name"/>
   </h2>
-  <xsl:value-of select="$i18n/balance_sheet"/>
+  <span class="i18n-balance_sheet">Balance Sheet</span>
   &#160;
   <xsl:value-of select="//to_date"/>
 </div>
@@ -45,7 +44,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <tr class="row1">
       <td>
         <b>
-          <xsl:value-of select="$i18n/assetsb"/>
+          <span class="i18n-assetsb">ASSETS</span>
         </b>
       </td>
       <td align="right">
@@ -76,7 +75,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 
     <tr>
       <td class="journal-data" style="text-indent: 16px;">
-        <xsl:value-of select="$i18n/total_assets"/>
+        <span class="i18n-total_assets">TOTAL ASSETS</span>
       </td>
       <td align="right" class="journal-data">
         <b>
@@ -93,7 +92,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <tr class="row1">
       <td>
         <b>
-          <xsl:value-of select="$i18n/liabilities_equity"/>
+          <span class="i18n-liabilities_equity">EQUITY</span>
         </b>
       </td>
       <td align="right">
@@ -101,18 +100,12 @@ xmlns="http://www.w3.org/1999/xhtml">
           <xsl:value-of select="//to_date"/>
         </b>
       </td>
-      <td align="right"><!--<b><xsl:value-of select="//_post/from_month"/>-<xsl:value-of select="//_post/from_day"/>-<xsl:value-of select="//_post/
-    from_year"/></b>--></td>
+      <td align="right"></td>
     </tr>
     <xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[account_type_id='20000']">
-      <xsl:variable
-        name   = "this_l_account_id"
-        select = "id"
-      />
-      <xsl:variable
-        name   = "liability_value"
-        select = "format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')"
-      />
+      <xsl:variable name="this_l_account_id" select="id" />
+      <xsl:variable name="liability_value"
+      select="format-number((sum($get_all_entry_amounts[entry_type_id='Credit'][account_id=$this_l_account_id]/entry_amount) - sum ($get_all_entry_amounts[entry_type_id='Debit'][account_id=$this_l_account_id]/entry_amount)),'#,###,###')" />
       <xsl:if test="not($liability_value=0)">
         <tr>
           <td class="journal-data" style="text-indent: 16px;">
@@ -129,7 +122,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     </xsl:for-each>
     <tr>
       <td class="journal-data" style="text-indent: 16px;">
-        <xsl:value-of select="$i18n/total_liabilities"/>
+        <span class="i18n-total_liabilities">Total Liabilities</span>
       </td>
       <td align="right" class="journal-data">
         <xsl:value-of select=" format-number( (sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Credit']/entry_amount) - sum($get_all_entry_amounts[account_type_id=20000][entry_type_id='Debit']/entry_amount) ),'#,###,###.##')"/>
@@ -160,7 +153,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     </xsl:for-each>
     <tr>
       <td class="journal-data" style="text-indent: 16px;">
-        <xsl:value-of select="$i18n/total_equity"/>
+        <span class="i18n-total_equity">TOTAL EQUITY</span>
       </td>
       <td align="right" class="journal-data" />
       <td align="right" />
@@ -170,7 +163,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     </tr>
     <tr>
       <td class="journal-data" style="text-indent: 16px;">
-        <xsl:value-of select="$i18n/total_liabilities_equity"/>
+        <span class="i18n-total_liabilities_equity">TOTAL LIABILITIES</span>
       </td>
 
       <!-- This is really obtuse for testing purposes,

@@ -27,7 +27,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
 
 
 <script type="text/javascript"
@@ -36,7 +35,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_transfers" />
 <div class="generic-button" style="float: right;">
 	<a href="{$link_prefix}transfer-create" id="transfer-create">
 		<img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-		<xsl:value-of select="$i18n/new_transfer"/>
+		<span class="i18n-new_transfer">New Transfer</span>
 	</a>
 </div>
 <div class="tableframe">
@@ -44,25 +43,25 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_transfers" />
 		<thead>
 			<tr>
 				<th>
-					<xsl:value-of select="$i18n/date"/>
+					<span class="i18n-date">Date</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/id"/>
+					<span class="i18n-id">ID</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/memo"/>
+					<span class="i18n-memo">Memorandum</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/amount"/>
+					<span class="i18n-amount">Amount</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/from_account"/>
+					<span class="i18n-from_account">From Account</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/to_account"/>
+					<span class="i18n-to_account">To Account</span>
 				</th>
 				<th class="{{sorter: false}}">
-					<xsl:value-of select="$i18n/method"/>
+					<span class="i18n-method">Method</span>
 				</th>
 			</tr>
 		</thead>
