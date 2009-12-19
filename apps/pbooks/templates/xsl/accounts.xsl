@@ -120,7 +120,6 @@ src="{$link_prefix}x-page-js&amp;selector=%23accounts_table_body%20tr&amp;functi
           <xsl:sort select="account_number"/>
           <xsl:call-template name="account-row">
             <xsl:with-param name="link_prefix" select="$link_prefix"/>
-            <xsl:with-param name="i18n" select="$i18n"/>
           </xsl:call-template>
         </xsl:for-each>
       </xsl:if>
@@ -131,7 +130,6 @@ src="{$link_prefix}x-page-js&amp;selector=%23accounts_table_body%20tr&amp;functi
           <xsl:sort select="account_number"/>
           <xsl:call-template name="account-row">
             <xsl:with-param name="link_prefix" select="$link_prefix"/>
-            <xsl:with-param name="i18n" select="$i18n"/>
           </xsl:call-template>
         </xsl:for-each>
       </xsl:if>

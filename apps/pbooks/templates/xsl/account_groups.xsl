@@ -24,11 +24,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
-	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup-simple"/>
 
 
@@ -60,7 +58,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <tbody>
     <xsl:apply-templates select="//groups/group">
       <xsl:with-param name="link_prefix" select="$link_prefix"/>
-      <xsl:with-param name="i18n" select="$i18n"/>
     </xsl:apply-templates>
   </tbody>
 </table>
@@ -70,7 +67,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 <xsl:param name="parent_gid">0</xsl:param>
 <xsl:param name="generation">0</xsl:param>
 <xsl:param name="link_prefix"/>
-<xsl:param name="i18n"/>
 <xsl:variable name="my_group_id" select="group_id"/>
 
 <tr class="row2" id="g_{group_id}">
@@ -110,7 +106,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 <xsl:apply-templates select="group">
   <xsl:with-param name="link_prefix" select="$link_prefix"/>
   <xsl:with-param name="parent_gid" select="$my_group_id"/>
-  <xsl:with-param name="i18n" select="$i18n"/>
   <xsl:with-param name="generation" select="$generation+1"/>
 </xsl:apply-templates>
 

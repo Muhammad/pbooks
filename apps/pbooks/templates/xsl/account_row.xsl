@@ -26,7 +26,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<!-- This is the account table row -->
   <xsl:template name="account-row">
 		<xsl:param name="link_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <!-- these rows contain ids for use in testing, do not remove! -->
@@ -87,7 +86,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <td>
       <a href="{$link_prefix}accounts-edit&amp;account_id={id}"
       id="{account_number}-e" title="account_id: {id}">
-        <xsl:value-of select="$i18n/edit"/>
+        <span class="i18n-edit">Edit</span>
       </a>
     </td>
   </xsl:if>
@@ -96,13 +95,13 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:if test="/_R_/_get/nid='customer-accounts'">
     <td>
       <a href="{$link_prefix}customer-statement&amp;account_id={id}">
-        <xsl:value-of select="$i18n/statement"/>
+        <span class="i18n-statement">Statement</span>
       </a>
     </td>
     <td>
       <a href="{$link_prefix}customer-edit&amp;account_id={id}"
         id="{account_number}-e">
-        <xsl:value-of select="$i18n/edit"/>
+        <span class="i18n-edit">Edit</span>
       </a>
     </td>
   </xsl:if>
@@ -111,7 +110,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <a id="{account_number}-d"
       href="#{$link_prefix}accounts-delete&amp;account_id={id}"
       onclick="account_delete({id}); return false;">
-      <xsl:value-of select="$i18n/delete"/>
+      <span class="i18n-delete">Delete</span>
     </a>
   </td>
 </tr>
