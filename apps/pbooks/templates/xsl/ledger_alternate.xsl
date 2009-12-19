@@ -26,7 +26,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns:math="http://exslt.org/math"
 	extension-element-prefixes="math">
 	<xsl:include href="html_main.xsl"/>
-	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
