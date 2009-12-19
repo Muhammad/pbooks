@@ -882,10 +882,6 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 
-<!-- ADMIN -->
-	<map:gate name="admin" role="pb_admin" cache="300" http_method="get">
-		<map:xsl src="templates/xsl/admin.xsl" />
-	</map:gate>
 
 <!-- DIAGNOSTICS -->
 	<map:gate name="logs" role="pb_admin" http_method="get">
