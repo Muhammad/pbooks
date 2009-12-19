@@ -88,7 +88,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 	</h2>
 	<ul style="big">
 		<li>
-			<a href="{$link_prefix}reports-trial-balance">
+			<a href="{$link_prefix}accounts">
 				<span id="i18n_trial-balance">Trial Balance</span>
 			</a>
 		</li>
