@@ -27,7 +27,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
   <xsl:param name="link_prefix"/>
   <xsl:param name="path_prefix"/>
-  <xsl:param name="i18n"/>
 
     <xsl:variable name="account_business_objects"
     select="/_R_/account_business_objects/account_business_objects" />
@@ -40,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 <h2>
-  <span id="$i18n-make_deposits">Make Deposits</span>
+  <span id="i18n-make_deposits">Make Deposits</span>
 </h2>
 
 <form action="{$link_prefix}deposit-submit&amp;entry_id={/_R_/_get/entry_id}"

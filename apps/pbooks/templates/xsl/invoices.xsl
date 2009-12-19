@@ -27,7 +27,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
     <xsl:variable name="business_objects"
     select="/_R_/get_some_business_objects/get_some_business_objects" />
     <xsl:variable name="all_accounts"

@@ -27,7 +27,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
 		<xsl:variable name="get_equation" select="/_R_/get_equation/get_equation" />
 		<xsl:variable name="get_transactions"
 		select="/_R_/get_all_transactions/get_all_transactions" />

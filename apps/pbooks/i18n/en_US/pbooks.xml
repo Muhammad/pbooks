@@ -222,7 +222,6 @@ Edit this account.
   <total_equity>TOTAL EQUITY</total_equity>
   <total_liabilities_equity>TOTAL LIABILITIES AND EQUITY</total_liabilities_equity>
   <net_change>Net Change</net_change>
-  <duplicates_info>The PBooks duplicates function can help you find and reconcile duplicate entries and transactions. Duplicates can occur if two different accounts have their data imported and contain mutual transactions, where one posts to the other prior creating a new journal entry for the second account. Therefore, the list of potential duplicates is currently limited to unmatched, imported transactions. </duplicates_info>
   <recent_deposits>Recent Deposits</recent_deposits>
   <cash>Cash</cash>
   <source>Source</source>

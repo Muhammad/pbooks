@@ -35,11 +35,13 @@ more than one debit or credit, there can only be one of the other type.
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
     <xsl:variable name="get_journal_entry"
     select="/_R_/get_journal_entry/get_journal_entry" />
 
-<xsl:call-template name="jquery-setup-simple"/>
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;simple=true" />
+
 <script type="text/javascript">
 function journal_entry_amount_create(entry_type_id) {
   $.post("<xsl:value-of select="$link_prefix"/>x-journal-entry-new-"+entry_type_id+"&amp;entry_id=<xsl:value-of select="//_get/entry_id"/>",
@@ -196,7 +198,6 @@ start journal entry form table
                     <xsl:with-param name="my_entry_amount_id" select="entry_amount_id"/>
                     <xsl:with-param name="link_prefix" select="$link_prefix"/>
                     <xsl:with-param name="path_prefix" select="$path_prefix"/>
-                    <xsl:with-param name="i18n" select="$i18n"/>
                     <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
                   </xsl:call-template>
                 </xsl:for-each>
@@ -206,7 +207,6 @@ start journal entry form table
                   <xsl:call-template name="credit">
                     <xsl:with-param name="link_prefix" select="$link_prefix"/>
                     <xsl:with-param name="path_prefix" select="$path_prefix"/>
-                    <xsl:with-param name="i18n" select="$i18n"/>
                     <xsl:with-param name="get_journal_entry" select="$get_journal_entry"/>
                   </xsl:call-template>
                 </xsl:if>
@@ -298,7 +298,7 @@ If you want to complete this process, continue as usual. For more information, s
     <div class="generic-button" id="delete-journal-entry-button">
       <form method="post" action="{$link_prefix}journal-delete">
         <input type="hidden" name="entry_id" value="{/_R_/_get/entry_id}"/>
-        <input type="submit" value="Delete this entry" onclick="return confirm('{$i18n/confirm_delete}');"/>
+        <input type="submit" value="Delete this entry" onclick="return confirm('Are you sure?');"/>
       </form>
     </div>
   </xsl:if>

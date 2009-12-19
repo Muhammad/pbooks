@@ -28,7 +28,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
     <xsl:variable name="get_all_entry_amounts"
     select="/_R_/get_all_entry_amounts/get_all_entry_amounts" />
     <xsl:variable name="get_all_debits"
@@ -209,7 +208,7 @@ because of the dynamic number of rows per entry.
       <td colspan="5" align="right">
         <xsl:if test="not($total_credits=$total_debits)">
           <div id="error_match">
-            <xsl:value-of select="$i18n/error_match"/>:
+            FIXME - better error reporting.:
           </div>
         </xsl:if>
       </td>

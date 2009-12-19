@@ -26,10 +26,10 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:include href="html_main.xsl"/>
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
-    <xsl:param name="i18n"/>
-    <xsl:call-template name="jquery-setup">
-      <xsl:with-param name="my-table">my_duplicates</xsl:with-param>
-    </xsl:call-template>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_duplicates&amp;simple=true" />
 
 
 <div class="tableframe">
@@ -102,7 +102,12 @@ xmlns="http://www.w3.org/1999/xhtml">
 </table>
 </div>
 <div class="table_meta" style="padding-left:270px; bottom: 45px;right: 70px;">
-<xsl:value-of select="$i18n/duplicates_info"/>
+<span class="i18n-duplicates_info">The PBooks duplicates function can help you 
+find and reconcile duplicate entries and transactions. Duplicates can occur if 
+two different accounts have their data imported and contain mutual 
+transactions, where one posts to the other prior creating a new journal entry 
+for the second account. Therefore, the list of potential duplicates is 
+currently limited to unmatched, imported transactions.</span>
 </div>
 <div class="table_controls">
 <xsl:call-template name="pager">

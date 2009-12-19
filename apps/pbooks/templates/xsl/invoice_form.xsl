@@ -27,15 +27,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
-    <xsl:variable name="business_objects"
-    select="/_R_/get_some_business_objects/get_some_business_objects" />
-    <xsl:variable name="invoice_amounts"
-    select="/_R_/invoices_get_amounts/invoices_get_amounts" />
-    <xsl:variable name="business_object_metadata"
-    select="/_R_/get_some_business_objects/get_some_business_objects" />
-    <xsl:variable name="all_accounts"
-    select="/_R_/get_all_accounts/get_all_accounts" />
+
+
+<xsl:variable name="business_objects"
+select="/_R_/get_some_business_objects/get_some_business_objects" />
+<xsl:variable name="invoice_amounts"
+select="/_R_/invoices_get_amounts/invoices_get_amounts" />
+<xsl:variable name="business_object_metadata"
+select="/_R_/get_some_business_objects/get_some_business_objects" />
+<xsl:variable name="all_accounts"
+select="/_R_/get_all_accounts/get_all_accounts" />
 
 
 <h2>
@@ -77,7 +78,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
       </tr>
       <tr>
         <th>
-          <xsl:value-of select="$i18n/invoice_number"/>:
+          <span class="i18n-invoice_number">Invoice Number</span>:
         </th>
         <td>
           <input type="text" name="invoice_number">
@@ -117,14 +118,14 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
               <xsl:attribute name="checked">checked</xsl:attribute>
             </xsl:if>
           </input>
-          <xsl:value-of select="$i18n/paid_in_full"/>
+          <span class="i18n-paid_in_full">Paid in full</span>
           <br/>
           <input type="radio" name="paid_status" value="partial_payment">
             <xsl:if test="$business_object_metadata/paid_status='partial'">
               <xsl:attribute name="checked">checked</xsl:attribute>
             </xsl:if>
           </input>
-          <xsl:value-of select="$i18n/paid"/>
+          <span class="i18n-paid">Paid</span>
           <br/>
           <input type="radio" name="paid_status" value="unpaid">
             <xsl:if test="not($business_object_metadata/paid_status) or
@@ -132,7 +133,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
               <xsl:attribute name="checked">checked</xsl:attribute>
             </xsl:if>
           </input>
-          <xsl:value-of select="$i18n/unpaid"/>
+          <span class="i18n-unpaid">Unpaid</span>
           <br/>
         </td>
       </tr>
@@ -194,7 +195,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
           <td>
             <select name="credit_account_1[]">
               <option>
-                <xsl:value-of select="$i18n/select_one"/>
+                <span class="i18n-select_one">Select One</span>
               </option>
               <xsl:for-each select="$all_accounts[account_type_id=40000]">
                 <xsl:variable name="my_account_id" select="id"/>
@@ -255,7 +256,7 @@ action="{$link_prefix}invoices-submit&amp;entry_id={/_R_/_get/entry_id}">
 <!-- Link to journal entry form. -->
 <div style="float: right">
   <a href="{$link_prefix}journal-entry&amp;entry_id={/_R_/_get/entry_id}">
-    <xsl:value-of select="$i18n/edit_journal_entry"/>
+    <span class="i18n-edit_journal_entry">Edit Journal Entry</span>
   </a>
 </div>
 
