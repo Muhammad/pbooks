@@ -328,6 +328,28 @@ xmlns="http://www.w3.org/1999/xhtml">
     </li>
   </xsl:template>
 
-
+<!-- load the javascript -->
+	<xsl:template name="pager">
+		<xsl:param name="my-table"/>
+		<xsl:param name="path_prefix"/>
+		<div id="{$my-table}-pager" class="pager">
+			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
+			<table>
+				<tr>
+					<td>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/first.png" class="first"/>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/prev.png" class="prev"/>
+					</td>
+					<td>
+						<input type="text" class="pagedisplay" size="3" readonly="readonly"/>
+					</td>
+					<td>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/next.png" class="next"/>
+						<img src="{/_R_/runtime/path_prefix}s/js/blue/last.png" class="last"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</xsl:template>
 
 </xsl:stylesheet>
