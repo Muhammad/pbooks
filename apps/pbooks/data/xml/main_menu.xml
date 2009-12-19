@@ -88,12 +88,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<key>transfers</key>
 			<url>transfers</url>
 		</item>
-    <!--
-		<item>
-			<key>taxes</key>
-			<url>taxes</url>
-		</item>
-    -->
 		<item>
 			<key>notes</key>
 			<url>notes</url>

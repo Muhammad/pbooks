@@ -897,10 +897,6 @@ This makes it easier to maintain persistence. -->
 	</map:gate>
 
 
-<!-- TAXES -->
-	<map:gate name="taxes" http_method="get">
-		<map:xsl src="templates/xsl/taxes.xsl" />
-	</map:gate>
 
 <!-- WORKFLOW -->
 	<map:gate name="workflow" http_method="get">
