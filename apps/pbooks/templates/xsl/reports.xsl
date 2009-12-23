@@ -65,7 +65,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</tr>
 	</table>
 	<div style="text-align: center; margin-top:2em;">
-		<input type="submit" value="{$i18n/build_report}" name="submit" />
+		<input type="submit" value="Build Report" name="submit" />
 	</div>
 
 	<!-- Saved reports -->
