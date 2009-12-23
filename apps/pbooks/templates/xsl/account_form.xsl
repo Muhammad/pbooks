@@ -38,7 +38,7 @@ main.xsl. Form input elements have attributes like required="1" if they are
 to be validated.
 -->
 
-<form method="post" onSubmit="return validateStandard(this, 'myerror');">
+<form method="post">
   <div class="tableframe">
 
     <!-- Check if the user is creating a new account or editing and existing one,
