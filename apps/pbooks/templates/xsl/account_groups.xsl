@@ -27,8 +27,10 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:call-template name="jquery-setup-simple"/>
 
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=accounts_table&amp;simple=true" />
 
 <div class="generic-button" style="text-align: right;">
   <a href="{$link_prefix}account-group-edit">
