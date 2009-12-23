@@ -27,7 +27,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
 
 		<xsl:variable name="account_business_objects"
 		select="/_R_/account_business_objects/account_business_objects" />
@@ -122,7 +121,7 @@ method="post" onSubmit="return validateStandard(this, 'myerror');">
 						<td />
 						<td>
 							<!-- Customer -->
-							<select name="revenue_account_id" required="1" exclude="-1" err="{$i18n/error_select_credit}">
+							<select name="revenue_account_id" required="1" exclude="-1" err="Error">
 								<xsl:for-each select="/_R_/get_all_accounts/get_all_accounts[accounts_receivable_account='on']">
 									<option value="{id}" id="ra_{id}">
 										<xsl:if test="id=$get_journal_entry/account_id and not(/_R_/_get/transaction_id)">

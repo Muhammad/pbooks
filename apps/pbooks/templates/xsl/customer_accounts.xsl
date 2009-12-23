@@ -28,7 +28,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
     <xsl:variable name="all_accounts"
     select="/_R_/get_all_accounts/get_all_accounts" />
 
@@ -105,7 +104,6 @@ src="{$link_prefix}x-page-js&amp;selector=%23customers_table_body%20tr&amp;funct
         <xsl:sort select="account_number"/>
         <xsl:call-template name="account-row">
           <xsl:with-param name="link_prefix" select="$link_prefix"/>
-          <xsl:with-param name="i18n" select="$i18n"/>
         </xsl:call-template>
       </xsl:for-each>
 

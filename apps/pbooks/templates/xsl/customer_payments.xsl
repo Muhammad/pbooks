@@ -27,7 +27,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 
 <script type="text/javascript"
@@ -39,7 +38,7 @@ src="{$link_prefix}x-page-js&amp;selector=%23my_payments%20tbody%20tr&amp;functi
 <div class="generic-button" style="float: right;">
   <a href="{$link_prefix}customer-payment-create" id="customer-payment-create">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-    <xsl:value-of select="$i18n/new_payment"/>
+    <span class="i18n-new_payment">New Payment</span>
   </a>
 </div>
 <div class="tableframe">
@@ -47,19 +46,19 @@ src="{$link_prefix}x-page-js&amp;selector=%23my_payments%20tbody%20tr&amp;functi
   <thead>
     <tr>
       <th>
-        <xsl:value-of select="$i18n/date"/>
+        <span class="i18n-date">Date</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/customer"/>
+        <span class="i18n-customer">Customer</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/memo"/>
+        <span class="i18n-memo">Memorandum</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/amount"/>
+        <span class="i18n-amount">Amount</span>
       </th>
       <th>
-        <xsl:value-of select="$i18n/id"/>
+        <span class="i18n-id">ID</span>
       </th>
     </tr>
   </thead>

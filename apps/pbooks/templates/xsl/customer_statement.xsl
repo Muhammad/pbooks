@@ -27,7 +27,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   <xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
-    <xsl:param name="i18n"/>
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
@@ -36,12 +35,12 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 <div class="generic-button" style="float: right;">
 	<a href="{$link_prefix}invoice-create" id="invoice-create">
 		<img src="{$path_prefix}{/_R_/runtime/icon_set}/page_edit.gif"/>
-		<xsl:value-of select="$i18n/new_invoice"/>
+		<span class="i18n-new_invoice">New Invoice</span>
 	</a>
 </div>
 
 <strong>
-	<xsl:value-of select="$i18n/recent_invoices"/>:
+	<span class="i18n-recent_invoices">Recent Invoices</span>:
 </strong>
 <div id="tableframe">
 
@@ -49,25 +48,25 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 		<thead>
 			<tr>
 				<th>
-					<xsl:value-of select="$i18n/date"/>
+					<span class="i18n-date">Date</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/id"/>
+					<span class="i18n-id">ID</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/client"/>
+					<span class="i18n-client">Client</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/memo"/>
+					<span class="i18n-memo">Memorandum</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/amount"/>
+					<span class="i18n-amount">Amount</span>
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/paid"/>&#160;
+					<span class="i18n-paid">Paid</span>&#160;
 				</th>
 				<th>
-					<xsl:value-of select="$i18n/print"/>
+					<span class="i18n-print">Print</span>
 				</th>
 			</tr>
 		</thead>
@@ -111,7 +110,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=my_invoices" />
 					</td>
 					<td>
 						<a href="{$link_prefix}invoice-print&amp;entry_id={entry_id}&amp;invoice_id={entry_id}&amp;account_id={$my_customer_id}&amp;print=true">
-							<xsl:value-of select="$i18n/print"/>
+							<span class="i18n-print">Print</span>
 						</a>
 					</td>
 				</tr>
