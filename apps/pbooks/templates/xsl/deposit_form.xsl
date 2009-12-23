@@ -202,7 +202,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <td>
               <!-- need to select where the money is coming from - or is it accounts receivable? -->
               <select name="credit_account_1[]" required="1" exclude="-1"
-              err="{$i18n/error_select_credit}">
+              err="Error">
                 <option value="-1">
                   <span id="i18n-credit_account">Credit Account</span>
                 </option>

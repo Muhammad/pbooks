@@ -41,19 +41,19 @@ src="{$link_prefix}x-page-js&amp;selector=%23customers_table_body%20tr&amp;funct
 <div class="generic-button" style="float: right;">
   <xsl:if test="/_R_/runtime/show_all_accounts">
     <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=off">
-      <span id="i18n-hide_accounts"/>
+      <span id="i18n-hide_accounts">Hide Accounts</span>
     </a>
   </xsl:if>
 
   <xsl:if test="not(/_R_/runtime/show_all_accounts)">
     <a href="{$link_prefix}customer-accounts&amp;show_all_accounts=on">
-      <span id="i18n-show_accounts"/>
+      <span id="i18n-show_accounts">Customer Accounts</span>
     </a>
   </xsl:if>
 
   <a href="{$link_prefix}customer-edit" class="generic-button">
     <img src="{$path_prefix}{/_R_/runtime/icon_set}/folder_new.gif"/>
-    <span id="i18n-new_customer"/>
+    <span id="i18n-new_customer">New Customer</span>
   </a>
 </div>
 
@@ -71,7 +71,7 @@ src="{$link_prefix}x-page-js&amp;selector=%23customers_table_body%20tr&amp;funct
           </th>
         </xsl:if>
         <th>
-          <span id="i18n-number"/>
+          <span id="i18n-number">Number</span>
         </th>
         <th>
           <span id="i18n-customer_name">Customer Name</span>
