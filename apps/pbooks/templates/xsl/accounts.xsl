@@ -28,7 +28,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:template name="content">
 		<xsl:param name="link_prefix"/>
 		<xsl:param name="path_prefix"/>
-		<xsl:param name="i18n"/>
 		<xsl:variable name="all_accounts"
 		select="/_R_/get_all_accounts/get_all_accounts" />
 
@@ -175,7 +174,7 @@ Display the text that explains when accounts can be deleted
 "An account can only be deleted when there are no journal transactions in that
 account. If you would like to hide the account, click edit and select the hide option." -->
 <div class="table_meta">
-  <xsl:value-of select="$i18n/account_deletion_requirement"/>
+<span class="i18n-account_deletion_requirement">An account can only be deleted when there are no journal transactions in that account. If you would like to hide the account, click edit and select the hide option.</span>
 </div>
 <xsl:if test="/_R_/_get/account_type_id">
 <script type="text/javascript">

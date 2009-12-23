@@ -60,8 +60,6 @@
   <sql>SQL</sql>
   <xml>XML</xml>
   <account_name>Account Name</account_name>
-  <account_deletion_requirement>An account can only be deleted when there are no journal transactions in that account. If you would like to hide the account, click edit and select the hide option.
-</account_deletion_requirement>
   <account_type>Account Type</account_type>
   <account_number>Account Number</account_number>
   <description>Description</description>
