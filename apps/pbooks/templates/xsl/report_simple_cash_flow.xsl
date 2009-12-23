@@ -173,9 +173,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=myLedger" />
 	</table>
 	</div>
 	<div class="table_controls">
-	<xsl:call-template name="pager">
-		<xsl:with-param name="my-table">myLedger</xsl:with-param>
-	</xsl:call-template>
 	</div>
 	<br/>
 </form>

@@ -227,13 +227,8 @@ because of the dynamic number of rows per entry.
   display the controls for the journal, not other pages which use this template
   -->
   <xsl:if test="/_R_/_get/nid='journal'">
-    <input type="button" id="new_entry_button" value="{$i18n/new_entry}"
+    <input type="button" id="new_entry_button" value="New Entry"
     onclick="document.location.href='{$link_prefix}journal-new'"/>
-    <!--
-    Delete selected entries - only display this function in training mode
-    -->
-    <input type="submit" value="{$i18n/delete_entries}"
-    onclick="return confirm('Are you sure you want to delete these entries?')"/>
   </xsl:if>
 </form>
 </div>
