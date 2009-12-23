@@ -223,13 +223,6 @@ because of the dynamic number of rows per entry.
   </table>
   <xsl:call-template name="previous_next"/>
 
-  <!--
-  display the controls for the journal, not other pages which use this template
-  -->
-  <xsl:if test="/_R_/_get/nid='journal'">
-    <input type="button" id="new_entry_button" value="New Entry"
-    onclick="document.location.href='{$link_prefix}journal-new'"/>
-  </xsl:if>
 </form>
 </div>
 
