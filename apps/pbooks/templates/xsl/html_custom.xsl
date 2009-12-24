@@ -91,7 +91,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"/>
 			<script type="text/javascript" src="{$path_prefix}s/js/document_ready.js"/>
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"/>
+      <xsl:if test="not(/_R_/_get/nid='invoice-print')">
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/pkgs/yui-app-theme/css/yuiapp.css" />
+			</xsl:if>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/js/blue/style.css" />
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/thickbox.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/date_input.css"></link>
