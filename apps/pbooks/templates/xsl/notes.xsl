@@ -35,7 +35,9 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=tr
   <input type="text" name="note" id="note_field"/>
   <input type="submit"/>
 </form>
-<br/><br/>
+<br/>
+
+<div class="tableframe">
 <table class="tablesorter" id="notes_table">
   <thead>
     <tr>
@@ -75,6 +77,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=tr
     </xsl:for-each>
   </tbody>
 </table>
+</div>
 
 
   </xsl:template>
