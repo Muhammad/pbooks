@@ -31,7 +31,11 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 <script type="text/javascript"
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=true" />
-
+<form method="post">
+  <input type="text" name="note" id="note_field"/>
+  <input type="submit"/>
+</form>
+<br/><br/>
 <table class="tablesorter" id="notes_table">
   <thead>
     <tr>
@@ -71,11 +75,6 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=notes_table&amp;simple=tr
     </xsl:for-each>
   </tbody>
 </table>
-<br/><br/>
-<form method="post">
-<input type="text" name="note" id="note_field"/>
-<input type="submit"/>
-</form>
 
 
   </xsl:template>
