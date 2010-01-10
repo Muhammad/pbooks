@@ -645,12 +645,14 @@ This makes it easier to maintain persistence. -->
 	<map:gate name="ledger-export" role="pb_admin" http_method="get">
 		<map:xsl src="templates/xsl/ledger_export.xsl" />
 	</map:gate>
-	<map:gate name="x-ledger-export" role="pb_admin" content_type="text/plain" http_method="get">
+	<map:gate name="x-ledger-export-csv" role="pb_admin" content_type="text/plain" http_method="get">
+    <map:set name="runtime/display_num_entries" value="2000" />
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
 		<map:action type="datetime" params="//get_all_transactions/entry_datetime,datetime,Y-m-d" />
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
 	<map:gate name="x-ledger-export-dl" role="pb_admin" content_type="application/octet-stream" http_method="get">
+    <map:set name="runtime/display_num_entries" value="2000" />
     <map:action type="header" params="Content-Type: application/octet-stream" />
     <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.csv&quot;" />
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
@@ -658,6 +660,7 @@ This makes it easier to maintain persistence. -->
 		<map:xsl src="templates/csv/transaction_export.csv.xsl" />
 	</map:gate>
 	<map:gate name="x-ods-export" content_type="application/octet-stream" cache="0" http_method="get">
+    <map:set name="runtime/display_num_entries" value="2000" />
     <map:action type="header" params="Content-Type: application/force-download" />
     <map:action type="header" params="Content-Disposition: attachment; filename=&quot;{/_R_/_get/account_id}-{/_R_/_get/start_date}.ods&quot;" />
 		<map:query src="data/sql/general_ledger_get_running_balance_plus.xml" />
@@ -666,7 +669,7 @@ This makes it easier to maintain persistence. -->
 		<map:script src="lib/php/export_ods.php" />
 	</map:gate>
 	<map:gate name="x-ledger-export-txt" role="pb_admin" content_type="text/plain" http_method="get">
-    <map:set name="display_num_entries" value="100" />
+    <map:set name="runtime/display_num_entries" value="2000" />
 		<map:xml src="data/xml/account_types.xml" />
 		<map:query src="data/sql/entries_only_get_some.xml" />
 		<map:query src="data/sql/entries_get_all.xml" />
@@ -905,7 +908,7 @@ This makes it easier to maintain persistence. -->
 
 	<map:gate name="duplicates" role="pb_admin" http_method="get">
 		<map:query src="data/sql/option_get.xml" />
-		<map:set name="display_num_entries" value="200" />
+		<map:set name="runtime/display_num_entries" value="200" />
 		<map:query src="data/sql/general_ledger_get_unmatched.xml" />
 		<map:query src="data/sql/entries_and_amounts_get_some.xml" />
 		<map:action type="datetime" params="//get_all_entry_amounts/entry_datetime,datetime,Y-m-d" />
