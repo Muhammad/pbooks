@@ -26,10 +26,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-<xsl:variable
-  name   = "get_all_entry_amounts"
-  select = "/_R_/get_all_entry_amounts/get_all_entry_amounts"
-/>
+<xsl:variable name="get_all_entry_amounts"
+select="/_R_/get_all_entry_amounts/get_all_entry_amounts" />
 
 <xsl:for-each select="/_R_/get_all_entries/get_all_entries">
   <xsl:variable name="this_entry_id" select="entry_id"/>
